@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "name": "Hast",
+    "aktiv": false,
+    "kategorie": "Zauber",
+    "quelle": "GRW",
+    "dauer": "1 Runde/Stufe",
+    "beschreibung": "Erhöht Geschwindigkeit und Kampfkraft.",
+    "effekte": [
+      {
+        "ziel": "angriff",
+        "bonusart": "Ausweichen",
+        "wert": 1
+      },
+      {
+        "ziel": "rk",
+        "bonusart": "Ausweichen",
+        "wert": 1
+      },
+      {
+        "ziel": "reflex",
+        "bonusart": "Ausweichen",
+        "wert": 1
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Helm des Drachen",
+    "aktiv": false,
+    "kategorie": "Gegenstand",
+    "quelle": "Eigenbau",
+    "dauer": "Permanent",
+    "beschreibung": "",
+    "effekte": [
+      {
+        "ziel": "rk",
+        "bonusart": "Verbesserung",
+        "wert": 3
+      }
+    ]
+  }
+]
