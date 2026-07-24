@@ -1,44 +1,23 @@
 [
   {
     "id": 1,
-    "name": "Hast",
-    "aktiv": false,
+    "name": "Bärenstärke",
     "kategorie": "Zauber",
-    "quelle": "GRW",
-    "dauer": "1 Runde/Stufe",
-    "beschreibung": "Erhöht Geschwindigkeit und Kampfkraft.",
-    "effekte": [
-      {
-        "ziel": "angriff",
-        "bonusart": "Ausweichen",
-        "wert": 1
-      },
-      {
-        "ziel": "rk",
-        "bonusart": "Ausweichen",
-        "wert": 1
-      },
-      {
-        "ziel": "reflex",
-        "bonusart": "Ausweichen",
-        "wert": 1
-      }
-    ]
+    "aktiv": false,
+    "boni": []
   },
   {
     "id": 2,
-    "name": "Helm des Drachen",
+    "name": "Gebet",
+    "kategorie": "Zauber",
     "aktiv": false,
-    "kategorie": "Gegenstand",
-    "quelle": "Eigenbau",
-    "dauer": "Permanent",
-    "beschreibung": "",
-    "effekte": [
-      {
-        "ziel": "rk",
-        "bonusart": "Verbesserung",
-        "wert": 3
-      }
-    ]
+    "boni": []
+  },
+  {
+    "id": 3,
+    "name": "Hast",
+    "kategorie": "Zauber",
+    "aktiv": false,
+    "boni": []
   }
 ]
