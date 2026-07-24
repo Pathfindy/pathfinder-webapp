@@ -1,6 +1,6 @@
 // Das azlantische Helferlein der Boni
 // app.js
-// Version 0.3.4
+// Version 0.3.5
 
 const seiten={
  dashboard:document.getElementById("dashboard"),
@@ -21,39 +21,45 @@ zeigeSeite("dashboard");
 let effekte=[];
 
 async function ladeEffekte(){
- const antwort=await fetch("data/effekte.json");
- effekte=await antwort.json();
- if(typeof ladeEffektStatus==="function") ladeEffektStatus(effekte);
- baueEffektliste();
+ try{
+   const antwort=await fetch("data/effekte.json");
+   effekte=await antwort.json();
+   console.log("Effekte geladen:",effekte.length);
+   baueEffektliste();
+ }catch(fehler){
+   console.error("Fehler beim Laden:",fehler);
+ }
 }
 
 function baueEffektliste(){
  const liste=document.getElementById("boniListe");
- const suche=(document.getElementById("suche")?.value||"").toLowerCase();
+ if(!liste){
+   console.error("Element #boniListe nicht gefunden.");
+   return;
+ }
  liste.innerHTML="";
- effekte
- .slice()
- .sort((a,b)=>a.name.localeCompare(b.name,"de"))
- .filter(e=>e.name.toLowerCase().includes(suche))
- .forEach(effekt=>{
+ effekte.sort((a,b)=>a.name.localeCompare(b.name,"de"));
+ effekte.forEach(effekt=>{
    const eintrag=document.createElement("div");
    eintrag.className="effekt";
-   const cb=document.createElement("input");
-   cb.type="checkbox";
-   cb.checked=!!effekt.aktiv;
-   cb.addEventListener("change",()=>{
-      effekt.aktiv=cb.checked;
-      if(typeof speichereEffektStatus==="function") speichereEffektStatus(effekte);
-      if(typeof berechneWerte==="function") berechneWerte();
-   });
-   const info=document.createElement("div");
-   info.className="effekt-info";
-   info.innerHTML=`<div class="effekt-name">${effekt.name}</div><div class="effekt-kategorie">${effekt.kategorie}</div>`;
-   eintrag.append(cb,info);
+   eintrag.innerHTML=`
+<label>
+<input type="checkbox" ${effekt.aktiv?"checked":""}>
+</label>
+<div class="effekt-info">
+<div class="effekt-name">${effekt.name}</div>
+<div class="effekt-kategorie">${effekt.kategorie}</div>
+</div>`;
    liste.appendChild(eintrag);
  });
 }
 
-document.getElementById("suche").addEventListener("input",baueEffektliste);
-
 ladeEffekte();
+
+
+// ==============================
+// Effekteditor (Vorbereitung)
+// ==============================
+function oeffneEffektEditor(effekt){
+    console.log("Editor folgt in Version 0.3.6", effekt);
+}
