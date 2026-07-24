@@ -73,3 +73,29 @@ async function ladeEffekte() {
 }
 
 ladeEffekte();
+
+function baueEffektliste() {
+
+    const liste = document.getElementById("boniListe");
+
+    liste.innerHTML = "";
+
+    effekte.sort((a, b) => a.name.localeCompare(b.name, "de"));
+
+    effekte.forEach(effekt => {
+
+        const eintrag = document.createElement("div");
+        eintrag.className = "effekt";
+
+        eintrag.innerHTML = `
+            <input type="checkbox" ${effekt.aktiv ? "checked" : ""}>
+
+            <div class="effekt-info">
+                <div class="effekt-name">${effekt.name}</div>
+                <div class="effekt-kategorie">${effekt.kategorie}</div>
+            </div>
+        `;
+
+        liste.appendChild(eintrag);
+
+    });
