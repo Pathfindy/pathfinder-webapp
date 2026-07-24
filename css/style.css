@@ -168,3 +168,20 @@ nav button{
 }
 
 }
+
+/* Seiten */
+
+.page {
+    display: none;
+}
+
+.page.active {
+    display: block;
+}
+
+/* Navigation */
+
+nav button.active {
+    background: #1e3a5f;
+    color: white;
+}
