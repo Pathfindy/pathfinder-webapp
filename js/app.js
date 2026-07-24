@@ -31,27 +31,40 @@ async function ladeEffekte(){
  }
 }
 
+
 function baueEffektliste(){
  const liste=document.getElementById("boniListe");
- if(!liste){
-   console.error("Element #boniListe nicht gefunden.");
-   return;
- }
+ const suche=document.getElementById("suche");
+ if(!liste) return;
+ const status=JSON.parse(localStorage.getItem("pf-effekte")||"{}");
+ const filter=(suche?.value||"").toLowerCase();
  liste.innerHTML="";
  effekte.sort((a,b)=>a.name.localeCompare(b.name,"de"));
- effekte.forEach(effekt=>{
+ effekte.filter(e=>e.name.toLowerCase().includes(filter)).forEach(effekt=>{
+   effekt.aktiv=!!status[effekt.name];
    const eintrag=document.createElement("div");
    eintrag.className="effekt";
-   eintrag.innerHTML=`
-<label>
-<input type="checkbox" ${effekt.aktiv?"checked":""}>
-</label>
-<div class="effekt-info">
-<div class="effekt-name">${effekt.name}</div>
-<div class="effekt-kategorie">${effekt.kategorie}</div>
-</div>`;
+   const cb=document.createElement("input");
+   cb.type="checkbox";
+   cb.checked=effekt.aktiv;
+   cb.addEventListener("change",()=>{
+      status[effekt.name]=cb.checked;
+      localStorage.setItem("pf-effekte",JSON.stringify(status));
+      effekt.aktiv=cb.checked;
+      if(typeof berechneWerte==="function") berechneWerte();
+   });
+   const label=document.createElement("label");
+   label.appendChild(cb);
+   const info=document.createElement("div");
+   info.className="effekt-info";
+   info.innerHTML=`<div class="effekt-name">${effekt.name}</div><div class="effekt-kategorie">${effekt.kategorie}</div>`;
+   eintrag.append(label,info);
    liste.appendChild(eintrag);
  });
+ if(suche && !suche.dataset.bound){
+    suche.dataset.bound="1";
+    suche.addEventListener("input",baueEffektliste);
+ }
 }
 
 ladeEffekte();
