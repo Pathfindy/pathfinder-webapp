@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Das azlantische Helferlein der Boni</title>
 
     <link rel="manifest" href="manifest.json">
@@ -15,89 +17,116 @@
 
 <header>
 
-<h1>Das azlantische Helferlein der Boni</h1>
+    <h1>Das azlantische Helferlein der Boni</h1>
 
 </header>
 
 <nav>
-<button id="btnDashboard">Dashboard</button>
-<button id="btnEffekte">Effekte</button>
-<button id="btnCharaktere">Charaktere</button>
+
+    <button id="btnDashboard">Dashboard</button>
+    <button id="btnEffekte">Effekte</button>
+    <button id="btnCharaktere">Charaktere</button>
+
 </nav>
 
 <main>
 
-<section id="dashboard">
+    <!-- ========================= -->
+    <!-- Dashboard                 -->
+    <!-- ========================= -->
 
-<h2>Aktuelle Werte</h2>
+    <section id="dashboard" class="page active">
 
-<div class="werte">
+        <h2>Aktuelle Werte</h2>
 
-<div class="karte">
-<h3>Angriff Nah</h3>
-<span id="angriffNah">0</span>
-</div>
+        <div class="werte">
 
-<div class="karte">
-<h3>Angriff Fern</h3>
-<span id="angriffFern">0</span>
-</div>
+            <div class="karte">
+                <h3>Angriff Nah</h3>
+                <span id="angriffNah">0</span>
+            </div>
 
-<div class="karte">
-<h3>Schaden</h3>
-<span id="schaden">0</span>
-</div>
+            <div class="karte">
+                <h3>Angriff Fern</h3>
+                <span id="angriffFern">0</span>
+            </div>
 
-<div class="karte">
-<h3>RK</h3>
-<span id="rk">0</span>
-</div>
+            <div class="karte">
+                <h3>Schaden</h3>
+                <span id="schaden">0</span>
+            </div>
 
-<div class="karte">
-<h3>RW-Reflex</h3>
-<span id="reflex">0</span>
-</div>
+            <div class="karte">
+                <h3>Rüstungsklasse</h3>
+                <span id="rk">0</span>
+            </div>
 
-<div class="karte">
-<h3>RW-Wille</h3>
-<span id="wille">0</span>
-</div>
+            <div class="karte">
+                <h3>RW-Zähigkeit</h3>
+                <span id="zaehigkeit">0</span>
+            </div>
 
-<div class="karte">
-<h3>RW-Zähigkeit</h3>
-<span id="zaehigkeit">0</span>
-</div>
+            <div class="karte">
+                <h3>RW-Reflex</h3>
+                <span id="reflex">0</span>
+            </div>
 
-<div class="karte">
-    <h3>RW-Furcht</h3>
-    <span id="furcht">0</span>
-</div>
+            <div class="karte">
+                <h3>RW-Wille</h3>
+                <span id="wille">0</span>
+            </div>
 
-<div class="karte">
-    <h3>RW-Verzauberung</h3>
-    <span id="verzauberung">0</span>
-</div>
+            <div class="karte">
+                <h3>RW-Furcht</h3>
+                <span id="furcht">0</span>
+            </div>
 
-<div class="karte">
-    <h3>RW-Bezauberung</h3>
-    <span id="bezauberung">0</span>
-</div>
+            <div class="karte">
+                <h3>RW-Verzauberung</h3>
+                <span id="verzauberung">0</span>
+            </div>
 
-</div>
+            <div class="karte">
+                <h3>RW-Bezauberung</h3>
+                <span id="bezauberung">0</span>
+            </div>
 
-</section>
+        </div>
 
-<section id="dashboard">
-...
-</section>
+    </section>
 
-<section id="effekte">
-...
-</section>
+    <!-- ========================= -->
+    <!-- Effekte                   -->
+    <!-- ========================= -->
 
-<section id="charaktere">
-...
-</section>
+    <section id="effekte" class="page">
+
+        <h2>Effekte</h2>
+
+        <input
+            type="text"
+            id="suche"
+            placeholder="Effekt suchen...">
+
+        <div id="boniListe">
+
+            <p>Noch keine Effekte geladen.</p>
+
+        </div>
+
+    </section>
+
+    <!-- ========================= -->
+    <!-- Charaktere                -->
+    <!-- ========================= -->
+
+    <section id="charaktere" class="page">
+
+        <h2>Charaktere</h2>
+
+        <p>Die Charakterverwaltung wird in einem späteren Sprint ergänzt.</p>
+
+    </section>
 
 </main>
 
@@ -108,4 +137,5 @@
 <script src="js/speicher.js"></script>
 
 </body>
+
 </html>
