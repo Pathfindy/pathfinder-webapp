@@ -20,12 +20,9 @@
 </header>
 
 <nav>
-
-<button id="btnDashboard">Dashboard</button>
-<button id="btnBoni">Boni</button>
-<button id="btnFilter">Filter</button>
-<button id="btnCharakter">Charakter</button>
-
+    <button class="active" data-page="dashboard">Dashboard</button>
+    <button data-page="effekte">Effekte</button>
+    <button data-page="charaktere">Charaktere</button>
 </nav>
 
 <main>
@@ -90,33 +87,16 @@
 
 </section>
 
-<section id="boni" style="display:none;">
-
-<h2>Boniliste</h2>
-
-<input
-type="text"
-id="suche"
-placeholder="Bonus suchen...">
-
-<div id="boniListe"></div>
-
+<section id="dashboard" class="page active">
+    …
 </section>
 
-<section id="filter" style="display:none;">
-
-<h2>Filter</h2>
-
-<p>Kommt in Schritt 5.</p>
-
+<section id="effekte" class="page">
+    …
 </section>
 
-<section id="charakter" style="display:none;">
-
-<h2>Charakter</h2>
-
-<p>Kommt in Version 2.1.</p>
-
+<section id="charaktere" class="page">
+    …
 </section>
 
 </main>
