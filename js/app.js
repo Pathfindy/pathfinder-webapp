@@ -1,97 +1,57 @@
 // Das azlantische Helferlein der Boni
 // app.js
-// Version 0.3.2
+// Version 0.3.3
 
-// ==============================
-// Seitenverwaltung
-// ==============================
-
-const seiten = {
-    dashboard: document.getElementById("dashboard"),
-    effekte: document.getElementById("effekte"),
-    charaktere: document.getElementById("charaktere")
+const seiten={
+ dashboard:document.getElementById("dashboard"),
+ effekte:document.getElementById("effekte"),
+ charaktere:document.getElementById("charaktere")
 };
 
-function zeigeSeite(name) {
-
-    Object.values(seiten).forEach(seite => {
-        seite.style.display = "none";
-    });
-
-    if (seiten[name]) {
-        seiten[name].style.display = "block";
-    }
-
+function zeigeSeite(name){
+ Object.values(seiten).forEach(s=>s.style.display="none");
+ if(seiten[name]) seiten[name].style.display="block";
 }
 
-// ==============================
-// Navigation
-// ==============================
-
-document.getElementById("btnDashboard").onclick = () => {
-    zeigeSeite("dashboard");
-};
-
-document.getElementById("btnEffekte").onclick = () => {
-    zeigeSeite("effekte");
-};
-
-document.getElementById("btnCharaktere").onclick = () => {
-    zeigeSeite("charaktere");
-};
-
-// Startseite
+document.getElementById("btnDashboard").onclick=()=>zeigeSeite("dashboard");
+document.getElementById("btnEffekte").onclick=()=>zeigeSeite("effekte");
+document.getElementById("btnCharaktere").onclick=()=>zeigeSeite("charaktere");
 zeigeSeite("dashboard");
 
-// ==============================
-// Effekte
-// ==============================
+let effekte=[];
 
-let effekte = [];
+async function ladeEffekte(){
+ try{
+   const antwort=await fetch("data/effekte.json");
+   effekte=await antwort.json();
+   console.log("Effekte geladen:",effekte.length);
+   baueEffektliste();
+ }catch(fehler){
+   console.error("Fehler beim Laden:",fehler);
+ }
+}
 
-// Daten laden
-async function ladeEffekte() {
-
-    try {
-
-        const antwort = await fetch("data/effekte.json");
-
-        effekte = await antwort.json();
-
-        console.log("Effekte geladen:", effekte.length);
-
-        if (typeof baueEffektliste === "function") {
-            baueEffektliste();
-        }
-
-    } catch (fehler) {
-
-        console.error("Fehler beim Laden:", fehler);
-
-    }
-
+function baueEffektliste(){
+ const liste=document.getElementById("boniListe");
+ if(!liste){
+   console.error("Element #boniListe nicht gefunden.");
+   return;
+ }
+ liste.innerHTML="";
+ effekte.sort((a,b)=>a.name.localeCompare(b.name,"de"));
+ effekte.forEach(effekt=>{
+   const eintrag=document.createElement("div");
+   eintrag.className="effekt";
+   eintrag.innerHTML=`
+<label>
+<input type="checkbox" ${effekt.aktiv?"checked":""}>
+</label>
+<div class="effekt-info">
+<div class="effekt-name">${effekt.name}</div>
+<div class="effekt-kategorie">${effekt.kategorie}</div>
+</div>`;
+   liste.appendChild(eintrag);
+ });
 }
 
 ladeEffekte();
-
-async function ladeEffekte() {
-    try {
-        console.log("1. Lade JSON...");
-
-        const antwort = await fetch("data/effekte.json");
-
-        console.log("2. Status:", antwort.status);
-
-        effekte = await antwort.json();
-
-        console.log("3. Effekte:", effekte);
-
-        console.log("4. baueEffektliste =", typeof baueEffektliste);
-
-        baueEffektliste();
-
-        console.log("5. Fertig");
-    } catch (fehler) {
-        console.error("FEHLER:", fehler);
-    }
-}
