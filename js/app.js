@@ -1,66 +1,75 @@
-// Pathfinder Boni 2.0
-// Grundfunktionen
+// Das azlantische Helferlein der Boni
+// app.js
+// Version 0.3.2
+
+// ==============================
+// Seitenverwaltung
+// ==============================
 
 const seiten = {
     dashboard: document.getElementById("dashboard"),
-    boni: document.getElementById("boni"),
-    filter: document.getElementById("filter"),
-    charakter: document.getElementById("charakter")
+    effekte: document.getElementById("effekte"),
+    charaktere: document.getElementById("charaktere")
 };
 
-function zeigeSeite(name){
+function zeigeSeite(name) {
 
-    Object.values(seiten).forEach(seite=>{
-        seite.style.display="none";
+    Object.values(seiten).forEach(seite => {
+        seite.style.display = "none";
     });
 
-    seiten[name].style.display="block";
+    if (seiten[name]) {
+        seiten[name].style.display = "block";
+    }
 
 }
 
-document.getElementById("btnDashboard").onclick=()=>{
+// ==============================
+// Navigation
+// ==============================
+
+document.getElementById("btnDashboard").onclick = () => {
     zeigeSeite("dashboard");
 };
 
-document.getElementById("btnBoni").onclick=()=>{
-    zeigeSeite("boni");
+document.getElementById("btnEffekte").onclick = () => {
+    zeigeSeite("effekte");
 };
 
-document.getElementById("btnFilter").onclick=()=>{
-    zeigeSeite("filter");
-};
-
-document.getElementById("btnCharakter").onclick=()=>{
-    zeigeSeite("charakter");
+document.getElementById("btnCharaktere").onclick = () => {
+    zeigeSeite("charaktere");
 };
 
 // Startseite
 zeigeSeite("dashboard");
 
-// Hier werden später alle Boni gespeichert
-let boni = [];
+// ==============================
+// Effekte
+// ==============================
+
+let effekte = [];
 
 // Daten laden
-async function ladeBoni(){
+async function ladeEffekte() {
 
-    try{
+    try {
 
-        const antwort = await fetch("data/boni.json");
+        const antwort = await fetch("data/effekte.json");
 
-        boni = await antwort.json();
+        effekte = await antwort.json();
 
-        console.log("Boni geladen:", boni.length);
+        console.log("Effekte geladen:", effekte.length);
 
-        if(typeof baueBoniliste==="function"){
-            baueBoniliste();
+        if (typeof baueEffektliste === "function") {
+            baueEffektliste();
         }
 
-    }catch(fehler){
+    } catch (fehler) {
 
-        console.error("Fehler beim Laden:",fehler);
+        console.error("Fehler beim Laden:", fehler);
 
     }
 
 }
 
-ladeBoni();
+ladeEffekte();
