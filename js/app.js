@@ -69,11 +69,38 @@ function baueEffektliste(){
  }
 }
 
+ladeEffekte();
+
 
 document.addEventListener("DOMContentLoaded",()=>{
-  ladeEffekte();
-  const b=document.getElementById("btnNeuerEffekt");
-  if(b){
-    b.addEventListener("click",()=>alert("Effekteditor folgt in Version 0.4.1"));
-  }
+ const b=document.getElementById("btnNeuerEffekt");
+ if(b){
+   b.addEventListener("click",()=>{
+      alert("Effekteditor folgt in Version 0.4.1");
+   });
+ }
+});
+
+
+function updateDebugStorage(extra=""){
+ const el=document.getElementById("debugStorage");
+ if(!el) return;
+ let txt="";
+ txt+="UA: "+navigator.userAgent+"\n";
+ try{
+   localStorage.setItem("pf-debug","ok");
+   txt+="localStorage: OK\n";
+ }catch(e){
+   txt+="localStorage ERROR: "+e+"\n";
+ }
+ txt+='pf-effekte: '+localStorage.getItem("pf-effekte")+"\n";
+ if(extra) txt+=extra;
+ el.textContent=txt;
+}
+window.addEventListener("load",()=>setTimeout(updateDebugStorage,300));
+
+document.addEventListener("change",(e)=>{
+ if(e.target && e.target.type==="checkbox"){
+   setTimeout(()=>updateDebugStorage("\nCheckbox geändert."),50);
+ }
 });
