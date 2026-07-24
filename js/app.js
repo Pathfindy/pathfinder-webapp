@@ -74,28 +74,24 @@ async function ladeEffekte() {
 
 ladeEffekte();
 
-function baueEffektliste() {
+async function ladeEffekte() {
+    try {
+        console.log("1. Lade JSON...");
 
-    const liste = document.getElementById("boniListe");
+        const antwort = await fetch("data/effekte.json");
 
-    liste.innerHTML = "";
+        console.log("2. Status:", antwort.status);
 
-    effekte.sort((a, b) => a.name.localeCompare(b.name, "de"));
+        effekte = await antwort.json();
 
-    effekte.forEach(effekt => {
+        console.log("3. Effekte:", effekte);
 
-        const eintrag = document.createElement("div");
-        eintrag.className = "effekt";
+        console.log("4. baueEffektliste =", typeof baueEffektliste);
 
-        eintrag.innerHTML = `
-            <input type="checkbox" ${effekt.aktiv ? "checked" : ""}>
+        baueEffektliste();
 
-            <div class="effekt-info">
-                <div class="effekt-name">${effekt.name}</div>
-                <div class="effekt-kategorie">${effekt.kategorie}</div>
-            </div>
-        `;
-
-        liste.appendChild(eintrag);
-
-    });
+        console.log("5. Fertig");
+    } catch (fehler) {
+        console.error("FEHLER:", fehler);
+    }
+}
