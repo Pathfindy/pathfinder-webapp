@@ -1,108 +1,170 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+/* ==========================
+   Das azlantische Helferlein der Boni
+   Style v0.3.1
+========================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-body{
-    font-family:Arial,Helvetica,sans-serif;
-    background:#f2f4f7;
-    color:#222;
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f6f8;
+    color: #222;
 }
 
-header{
-    background:#1e3a5f;
-    color:white;
-    padding:18px;
-    text-align:center;
-    font-size:22px;
-    font-weight:bold;
+/* ==========================
+   Header
+========================== */
+
+header {
+    background: #1e3a5f;
+    color: white;
+    padding: 10px 16px;
+    text-align: center;
 }
 
-nav{
-    display:flex;
-    justify-content:space-around;
-    background:#284d79;
-    padding:10px;
-    position:sticky;
-    top:0;
+header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+/* ==========================
+   Navigation
+========================== */
+
+nav {
+    display: flex;
+    gap: 6px;
+    padding: 8px;
+    background: white;
+    border-bottom: 1px solid #ddd;
+}
+
+nav button {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background: #e6eaf0;
+    cursor: pointer;
+    font-size: .95rem;
+}
+
+nav button:hover {
+    background: #d3dce8;
+}
+
+/* ==========================
+   Inhalt
+========================== */
+
+main {
+    padding: 12px;
+}
+
+section h2 {
+    margin-bottom: 12px;
+}
+
+/* ==========================
+   Dashboard
+========================== */
+
+.werte {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px,1fr));
+    gap: 10px;
+}
+
+.karte {
+    background: white;
+    border-radius: 10px;
+    padding: 12px;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,.08);
+}
+
+.karte h3 {
+    font-size: .9rem;
+    margin-bottom: 8px;
+}
+
+.karte span {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #1e3a5f;
+}
+
+/* ==========================
+   Suche
+========================== */
+
+#suche {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 12px;
+    border: 1px solid #bbb;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+/* ==========================
+   Effektliste
+========================== */
+
+#boniListe {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.effekt {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: white;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0,0,0,.08);
+}
+
+.effekt input[type="checkbox"] {
+    transform: scale(1.2);
+}
+
+.effekt-info {
+    flex: 1;
+}
+
+.effekt-name {
+    font-weight: bold;
+}
+
+.effekt-kategorie {
+    font-size: .85rem;
+    color: #666;
+}
+
+/* ==========================
+   Smartphone
+========================== */
+
+@media (max-width:600px){
+
+header h1{
+    font-size:1.05rem;
 }
 
 nav button{
-    background:white;
-    border:none;
-    border-radius:10px;
-    padding:10px 16px;
-    cursor:pointer;
-    font-size:15px;
-    font-weight:bold;
-}
-
-nav button:hover{
-    background:#dbe9ff;
-}
-
-main{
-    padding:15px;
-}
-
-.werte{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
-    gap:15px;
-}
-
-.karte{
-    background:white;
-    border-radius:12px;
-    padding:20px;
-    text-align:center;
-    box-shadow:0 2px 8px rgba(0,0,0,.15);
-}
-
-.karte h3{
-    font-size:16px;
-    margin-bottom:12px;
+    font-size:.85rem;
+    padding:8px;
 }
 
 .karte span{
-    font-size:32px;
-    font-weight:bold;
-    color:#1e3a5f;
+    font-size:1.2rem;
 }
 
-#suche{
-    width:100%;
-    padding:12px;
-    margin:15px 0;
-    border-radius:10px;
-    border:1px solid #bbb;
-    font-size:16px;
-}
-
-#boniListe{
-    display:flex;
-    flex-direction:column;
-    gap:10px;
-}
-
-.bonus{
-    background:white;
-    border-radius:10px;
-    padding:12px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    box-shadow:0 1px 4px rgba(0,0,0,.15);
-}
-
-.bonus:hover{
-    background:#eef5ff;
-}
-
-footer{
-    text-align:center;
-    color:#666;
-    margin-top:30px;
-    font-size:13px;
 }
