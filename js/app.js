@@ -25,6 +25,8 @@ async function ladeEffekte(){
    const antwort=await fetch("data/effekte.json");
    effekte=await antwort.json();
    console.log("Effekte geladen:",effekte.length);
+   const status=JSON.parse(localStorage.getItem("pf-effekte")||"{}");
+   effekte.forEach(e=>e.aktiv=!!status[e.name]);
    baueEffektliste();
  }catch(fehler){
    console.error("Fehler beim Laden:",fehler);
