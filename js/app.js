@@ -1,6 +1,6 @@
 // Das azlantische Helferlein der Boni
 // app.js
-// Version 0.3.5
+// Version 0.3.3
 
 const seiten={
  dashboard:document.getElementById("dashboard"),
@@ -57,9 +57,11 @@ function baueEffektliste(){
 ladeEffekte();
 
 
-// ==============================
-// Effekteditor (Vorbereitung)
-// ==============================
-function oeffneEffektEditor(effekt){
-    console.log("Editor folgt in Version 0.3.6", effekt);
-}
+document.addEventListener("DOMContentLoaded",()=>{
+ const b=document.getElementById("btnNeuerEffekt");
+ if(b){
+   b.addEventListener("click",()=>{
+      alert("Effekteditor folgt in Version 0.4.1");
+   });
+ }
+});
