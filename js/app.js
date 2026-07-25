@@ -125,3 +125,28 @@ function normalisiereEffekt(effekt){
     }
     return effekt;
 }
+
+
+// ==== v0.6.0 editor scaffold ====
+function fuegeBonuszeileHinzu(){
+  const c=document.getElementById("bonusContainer");
+  if(!c) return;
+  const row=document.createElement("div");
+  row.className="bonus-zeile";
+  row.innerHTML=`
+<select disabled><option>Ziel (folgt)</option></select>
+<select disabled><option>Bonusart (folgt)</option></select>
+<select disabled><option>Wert (folgt)</option></select>
+<button type="button">🗑</button>`;
+  row.querySelector("button").onclick=()=>row.remove();
+  c.appendChild(row);
+}
+document.addEventListener("DOMContentLoaded",()=>{
+ const b=document.getElementById("btnBonusHinzufuegen");
+ if(b){
+   b.addEventListener("click",fuegeBonuszeileHinzu);
+   if(document.getElementById("bonusContainer")?.children.length===0){
+      fuegeBonuszeileHinzu();
+   }
+ }
+});
