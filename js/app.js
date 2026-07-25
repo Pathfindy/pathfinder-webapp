@@ -76,7 +76,7 @@ document.addEventListener("DOMContentLoaded",()=>{
  const b=document.getElementById("btnNeuerEffekt");
  if(b){
    b.addEventListener("click",()=>{
-      alert("Effekteditor folgt in Version 0.4.1");
+      
    });
  }
 });
