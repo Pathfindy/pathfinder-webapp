@@ -1,6 +1,6 @@
 // Das azlantische Helferlein der Boni
 // app.js
-// Version 0.3.3
+// Version 0.5.0
 
 const seiten={
  dashboard:document.getElementById("dashboard"),
@@ -76,7 +76,7 @@ document.addEventListener("DOMContentLoaded",()=>{
  const b=document.getElementById("btnNeuerEffekt");
  if(b){
    b.addEventListener("click",()=>{
-      alert("Effekteditor folgt in Version 0.4.1");
+      document.getElementById("effektDialog")?.showModal();
    });
  }
 });
@@ -104,3 +104,5 @@ document.addEventListener("change",(e)=>{
    setTimeout(()=>updateDebugStorage("\nCheckbox geändert."),50);
  }
 });
+
+document.addEventListener("click",e=>{if(e.target?.id==="btnDialogSchliessen")document.getElementById("effektDialog").close();});
