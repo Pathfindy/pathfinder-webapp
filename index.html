@@ -104,16 +104,12 @@
 
         <h2>Effekte</h2>
 
-<button id="btnNeuerEffekt">+ Neuer Effekt</button>
-
         <button id="btnNeuerEffekt">+ Neuer Effekt</button>
 
         <input
             type="text"
             id="suche"
             placeholder="Effekt suchen...">
-
-        <dialog id="effektDialog"><h3>Neuer Effekt</h3><p>Der vollständige Effekteditor folgt im nächsten Schritt.</p><button id="btnDialogSchliessen">Schließen</button></dialog>
 
         <div id="boniListe">
 
@@ -142,6 +138,20 @@
 <script src="js/berechnung.js"></script>
 <script src="js/makros.js"></script>
 <script src="js/speicher.js"></script>
+
+
+<dialog id="effektDialog">
+<h3>Neuen Effekt anlegen</h3>
+<label>Name<br><input id="effektName"></label><br><br>
+<label>Kategorie<br>
+<select id="effektKategorie">
+<option>Zauber</option><option>Talent</option><option>Gegenstand</option><option>Sonstiges</option>
+</select></label><br><br>
+<label>Beschreibung<br><textarea id="effektBeschreibung"></textarea></label><br><br>
+<label>Quelle<br><input id="effektQuelle"></label><br><br>
+<button id="btnSpeichernEffekt">Speichern</button>
+<button id="btnSchliessenDialog">Abbrechen</button>
+</dialog>
 
 </body>
 
