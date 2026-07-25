@@ -185,3 +185,8 @@ nav button.active {
     background: #1e3a5f;
     color: white;
 }
+
+
+#bonusEditor{margin:12px 0}
+.bonus-zeile{display:flex;gap:6px;align-items:center;margin:6px 0;flex-wrap:wrap}
+.bonus-zeile select{flex:1;min-width:90px}
