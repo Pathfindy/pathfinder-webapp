@@ -1,6 +1,6 @@
 // Das azlantische Helferlein der Boni
 // app.js
-// Version 0.5.0
+// Version 0.3.3
 
 const seiten={
  dashboard:document.getElementById("dashboard"),
@@ -76,7 +76,7 @@ document.addEventListener("DOMContentLoaded",()=>{
  const b=document.getElementById("btnNeuerEffekt");
  if(b){
    b.addEventListener("click",()=>{
-      document.getElementById("effektDialog")?.showModal();
+      alert("Effekteditor folgt in Version 0.4.1");
    });
  }
 });
@@ -105,4 +105,20 @@ document.addEventListener("change",(e)=>{
  }
 });
 
-document.addEventListener("click",e=>{if(e.target?.id==="btnDialogSchliessen")document.getElementById("effektDialog").close();});
+document.addEventListener("DOMContentLoaded",()=>{
+ const btn=document.getElementById("btnNeuerEffekt");
+ const dlg=document.getElementById("effektDialog");
+ document.getElementById("btnSchliessenDialog")?.addEventListener("click",()=>dlg.close());
+ btn?.addEventListener("click",()=>dlg.showModal());
+ document.getElementById("btnSpeichernEffekt")?.addEventListener("click",()=>{
+   const daten={
+    name:effektName.value,
+    kategorie:effektKategorie.value,
+    beschreibung:effektBeschreibung.value,
+    quelle:effektQuelle.value
+   };
+   localStorage.setItem("pf-neuer-effekt",JSON.stringify(daten));
+   alert("Grunddaten gespeichert (Bonuszeilen folgen in v0.5.2)");
+   dlg.close();
+ });
+});
