@@ -103,3 +103,25 @@ document.addEventListener("DOMContentLoaded",()=>{
    dlg.close();
  });
 });
+
+
+// === v0.6.0 foundation ===
+// Datenmodell-Vorbereitung für Bonuszeilen
+const PF_BONUS_ZIELE = [];
+const PF_BONUSARTEN = [];
+const PF_BONUSWERTE = [1,2,3,4,5,6,7,8,0,-1,-2,-3,-4,-5,-6,-7,-8];
+
+function neuerLeererBonus(){
+    return {
+        ziel:"",
+        bonusart:"",
+        wert:0
+    };
+}
+
+function normalisiereEffekt(effekt){
+    if(!Array.isArray(effekt.boni)){
+        effekt.boni=[];
+    }
+    return effekt;
+}
