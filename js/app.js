@@ -27,7 +27,7 @@ async function ladeEffekte(){
    console.log("Effekte geladen:",effekte.length);
    const status=JSON.parse(localStorage.getItem("pf-effekte")||"{}");
    effekte.forEach(e=>e.aktiv=!!status[e.name]);
-   const benutzer=JSON.parse(localStorage.getItem("pf-benutzer-effekte")||"[]"); effekte=effekte.concat(benutzer); baueEffektliste();
+   const benutzer=JSON.parse(localStorage.getItem("pf-benutzer-effekte")||"[]"); effekte.forEach(e=>e.standard=true); effekte=effekte.concat(benutzer.map(x=>({...x,standard:false}))); baueEffektliste();
  }catch(fehler){
    console.error("Fehler beim Laden:",fehler);
  }
@@ -60,7 +60,21 @@ function baueEffektliste(){
    const info=document.createElement("div");
    info.className="effekt-info";
    info.innerHTML=`<div class="effekt-name">${effekt.name}</div><div class="effekt-kategorie">${effekt.kategorie}</div>`;
-   eintrag.append(label,info);
+   if(!effekt.standard){
+      const del=document.createElement("button");
+      del.textContent="🗑";
+      del.onclick=()=>{
+        if(confirm("Effekt wirklich löschen?")){
+          effekte=effekte.filter(x=>x!==effekt);
+          const ben=effekte.filter(x=>!x.standard);
+          localStorage.setItem("pf-benutzer-effekte",JSON.stringify(ben));
+          baueEffektliste();
+        }
+      };
+      eintrag.append(label,info,del);
+   } else {
+      eintrag.append(label,info);
+   }
    liste.appendChild(eintrag);
  });
  if(suche && !suche.dataset.bound){
@@ -96,6 +110,7 @@ document.addEventListener("DOMContentLoaded",()=>{
    };
    let benutzer=JSON.parse(localStorage.getItem("pf-benutzer-effekte")||"[]");
    daten.aktiv=false;
+   daten.standard=false;
    benutzer.push(daten);
    localStorage.setItem("pf-benutzer-effekte",JSON.stringify(benutzer));
    effekte.push(daten);
