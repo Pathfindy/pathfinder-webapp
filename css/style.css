@@ -1,6 +1,6 @@
 /* ==========================
    Das azlantische Helferlein der Boni
-   Style v0.3.1
+   Style v0.4.0
 ========================== */
 
 * {
@@ -137,6 +137,7 @@ section h2 {
 
 .effekt-info {
     flex: 1;
+    min-width: 0;
 }
 
 .effekt-name {
@@ -148,25 +149,110 @@ section h2 {
     color: #666;
 }
 
+.effekt-aktionen {
+    display: flex;
+    gap: 4px;
+}
+
+.icon-button {
+    border: 0;
+    border-radius: 8px;
+    background: #e6eaf0;
+    min-width: 40px;
+    min-height: 40px;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.icon-button:hover {
+    background: #d3dce8;
+}
+
+/* ==========================
+   Effekteditor
+========================== */
+
+#effektDialog {
+    width: min(94vw, 720px);
+    max-height: 92vh;
+    margin: auto;
+    padding: 18px;
+    border: 0;
+    border-radius: 12px;
+    overflow: auto;
+}
+
+#effektDialog::backdrop {
+    background: rgba(0,0,0,.45);
+}
+
+#effektDialog input,
+#effektDialog textarea,
+#effektDialog select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #bbb;
+    border-radius: 8px;
+    font: inherit;
+}
+
+#effektDialog textarea {
+    min-height: 90px;
+    resize: vertical;
+}
+
+#bonusEditor {
+    margin: 12px 0;
+}
+
+#bonusContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 8px 0;
+}
+
+.bonus-zeile {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1.5fr) minmax(76px, .7fr) 40px;
+    gap: 6px;
+    align-items: center;
+}
+
+.bonus-entfernen {
+    min-width: 40px;
+    width: 40px;
+}
+
+.bonus-leer {
+    padding: 10px;
+    color: #666;
+    background: #f4f6f8;
+    border-radius: 8px;
+}
+
 /* ==========================
    Smartphone
 ========================== */
 
 @media (max-width:600px){
 
-header h1{
-    font-size:1.05rem;
-}
+    header h1{
+        font-size:1.05rem;
+    }
 
-nav button{
-    font-size:.85rem;
-    padding:8px;
-}
+    nav button{
+        font-size:.85rem;
+        padding:8px;
+    }
 
-.karte span{
-    font-size:1.2rem;
-}
+    .karte span{
+        font-size:1.2rem;
+    }
 
+    .bonus-zeile {
+        grid-template-columns: 1fr 1fr 76px 40px;
+    }
 }
 
 /* Seiten */
@@ -185,8 +271,3 @@ nav button.active {
     background: #1e3a5f;
     color: white;
 }
-
-
-#bonusEditor{margin:12px 0}
-.bonus-zeile{display:flex;gap:6px;align-items:center;margin:6px 0;flex-wrap:wrap}
-.bonus-zeile select{flex:1;min-width:90px}
