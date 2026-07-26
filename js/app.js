@@ -1,6 +1,6 @@
 // Das azlantische Helferlein der Boni
 // app.js
-// Version 0.3.3
+// Version 0.6.1
 
 const seiten={
  dashboard:document.getElementById("dashboard"),
@@ -20,19 +20,66 @@ zeigeSeite("dashboard");
 
 let effekte=[];
 
+function neueEffektId(){
+ if(typeof crypto!=="undefined" && typeof crypto.randomUUID==="function"){
+   return crypto.randomUUID();
+ }
+ return "effekt-"+Date.now()+"-"+Math.random().toString(36).slice(2);
+}
+
+function standardEffektId(effekt){
+ const basis=`${effekt.name||"effekt"}-${effekt.kategorie||"standard"}`
+   .toLowerCase()
+   .normalize("NFD")
+   .replace(/[\u0300-\u036f]/g,"")
+   .replace(/[^a-z0-9]+/g,"-")
+   .replace(/^-+|-+$/g,"");
+ return `standard-${basis||"effekt"}`;
+}
+
+function normalisiereEffekt(effekt={}){
+ const standard=!!effekt.standard;
+ return {
+   id:effekt.id||(standard?standardEffektId(effekt):neueEffektId()),
+   standard,
+   aktiv:!!effekt.aktiv,
+   name:effekt.name||"",
+   kategorie:effekt.kategorie||"",
+   beschreibung:effekt.beschreibung||"",
+   quelle:effekt.quelle||"",
+   boni:Array.isArray(effekt.boni)?effekt.boni:[]
+ };
+}
+
+function erzeugeEffekt(daten={}){
+ return normalisiereEffekt({
+   ...daten,
+   standard:false,
+   aktiv:false
+ });
+}
+
 async function ladeEffekte(){
  try{
    const antwort=await fetch("data/effekte.json");
-   effekte=await antwort.json();
-   console.log("Effekte geladen:",effekte.length);
+   const standardEffekte=await antwort.json();
    const status=JSON.parse(localStorage.getItem("pf-effekte")||"{}");
-   effekte.forEach(e=>e.aktiv=!!status[e.name]);
-   const benutzer=JSON.parse(localStorage.getItem("pf-benutzer-effekte")||"[]"); effekte.forEach(e=>e.standard=true); effekte=effekte.concat(benutzer.map(x=>({...x,standard:false}))); baueEffektliste();
+
+   const benutzerRohdaten=JSON.parse(localStorage.getItem("pf-benutzer-effekte")||"[]");
+   const benutzer=benutzerRohdaten.map(effekt=>normalisiereEffekt({...effekt,standard:false}));
+   localStorage.setItem("pf-benutzer-effekte",JSON.stringify(benutzer));
+
+   effekte=standardEffekte
+     .map(effekt=>normalisiereEffekt({...effekt,standard:true}))
+     .concat(benutzer);
+   effekte.forEach(effekt=>effekt.aktiv=!!status[effekt.name]);
+
+   console.log("Effekte geladen:",effekte.length);
+   baueEffektliste();
  }catch(fehler){
    console.error("Fehler beim Laden:",fehler);
  }
 }
-
 
 function baueEffektliste(){
  const liste=document.getElementById("boniListe");
@@ -65,7 +112,7 @@ function baueEffektliste(){
       del.textContent="🗑";
       del.onclick=()=>{
         if(confirm("Effekt wirklich löschen?")){
-          effekte=effekte.filter(x=>x!==effekt);
+          effekte=effekte.filter(x=>x.id!==effekt.id);
           const ben=effekte.filter(x=>!x.standard);
           localStorage.setItem("pf-benutzer-effekte",JSON.stringify(ben));
           baueEffektliste();
@@ -85,7 +132,6 @@ function baueEffektliste(){
 
 ladeEffekte();
 
-
 document.addEventListener("DOMContentLoaded",()=>{
  const b=document.getElementById("btnNeuerEffekt");
  if(b){
@@ -95,22 +141,20 @@ document.addEventListener("DOMContentLoaded",()=>{
  }
 });
 
-
 document.addEventListener("DOMContentLoaded",()=>{
  const btn=document.getElementById("btnNeuerEffekt");
  const dlg=document.getElementById("effektDialog");
  document.getElementById("btnSchliessenDialog")?.addEventListener("click",()=>dlg.close());
  btn?.addEventListener("click",()=>dlg.showModal());
  document.getElementById("btnSpeichernEffekt")?.addEventListener("click",()=>{
-   const daten={
-    name:effektName.value,
+   const daten=erzeugeEffekt({
+    name:effektName.value.trim(),
     kategorie:effektKategorie.value,
-    beschreibung:effektBeschreibung.value,
-    quelle:effektQuelle.value
-   };
-   let benutzer=JSON.parse(localStorage.getItem("pf-benutzer-effekte")||"[]");
-   daten.aktiv=false;
-   daten.standard=false;
+    beschreibung:effektBeschreibung.value.trim(),
+    quelle:effektQuelle.value.trim()
+   });
+   let benutzer=JSON.parse(localStorage.getItem("pf-benutzer-effekte")||"[]")
+     .map(effekt=>normalisiereEffekt({...effekt,standard:false}));
    benutzer.push(daten);
    localStorage.setItem("pf-benutzer-effekte",JSON.stringify(benutzer));
    effekte.push(daten);
@@ -118,7 +162,6 @@ document.addEventListener("DOMContentLoaded",()=>{
    dlg.close();
  });
 });
-
 
 // === v0.6.0 foundation ===
 // Datenmodell-Vorbereitung für Bonuszeilen
@@ -134,27 +177,19 @@ function neuerLeererBonus(){
     };
 }
 
-function normalisiereEffekt(effekt){
-    if(!Array.isArray(effekt.boni)){
-        effekt.boni=[];
-    }
-    return effekt;
-}
-
-
 // ==== v0.6.0 editor scaffold ====
 function fuegeBonuszeileHinzu(){
-  const c=document.getElementById("bonusContainer");
-  if(!c) return;
-  const row=document.createElement("div");
-  row.className="bonus-zeile";
-  row.innerHTML=`
+ const c=document.getElementById("bonusContainer");
+ if(!c) return;
+ const row=document.createElement("div");
+ row.className="bonus-zeile";
+ row.innerHTML=`
 <select disabled><option>Ziel (folgt)</option></select>
 <select disabled><option>Bonusart (folgt)</option></select>
 <select disabled><option>Wert (folgt)</option></select>
 <button type="button">🗑</button>`;
-  row.querySelector("button").onclick=()=>row.remove();
-  c.appendChild(row);
+ row.querySelector("button").onclick=()=>row.remove();
+ c.appendChild(row);
 }
 document.addEventListener("DOMContentLoaded",()=>{
  const b=document.getElementById("btnBonusHinzufuegen");
