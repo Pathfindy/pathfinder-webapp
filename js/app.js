@@ -96,6 +96,51 @@ function erzeugeEffekt(daten={}){
  });
 }
 
+function listeBenutzerEffekte(){
+ return effekte.filter(effekt=>!effekt.standard);
+}
+
+function speichereAktuelleBenutzerEffekte(){
+ speichereBenutzerEffekte(listeBenutzerEffekte());
+}
+
+function findeEffekt(id){
+ return effekte.find(effekt=>effekt.id===id)||null;
+}
+
+function erstelleBenutzerEffekt(daten={}){
+ const effekt=erzeugeEffekt(daten);
+ effekte.push(effekt);
+ speichereAktuelleBenutzerEffekte();
+ return effekt;
+}
+
+function aktualisiereBenutzerEffekt(id,daten={}){
+ const effekt=findeEffekt(id);
+ if(!effekt || effekt.standard) return null;
+
+ const aktualisiert=normalisiereEffekt({
+   ...effekt,
+   ...daten,
+   id:effekt.id,
+   standard:false
+ });
+
+ const index=effekte.findIndex(eintrag=>eintrag.id===id);
+ effekte[index]=aktualisiert;
+ speichereAktuelleBenutzerEffekte();
+ return aktualisiert;
+}
+
+function loescheBenutzerEffekt(id){
+ const effekt=findeEffekt(id);
+ if(!effekt || effekt.standard) return false;
+
+ effekte=effekte.filter(eintrag=>eintrag.id!==id);
+ speichereAktuelleBenutzerEffekte();
+ return true;
+}
+
 async function ladeEffekte(){
  try{
    const antwort=await fetch("data/effekte.json");
@@ -148,10 +193,7 @@ function baueEffektliste(){
       const del=document.createElement("button");
       del.textContent="🗑";
       del.onclick=()=>{
-        if(confirm("Effekt wirklich löschen?")){
-          effekte=effekte.filter(x=>x.id!==effekt.id);
-          const ben=effekte.filter(x=>!x.standard);
-          speichereBenutzerEffekte(ben);
+        if(confirm("Effekt wirklich löschen?") && loescheBenutzerEffekt(effekt.id)){
           baueEffektliste();
         }
       };
@@ -184,17 +226,12 @@ document.addEventListener("DOMContentLoaded",()=>{
  document.getElementById("btnSchliessenDialog")?.addEventListener("click",()=>dlg.close());
  btn?.addEventListener("click",()=>dlg.showModal());
  document.getElementById("btnSpeichernEffekt")?.addEventListener("click",()=>{
-   const daten=erzeugeEffekt({
+   erstelleBenutzerEffekt({
     name:effektName.value.trim(),
     kategorie:effektKategorie.value,
     beschreibung:effektBeschreibung.value.trim(),
     quelle:effektQuelle.value.trim()
    });
-   let benutzer=ladeBenutzerEffekte()
-     .map(effekt=>normalisiereEffekt({...effekt,standard:false}));
-   benutzer.push(daten);
-   speichereBenutzerEffekte(benutzer);
-   effekte.push(daten);
    baueEffektliste();
    dlg.close();
  });
