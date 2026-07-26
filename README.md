@@ -1,31 +1,49 @@
-# Commit 5 – Editable bonus rows
+# Commit 6 – Bonus stacking engine
 
 Commit-Message:
 
-`feat(editor): implement editable bonus rows`
+`feat(calculation): implement bonus stacking engine`
 
 ## Geänderte Dateien
 
+- `js/berechnung.js`
 - `js/app.js`
-- `css/style.css`
 
-## Enthaltene Funktionen
+## Enthaltene Regeln
 
-- Bonuszeilen mit Dropdowns für Ziel, Bonusart und Wert
-- `editorState.entwurf.boni` als einzige Datenquelle des Editors
-- Bonuszeilen hinzufügen und löschen
-- gespeicherte Bonuszeilen beim Bearbeiten laden
-- Bonuszeilen zusammen mit dem Effekt in `localStorage` speichern
-- Bearbeiten-Schaltfläche für benutzerdefinierte Effekte
-- Namensprüfung vor dem Speichern
+- Es werden nur aktive Effekte ausgewertet.
+- Boni werden nach Ziel gruppiert.
+- Gleichartige positive Boni stapeln nicht; nur der höchste zählt.
+- Mali derselben Bonusart werden addiert.
+- Ausweich-, Umstands- und unbenannte Boni werden vollständig addiert.
+- Ungültige oder leere Bonuszeilen werden sicher ignoriert.
+- `berechneBonusErgebnis(effekte)` gibt ein reines Ergebnisobjekt zurück.
+- `berechneWerte()` verwendet die globale Effektliste, verändert das Dashboard in diesem Commit aber noch nicht.
 
-## Einspielen im GitHub-Browser
+## Beispiel
 
-1. Öffne im Repository `js/app.js`.
-2. Klicke auf das Stift-Symbol zum Bearbeiten.
-3. Ersetze den vollständigen Inhalt durch die Datei aus diesem Paket.
-4. Wiederhole das für `css/style.css`.
-5. Verwende als Commit-Message:
-   `feat(editor): implement editable bonus rows`
+```js
+berechneBonusErgebnis([
+  {
+    aktiv: true,
+    boni: [
+      { ziel: "Rüstungsklasse", bonusart: "Moral", wert: 2 },
+      { ziel: "Rüstungsklasse", bonusart: "Moral", wert: 4 },
+      { ziel: "Rüstungsklasse", bonusart: "Ausweich", wert: 1 }
+    ]
+  }
+]);
 
-Am saubersten ist es, beide Dateien in einem einzigen Commit hochzuladen.
+// { "Rüstungsklasse": 5 }
+```
+
+## Einspielen
+
+Ersetze im GitHub-Browser den vollständigen Inhalt von:
+
+1. `js/berechnung.js`
+2. `js/app.js`
+
+und speichere beide gemeinsam mit:
+
+`feat(calculation): implement bonus stacking engine`
