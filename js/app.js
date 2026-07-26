@@ -1,6 +1,6 @@
 // Das azlantische Helferlein der Boni
 // app.js
-// Version 0.6.1
+// Version 0.7.0
 
 const seiten={
  dashboard:document.getElementById("dashboard"),
@@ -74,6 +74,15 @@ function standardEffektId(effekt){
  return `standard-${basis||"effekt"}`;
 }
 
+function normalisiereBonus(bonus={}){
+ const wert=Number(bonus.wert);
+ return {
+   ziel:typeof bonus.ziel==="string"?bonus.ziel:"",
+   bonusart:typeof bonus.bonusart==="string"?bonus.bonusart:"",
+   wert:Number.isFinite(wert)?wert:0
+ };
+}
+
 function normalisiereEffekt(effekt={}){
  const standard=!!effekt.standard;
  return {
@@ -84,7 +93,7 @@ function normalisiereEffekt(effekt={}){
    kategorie:effekt.kategorie||"",
    beschreibung:effekt.beschreibung||"",
    quelle:effekt.quelle||"",
-   boni:Array.isArray(effekt.boni)?effekt.boni:[]
+   boni:Array.isArray(effekt.boni)?effekt.boni.map(normalisiereBonus):[]
  };
 }
 
@@ -175,6 +184,7 @@ function baueEffektliste(){
    effekt.aktiv=!!status[effekt.name];
    const eintrag=document.createElement("div");
    eintrag.className="effekt";
+
    const cb=document.createElement("input");
    cb.type="checkbox";
    cb.checked=effekt.aktiv;
@@ -184,41 +194,90 @@ function baueEffektliste(){
       effekt.aktiv=cb.checked;
       if(typeof berechneWerte==="function") berechneWerte();
    });
+
    const label=document.createElement("label");
+   label.className="effekt-aktiv";
    label.appendChild(cb);
+
    const info=document.createElement("div");
    info.className="effekt-info";
    info.innerHTML=`<div class="effekt-name">${effekt.name}</div><div class="effekt-kategorie">${effekt.kategorie}</div>`;
+
    if(!effekt.standard){
+      const aktionen=document.createElement("div");
+      aktionen.className="effekt-aktionen";
+
+      const bearbeiten=document.createElement("button");
+      bearbeiten.type="button";
+      bearbeiten.className="icon-button";
+      bearbeiten.textContent="✏️";
+      bearbeiten.setAttribute("aria-label",`${effekt.name} bearbeiten`);
+      bearbeiten.onclick=()=>oeffneEffektEditor(effekt.id);
+
       const del=document.createElement("button");
+      del.type="button";
+      del.className="icon-button";
       del.textContent="🗑";
+      del.setAttribute("aria-label",`${effekt.name} löschen`);
       del.onclick=()=>{
         if(confirm("Effekt wirklich löschen?") && loescheBenutzerEffekt(effekt.id)){
           baueEffektliste();
         }
       };
-      eintrag.append(label,info,del);
+
+      aktionen.append(bearbeiten,del);
+      eintrag.append(label,info,aktionen);
    } else {
       eintrag.append(label,info);
    }
    liste.appendChild(eintrag);
  });
+
  if(suche && !suche.dataset.bound){
     suche.dataset.bound="1";
     suche.addEventListener("input",baueEffektliste);
  }
 }
 
-ladeEffekte();
+const PF_BONUS_ZIELE=[
+ "Angriff Nah",
+ "Angriff Fern",
+ "Schaden",
+ "Rüstungsklasse",
+ "RW-Zähigkeit",
+ "RW-Reflex",
+ "RW-Wille",
+ "RW-Furcht",
+ "RW-Verzauberung",
+ "RW-Bezauberung"
+];
 
-document.addEventListener("DOMContentLoaded",()=>{
- const b=document.getElementById("btnNeuerEffekt");
- if(b){
-   b.addEventListener("click",()=>{
-      
-   });
- }
-});
+const PF_BONUSARTEN=[
+ "Unbenannt",
+ "Ablenkung",
+ "Alchemistisch",
+ "Ausweich",
+ "Erkenntnis",
+ "Heilig",
+ "Kompetenz",
+ "Moral",
+ "Natürlich",
+ "Profan",
+ "Resistenz",
+ "Rüstung",
+ "Schild",
+ "Verbesserung"
+];
+
+const PF_BONUSWERTE=[1,2,3,4,5,6,7,8,0,-1,-2,-3,-4,-5,-6,-7,-8];
+
+function neuerLeererBonus(){
+ return {
+   ziel:PF_BONUS_ZIELE[0],
+   bonusart:PF_BONUSARTEN[0],
+   wert:0
+ };
+}
 
 const editorState={
  effektId:null,
@@ -227,7 +286,7 @@ const editorState={
 
 function editorZuruecksetzen(){
  editorState.effektId=null;
- editorState.entwurf=erzeugeEffekt();
+ editorState.entwurf=erzeugeEffekt({boni:[neuerLeererBonus()]});
 }
 
 function leseEditorFormular(){
@@ -238,7 +297,8 @@ function leseEditorFormular(){
    name:document.getElementById("effektName")?.value.trim()||"",
    kategorie:document.getElementById("effektKategorie")?.value||"",
    beschreibung:document.getElementById("effektBeschreibung")?.value.trim()||"",
-   quelle:document.getElementById("effektQuelle")?.value.trim()||""
+   quelle:document.getElementById("effektQuelle")?.value.trim()||"",
+   boni:editorState.entwurf.boni.map(normalisiereBonus)
  };
 
  return editorState.entwurf;
@@ -251,11 +311,90 @@ function schreibeEditorFormular(){
  const kategorie=document.getElementById("effektKategorie");
  const beschreibung=document.getElementById("effektBeschreibung");
  const quelle=document.getElementById("effektQuelle");
+ const titel=document.querySelector("#effektDialog h3");
 
  if(name) name.value=editorState.entwurf.name;
  if(kategorie) kategorie.value=editorState.entwurf.kategorie;
  if(beschreibung) beschreibung.value=editorState.entwurf.beschreibung;
  if(quelle) quelle.value=editorState.entwurf.quelle;
+ if(titel) titel.textContent=editorState.effektId?"Effekt bearbeiten":"Neuen Effekt anlegen";
+
+ rendereBonusEditor();
+}
+
+function erzeugeOptionen(werte,auswahl){
+ return werte.map(wert=>{
+   const option=document.createElement("option");
+   option.value=String(wert);
+   option.textContent=wert>0 && typeof wert==="number"?`+${wert}`:String(wert);
+   option.selected=String(wert)===String(auswahl);
+   return option;
+ });
+}
+
+function aktualisiereBonus(index,feld,wert){
+ if(!editorState.entwurf?.boni[index]) return;
+ editorState.entwurf.boni[index]={
+   ...editorState.entwurf.boni[index],
+   [feld]:feld==="wert"?Number(wert):wert
+ };
+}
+
+function entferneBonuszeile(index){
+ if(!editorState.entwurf) return;
+ editorState.entwurf.boni.splice(index,1);
+ rendereBonusEditor();
+}
+
+function fuegeBonuszeileHinzu(){
+ if(!editorState.entwurf) editorZuruecksetzen();
+ editorState.entwurf.boni.push(neuerLeererBonus());
+ rendereBonusEditor();
+}
+
+function rendereBonusEditor(){
+ const container=document.getElementById("bonusContainer");
+ if(!container || !editorState.entwurf) return;
+
+ container.innerHTML="";
+
+ if(editorState.entwurf.boni.length===0){
+   const hinweis=document.createElement("p");
+   hinweis.className="bonus-leer";
+   hinweis.textContent="Noch keine Bonuszeile angelegt.";
+   container.appendChild(hinweis);
+   return;
+ }
+
+ editorState.entwurf.boni.forEach((bonus,index)=>{
+   const zeile=document.createElement("div");
+   zeile.className="bonus-zeile";
+
+   const ziel=document.createElement("select");
+   ziel.setAttribute("aria-label",`Ziel der Bonuszeile ${index+1}`);
+   ziel.append(...erzeugeOptionen(PF_BONUS_ZIELE,bonus.ziel));
+   ziel.addEventListener("change",event=>aktualisiereBonus(index,"ziel",event.target.value));
+
+   const bonusart=document.createElement("select");
+   bonusart.setAttribute("aria-label",`Bonusart der Bonuszeile ${index+1}`);
+   bonusart.append(...erzeugeOptionen(PF_BONUSARTEN,bonus.bonusart));
+   bonusart.addEventListener("change",event=>aktualisiereBonus(index,"bonusart",event.target.value));
+
+   const wert=document.createElement("select");
+   wert.setAttribute("aria-label",`Wert der Bonuszeile ${index+1}`);
+   wert.append(...erzeugeOptionen(PF_BONUSWERTE,bonus.wert));
+   wert.addEventListener("change",event=>aktualisiereBonus(index,"wert",event.target.value));
+
+   const entfernen=document.createElement("button");
+   entfernen.type="button";
+   entfernen.className="icon-button bonus-entfernen";
+   entfernen.textContent="🗑";
+   entfernen.setAttribute("aria-label",`Bonuszeile ${index+1} löschen`);
+   entfernen.addEventListener("click",()=>entferneBonuszeile(index));
+
+   zeile.append(ziel,bonusart,wert,entfernen);
+   container.appendChild(zeile);
+ });
 }
 
 function oeffneNeuenEffekt(){
@@ -273,6 +412,7 @@ function oeffneEffektEditor(effektId){
    ...effekt,
    boni:effekt.boni.map(bonus=>({...bonus}))
  });
+
  schreibeEditorFormular();
  document.getElementById("effektDialog")?.showModal();
  return true;
@@ -285,6 +425,12 @@ function schliesseEffektEditor(){
 
 function speichereEditor(){
  const daten=leseEditorFormular();
+
+ if(!daten.name){
+   alert("Bitte gib einen Namen für den Effekt ein.");
+   document.getElementById("effektName")?.focus();
+   return;
+ }
 
  if(editorState.effektId){
    aktualisiereBenutzerEffekt(editorState.effektId,daten);
@@ -301,42 +447,7 @@ document.addEventListener("DOMContentLoaded",()=>{
  document.getElementById("btnNeuerEffekt")?.addEventListener("click",oeffneNeuenEffekt);
  document.getElementById("btnSchliessenDialog")?.addEventListener("click",schliesseEffektEditor);
  document.getElementById("btnSpeichernEffekt")?.addEventListener("click",speichereEditor);
+ document.getElementById("btnBonusHinzufuegen")?.addEventListener("click",fuegeBonuszeileHinzu);
 });
 
-// === v0.6.0 foundation ===
-// Datenmodell-Vorbereitung für Bonuszeilen
-const PF_BONUS_ZIELE = [];
-const PF_BONUSARTEN = [];
-const PF_BONUSWERTE = [1,2,3,4,5,6,7,8,0,-1,-2,-3,-4,-5,-6,-7,-8];
-
-function neuerLeererBonus(){
-    return {
-        ziel:"",
-        bonusart:"",
-        wert:0
-    };
-}
-
-// ==== v0.6.0 editor scaffold ====
-function fuegeBonuszeileHinzu(){
- const c=document.getElementById("bonusContainer");
- if(!c) return;
- const row=document.createElement("div");
- row.className="bonus-zeile";
- row.innerHTML=`
-<select disabled><option>Ziel (folgt)</option></select>
-<select disabled><option>Bonusart (folgt)</option></select>
-<select disabled><option>Wert (folgt)</option></select>
-<button type="button">🗑</button>`;
- row.querySelector("button").onclick=()=>row.remove();
- c.appendChild(row);
-}
-document.addEventListener("DOMContentLoaded",()=>{
- const b=document.getElementById("btnBonusHinzufuegen");
- if(b){
-   b.addEventListener("click",fuegeBonuszeileHinzu);
-   if(document.getElementById("bonusContainer")?.children.length===0){
-      fuegeBonuszeileHinzu();
-   }
- }
-});
+ladeEffekte();
