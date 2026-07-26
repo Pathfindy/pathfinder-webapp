@@ -266,6 +266,7 @@ const PF_BONUSARTEN=[
  "Resistenz",
  "Rüstung",
  "Schild",
+ "Umstand",
  "Verbesserung"
 ];
 
