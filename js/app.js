@@ -220,21 +220,87 @@ document.addEventListener("DOMContentLoaded",()=>{
  }
 });
 
-document.addEventListener("DOMContentLoaded",()=>{
- const btn=document.getElementById("btnNeuerEffekt");
- const dlg=document.getElementById("effektDialog");
- document.getElementById("btnSchliessenDialog")?.addEventListener("click",()=>dlg.close());
- btn?.addEventListener("click",()=>dlg.showModal());
- document.getElementById("btnSpeichernEffekt")?.addEventListener("click",()=>{
-   erstelleBenutzerEffekt({
-    name:effektName.value.trim(),
-    kategorie:effektKategorie.value,
-    beschreibung:effektBeschreibung.value.trim(),
-    quelle:effektQuelle.value.trim()
-   });
-   baueEffektliste();
-   dlg.close();
+const editorState={
+ effektId:null,
+ entwurf:null
+};
+
+function editorZuruecksetzen(){
+ editorState.effektId=null;
+ editorState.entwurf=erzeugeEffekt();
+}
+
+function leseEditorFormular(){
+ if(!editorState.entwurf) editorZuruecksetzen();
+
+ editorState.entwurf={
+   ...editorState.entwurf,
+   name:document.getElementById("effektName")?.value.trim()||"",
+   kategorie:document.getElementById("effektKategorie")?.value||"",
+   beschreibung:document.getElementById("effektBeschreibung")?.value.trim()||"",
+   quelle:document.getElementById("effektQuelle")?.value.trim()||""
+ };
+
+ return editorState.entwurf;
+}
+
+function schreibeEditorFormular(){
+ if(!editorState.entwurf) editorZuruecksetzen();
+
+ const name=document.getElementById("effektName");
+ const kategorie=document.getElementById("effektKategorie");
+ const beschreibung=document.getElementById("effektBeschreibung");
+ const quelle=document.getElementById("effektQuelle");
+
+ if(name) name.value=editorState.entwurf.name;
+ if(kategorie) kategorie.value=editorState.entwurf.kategorie;
+ if(beschreibung) beschreibung.value=editorState.entwurf.beschreibung;
+ if(quelle) quelle.value=editorState.entwurf.quelle;
+}
+
+function oeffneNeuenEffekt(){
+ editorZuruecksetzen();
+ schreibeEditorFormular();
+ document.getElementById("effektDialog")?.showModal();
+}
+
+function oeffneEffektEditor(effektId){
+ const effekt=findeEffekt(effektId);
+ if(!effekt || effekt.standard) return false;
+
+ editorState.effektId=effekt.id;
+ editorState.entwurf=normalisiereEffekt({
+   ...effekt,
+   boni:effekt.boni.map(bonus=>({...bonus}))
  });
+ schreibeEditorFormular();
+ document.getElementById("effektDialog")?.showModal();
+ return true;
+}
+
+function schliesseEffektEditor(){
+ document.getElementById("effektDialog")?.close();
+ editorZuruecksetzen();
+}
+
+function speichereEditor(){
+ const daten=leseEditorFormular();
+
+ if(editorState.effektId){
+   aktualisiereBenutzerEffekt(editorState.effektId,daten);
+ }else{
+   erstelleBenutzerEffekt(daten);
+ }
+
+ baueEffektliste();
+ schliesseEffektEditor();
+}
+
+document.addEventListener("DOMContentLoaded",()=>{
+ editorZuruecksetzen();
+ document.getElementById("btnNeuerEffekt")?.addEventListener("click",oeffneNeuenEffekt);
+ document.getElementById("btnSchliessenDialog")?.addEventListener("click",schliesseEffektEditor);
+ document.getElementById("btnSpeichernEffekt")?.addEventListener("click",speichereEditor);
 });
 
 // === v0.6.0 foundation ===
