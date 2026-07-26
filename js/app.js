@@ -20,6 +20,43 @@ zeigeSeite("dashboard");
 
 let effekte=[];
 
+const STORAGE_KEYS={
+ status:"pf-effekte",
+ benutzerEffekte:"pf-benutzer-effekte"
+};
+
+function ladeJson(key,standardwert){
+ try{
+   const rohwert=localStorage.getItem(key);
+   return rohwert===null?standardwert:JSON.parse(rohwert);
+ }catch(fehler){
+   console.warn(`Gespeicherte Daten unter "${key}" konnten nicht gelesen werden:`,fehler);
+   return standardwert;
+ }
+}
+
+function speichereJson(key,wert){
+ localStorage.setItem(key,JSON.stringify(wert));
+}
+
+function ladeStatus(){
+ const status=ladeJson(STORAGE_KEYS.status,{});
+ return status && typeof status==="object" && !Array.isArray(status)?status:{};
+}
+
+function speichereStatus(status){
+ speichereJson(STORAGE_KEYS.status,status);
+}
+
+function ladeBenutzerEffekte(){
+ const benutzer=ladeJson(STORAGE_KEYS.benutzerEffekte,[]);
+ return Array.isArray(benutzer)?benutzer:[];
+}
+
+function speichereBenutzerEffekte(benutzer){
+ speichereJson(STORAGE_KEYS.benutzerEffekte,benutzer);
+}
+
 function neueEffektId(){
  if(typeof crypto!=="undefined" && typeof crypto.randomUUID==="function"){
    return crypto.randomUUID();
@@ -63,11 +100,11 @@ async function ladeEffekte(){
  try{
    const antwort=await fetch("data/effekte.json");
    const standardEffekte=await antwort.json();
-   const status=JSON.parse(localStorage.getItem("pf-effekte")||"{}");
+   const status=ladeStatus();
 
-   const benutzerRohdaten=JSON.parse(localStorage.getItem("pf-benutzer-effekte")||"[]");
+   const benutzerRohdaten=ladeBenutzerEffekte();
    const benutzer=benutzerRohdaten.map(effekt=>normalisiereEffekt({...effekt,standard:false}));
-   localStorage.setItem("pf-benutzer-effekte",JSON.stringify(benutzer));
+   speichereBenutzerEffekte(benutzer);
 
    effekte=standardEffekte
      .map(effekt=>normalisiereEffekt({...effekt,standard:true}))
@@ -85,7 +122,7 @@ function baueEffektliste(){
  const liste=document.getElementById("boniListe");
  const suche=document.getElementById("suche");
  if(!liste) return;
- const status=JSON.parse(localStorage.getItem("pf-effekte")||"{}");
+ const status=ladeStatus();
  const filter=(suche?.value||"").toLowerCase();
  liste.innerHTML="";
  effekte.sort((a,b)=>a.name.localeCompare(b.name,"de"));
@@ -98,7 +135,7 @@ function baueEffektliste(){
    cb.checked=effekt.aktiv;
    cb.addEventListener("change",()=>{
       status[effekt.name]=cb.checked;
-      localStorage.setItem("pf-effekte",JSON.stringify(status));
+      speichereStatus(status);
       effekt.aktiv=cb.checked;
       if(typeof berechneWerte==="function") berechneWerte();
    });
@@ -114,7 +151,7 @@ function baueEffektliste(){
         if(confirm("Effekt wirklich löschen?")){
           effekte=effekte.filter(x=>x.id!==effekt.id);
           const ben=effekte.filter(x=>!x.standard);
-          localStorage.setItem("pf-benutzer-effekte",JSON.stringify(ben));
+          speichereBenutzerEffekte(ben);
           baueEffektliste();
         }
       };
@@ -153,10 +190,10 @@ document.addEventListener("DOMContentLoaded",()=>{
     beschreibung:effektBeschreibung.value.trim(),
     quelle:effektQuelle.value.trim()
    });
-   let benutzer=JSON.parse(localStorage.getItem("pf-benutzer-effekte")||"[]")
+   let benutzer=ladeBenutzerEffekte()
      .map(effekt=>normalisiereEffekt({...effekt,standard:false}));
    benutzer.push(daten);
-   localStorage.setItem("pf-benutzer-effekte",JSON.stringify(benutzer));
+   speichereBenutzerEffekte(benutzer);
    effekte.push(daten);
    baueEffektliste();
    dlg.close();
