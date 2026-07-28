@@ -462,18 +462,6 @@ function baueKategorieFilter(){
  }
 }
 
-function setzeEffektFilterZurueck(){
- const suche=document.getElementById("suche");
- const kategorie=document.getElementById("filterKategorie");
- const nurAktiv=document.getElementById("filterNurAktiv");
-
- if(suche) suche.value="";
- if(kategorie) kategorie.value="";
- if(nurAktiv) nurAktiv.checked=false;
-
- baueEffektliste();
-}
-
 function baueEffektliste(){
  const liste=document.getElementById("boniListe");
  const suche=document.getElementById("suche");
@@ -582,12 +570,7 @@ function baueEffektliste(){
     nurAktivFilter.dataset.bound="1";
     nurAktivFilter.addEventListener("change",baueEffektliste);
  }
-
- const alleButton=document.getElementById("btnAlleEffekte");
- if(alleButton && !alleButton.dataset.bound){
-    alleButton.dataset.bound="1";
-    alleButton.addEventListener("click",setzeEffektFilterZurueck);
- }
+}
 }
 
 const PF_BONUS_ZIELE=[
