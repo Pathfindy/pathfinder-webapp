@@ -392,3 +392,89 @@ nav button.active {
         align-items: center;
     }
 }
+
+
+/* ==========================
+   Effektfilter
+========================== */
+
+.effekt-filter {
+    display: grid;
+    grid-template-columns: minmax(170px, 1fr) auto auto;
+    gap: 8px;
+    align-items: end;
+    margin-bottom: 8px;
+    padding: 10px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 1px 4px rgba(0,0,0,.08);
+}
+
+.effekt-filter label {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    font-size: .9rem;
+    font-weight: 600;
+}
+
+.effekt-filter select,
+#btnAlleEffekte {
+    min-height: 44px;
+    padding: 9px 10px;
+    border: 1px solid #bbb;
+    border-radius: 8px;
+    background: white;
+    font: inherit;
+}
+
+.filter-schalter {
+    min-height: 44px;
+    flex-direction: row !important;
+    align-items: center;
+    padding: 0 8px;
+    border: 1px solid #bbb;
+    border-radius: 8px;
+    white-space: nowrap;
+}
+
+.filter-schalter input {
+    width: 20px;
+    height: 20px;
+}
+
+#btnAlleEffekte {
+    border-color: #1e3a5f;
+    background: #1e3a5f;
+    color: white;
+    cursor: pointer;
+}
+
+.filter-ergebnis {
+    margin: 4px 0 10px;
+    color: #667;
+    font-size: .9rem;
+}
+
+.filter-leer {
+    padding: 14px;
+    background: white;
+    border-radius: 8px;
+    color: #667;
+    text-align: center;
+}
+
+@media (max-width:600px) {
+    .effekt-filter {
+        grid-template-columns: 1fr;
+        align-items: stretch;
+    }
+
+    .filter-schalter {
+        justify-content: flex-start;
+    }
+
+    #btnAlleEffekte {
+        width: 100%;
+    }
+}
