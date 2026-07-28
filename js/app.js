@@ -1,6 +1,6 @@
 // Das azlantische Helferlein der Boni
 // app.js
-// Version 0.10.0
+// Version 0.11.0
 
 const seiten={
  dashboard:document.getElementById("dashboard"),
@@ -422,22 +422,93 @@ async function ladeEffekte(){
    effekte.forEach(effekt=>effekt.aktiv=!!status[effekt.name]);
 
    console.log("Effekte geladen:",effekte.length);
+   baueKategorieFilter();
    baueEffektliste();
  }catch(fehler){
    console.error("Fehler beim Laden:",fehler);
  }
 }
 
+
+function effektKategorien(){
+ return [...new Set(
+   effekte
+     .map(effekt=>String(effekt.kategorie||"").trim())
+     .filter(Boolean)
+ )].sort((a,b)=>a.localeCompare(b,"de"));
+}
+
+function baueKategorieFilter(){
+ const auswahl=document.getElementById("filterKategorie");
+ if(!auswahl) return;
+
+ const bisherigerWert=auswahl.value;
+ auswahl.innerHTML="";
+
+ const alle=document.createElement("option");
+ alle.value="";
+ alle.textContent="Alle Kategorien";
+ auswahl.appendChild(alle);
+
+ effektKategorien().forEach(kategorie=>{
+   const option=document.createElement("option");
+   option.value=kategorie;
+   option.textContent=kategorie;
+   auswahl.appendChild(option);
+ });
+
+ if([...auswahl.options].some(option=>option.value===bisherigerWert)){
+   auswahl.value=bisherigerWert;
+ }
+}
+
+function setzeEffektFilterZurueck(){
+ const suche=document.getElementById("suche");
+ const kategorie=document.getElementById("filterKategorie");
+ const nurAktiv=document.getElementById("filterNurAktiv");
+
+ if(suche) suche.value="";
+ if(kategorie) kategorie.value="";
+ if(nurAktiv) nurAktiv.checked=false;
+
+ baueEffektliste();
+}
+
 function baueEffektliste(){
  const liste=document.getElementById("boniListe");
  const suche=document.getElementById("suche");
+ const kategorieFilter=document.getElementById("filterKategorie");
+ const nurAktivFilter=document.getElementById("filterNurAktiv");
+ const ergebnis=document.getElementById("filterErgebnis");
  if(!liste) return;
+
  const status=ladeStatus();
- const filter=(suche?.value||"").toLowerCase();
+ const suchtext=(suche?.value||"").trim().toLowerCase();
+ const kategorie=kategorieFilter?.value||"";
+ const nurAktiv=!!nurAktivFilter?.checked;
+
  liste.innerHTML="";
  effekte.sort((a,b)=>a.name.localeCompare(b.name,"de"));
- effekte.filter(e=>e.name.toLowerCase().includes(filter)).forEach(effekt=>{
+
+ const gefilterteEffekte=effekte.filter(effekt=>{
    effekt.aktiv=!!status[effekt.name];
+
+   const passtZurSuche=!suchtext ||
+     effekt.name.toLowerCase().includes(suchtext) ||
+     String(effekt.beschreibung||"").toLowerCase().includes(suchtext) ||
+     String(effekt.quelle||"").toLowerCase().includes(suchtext);
+
+   const passtZurKategorie=!kategorie || effekt.kategorie===kategorie;
+   const passtZumAktivFilter=!nurAktiv || effekt.aktiv;
+
+   return passtZurSuche && passtZurKategorie && passtZumAktivFilter;
+ });
+
+ if(ergebnis){
+   ergebnis.textContent=`${gefilterteEffekte.length} von ${effekte.length} Effekten angezeigt`;
+ }
+
+ gefilterteEffekte.forEach(effekt=>{
    const eintrag=document.createElement("div");
    eintrag.className="effekt";
 
@@ -490,9 +561,32 @@ function baueEffektliste(){
    liste.appendChild(eintrag);
  });
 
+ if(gefilterteEffekte.length===0){
+   const hinweis=document.createElement("p");
+   hinweis.className="filter-leer";
+   hinweis.textContent="Keine Effekte entsprechen den gewählten Filtern.";
+   liste.appendChild(hinweis);
+ }
+
  if(suche && !suche.dataset.bound){
     suche.dataset.bound="1";
     suche.addEventListener("input",baueEffektliste);
+ }
+
+ if(kategorieFilter && !kategorieFilter.dataset.bound){
+    kategorieFilter.dataset.bound="1";
+    kategorieFilter.addEventListener("change",baueEffektliste);
+ }
+
+ if(nurAktivFilter && !nurAktivFilter.dataset.bound){
+    nurAktivFilter.dataset.bound="1";
+    nurAktivFilter.addEventListener("change",baueEffektliste);
+ }
+
+ const alleButton=document.getElementById("btnAlleEffekte");
+ if(alleButton && !alleButton.dataset.bound){
+    alleButton.dataset.bound="1";
+    alleButton.addEventListener("click",setzeEffektFilterZurueck);
  }
 }
 
