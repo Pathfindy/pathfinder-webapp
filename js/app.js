@@ -612,12 +612,29 @@ function speichereEditor(){
  schliesseEffektEditor();
 }
 
-document.addEventListener("DOMContentLoaded",()=>{
- editorZuruecksetzen();
- document.getElementById("btnNeuerEffekt")?.addEventListener("click",oeffneNeuenEffekt);
- document.getElementById("btnSchliessenDialog")?.addEventListener("click",schliesseEffektEditor);
- document.getElementById("btnSpeichernEffekt")?.addEventListener("click",speichereEditor);
- document.getElementById("btnBonusHinzufuegen")?.addEventListener("click",fuegeBonuszeileHinzu);
-});
+function initialisiereApp(){
+  editorZuruecksetzen();
+  document.getElementById("btnNeuerEffekt")?.addEventListener("click",oeffneNeuenEffekt);
+  document.getElementById("btnSchliessenDialog")?.addEventListener("click",schliesseEffektEditor);
+  document.getElementById("btnSpeichernEffekt")?.addEventListener("click",speichereEditor);
+  document.getElementById("btnBonusHinzufuegen")?.addEventListener("click",fuegeBonuszeileHinzu);
+
+  const neuerCharakterButton=document.getElementById("btnNeuerCharakter");
+  if(neuerCharakterButton && !neuerCharakterButton.dataset.bound){
+    neuerCharakterButton.dataset.bound="1";
+    neuerCharakterButton.addEventListener("click",()=>{
+      const name=prompt("Name des neuen Charakters:","Neuer Charakter");
+      if(name!==null) erstelleCharakter(name);
+    });
+  }
+
+  ladeCharaktere();
+}
+
+if(document.readyState==="loading"){
+  document.addEventListener("DOMContentLoaded",initialisiereApp,{once:true});
+}else{
+  initialisiereApp();
+}
 
 ladeEffekte();
