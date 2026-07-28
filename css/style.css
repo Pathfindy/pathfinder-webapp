@@ -376,3 +376,19 @@ nav button.active {
         width: 100%;
     }
 }
+
+
+/* Effektstatus zwischen Charakteren kopieren */
+.charakter-aktionen .icon-button[title] {
+    position: relative;
+}
+
+@media (max-width:600px) {
+    .charakter-eintrag {
+        align-items: stretch;
+    }
+
+    .charakter-aktionen {
+        align-items: center;
+    }
+}
