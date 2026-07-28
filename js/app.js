@@ -1,6 +1,6 @@
 // Das azlantische Helferlein der Boni
 // app.js
-// Version 0.11.0
+// Version 0.11.1
 
 const seiten={
  dashboard:document.getElementById("dashboard"),
@@ -570,7 +570,6 @@ function baueEffektliste(){
     nurAktivFilter.dataset.bound="1";
     nurAktivFilter.addEventListener("change",baueEffektliste);
  }
-}
 }
 
 const PF_BONUS_ZIELE=[
