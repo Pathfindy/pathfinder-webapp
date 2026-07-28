@@ -38,6 +38,7 @@
     <section id="dashboard" class="page active">
 
         <h2>Aktuelle Werte</h2>
+        <p class="aktiver-charakter-hinweis">Charakter: <strong data-aktiver-charakter>Mein Charakter</strong></p>
 
         <div class="werte">
 
@@ -125,9 +126,15 @@
 
     <section id="charaktere" class="page">
 
-        <h2>Charaktere</h2>
+        <div class="seitenkopf">
+            <div>
+                <h2>Charaktere</h2>
+                <p>Aktiv: <strong data-aktiver-charakter>Mein Charakter</strong></p>
+            </div>
+            <button type="button" id="btnNeuerCharakter">+ Neuer Charakter</button>
+        </div>
 
-        <p>Die Charakterverwaltung wird in einem späteren Sprint ergänzt.</p>
+        <div id="charakterListe" aria-live="polite"></div>
 
     </section>
 
