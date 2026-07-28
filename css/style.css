@@ -419,14 +419,6 @@ nav button.active {
 }
 
 .effekt-filter select,
-#btnAlleEffekte {
-    min-height: 44px;
-    padding: 9px 10px;
-    border: 1px solid #bbb;
-    border-radius: 8px;
-    background: white;
-    font: inherit;
-}
 
 .filter-schalter {
     min-height: 44px;
@@ -443,12 +435,6 @@ nav button.active {
     height: 20px;
 }
 
-#btnAlleEffekte {
-    border-color: #1e3a5f;
-    background: #1e3a5f;
-    color: white;
-    cursor: pointer;
-}
 
 .filter-ergebnis {
     margin: 4px 0 10px;
@@ -472,9 +458,5 @@ nav button.active {
 
     .filter-schalter {
         justify-content: flex-start;
-    }
-
-    #btnAlleEffekte {
-        width: 100%;
     }
 }
