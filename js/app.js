@@ -1,6 +1,6 @@
 // Das azlantische Helferlein der Boni
 // app.js
-// Version 0.7.0
+// Version 0.8.0
 
 const seiten={
  dashboard:document.getElementById("dashboard"),
@@ -222,6 +222,7 @@ function baueEffektliste(){
       del.onclick=()=>{
         if(confirm("Effekt wirklich löschen?") && loescheBenutzerEffekt(effekt.id)){
           baueEffektliste();
+          if(typeof berechneWerte==="function") berechneWerte();
         }
       };
 

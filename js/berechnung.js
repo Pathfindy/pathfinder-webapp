@@ -1,6 +1,6 @@
 // Das azlantische Helferlein der Boni
 // berechnung.js
-// Version 0.2.0
+// Version 0.3.0
 
 const STAPELBARE_BONUSARTEN = new Set([
     "Ausweich",
@@ -93,15 +93,54 @@ function berechneBonusErgebnis(effektListe = []) {
     return ergebnis;
 }
 
+const DASHBOARD_ZIELE = {
+    "Angriff Nah": "angriffNah",
+    "Angriff Fern": "angriffFern",
+    "Schaden": "schaden",
+    "Rüstungsklasse": "rk",
+    "RW-Zähigkeit": "zaehigkeit",
+    "RW-Reflex": "reflex",
+    "RW-Wille": "wille",
+    "RW-Furcht": "furcht",
+    "RW-Verzauberung": "verzauberung",
+    "RW-Bezauberung": "bezauberung"
+};
+
+function formatiereDashboardWert(wert) {
+    const zahl = Number(wert);
+    const sichererWert = Number.isFinite(zahl) ? zahl : 0;
+    return sichererWert > 0 ? `+${sichererWert}` : String(sichererWert);
+}
+
+function aktualisiereDashboard(ergebnis = {}) {
+    if (typeof document === "undefined") {
+        return ergebnis;
+    }
+
+    Object.entries(DASHBOARD_ZIELE).forEach(([ziel, elementId]) => {
+        const element = document.getElementById(elementId);
+
+        if (element) {
+            element.textContent = formatiereDashboardWert(ergebnis[ziel] ?? 0);
+        }
+    });
+
+    return ergebnis;
+}
+
 function berechneWerte() {
     const effektListe = typeof effekte !== "undefined" ? effekte : [];
-    return berechneBonusErgebnis(effektListe);
+    const ergebnis = berechneBonusErgebnis(effektListe);
+    aktualisiereDashboard(ergebnis);
+    return ergebnis;
 }
 
 // Erlaubt einfache Tests in der Browser-Konsole und die spätere Nutzung durch die UI.
 if (typeof window !== "undefined") {
     window.STAPELBARE_BONUSARTEN = STAPELBARE_BONUSARTEN;
+    window.DASHBOARD_ZIELE = DASHBOARD_ZIELE;
     window.sammleAktiveBoni = sammleAktiveBoni;
     window.berechneBonusErgebnis = berechneBonusErgebnis;
+    window.aktualisiereDashboard = aktualisiereDashboard;
     window.berechneWerte = berechneWerte;
 }
