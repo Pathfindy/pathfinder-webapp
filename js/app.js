@@ -1,6 +1,6 @@
 // Das azlantische Helferlein der Boni
 // app.js
-// Version 0.8.0
+// Version 0.9.0
 
 const seiten={
  dashboard:document.getElementById("dashboard"),
@@ -22,7 +22,9 @@ let effekte=[];
 
 const STORAGE_KEYS={
  status:"pf-effekte",
- benutzerEffekte:"pf-benutzer-effekte"
+ benutzerEffekte:"pf-benutzer-effekte",
+ charaktere:"pf-charaktere",
+ aktiverCharakter:"pf-aktiver-charakter"
 };
 
 function ladeJson(key,standardwert){
@@ -37,6 +39,172 @@ function ladeJson(key,standardwert){
 
 function speichereJson(key,wert){
  localStorage.setItem(key,JSON.stringify(wert));
+}
+
+let charaktere=[];
+let aktiverCharakterId=null;
+
+function neueCharakterId(){
+ if(typeof crypto!=="undefined" && typeof crypto.randomUUID==="function"){
+   return crypto.randomUUID();
+ }
+ return "charakter-"+Date.now()+"-"+Math.random().toString(36).slice(2);
+}
+
+function normalisiereCharakter(charakter={}){
+ return {
+   id:charakter.id||neueCharakterId(),
+   name:typeof charakter.name==="string" && charakter.name.trim()
+     ?charakter.name.trim()
+     :"Unbenannter Charakter"
+ };
+}
+
+function speichereCharaktere(){
+ speichereJson(STORAGE_KEYS.charaktere,charaktere);
+ if(aktiverCharakterId){
+   localStorage.setItem(STORAGE_KEYS.aktiverCharakter,aktiverCharakterId);
+ }
+}
+
+function findeCharakter(id){
+ return charaktere.find(charakter=>charakter.id===id)||null;
+}
+
+function aktiverCharakter(){
+ return findeCharakter(aktiverCharakterId);
+}
+
+function ladeCharaktere(){
+ const gespeichert=ladeJson(STORAGE_KEYS.charaktere,[]);
+ charaktere=Array.isArray(gespeichert)
+   ?gespeichert.map(normalisiereCharakter)
+   :[];
+
+ if(charaktere.length===0){
+   charaktere=[normalisiereCharakter({name:"Mein Charakter"})];
+ }
+
+ const gespeicherteAuswahl=localStorage.getItem(STORAGE_KEYS.aktiverCharakter);
+ aktiverCharakterId=findeCharakter(gespeicherteAuswahl)
+   ?gespeicherteAuswahl
+   :charaktere[0].id;
+
+ speichereCharaktere();
+ rendereCharaktere();
+ aktualisiereAktivenCharakterHinweis();
+}
+
+function erstelleCharakter(name){
+ const bereinigterName=String(name||"").trim();
+ if(!bereinigterName) return null;
+
+ const charakter=normalisiereCharakter({name:bereinigterName});
+ charaktere.push(charakter);
+ aktiverCharakterId=charakter.id;
+ speichereCharaktere();
+ rendereCharaktere();
+ aktualisiereAktivenCharakterHinweis();
+ return charakter;
+}
+
+function waehleCharakter(id){
+ if(!findeCharakter(id)) return false;
+ aktiverCharakterId=id;
+ speichereCharaktere();
+ rendereCharaktere();
+ aktualisiereAktivenCharakterHinweis();
+ return true;
+}
+
+function benenneCharakterUm(id,name){
+ const charakter=findeCharakter(id);
+ const bereinigterName=String(name||"").trim();
+ if(!charakter || !bereinigterName) return false;
+
+ charakter.name=bereinigterName;
+ speichereCharaktere();
+ rendereCharaktere();
+ aktualisiereAktivenCharakterHinweis();
+ return true;
+}
+
+function loescheCharakter(id){
+ if(charaktere.length<=1) return false;
+
+ const index=charaktere.findIndex(charakter=>charakter.id===id);
+ if(index<0) return false;
+
+ charaktere.splice(index,1);
+ if(aktiverCharakterId===id){
+   aktiverCharakterId=charaktere[Math.min(index,charaktere.length-1)].id;
+ }
+
+ speichereCharaktere();
+ rendereCharaktere();
+ aktualisiereAktivenCharakterHinweis();
+ return true;
+}
+
+function aktualisiereAktivenCharakterHinweis(){
+ const charakter=aktiverCharakter();
+ document.querySelectorAll("[data-aktiver-charakter]").forEach(element=>{
+   element.textContent=charakter?.name||"Kein Charakter";
+ });
+}
+
+function rendereCharaktere(){
+ const liste=document.getElementById("charakterListe");
+ if(!liste) return;
+
+ liste.innerHTML="";
+ charaktere.forEach(charakter=>{
+   const eintrag=document.createElement("article");
+   eintrag.className="charakter-eintrag";
+   if(charakter.id===aktiverCharakterId){
+     eintrag.classList.add("aktiv");
+   }
+
+   const auswahl=document.createElement("button");
+   auswahl.type="button";
+   auswahl.className="charakter-auswahl";
+   auswahl.setAttribute("aria-pressed",String(charakter.id===aktiverCharakterId));
+   auswahl.innerHTML=`<strong>${charakter.name}</strong><span>${charakter.id===aktiverCharakterId?"Aktiv":"Auswählen"}</span>`;
+   auswahl.addEventListener("click",()=>waehleCharakter(charakter.id));
+
+   const aktionen=document.createElement("div");
+   aktionen.className="charakter-aktionen";
+
+   const umbenennen=document.createElement("button");
+   umbenennen.type="button";
+   umbenennen.className="icon-button";
+   umbenennen.textContent="✏️";
+   umbenennen.setAttribute("aria-label",`${charakter.name} umbenennen`);
+   umbenennen.addEventListener("click",()=>{
+     const name=prompt("Neuer Charaktername:",charakter.name);
+     if(name!==null) benenneCharakterUm(charakter.id,name);
+   });
+
+   const loeschen=document.createElement("button");
+   loeschen.type="button";
+   loeschen.className="icon-button";
+   loeschen.textContent="🗑";
+   loeschen.disabled=charaktere.length<=1;
+   loeschen.setAttribute("aria-label",`${charakter.name} löschen`);
+   loeschen.addEventListener("click",()=>{
+     if(charaktere.length<=1){
+       alert("Mindestens ein Charakter muss erhalten bleiben.");
+       return;
+     }
+     if(confirm(`Charakter "${charakter.name}" wirklich löschen?`)){
+       loescheCharakter(charakter.id);
+     }
+   });
+
+   aktionen.append(umbenennen,loeschen);
+   eintrag.append(auswahl,aktionen);
+   liste.appendChild(eintrag);
+ });
 }
 
 function ladeStatus(){
