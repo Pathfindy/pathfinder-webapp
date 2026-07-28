@@ -112,6 +112,24 @@
             id="suche"
             placeholder="Effekt suchen...">
 
+        <div class="effekt-filter" aria-label="Effektfilter">
+            <label for="filterKategorie">
+                Kategorie
+                <select id="filterKategorie">
+                    <option value="">Alle Kategorien</option>
+                </select>
+            </label>
+
+            <label class="filter-schalter">
+                <input type="checkbox" id="filterNurAktiv">
+                Nur aktive
+            </label>
+
+            <button type="button" id="btnAlleEffekte">Alle Effekte anzeigen</button>
+        </div>
+
+        <p id="filterErgebnis" class="filter-ergebnis" aria-live="polite"></p>
+
         <div id="boniListe">
 
             <p>Noch keine Effekte geladen.</p>
