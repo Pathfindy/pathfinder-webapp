@@ -1,6 +1,6 @@
 /* ==========================
    Das azlantische Helferlein der Boni
-   Style v0.4.0
+   Style v0.5.0
 ========================== */
 
 * {
@@ -270,4 +270,109 @@ section h2 {
 nav button.active {
     background: #1e3a5f;
     color: white;
+}
+
+
+/* ==========================
+   Charakterverwaltung
+========================== */
+
+.seitenkopf {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.seitenkopf h2 {
+    margin-bottom: 4px;
+}
+
+.seitenkopf p,
+.aktiver-charakter-hinweis {
+    color: #5c6673;
+}
+
+.aktiver-charakter-hinweis {
+    margin: -4px 0 12px;
+}
+
+#btnNeuerCharakter {
+    border: 0;
+    border-radius: 8px;
+    padding: 10px 12px;
+    background: #1e3a5f;
+    color: white;
+    font: inherit;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+#charakterListe {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.charakter-eintrag {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px;
+    background: white;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    box-shadow: 0 1px 4px rgba(0,0,0,.08);
+}
+
+.charakter-eintrag.aktiv {
+    border-color: #1e3a5f;
+}
+
+.charakter-auswahl {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+    padding: 8px;
+    border: 0;
+    background: transparent;
+    text-align: left;
+    font: inherit;
+    cursor: pointer;
+}
+
+.charakter-auswahl strong {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.charakter-auswahl span {
+    color: #667;
+    font-size: .85rem;
+}
+
+.charakter-aktionen {
+    display: flex;
+    gap: 4px;
+}
+
+.icon-button:disabled {
+    opacity: .45;
+    cursor: not-allowed;
+}
+
+@media (max-width:600px) {
+    .seitenkopf {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    #btnNeuerCharakter {
+        width: 100%;
+    }
 }
