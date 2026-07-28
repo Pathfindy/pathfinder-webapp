@@ -1,6 +1,6 @@
 // Das azlantische Helferlein der Boni
 // app.js
-// Version 0.9.0
+// Version 0.10.0
 
 const seiten={
  dashboard:document.getElementById("dashboard"),
@@ -24,7 +24,8 @@ const STORAGE_KEYS={
  status:"pf-effekte",
  benutzerEffekte:"pf-benutzer-effekte",
  charaktere:"pf-charaktere",
- aktiverCharakter:"pf-aktiver-charakter"
+ aktiverCharakter:"pf-aktiver-charakter",
+ charakterEffekte:"pf-charakter-effekte"
 };
 
 function ladeJson(key,standardwert){
@@ -91,6 +92,7 @@ function ladeCharaktere(){
    :charaktere[0].id;
 
  speichereCharaktere();
+ ladeStatusFuerCharakter(aktiverCharakterId);
  rendereCharaktere();
  aktualisiereAktivenCharakterHinweis();
 }
@@ -114,6 +116,8 @@ function waehleCharakter(id){
  speichereCharaktere();
  rendereCharaktere();
  aktualisiereAktivenCharakterHinweis();
+ baueEffektliste();
+ if(typeof berechneWerte==="function") berechneWerte();
  return true;
 }
 
@@ -136,6 +140,7 @@ function loescheCharakter(id){
  if(index<0) return false;
 
  charaktere.splice(index,1);
+ loescheCharakterStatus(id);
  if(aktiverCharakterId===id){
    aktiverCharakterId=charaktere[Math.min(index,charaktere.length-1)].id;
  }
@@ -185,6 +190,32 @@ function rendereCharaktere(){
      if(name!==null) benenneCharakterUm(charakter.id,name);
    });
 
+   const kopieren=document.createElement("button");
+   kopieren.type="button";
+   kopieren.className="icon-button";
+   kopieren.textContent="📋";
+   kopieren.disabled=charakter.id===aktiverCharakterId;
+   kopieren.setAttribute(
+     "aria-label",
+     `Effekte von ${charakter.name} auf den aktiven Charakter kopieren`
+   );
+   kopieren.title=charakter.id===aktiverCharakterId
+     ?"Dieser Charakter ist bereits aktiv."
+     :"Effektaktivierungen auf den aktiven Charakter kopieren";
+   kopieren.addEventListener("click",()=>{
+     const ziel=aktiverCharakter();
+     if(!ziel || charakter.id===ziel.id) return;
+
+     const bestaetigt=confirm(
+       `Die Effektaktivierungen von "${charakter.name}" werden auf "${ziel.name}" kopiert. `+
+       `Die bisherigen Aktivierungen von "${ziel.name}" werden ersetzt. Fortfahren?`
+     );
+
+     if(bestaetigt && kopiereEffektstatus(charakter.id,ziel.id)){
+       alert(`Effektaktivierungen von "${charakter.name}" wurden auf "${ziel.name}" kopiert.`);
+     }
+   });
+
    const loeschen=document.createElement("button");
    loeschen.type="button";
    loeschen.className="icon-button";
@@ -201,19 +232,76 @@ function rendereCharaktere(){
      }
    });
 
-   aktionen.append(umbenennen,loeschen);
+   aktionen.append(umbenennen,kopieren,loeschen);
    eintrag.append(auswahl,aktionen);
    liste.appendChild(eintrag);
  });
 }
 
-function ladeStatus(){
- const status=ladeJson(STORAGE_KEYS.status,{});
+function ladeAlleCharakterStatus(){
+ const gespeichert=ladeJson(STORAGE_KEYS.charakterEffekte,{});
+ return gespeichert && typeof gespeichert==="object" && !Array.isArray(gespeichert)
+   ?gespeichert
+   :{};
+}
+
+function speichereAlleCharakterStatus(statusNachCharakter){
+ speichereJson(STORAGE_KEYS.charakterEffekte,statusNachCharakter);
+}
+
+function normalisiereStatus(status){
  return status && typeof status==="object" && !Array.isArray(status)?status:{};
 }
 
+function ladeStatusFuerCharakter(charakterId){
+ if(!charakterId) return {};
+
+ const statusNachCharakter=ladeAlleCharakterStatus();
+ if(Object.prototype.hasOwnProperty.call(statusNachCharakter,charakterId)){
+   return normalisiereStatus(statusNachCharakter[charakterId]);
+ }
+
+ // Einmalige Migration des bisherigen globalen Effektstatus auf den aktiven Charakter.
+ const alterGlobalerStatus=normalisiereStatus(ladeJson(STORAGE_KEYS.status,{}));
+ statusNachCharakter[charakterId]={...alterGlobalerStatus};
+ speichereAlleCharakterStatus(statusNachCharakter);
+ return statusNachCharakter[charakterId];
+}
+
+function ladeStatus(){
+ return ladeStatusFuerCharakter(aktiverCharakterId);
+}
+
 function speichereStatus(status){
- speichereJson(STORAGE_KEYS.status,status);
+ if(!aktiverCharakterId) return;
+ const statusNachCharakter=ladeAlleCharakterStatus();
+ statusNachCharakter[aktiverCharakterId]={...normalisiereStatus(status)};
+ speichereAlleCharakterStatus(statusNachCharakter);
+}
+
+function kopiereEffektstatus(quelleId,zielId){
+ const quelle=findeCharakter(quelleId);
+ const ziel=findeCharakter(zielId);
+ if(!quelle || !ziel || quelleId===zielId) return false;
+
+ const statusNachCharakter=ladeAlleCharakterStatus();
+ const quellStatus=ladeStatusFuerCharakter(quelleId);
+ statusNachCharakter[zielId]={...quellStatus};
+ speichereAlleCharakterStatus(statusNachCharakter);
+
+ if(zielId===aktiverCharakterId){
+   baueEffektliste();
+   if(typeof berechneWerte==="function") berechneWerte();
+ }
+
+ return true;
+}
+
+function loescheCharakterStatus(charakterId){
+ const statusNachCharakter=ladeAlleCharakterStatus();
+ if(!Object.prototype.hasOwnProperty.call(statusNachCharakter,charakterId)) return;
+ delete statusNachCharakter[charakterId];
+ speichereAlleCharakterStatus(statusNachCharakter);
 }
 
 function ladeBenutzerEffekte(){
