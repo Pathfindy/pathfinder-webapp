@@ -1,6 +1,6 @@
 // Das azlantische Helferlein der Boni
 // app.js
-// Version 0.17.1
+// Version 0.18.0
 
 const seiten={
  dashboard:document.getElementById("dashboard"),
@@ -1004,6 +1004,48 @@ function sperreAdminModus(automatisch=false){
   if(automatisch && seiten.admin?.style.display!=="none") alert("Der Admin-Modus wurde nach 15 Minuten automatisch gesperrt.");
 }
 
+function bereiteStandardEffektFuerExportVor(effekt){
+ return {
+   id:effekt.id,
+   name:effekt.name,
+   kategorie:normalisiereKategorie(effekt.kategorie),
+   aktiv:false,
+   beschreibung:effekt.beschreibung||"",
+   quelle:effekt.quelle||"",
+   boni:Array.isArray(effekt.boni)?effekt.boni.map(normalisiereBonus):[]
+ };
+}
+
+function erstelleZusammengefuehrteStandardDatenbank(){
+ return effekte
+   .filter(effekt=>effekt.standard)
+   .map(bereiteStandardEffektFuerExportVor)
+   .sort((a,b)=>a.name.localeCompare(b.name,"de"));
+}
+
+function exportiereStandardDatenbank(){
+ if(!istAdminEntsperrt()) return false;
+
+ const daten=erstelleZusammengefuehrteStandardDatenbank();
+ const json=JSON.stringify(daten,null,2)+"\n";
+ const datei=new Blob([json],{type:"application/json;charset=utf-8"});
+ const url=URL.createObjectURL(datei);
+ const link=document.createElement("a");
+
+ link.href=url;
+ link.download="effekte.json";
+ document.body.appendChild(link);
+ link.click();
+ link.remove();
+ setTimeout(()=>URL.revokeObjectURL(url),0);
+
+ alert(
+   `${daten.length} Standardeffekte wurden als effekte.json exportiert. `+
+   `Die Datei enthält originale, bearbeitete und neu angelegte Standardeffekte.`
+ );
+ return true;
+}
+
 function aktualisiereAdminStatistik(){
  const standardAnzahl=effekte.filter(effekt=>effekt.standard).length;
  const geaendertAnzahl=Object.keys(ladeAdminStandardAenderungen()).length;
@@ -1027,6 +1069,15 @@ function stelleAdminWerkzeugeBereit(){
    button.textContent="➕ Neuer Standardeffekt";
    button.addEventListener("click",oeffneNeuenStandardEffekt);
    werkzeuge.appendChild(button);
+ }
+
+ if(!document.getElementById("btnExportStandardEffekte")){
+   const exportButton=document.createElement("button");
+   exportButton.type="button";
+   exportButton.id="btnExportStandardEffekte";
+   exportButton.textContent="⬇️ effekte.json exportieren";
+   exportButton.addEventListener("click",exportiereStandardDatenbank);
+   werkzeuge.appendChild(exportButton);
  }
 
  if(!document.getElementById("adminNeuAnzahl")){
