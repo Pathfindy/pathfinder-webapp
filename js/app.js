@@ -953,6 +953,7 @@ function initialisiereApp(){
   }
 
   ladeCharaktere();
+  initialisiereAdminModus();
 }
 
 if(document.readyState==="loading"){
