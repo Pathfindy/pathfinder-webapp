@@ -452,7 +452,7 @@ async function ladeEffekte(){
    speichereBenutzerEffekte(benutzer);
 
    effekte=standardEffekte
-     .map(effekt=>normalisiereEffekt({...effekt,standard:true}))
+     .map(effekt=>angewendeterStandardEffekt(normalisiereEffekt({...effekt,standard:true})))
      .concat(benutzer);
    effekte.forEach(effekt=>effekt.aktiv=!!status[effekt.name]);
 
@@ -574,7 +574,8 @@ function baueEffektliste(){
    info.className="effekt-info";
    info.innerHTML=`<div class="effekt-name">${effekt.name}</div><div class="effekt-kategorie">${effekt.kategorie}</div>`;
 
-   if(!effekt.standard){
+   const darfBearbeiten=!effekt.standard || istAdminEntsperrt();
+   if(darfBearbeiten){
       const aktionen=document.createElement("div");
       aktionen.className="effekt-aktionen";
 
@@ -584,20 +585,23 @@ function baueEffektliste(){
       bearbeiten.textContent="✏️";
       bearbeiten.setAttribute("aria-label",`${effekt.name} bearbeiten`);
       bearbeiten.onclick=()=>oeffneEffektEditor(effekt.id);
+      aktionen.appendChild(bearbeiten);
 
-      const del=document.createElement("button");
-      del.type="button";
-      del.className="icon-button";
-      del.textContent="🗑";
-      del.setAttribute("aria-label",`${effekt.name} löschen`);
-      del.onclick=()=>{
-        if(confirm("Effekt wirklich löschen?") && loescheBenutzerEffekt(effekt.id)){
-          baueEffektliste();
-          if(typeof berechneWerte==="function") berechneWerte();
-        }
-      };
+      if(!effekt.standard){
+        const del=document.createElement("button");
+        del.type="button";
+        del.className="icon-button";
+        del.textContent="🗑";
+        del.setAttribute("aria-label",`${effekt.name} löschen`);
+        del.onclick=()=>{
+          if(confirm("Effekt wirklich löschen?") && loescheBenutzerEffekt(effekt.id)){
+            baueEffektliste();
+            if(typeof berechneWerte==="function") berechneWerte();
+          }
+        };
+        aktionen.appendChild(del);
+      }
 
-      aktionen.append(bearbeiten,del);
       eintrag.append(label,info,aktionen);
    } else {
       eintrag.append(label,info);
@@ -795,7 +799,7 @@ function oeffneNeuenEffekt(){
 
 function oeffneEffektEditor(effektId){
  const effekt=findeEffekt(effektId);
- if(!effekt || effekt.standard) return false;
+ if(!effekt || (effekt.standard && !istAdminEntsperrt())) return false;
 
  editorState.effektId=effekt.id;
  editorState.entwurf=normalisiereEffekt({
@@ -823,7 +827,12 @@ function speichereEditor(){
  }
 
  if(editorState.effektId){
-   aktualisiereBenutzerEffekt(editorState.effektId,daten);
+   const effekt=findeEffekt(editorState.effektId);
+   if(effekt?.standard){
+     aktualisiereStandardEffekt(editorState.effektId,daten);
+   }else{
+     aktualisiereBenutzerEffekt(editorState.effektId,daten);
+   }
  }else{
    erstelleBenutzerEffekt(daten);
  }
