@@ -1,6 +1,6 @@
 // Das azlantische Helferlein der Boni
 // app.js
-// Version 0.17.0
+// Version 0.17.1
 
 const seiten={
  dashboard:document.getElementById("dashboard"),
@@ -513,6 +513,16 @@ function aktualisiereStandardEffekt(id,daten={}){
  return aktualisiert;
 }
 
+
+function loescheNeuenStandardEffekt(id){
+ if(!istAdminEntsperrt() || !istNeuerStandardEffekt(id)) return false;
+ const neue=ladeAdminStandardNeu().filter(e=>e.id!==id);
+ speichereAdminStandardNeu(neue);
+ effekte=effekte.filter(e=>e.id!==id);
+ aktualisiereAdminStatistik();
+ return true;
+}
+
 async function ladeEffekte(){
  try{
    const antwort=await fetch("data/effekte.json");
@@ -661,16 +671,21 @@ function baueEffektliste(){
       bearbeiten.onclick=()=>oeffneEffektEditor(effekt.id);
       aktionen.appendChild(bearbeiten);
 
-      if(!effekt.standard){
+      if(!effekt.standard || (effekt.standard && istNeuerStandardEffekt(effekt.id))){
         const del=document.createElement("button");
         del.type="button";
         del.className="icon-button";
         del.textContent="🗑";
         del.setAttribute("aria-label",`${effekt.name} löschen`);
         del.onclick=()=>{
-          if(confirm("Effekt wirklich löschen?") && loescheBenutzerEffekt(effekt.id)){
-            baueEffektliste();
-            if(typeof berechneWerte==="function") berechneWerte();
+          if(confirm("Effekt wirklich löschen?")){
+            const geloescht=effekt.standard
+              ?loescheNeuenStandardEffekt(effekt.id)
+              :loescheBenutzerEffekt(effekt.id);
+            if(geloescht){
+              baueEffektliste();
+              if(typeof berechneWerte==="function") berechneWerte();
+            }
           }
         };
         aktionen.appendChild(del);
