@@ -1,6 +1,6 @@
 // Das azlantische Helferlein der Boni
 // app.js
-// Version 0.16.1
+// Version 0.16.2
 
 const seiten={
  dashboard:document.getElementById("dashboard"),
@@ -656,7 +656,6 @@ const PF_BONUS_ZIELE=[
 ];
 
 const PF_BONUSARTEN=[
- "Namenlos",
  "Ablenkung",
  "Alchemistisch",
  "Ausweich",
@@ -665,6 +664,7 @@ const PF_BONUSARTEN=[
  "Heilig",
  "Kompetenz",
  "Moral",
+ "Namenlos",
  "Natürlich",
  "Profan",
  "Resistenz",
