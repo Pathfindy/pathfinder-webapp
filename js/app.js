@@ -5,7 +5,8 @@
 const seiten={
  dashboard:document.getElementById("dashboard"),
  effekte:document.getElementById("effekte"),
- charaktere:document.getElementById("charaktere")
+ charaktere:document.getElementById("charaktere"),
+ admin:document.getElementById("admin")
 };
 
 function zeigeSeite(name){
@@ -16,6 +17,7 @@ function zeigeSeite(name){
 document.getElementById("btnDashboard").onclick=()=>zeigeSeite("dashboard");
 document.getElementById("btnEffekte").onclick=()=>zeigeSeite("effekte");
 document.getElementById("btnCharaktere").onclick=()=>zeigeSeite("charaktere");
+document.getElementById("btnAdmin").onclick=()=>{ zeigeSeite("admin"); aktualisiereAdminAnsicht(); };
 zeigeSeite("dashboard");
 
 let effekte=[];
@@ -25,7 +27,8 @@ const STORAGE_KEYS={
  benutzerEffekte:"pf-benutzer-effekte",
  charaktere:"pf-charaktere",
  aktiverCharakter:"pf-aktiver-charakter",
- charakterEffekte:"pf-charakter-effekte"
+ charakterEffekte:"pf-charakter-effekte",
+ adminPinHash:"pf-admin-pin-hash"
 };
 
 function ladeJson(key,standardwert){
@@ -795,6 +798,142 @@ function speichereEditor(){
 
  baueEffektliste();
  schliesseEffektEditor();
+}
+
+
+// ==========================
+// Admin-Modus mit 4-stelliger PIN
+// ==========================
+
+const ADMIN_SESSION_KEY="pf-admin-entsperrt";
+const ADMIN_TIMEOUT_MS=15*60*1000;
+const ADMIN_MAX_FEHLVERSUCHE=5;
+const ADMIN_SPERRE_MS=30*1000;
+let adminTimeoutId=null;
+let adminFehlversuche=0;
+let adminGesperrtBis=0;
+
+function hatAdminPin(){
+  return Boolean(localStorage.getItem(STORAGE_KEYS.adminPinHash));
+}
+
+function istAdminEntsperrt(){
+  return sessionStorage.getItem(ADMIN_SESSION_KEY)==="1";
+}
+
+async function bildePinHash(pin){
+  const daten=new TextEncoder().encode(pin);
+  const hash=await crypto.subtle.digest("SHA-256",daten);
+  return Array.from(new Uint8Array(hash)).map(byte=>byte.toString(16).padStart(2,"0")).join("");
+}
+
+function istGueltigeAdminPin(pin){
+  return /^\d{4}$/.test(pin);
+}
+
+function planeAdminSperre(){
+  clearTimeout(adminTimeoutId);
+  if(!istAdminEntsperrt()) return;
+  adminTimeoutId=setTimeout(()=>sperreAdminModus(true),ADMIN_TIMEOUT_MS);
+}
+
+function entsperreAdminModus(){
+  sessionStorage.setItem(ADMIN_SESSION_KEY,"1");
+  adminFehlversuche=0;
+  planeAdminSperre();
+  aktualisiereAdminAnsicht();
+}
+
+function sperreAdminModus(automatisch=false){
+  sessionStorage.removeItem(ADMIN_SESSION_KEY);
+  clearTimeout(adminTimeoutId);
+  aktualisiereAdminAnsicht();
+  if(automatisch && seiten.admin?.style.display!=="none") alert("Der Admin-Modus wurde nach 15 Minuten automatisch gesperrt.");
+}
+
+function aktualisiereAdminAnsicht(){
+  const aktiv=istAdminEntsperrt();
+  const status=document.getElementById("adminStatus");
+  const gesperrt=document.getElementById("adminGesperrt");
+  const werkzeuge=document.getElementById("adminWerkzeuge");
+  const sperren=document.getElementById("btnAdminSperren");
+  if(status){
+    status.textContent=aktiv?"Entsperrt":"Gesperrt";
+    status.classList.toggle("aktiv",aktiv);
+  }
+  if(gesperrt) gesperrt.hidden=aktiv;
+  if(werkzeuge) werkzeuge.hidden=!aktiv;
+  if(sperren) sperren.hidden=!aktiv;
+}
+
+function oeffneAdminPinDialog(){
+  const dialog=document.getElementById("adminPinDialog");
+  const erstmalig=!hatAdminPin();
+  const titel=document.getElementById("adminPinTitel");
+  const hinweis=document.getElementById("adminPinHinweis");
+  const bestaetigung=document.getElementById("adminPinBestaetigen");
+  const bestaetigungLabel=document.getElementById("adminPinBestaetigenLabel");
+  const fehler=document.getElementById("adminPinFehler");
+  document.getElementById("adminPinForm")?.reset();
+  if(titel) titel.textContent=erstmalig?"Admin-PIN festlegen":"Admin-Modus öffnen";
+  if(hinweis) hinweis.textContent=erstmalig?"Lege eine vierstellige PIN fest.":"Bitte vierstellige PIN eingeben.";
+  if(bestaetigung){ bestaetigung.hidden=!erstmalig; bestaetigung.required=erstmalig; }
+  if(bestaetigungLabel) bestaetigungLabel.hidden=!erstmalig;
+  if(fehler) fehler.textContent="";
+  dialog?.showModal();
+  setTimeout(()=>document.getElementById("adminPin")?.focus(),0);
+}
+
+async function verarbeiteAdminPin(event){
+  event.preventDefault();
+  const fehler=document.getElementById("adminPinFehler");
+  const pin=document.getElementById("adminPin")?.value||"";
+  const bestaetigung=document.getElementById("adminPinBestaetigen")?.value||"";
+  const restzeit=adminGesperrtBis-Date.now();
+  if(restzeit>0){
+    if(fehler) fehler.textContent=`Zu viele Fehlversuche. Bitte in ${Math.ceil(restzeit/1000)} Sekunden erneut versuchen.`;
+    return;
+  }
+  if(!istGueltigeAdminPin(pin)){
+    if(fehler) fehler.textContent="Die PIN muss genau aus vier Ziffern bestehen.";
+    return;
+  }
+  if(!hatAdminPin()){
+    if(pin!==bestaetigung){
+      if(fehler) fehler.textContent="Die beiden PIN-Eingaben stimmen nicht überein.";
+      return;
+    }
+    localStorage.setItem(STORAGE_KEYS.adminPinHash,await bildePinHash(pin));
+    entsperreAdminModus();
+    document.getElementById("adminPinDialog")?.close();
+    return;
+  }
+  const stimmt=(await bildePinHash(pin))===localStorage.getItem(STORAGE_KEYS.adminPinHash);
+  if(stimmt){
+    entsperreAdminModus();
+    document.getElementById("adminPinDialog")?.close();
+    return;
+  }
+  adminFehlversuche+=1;
+  if(adminFehlversuche>=ADMIN_MAX_FEHLVERSUCHE){
+    adminGesperrtBis=Date.now()+ADMIN_SPERRE_MS;
+    adminFehlversuche=0;
+    if(fehler) fehler.textContent="Zu viele Fehlversuche. Die Eingabe ist für 30 Sekunden gesperrt.";
+  }else if(fehler){
+    fehler.textContent=`PIN falsch. Noch ${ADMIN_MAX_FEHLVERSUCHE-adminFehlversuche} Versuch(e).`;
+  }
+}
+
+function initialisiereAdminModus(){
+  aktualisiereAdminAnsicht();
+  if(istAdminEntsperrt()) planeAdminSperre();
+  document.getElementById("btnAdminEntsperren")?.addEventListener("click",oeffneAdminPinDialog);
+  document.getElementById("btnAdminSperren")?.addEventListener("click",()=>sperreAdminModus(false));
+  document.getElementById("adminPinForm")?.addEventListener("submit",verarbeiteAdminPin);
+  document.getElementById("btnAdminPinAbbrechen")?.addEventListener("click",()=>document.getElementById("adminPinDialog")?.close());
+  ["pointerdown","keydown","touchstart"].forEach(ereignis=>document.addEventListener(ereignis,()=>{
+    if(istAdminEntsperrt()) planeAdminSperre();
+  },{passive:true}));
 }
 
 function initialisiereApp(){
