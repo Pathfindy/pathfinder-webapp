@@ -1,6 +1,6 @@
 // Das azlantische Helferlein der Boni
 // app.js
-// Version 0.16.2
+// Version 0.17.0
 
 const seiten={
  dashboard:document.getElementById("dashboard"),
@@ -29,7 +29,8 @@ const STORAGE_KEYS={
  aktiverCharakter:"pf-aktiver-charakter",
  charakterEffekte:"pf-charakter-effekte",
  adminPinHash:"pf-admin-pin-hash",
- adminStandardAenderungen:"pf-admin-standard-aenderungen"
+ adminStandardAenderungen:"pf-admin-standard-aenderungen",
+ adminStandardNeu:"pf-admin-standard-neu"
 };
 
 function ladeJson(key,standardwert){
@@ -421,6 +422,49 @@ function loescheBenutzerEffekt(id){
 }
 
 
+function ladeAdminStandardNeu(){
+ const daten=ladeJson(STORAGE_KEYS.adminStandardNeu,[]);
+ return Array.isArray(daten)
+   ?daten.map(effekt=>normalisiereEffekt({...effekt,standard:true,aktiv:false}))
+   :[];
+}
+
+function speichereAdminStandardNeu(neueStandardEffekte){
+ speichereJson(
+   STORAGE_KEYS.adminStandardNeu,
+   neueStandardEffekte.map(effekt=>({...normalisiereEffekt({...effekt,standard:true}),aktiv:false}))
+ );
+}
+
+function neueStandardEffektId(){
+ if(typeof crypto!=="undefined" && typeof crypto.randomUUID==="function"){
+   return `standard-admin-${crypto.randomUUID()}`;
+ }
+ return "standard-admin-"+Date.now()+"-"+Math.random().toString(36).slice(2);
+}
+
+function istNeuerStandardEffekt(id){
+ return ladeAdminStandardNeu().some(effekt=>effekt.id===id);
+}
+
+function erstelleStandardEffekt(daten={}){
+ if(!istAdminEntsperrt()) return null;
+
+ const effekt=normalisiereEffekt({
+   ...daten,
+   id:neueStandardEffektId(),
+   standard:true,
+   aktiv:false
+ });
+
+ const neueStandardEffekte=ladeAdminStandardNeu();
+ neueStandardEffekte.push(effekt);
+ speichereAdminStandardNeu(neueStandardEffekte);
+ effekte.push(effekt);
+ aktualisiereAdminStatistik();
+ return effekt;
+}
+
 function ladeAdminStandardAenderungen(){
  const daten=ladeJson(STORAGE_KEYS.adminStandardAenderungen,{});
  return daten && typeof daten==="object" && !Array.isArray(daten)?daten:{};
@@ -441,12 +485,30 @@ function aktualisiereStandardEffekt(id,daten={}){
  if(!istAdminEntsperrt()) return null;
  const effekt=findeEffekt(id);
  if(!effekt || !effekt.standard) return null;
- const aktualisiert=normalisiereEffekt({...effekt,...daten,id:effekt.id,standard:true,aktiv:effekt.aktiv});
- const aenderungen=ladeAdminStandardAenderungen();
- aenderungen[id]={...aktualisiert,aktiv:false};
- speichereAdminStandardAenderungen(aenderungen);
+
+ const aktualisiert=normalisiereEffekt({
+   ...effekt,
+   ...daten,
+   id:effekt.id,
+   standard:true,
+   aktiv:effekt.aktiv
+ });
+
+ if(istNeuerStandardEffekt(id)){
+   const neueStandardEffekte=ladeAdminStandardNeu();
+   const indexNeu=neueStandardEffekte.findIndex(eintrag=>eintrag.id===id);
+   if(indexNeu>=0){
+     neueStandardEffekte[indexNeu]={...aktualisiert,aktiv:false};
+     speichereAdminStandardNeu(neueStandardEffekte);
+   }
+ }else{
+   const aenderungen=ladeAdminStandardAenderungen();
+   aenderungen[id]={...aktualisiert,aktiv:false};
+   speichereAdminStandardAenderungen(aenderungen);
+ }
+
  const index=effekte.findIndex(eintrag=>eintrag.id===id);
- effekte[index]=aktualisiert;
+ if(index>=0) effekte[index]=aktualisiert;
  aktualisiereAdminStatistik();
  return aktualisiert;
 }
@@ -461,9 +523,11 @@ async function ladeEffekte(){
    const benutzer=benutzerRohdaten.map(effekt=>normalisiereEffekt({...effekt,standard:false}));
    speichereBenutzerEffekte(benutzer);
 
+   const neueStandardEffekte=ladeAdminStandardNeu();
+
    effekte=standardEffekte
      .map(effekt=>angewendeterStandardEffekt(normalisiereEffekt({...effekt,standard:true})))
-     .concat(benutzer);
+     .concat(neueStandardEffekte,benutzer);
    effekte.forEach(effekt=>effekt.aktiv=!!status[effekt.name]);
 
    console.log("Effekte geladen:",effekte.length);
@@ -686,11 +750,13 @@ function neuerLeererBonus(){
 
 const editorState={
  effektId:null,
- entwurf:null
+ entwurf:null,
+ standardNeu:false
 };
 
 function editorZuruecksetzen(){
  editorState.effektId=null;
+ editorState.standardNeu=false;
  editorState.entwurf=erzeugeEffekt({boni:[neuerLeererBonus()]});
 }
 
@@ -722,7 +788,11 @@ function schreibeEditorFormular(){
  if(kategorie) kategorie.value=editorState.entwurf.kategorie;
  if(beschreibung) beschreibung.value=editorState.entwurf.beschreibung;
  if(quelle) quelle.value=editorState.entwurf.quelle;
- if(titel) titel.textContent=editorState.effektId?"Effekt bearbeiten":"Neuen Effekt anlegen";
+ if(titel){
+   titel.textContent=editorState.effektId
+     ?"Effekt bearbeiten"
+     :(editorState.standardNeu?"Neuen Standardeffekt anlegen":"Neuen Effekt anlegen");
+ }
 
  rendereBonusEditor();
 }
@@ -808,6 +878,20 @@ function oeffneNeuenEffekt(){
  document.getElementById("effektDialog")?.showModal();
 }
 
+function oeffneNeuenStandardEffekt(){
+ if(!istAdminEntsperrt()) return false;
+ editorZuruecksetzen();
+ editorState.standardNeu=true;
+ editorState.entwurf=normalisiereEffekt({
+   ...editorState.entwurf,
+   standard:true,
+   boni:[neuerLeererBonus()]
+ });
+ schreibeEditorFormular();
+ document.getElementById("effektDialog")?.showModal();
+ return true;
+}
+
 function oeffneEffektEditor(effektId){
  const effekt=findeEffekt(effektId);
  if(!effekt || (effekt.standard && !istAdminEntsperrt())) return false;
@@ -844,6 +928,8 @@ function speichereEditor(){
    }else{
      aktualisiereBenutzerEffekt(editorState.effektId,daten);
    }
+ }else if(editorState.standardNeu){
+   erstelleStandardEffekt(daten);
  }else{
    erstelleBenutzerEffekt(daten);
  }
@@ -906,13 +992,38 @@ function sperreAdminModus(automatisch=false){
 function aktualisiereAdminStatistik(){
  const standardAnzahl=effekte.filter(effekt=>effekt.standard).length;
  const geaendertAnzahl=Object.keys(ladeAdminStandardAenderungen()).length;
+ const neuAnzahl=ladeAdminStandardNeu().length;
  const standardEl=document.getElementById("adminStandardAnzahl");
  const geaendertEl=document.getElementById("adminGeaendertAnzahl");
+ const neuEl=document.getElementById("adminNeuAnzahl");
  if(standardEl) standardEl.textContent=String(standardAnzahl);
  if(geaendertEl) geaendertEl.textContent=String(geaendertAnzahl);
+ if(neuEl) neuEl.textContent=String(neuAnzahl);
+}
+
+function stelleAdminWerkzeugeBereit(){
+ const werkzeuge=document.getElementById("adminWerkzeuge");
+ if(!werkzeuge) return;
+
+ if(!document.getElementById("btnNeuerStandardEffekt")){
+   const button=document.createElement("button");
+   button.type="button";
+   button.id="btnNeuerStandardEffekt";
+   button.textContent="➕ Neuer Standardeffekt";
+   button.addEventListener("click",oeffneNeuenStandardEffekt);
+   werkzeuge.appendChild(button);
+ }
+
+ if(!document.getElementById("adminNeuAnzahl")){
+   const statistik=document.createElement("p");
+   statistik.className="admin-statistik-neu";
+   statistik.innerHTML='Neu: <strong id="adminNeuAnzahl">0</strong>';
+   werkzeuge.appendChild(statistik);
+ }
 }
 
 function aktualisiereAdminAnsicht(){
+  stelleAdminWerkzeugeBereit();
   const aktiv=istAdminEntsperrt();
   const status=document.getElementById("adminStatus");
   const gesperrt=document.getElementById("adminGesperrt");
