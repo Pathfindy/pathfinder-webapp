@@ -1,0 +1,47 @@
+diff --git a/js/app.js b/js/app.js
+--- a/js/app.js
++++ b/js/app.js
+@@
+-// Version 0.16.0
++// Version 0.16.1
+@@
++function normalisiereBonusart(bonusart){
++ const wert=String(bonusart||"").trim();
++ const alteBezeichnungen={
++   Unbekannt:"Namenlos",
++   Unbenannt:"Namenlos",
++   Umstand:"Situation"
++ };
++ return alteBezeichnungen[wert]||wert;
++}
++
+ function normalisiereBonus(bonus={}){
+  const wert=Number(bonus.wert);
+  return {
+    ziel:typeof bonus.ziel==="string"?bonus.ziel:"",
+-   bonusart:typeof bonus.bonusart==="string"?bonus.bonusart:"",
++   bonusart:normalisiereBonusart(bonus.bonusart),
+    wert:Number.isFinite(wert)?wert:0
+  };
+ }
+@@
+ const PF_BONUSARTEN=[
+- "Unbenannt",
++ "Namenlos",
+  "Ablenkung",
+  "Alchemistisch",
+  "Ausweich",
+  "Erkenntnis",
++ "Glück",
+  "Heilig",
+  "Kompetenz",
+  "Moral",
+  "Natürlich",
+  "Profan",
+  "Resistenz",
+  "Rüstung",
+  "Schild",
+- "Umstand",
++ "Situation",
+  "Verbesserung"
+ ];
