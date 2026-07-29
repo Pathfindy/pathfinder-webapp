@@ -516,3 +516,10 @@ nav button.active {
         width: 100%;
     }
 }
+
+
+/* Commit 16: Admin-Arbeitsstand für Standardeffekte */
+.admin-statistik{display:grid;gap:.75rem;margin:1rem 0 0}
+.admin-statistik div{display:flex;justify-content:space-between;align-items:center;padding:.75rem;border:1px solid #cbd5e1;border-radius:.6rem}
+.admin-statistik dt{font-weight:600}
+.admin-statistik dd{margin:0;font-size:1.2rem;font-weight:700}
