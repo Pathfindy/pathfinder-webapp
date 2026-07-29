@@ -1,6 +1,6 @@
 // Das azlantische Helferlein der Boni
 // app.js
-// Version 0.11.1
+// Version 0.13.0
 
 const seiten={
  dashboard:document.getElementById("dashboard"),
@@ -346,7 +346,7 @@ function normalisiereEffekt(effekt={}){
    standard,
    aktiv:!!effekt.aktiv,
    name:effekt.name||"",
-   kategorie:effekt.kategorie||"",
+   kategorie:normalisiereKategorie(effekt.kategorie),
    beschreibung:effekt.beschreibung||"",
    quelle:effekt.quelle||"",
    boni:Array.isArray(effekt.boni)?effekt.boni.map(normalisiereBonus):[]
@@ -430,12 +430,33 @@ async function ladeEffekte(){
 }
 
 
+const PF_EFFEKT_KATEGORIEN=[
+ "Ausrüstung",
+ "Kampf",
+ "Klassenmerkmale",
+ "Sonstige",
+ "Talente",
+ "Volksmerkmale",
+ "Zauber",
+ "Zustände"
+];
+
+function normalisiereKategorie(kategorie){
+ const wert=String(kategorie||"").trim();
+ const alteBezeichnungen={
+   Gegenstand:"Ausrüstung",
+   Talent:"Talente",
+   Sonstiges:"Sonstige"
+ };
+ return alteBezeichnungen[wert]||wert;
+}
+
 function effektKategorien(){
- return [...new Set(
-   effekte
-     .map(effekt=>String(effekt.kategorie||"").trim())
-     .filter(Boolean)
- )].sort((a,b)=>a.localeCompare(b,"de"));
+ const vorhandene=effekte
+   .map(effekt=>normalisiereKategorie(effekt.kategorie))
+   .filter(Boolean);
+ return [...new Set([...PF_EFFEKT_KATEGORIEN,...vorhandene])]
+   .sort((a,b)=>a.localeCompare(b,"de"));
 }
 
 function baueKategorieFilter(){
@@ -603,7 +624,7 @@ const PF_BONUSARTEN=[
  "Verbesserung"
 ];
 
-const PF_BONUSWERTE=[1,2,3,4,5,6,7,8,0,-1,-2,-3,-4,-5,-6,-7,-8];
+const PF_BONUSWERTE=[...Array.from({length:20},(_,index)=>20-index),0,...Array.from({length:20},(_,index)=>-(index+1))];
 
 function neuerLeererBonus(){
  return {
