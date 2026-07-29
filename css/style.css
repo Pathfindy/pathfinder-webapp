@@ -460,3 +460,59 @@ nav button.active {
         justify-content: flex-start;
     }
 }
+
+
+/* ==========================
+   Admin-Modus
+========================== */
+.admin-karte {
+    padding: 16px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 1px 4px rgba(0,0,0,.08);
+}
+
+.admin-status {
+    margin: 4px 0 0;
+    color: #8b1e1e;
+    font-weight: 700;
+}
+
+.admin-status.aktiv {
+    color: #176b35;
+}
+
+.admin-pin-dialog form {
+    display: grid;
+    gap: 10px;
+    min-width: min(320px, 80vw);
+}
+
+.admin-pin-dialog input {
+    width: 100%;
+    min-height: 48px;
+    box-sizing: border-box;
+    font-size: 1.35rem;
+    letter-spacing: .45em;
+    text-align: center;
+}
+
+.admin-fehler {
+    min-height: 1.3em;
+    margin: 0;
+    color: #a21f1f;
+}
+
+.dialog-aktionen {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+@media (max-width:600px) {
+    .dialog-aktionen button,
+    #btnAdminSperren,
+    #btnAdminEntsperren {
+        width: 100%;
+    }
+}
