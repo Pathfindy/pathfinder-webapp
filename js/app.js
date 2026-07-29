@@ -1,6 +1,6 @@
 // Das azlantische Helferlein der Boni
 // app.js
-// Version 0.13.0
+// Version 0.11.1
 
 const seiten={
  dashboard:document.getElementById("dashboard"),
@@ -603,7 +603,7 @@ const PF_BONUSARTEN=[
  "Verbesserung"
 ];
 
-const PF_BONUSWERTE=[...Array.from({length:20},(_,index)=>20-index),0,...Array.from({length:20},(_,index)=>-(index+1))];
+const PF_BONUSWERTE=[1,2,3,4,5,6,7,8,0,-1,-2,-3,-4,-5,-6,-7,-8];
 
 function neuerLeererBonus(){
  return {
