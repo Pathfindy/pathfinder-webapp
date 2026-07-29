@@ -1,6 +1,6 @@
 // Das azlantische Helferlein der Boni
 // app.js
-// Version 0.13.0
+// Version 0.16.0
 
 const seiten={
  dashboard:document.getElementById("dashboard"),
@@ -28,7 +28,8 @@ const STORAGE_KEYS={
  charaktere:"pf-charaktere",
  aktiverCharakter:"pf-aktiver-charakter",
  charakterEffekte:"pf-charakter-effekte",
- adminPinHash:"pf-admin-pin-hash"
+ adminPinHash:"pf-admin-pin-hash",
+ adminStandardAenderungen:"pf-admin-standard-aenderungen"
 };
 
 function ladeJson(key,standardwert){
@@ -402,11 +403,42 @@ function aktualisiereBenutzerEffekt(id,daten={}){
 
 function loescheBenutzerEffekt(id){
  const effekt=findeEffekt(id);
- if(!effekt || effekt.standard) return false;
+ if(!effekt || (effekt.standard && !istAdminEntsperrt())) return false;
 
  effekte=effekte.filter(eintrag=>eintrag.id!==id);
  speichereAktuelleBenutzerEffekte();
  return true;
+}
+
+
+function ladeAdminStandardAenderungen(){
+ const daten=ladeJson(STORAGE_KEYS.adminStandardAenderungen,{});
+ return daten && typeof daten==="object" && !Array.isArray(daten)?daten:{};
+}
+
+function speichereAdminStandardAenderungen(aenderungen){
+ speichereJson(STORAGE_KEYS.adminStandardAenderungen,aenderungen);
+}
+
+function angewendeterStandardEffekt(effekt){
+ if(!istAdminEntsperrt()) return effekt;
+ const aenderungen=ladeAdminStandardAenderungen();
+ const entwurf=aenderungen[effekt.id];
+ return entwurf?normalisiereEffekt({...effekt,...entwurf,id:effekt.id,standard:true}):effekt;
+}
+
+function aktualisiereStandardEffekt(id,daten={}){
+ if(!istAdminEntsperrt()) return null;
+ const effekt=findeEffekt(id);
+ if(!effekt || !effekt.standard) return null;
+ const aktualisiert=normalisiereEffekt({...effekt,...daten,id:effekt.id,standard:true,aktiv:effekt.aktiv});
+ const aenderungen=ladeAdminStandardAenderungen();
+ aenderungen[id]={...aktualisiert,aktiv:false};
+ speichereAdminStandardAenderungen(aenderungen);
+ const index=effekte.findIndex(eintrag=>eintrag.id===id);
+ effekte[index]=aktualisiert;
+ aktualisiereAdminStatistik();
+ return aktualisiert;
 }
 
 async function ladeEffekte(){
@@ -851,6 +883,15 @@ function sperreAdminModus(automatisch=false){
   if(automatisch && seiten.admin?.style.display!=="none") alert("Der Admin-Modus wurde nach 15 Minuten automatisch gesperrt.");
 }
 
+function aktualisiereAdminStatistik(){
+ const standardAnzahl=effekte.filter(effekt=>effekt.standard).length;
+ const geaendertAnzahl=Object.keys(ladeAdminStandardAenderungen()).length;
+ const standardEl=document.getElementById("adminStandardAnzahl");
+ const geaendertEl=document.getElementById("adminGeaendertAnzahl");
+ if(standardEl) standardEl.textContent=String(standardAnzahl);
+ if(geaendertEl) geaendertEl.textContent=String(geaendertAnzahl);
+}
+
 function aktualisiereAdminAnsicht(){
   const aktiv=istAdminEntsperrt();
   const status=document.getElementById("adminStatus");
@@ -864,6 +905,8 @@ function aktualisiereAdminAnsicht(){
   if(gesperrt) gesperrt.hidden=aktiv;
   if(werkzeuge) werkzeuge.hidden=!aktiv;
   if(sperren) sperren.hidden=!aktiv;
+  aktualisiereAdminStatistik();
+  if(typeof baueEffektliste==="function") baueEffektliste();
 }
 
 function oeffneAdminPinDialog(){
