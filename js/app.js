@@ -1,6 +1,6 @@
 // Das azlantische Helferlein der Boni
 // app.js
-// Version 0.16.0
+// Version 0.16.1
 
 const seiten={
  dashboard:document.getElementById("dashboard"),
@@ -334,11 +334,21 @@ function standardEffektId(effekt){
  return `standard-${basis||"effekt"}`;
 }
 
+function normalisiereBonusart(bonusart){
+ const wert=String(bonusart||"").trim();
+ const alteBezeichnungen={
+   Unbenannt:"Namenlos",
+   Unbekannt:"Namenlos",
+   Umstand:"Situation"
+ };
+ return alteBezeichnungen[wert]||wert;
+}
+
 function normalisiereBonus(bonus={}){
  const wert=Number(bonus.wert);
  return {
    ziel:typeof bonus.ziel==="string"?bonus.ziel:"",
-   bonusart:typeof bonus.bonusart==="string"?bonus.bonusart:"",
+   bonusart:normalisiereBonusart(bonus.bonusart),
    wert:Number.isFinite(wert)?wert:0
  };
 }
@@ -646,11 +656,12 @@ const PF_BONUS_ZIELE=[
 ];
 
 const PF_BONUSARTEN=[
- "Unbenannt",
+ "Namenlos",
  "Ablenkung",
  "Alchemistisch",
  "Ausweich",
  "Erkenntnis",
+ "Glück",
  "Heilig",
  "Kompetenz",
  "Moral",
@@ -659,7 +670,7 @@ const PF_BONUSARTEN=[
  "Resistenz",
  "Rüstung",
  "Schild",
- "Umstand",
+ "Situation",
  "Verbesserung"
 ];
 
