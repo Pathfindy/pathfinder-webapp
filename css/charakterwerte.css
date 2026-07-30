@@ -70,18 +70,12 @@
 
 .tp-aktionen {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px;
-    align-items: end;
+    grid-template-columns: auto minmax(130px, 1fr);
+    gap: 10px 12px;
+    align-items: center;
 }
 
-.tp-aktion {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-}
-
-.tp-aktion > label {
+.tp-aktionen > label {
     font-weight: 600;
 }
 
@@ -118,31 +112,17 @@
 }
 
 @media (max-width: 600px) {
-    .tp-bereich {
-        padding: 12px;
+    .tp-werte {
+        grid-template-columns: 1fr;
     }
 
-    .tp-werte {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+    .tp-aktionen {
+        grid-template-columns: 1fr;
         gap: 6px;
     }
 
-    .tp-feld input,
-    .tp-aktionszeile input,
-    .tp-aktuell output {
-        min-height: 42px;
-        padding: 7px 6px;
-    }
-
-    .tp-aktionen {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 8px;
-    }
-}
-
-@media (max-width: 380px) {
-    .tp-aktionen {
-        grid-template-columns: 1fr;
+    .tp-aktionen > label:not(:first-child) {
+        margin-top: 6px;
     }
 }
 
@@ -285,63 +265,80 @@
     .angriff-ergebnis { grid-template-columns: 1fr; }
 }
 
-
 /* ==========================
-   Commit 20.1: kompakte Angriffskarten
+   Commit 20.2: gezielte Layout-Ergänzungen
 ========================== */
 
-.angriff-kopf {
-    grid-template-columns: minmax(0, 1fr) 44px;
-    margin-bottom: 8px;
+/* Bestehende App-Grafik bleibt unverändert. */
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
-.angriff-umschalten {
-    width: 44px;
-    min-height: 42px;
-    border: 0;
-    border-radius: 8px;
-    background: #e6eaf0;
-    color: #1e3a5f;
-    font-size: 1.2rem;
-    font-weight: 700;
-    cursor: pointer;
+/* Drei TP-Werte in einer Zeile. */
+.tp-werte {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
-.angriff-ergebnis {
-    margin-top: 0;
+/* Schaden und Heilung in einer Zeile. */
+.tp-aktionen.tp-aktionen-kompakt {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: end;
 }
 
+.tp-aktion {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.tp-aktion > label {
+    font-weight: 600;
+}
+
+/* Angriffsergebnis bleibt sichtbar; Eingabefelder sind ausklappbar. */
 .angriff-details {
     margin-top: 10px;
-    padding-top: 10px;
-    border-top: 1px solid #d7dce2;
 }
 
 .angriff-details[hidden] {
     display: none;
 }
 
-.angriff-loeschen {
+.angriff-toggle {
+    min-width: 44px;
+    min-height: 42px;
+    border: 0;
+    border-radius: 8px;
+    background: #e6eaf0;
+    color: inherit;
+    font: inherit;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.angriff-details .angriff-loeschen {
     width: auto;
-    min-height: 40px;
     margin-top: 10px;
     padding: 8px 12px;
-    background: #f7d6d6;
-    color: #8b1e1e;
-    font: inherit;
-    font-weight: 600;
 }
 
-.angriff-karte.offen {
-    background: #fff;
-}
-
-@media (max-width: 480px) {
-    .angriff-ergebnis {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+@media (max-width: 600px) {
+    .tp-werte {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 6px;
     }
 
-    .angriff-ergebnis div {
-        padding: 9px 8px;
+    .tp-aktionen.tp-aktionen-kompakt {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+    }
+}
+
+@media (max-width: 380px) {
+    .tp-aktionen.tp-aktionen-kompakt {
+        grid-template-columns: 1fr;
     }
 }
