@@ -8,8 +8,8 @@
     <title>Das azlantische Helferlein der Boni</title>
 
     <link rel="manifest" href="manifest.json">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/charakterwerte.css">
+    <link rel="stylesheet" href="css/style.css?v=20.1">
+    <link rel="stylesheet" href="css/charakterwerte.css?v=20.1">
 
     <meta name="theme-color" content="#1e3a5f">
 </head>
@@ -170,16 +170,20 @@
             </div>
 
             <div class="tp-aktionen">
-                <label for="schadenEingabe">Schaden</label>
-                <div class="tp-aktionszeile">
-                    <input id="schadenEingabe" type="number" min="1" max="9999" step="1" inputmode="numeric" placeholder="0">
-                    <button type="button" id="btnSchadenAnwenden" aria-label="Schaden anwenden">✓</button>
+                <div class="tp-aktion">
+                    <label for="schadenEingabe">Schaden</label>
+                    <div class="tp-aktionszeile">
+                        <input id="schadenEingabe" type="number" min="1" max="9999" step="1" inputmode="numeric" placeholder="0">
+                        <button type="button" id="btnSchadenAnwenden" aria-label="Schaden anwenden">✓</button>
+                    </div>
                 </div>
 
-                <label for="heilungEingabe">Heilung</label>
-                <div class="tp-aktionszeile">
-                    <input id="heilungEingabe" type="number" min="1" max="9999" step="1" inputmode="numeric" placeholder="0">
-                    <button type="button" id="btnHeilungAnwenden" aria-label="Heilung anwenden">✓</button>
+                <div class="tp-aktion">
+                    <label for="heilungEingabe">Heilung</label>
+                    <div class="tp-aktionszeile">
+                        <input id="heilungEingabe" type="number" min="1" max="9999" step="1" inputmode="numeric" placeholder="0">
+                        <button type="button" id="btnHeilungAnwenden" aria-label="Heilung anwenden">✓</button>
+                    </div>
                 </div>
             </div>
 
@@ -251,7 +255,7 @@
 </main>
 
 <script src="js/app.js"></script>
-<script src="js/charakterwerte.js"></script>
+<script src="js/charakterwerte.js?v=20.1"></script>
 <script src="js/filter.js"></script>
 <script src="js/berechnung.js"></script>
 <script src="js/makros.js"></script>
