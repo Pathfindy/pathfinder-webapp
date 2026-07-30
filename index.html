@@ -9,6 +9,7 @@
 
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/charakterwerte.css">
 
     <meta name="theme-color" content="#1e3a5f">
 </head>
@@ -25,6 +26,7 @@
 
     <button id="btnDashboard">Dashboard</button>
     <button id="btnEffekte">Effekte</button>
+    <button id="btnCharakterwerte">Werte</button>
     <button id="btnCharaktere">Charaktere</button>
     <button id="btnAdmin">Admin</button>
 
@@ -95,8 +97,7 @@
 
         </div>
 
-    
-</section>
+    </section>
 
     <!-- ========================= -->
     <!-- Effekte                   -->
@@ -128,13 +129,62 @@
         </div>
 
         <p id="filterErgebnis" class="filter-ergebnis" aria-live="polite"></p>
-
         <div id="boniListe">
 
             <p>Noch keine Effekte geladen.</p>
 
         </div>
 
+    </section>
+
+    <!-- ========================= -->
+    <!-- Charakterwerte            -->
+    <!-- ========================= -->
+
+    <section id="charakterwerte" class="page">
+        <div class="seitenkopf">
+            <div>
+                <h2>Charakterwerte</h2>
+                <p>Aktiv: <strong data-aktiver-charakter>Mein Charakter</strong></p>
+            </div>
+        </div>
+
+        <div class="tp-bereich" aria-labelledby="tp-ueberschrift">
+            <h3 id="tp-ueberschrift">Trefferpunkte</h3>
+
+            <div class="tp-werte">
+                <label class="tp-feld" for="maxTp">
+                    <span>Max TP</span>
+                    <input id="maxTp" type="number" min="0" max="9999" step="1" inputmode="numeric">
+                </label>
+
+                <div class="tp-feld tp-aktuell">
+                    <span>Aktuelle TP</span>
+                    <output id="aktuelleTp" aria-live="polite">0</output>
+                </div>
+
+                <label class="tp-feld" for="temporaereTp">
+                    <span>Temp TP</span>
+                    <input id="temporaereTp" type="number" min="0" max="9999" step="1" inputmode="numeric">
+                </label>
+            </div>
+
+            <div class="tp-aktionen">
+                <label for="schadenEingabe">Schaden</label>
+                <div class="tp-aktionszeile">
+                    <input id="schadenEingabe" type="number" min="1" max="9999" step="1" inputmode="numeric" placeholder="0">
+                    <button type="button" id="btnSchadenAnwenden" aria-label="Schaden anwenden">✓</button>
+                </div>
+
+                <label for="heilungEingabe">Heilung</label>
+                <div class="tp-aktionszeile">
+                    <input id="heilungEingabe" type="number" min="1" max="9999" step="1" inputmode="numeric" placeholder="0">
+                    <button type="button" id="btnHeilungAnwenden" aria-label="Heilung anwenden">✓</button>
+                </div>
+            </div>
+
+            <p id="tpMeldung" class="tp-meldung" aria-live="polite"></p>
+        </div>
     </section>
 
     <!-- ========================= -->
@@ -187,11 +237,11 @@
 </main>
 
 <script src="js/app.js"></script>
+<script src="js/charakterwerte.js"></script>
 <script src="js/filter.js"></script>
 <script src="js/berechnung.js"></script>
 <script src="js/makros.js"></script>
 <script src="js/speicher.js"></script>
-
 
 <dialog id="effektDialog">
 <h3>Neuen Effekt anlegen</h3>
