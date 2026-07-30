@@ -39,9 +39,6 @@
     };
   };
 
-  charaktere = charaktere.map(normalisiereCharakter);
-  speichereCharaktere();
-
   const seite = document.getElementById("charakterwerte");
   const btnSeite = document.getElementById("btnCharakterwerte");
   const maxTpFeld = document.getElementById("maxTp");
