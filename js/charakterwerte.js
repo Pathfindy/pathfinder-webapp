@@ -1,4 +1,4 @@
-// Commit 20.1: UI-Optimierung für Trefferpunkte und Angriffe
+// Commit 20.2: UI-Rollback mit kompakten Bereichen
 (() => {
   const TP_MAX = 9999;
   const ANGRIFF_MAX = 6;
@@ -257,9 +257,9 @@
 
       const umschalten = document.createElement("button");
       umschalten.type = "button";
-      umschalten.className = "angriff-umschalten";
+      umschalten.className = "angriff-toggle";
       umschalten.textContent = "▾";
-      umschalten.setAttribute("aria-label", `${angriff.name} bearbeiten`);
+      umschalten.setAttribute("aria-label", `${angriff.name} Details anzeigen`);
       umschalten.setAttribute("aria-expanded", "false");
 
       kopf.append(name, umschalten);
@@ -335,7 +335,7 @@
       const loeschen = document.createElement("button");
       loeschen.type = "button";
       loeschen.className = "angriff-loeschen";
-      loeschen.textContent = "Angriff löschen";
+      loeschen.textContent = "🗑 Löschen";
       loeschen.setAttribute("aria-label", `${angriff.name} löschen`);
       loeschen.addEventListener("click", () => {
         charakter.kampfwerte.angriffe.splice(index, 1);
@@ -347,11 +347,10 @@
       details.append(felder, loeschen);
 
       umschalten.addEventListener("click", () => {
-        const wirdGeoeffnet = details.hidden;
-        details.hidden = !wirdGeoeffnet;
-        karte.classList.toggle("offen", wirdGeoeffnet);
-        umschalten.textContent = wirdGeoeffnet ? "▴" : "▾";
-        umschalten.setAttribute("aria-expanded", String(wirdGeoeffnet));
+        const oeffnen = details.hidden;
+        details.hidden = !oeffnen;
+        umschalten.textContent = oeffnen ? "▴" : "▾";
+        umschalten.setAttribute("aria-expanded", String(oeffnen));
       });
 
       karte.append(kopf, ergebnis, details);
