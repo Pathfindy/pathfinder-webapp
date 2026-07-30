@@ -1,6 +1,7 @@
 // Das azlantische Helferlein der Boni
 // app.js
-// Version 0.18.0
+// Version 0.18.1
+const APP_VERSION="0.18.1";
 
 const seiten={
  dashboard:document.getElementById("dashboard"),
@@ -525,7 +526,10 @@ function loescheNeuenStandardEffekt(id){
 
 async function ladeEffekte(){
  try{
-   const antwort=await fetch("data/effekte.json");
+   const antwort=await fetch(
+     `data/effekte.json?v=${encodeURIComponent(APP_VERSION)}`,
+     {cache:"no-store"}
+   );
    const standardEffekte=await antwort.json();
    const status=ladeStatus();
 
