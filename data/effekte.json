@@ -4,6 +4,8 @@
     "name": "Bärenstärke",
     "kategorie": "Zauber",
     "aktiv": false,
+    "beschreibung": "",
+    "quelle": "",
     "boni": []
   },
   {
@@ -11,6 +13,8 @@
     "name": "Gebet",
     "kategorie": "Zauber",
     "aktiv": false,
+    "beschreibung": "",
+    "quelle": "",
     "boni": []
   },
   {
@@ -18,6 +22,43 @@
     "name": "Hast",
     "kategorie": "Zauber",
     "aktiv": false,
+    "beschreibung": "",
+    "quelle": "",
     "boni": []
+  },
+  {
+    "id": "standard-admin-32579b31-6a8d-4551-93b0-fa333610addc",
+    "name": "Heldenmut",
+    "kategorie": "Zauber",
+    "aktiv": false,
+    "beschreibung": "Moralbonus von +2 auf Angriff- Rettungs- und Fertigkeitswürfe.\nDauer: 10 Min./ Stufe",
+    "quelle": "GRW S. 288",
+    "boni": [
+      {
+        "ziel": "Angriff Nah",
+        "bonusart": "Moral",
+        "wert": 2
+      },
+      {
+        "ziel": "Angriff Fern",
+        "bonusart": "Moral",
+        "wert": 2
+      },
+      {
+        "ziel": "RW-Reflex",
+        "bonusart": "Moral",
+        "wert": 2
+      },
+      {
+        "ziel": "RW-Wille",
+        "bonusart": "Moral",
+        "wert": 2
+      },
+      {
+        "ziel": "RW-Zähigkeit",
+        "bonusart": "Moral",
+        "wert": 2
+      }
+    ]
   }
 ]
