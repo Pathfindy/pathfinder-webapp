@@ -1,6 +1,8 @@
-// Commit 19: Charakterwerte und Trefferpunkte
+// Commit 20: Charakterwerte, Trefferpunkte und Angriffe
 (() => {
   const TP_MAX = 9999;
+  const ANGRIFF_MAX = 6;
+  const WUERFELSEITEN = [0, 3, 4, 6, 8, 10, 12, 20];
 
   function ganzeZahl(wert, minimum = 0, maximum = TP_MAX) {
     const zahl = Number(wert);
@@ -8,10 +10,40 @@
     return Math.min(maximum, Math.max(minimum, Math.trunc(zahl)));
   }
 
+  function vorzeichen(wert) {
+    const zahl = Number(wert);
+    const sicher = Number.isFinite(zahl) ? Math.trunc(zahl) : 0;
+    return sicher >= 0 ? `+${sicher}` : String(sicher);
+  }
+
+  function normalisiereAngriff(angriff = {}, index = 0) {
+    const wuerfelSeiten = WUERFELSEITEN.includes(Number(angriff.wuerfelSeiten))
+      ? Number(angriff.wuerfelSeiten)
+      : 8;
+
+    return {
+      id: typeof angriff.id === "string" && angriff.id
+        ? angriff.id
+        : `angriff-${Date.now()}-${index}-${Math.random().toString(36).slice(2)}`,
+      name: typeof angriff.name === "string" && angriff.name.trim()
+        ? angriff.name.trim()
+        : `Angriff ${index + 1}`,
+      art: angriff.art === "Fern" ? "Fern" : "Nah",
+      grundAngriff: ganzeZahl(angriff.grundAngriff, -999, 999),
+      wuerfelAnzahl: ganzeZahl(angriff.wuerfelAnzahl, 0, 20),
+      wuerfelSeiten,
+      schadenModifikator: ganzeZahl(angriff.schadenModifikator, -999, 999)
+    };
+  }
+
   function normalisiereKampfwerte(kampfwerte = {}) {
     const rw = kampfwerte && typeof kampfwerte.rw === "object" ? kampfwerte.rw : {};
+    const angriffe = Array.isArray(kampfwerte?.angriffe)
+      ? kampfwerte.angriffe.slice(0, ANGRIFF_MAX).map(normalisiereAngriff)
+      : [];
+
     return {
-      angriffe: Array.isArray(kampfwerte?.angriffe) ? kampfwerte.angriffe : [],
+      angriffe,
       kmb: Number.isFinite(Number(kampfwerte?.kmb)) ? Number(kampfwerte.kmb) : 0,
       kmv: Number.isFinite(Number(kampfwerte?.kmv)) ? Number(kampfwerte.kmv) : 0,
       rk: Number.isFinite(Number(kampfwerte?.rk)) ? Number(kampfwerte.rk) : 0,
@@ -47,14 +79,22 @@
   const schadenFeld = document.getElementById("schadenEingabe");
   const heilungFeld = document.getElementById("heilungEingabe");
   const meldung = document.getElementById("tpMeldung");
+  const angriffeListe = document.getElementById("angriffeListe");
+  const angriffeMeldung = document.getElementById("angriffeMeldung");
+  const btnAngriffHinzufuegen = document.getElementById("btnAngriffHinzufuegen");
 
   if (!seite || !btnSeite) return;
-
   seiten.charakterwerte = seite;
 
   function zeigeMeldung(text = "", fehler = false) {
     meldung.textContent = text;
     meldung.classList.toggle("fehler", fehler);
+  }
+
+  function zeigeAngriffeMeldung(text = "", fehler = false) {
+    if (!angriffeMeldung) return;
+    angriffeMeldung.textContent = text;
+    angriffeMeldung.classList.toggle("fehler", fehler);
   }
 
   function tpFarbklasse(charakter) {
@@ -63,6 +103,32 @@
     if (prozent > 50) return "tp-gruen";
     if (prozent >= 25) return "tp-gelb";
     return "tp-orange";
+  }
+
+  function aktuelleBonuswerte() {
+    return typeof berechneBonusErgebnis === "function"
+      ? berechneBonusErgebnis(typeof effekte !== "undefined" ? effekte : [])
+      : {};
+  }
+
+  function angriffsBonus(angriff, boni = aktuelleBonuswerte()) {
+    const ziel = angriff.art === "Fern" ? "Angriff Fern" : "Angriff Nah";
+    return Number(boni[ziel] ?? 0);
+  }
+
+  function schadenBonus(boni = aktuelleBonuswerte()) {
+    return Number(boni.Schaden ?? 0);
+  }
+
+  function formatiereSchaden(angriff, boni = aktuelleBonuswerte()) {
+    const modifikator = angriff.schadenModifikator + schadenBonus(boni);
+    const wuerfel = angriff.wuerfelAnzahl > 0 && angriff.wuerfelSeiten > 0
+      ? `${angriff.wuerfelAnzahl}W${angriff.wuerfelSeiten}`
+      : "";
+
+    if (!wuerfel) return String(modifikator);
+    if (modifikator === 0) return wuerfel;
+    return `${wuerfel}${vorzeichen(modifikator)}`;
   }
 
   function aktualisiereTrefferpunkteAnsicht() {
@@ -114,7 +180,6 @@
     const vonTemp = Math.min(charakter.temporaereTp, schaden);
     charakter.temporaereTp -= vonTemp;
     charakter.aktuelleTp -= schaden - vonTemp;
-
     schadenFeld.value = "";
     zeigeMeldung(`${schaden} Schaden angewendet.`);
     speichereTpAenderung();
@@ -126,15 +191,172 @@
     if (!charakter || heilung === null) return;
 
     charakter.aktuelleTp = Math.min(charakter.maxTp, charakter.aktuelleTp + heilung);
-
     heilungFeld.value = "";
     zeigeMeldung(`${heilung} Heilung angewendet.`);
     speichereTpAenderung();
   }
 
+  function speichereAngriffsfeld(angriff, feld, eigenschaft, minimum, maximum) {
+    const wert = ganzeZahl(feld.value, minimum, maximum);
+    angriff[eigenschaft] = wert;
+    feld.value = wert;
+    speichereCharaktere();
+    aktualisiereAngriffeAnsicht();
+  }
+
+  function erstelleZahlenfeld(wert, beschriftung, minimum, maximum) {
+    const feld = document.createElement("input");
+    feld.type = "number";
+    feld.value = wert;
+    feld.min = String(minimum);
+    feld.max = String(maximum);
+    feld.step = "1";
+    feld.inputMode = "numeric";
+    feld.setAttribute("aria-label", beschriftung);
+    return feld;
+  }
+
+  function aktualisiereAngriffeAnsicht() {
+    if (!angriffeListe || !btnAngriffHinzufuegen) return;
+
+    const charakter = aktiverCharakter();
+    angriffeListe.innerHTML = "";
+    btnAngriffHinzufuegen.disabled = !charakter || charakter.kampfwerte.angriffe.length >= ANGRIFF_MAX;
+
+    if (!charakter) {
+      angriffeListe.innerHTML = '<p class="angriffe-leer">Kein aktiver Charakter.</p>';
+      return;
+    }
+
+    const angriffe = charakter.kampfwerte.angriffe;
+    if (angriffe.length === 0) {
+      angriffeListe.innerHTML = '<p class="angriffe-leer">Noch keine Angriffe angelegt.</p>';
+      return;
+    }
+
+    const boni = aktuelleBonuswerte();
+
+    angriffe.forEach((angriff, index) => {
+      const karte = document.createElement("article");
+      karte.className = "angriff-karte";
+
+      const kopf = document.createElement("div");
+      kopf.className = "angriff-kopf";
+
+      const name = document.createElement("input");
+      name.type = "text";
+      name.className = "angriff-name";
+      name.value = angriff.name;
+      name.maxLength = 60;
+      name.setAttribute("aria-label", `Name von Angriff ${index + 1}`);
+      name.addEventListener("change", () => {
+        angriff.name = name.value.trim() || `Angriff ${index + 1}`;
+        name.value = angriff.name;
+        speichereCharaktere();
+      });
+
+      const loeschen = document.createElement("button");
+      loeschen.type = "button";
+      loeschen.className = "angriff-loeschen";
+      loeschen.textContent = "🗑";
+      loeschen.setAttribute("aria-label", `${angriff.name} löschen`);
+      loeschen.addEventListener("click", () => {
+        charakter.kampfwerte.angriffe.splice(index, 1);
+        speichereCharaktere();
+        zeigeAngriffeMeldung("Angriff gelöscht.");
+        aktualisiereAngriffeAnsicht();
+      });
+
+      kopf.append(name, loeschen);
+
+      const felder = document.createElement("div");
+      felder.className = "angriff-felder";
+
+      const artLabel = document.createElement("label");
+      artLabel.innerHTML = "<span>Art</span>";
+      const art = document.createElement("select");
+      ["Nah", "Fern"].forEach(optionWert => {
+        const option = document.createElement("option");
+        option.value = optionWert;
+        option.textContent = optionWert;
+        option.selected = angriff.art === optionWert;
+        art.appendChild(option);
+      });
+      art.addEventListener("change", () => {
+        angriff.art = art.value === "Fern" ? "Fern" : "Nah";
+        speichereCharaktere();
+        aktualisiereAngriffeAnsicht();
+      });
+      artLabel.appendChild(art);
+
+      const grundLabel = document.createElement("label");
+      grundLabel.innerHTML = "<span>Grund-Angriff</span>";
+      const grund = erstelleZahlenfeld(angriff.grundAngriff, "Grund-Angriff", -999, 999);
+      grund.addEventListener("change", () => speichereAngriffsfeld(angriff, grund, "grundAngriff", -999, 999));
+      grundLabel.appendChild(grund);
+
+      const wuerfelLabel = document.createElement("label");
+      wuerfelLabel.innerHTML = "<span>Schadenswürfel</span>";
+      const wuerfelZeile = document.createElement("div");
+      wuerfelZeile.className = "wuerfel-zeile";
+      const anzahl = erstelleZahlenfeld(angriff.wuerfelAnzahl, "Anzahl Schadenswürfel", 0, 20);
+      const seiten = document.createElement("select");
+      WUERFELSEITEN.forEach(wert => {
+        const option = document.createElement("option");
+        option.value = String(wert);
+        option.textContent = wert === 0 ? "–" : `W${wert}`;
+        option.selected = angriff.wuerfelSeiten === wert;
+        seiten.appendChild(option);
+      });
+      anzahl.addEventListener("change", () => speichereAngriffsfeld(angriff, anzahl, "wuerfelAnzahl", 0, 20));
+      seiten.addEventListener("change", () => {
+        angriff.wuerfelSeiten = Number(seiten.value);
+        speichereCharaktere();
+        aktualisiereAngriffeAnsicht();
+      });
+      wuerfelZeile.append(anzahl, seiten);
+      wuerfelLabel.appendChild(wuerfelZeile);
+
+      const schadenLabel = document.createElement("label");
+      schadenLabel.innerHTML = "<span>Grund-Schaden</span>";
+      const schaden = erstelleZahlenfeld(angriff.schadenModifikator, "Grund-Schadensmodifikator", -999, 999);
+      schaden.addEventListener("change", () => speichereAngriffsfeld(angriff, schaden, "schadenModifikator", -999, 999));
+      schadenLabel.appendChild(schaden);
+
+      felder.append(artLabel, grundLabel, wuerfelLabel, schadenLabel);
+
+      const ergebnis = document.createElement("div");
+      ergebnis.className = "angriff-ergebnis";
+      const gesamtAngriff = angriff.grundAngriff + angriffsBonus(angriff, boni);
+      ergebnis.innerHTML = `
+        <div><span>Angriff</span><strong>${vorzeichen(gesamtAngriff)}</strong></div>
+        <div><span>Schaden</span><strong>${formatiereSchaden(angriff, boni)}</strong></div>
+      `;
+
+      karte.append(kopf, felder, ergebnis);
+      angriffeListe.appendChild(karte);
+    });
+  }
+
+  function fuegeAngriffHinzu() {
+    const charakter = aktiverCharakter();
+    if (!charakter) return;
+
+    if (charakter.kampfwerte.angriffe.length >= ANGRIFF_MAX) {
+      zeigeAngriffeMeldung("Es können höchstens sechs Angriffe angelegt werden.", true);
+      return;
+    }
+
+    charakter.kampfwerte.angriffe.push(normalisiereAngriff({}, charakter.kampfwerte.angriffe.length));
+    speichereCharaktere();
+    zeigeAngriffeMeldung();
+    aktualisiereAngriffeAnsicht();
+  }
+
   btnSeite.addEventListener("click", () => {
     zeigeSeite("charakterwerte");
     aktualisiereTrefferpunkteAnsicht();
+    aktualisiereAngriffeAnsicht();
   });
 
   maxTpFeld.addEventListener("change", () => {
@@ -167,6 +389,7 @@
 
   document.getElementById("btnSchadenAnwenden").addEventListener("click", anwendenSchaden);
   document.getElementById("btnHeilungAnwenden").addEventListener("click", anwendenHeilung);
+  btnAngriffHinzufuegen?.addEventListener("click", fuegeAngriffHinzu);
 
   schadenFeld.addEventListener("keydown", event => {
     if (event.key === "Enter") anwendenSchaden();
@@ -180,7 +403,9 @@
     const ergebnis = bisherigeCharakterwahl(id);
     if (ergebnis) {
       zeigeMeldung();
+      zeigeAngriffeMeldung();
       aktualisiereTrefferpunkteAnsicht();
+      aktualisiereAngriffeAnsicht();
     }
     return ergebnis;
   };
@@ -188,9 +413,24 @@
   const bisherigesLoeschen = loescheCharakter;
   loescheCharakter = function (id) {
     const ergebnis = bisherigesLoeschen(id);
-    if (ergebnis) aktualisiereTrefferpunkteAnsicht();
+    if (ergebnis) {
+      aktualisiereTrefferpunkteAnsicht();
+      aktualisiereAngriffeAnsicht();
+    }
     return ergebnis;
   };
 
+  if (typeof berechneWerte === "function") {
+    const bisherigeBerechnung = berechneWerte;
+    berechneWerte = function (...argumente) {
+      const ergebnis = bisherigeBerechnung(...argumente);
+      aktualisiereAngriffeAnsicht();
+      return ergebnis;
+    };
+    window.berechneWerte = berechneWerte;
+  }
+
+  window.aktualisiereAngriffeAnsicht = aktualisiereAngriffeAnsicht;
   aktualisiereTrefferpunkteAnsicht();
+  aktualisiereAngriffeAnsicht();
 })();
