@@ -1,4 +1,4 @@
-// Commit 20: Charakterwerte, Trefferpunkte und Angriffe
+// Commit 20.1: UI-Optimierung für Trefferpunkte und Angriffe
 (() => {
   const TP_MAX = 9999;
   const ANGRIFF_MAX = 6;
@@ -255,19 +255,26 @@
         speichereCharaktere();
       });
 
-      const loeschen = document.createElement("button");
-      loeschen.type = "button";
-      loeschen.className = "angriff-loeschen";
-      loeschen.textContent = "🗑";
-      loeschen.setAttribute("aria-label", `${angriff.name} löschen`);
-      loeschen.addEventListener("click", () => {
-        charakter.kampfwerte.angriffe.splice(index, 1);
-        speichereCharaktere();
-        zeigeAngriffeMeldung("Angriff gelöscht.");
-        aktualisiereAngriffeAnsicht();
-      });
+      const umschalten = document.createElement("button");
+      umschalten.type = "button";
+      umschalten.className = "angriff-umschalten";
+      umschalten.textContent = "▾";
+      umschalten.setAttribute("aria-label", `${angriff.name} bearbeiten`);
+      umschalten.setAttribute("aria-expanded", "false");
 
-      kopf.append(name, loeschen);
+      kopf.append(name, umschalten);
+
+      const ergebnis = document.createElement("div");
+      ergebnis.className = "angriff-ergebnis";
+      const gesamtAngriff = angriff.grundAngriff + angriffsBonus(angriff, boni);
+      ergebnis.innerHTML = `
+        <div><span>Angriff</span><strong>${vorzeichen(gesamtAngriff)}</strong></div>
+        <div><span>Schaden</span><strong>${formatiereSchaden(angriff, boni)}</strong></div>
+      `;
+
+      const details = document.createElement("div");
+      details.className = "angriff-details";
+      details.hidden = true;
 
       const felder = document.createElement("div");
       felder.className = "angriff-felder";
@@ -325,15 +332,29 @@
 
       felder.append(artLabel, grundLabel, wuerfelLabel, schadenLabel);
 
-      const ergebnis = document.createElement("div");
-      ergebnis.className = "angriff-ergebnis";
-      const gesamtAngriff = angriff.grundAngriff + angriffsBonus(angriff, boni);
-      ergebnis.innerHTML = `
-        <div><span>Angriff</span><strong>${vorzeichen(gesamtAngriff)}</strong></div>
-        <div><span>Schaden</span><strong>${formatiereSchaden(angriff, boni)}</strong></div>
-      `;
+      const loeschen = document.createElement("button");
+      loeschen.type = "button";
+      loeschen.className = "angriff-loeschen";
+      loeschen.textContent = "Angriff löschen";
+      loeschen.setAttribute("aria-label", `${angriff.name} löschen`);
+      loeschen.addEventListener("click", () => {
+        charakter.kampfwerte.angriffe.splice(index, 1);
+        speichereCharaktere();
+        zeigeAngriffeMeldung("Angriff gelöscht.");
+        aktualisiereAngriffeAnsicht();
+      });
 
-      karte.append(kopf, felder, ergebnis);
+      details.append(felder, loeschen);
+
+      umschalten.addEventListener("click", () => {
+        const wirdGeoeffnet = details.hidden;
+        details.hidden = !wirdGeoeffnet;
+        karte.classList.toggle("offen", wirdGeoeffnet);
+        umschalten.textContent = wirdGeoeffnet ? "▴" : "▾";
+        umschalten.setAttribute("aria-expanded", String(wirdGeoeffnet));
+      });
+
+      karte.append(kopf, ergebnis, details);
       angriffeListe.appendChild(karte);
     });
   }
