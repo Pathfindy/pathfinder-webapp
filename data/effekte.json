@@ -1,37 +1,272 @@
 [
   {
+    "id": "standard-admin-b202a69e-2c47-4ab0-a310-934466466df9",
+    "name": "Ausdauer des Ochsen (+4 KO)",
+    "kategorie": "Zauber",
+    "aktiv": false,
+    "beschreibung": "AUSDAUER DES OCHSEN\nSchule: Verwandlung; Grad: KLE 2, DRU 2, WAL 2, HXM/MAG 2\nZeitaufwand: 1 Standard-Aktion\nKomponenten: V, G, M/GF (ein paar Haare oder ein wenig Dung \neines Ochsen)\nReichweite: Berührung\nZiel: Berührte Kreatur\nWirkungsdauer: 1 Min./Stufe\nRettungswurf: Willen, keine Wirkung (harmlos);  \nZauberresistenz: Ja \nDie betroffene Kreatur erhält eine erhöhte Lebenskraft und \nAusdauer. Der Zauber gewährt ihr einen Verbesserungsbonus \nvon +4 auf Konstitution, der auch die üblichen Vorteile auf die \nTrefferpunkte, den Zähigkeitswurf, Konstitutionswürfe usw. \nverleiht.\nTrefferpunkte, die durch diesen zeitweiligen Anstieg der \nKonstitution gewonnen wurden, gelten nicht als temporäre \nTrefferpunkte. Sie verschwinden, wenn der Konstitutionswert des \nZiels wieder auf den normalen Wert sinkt. Sie gehen nicht wie \ntemporäre Trefferpunkte zuerst verloren.",
+    "quelle": "GRW S.247",
+    "boni": [
+      {
+        "ziel": "RW-Zähigkeit",
+        "bonusart": "Verbesserung",
+        "wert": 2
+      }
+    ],
+    "gebiet": "",
+    "dauer": "1 Min./Stufe"
+  },
+  {
     "id": 1,
     "name": "Bärenstärke",
     "kategorie": "Zauber",
     "aktiv": false,
+    "beschreibung": "BÄRENSTÄRKE\nSchule: Verwandlung; Grad: KLE 2, DRU 2, PAL 2, HXM/MAG 2\nZeitaufwand: 1 Standard-Aktion\nKomponenten: V, G, M/GF (ein paar Haare oder ein wenig Dung \nvon einem Bären)\nReichweite: Berührung\nZiel: Berührte Kreatur\nWirkungsdauer: 1 Min./Stufe\nRettungswurf: Willen, keine Wirkung (harmlos);  \nZauberresistenz: Ja (harmlos) \nDas Ziel wird stärker. Der Zauber verleiht einen Verbesserungsbonus \nvon +4 auf Stärke, was auch die üblichen Vorteile für Nahkampf-\n\nangriffe, Schadenswürfe im Nahkampf und andere Verwendungen \ndes Stärkemodifikators mit sich bringt.",
+    "quelle": "GRW S.249",
+    "boni": [
+      {
+        "ziel": "Angriff Nah",
+        "bonusart": "Verbesserung",
+        "wert": 2
+      },
+      {
+        "ziel": "Schaden",
+        "bonusart": "Verbesserung",
+        "wert": 2
+      }
+    ],
+    "gebiet": "",
+    "dauer": "1 Min./Stufe"
+  },
+  {
+    "id": "standard-admin-73cd1beb-c64e-449c-a225-3603b93bde5a",
+    "name": "Defensiv Kämpfen",
+    "kategorie": "Kampf",
+    "aktiv": false,
     "beschreibung": "",
-    "quelle": "",
-    "boni": []
+    "quelle": "GRW S. 184",
+    "boni": [
+      {
+        "ziel": "Angriff Nah",
+        "bonusart": "Malus",
+        "wert": -4
+      },
+      {
+        "ziel": "Rüstungsklasse",
+        "bonusart": "Ausweichen",
+        "wert": 2
+      }
+    ],
+    "gebiet": "selbst",
+    "dauer": "1 Runde"
+  },
+  {
+    "id": "standard-admin-9a75420f-4c55-4703-9fbb-8679005b9ecc",
+    "name": "Flankieren / In die Zange nehmen",
+    "kategorie": "Kampf",
+    "aktiv": false,
+    "beschreibung": "Verbündeter auf der gegenüberliegenden Seite des Gegners.\nVerbündeter bedroht von dort den Gegner.",
+    "quelle": "GRW S. 196",
+    "boni": [
+      {
+        "ziel": "Angriff Nah",
+        "bonusart": "Situation",
+        "wert": 2
+      }
+    ],
+    "gebiet": "selbst",
+    "dauer": "in Reichweite"
   },
   {
     "id": 2,
     "name": "Gebet",
     "kategorie": "Zauber",
     "aktiv": false,
-    "beschreibung": "",
-    "quelle": "",
-    "boni": []
+    "beschreibung": "GEBET\nSchule: Verzauberung (Zwang) [Geistesbeeinflussung];  \nGrad: KLE 3, PAL 3\nZeitaufwand: 1 Standard-Aktion\nKomponenten: V, G, GF\nReichweite: 12 m\nWirkungsbereich: Alle Verbündeten und Feinde in einem  \nExplosionsradius von 12 m mit dir im Zentrum\nWirkungsdauer: 1 Runde/Stufe\nRettungswurf: Nein; Zauberresistenz: Ja \nDu verschaffst dir und deinen Verbündeten das besondere \nWohlwollen deiner Gottheit und strafst deine Feinde mit der \nMissgunst jener Gottheit. Du und alle deine Verbündeten erhalten \neinen Glücksbonus von +1 auf Angriffs-, Waffenschadens-, \nRettungs- und Fertigkeitswürfe. Deine Feinde erhalten einen \nMalus von – 1 auf dieselben Würfe.",
+    "quelle": "GRW S. 279",
+    "boni": [
+      {
+        "ziel": "Angriff Nah",
+        "bonusart": "Glück",
+        "wert": 1
+      },
+      {
+        "ziel": "Schaden",
+        "bonusart": "Glück",
+        "wert": 1
+      },
+      {
+        "ziel": "RW-Reflex",
+        "bonusart": "Glück",
+        "wert": 1
+      },
+      {
+        "ziel": "RW-Wille",
+        "bonusart": "Glück",
+        "wert": 1
+      },
+      {
+        "ziel": "RW-Zähigkeit",
+        "bonusart": "Glück",
+        "wert": 1
+      },
+      {
+        "ziel": "Angriff Fern",
+        "bonusart": "Glück",
+        "wert": 1
+      }
+    ],
+    "gebiet": "",
+    "dauer": "1 Runde/Stufe"
   },
   {
     "id": 3,
     "name": "Hast",
     "kategorie": "Zauber",
     "aktiv": false,
-    "beschreibung": "",
-    "quelle": "",
-    "boni": []
+    "beschreibung": "HAST\nSchule: Verwandlung; Grad: BAR 3, HXM/MAG 3\nZeitaufwand: 1 Standard-Aktion\nKomponenten: V, G, M (ein Stückchen einer Süßholzwurzel)\nReichweite: Nah (7,50 m + 1,50 m/2 Stufen)\nZiele: Eine Kreatur/Stufe, zwei beliebige Ziele dürfen nicht weiter \nals 9 m voneinander entfernt sein\nWirkungsdauer: 1 Runde/Stufe\nRettungswurf: Zähigkeit, keine Wirkung (harmlos);  \nZauberresistenz: Ja (harmlos) \nDie verwandelte Kreatur kann sich schneller bewegen und \nschneller handeln als normal. Diese zusätzliche Geschwindigkeit \nhat mehrere Effekte.\n Bei einer vollen Aktion kann der Betroffene einen weiteren \nzusätzlichen  Angriff mit einer natürlichen oder einer hergestellten \nWaffe ausführen. Dabei darf der volle GAB verwendet werden + \nallen Modifikatoren, die der Situation angemessen sind. (Dieser \nEffekt ist weder kumulativ mit ähnlichen Effekten, wie etwa denen \neiner Waffe der Geschwindigkeit, noch gewährt er dem Betroffenen \nwirklich eine zusätzliche Aktion. Du kannst die zweite Aktion also \nnicht dafür verwenden, einen weiteren Zauber zu wirken oder sonst \neine andere Art von zweiter Aktion in der Runde auszuführen.)\n Der Betroffene erhält außerdem einen Bonus von +1 auf Angriffs- \nund Reflexwürfe, sowie einen Ausweichbonus von +1 auf die RK. \nJeglicher Umstand, der den Verlust des Geschicklichkeitsbonus \nfür die RK mit sich bringt, lässt dich auch diese Ausweichboni \nverlieren. \n Alle Bewegungsraten der betroffenen Kreatur (also bei der \nBewegung zu Lande, sowie beim Graben, Klettern, Fliegen und \nSchwimmen) steigen um 9 m, bis zu einem Maximum, das dem \nDoppelten der jeweiligen normalen Bewegungsrate der Kreatur \nentspricht. Diese Steigerung zählt als Verbesserungsbonus und \nbetrifft auch die Sprungreichweite der Kreatur, wie es bei einer \ngesteigerten Bewegungsrate der Fall ist. \nHast ist nicht mit sich selbst kumulativ. Hast bannt und ist der \nGegenzauber zu Verlangsamen.",
+    "quelle": "GRW S. 286",
+    "boni": [
+      {
+        "ziel": "Angriff Nah",
+        "bonusart": "Namenlos",
+        "wert": 1
+      },
+      {
+        "ziel": "Angriff Fern",
+        "bonusart": "Namenlos",
+        "wert": 1
+      },
+      {
+        "ziel": "Rüstungsklasse",
+        "bonusart": "Ausweichen",
+        "wert": 1
+      },
+      {
+        "ziel": "RW-Reflex",
+        "bonusart": "Namenlos",
+        "wert": 1
+      }
+    ],
+    "gebiet": "",
+    "dauer": "1 Runde/Stufe"
+  },
+  {
+    "id": "standard-admin-aa24da58-ed16-421b-9270-65b49b5cf67b",
+    "name": "Heftiger Angriff (GAB 1-3)",
+    "kategorie": "Talente",
+    "aktiv": false,
+    "beschreibung": "Heftiger Angriff [Kampf] \n\nDu opferst einen Teil deiner Zielgenauigkeit für größere \nStärke und machst so außerordentlich tödliche Nahkampf­\nangriffe.\nVoraussetzungen: ST 13, Grund­Angriffsbonus +1\n\nVorteil: Du kannst wählen, einen Malus von – 1 auf alle \nNahkampf­Angriffswürfe und Kampfmanöver­Würfe zu \nerhalten. Dafür gewinnst du einen Bonus von +2 auf alle \nNahkampf­Schadenswürfe. Dieser Schadensbonus erhöht sich \nnochmal um die Hälfte (+50%), wenn du eine zweihändige \nWaffe, eine einhändige mit zwei Händen geführte Waffe oder \neine natürliche Waffe verwendest, die einen 1 ½ ­fachen \nStärke­Modifikator auf den Schadenswurf verleiht. Umgekehrt \nwird der Schadensbonus halbiert, wenn der Angriff mit einer \nZweithandwaffe oder einer natürlichen Zweitwaffe ausgeführt \nwird. Wenn dein Grund­Angriffsbonus +4 erreicht und für \njede +4 danach erhöht sich der Malus um weitere – 1 und \nder Schadensbonus um weitere +2. Du musst dich vor dem \nAngriffswurf entscheiden, ob du dieses Talent einsetzen \nmöchtest. Seine Wirkung dauert bis zu deinem nächsten Zug \nan. Der Bonusschaden gilt nicht für Berührungsangriffe oder \nEffekte, die keinen Trefferpunkteschaden verursachen.",
+    "quelle": "GRW S. 124",
+    "boni": [
+      {
+        "ziel": "Angriff Nah",
+        "bonusart": "Malus",
+        "wert": -1
+      },
+      {
+        "ziel": "Schaden",
+        "bonusart": "Namenlos",
+        "wert": 2
+      }
+    ],
+    "gebiet": "selbst",
+    "dauer": "1 Runde"
+  },
+  {
+    "id": "standard-admin-d512fa3e-56f2-445e-ada0-b594966f6ecb",
+    "name": "Heftiger Angriff (GAB 12-15)",
+    "kategorie": "Talente",
+    "aktiv": false,
+    "beschreibung": "Heftiger Angriff [Kampf] \n\nDu opferst einen Teil deiner Zielgenauigkeit für größere \nStärke und machst so außerordentlich tödliche Nahkampf­\nangriffe.\nVoraussetzungen: ST 13, Grund­Angriffsbonus +1\n\nVorteil: Du kannst wählen, einen Malus von – 1 auf alle \nNahkampf­Angriffswürfe und Kampfmanöver­Würfe zu \nerhalten. Dafür gewinnst du einen Bonus von +2 auf alle \nNahkampf­Schadenswürfe. Dieser Schadensbonus erhöht sich \nnochmal um die Hälfte (+50%), wenn du eine zweihändige \nWaffe, eine einhändige mit zwei Händen geführte Waffe oder \neine natürliche Waffe verwendest, die einen 1 ½ ­fachen \nStärke­Modifikator auf den Schadenswurf verleiht. Umgekehrt \nwird der Schadensbonus halbiert, wenn der Angriff mit einer \nZweithandwaffe oder einer natürlichen Zweitwaffe ausgeführt \nwird. Wenn dein Grund­Angriffsbonus +4 erreicht und für \njede +4 danach erhöht sich der Malus um weitere – 1 und \nder Schadensbonus um weitere +2. Du musst dich vor dem \nAngriffswurf entscheiden, ob du dieses Talent einsetzen \nmöchtest. Seine Wirkung dauert bis zu deinem nächsten Zug \nan. Der Bonusschaden gilt nicht für Berührungsangriffe oder \nEffekte, die keinen Trefferpunkteschaden verursachen.",
+    "quelle": "GRW S. 124",
+    "boni": [
+      {
+        "ziel": "Angriff Nah",
+        "bonusart": "Malus",
+        "wert": -4
+      },
+      {
+        "ziel": "Schaden",
+        "bonusart": "Namenlos",
+        "wert": 8
+      }
+    ],
+    "gebiet": "selbst",
+    "dauer": "1 Runde"
+  },
+  {
+    "id": "standard-admin-853368b6-d56e-43bf-8564-e30376d34da3",
+    "name": "Heftiger Angriff (GAB 4-7)",
+    "kategorie": "Talente",
+    "aktiv": false,
+    "beschreibung": "Heftiger Angriff [Kampf] \n\nDu opferst einen Teil deiner Zielgenauigkeit für größere \nStärke und machst so außerordentlich tödliche Nahkampf­\nangriffe.\nVoraussetzungen: ST 13, Grund­Angriffsbonus +1\n\nVorteil: Du kannst wählen, einen Malus von – 1 auf alle \nNahkampf­Angriffswürfe und Kampfmanöver­Würfe zu \nerhalten. Dafür gewinnst du einen Bonus von +2 auf alle \nNahkampf­Schadenswürfe. Dieser Schadensbonus erhöht sich \nnochmal um die Hälfte (+50%), wenn du eine zweihändige \nWaffe, eine einhändige mit zwei Händen geführte Waffe oder \neine natürliche Waffe verwendest, die einen 1 ½ ­fachen \nStärke­Modifikator auf den Schadenswurf verleiht. Umgekehrt \nwird der Schadensbonus halbiert, wenn der Angriff mit einer \nZweithandwaffe oder einer natürlichen Zweitwaffe ausgeführt \nwird. Wenn dein Grund­Angriffsbonus +4 erreicht und für \njede +4 danach erhöht sich der Malus um weitere – 1 und \nder Schadensbonus um weitere +2. Du musst dich vor dem \nAngriffswurf entscheiden, ob du dieses Talent einsetzen \nmöchtest. Seine Wirkung dauert bis zu deinem nächsten Zug \nan. Der Bonusschaden gilt nicht für Berührungsangriffe oder \nEffekte, die keinen Trefferpunkteschaden verursachen.",
+    "quelle": "GRW S. 124",
+    "boni": [
+      {
+        "ziel": "Angriff Nah",
+        "bonusart": "Malus",
+        "wert": -2
+      },
+      {
+        "ziel": "Schaden",
+        "bonusart": "Namenlos",
+        "wert": 4
+      }
+    ],
+    "gebiet": "selbst",
+    "dauer": "1 Runde"
+  },
+  {
+    "id": "standard-admin-bbf32848-00b5-45a6-a6c0-07296c10942b",
+    "name": "Heftiger Angriff (GAB 8-11)",
+    "kategorie": "Talente",
+    "aktiv": false,
+    "beschreibung": "Heftiger Angriff [Kampf] \n\nDu opferst einen Teil deiner Zielgenauigkeit für größere \nStärke und machst so außerordentlich tödliche Nahkampf­\nangriffe.\nVoraussetzungen: ST 13, Grund­Angriffsbonus +1\n\nVorteil: Du kannst wählen, einen Malus von – 1 auf alle \nNahkampf­Angriffswürfe und Kampfmanöver­Würfe zu \nerhalten. Dafür gewinnst du einen Bonus von +2 auf alle \nNahkampf­Schadenswürfe. Dieser Schadensbonus erhöht sich \nnochmal um die Hälfte (+50%), wenn du eine zweihändige \nWaffe, eine einhändige mit zwei Händen geführte Waffe oder \neine natürliche Waffe verwendest, die einen 1 ½ ­fachen \nStärke­Modifikator auf den Schadenswurf verleiht. Umgekehrt \nwird der Schadensbonus halbiert, wenn der Angriff mit einer \nZweithandwaffe oder einer natürlichen Zweitwaffe ausgeführt \nwird. Wenn dein Grund­Angriffsbonus +4 erreicht und für \njede +4 danach erhöht sich der Malus um weitere – 1 und \nder Schadensbonus um weitere +2. Du musst dich vor dem \nAngriffswurf entscheiden, ob du dieses Talent einsetzen \nmöchtest. Seine Wirkung dauert bis zu deinem nächsten Zug \nan. Der Bonusschaden gilt nicht für Berührungsangriffe oder \nEffekte, die keinen Trefferpunkteschaden verursachen.",
+    "quelle": "GRW S. 124",
+    "boni": [
+      {
+        "ziel": "Angriff Nah",
+        "bonusart": "Malus",
+        "wert": -3
+      },
+      {
+        "ziel": "Schaden",
+        "bonusart": "Namenlos",
+        "wert": 6
+      }
+    ],
+    "gebiet": "selbst",
+    "dauer": "1 Runde"
+  },
+  {
+    "id": "standard-admin-0971dd97-ed91-4505-ad8b-0bd8fbaef78e",
+    "name": "Heldenmahl",
+    "kategorie": "Zauber",
+    "aktiv": false,
+    "beschreibung": "HELDENMAHL\nSchule: Beschwörung [Erschaffung]; Grad: BAR 6, KLE 6\nZeitaufwand: 10 Minuten\nKomponenten: V, G, GF\nReichweite: Nah (7,50 m + 1,50 m/2 Stufen)\nEffekt: Mahlzeit für eine Kreatur/Stufe\nWirkungsdauer: 1 Stunde plus 12 Stunden; siehe Text\nRettungswurf: Nein; Zauberresistenz: Nein\n\nDu erschaffst ein großartiges Festmahl, inklusive Tisch, Stühlen, \nGeschirr, Besteck und natürlich Speisen und Getränken. Das \nVerzehren des Festmahls dauert 1 Stunde und die wohltätigen \nEffekte setzen erst ein, nachdem diese Stunde vergangen ist. \nJede Kreatur, die an dem Heldenmahl teilnimmt, wird von allen \nKrankheiten und Übelkeit geheilt, erhält die vorteilhafte Wirkung \nvon Gift neutralisieren und Krankheit kurieren und 1W8 temporäre \nTrefferpunkte + 1 pro 2 Zauberstufen (maximal +10), nachdem sie \ndie nektarartigen Getränke zu sich genommen hat, die Teil des \nFestmahls sind. Die Speisen gleichen Ambrosia und ihr Verzehr \nverleiht jeder Kreatur 12 Stunden lang einen Moralbonus von +1 \nauf Angriffs- und Willenswürfe und einen Moralbonus von +4 auf \nRettungswürfe gegen Gifte und Furchteffekte.\nWird das Festmahl aus irgendeinem Grund unterbrochen, ist der \nZauber ruiniert und alle Effekte werden aufgehoben.",
+    "quelle": "GRW S. 288",
+    "boni": [
+      {
+        "ziel": "Angriff Nah",
+        "bonusart": "Moral",
+        "wert": 1
+      },
+      {
+        "ziel": "RW-Furcht",
+        "bonusart": "Moral",
+        "wert": 4
+      }
+    ],
+    "gebiet": "",
+    "dauer": ""
   },
   {
     "id": "standard-admin-32579b31-6a8d-4551-93b0-fa333610addc",
     "name": "Heldenmut",
     "kategorie": "Zauber",
     "aktiv": false,
-    "beschreibung": "Moralbonus von +2 auf Angriff- Rettungs- und Fertigkeitswürfe.\nDauer: 10 Min./ Stufe",
+    "beschreibung": "HELDENMUT\nSchule: Verzauberung (Zwang) [Geistesbeeinflussung];  \nGrad: BAR 2, HXM/MAG 3\nZeitaufwand: 1 Standard-Aktion\nKomponenten: V, G\nReichweite: Berührung\nZiel: Berührte Kreatur\nWirkungsdauer: 10 Min./Stufe\nRettungswurf: Willen, keine Wirkung (harmlos);  \nZauberresistenz: Ja (harmlos) \n\nDer Zauber verleiht einer Kreatur großen Mut und Kampfmoral. \nSie erhält einen Moralbonus von +2 auf Angriffs-, Rettungs- und \nFertigkeitswürfe.",
     "quelle": "GRW S. 288",
     "boni": [
       {
@@ -59,6 +294,347 @@
         "bonusart": "Moral",
         "wert": 2
       }
-    ]
+    ],
+    "gebiet": "",
+    "dauer": "10 Min./Stufe"
+  },
+  {
+    "id": "standard-admin-0d91c5be-156a-40e9-871b-9b968d798abe",
+    "name": "Katzenhafte Anmut",
+    "kategorie": "Zauber",
+    "aktiv": false,
+    "beschreibung": "KATZENHAFTE ANMUT\nSchule: Verwandlung; Grad: BAR 2, DRU 2, WAL 2, HXM/MAG 2\nZeitaufwand: 1 Standard-Aktion\nKomponenten: V, G, M (ein Stückchen Katzenfell)\nReichweite: Berührung \nZiel: Berührte Kreatur\nWirkungsdauer: 1 Min./Stufe\nRettungswurf: Willen, keine Wirkung (harmlos);  \nZauberresistenz: Ja \n\nDer Berührte wird anmutiger, beweglicher und kann sich \nkontrollierter bewegen. Der Zauber verleiht einen Verbesserungs-\nbonus von +4 auf Geschicklichkeit, was auch die üblichen \nVorteile für die RK, Reflexwürfe und andere Verwendungen des \nGE-Modifikators mit sich bringt.",
+    "quelle": "GRW S. 292",
+    "boni": [
+      {
+        "ziel": "Angriff Fern",
+        "bonusart": "Verbesserung",
+        "wert": 2
+      },
+      {
+        "ziel": "Rüstungsklasse",
+        "bonusart": "Verbesserung",
+        "wert": 2
+      },
+      {
+        "ziel": "RW-Reflex",
+        "bonusart": "Verbesserung",
+        "wert": 2
+      }
+    ],
+    "gebiet": "",
+    "dauer": "1 Min./Stufe"
+  },
+  {
+    "id": "standard-admin-d118065c-88af-45fe-84bd-a93c39f92ac4",
+    "name": "Mächtige magische Fänge (Version alle Angriffe +1)",
+    "kategorie": "Zauber",
+    "aktiv": false,
+    "beschreibung": "MÄCHTIGE MAGISCHE FÄNGE \nSchule: Verwandlung; Grad: DRU 3, WAL 3\nReichweite: Nah (7,50 m + 1,50 m/2 Stufen)\nZiel: Eine lebende Kreatur\nWirkungsdauer: 1 Stunde/Stufe\nFunktioniert wie Magische Fänge, der Verbesserungsbonus auf \nAngriffs- und Schadenswürfe steigt aber alle 4 Zauberstufen um +1 \n(maximal +5). Der Bonus ermöglicht es natürlichen Waffen jedoch \nnicht, Schadensreduzierung außer gegen Magie zu umgehen.\nDu kannst alternativ dazu auch allen natürlichen Waffen des Ziels \neinen Verbesserungsbonus von +1 verleihen (ungeachtet deiner \nZauberstufe).\nMächtige Magische Fänge kann mit Dauerhaftigkeit permanent \ngemacht werden.",
+    "quelle": "GRW S. 302",
+    "boni": [
+      {
+        "ziel": "Angriff Nah",
+        "bonusart": "Verbesserung",
+        "wert": 1
+      },
+      {
+        "ziel": "Schaden",
+        "bonusart": "Verbesserung",
+        "wert": 1
+      }
+    ],
+    "gebiet": "",
+    "dauer": "1 Std./Stufe"
+  },
+  {
+    "id": "standard-admin-be4af10c-8c17-4cac-a70c-5879f7123a04",
+    "name": "Magierrüstung",
+    "kategorie": "Zauber",
+    "aktiv": false,
+    "beschreibung": "MAGIERRÜSTUNG\nSchule: Beschwörung (Erschaffung) [Energie]; Grad: HXM/MAG 1\nZeitaufwand: 1 Standard-Aktion\nKomponenten: V, G, F (ein Stückchen gehärtetes Leder)\nReichweite: Berührung\nZiel: Berührte Kreatur\nWirkungsdauer: 1 Stunde/Stufe (A)\nRettungswurf: Willen, keine Wirkung (harmlos);  \nZauberresistenz: Nein \nEin unsichtbares aber spürbares Energiefeld umgibt das Ziel des \nZaubers und verleiht ihm einen Rüstungsbonus von +4 auf die RK. \nIm Gegensatz zu normalen Rüstungen bringt die Magierrüstung \nkeine Rüstungsmali, keine Chance für arkane Zauberpatzer und keine \nVerringerung der Bewegungsrate mit sich. Da die Magierrüstung aus \nEnergie besteht, können körperlose Kreaturen sie nicht umgehen, \nwie sie es bei normalen Rüstungen können",
+    "quelle": "GRW S.300",
+    "boni": [
+      {
+        "ziel": "Rüstungsklasse",
+        "bonusart": "Rüstung",
+        "wert": 4
+      }
+    ],
+    "gebiet": "",
+    "dauer": "1 Std./Stufe"
+  },
+  {
+    "id": "standard-admin-7467bc5a-1ef2-4a89-9944-69960bcf29ef",
+    "name": "Person vergrößern (+2 ST, -2 GE)",
+    "kategorie": "Zauber",
+    "aktiv": false,
+    "beschreibung": "PERSON VERGRÖSSERN\nSchule: Verwandlung; Grad: HXM/MAG 1\nZeitaufwand: 1 Runde\nKomponenten: V, G, M (Eisenpulver)\nReichweite: Nah (7,50 m + 1,50 m/2 Stufen)\nZiel: Eine humanoide Kreatur\nWirkungsdauer: 1 Min./Stufe\nRettungswurf: Zähigkeit, keine Wirkung; Zauberresistenz: Ja\n\nDieser Zauber lässt eine humanoide Kreatur sofort auf das Doppelte \nihrer Größe anwachsen und achtmal so schwer werden. Die Kreatur \nwächst so um eine Größenkategorie. Sie erhält einen Größenbonus \nvon +2 auf Stärke, einen Größenmalus von – 2 auf Geschicklichkeit \n(bis zu einem Minimum von 1) und aufgrund der gesteigerten \nGröße einen Malus von – 1 auf Angriffswürfe und die RK. \nEine humanoide Kreatur, die dadurch „groß“ wird, hat eine \nAngriffsfläche von 3 m und eine natürliche Reichweite von 3 m. Die \nBewegungsrate des Ziels verändert sich nicht.\nSollte nicht genug Raum für das Wachstum vorhanden sein, \nnimmt die Kreatur die maximal mögliche Größe an und darf einen \nStärkewurf machen (mit der erhöhten Stärke), um ihr Gefängnis \nzu sprengen. Schlägt dieser Wurf fehl, wird die Kreatur von dem \nsie umgebenden Material eingeschränkt, ohne dadurch Schaden \nzu erleiden – der Zauber kann nicht verwendet werden, um eine \nKreatur aufgrund ihrer Größe zu zerquetschen.\nJegliche Ausrüstung, die von der Kreatur getragen wird, wird \nebenfalls vergrößert. Nahkampfwaffen verursachen dadurch \nmehr Schaden. Andere magische Eigenschaften werden durch den \nZauber nicht betroffen. Jeder vergrößerte Gegenstand, der den \nBesitz einer vergrößerten Kreatur verlässt (auch geworfene oder \nverschossene Projektile), nimmt sofort wieder seine ursprüngliche \nGröße an. Wurf- und Projektilwaffen verursachen also ihren \nnormalen Schaden und Projektile verursachen soviel Schaden, wie \nes die Größe der Waffe vorgibt, mit der sie abgefeuert wurden. Die \nmagischen Eigenschaften von vergrößerten Waffen werden nicht \ndurch den Zauber verbessert.\nUnterschiedliche magische Effekte, welche die Größe erhöhen, \nsind nicht kumulativ.\nPerson vergrößern bannt und ist der Gegenzauber zu Person \nverkleinern.\nPerson vergrößern kann mit Hilfe von Dauerhaftigkeit permanent \ngemacht werden.",
+    "quelle": "GRW S. 312",
+    "boni": [
+      {
+        "ziel": "Angriff Nah",
+        "bonusart": "Größe",
+        "wert": 1
+      },
+      {
+        "ziel": "Angriff Fern",
+        "bonusart": "Malus",
+        "wert": -1
+      },
+      {
+        "ziel": "Rüstungsklasse",
+        "bonusart": "Malus",
+        "wert": -1
+      },
+      {
+        "ziel": "RW-Reflex",
+        "bonusart": "Malus",
+        "wert": -1
+      }
+    ],
+    "gebiet": "",
+    "dauer": "1 Min./Stufe"
+  },
+  {
+    "id": "standard-admin-d383c6c2-20d7-4bc0-92f2-a775cfcea71d",
+    "name": "Rindenhaut (1. bis 5. Stufe)",
+    "kategorie": "Zauber",
+    "aktiv": false,
+    "beschreibung": "RINDENHAUT\nSchule: Verwandlung; Grad: DRU 2, WAL 2\nZeitaufwand: 1 Standard-Aktion\nKomponenten: V, G, GF\nReichweite: Berührung\nZiel: Berührte lebende Kreatur\nWirkungsdauer: 10 Min./Stufe\nRettungswurf: Nein; Zauberresistenz: Ja (harmlos)\n\nRindenhaut macht die Haut einer Kreatur widerstandsfähiger. Der \nEffekt verleiht dem Ziel einen Verbesserungsbonus von +2 auf \neinen bereits vorhandenen natürlichen Rüstungsbonus. Dieser \nVerbesserungsbonus steigt alle 3 Zauberstufen über der dritten \num +1, bis zu einem Maximum von +5 auf der 12. Stufe.\n Der Verbesserungsbonus von Rindenhaut ist mit dem natürlichen \nRüstungsbonus des Ziels kumulativ. Eine Kreatur ohne natürliche \nRüstung hat einen effektiven natürlichen Rüstungsbonus von 0",
+    "quelle": "GRW S. 319",
+    "boni": [
+      {
+        "ziel": "Rüstungsklasse",
+        "bonusart": "Natürliche Rüstung",
+        "wert": 2
+      }
+    ],
+    "gebiet": "",
+    "dauer": "10 Min./Stufe"
+  },
+  {
+    "id": "standard-admin-59aa169d-57cc-4efe-a075-169813a79b52",
+    "name": "Rindenhaut (6. bis 8. Stufe)",
+    "kategorie": "Zauber",
+    "aktiv": false,
+    "beschreibung": "RINDENHAUT\nSchule: Verwandlung; Grad: DRU 2, WAL 2\nZeitaufwand: 1 Standard-Aktion\nKomponenten: V, G, GF\nReichweite: Berührung\nZiel: Berührte lebende Kreatur\nWirkungsdauer: 10 Min./Stufe\nRettungswurf: Nein; Zauberresistenz: Ja (harmlos)\n\nRindenhaut macht die Haut einer Kreatur widerstandsfähiger. Der \nEffekt verleiht dem Ziel einen Verbesserungsbonus von +2 auf \neinen bereits vorhandenen natürlichen Rüstungsbonus. Dieser \nVerbesserungsbonus steigt alle 3 Zauberstufen über der dritten \num +1, bis zu einem Maximum von +5 auf der 12. Stufe.\n Der Verbesserungsbonus von Rindenhaut ist mit dem natürlichen \nRüstungsbonus des Ziels kumulativ. Eine Kreatur ohne natürliche \nRüstung hat einen effektiven natürlichen Rüstungsbonus von 0.",
+    "quelle": "GRW S. 319",
+    "boni": [
+      {
+        "ziel": "Rüstungsklasse",
+        "bonusart": "Natürliche Rüstung",
+        "wert": 3
+      }
+    ],
+    "gebiet": "",
+    "dauer": "10 Min./Stufe"
+  },
+  {
+    "id": "standard-admin-f3d40589-443c-484a-ad88-3a2c0c77e657",
+    "name": "Rindenhaut (9. bis 11. Stufe)",
+    "kategorie": "Zauber",
+    "aktiv": false,
+    "beschreibung": "RINDENHAUT\nSchule: Verwandlung; Grad: DRU 2, WAL 2\nZeitaufwand: 1 Standard-Aktion\nKomponenten: V, G, GF\nReichweite: Berührung\nZiel: Berührte lebende Kreatur\nWirkungsdauer: 10 Min./Stufe\nRettungswurf: Nein; Zauberresistenz: Ja (harmlos) \n\nRindenhaut macht die Haut einer Kreatur widerstandsfähiger. Der \nEffekt verleiht dem Ziel einen Verbesserungsbonus von +2 auf \neinen bereits vorhandenen natürlichen Rüstungsbonus. Dieser \nVerbesserungsbonus steigt alle 3 Zauberstufen über der dritten \num +1, bis zu einem Maximum von +5 auf der 12. Stufe.\n Der Verbesserungsbonus von Rindenhaut ist mit dem natürlichen \nRüstungsbonus des Ziels kumulativ. Eine Kreatur ohne natürliche \nRüstung hat einen effektiven natürlichen Rüstungsbonus von 0.",
+    "quelle": "GRW S. 319",
+    "boni": [
+      {
+        "ziel": "Rüstungsklasse",
+        "bonusart": "Natürliche Rüstung",
+        "wert": 4
+      }
+    ],
+    "gebiet": "",
+    "dauer": "10 Min./Stufe"
+  },
+  {
+    "id": "standard-admin-5ec53278-dcf9-4baa-bdc5-256190a953ca",
+    "name": "Rindenhaut (ab 12. Stufe)",
+    "kategorie": "Zauber",
+    "aktiv": false,
+    "beschreibung": "RINDENHAUT\nSchule: Verwandlung; Grad: DRU 2, WAL 2\nZeitaufwand: 1 Standard-Aktion\nKomponenten: V, G, GF\nReichweite: Berührung\nZiel: Berührte lebende Kreatur\nWirkungsdauer: 10 Min./Stufe\nRettungswurf: Nein; Zauberresistenz: Ja (harmlos)\n\nRindenhaut macht die Haut einer Kreatur widerstandsfähiger. Der \nEffekt verleiht dem Ziel einen Verbesserungsbonus von +2 auf \neinen bereits vorhandenen natürlichen Rüstungsbonus. Dieser \nVerbesserungsbonus steigt alle 3 Zauberstufen über der dritten \num +1, bis zu einem Maximum von +5 auf der 12. Stufe.\n Der Verbesserungsbonus von Rindenhaut ist mit dem natürlichen \nRüstungsbonus des Ziels kumulativ. Eine Kreatur ohne natürliche \nRüstung hat einen effektiven natürlichen Rüstungsbonus von 0.",
+    "quelle": "GRW S. 319",
+    "boni": [
+      {
+        "ziel": "Rüstungsklasse",
+        "bonusart": "Natürliche Rüstung",
+        "wert": 5
+      }
+    ],
+    "gebiet": "",
+    "dauer": "10 Min./Stufe"
+  },
+  {
+    "id": "standard-admin-0861078d-9185-4c55-8969-5e929b1f1001",
+    "name": "Schild",
+    "kategorie": "Zauber",
+    "aktiv": false,
+    "beschreibung": "SCHILD\nSchule: Bannzauber [Energie]; Grad: HXM/MAG 1\nZeitaufwand: 1 Standard-Aktion\nKomponenten: V, G\nReichweite: Persönlich\nZiel: Du\nWirkungsdauer: 1 Min./Stufe\n\nMit diesem Zauber erschaffst du eine unsichtbare bewegliche \nScheibe aus Energie, die vor dir in der Luft schwebt. Sie hebt \nMagische Geschosse auf, die gegen dich gerichtet sind. Außerdem \nverleiht sie dir einen Schildbonus von +4 auf deine RK. Dieser \nBonus gilt auch gegen körperlose Berührungsangriffe, da es \nsich um einen Energieeffekt handelt. Der Schild verursacht keine \nRüstungsmali und auch keine Chance für arkane Zauberpatzer.",
+    "quelle": "GRW S. 322",
+    "boni": [
+      {
+        "ziel": "Rüstungsklasse",
+        "bonusart": "Schild",
+        "wert": 4
+      }
+    ],
+    "gebiet": "selbst",
+    "dauer": "1 Min./Stufe"
+  },
+  {
+    "id": "standard-admin-d26af6c7-0797-4ea4-a61f-a6f86e23f885",
+    "name": "Schild des Glaubens (1. bis 5. Stufe)",
+    "kategorie": "Zauber",
+    "aktiv": false,
+    "beschreibung": "SCHILD DES GLAUBENS\nSchule: Bannzauber; Grad: KLE 1\nZeitaufwand: 1 Standard-Aktion\nKomponenten: V, G, M (Pergament, auf dem ein heiliger Text \nsteht)\nReichweite: Berührung\nZiel: Berührte Kreatur\nWirkungsdauer: 1 Min./Stufe\nRettungswurf: Willen, keine Wirkung (harmlos);  \nZauberresistenz: Ja (harmlos)\n\nDieser Zauber erschafft ein schimmerndes, magisches Feld um die \nberührte Kreatur, das Angriffe ablenkt. Er verleiht dem Ziel einen \nAblenkungsbonus von +2 auf die RK +1 pro sechs Zauberstufen \n(maximaler Ablenkungsbonus von +5 auf der 18. Stufe)",
+    "quelle": "GRW S. 323",
+    "boni": [
+      {
+        "ziel": "Rüstungsklasse",
+        "bonusart": "Ablenkung",
+        "wert": 2
+      }
+    ],
+    "gebiet": "",
+    "dauer": "1 Min./Stufe"
+  },
+  {
+    "id": "standard-admin-20c423f9-3cd5-417c-9e5a-fa5706df1cd9",
+    "name": "Schild des Glaubens (12. bis 17. Stufe)",
+    "kategorie": "Zauber",
+    "aktiv": false,
+    "beschreibung": "SCHILD DES GLAUBENS\nSchule: Bannzauber; Grad: KLE 1\nZeitaufwand: 1 Standard-Aktion\nKomponenten: V, G, M (Pergament, auf dem ein heiliger Text \nsteht)\nReichweite: Berührung\nZiel: Berührte Kreatur\nWirkungsdauer: 1 Min./Stufe\nRettungswurf: Willen, keine Wirkung (harmlos);  \nZauberresistenz: Ja (harmlos) \n\nDieser Zauber erschafft ein schimmerndes, magisches Feld um die \nberührte Kreatur, das Angriffe ablenkt. Er verleiht dem Ziel einen \nAblenkungsbonus von +2 auf die RK +1 pro sechs Zauberstufen \n(maximaler Ablenkungsbonus von +5 auf der 18. Stufe)",
+    "quelle": "GRW S. 323",
+    "boni": [
+      {
+        "ziel": "Rüstungsklasse",
+        "bonusart": "Ablenkung",
+        "wert": 4
+      }
+    ],
+    "gebiet": "",
+    "dauer": "1 Min./Stufe"
+  },
+  {
+    "id": "standard-admin-b60c2f1d-90c5-4f19-acc2-aed9bfdb40ca",
+    "name": "Schild des Glaubens (6. bis 11. Stufe)",
+    "kategorie": "Zauber",
+    "aktiv": false,
+    "beschreibung": "SCHILD DES GLAUBENS\nSchule: Bannzauber; Grad: KLE 1\nZeitaufwand: 1 Standard-Aktion\nKomponenten: V, G, M (Pergament, auf dem ein heiliger Text \nsteht)\nReichweite: Berührung\nZiel: Berührte Kreatur\nWirkungsdauer: 1 Min./Stufe\nRettungswurf: Willen, keine Wirkung (harmlos);  \nZauberresistenz: Ja (harmlos) \n\nDieser Zauber erschafft ein schimmerndes, magisches Feld um die \nberührte Kreatur, das Angriffe ablenkt. Er verleiht dem Ziel einen \nAblenkungsbonus von +2 auf die RK +1 pro sechs Zauberstufen \n(maximaler Ablenkungsbonus von +5 auf der 18. Stufe)",
+    "quelle": "GRW S. 323",
+    "boni": [
+      {
+        "ziel": "Angriff Nah",
+        "bonusart": "Ablenkung",
+        "wert": 3
+      }
+    ],
+    "gebiet": "",
+    "dauer": "1 Min./Stufe"
+  },
+  {
+    "id": "standard-admin-6e5b933e-4640-4332-8078-9f060755713f",
+    "name": "Segen",
+    "kategorie": "Zauber",
+    "aktiv": false,
+    "beschreibung": "SEGNEN\nSchule: Verzauberung (Zwang) [Geistesbeeinflussung];  \nGrad: KLE 1, PAL 1\nZeitaufwand: 1 Standard-Aktion\nKomponenten: V, G, GF\nReichweite: 15 m\nWirkungsbereich: Der Zaubernde und alle Verbündeten innerhalb \neines Explosionsradius von 15 m, der vom Zaubernden ausgeht\nWirkungsdauer: 1 Min./Stufe\nRettungswurf: Nein; Zauberresistenz: Ja (harmlos) \n\nSegnen erfüllt deine Gefährten mit Mut. Jeder Verbündete erhält \neinen Moralbonus von +1 auf Angriffswürfe und Rettungswürfe \ngegen Furchteffekte.\nSegnen bannt und ist der Gegenzauber zu Verfluchen.",
+    "quelle": "GRW S. 330",
+    "boni": [
+      {
+        "ziel": "Angriff Nah",
+        "bonusart": "Moral",
+        "wert": 1
+      },
+      {
+        "ziel": "Angriff Fern",
+        "bonusart": "Moral",
+        "wert": 1
+      },
+      {
+        "ziel": "RW-Furcht",
+        "bonusart": "Moral",
+        "wert": 1
+      }
+    ],
+    "gebiet": "",
+    "dauer": "1 Min./Stufe"
+  },
+  {
+    "id": "standard-admin-c7207538-3323-478b-9288-d407efda201e",
+    "name": "Unsichtbarkeit",
+    "kategorie": "Zauber",
+    "aktiv": false,
+    "beschreibung": "UNSICHTBARKEIT\n\nSchule: Illusion (Fehlgefühl); Grad: BAR 2, HXM/MAG 2\nZeitaufwand: 1 Standard-Aktion\nKomponenten: V, G, M/GF (eine in Gummiarabikum eingelassene \nWimper)\nReichweite: Persönlich oder Berührung\nZiel: Du oder eine Kreatur oder ein Gegenstand, die nicht mehr \nals 100 Pfd./Stufe wiegen dürfen\nWirkungsdauer: 1 Min./Stufe\nRettungswurf: Willen, keine Wirkung (harmlos) oder Willen, keine \nWirkung (harmlos, Gegenstand); Zauberresistenz: Ja (harmlos) \noder ja (harmlos, Gegenstand)\n\nDie berührte Kreatur oder der berührte Gegenstand werden \nunsichtbar und verschwinden aus dem Sichtfeld. Auch getragene \nAusrüstung verschwindet. Wirkst du den Zauber auf jemand \nanderen, können weder du noch deine Verbündeten diese Kreatur \nsehen, solange du Unsichtbares nicht sehen kannst oder Magie \nbenutzt, um dies zu tun.\nGegenstände, die der Unsichtbare fallen lässt oder ablegt, \nwerden sichtbar. Gegenstände, die er aufhebt, werden unsichtbar, \nwenn er sie unter seine Kleidung oder in getragene Beutel steckt. \nLicht jedoch wird niemals unsichtbar, höchstens die Quelle des \nLichts (es wäre dann ein Licht ohne offensichtliche Quelle zu sehen). \nTrägt der Unsichtbare einen Gegenstand mit Teilen, die weiter als \n3 m abstehen, werden diese Teile sichtbar. \nDas Ziel des Zaubers steht nicht unter dem Einfluss magischer \nStille. Aber auch andere Umstände können dazu führen, dass der \nUnsichtbare entdeckt wird (etwa wenn er in Wasser schwimmt \noder in eine Pfütze tritt). Ist ein Wurf erforderlich, erhält ein \nUnsichtbarer, der sich nicht bewegt, einen Bonus von +40 auf \nWürfe auf Heimlichkeit. Bewegt die Kreatur sich, sinkt der Bonus \nauf +20. Der Zauber endet, wenn der Unsichtbare eine Kreatur \nangreift. Für die Zwecke von Unsichtbarkeit gilt auch ein gezielter \nZauber auf einen Feind oder auf ein Gebiet, in dem sich ein Gegner \naufhält, als Angriff. Wer aber nun genau als Feind gilt, hängt von der \nWahrnehmung des Charakters ab. Aktionen, die auf Gegenstände \nzielen, die nicht getragen werden, beenden den Zauber nicht. \nIndirekt Schaden zu verursachen, gilt ebenfalls nicht als Angriff. \nEin Unsichtbarer kann also Türen öffnen, sprechen, essen, Treppen \nsteigen, Monster beschwören und diese angreifen lassen, die \nSeile einer Hängebrücke zerschneiden, während sich Gegner auf \nihr befinden, ein Fallgitter öffnen, um Hunde zu befreien, die \ndann angreifen usw. Greift er aber selbst an, wird er sofort mit all \nseiner Ausrüstung sichtbar. Zauber wie Segnen, die nur Verbündete \nbetreffen, gelten hier auch nicht als Angriff, selbst wenn Feinde in \ndem betroffenen Gebiet stehen.\nUnsichtbarkeit kann mit Dauerhaftigkeit permanent gemacht \nwerden (allerdings nur für Gegenstände).\n\nIgnoriere die GE-Boni der RK beim Gegener",
+    "quelle": "GRW S. 349 / 568",
+    "boni": [
+      {
+        "ziel": "Angriff Nah",
+        "bonusart": "Situation",
+        "wert": 2
+      },
+      {
+        "ziel": "Angriff Fern",
+        "bonusart": "Situation",
+        "wert": 2
+      }
+    ],
+    "gebiet": "",
+    "dauer": "1 Min./Stufe"
+  },
+  {
+    "id": "standard-admin-c2722256-b1fe-4ea4-a45e-0d5d83b8dd63",
+    "name": "Unsichtbarkeit",
+    "kategorie": "Zustände",
+    "aktiv": false,
+    "beschreibung": "Unsichtbar: Kreaturen, die unsichtbar sind, können nicht mit \nHilfe des Sehsinns wahrgenommen werden. Eine unsichtbare \nKreatur erhält einen Bonus von +2 auf Angriffswürfe gegen \nGegner, die sie sehen kann und kann deren GE­Boni auf die RK \n(falls vorhanden) ignorieren. Siehe ansonsten „Unsichtbarkeit“ \nbei den besonderen Fähigkeiten.\n\nTarnung 50% Fehlschlagchance",
+    "quelle": "GRW S. 568",
+    "boni": [
+      {
+        "ziel": "Angriff Nah",
+        "bonusart": "Situation",
+        "wert": 2
+      },
+      {
+        "ziel": "Angriff Fern",
+        "bonusart": "Situation",
+        "wert": 2
+      }
+    ],
+    "gebiet": "selbst",
+    "dauer": ""
+  },
+  {
+    "id": "standard-admin-6ea6c7d8-5f39-4abc-89bc-13581aeb29e2",
+    "name": "Volle Verteidigung",
+    "kategorie": "Kampf",
+    "aktiv": false,
+    "beschreibung": "Keine Angriffe\n\nStandard-Aktion",
+    "quelle": "GRW S. 186",
+    "boni": [
+      {
+        "ziel": "Rüstungsklasse",
+        "bonusart": "Ausweichen",
+        "wert": 4
+      }
+    ],
+    "gebiet": "selbst",
+    "dauer": "1 Runde"
+  },
+  {
+    "id": "standard-admin-a7a742e2-bebf-4a78-9b22-6dcb4cc6ffc2",
+    "name": "Weisheit der Eule (+41 WE)",
+    "kategorie": "Zauber",
+    "aktiv": false,
+    "beschreibung": "WEISHEIT DER EULE\nSchule: Verwandlung;  \nGrad: KLE 2, DRU 2, PAL 2, WAL 2, HXM/MAG 2\nZeitaufwand: 1 Standard-Aktion\nKomponenten: V, G, M/GF (Federn oder Dung von einer Eule)\nReichweite: Berührung\nZiel: Berührte Kreatur\nWirkungsdauer: 1 Min./Stufe\nRettungswurf: Willen, keine Wirkung (harmlos);  \nZauberresistenz: Ja \n\nDer Verwandelte wird weiser. Der Zauber verleiht ihm einen \nVerbesserungsbonus von +4 auf Weisheit, was auch die üblichen \nVorteile für Fertigkeitswürfe mit sich bringt, die auf Weisheit basieren. \nKleriker, Druiden und Waldläufer (und andere Zauberkundige, deren \nZauberkraft von ihrer Weisheit abhängt) erhalten durch Weisheit \nder Eule keine Bonuszauber, der SG für Rettungswürfe gegen ihre \nZauber steigt jedoch.",
+    "quelle": "GRW S. 362",
+    "boni": [
+      {
+        "ziel": "RW-Wille",
+        "bonusart": "Verbesserung",
+        "wert": 2
+      }
+    ],
+    "gebiet": "",
+    "dauer": "1 Min./Stufe"
   }
 ]
