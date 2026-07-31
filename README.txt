@@ -1,11 +1,30 @@
-Wiederherstellung css/style.css
-================================
+COMMIT 21 – Installation
+========================
 
-Diese ZIP enthält die vollständige style.css aus dem Stand vor der
-versehentlichen Überschreibung. Die Sticky-Navigation aus Commit 20.1
-wurde am Ende ergänzt.
+Die GitHub-Verbindung konnte die Dateien lesen, besitzt aber derzeit keine
+Schreibberechtigung für das Repository. Dieses Paket ist deshalb vollständig
+zum Einspielen vorbereitet.
 
-Installation:
-1. ZIP entpacken.
-2. Die Datei css/style.css in das Projekt kopieren.
-3. Vorhandene css/style.css ersetzen.
+Enthalten:
+- css/commit21.css
+- js/commit21.js
+- js/berechnung.js
+- apply_commit21.py
+
+Vorgehen:
+1. ZIP direkt in den Stammordner des Repositories entpacken.
+2. Im Stammordner ausführen:
+       python apply_commit21.py
+3. Danach:
+       git add index.html css/commit21.css js/commit21.js js/berechnung.js
+       git commit -m "Commit 21: Navigation und Effektdetails erweitern"
+       git push
+
+Umgesetzt:
+- Menü-Reihenfolge: Charaktere, Werte, Effekte, Dashboard, Admin
+- aktiver Menübutton bleibt dunkelblau und ersetzt die Seitenüberschrift
+- aktiver Charakter auf der Effektseite
+- Bonusarten ergänzt und umbenannt
+- stapelbar: Ausweichen, Situation, Namenlos, Malus
+- kompakte Bonianzeige auf Effektkarten
+- Bereich und Dauer gemäß Excel-Blatt „Parameter“
