@@ -1,32 +1,44 @@
-COMMIT 22 – CHARAKTER-IMPORT/EXPORT
+COMMIT 23 – FESTES ADMIN-PASSWORT
 
-Enthalten:
-- js/commit22.js
-- css/commit22.css
-- apply_commit22.py
+Passwort:
+7536
 
-Funktionen:
-- Aktiven Charakter als JSON exportieren
-- Charakter aus JSON importieren
-- Import als neuer Charakter oder Überschreiben des aktiven Charakters
-- Enthält Charakterdaten, TP, Angriffe, Effektaktivierungen und benötigte aktive Benutzereffekte
-- Validierung von Format und Exportversion
+Änderungen:
+- Benutzer können keine eigene Admin-PIN mehr festlegen.
+- Für alle Installationen gilt das feste Passwort 7536.
+- Der bisherige LocalStorage-Eintrag "pf-admin-pin-hash" wird entfernt.
+- Fehlversuchssperre, Sitzungssperre und automatische Sperrung bleiben erhalten.
+- Die vorhandene Oberfläche wird weiterverwendet und auf "Passwort" umgestellt.
 
-INSTALLATION ÜBER GITHUB:
-1. js/commit22.js in den Ordner js hochladen.
-2. css/commit22.css in den Ordner css hochladen.
-3. index.html bearbeiten und ergänzen:
+MANUELLE INSTALLATION AUF GITHUB
 
-Im <head>, nach commit21.css:
-<link rel="stylesheet" href="css/commit22.css?v=22">
+1. Lade js/commit23.js in den Ordner js hoch.
+2. Ergänze in index.html direkt unter:
 
-Nach commit21.js:
-<script src="js/commit22.js?v=22"></script>
+   <script src="js/commit22.js?v=22"></script>
 
-4. Commit-Nachricht:
-Commit 22: Charakter Import und Export hinzufügen
+   diese Zeile:
 
-5. Nach dem Deployment die Seite mit Strg+F5 neu laden.
+   <script src="js/commit23.js?v=23"></script>
 
-ALTERNATIV LOKAL:
-python apply_commit22.py
+3. Commit-Nachricht:
+
+   Commit 23: Festes Admin-Passwort einführen
+
+ALTERNATIV LOKAL
+
+python apply_commit23.py /pfad/zum/projekt
+
+TEST
+
+1. Webseite vollständig neu laden.
+2. Admin öffnen.
+3. Passwort 7536 eingeben.
+4. Falsches Passwort prüfen.
+5. Automatische Admin-Sperre prüfen.
+
+HINWEIS
+
+Da die Anwendung über öffentliches GitHub Pages ausgeliefert wird, ist das Passwort
+im JavaScript-Quellcode einsehbar. Es verhindert versehentliche Änderungen, bietet
+aber keinen Schutz gegen gezielte technische Zugriffe.
