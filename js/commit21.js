@@ -244,7 +244,7 @@
       const hinweis = document.createElement("p");
       hinweis.className = "aktiver-charakter-hinweis effekt-charakter-hinweis";
       hinweis.innerHTML =
-        'Aktiver Charakter: <strong data-aktiver-charakter>Mein Charakter</strong>';
+        'Aktiv: <strong data-aktiver-charakter>Mein Charakter</strong>';
       effekteSeite.prepend(hinweis);
     }
 
