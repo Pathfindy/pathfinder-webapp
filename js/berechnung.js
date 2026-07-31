@@ -1,36 +1,45 @@
 // Das azlantische Helferlein der Boni
 // berechnung.js
-// Version 0.3.0
+// Commit 21
 
 const STAPELBARE_BONUSARTEN = new Set([
-    "Ausweich",
-    "Umstand",
-    "Unbenannt"
+    "Ausweichen",
+    "Situation",
+    "Namenlos",
+    "Malus"
 ]);
+
+function normalisiereBerechnungsBonusart(bonusart) {
+    const wert = typeof bonusart === "string" ? bonusart.trim() : "Namenlos";
+    const migration = {
+        "Ausweich": "Ausweichen",
+        "Umstand": "Situation",
+        "Unbenannt": "Namenlos",
+        "Unbekannt": "Namenlos",
+        "Natürlich": "Natürliche Rüstung",
+        "Natürliche": "Natürliche Rüstung",
+        "Natür. Rüstung": "Natürliche Rüstung"
+    };
+    return migration[wert] || wert;
+}
 
 function normalisiereBerechnungsBonus(bonus = {}) {
     const wert = Number(bonus.wert);
 
     return {
         ziel: typeof bonus.ziel === "string" ? bonus.ziel.trim() : "",
-        bonusart: typeof bonus.bonusart === "string"
-            ? bonus.bonusart.trim()
-            : "Unbenannt",
+        bonusart: normalisiereBerechnungsBonusart(bonus.bonusart),
         wert: Number.isFinite(wert) ? wert : 0
     };
 }
 
 function sammleAktiveBoni(effektListe = []) {
-    if (!Array.isArray(effektListe)) {
-        return [];
-    }
+    if (!Array.isArray(effektListe)) return [];
 
     return effektListe
         .filter(effekt => effekt && effekt.aktiv)
         .flatMap(effekt => {
-            if (!Array.isArray(effekt.boni)) {
-                return [];
-            }
+            if (!Array.isArray(effekt.boni)) return [];
 
             return effekt.boni.map(bonus => ({
                 ...normalisiereBerechnungsBonus(bonus),
@@ -62,7 +71,7 @@ function berechneBonusErgebnis(effektListe = []) {
         if (!zielGruppe.nachBonusart.has(bonus.bonusart)) {
             zielGruppe.nachBonusart.set(bonus.bonusart, {
                 hoechsterBonus: 0,
-                mali: 0
+                niedrigsterMalus: 0
             });
         }
 
@@ -74,7 +83,10 @@ function berechneBonusErgebnis(effektListe = []) {
                 bonus.wert
             );
         } else {
-            artGruppe.mali += bonus.wert;
+            artGruppe.niedrigsterMalus = Math.min(
+                artGruppe.niedrigsterMalus,
+                bonus.wert
+            );
         }
     });
 
@@ -84,7 +96,7 @@ function berechneBonusErgebnis(effektListe = []) {
         let gesamt = zielGruppe.stapelbar;
 
         zielGruppe.nachBonusart.forEach(artGruppe => {
-            gesamt += artGruppe.hoechsterBonus + artGruppe.mali;
+            gesamt += artGruppe.hoechsterBonus + artGruppe.niedrigsterMalus;
         });
 
         ergebnis[ziel] = gesamt;
@@ -113,13 +125,10 @@ function formatiereDashboardWert(wert) {
 }
 
 function aktualisiereDashboard(ergebnis = {}) {
-    if (typeof document === "undefined") {
-        return ergebnis;
-    }
+    if (typeof document === "undefined") return ergebnis;
 
     Object.entries(DASHBOARD_ZIELE).forEach(([ziel, elementId]) => {
         const element = document.getElementById(elementId);
-
         if (element) {
             element.textContent = formatiereDashboardWert(ergebnis[ziel] ?? 0);
         }
@@ -135,7 +144,6 @@ function berechneWerte() {
     return ergebnis;
 }
 
-// Erlaubt einfache Tests in der Browser-Konsole und die spätere Nutzung durch die UI.
 if (typeof window !== "undefined") {
     window.STAPELBARE_BONUSARTEN = STAPELBARE_BONUSARTEN;
     window.DASHBOARD_ZIELE = DASHBOARD_ZIELE;
