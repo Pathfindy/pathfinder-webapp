@@ -1,0 +1,40 @@
+/* Commit 22: Charakter-Import und -Export */
+.charakter-datei-aktionen {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.charakter-import-dialog {
+  width: min(34rem, calc(100vw - 2rem));
+}
+
+.charakter-import-dialog::backdrop {
+  background: rgb(0 0 0 / 45%);
+}
+
+.charakter-import-aktionen {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.charakter-import-aktionen button {
+  width: 100%;
+}
+
+@media (max-width: 700px) {
+  #charaktere .seitenkopf {
+    align-items: stretch;
+  }
+
+  .charakter-datei-aktionen {
+    justify-content: stretch;
+  }
+
+  .charakter-datei-aktionen > button {
+    flex: 1 1 10rem;
+  }
+}
