@@ -1,30 +1,32 @@
-COMMIT 21 – Installation
-========================
-
-Die GitHub-Verbindung konnte die Dateien lesen, besitzt aber derzeit keine
-Schreibberechtigung für das Repository. Dieses Paket ist deshalb vollständig
-zum Einspielen vorbereitet.
+COMMIT 22 – CHARAKTER-IMPORT/EXPORT
 
 Enthalten:
-- css/commit21.css
-- js/commit21.js
-- js/berechnung.js
-- apply_commit21.py
+- js/commit22.js
+- css/commit22.css
+- apply_commit22.py
 
-Vorgehen:
-1. ZIP direkt in den Stammordner des Repositories entpacken.
-2. Im Stammordner ausführen:
-       python apply_commit21.py
-3. Danach:
-       git add index.html css/commit21.css js/commit21.js js/berechnung.js
-       git commit -m "Commit 21: Navigation und Effektdetails erweitern"
-       git push
+Funktionen:
+- Aktiven Charakter als JSON exportieren
+- Charakter aus JSON importieren
+- Import als neuer Charakter oder Überschreiben des aktiven Charakters
+- Enthält Charakterdaten, TP, Angriffe, Effektaktivierungen und benötigte aktive Benutzereffekte
+- Validierung von Format und Exportversion
 
-Umgesetzt:
-- Menü-Reihenfolge: Charaktere, Werte, Effekte, Dashboard, Admin
-- aktiver Menübutton bleibt dunkelblau und ersetzt die Seitenüberschrift
-- aktiver Charakter auf der Effektseite
-- Bonusarten ergänzt und umbenannt
-- stapelbar: Ausweichen, Situation, Namenlos, Malus
-- kompakte Bonianzeige auf Effektkarten
-- Bereich und Dauer gemäß Excel-Blatt „Parameter“
+INSTALLATION ÜBER GITHUB:
+1. js/commit22.js in den Ordner js hochladen.
+2. css/commit22.css in den Ordner css hochladen.
+3. index.html bearbeiten und ergänzen:
+
+Im <head>, nach commit21.css:
+<link rel="stylesheet" href="css/commit22.css?v=22">
+
+Nach commit21.js:
+<script src="js/commit22.js?v=22"></script>
+
+4. Commit-Nachricht:
+Commit 22: Charakter Import und Export hinzufügen
+
+5. Nach dem Deployment die Seite mit Strg+F5 neu laden.
+
+ALTERNATIV LOKAL:
+python apply_commit22.py
