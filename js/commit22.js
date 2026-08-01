@@ -93,6 +93,9 @@
           : {},
       benutzerEffekte: Array.isArray(daten.benutzerEffekte)
         ? daten.benutzerEffekte
+        : [],
+      favoriten: Array.isArray(daten.favoriten)
+        ? daten.favoriten.map(String)
         : []
     };
   }
@@ -135,6 +138,18 @@
     speichereAlleCharakterStatus(alleStatus);
   }
 
+  function speichereImportFavoriten(charakterId, favoriten) {
+    if (!Array.isArray(favoriten)) return;
+    if (window.pfFavoriten && typeof window.pfFavoriten.speichern === "function") {
+      window.pfFavoriten.speichern(charakterId, favoriten.map(String));
+      return;
+    }
+    const schluessel = "pf-charakter-favoriten";
+    const alle = JSON.parse(localStorage.getItem(schluessel) || "{}");
+    alle[charakterId] = [...new Set(favoriten.map(String))];
+    localStorage.setItem(schluessel, JSON.stringify(alle));
+  }
+
   function aktualisiereNachImport() {
     speichereCharaktere();
     rendereCharaktere();
@@ -155,6 +170,7 @@
     charaktere.push(charakter);
     aktiverCharakterId = charakter.id;
     speichereImportStatus(charakter.id, importDaten.effektStatus);
+    speichereImportFavoriten(charakter.id, importDaten.favoriten);
     aktualisiereNachImport();
     alert(`„${charakter.name}“ wurde als neuer Charakter importiert.`);
   }
@@ -178,6 +194,7 @@
 
     charaktere[index] = importiert;
     speichereImportStatus(ziel.id, importDaten.effektStatus);
+    speichereImportFavoriten(ziel.id, importDaten.favoriten);
     aktualisiereNachImport();
     alert(`Der aktive Charakter wurde durch „${importiert.name}“ ersetzt.`);
   }
