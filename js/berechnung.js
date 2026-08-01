@@ -1,12 +1,13 @@
 // Das azlantische Helferlein der Boni
 // berechnung.js
-// Commit 21
+// Commit 24
 
 const STAPELBARE_BONUSARTEN = new Set([
     "Ausweichen",
     "Situation",
     "Namenlos",
-    "Malus"
+    "Malus",
+    "Modifikator Attribut"
 ]);
 
 function normalisiereBerechnungsBonusart(bonusart) {
@@ -108,9 +109,13 @@ function berechneBonusErgebnis(effektListe = []) {
 const DASHBOARD_ZIELE = {
     "Angriff Nah": "angriffNah",
     "Angriff Fern": "angriffFern",
-    "Schaden": "schaden",
+    "Schaden Nah": "schadenNah",
+    "Schaden Fern": "schadenFern",
     "Rüstungsklasse": "rk",
     "RW-Zähigkeit": "zaehigkeit",
+    "RW-Gift": "gift",
+    "KMB": "kmb",
+    "KMV": "kmv",
     "RW-Reflex": "reflex",
     "RW-Wille": "wille",
     "RW-Furcht": "furcht",
@@ -140,6 +145,9 @@ function aktualisiereDashboard(ergebnis = {}) {
 function berechneWerte() {
     const effektListe = typeof effekte !== "undefined" ? effekte : [];
     const ergebnis = berechneBonusErgebnis(effektListe);
+    const altSchaden = Number(ergebnis.Schaden ?? 0);
+    ergebnis["Schaden Nah"] = Number(ergebnis["Schaden Nah"] ?? 0) + altSchaden;
+    ergebnis["Schaden Fern"] = Number(ergebnis["Schaden Fern"] ?? 0) + altSchaden;
     aktualisiereDashboard(ergebnis);
     return ergebnis;
 }

@@ -1,4 +1,4 @@
-// Commit 20.2: UI-Rollback mit kompakten Bereichen
+// Commit 24: Angriffe mit Notizen und getrenntem Schaden
 (() => {
   const TP_MAX = 9999;
   const ANGRIFF_MAX = 6;
@@ -7,6 +7,13 @@
   function ganzeZahl(wert, minimum = 0, maximum = TP_MAX) {
     const zahl = Number(wert);
     if (!Number.isFinite(zahl)) return minimum;
+    return Math.min(maximum, Math.max(minimum, Math.trunc(zahl)));
+  }
+
+  function optionaleGanzeZahl(wert, minimum = -999, maximum = 999) {
+    if (wert === "" || wert === null || typeof wert === "undefined") return null;
+    const zahl = Number(wert);
+    if (!Number.isFinite(zahl)) return null;
     return Math.min(maximum, Math.max(minimum, Math.trunc(zahl)));
   }
 
@@ -32,7 +39,9 @@
       grundAngriff: ganzeZahl(angriff.grundAngriff, -999, 999),
       wuerfelAnzahl: ganzeZahl(angriff.wuerfelAnzahl, 0, 20),
       wuerfelSeiten,
-      schadenModifikator: ganzeZahl(angriff.schadenModifikator, -999, 999)
+      schadenModifikator: optionaleGanzeZahl(angriff.schadenModifikator, -999, 999),
+      notiz: typeof angriff.notiz === "string" ? angriff.notiz : "",
+      detailsOffen: !!angriff.detailsOffen
     };
   }
 
@@ -116,12 +125,14 @@
     return Number(boni[ziel] ?? 0);
   }
 
-  function schadenBonus(boni = aktuelleBonuswerte()) {
-    return Number(boni.Schaden ?? 0);
+  function schadenBonus(angriff, boni = aktuelleBonuswerte()) {
+    const ziel = angriff.art === "Fern" ? "Schaden Fern" : "Schaden Nah";
+    return Number(boni[ziel] ?? 0) + Number(boni.Schaden ?? 0);
   }
 
   function formatiereSchaden(angriff, boni = aktuelleBonuswerte()) {
-    const modifikator = angriff.schadenModifikator + schadenBonus(boni);
+    const grundwert = angriff.schadenModifikator === null ? 0 : angriff.schadenModifikator;
+    const modifikator = grundwert + schadenBonus(angriff, boni);
     const wuerfel = angriff.wuerfelAnzahl > 0 && angriff.wuerfelSeiten > 0
       ? `${angriff.wuerfelAnzahl}W${angriff.wuerfelSeiten}`
       : "";
@@ -272,9 +283,22 @@
         <div><span>Schaden</span><strong>${formatiereSchaden(angriff, boni)}</strong></div>
       `;
 
+      const notiz = document.createElement("textarea");
+      notiz.className = "angriff-notiz";
+      notiz.value = angriff.notiz;
+      notiz.rows = 2;
+      notiz.placeholder = "Notiz zum Angriff";
+      notiz.setAttribute("aria-label", `Notiz zu ${angriff.name}`);
+      notiz.addEventListener("input", () => {
+        angriff.notiz = notiz.value;
+        speichereCharaktere();
+      });
+
       const details = document.createElement("div");
       details.className = "angriff-details";
-      details.hidden = true;
+      details.hidden = !angriff.detailsOffen;
+      umschalten.textContent = angriff.detailsOffen ? "▴" : "▾";
+      umschalten.setAttribute("aria-expanded", String(angriff.detailsOffen));
 
       const felder = document.createElement("div");
       felder.className = "angriff-felder";
@@ -326,8 +350,19 @@
 
       const schadenLabel = document.createElement("label");
       schadenLabel.innerHTML = "<span>Grund-Schaden</span>";
-      const schaden = erstelleZahlenfeld(angriff.schadenModifikator, "Grund-Schadensmodifikator", -999, 999);
-      schaden.addEventListener("change", () => speichereAngriffsfeld(angriff, schaden, "schadenModifikator", -999, 999));
+      const schaden = erstelleZahlenfeld(
+        angriff.schadenModifikator === null ? "" : angriff.schadenModifikator,
+        "Grund-Schadensmodifikator",
+        -999,
+        999
+      );
+      schaden.placeholder = "";
+      schaden.addEventListener("change", () => {
+        angriff.schadenModifikator = optionaleGanzeZahl(schaden.value, -999, 999);
+        schaden.value = angriff.schadenModifikator === null ? "" : angriff.schadenModifikator;
+        speichereCharaktere();
+        aktualisiereAngriffeAnsicht();
+      });
       schadenLabel.appendChild(schaden);
 
       felder.append(artLabel, grundLabel, wuerfelLabel, schadenLabel);
@@ -348,12 +383,14 @@
 
       umschalten.addEventListener("click", () => {
         const oeffnen = details.hidden;
+        angriff.detailsOffen = oeffnen;
         details.hidden = !oeffnen;
         umschalten.textContent = oeffnen ? "▴" : "▾";
         umschalten.setAttribute("aria-expanded", String(oeffnen));
+        speichereCharaktere();
       });
 
-      karte.append(kopf, ergebnis, details);
+      karte.append(kopf, ergebnis, notiz, details);
       angriffeListe.appendChild(karte);
     });
   }
