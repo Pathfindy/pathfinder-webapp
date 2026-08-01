@@ -73,7 +73,7 @@
     if (daten.format !== EXPORT_FORMAT) {
       throw new Error("Die Datei ist kein Pathfinder-Charakterexport.");
     }
-    if (daten.version !== EXPORT_VERSION) {
+    if (![1, 2].includes(Number(daten.version))) {
       throw new Error(`Die Exportversion ${daten.version ?? "?"} wird nicht unterstützt.`);
     }
     if (!daten.charakter || typeof daten.charakter !== "object") {
