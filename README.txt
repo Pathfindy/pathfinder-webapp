@@ -1,44 +1,33 @@
-COMMIT 23 – FESTES ADMIN-PASSWORT
+COMMIT 24 – INSTALLATION
 
-Passwort:
-7536
+Enthalten:
+- index.html
+- js/charakterwerte.js
+- js/berechnung.js
+- js/commit24.js
+- css/charakterwerte.css
+- css/commit24.css
+- apply_commit24.py
 
-Änderungen:
-- Benutzer können keine eigene Admin-PIN mehr festlegen.
-- Für alle Installationen gilt das feste Passwort 7536.
-- Der bisherige LocalStorage-Eintrag "pf-admin-pin-hash" wird entfernt.
-- Fehlversuchssperre, Sitzungssperre und automatische Sperrung bleiben erhalten.
-- Die vorhandene Oberfläche wird weiterverwendet und auf "Passwort" umgestellt.
-
-MANUELLE INSTALLATION AUF GITHUB
-
-1. Lade js/commit23.js in den Ordner js hoch.
-2. Ergänze in index.html direkt unter:
-
-   <script src="js/commit22.js?v=22"></script>
-
-   diese Zeile:
-
-   <script src="js/commit23.js?v=23"></script>
-
+GitHub:
+1. Dateien in die entsprechenden Ordner hochladen und vorhandene Dateien ersetzen.
+2. index.html im Stammordner ersetzen.
 3. Commit-Nachricht:
+   Commit 24: Dashboard, Angriffe und Favoriten erweitern
+4. GitHub Pages abwarten und mit Strg+F5 neu laden.
 
-   Commit 23: Festes Admin-Passwort einführen
+Umgesetzt:
+- Bonusart „Modifikator Attribut“ ist stapelbar
+- „Berührung“ als Auswahl im Effektfeld Bereich
+- Schaden Nah und Schaden Fern
+- Dashboard: RW-Gift, KMB und KMV
+- Neue Effektziele für diese Werte
+- Angriffsnotiz, auch zugeklappt sichtbar
+- Angriffe bleiben bei Eingaben offen
+- Grund-Schaden darf negativ sein und beginnt bei neuen Angriffen leer
+- Hinweis unter „Angriffe“ entfernt
+- Favoriten pro Charakter mit Stern und Filter
+- Charakterexport enthält Favoriten und alle Benutzereffekte
 
-ALTERNATIV LOKAL
-
-python apply_commit23.py /pfad/zum/projekt
-
-TEST
-
-1. Webseite vollständig neu laden.
-2. Admin öffnen.
-3. Passwort 7536 eingeben.
-4. Falsches Passwort prüfen.
-5. Automatische Admin-Sperre prüfen.
-
-HINWEIS
-
-Da die Anwendung über öffentliches GitHub Pages ausgeliefert wird, ist das Passwort
-im JavaScript-Quellcode einsehbar. Es verhindert versehentliche Änderungen, bietet
-aber keinen Schutz gegen gezielte technische Zugriffe.
+Kompatibilität:
+- Alte Effekte mit Ziel „Schaden“ wirken weiterhin auf Schaden Nah und Schaden Fern.

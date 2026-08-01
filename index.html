@@ -9,9 +9,10 @@
 
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/charakterwerte.css?v=20.2">
+    <link rel="stylesheet" href="css/charakterwerte.css?v=24">
     <link rel="stylesheet" href="css/commit21.css?v=21">
     <link rel="stylesheet" href="css/commit22.css?v=22">
+    <link rel="stylesheet" href="css/commit24.css?v=24">
     
     <meta name="theme-color" content="#1e3a5f">
 </head>
@@ -58,8 +59,13 @@
             </div>
 
             <div class="karte">
-                <h3>Schaden</h3>
-                <span id="schaden">0</span>
+                <h3>Schaden Nah</h3>
+                <span id="schadenNah">0</span>
+            </div>
+
+            <div class="karte">
+                <h3>Schaden Fern</h3>
+                <span id="schadenFern">0</span>
             </div>
 
             <div class="karte">
@@ -70,6 +76,21 @@
             <div class="karte">
                 <h3>RW-Zähigkeit</h3>
                 <span id="zaehigkeit">0</span>
+            </div>
+
+            <div class="karte">
+                <h3>RW-Gift</h3>
+                <span id="gift">0</span>
+            </div>
+
+            <div class="karte">
+                <h3>KMB</h3>
+                <span id="kmb">0</span>
+            </div>
+
+            <div class="karte">
+                <h3>KMV</h3>
+                <span id="kmv">0</span>
             </div>
 
             <div class="karte">
@@ -127,6 +148,11 @@
             <label class="filter-schalter">
                 <input type="checkbox" id="filterNurAktiv">
                 Nur aktive
+            </label>
+
+            <label class="filter-schalter">
+                <input type="checkbox" id="filterNurFavoriten">
+                Nur Favoriten
             </label>
         </div>
 
@@ -197,7 +223,6 @@
             <div class="angriffe-kopf">
                 <div>
                     <h3 id="angriffe-ueberschrift">Angriffe</h3>
-                    <p>Bis zu sechs charakterbezogene Angriffe. Aktive Angriffs- und Schadensboni werden automatisch eingerechnet.</p>
                 </div>
                 <button type="button" id="btnAngriffHinzufuegen">+ Angriff</button>
             </div>
@@ -257,14 +282,15 @@
 </main>
 
 <script src="js/app.js"></script>
-<script src="js/charakterwerte.js?v=20.2"></script>
+<script src="js/charakterwerte.js?v=24"></script>
 <script src="js/filter.js"></script>
-<script src="js/berechnung.js"></script>
+<script src="js/berechnung.js?v=24"></script>
 <script src="js/makros.js"></script>
 <script src="js/speicher.js"></script>
 <script src="js/commit21.js?v=21.1"></script>
 <script src="js/commit22.js?v=22"></script>
-<script src="js/commit23.js?v=23"></script>    
+<script src="js/commit23.js?v=23"></script>
+<script src="js/commit24.js?v=24"></script>    
 
 <dialog id="effektDialog">
 <h3>Neuen Effekt anlegen</h3>
