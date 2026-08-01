@@ -26,12 +26,12 @@
     "boni": [
       {
         "ziel": "Angriff Nah",
-        "bonusart": "Verbesserung",
+        "bonusart": "Modifikator Attribut",
         "wert": 2
       },
       {
-        "ziel": "Schaden",
-        "bonusart": "Verbesserung",
+        "ziel": "Schaden Nah",
+        "bonusart": "Modifikator Attribut",
         "wert": 2
       }
     ],
@@ -91,7 +91,7 @@
         "wert": 1
       },
       {
-        "ziel": "Schaden",
+        "ziel": "Angriff Fern",
         "bonusart": "Glück",
         "wert": 1
       },
@@ -111,7 +111,12 @@
         "wert": 1
       },
       {
-        "ziel": "Angriff Fern",
+        "ziel": "Schaden Nah",
+        "bonusart": "Glück",
+        "wert": 1
+      },
+      {
+        "ziel": "Schaden Fern",
         "bonusart": "Glück",
         "wert": 1
       }
@@ -165,7 +170,7 @@
         "wert": -1
       },
       {
-        "ziel": "Schaden",
+        "ziel": "Schaden Nah",
         "bonusart": "Namenlos",
         "wert": 2
       }
@@ -187,7 +192,7 @@
         "wert": -4
       },
       {
-        "ziel": "Schaden",
+        "ziel": "Schaden Nah",
         "bonusart": "Namenlos",
         "wert": 8
       }
@@ -209,7 +214,7 @@
         "wert": -2
       },
       {
-        "ziel": "Schaden",
+        "ziel": "Schaden Nah",
         "bonusart": "Namenlos",
         "wert": 4
       }
@@ -231,7 +236,7 @@
         "wert": -3
       },
       {
-        "ziel": "Schaden",
+        "ziel": "Schaden Nah",
         "bonusart": "Namenlos",
         "wert": 6
       }
@@ -251,6 +256,21 @@
         "ziel": "Angriff Nah",
         "bonusart": "Moral",
         "wert": 1
+      },
+      {
+        "ziel": "Angriff Fern",
+        "bonusart": "Moral",
+        "wert": 1
+      },
+      {
+        "ziel": "RW-Wille",
+        "bonusart": "Moral",
+        "wert": 4
+      },
+      {
+        "ziel": "RW-Gift",
+        "bonusart": "Moral",
+        "wert": 4
       },
       {
         "ziel": "RW-Furcht",
@@ -308,17 +328,17 @@
     "boni": [
       {
         "ziel": "Angriff Fern",
-        "bonusart": "Verbesserung",
+        "bonusart": "Modifikator Attribut",
         "wert": 2
       },
       {
         "ziel": "Rüstungsklasse",
-        "bonusart": "Verbesserung",
+        "bonusart": "Modifikator Attribut",
         "wert": 2
       },
       {
         "ziel": "RW-Reflex",
-        "bonusart": "Verbesserung",
+        "bonusart": "Modifikator Attribut",
         "wert": 2
       }
     ],
@@ -369,7 +389,7 @@
     "name": "Person vergrößern (+2 ST, -2 GE)",
     "kategorie": "Zauber",
     "aktiv": false,
-    "beschreibung": "PERSON VERGRÖSSERN\nSchule: Verwandlung; Grad: HXM/MAG 1\nZeitaufwand: 1 Runde\nKomponenten: V, G, M (Eisenpulver)\nReichweite: Nah (7,50 m + 1,50 m/2 Stufen)\nZiel: Eine humanoide Kreatur\nWirkungsdauer: 1 Min./Stufe\nRettungswurf: Zähigkeit, keine Wirkung; Zauberresistenz: Ja\n\nDieser Zauber lässt eine humanoide Kreatur sofort auf das Doppelte \nihrer Größe anwachsen und achtmal so schwer werden. Die Kreatur \nwächst so um eine Größenkategorie. Sie erhält einen Größenbonus \nvon +2 auf Stärke, einen Größenmalus von – 2 auf Geschicklichkeit \n(bis zu einem Minimum von 1) und aufgrund der gesteigerten \nGröße einen Malus von – 1 auf Angriffswürfe und die RK. \nEine humanoide Kreatur, die dadurch „groß“ wird, hat eine \nAngriffsfläche von 3 m und eine natürliche Reichweite von 3 m. Die \nBewegungsrate des Ziels verändert sich nicht.\nSollte nicht genug Raum für das Wachstum vorhanden sein, \nnimmt die Kreatur die maximal mögliche Größe an und darf einen \nStärkewurf machen (mit der erhöhten Stärke), um ihr Gefängnis \nzu sprengen. Schlägt dieser Wurf fehl, wird die Kreatur von dem \nsie umgebenden Material eingeschränkt, ohne dadurch Schaden \nzu erleiden – der Zauber kann nicht verwendet werden, um eine \nKreatur aufgrund ihrer Größe zu zerquetschen.\nJegliche Ausrüstung, die von der Kreatur getragen wird, wird \nebenfalls vergrößert. Nahkampfwaffen verursachen dadurch \nmehr Schaden. Andere magische Eigenschaften werden durch den \nZauber nicht betroffen. Jeder vergrößerte Gegenstand, der den \nBesitz einer vergrößerten Kreatur verlässt (auch geworfene oder \nverschossene Projektile), nimmt sofort wieder seine ursprüngliche \nGröße an. Wurf- und Projektilwaffen verursachen also ihren \nnormalen Schaden und Projektile verursachen soviel Schaden, wie \nes die Größe der Waffe vorgibt, mit der sie abgefeuert wurden. Die \nmagischen Eigenschaften von vergrößerten Waffen werden nicht \ndurch den Zauber verbessert.\nUnterschiedliche magische Effekte, welche die Größe erhöhen, \nsind nicht kumulativ.\nPerson vergrößern bannt und ist der Gegenzauber zu Person \nverkleinern.\nPerson vergrößern kann mit Hilfe von Dauerhaftigkeit permanent \ngemacht werden.",
+    "beschreibung": "PERSON VERGRÖSSERN\n\nSchule: Verwandlung; Grad: HXM/MAG 1\nZeitaufwand: 1 Runde\nKomponenten: V, G, M (Eisenpulver)\nReichweite: Nah (7,50 m + 1,50 m/2 Stufen)\nZiel: Eine humanoide Kreatur\nWirkungsdauer: 1 Min./Stufe\nRettungswurf: Zähigkeit, keine Wirkung; Zauberresistenz: Ja\n\nDieser Zauber lässt eine humanoide Kreatur sofort auf das Doppelte \nihrer Größe anwachsen und achtmal so schwer werden. Die Kreatur \nwächst so um eine Größenkategorie. Sie erhält einen Größenbonus \nvon +2 auf Stärke, einen Größenmalus von – 2 auf Geschicklichkeit \n(bis zu einem Minimum von 1) und aufgrund der gesteigerten \nGröße einen Malus von – 1 auf Angriffswürfe und die RK. \nEine humanoide Kreatur, die dadurch „groß“ wird, hat eine \nAngriffsfläche von 3 m und eine natürliche Reichweite von 3 m. Die \nBewegungsrate des Ziels verändert sich nicht.\nSollte nicht genug Raum für das Wachstum vorhanden sein, \nnimmt die Kreatur die maximal mögliche Größe an und darf einen \nStärkewurf machen (mit der erhöhten Stärke), um ihr Gefängnis \nzu sprengen. Schlägt dieser Wurf fehl, wird die Kreatur von dem \nsie umgebenden Material eingeschränkt, ohne dadurch Schaden \nzu erleiden – der Zauber kann nicht verwendet werden, um eine \nKreatur aufgrund ihrer Größe zu zerquetschen.\nJegliche Ausrüstung, die von der Kreatur getragen wird, wird \nebenfalls vergrößert. Nahkampfwaffen verursachen dadurch \nmehr Schaden. Andere magische Eigenschaften werden durch den \nZauber nicht betroffen. Jeder vergrößerte Gegenstand, der den \nBesitz einer vergrößerten Kreatur verlässt (auch geworfene oder \nverschossene Projektile), nimmt sofort wieder seine ursprüngliche \nGröße an. Wurf- und Projektilwaffen verursachen also ihren \nnormalen Schaden und Projektile verursachen soviel Schaden, wie \nes die Größe der Waffe vorgibt, mit der sie abgefeuert wurden. Die \nmagischen Eigenschaften von vergrößerten Waffen werden nicht \ndurch den Zauber verbessert.\nUnterschiedliche magische Effekte, welche die Größe erhöhen, \nsind nicht kumulativ.\nPerson vergrößern bannt und ist der Gegenzauber zu Person \nverkleinern.\nPerson vergrößern kann mit Hilfe von Dauerhaftigkeit permanent \ngemacht werden.",
     "quelle": "GRW S. 312",
     "boni": [
       {
@@ -622,15 +642,15 @@
   },
   {
     "id": "standard-admin-a7a742e2-bebf-4a78-9b22-6dcb4cc6ffc2",
-    "name": "Weisheit der Eule (+41 WE)",
+    "name": "Weisheit der Eule (+4 WE)",
     "kategorie": "Zauber",
     "aktiv": false,
-    "beschreibung": "WEISHEIT DER EULE\nSchule: Verwandlung;  \nGrad: KLE 2, DRU 2, PAL 2, WAL 2, HXM/MAG 2\nZeitaufwand: 1 Standard-Aktion\nKomponenten: V, G, M/GF (Federn oder Dung von einer Eule)\nReichweite: Berührung\nZiel: Berührte Kreatur\nWirkungsdauer: 1 Min./Stufe\nRettungswurf: Willen, keine Wirkung (harmlos);  \nZauberresistenz: Ja \n\nDer Verwandelte wird weiser. Der Zauber verleiht ihm einen \nVerbesserungsbonus von +4 auf Weisheit, was auch die üblichen \nVorteile für Fertigkeitswürfe mit sich bringt, die auf Weisheit basieren. \nKleriker, Druiden und Waldläufer (und andere Zauberkundige, deren \nZauberkraft von ihrer Weisheit abhängt) erhalten durch Weisheit \nder Eule keine Bonuszauber, der SG für Rettungswürfe gegen ihre \nZauber steigt jedoch.",
+    "beschreibung": "WEISHEIT DER EULE\n\nSchule: Verwandlung;  \nGrad: KLE 2, DRU 2, PAL 2, WAL 2, HXM/MAG 2\nZeitaufwand: 1 Standard-Aktion\nKomponenten: V, G, M/GF (Federn oder Dung von einer Eule)\nReichweite: Berührung\nZiel: Berührte Kreatur\nWirkungsdauer: 1 Min./Stufe\nRettungswurf: Willen, keine Wirkung (harmlos);  \nZauberresistenz: Ja \n\nDer Verwandelte wird weiser. Der Zauber verleiht ihm einen \nVerbesserungsbonus von +4 auf Weisheit, was auch die üblichen \nVorteile für Fertigkeitswürfe mit sich bringt, die auf Weisheit basieren. \nKleriker, Druiden und Waldläufer (und andere Zauberkundige, deren \nZauberkraft von ihrer Weisheit abhängt) erhalten durch Weisheit \nder Eule keine Bonuszauber, der SG für Rettungswürfe gegen ihre \nZauber steigt jedoch.",
     "quelle": "GRW S. 362",
     "boni": [
       {
         "ziel": "RW-Wille",
-        "bonusart": "Verbesserung",
+        "bonusart": "Modifikator Attribut",
         "wert": 2
       }
     ],
