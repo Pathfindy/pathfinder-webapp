@@ -342,3 +342,46 @@ nav {
         grid-template-columns: 1fr;
     }
 }
+
+
+/* ==========================
+   Commit 24
+========================== */
+
+.angriff-notiz {
+    width: 100%;
+    min-height: 58px;
+    margin-top: 8px;
+    padding: 8px 9px;
+    border: 1px solid #bbb;
+    border-radius: 8px;
+    background: white;
+    font: inherit;
+    resize: vertical;
+}
+
+.effekt-favorit {
+    flex: 0 0 auto;
+    min-width: 42px;
+    min-height: 42px;
+    border: 0;
+    border-radius: 8px;
+    background: #e6eaf0;
+    color: #8a6d00;
+    font-size: 1.3rem;
+    cursor: pointer;
+}
+
+.effekt-favorit.aktiv {
+    background: #fff2bf;
+}
+
+.effekt-filter {
+    grid-template-columns: minmax(170px, 1fr) auto auto;
+}
+
+@media (max-width:600px) {
+    .effekt-filter {
+        grid-template-columns: 1fr;
+    }
+}
