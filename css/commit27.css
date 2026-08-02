@@ -1,0 +1,49 @@
+/* Commit 27: Abgeleitete Spezial-Rettungswürfe */
+
+.spezial-rw-27 {
+    position: relative;
+    padding-left: 24px;
+    background: #f8fafc;
+}
+
+.spezial-rw-27::before {
+    content: "↳";
+    position: absolute;
+    left: 5px;
+    color: #788596;
+    font-weight: 700;
+}
+
+.spezial-rw-27 label {
+    font-weight: 550;
+    color: #3f4d5c;
+}
+
+.spezial-rw-basis-27 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 42px;
+    padding: 6px 8px;
+    border-radius: 8px;
+    background: #f0f3f7;
+    color: #667382;
+    font-size: .82rem;
+    text-align: center;
+}
+
+.bonus-detail-untertitel-27 {
+    margin: 16px 0 8px;
+    color: #1e3a5f;
+}
+
+@media (max-width: 520px) {
+    .spezial-rw-27 {
+        padding-left: 20px;
+    }
+
+    .spezial-rw-basis-27 {
+        font-size: .72rem;
+        padding-inline: 4px;
+    }
+}
