@@ -1,58 +1,22 @@
-// Commit 27: Spezial-Rettungswürfe von Wille und Zähigkeit ableiten
+// Commit 26: Grundwerte für RK, Rettungswürfe, KMB und KMV
 (() => {
   "use strict";
 
   const WERTE = [
-    { key: "rk", ziel: "Rüstungsklasse", label: "Rüstungsklasse", gruppe: "Rüstungsklasse", eingabe: true },
-    { key: "rw.reflex", ziel: "RW-Reflex", label: "RW-Reflex", gruppe: "Rettungswürfe", eingabe: true },
-    { key: "rw.wille", ziel: "RW-Wille", label: "RW-Wille", gruppe: "Rettungswürfe", eingabe: true },
-    {
-      key: "rw.furcht",
-      ziel: "RW-Furcht",
-      label: "RW-Furcht",
-      gruppe: "Rettungswürfe",
-      eingabe: false,
-      basisKey: "rw.wille",
-      basisZiel: "RW-Wille"
-    },
-    {
-      key: "rw.bezauberung",
-      ziel: "RW-Bezauberung",
-      label: "RW-Bezauberung",
-      gruppe: "Rettungswürfe",
-      eingabe: false,
-      basisKey: "rw.wille",
-      basisZiel: "RW-Wille"
-    },
-    {
-      key: "rw.verzauberung",
-      ziel: "RW-Verzauberung",
-      label: "RW-Verzauberung",
-      gruppe: "Rettungswürfe",
-      eingabe: false,
-      basisKey: "rw.wille",
-      basisZiel: "RW-Wille"
-    },
-    { key: "rw.zaehigkeit", ziel: "RW-Zähigkeit", label: "RW-Zähigkeit", gruppe: "Rettungswürfe", eingabe: true },
-    {
-      key: "rw.gift",
-      ziel: "RW-Gift",
-      label: "RW-Gift",
-      gruppe: "Rettungswürfe",
-      eingabe: false,
-      basisKey: "rw.zaehigkeit",
-      basisZiel: "RW-Zähigkeit"
-    },
-    { key: "kmb", ziel: "KMB", label: "KMB", gruppe: "Kampfmanöver", eingabe: true },
-    { key: "kmv", ziel: "KMV", label: "KMV", gruppe: "Kampfmanöver", eingabe: true }
+    { key: "rk", ziel: "Rüstungsklasse", label: "Rüstungsklasse", gruppe: "Rüstungsklasse" },
+    { key: "rw.reflex", ziel: "RW-Reflex", label: "RW-Reflex", gruppe: "Rettungswürfe" },
+    { key: "rw.wille", ziel: "RW-Wille", label: "RW-Wille", gruppe: "Rettungswürfe" },
+    { key: "rw.zaehigkeit", ziel: "RW-Zähigkeit", label: "RW-Zähigkeit", gruppe: "Rettungswürfe" },
+    { key: "rw.furcht", ziel: "RW-Furcht", label: "RW-Furcht", gruppe: "Rettungswürfe" },
+    { key: "rw.gift", ziel: "RW-Gift", label: "RW-Gift", gruppe: "Rettungswürfe" },
+    { key: "rw.bezauberung", ziel: "RW-Bezauberung", label: "RW-Bezauberung", gruppe: "Rettungswürfe" },
+    { key: "rw.verzauberung", ziel: "RW-Verzauberung", label: "RW-Verzauberung", gruppe: "Rettungswürfe" },
+    { key: "kmb", ziel: "KMB", label: "KMB", gruppe: "Kampfmanöver" },
+    { key: "kmv", ziel: "KMV", label: "KMV", gruppe: "Kampfmanöver" }
   ];
 
-  const SPEZIAL_ZIELE = new Map(
-    WERTE.filter(eintrag => !eintrag.eingabe)
-      .map(eintrag => [eintrag.ziel, eintrag])
-  );
-
-  function ganzeZahl(wert) {
+  function ganzeZahlOderNull(wert) {
+    if (wert === "" || wert === null || typeof wert === "undefined") return 0;
     const zahl = Number(wert);
     return Number.isFinite(zahl) ? Math.trunc(zahl) : 0;
   }
@@ -71,13 +35,13 @@
     ziel[teile.at(-1)] = wert;
   }
 
-  function formatiereBonus(wert) {
-    const zahl = ganzeZahl(wert);
+  function formatiereWert(wert) {
+    const zahl = ganzeZahlOderNull(wert);
     return zahl > 0 ? `+${zahl}` : String(zahl);
   }
 
-  function formatiereGesamt(wert) {
-    return String(ganzeZahl(wert));
+  function formatiereGesamtwert(wert) {
+    return String(ganzeZahlOderNull(wert));
   }
 
   const bisherigeNormalisierung = normalisiereCharakter;
@@ -96,93 +60,36 @@
       ...basis,
       kampfwerte: {
         ...basis.kampfwerte,
-        rk: ganzeZahl(kampfwerteQuelle.rk ?? basis.kampfwerte?.rk),
-        kmb: ganzeZahl(kampfwerteQuelle.kmb ?? basis.kampfwerte?.kmb),
-        kmv: ganzeZahl(kampfwerteQuelle.kmv ?? basis.kampfwerte?.kmv),
+        rk: ganzeZahlOderNull(kampfwerteQuelle.rk ?? basis.kampfwerte?.rk),
+        kmb: ganzeZahlOderNull(kampfwerteQuelle.kmb ?? basis.kampfwerte?.kmb),
+        kmv: ganzeZahlOderNull(kampfwerteQuelle.kmv ?? basis.kampfwerte?.kmv),
         rw: {
           ...(basis.kampfwerte?.rw || {}),
-          reflex: ganzeZahl(rwQuelle.reflex ?? basis.kampfwerte?.rw?.reflex),
-          wille: ganzeZahl(rwQuelle.wille ?? basis.kampfwerte?.rw?.wille),
-          zaehigkeit: ganzeZahl(rwQuelle.zaehigkeit ?? basis.kampfwerte?.rw?.zaehigkeit)
+          reflex: ganzeZahlOderNull(rwQuelle.reflex ?? basis.kampfwerte?.rw?.reflex),
+          wille: ganzeZahlOderNull(rwQuelle.wille ?? basis.kampfwerte?.rw?.wille),
+          zaehigkeit: ganzeZahlOderNull(rwQuelle.zaehigkeit ?? basis.kampfwerte?.rw?.zaehigkeit),
+          furcht: ganzeZahlOderNull(rwQuelle.furcht),
+          gift: ganzeZahlOderNull(rwQuelle.gift),
+          bezauberung: ganzeZahlOderNull(rwQuelle.bezauberung),
+          verzauberung: ganzeZahlOderNull(rwQuelle.verzauberung)
         }
       }
     };
   };
 
-  function aktiveBoni() {
-    return typeof sammleAktiveBoni === "function"
-      ? sammleAktiveBoni(typeof effekte !== "undefined" ? effekte : [])
-      : [];
-  }
-
-  function bewerteBonusListe(boni) {
-    const stapelbar =
-      typeof STAPELBARE_BONUSARTEN !== "undefined"
-        ? STAPELBARE_BONUSARTEN
-        : new Set();
-
-    const gruppen = new Map();
-    boni.forEach((bonus, index) => {
-      const art = bonus.bonusart || "Namenlos";
-      if (!gruppen.has(art)) gruppen.set(art, []);
-      gruppen.get(art).push({ bonus, index });
-    });
-
-    const bewertet = boni.map(bonus => ({ ...bonus, beruecksichtigt: false }));
-
-    gruppen.forEach((eintraege, art) => {
-      if (stapelbar.has(art)) {
-        eintraege.forEach(({ index }) => {
-          bewertet[index].beruecksichtigt = true;
-        });
-        return;
-      }
-
-      const positive = eintraege.filter(({ bonus }) => bonus.wert > 0);
-      const negative = eintraege.filter(({ bonus }) => bonus.wert < 0);
-
-      if (positive.length) {
-        const max = Math.max(...positive.map(({ bonus }) => bonus.wert));
-        const erster = positive.find(({ bonus }) => bonus.wert === max);
-        if (erster) bewertet[erster.index].beruecksichtigt = true;
-      }
-
-      if (negative.length) {
-        const min = Math.min(...negative.map(({ bonus }) => bonus.wert));
-        const erster = negative.find(({ bonus }) => bonus.wert === min);
-        if (erster) bewertet[erster.index].beruecksichtigt = true;
-      }
-    });
-
-    return bewertet;
-  }
-
-  function bonusBerechnung(ziel) {
-    const spezial = SPEZIAL_ZIELE.get(ziel);
-    const erlaubteZiele = spezial
-      ? new Set([spezial.basisZiel, spezial.ziel])
-      : new Set([ziel]);
-
-    const boni = aktiveBoni().filter(bonus => erlaubteZiele.has(bonus.ziel));
-    const bewertet = bewerteBonusListe(boni);
-    const gesamt = bewertet
-      .filter(bonus => bonus.beruecksichtigt)
-      .reduce((summe, bonus) => summe + ganzeZahl(bonus.wert), 0);
-
-    return { gesamt, boni: bewertet };
-  }
-
-  function grundwertFuer(eintrag, charakter) {
-    const pfad = eintrag.eingabe ? eintrag.key : eintrag.basisKey;
-    return ganzeZahl(lesePfad(charakter?.kampfwerte, pfad));
-  }
-
-  function gesamtwertFuer(eintrag, charakter) {
-    return grundwertFuer(eintrag, charakter) + bonusBerechnung(eintrag.ziel).gesamt;
+  function aktuelleBoni() {
+    if (typeof berechneBonusErgebnis !== "function") return {};
+    const ergebnis = berechneBonusErgebnis(
+      typeof effekte !== "undefined" ? effekte : []
+    );
+    const altSchaden = Number(ergebnis.Schaden || 0);
+    ergebnis["Schaden Nah"] = Number(ergebnis["Schaden Nah"] || 0) + altSchaden;
+    ergebnis["Schaden Fern"] = Number(ergebnis["Schaden Fern"] || 0) + altSchaden;
+    return ergebnis;
   }
 
   function erstelleBereich() {
-    document.getElementById("grundwerte26")?.remove();
+    if (document.getElementById("grundwerte26")) return;
 
     const angriffe = document.querySelector("#charakterwerte .angriffe-bereich");
     if (!angriffe) return;
@@ -204,48 +111,41 @@
       WERTE.filter(eintrag => eintrag.gruppe === gruppenname).forEach(eintrag => {
         const zeile = document.createElement("div");
         zeile.className = "grundwert-zeile-26";
-        if (!eintrag.eingabe) zeile.classList.add("spezial-rw-27");
         zeile.dataset.wertKey = eintrag.key;
         zeile.dataset.bonusZiel = eintrag.ziel;
 
         const label = document.createElement("label");
         label.textContent = eintrag.label;
+        label.htmlFor = `grundwert26-${eintrag.key.replace(".", "-")}`;
 
-        let mittelteil;
-        if (eintrag.eingabe) {
-          const input = document.createElement("input");
-          input.id = `grundwert26-${eintrag.key.replace(".", "-")}`;
-          label.htmlFor = input.id;
-          input.type = "number";
-          input.step = "1";
-          input.min = "-999";
-          input.max = "999";
-          input.inputMode = "numeric";
-          input.setAttribute("aria-label", `${eintrag.label} Grundwert`);
-          input.addEventListener("change", () => {
-            const charakter = aktiverCharakter();
-            if (!charakter) return;
-            const wert = ganzeZahl(input.value);
-            input.value = String(wert);
-            schreibePfad(charakter.kampfwerte, eintrag.key, wert);
-            speichereCharaktere();
-            aktualisiereAnsicht();
-          });
-          mittelteil = input;
-        } else {
-          const basis = document.createElement("span");
-          basis.className = "spezial-rw-basis-27";
-          basis.textContent = `aus ${eintrag.basisZiel}`;
-          mittelteil = basis;
-        }
+        const input = document.createElement("input");
+        input.id = `grundwert26-${eintrag.key.replace(".", "-")}`;
+        input.type = "number";
+        input.step = "1";
+        input.min = "-999";
+        input.max = "999";
+        input.inputMode = "numeric";
+        input.setAttribute("aria-label", `${eintrag.label} Grundwert`);
 
         const gesamt = document.createElement("button");
         gesamt.type = "button";
         gesamt.className = "grundwert-gesamt-26";
         gesamt.setAttribute("aria-label", `${eintrag.label} Bonusdetails anzeigen`);
-        gesamt.addEventListener("click", () => zeigeDetails(eintrag));
+        gesamt.addEventListener("click", () =>
+          zeigeDetails(eintrag, ganzeZahlOderNull(input.value))
+        );
 
-        zeile.append(label, mittelteil, gesamt);
+        input.addEventListener("change", () => {
+          const charakter = aktiverCharakter();
+          if (!charakter) return;
+          const wert = ganzeZahlOderNull(input.value);
+          input.value = String(wert);
+          schreibePfad(charakter.kampfwerte, eintrag.key, wert);
+          speichereCharaktere();
+          aktualisiereAnsicht();
+        });
+
+        zeile.append(label, input, gesamt);
         gruppe.appendChild(zeile);
       });
 
@@ -253,6 +153,44 @@
     });
 
     angriffe.after(bereich);
+  }
+
+  function bewerteteBoni(ziel) {
+    if (typeof sammleAktiveBoni !== "function") return [];
+    const boni = sammleAktiveBoni(typeof effekte !== "undefined" ? effekte : [])
+      .filter(bonus => bonus.ziel === ziel);
+
+    const stapelbar =
+      typeof STAPELBARE_BONUSARTEN !== "undefined"
+        ? STAPELBARE_BONUSARTEN
+        : new Set();
+
+    const nachArt = new Map();
+    boni.forEach(bonus => {
+      if (!nachArt.has(bonus.bonusart)) nachArt.set(bonus.bonusart, []);
+      nachArt.get(bonus.bonusart).push(bonus);
+    });
+
+    return boni.map(bonus => {
+      if (stapelbar.has(bonus.bonusart)) {
+        return { ...bonus, beruecksichtigt: true };
+      }
+
+      const gruppe = nachArt.get(bonus.bonusart) || [];
+      if (bonus.wert > 0) {
+        const maximum = Math.max(
+          0,
+          ...gruppe.filter(e => e.wert > 0).map(e => e.wert)
+        );
+        return { ...bonus, beruecksichtigt: bonus.wert === maximum };
+      }
+
+      const minimum = Math.min(
+        0,
+        ...gruppe.filter(e => e.wert < 0).map(e => e.wert)
+      );
+      return { ...bonus, beruecksichtigt: bonus.wert === minimum };
+    });
   }
 
   function detailDialog() {
@@ -275,14 +213,10 @@
     return dialog;
   }
 
-  function zeigeDetails(eintrag) {
-    const charakter = aktiverCharakter();
-    if (!charakter) return;
-
+  function zeigeDetails(eintrag, grundwert) {
     const dialog = detailDialog();
-    const grundwert = grundwertFuer(eintrag, charakter);
-    const berechnung = bonusBerechnung(eintrag.ziel);
-    const gesamt = grundwert + berechnung.gesamt;
+    const boni = bewerteteBoni(eintrag.ziel);
+    const bonusGesamt = Number(aktuelleBoni()[eintrag.ziel] || 0);
 
     dialog.querySelector("#bonusDetailTitel").textContent = eintrag.label;
     const inhalt = dialog.querySelector("#bonusDetailInhalt");
@@ -290,29 +224,31 @@
 
     const summe = document.createElement("p");
     summe.className = "bonus-detail-summe";
-    summe.textContent = eintrag.eingabe
-      ? `Grundwert ${formatiereGesamt(grundwert)} + Boni ${formatiereBonus(berechnung.gesamt)} = ${formatiereGesamt(gesamt)}`
-      : `Basis ${eintrag.basisZiel} ${formatiereGesamt(grundwert)} + anwendbare Boni ${formatiereBonus(berechnung.gesamt)} = ${formatiereGesamt(gesamt)}`;
+    summe.textContent =
+      `Grundwert ${formatiereWert(grundwert)} + Boni ${formatiereWert(bonusGesamt)}` +
+      ` = ${formatiereGesamtwert(grundwert + bonusGesamt)}`;
     inhalt.appendChild(summe);
 
-    if (!berechnung.boni.length) {
+    if (boni.length === 0) {
       const leer = document.createElement("p");
       leer.textContent = "Keine aktiven Boni für diesen Wert.";
       inhalt.appendChild(leer);
     } else {
       const liste = document.createElement("div");
       liste.className = "bonus-detail-liste";
-      berechnung.boni.forEach(bonus => {
+      boni.forEach(bonus => {
         const zeile = document.createElement("div");
         zeile.className = "bonus-detail-zeile";
-        if (!bonus.beruecksichtigt) zeile.classList.add("nicht-beruecksichtigt");
+        if (!bonus.beruecksichtigt) {
+          zeile.classList.add("nicht-beruecksichtigt");
+        }
         zeile.innerHTML = `
-          <strong>${formatiereBonus(bonus.wert)}</strong>
+          <strong>${formatiereWert(bonus.wert)}</strong>
           <span>${bonus.bonusart}</span>
           <span>${bonus.effektName || "Unbenannter Effekt"}</span>
-          <small>${bonus.ziel}${bonus.beruecksichtigt
-            ? " · berücksichtigt"
-            : " · gleicher Bonustyp – nicht berücksichtigt"}</small>
+          <small>${bonus.beruecksichtigt
+            ? "berücksichtigt"
+            : "nicht stapelbar – nicht berücksichtigt"}</small>
         `;
         liste.appendChild(zeile);
       });
@@ -322,57 +258,37 @@
     dialog.showModal();
   }
 
-  function aktualisiereDashboardSpezialwerte() {
-    const charakter = aktiverCharakter();
-    if (!charakter) return;
-
-    const ids = {
-      "RW-Furcht": "furcht",
-      "RW-Gift": "gift",
-      "RW-Bezauberung": "bezauberung",
-      "RW-Verzauberung": "verzauberung"
-    };
-
-    SPEZIAL_ZIELE.forEach((eintrag, ziel) => {
-      const element = document.getElementById(ids[ziel]);
-      if (element) element.textContent = formatiereGesamt(gesamtwertFuer(eintrag, charakter));
-    });
-  }
-
   function aktualisiereAnsicht() {
+    erstelleBereich();
+
     const charakter = aktiverCharakter();
-    const bereich = document.getElementById("grundwerte26");
-    if (!bereich) erstelleBereich();
+    const boni = aktuelleBoni();
 
     document.querySelectorAll(".grundwert-zeile-26").forEach(zeile => {
-      const eintrag = WERTE.find(wert => wert.ziel === zeile.dataset.bonusZiel);
-      if (!eintrag) return;
-
+      const key = zeile.dataset.wertKey;
+      const ziel = zeile.dataset.bonusZiel;
       const input = zeile.querySelector("input");
       const gesamt = zeile.querySelector(".grundwert-gesamt-26");
 
       if (!charakter) {
-        if (input) {
-          input.disabled = true;
-          input.value = "0";
-        }
+        input.disabled = true;
+        input.value = "0";
         gesamt.textContent = "0";
         gesamt.disabled = true;
         return;
       }
 
-      if (input) {
-        input.disabled = false;
-        input.value = String(grundwertFuer(eintrag, charakter));
-      }
+      input.disabled = false;
       gesamt.disabled = false;
-      gesamt.textContent = formatiereGesamt(gesamtwertFuer(eintrag, charakter));
+      const grundwert = ganzeZahlOderNull(lesePfad(charakter.kampfwerte, key));
+      input.value = String(grundwert);
+      gesamt.textContent = formatiereGesamtwert(
+        grundwert + Number(boni[ziel] || 0)
+      );
     });
-
-    aktualisiereDashboardSpezialwerte();
   }
 
-  function initialisiereCommit27() {
+  function initialisiereCommit26() {
     erstelleBereich();
     aktualisiereAnsicht();
 
@@ -400,10 +316,10 @@
   }
 
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initialisiereCommit27, {
+    document.addEventListener("DOMContentLoaded", initialisiereCommit26, {
       once: true
     });
   } else {
-    initialisiereCommit27();
+    initialisiereCommit26();
   }
 })();
