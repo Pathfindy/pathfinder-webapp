@@ -44,6 +44,23 @@
     "dauer": "1 Min./Stufe"
   },
   {
+    "id": "standard-admin-4f64b8f1-f2dc-4bde-bade-844a43a48a5c",
+    "name": "Betäubt",
+    "kategorie": "Zustände",
+    "aktiv": false,
+    "beschreibung": "Betäubt: Ein betäubter Charakter lässt alles fallen, was er \nhält, kann keine Aktionen ausführen, erhält einen Malus von \n– 2 auf die RK und verliert seinen GE­Bonus auf die RK (falls \nvorhanden).",
+    "quelle": "GRW S. 566",
+    "boni": [
+      {
+        "ziel": "Rüstungsklasse",
+        "bonusart": "Malus",
+        "wert": -2
+      }
+    ],
+    "gebiet": "selbst",
+    "dauer": "Nach Angabe SL"
+  },
+  {
     "id": "standard-admin-73cd1beb-c64e-449c-a225-3603b93bde5a",
     "name": "Defensiv kämpfen",
     "kategorie": "Kampf",
@@ -91,6 +108,23 @@
     ],
     "gebiet": "",
     "dauer": ""
+  },
+  {
+    "id": "standard-admin-ffecdf13-9ca0-470d-9a35-48a17c5eda1b",
+    "name": "Erschütter",
+    "kategorie": "Zustände",
+    "aktiv": false,
+    "beschreibung": "Erschüttert: Ein erschütterter Charakter erhält einen Malus \nvon – 2 auf Angriffs­, Rettungs­, Fertigkeits­ und Attributswürfe. \nErschüttert ist ein weniger schlimmer Zustand der Furcht als \nverängstigt oder in Panik.",
+    "quelle": "GRW S.566",
+    "boni": [
+      {
+        "ziel": "Angriff Nah",
+        "bonusart": "Ablenkung",
+        "wert": 0
+      }
+    ],
+    "gebiet": "selbst",
+    "dauer": "Nach Angabe SL"
   },
   {
     "id": "standard-admin-9a75420f-4c55-4703-9fbb-8679005b9ecc",
@@ -165,6 +199,33 @@
     ],
     "gebiet": "",
     "dauer": "1 Runde/Stufe"
+  },
+  {
+    "id": "standard-admin-f4a2c867-a07f-4178-87d6-50a0d7ea4a19",
+    "name": "Geblendet",
+    "kategorie": "Zustände",
+    "aktiv": false,
+    "beschreibung": "Geblendet: Ein Geblendeter kann kaum etwas sehen, da \nseine Augen überreizt sind. Er erhält einen Malus von – 1 auf \nAngriffswürfe und Würfe auf Wahrnehmung fürs Sehen.",
+    "quelle": "GRW S.566",
+    "boni": [
+      {
+        "ziel": "Angriff Nah",
+        "bonusart": "Malus",
+        "wert": -1
+      },
+      {
+        "ziel": "Angriff Fern",
+        "bonusart": "Malus",
+        "wert": -1
+      },
+      {
+        "ziel": "KMB",
+        "bonusart": "Malus",
+        "wert": -1
+      }
+    ],
+    "gebiet": "selbst",
+    "dauer": "Nach Angabe SL"
   },
   {
     "id": "standard-admin-d4197b59-0b24-400d-9375-db883effb3fd",
@@ -1286,6 +1347,48 @@
     ],
     "gebiet": "selbst",
     "dauer": ""
+  },
+  {
+    "id": "standard-admin-86c9750a-fecd-4586-b8d9-950c86a4da06",
+    "name": "Verängstigt",
+    "kategorie": "Zustände",
+    "aktiv": false,
+    "beschreibung": "Verängstigt: Eine verängstigte Kreatur flieht vor der Quelle \nihrer Furcht so gut sie kann. Kann sie nicht fliehen, darf sie \nkämpfen. Ein Verängstigter erhält einen Malus von – 2 auf alle \nAngriffs­, Rettungs­, Fertigkeits­ und Attributswürfe. Er kann \naber besondere Fähigkeiten, auch Zauber, einsetzen, um zu \nfliehen. Ja der Charakter muss diese Mittel sogar einsetzen, \nwenn es ihm sonst nicht möglich ist zu fliehen. \nVerängstigt gleicht dem Zustand erschüttert, außer dass die \nKreatur fliehen muss, wenn ihr dies möglich ist. In Panik ist \nein noch intensiverer Zustand der Furcht.",
+    "quelle": "GRW S. 568",
+    "boni": [
+      {
+        "ziel": "Angriff Nah",
+        "bonusart": "Malus",
+        "wert": -2
+      },
+      {
+        "ziel": "Angriff Fern",
+        "bonusart": "Malus",
+        "wert": -2
+      },
+      {
+        "ziel": "KMB",
+        "bonusart": "Malus",
+        "wert": -2
+      },
+      {
+        "ziel": "RW-Reflex",
+        "bonusart": "Malus",
+        "wert": -2
+      },
+      {
+        "ziel": "RW-Wille",
+        "bonusart": "Malus",
+        "wert": -2
+      },
+      {
+        "ziel": "RW-Zähigkeit",
+        "bonusart": "Malus",
+        "wert": -2
+      }
+    ],
+    "gebiet": "selbst",
+    "dauer": "Nach Angabe SL"
   },
   {
     "id": "standard-admin-ceeb3a33-32c9-4f5d-9488-67cd22f78a57",
