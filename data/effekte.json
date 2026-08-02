@@ -110,6 +110,95 @@
     "dauer": ""
   },
   {
+    "id": "standard-admin-bff93ccf-92bf-4c7a-b169-bc8f9583c04c",
+    "name": "Entkräftet",
+    "kategorie": "Zustände",
+    "aktiv": false,
+    "beschreibung": "Entkräftet:\nEin entkräfteter Charakter kann sich nur mit \nseiner halben Bewegungsrate fortbewegen, kann nicht rennen \nund keine Sturmangriffe ausführen und erhält einen Malus \nvon – 6 auf Stärke und Geschicklichkeit. Hat ein entkräfteter \nCharakter sich 1 Stunde lang ausgeruht, ist er nur noch \nerschöpft. Ein erschöpfter Charakter wird wieder entkräftet, \nwenn er etwas macht, das ihn normalerweise erschöpfen \nwürde.",
+    "quelle": "GRW S. 566",
+    "boni": [
+      {
+        "ziel": "Angriff Nah",
+        "bonusart": "Modifikator Attribut",
+        "wert": -3
+      },
+      {
+        "ziel": "Angriff Fern",
+        "bonusart": "Modifikator Attribut",
+        "wert": -3
+      },
+      {
+        "ziel": "Schaden Nah",
+        "bonusart": "Modifikator Attribut",
+        "wert": -3
+      },
+      {
+        "ziel": "Rüstungsklasse",
+        "bonusart": "Modifikator Attribut",
+        "wert": -3
+      },
+      {
+        "ziel": "RW-Reflex",
+        "bonusart": "Modifikator Attribut",
+        "wert": -3
+      },
+      {
+        "ziel": "KMB",
+        "bonusart": "Modifikator Attribut",
+        "wert": -3
+      },
+      {
+        "ziel": "KMV",
+        "bonusart": "Modifikator Attribut",
+        "wert": -3
+      }
+    ],
+    "gebiet": "selbst",
+    "dauer": "Nach Angabe SL"
+  },
+  {
+    "id": "standard-admin-5d7d2cfa-c27a-41f9-9e4e-da1ea6f9cd48",
+    "name": "Erschöpft",
+    "kategorie": "Zustände",
+    "aktiv": false,
+    "beschreibung": "Erschöpft: \nEin erschöpfter Charakter kann weder rennen, \nnoch Sturmangriffe ausführen und erhält einen Malus von \n– 2 auf Stärke und Geschicklichkeit. Macht der Erschöpfte\nirgendetwas, das ihn normalerweise erschöpfen würde, wird \ner dadurch entkräftet. Hat der Charakter sich 8 Stunden lang \nausgeruht, ist er nicht länger erschöpft.",
+    "quelle": "GRW S. 566",
+    "boni": [
+      {
+        "ziel": "Angriff Nah",
+        "bonusart": "Modifikator Attribut",
+        "wert": -1
+      },
+      {
+        "ziel": "Angriff Fern",
+        "bonusart": "Modifikator Attribut",
+        "wert": -1
+      },
+      {
+        "ziel": "Schaden Nah",
+        "bonusart": "Modifikator Attribut",
+        "wert": -1
+      },
+      {
+        "ziel": "RW-Reflex",
+        "bonusart": "Modifikator Attribut",
+        "wert": -1
+      },
+      {
+        "ziel": "KMB",
+        "bonusart": "Modifikator Attribut",
+        "wert": -1
+      },
+      {
+        "ziel": "KMV",
+        "bonusart": "Modifikator Attribut",
+        "wert": -1
+      }
+    ],
+    "gebiet": "selbst",
+    "dauer": "Nach Angabe SL"
+  },
+  {
     "id": "standard-admin-ffecdf13-9ca0-470d-9a35-48a17c5eda1b",
     "name": "Erschütter",
     "kategorie": "Zustände",
@@ -612,6 +701,23 @@
     "dauer": "10 Min./Stufe"
   },
   {
+    "id": "standard-admin-7f01bbe9-eb55-45d8-94b5-142b31a4e7ec",
+    "name": "Im Haltegriff",
+    "kategorie": "Zustände",
+    "aktiv": false,
+    "beschreibung": "Im Haltegriff: Eine Kreatur im Haltegriff ist tatsächlich \nfest verschnürt und kann nur wenige Aktionen unternehmen. \nSie kann sich nicht bewegen und verliert ihren GE­Bonus \nund erhält zusätzlich noch einen Malus von – 4 auf ihre RK. \nEine Kreatur im Haltegriff kann nur einige wenige Aktionen \nausführen: Sie kann versuchen sich zu befreien, entweder mit\nHilfe eines Kampfmanöverwurfs oder mit einem Wurf auf \nEntfesslungskunst. Sie kann verbale und geistige Aktionen \nausführen, aber keine Zauber wirken, die eine Gesten­ oder eine \nMaterialkomponente benötigen. Eine Kreatur im Haltegriff, \ndie einen Zauber wirken oder Zauberähnliche Fähigkeiten \neinsetzen möchte, muss einen Konzentrationswurf (SG 10 \n+ KMB desjenigen, der sie im Haltegriff hat + Zaubergrad) \nmachen. Bei einem Fehlschlag geht der Zauber verloren. Im \nHaltegriff ist eine schwerwiegendere Version des Zustands \nringend und die beiden Zustände sind nicht kumulativ.",
+    "quelle": "GRW S. 566-567",
+    "boni": [
+      {
+        "ziel": "Rüstungsklasse",
+        "bonusart": "Malus",
+        "wert": -4
+      }
+    ],
+    "gebiet": "selbst",
+    "dauer": "Nach Angabe SL"
+  },
+  {
     "id": "standard-admin-52da5c4d-f682-4193-be6e-d7e1faadbbfc",
     "name": "Kampfrausch (Barbar, +4 ST und. KO (Moralbonus))",
     "kategorie": "Klassenmerkmale",
@@ -684,6 +790,53 @@
     ],
     "gebiet": "",
     "dauer": "1 Min./Stufe"
+  },
+  {
+    "id": "standard-admin-216039b2-705a-45b6-aac7-fecc4e830b95",
+    "name": "Kränkelnd",
+    "kategorie": "Zustände",
+    "aktiv": false,
+    "beschreibung": "Kränkelnd: \nDer betroffene Charakter erhält einen Malus \nvon – 2 auf alle Angriffs­, Waffenschadens­, Rettungs­, Fertig­\nkeits­ und Attributswürfe.",
+    "quelle": "GRW S. 567",
+    "boni": [
+      {
+        "ziel": "Angriff Nah",
+        "bonusart": "Malus",
+        "wert": -2
+      },
+      {
+        "ziel": "Angriff Fern",
+        "bonusart": "Malus",
+        "wert": -2
+      },
+      {
+        "ziel": "Schaden Nah",
+        "bonusart": "Malus",
+        "wert": -2
+      },
+      {
+        "ziel": "Schaden Fern",
+        "bonusart": "Malus",
+        "wert": -2
+      },
+      {
+        "ziel": "RW-Reflex",
+        "bonusart": "Malus",
+        "wert": -2
+      },
+      {
+        "ziel": "RW-Wille",
+        "bonusart": "Malus",
+        "wert": -2
+      },
+      {
+        "ziel": "RW-Zähigkeit",
+        "bonusart": "Malus",
+        "wert": -2
+      }
+    ],
+    "gebiet": "selbst",
+    "dauer": "Nach Angabe SL"
   },
   {
     "id": "standard-admin-a1f984c4-9052-41b2-b659-018f8dae76f6",
@@ -1146,6 +1299,38 @@
     "dauer": "10 Min./Stufe"
   },
   {
+    "id": "standard-admin-1799d8bc-b469-4ed6-8016-45c5c00e3da8",
+    "name": "Ringend",
+    "kategorie": "Zustände",
+    "aktiv": false,
+    "beschreibung": "Ringend: \nEine ringende Kreatur wird durch eine andere \nKreatur, eine Falle oder einen Effekt festgehalten. Ringende \nKreaturen können sich nicht bewegen und erhalten einen \nMalus von – 4 auf ihre Geschicklichkeit. Außerdem erhält eine \nringende Kreatur einen Malus von – 2 auf alle Angriffs­ und \nKampfmanöverwürfe, außer auf solche, um selbst jemanden \nin den Ringkampf zu verwickeln oder dem ringenden Zustand \nzu entkommen. Des Weiteren können ringende Kreaturen \nkeine Aktionen ausführen, für die sie beide Hände bräuchten. \nEin ringender Charakter, der zaubern oder Zauberähnliche \nFähigkeiten einsetzen möchte, muss einen Konzentrationswurf \n(SG 10 + KMB desjenigen, der ihn in den Ringkampf verwickelt \nhat + Zaubergrad) machen. Misslingt dieser Wurf, geht \nder Zauber verloren. Ringende Kreaturen können keine \nGelegenheitsangriffe ausführen.\nEiner ringenden Kreatur ist es nicht möglich, Heimlichkeit \neinzusetzen, um sich vor demjenigen zu verstecken, der sie \nin den Ringkampf verwickelt hat, selbst wenn eine besondere \nFähigkeit, wie etwa Meisterliches Verstecken, ihr dies erlauben \nwürde. Wenn eine ringende Kreatur unsichtbar wird, entweder \nmit Hilfe eines Zaubers oder einer anderen Fähigkeit, erhält sie \neinen Situationsbonus von +2 auf ihre KMV, um den Ringkampf \nzu vermeiden. Ansonsten erhält sie keine Vorteile.",
+    "quelle": "GRW S. 567",
+    "boni": [
+      {
+        "ziel": "Rüstungsklasse",
+        "bonusart": "Modifikator Attribut",
+        "wert": -2
+      },
+      {
+        "ziel": "KMV",
+        "bonusart": "Modifikator Attribut",
+        "wert": -2
+      },
+      {
+        "ziel": "Angriff Nah",
+        "bonusart": "Malus",
+        "wert": -2
+      },
+      {
+        "ziel": "KMB",
+        "bonusart": "Malus",
+        "wert": -2
+      }
+    ],
+    "gebiet": "selbst",
+    "dauer": "Nach Angabe SL"
+  },
+  {
     "id": "standard-admin-11cf5018-7753-41e4-b670-bfb644036ce5",
     "name": "Rüstungsarmschienen +3",
     "kategorie": "Ausrüstung",
@@ -1421,6 +1606,38 @@
     ],
     "gebiet": "Reichweite Eidolon",
     "dauer": "in Reichweite"
+  },
+  {
+    "id": "standard-admin-2c1006cb-9b9e-44fb-8dd0-f52a66dbbaa8",
+    "name": "Verstrickt",
+    "kategorie": "Zustände",
+    "aktiv": false,
+    "beschreibung": "Verstrickt: \nEin verstrickter Charakter ist in seiner Bewegung \neingeschränkt. Solange seine Fesseln nicht an einem unbeweg­\nlichen Objekt befestigt sind oder von einer Kraft festgehalten \nwerden, kann er sich aber noch bewegen. Eine verstrickte \nKreatur bewegt sich mit ihrer halben Bewegungsrate, kann \nnicht rennen oder Sturmangriffe ausführen, erhält einen \nMalus von – 2 auf alle Angriffswürfe und einen Malus von \n– 4 auf Geschicklichkeit. Ein verstrickter Charakter, der \nversucht, einen Zauber zu wirken, muss einen erfolgreichen \nKonzentrationswurf (SG 15 + Zaubergrad) machen, oder er \nverliert den Zauber.",
+    "quelle": "GRW S. 568",
+    "boni": [
+      {
+        "ziel": "Angriff Nah",
+        "bonusart": "Malus",
+        "wert": -2
+      },
+      {
+        "ziel": "Angriff Fern",
+        "bonusart": "Modifikator Attribut",
+        "wert": -2
+      },
+      {
+        "ziel": "Rüstungsklasse",
+        "bonusart": "Modifikator Attribut",
+        "wert": -2
+      },
+      {
+        "ziel": "KMV",
+        "bonusart": "Modifikator Attribut",
+        "wert": -2
+      }
+    ],
+    "gebiet": "selbst",
+    "dauer": "Nach Angabe SL"
   },
   {
     "id": "standard-admin-6ea6c7d8-5f39-4abc-89bc-13581aeb29e2",
