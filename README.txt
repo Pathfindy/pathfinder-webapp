@@ -1,29 +1,17 @@
-COMMIT 25 – KOMFORTFUNKTIONEN, BONUSDETAILS UND CHARAKTERWECHSEL
+COMMIT 25.1 – KORRIGIERTE WIEDERHERSTELLUNG
 
-Enthalten:
-- index.html
-- js/commit25.js
-- css/commit25.css
+Diese Datei basiert ausdrücklich auf der funktionierenden Commit-25-index.html.
 
-Umgesetzt:
-1. Effektbanner:
-   - Aktiv-Häkchen links
-   - Favoritenstern rechts
-   - Favoritenstern kleiner
-2. Langes Antippen eines Effektbanners öffnet/schließt Beschreibung und Quelle.
-3. Suche, Kategorie, Nur aktive und Nur Favoriten sind kompakt und fixiert.
-4. Dashboardkarten zeigen beim Antippen die beteiligten Boni, Bonusarten und Effekte.
-5. Angriffs- und Schadenswerte auf der Werte-Seite zeigen dieselben Bonusdetails.
-6. Eine fixierte Charakterauswahl ermöglicht den Wechsel auf jeder Seite.
+Geändert wurde ausschließlich:
+- alte Charakterzeile auf dem Dashboard entfernt
+- alte Charakterzeile auf der Werte-Seite entfernt
+- alte Charakterzeile auf der Charaktere-Seite entfernt
+
+Alle Commit-25-Einbindungen bleiben erhalten.
 
 Installation:
-1. index.html im Hauptverzeichnis ersetzen.
-2. js/commit25.js in den Ordner js hochladen.
-3. css/commit25.css in den Ordner css hochladen.
-4. Commit-Nachricht:
-   Commit 25: Komfortfunktionen, Bonusdetails und globaler Charakterwechsel
-5. GitHub Pages abwarten und die App mit Strg+F5 neu laden.
-
-Hinweis:
-Die Bonusdetailansicht kennzeichnet bei nicht stapelbaren Bonusarten Werte,
-die aufgrund der bestehenden Stapelregeln nicht berücksichtigt werden.
+1. Nur die enthaltene index.html in das Hauptverzeichnis des Repositorys hochladen.
+2. Die bestehende index.html ersetzen.
+3. Commit-Nachricht:
+   Commit 25.1: Charakteranzeige ohne Funktionsverlust bereinigt
+4. GitHub Pages abwarten und Strg+F5 drücken.
