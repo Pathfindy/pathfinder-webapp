@@ -1,43 +1,42 @@
-COMMIT 27 – SPEZIAL-RETTUNGSWÜRFE ABLEITEN
+COMMIT 27.1 – VERIFIZIERTER FIX DER UNTERRETTUNGSWÜRFE
 
 Enthalten:
 - index.html
 - js/commit26.js
 - css/commit27.css
 
-Neue Berechnung:
-- RW-Furcht basiert auf RW-Wille.
-- RW-Bezauberung basiert auf RW-Wille.
-- RW-Verzauberung basiert auf RW-Wille.
-- RW-Gift basiert auf RW-Zähigkeit.
-
-Die Spezial-Rettungswürfe besitzen kein eigenes Grundwertfeld mehr.
-Sie werden eingerückt unter dem jeweiligen Basis-Rettungswurf angezeigt.
+Korrektur:
+- RW-Wille verwendet ausschließlich Boni mit Ziel RW-Wille.
+- RW-Zähigkeit verwendet ausschließlich Boni mit Ziel RW-Zähigkeit.
+- RW-Furcht verwendet ausschließlich RW-Wille-Boni und RW-Furcht-Boni.
+- RW-Bezauberung verwendet ausschließlich RW-Wille-Boni und RW-Bezauberung-Boni.
+- RW-Verzauberung verwendet ausschließlich RW-Wille-Boni und RW-Verzauberung-Boni.
+- RW-Gift verwendet ausschließlich RW-Zähigkeit-Boni und RW-Gift-Boni.
+- Ein Spezialbonus wirkt weder auf den Basis-Rettungswurf noch auf andere
+  Unterrettungswürfe.
 
 Stapelregeln:
-Für einen Spezial-Rettungswurf werden die Boni auf den Basis-Rettungswurf und
-die speziellen Boni gemeinsam ausgewertet. Boni desselben nicht stapelbaren
-Bonustyps werden nicht addiert; nur der höchste positive Bonus und der
-stärkste Malus dieses Typs werden berücksichtigt. Stapelbare Bonusarten
-werden weiterhin addiert.
+Die relevanten Basis- und Spezialboni werden für jeden Unterrettungswurf
+separat zusammengestellt und anschließend gemeinsam nach Bonusart ausgewertet.
 
 Beispiel:
-- +2 Widerstand auf RW-Wille
-- +4 Widerstand gegen Furcht
-Ergebnis für RW-Furcht: Es gilt +4, nicht +6.
+Grundwert RW-Wille 8
++4 Moral auf RW-Furcht
 
-Dashboard:
-Die vier Spezial-Rettungswürfe werden ebenfalls aus Wille bzw. Zähigkeit
-und den anwendbaren Spezialboni berechnet.
+Ergebnis:
+RW-Wille        8
+RW-Furcht       12
+RW-Bezauberung  8
+RW-Verzauberung 8
 
-Bestehende Daten:
-Alte separat gespeicherte Grundwerte für Furcht, Gift, Bezauberung und
-Verzauberung werden nicht mehr verwendet, aber nicht aus dem Export gelöscht.
+Wichtig:
+Die Cache-Version von js/commit26.js wurde auf 27.1 erhöht. Dadurch lädt der
+Browser auf Smartphones tatsächlich die korrigierte Datei.
 
 Installation:
 1. index.html im Hauptverzeichnis ersetzen.
 2. js/commit26.js ersetzen.
-3. css/commit27.css in den Ordner css hochladen.
+3. css/commit27.css kann unverändert erneut hochgeladen werden.
 4. Commit-Nachricht:
-   Commit 27: Spezial-Rettungswürfe von Wille und Zähigkeit ableiten
-5. GitHub Pages abwarten und die App neu laden.
+   Commit 27.1: Unterrettungswürfe strikt getrennt berechnen
+5. GitHub Pages abwarten und die App vollständig neu öffnen.
