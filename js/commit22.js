@@ -107,11 +107,30 @@
       .replace(/\s+/g, " ");
   }
 
+  function normalisiereEffektId(wert) {
+    if (wert === null || typeof wert === "undefined") return "";
+    return String(wert).trim();
+  }
+
+  function bonusSignatur(bonus = {}) {
+    const wert = Number(bonus.wert);
+    return [
+      normalisiereVergleichstext(bonus.ziel),
+      normalisiereVergleichstext(bonus.bonusart),
+      Number.isFinite(wert) ? String(wert) : "0"
+    ].join(":");
+  }
+
   function effektSignatur(effekt = {}) {
+    const boni = Array.isArray(effekt.boni)
+      ? effekt.boni.map(bonusSignatur).sort().join(";")
+      : "";
+
     return [
       normalisiereVergleichstext(effekt.name),
       normalisiereVergleichstext(effekt.kategorie),
-      normalisiereVergleichstext(effekt.quelle)
+      normalisiereVergleichstext(effekt.quelle),
+      boni
     ].join("|");
   }
 
@@ -179,7 +198,7 @@
         standard: false,
         aktiv: false
       });
-      const id = String(effekt.id || "");
+      const id = normalisiereEffektId(effekt.id);
       const signatur = effektSignatur(effekt);
 
       let vorhandenerIndex = id && nachId.has(id)
@@ -234,9 +253,7 @@
       if (!roheffekt || typeof roheffekt !== "object") return;
 
       const importId =
-        typeof roheffekt.id === "string" && roheffekt.id
-          ? roheffekt.id
-          : neueEffektId();
+        normalisiereEffektId(roheffekt.id) || neueEffektId();
 
       const importiert = normalisiereEffekt({
         ...roheffekt,
@@ -249,7 +266,7 @@
       const indexAlle = effekte.findIndex(eintrag =>
         !eintrag.standard &&
         (
-          String(eintrag.id) === String(importId) ||
+          normalisiereEffektId(eintrag.id) === normalisiereEffektId(importId) ||
           effektSignatur(eintrag) === signatur
         )
       );
@@ -263,14 +280,21 @@
           standard: false,
           aktiv: false
         });
-        idZuBehalten.set(String(importId), String(bestehendeId));
+        idZuBehalten.set(
+          normalisiereEffektId(importId),
+          normalisiereEffektId(bestehendeId)
+        );
       } else {
         effekte.push(importiert);
-        idZuBehalten.set(String(importId), String(importiert.id));
+        idZuBehalten.set(
+          normalisiereEffektId(importId),
+          normalisiereEffektId(importiert.id)
+        );
       }
     });
 
     speichereAktuelleBenutzerEffekte();
+    bereinigeDoppelteBenutzerEffekte();
     migriereFavoritenIds(idZuBehalten);
     return idZuBehalten;
   }

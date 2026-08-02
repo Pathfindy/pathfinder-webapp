@@ -8,7 +8,8 @@
       ziel: "Rüstungsklasse",
       label: "Rüstungsklasse",
       gruppe: "Rüstungsklasse",
-      eingabe: true
+      eingabe: true,
+      notizKey: "notizen.rk"
     },
     {
       key: "rw.reflex",
@@ -68,14 +69,16 @@
       ziel: "KMB",
       label: "KMB",
       gruppe: "Kampfmanöver",
-      eingabe: true
+      eingabe: true,
+      notizKey: "notizen.kmb"
     },
     {
       key: "kmv",
       ziel: "KMV",
       label: "KMV",
       gruppe: "Kampfmanöver",
-      eingabe: true
+      eingabe: true,
+      notizKey: "notizen.kmv"
     }
   ];
 
@@ -129,6 +132,21 @@
         rk: ganzeZahl(kampfwerteQuelle.rk ?? basis.kampfwerte?.rk),
         kmb: ganzeZahl(kampfwerteQuelle.kmb ?? basis.kampfwerte?.kmb),
         kmv: ganzeZahl(kampfwerteQuelle.kmv ?? basis.kampfwerte?.kmv),
+        notizen: {
+          ...(basis.kampfwerte?.notizen || {}),
+          rk:
+            typeof kampfwerteQuelle.notizen?.rk === "string"
+              ? kampfwerteQuelle.notizen.rk
+              : "",
+          kmb:
+            typeof kampfwerteQuelle.notizen?.kmb === "string"
+              ? kampfwerteQuelle.notizen.kmb
+              : "",
+          kmv:
+            typeof kampfwerteQuelle.notizen?.kmv === "string"
+              ? kampfwerteQuelle.notizen.kmv
+              : ""
+        },
         rw: {
           ...(basis.kampfwerte?.rw || {}),
           reflex: ganzeZahl(rwQuelle.reflex ?? basis.kampfwerte?.rw?.reflex),
@@ -321,6 +339,32 @@
 
             zeile.append(label, mitte, gesamt);
             gruppe.appendChild(zeile);
+
+            if (eintrag.notizKey) {
+              const notizFeld = document.createElement("textarea");
+              notizFeld.className = "grundwert-notiz-28";
+              notizFeld.rows = 3;
+              notizFeld.placeholder = "Freitext …";
+              notizFeld.dataset.notizKey = eintrag.notizKey;
+              notizFeld.setAttribute(
+                "aria-label",
+                `Freitext zu ${eintrag.label}`
+              );
+
+              notizFeld.addEventListener("input", () => {
+                const charakter = aktiverCharakter();
+                if (!charakter) return;
+
+                schreibePfad(
+                  charakter.kampfwerte,
+                  eintrag.notizKey,
+                  notizFeld.value
+                );
+                speichereCharaktere();
+              });
+
+              gruppe.appendChild(notizFeld);
+            }
           });
 
         bereich.appendChild(gruppe);
@@ -499,6 +543,19 @@
           gesamtwertFuer(eintrag, charakter, ergebnis)
         );
       });
+
+    document.querySelectorAll(".grundwert-notiz-28").forEach(notizFeld => {
+      if (!charakter) {
+        notizFeld.disabled = true;
+        notizFeld.value = "";
+        return;
+      }
+
+      notizFeld.disabled = false;
+      notizFeld.value = String(
+        lesePfad(charakter.kampfwerte, notizFeld.dataset.notizKey) || ""
+      );
+    });
   }
 
   function initialisiereCommit27() {
