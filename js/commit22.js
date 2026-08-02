@@ -100,42 +100,196 @@
     };
   }
 
-  function importiereBenutzerEffekte(importierteEffekte) {
-    if (!Array.isArray(importierteEffekte) || importierteEffekte.length === 0) return;
+  function normalisiereVergleichstext(wert) {
+    return String(wert || "")
+      .trim()
+      .toLocaleLowerCase("de-DE")
+      .replace(/\s+/g, " ");
+  }
 
-    const vorhandene = typeof listeBenutzerEffekte === "function"
-      ? listeBenutzerEffekte()
-      : [];
+  function effektSignatur(effekt = {}) {
+    return [
+      normalisiereVergleichstext(effekt.name),
+      normalisiereVergleichstext(effekt.kategorie),
+      normalisiereVergleichstext(effekt.quelle)
+    ].join("|");
+  }
+
+  function ladeAlleFavoriten25_2() {
+    try {
+      const daten = JSON.parse(
+        localStorage.getItem("pf-charakter-favoriten") || "{}"
+      );
+      return daten && typeof daten === "object" && !Array.isArray(daten)
+        ? daten
+        : {};
+    } catch {
+      return {};
+    }
+  }
+
+  function migriereFavoritenIds(idZuBehalten) {
+    if (!(idZuBehalten instanceof Map) || idZuBehalten.size === 0) return;
+
+    const alleFavoriten = ladeAlleFavoriten25_2();
+    let geaendert = false;
+
+    Object.keys(alleFavoriten).forEach(charakterId => {
+      if (!Array.isArray(alleFavoriten[charakterId])) return;
+
+      const ersetzt = alleFavoriten[charakterId].map(id =>
+        idZuBehalten.get(String(id)) || String(id)
+      );
+      const eindeutig = [...new Set(ersetzt)];
+
+      if (
+        eindeutig.length !== alleFavoriten[charakterId].length ||
+        eindeutig.some((id, index) => id !== alleFavoriten[charakterId][index])
+      ) {
+        alleFavoriten[charakterId] = eindeutig;
+        geaendert = true;
+      }
+    });
+
+    if (geaendert) {
+      localStorage.setItem(
+        "pf-charakter-favoriten",
+        JSON.stringify(alleFavoriten)
+      );
+    }
+  }
+
+  function bereinigeDoppelteBenutzerEffekte() {
+    if (typeof ladeBenutzerEffekte !== "function") return false;
+
+    const roh = ladeBenutzerEffekte();
+    if (!Array.isArray(roh) || roh.length < 2) return false;
+
+    const nachId = new Map();
+    const nachSignatur = new Map();
+    const bereinigt = [];
+    const idZuBehalten = new Map();
+    let geaendert = false;
+
+    roh.forEach(roheffekt => {
+      if (!roheffekt || typeof roheffekt !== "object") return;
+
+      const effekt = normalisiereEffekt({
+        ...roheffekt,
+        standard: false,
+        aktiv: false
+      });
+      const id = String(effekt.id || "");
+      const signatur = effektSignatur(effekt);
+
+      let vorhandenerIndex = id && nachId.has(id)
+        ? nachId.get(id)
+        : nachSignatur.get(signatur);
+
+      if (typeof vorhandenerIndex === "number") {
+        const vorhanden = bereinigt[vorhandenerIndex];
+        idZuBehalten.set(id, vorhanden.id);
+
+        bereinigt[vorhandenerIndex] = normalisiereEffekt({
+          ...effekt,
+          ...vorhanden,
+          id: vorhanden.id,
+          standard: false,
+          aktiv: false,
+          beschreibung: vorhanden.beschreibung || effekt.beschreibung || "",
+          quelle: vorhanden.quelle || effekt.quelle || "",
+          gebiet: vorhanden.gebiet || effekt.gebiet || "",
+          dauer: vorhanden.dauer || effekt.dauer || "",
+          boni:
+            Array.isArray(vorhanden.boni) && vorhanden.boni.length
+              ? vorhanden.boni
+              : effekt.boni
+        });
+        geaendert = true;
+        return;
+      }
+
+      const neuerIndex = bereinigt.length;
+      bereinigt.push(effekt);
+      if (id) nachId.set(id, neuerIndex);
+      nachSignatur.set(signatur, neuerIndex);
+    });
+
+    if (!geaendert) return false;
+
+    speichereBenutzerEffekte(bereinigt);
+    migriereFavoritenIds(idZuBehalten);
+    return true;
+  }
+
+  function importiereBenutzerEffekte(importierteEffekte) {
+    const idZuBehalten = new Map();
+    if (!Array.isArray(importierteEffekte) || importierteEffekte.length === 0) {
+      return idZuBehalten;
+    }
+
+    bereinigeDoppelteBenutzerEffekte();
 
     importierteEffekte.forEach(roheffekt => {
       if (!roheffekt || typeof roheffekt !== "object") return;
 
-      const id = typeof roheffekt.id === "string" && roheffekt.id
-        ? roheffekt.id
-        : neueEffektId();
+      const importId =
+        typeof roheffekt.id === "string" && roheffekt.id
+          ? roheffekt.id
+          : neueEffektId();
 
-      const effekt = normalisiereEffekt({
+      const importiert = normalisiereEffekt({
         ...roheffekt,
-        id,
+        id: importId,
         standard: false,
         aktiv: false
       });
 
-      const indexAlle = effekte.findIndex(eintrag => eintrag.id === id);
+      const signatur = effektSignatur(importiert);
+      const indexAlle = effekte.findIndex(eintrag =>
+        !eintrag.standard &&
+        (
+          String(eintrag.id) === String(importId) ||
+          effektSignatur(eintrag) === signatur
+        )
+      );
+
       if (indexAlle >= 0) {
-        if (!effekte[indexAlle].standard) effekte[indexAlle] = effekt;
+        const bestehendeId = effekte[indexAlle].id;
+        effekte[indexAlle] = normalisiereEffekt({
+          ...effekte[indexAlle],
+          ...importiert,
+          id: bestehendeId,
+          standard: false,
+          aktiv: false
+        });
+        idZuBehalten.set(String(importId), String(bestehendeId));
       } else {
-        effekte.push(effekt);
+        effekte.push(importiert);
+        idZuBehalten.set(String(importId), String(importiert.id));
       }
     });
 
     speichereAktuelleBenutzerEffekte();
+    migriereFavoritenIds(idZuBehalten);
+    return idZuBehalten;
   }
 
   function speichereImportStatus(charakterId, status) {
     const alleStatus = ladeAlleCharakterStatus();
     alleStatus[charakterId] = { ...normalisiereStatus(status) };
     speichereAlleCharakterStatus(alleStatus);
+  }
+
+  function mappeImportFavoriten(favoriten, idZuBehalten) {
+    if (!Array.isArray(favoriten)) return [];
+    return [...new Set(
+      favoriten.map(id =>
+        idZuBehalten instanceof Map
+          ? idZuBehalten.get(String(id)) || String(id)
+          : String(id)
+      )
+    )];
   }
 
   function speichereImportFavoriten(charakterId, favoriten) {
@@ -160,7 +314,7 @@
   }
 
   function alsNeuenCharakterImportieren(importDaten) {
-    importiereBenutzerEffekte(importDaten.benutzerEffekte);
+    const idZuBehalten = importiereBenutzerEffekte(importDaten.benutzerEffekte);
 
     const charakter = normalisiereCharakter({
       ...sichereKopie(importDaten.charakter),
@@ -170,7 +324,10 @@
     charaktere.push(charakter);
     aktiverCharakterId = charakter.id;
     speichereImportStatus(charakter.id, importDaten.effektStatus);
-    speichereImportFavoriten(charakter.id, importDaten.favoriten);
+    speichereImportFavoriten(
+      charakter.id,
+      mappeImportFavoriten(importDaten.favoriten, idZuBehalten)
+    );
     aktualisiereNachImport();
     alert(`„${charakter.name}“ wurde als neuer Charakter importiert.`);
   }
@@ -182,7 +339,7 @@
       return;
     }
 
-    importiereBenutzerEffekte(importDaten.benutzerEffekte);
+    const idZuBehalten = importiereBenutzerEffekte(importDaten.benutzerEffekte);
 
     const index = charaktere.findIndex(charakter => charakter.id === ziel.id);
     if (index < 0) return;
@@ -194,7 +351,10 @@
 
     charaktere[index] = importiert;
     speichereImportStatus(ziel.id, importDaten.effektStatus);
-    speichereImportFavoriten(ziel.id, importDaten.favoriten);
+    speichereImportFavoriten(
+      ziel.id,
+      mappeImportFavoriten(importDaten.favoriten, idZuBehalten)
+    );
     aktualisiereNachImport();
     alert(`Der aktive Charakter wurde durch „${importiert.name}“ ersetzt.`);
   }
@@ -264,6 +424,11 @@
   }
 
   function initialisiereCommit22() {
+    const wurdeBereinigt = bereinigeDoppelteBenutzerEffekte();
+    if (wurdeBereinigt && typeof ladeEffekte === "function") {
+      ladeEffekte();
+    }
+
     const seitenkopf = document.querySelector("#charaktere .seitenkopf");
     const neuerCharakter = document.getElementById("btnNeuerCharakter");
     if (!seitenkopf || !neuerCharakter || document.getElementById("btnCharakterExport")) return;
