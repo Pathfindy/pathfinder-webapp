@@ -1,0 +1,25 @@
+/* Commit 28: Notizfelder für RK, KMB und KMV */
+
+.grundwert-notiz-28 {
+    width: 100%;
+    min-height: 76px;
+    margin: 0 4px 12px;
+    padding: 9px 10px;
+    border: 1px solid #b8c0ca;
+    border-radius: 8px;
+    background: white;
+    font: inherit;
+    line-height: 1.35;
+    resize: vertical;
+}
+
+.grundwert-notiz-28:focus {
+    border-color: #6f8fb2;
+    outline: 2px solid rgba(111, 143, 178, .24);
+}
+
+@media (max-width: 520px) {
+    .grundwert-notiz-28 {
+        margin-inline: 0;
+    }
+}
