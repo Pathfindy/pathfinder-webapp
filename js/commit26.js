@@ -40,6 +40,10 @@
     return zahl > 0 ? `+${zahl}` : String(zahl);
   }
 
+  function formatiereGesamtwert(wert) {
+    return String(ganzeZahlOderNull(wert));
+  }
+
   const bisherigeNormalisierung = normalisiereCharakter;
   normalisiereCharakter = function (charakter = {}) {
     const basis = bisherigeNormalisierung(charakter);
@@ -148,7 +152,7 @@
       bereich.appendChild(gruppe);
     });
 
-    angriffe.before(bereich);
+    angriffe.after(bereich);
   }
 
   function bewerteteBoni(ziel) {
@@ -222,7 +226,7 @@
     summe.className = "bonus-detail-summe";
     summe.textContent =
       `Grundwert ${formatiereWert(grundwert)} + Boni ${formatiereWert(bonusGesamt)}` +
-      ` = ${formatiereWert(grundwert + bonusGesamt)}`;
+      ` = ${formatiereGesamtwert(grundwert + bonusGesamt)}`;
     inhalt.appendChild(summe);
 
     if (boni.length === 0) {
@@ -278,7 +282,7 @@
       gesamt.disabled = false;
       const grundwert = ganzeZahlOderNull(lesePfad(charakter.kampfwerte, key));
       input.value = String(grundwert);
-      gesamt.textContent = formatiereWert(
+      gesamt.textContent = formatiereGesamtwert(
         grundwert + Number(boni[ziel] || 0)
       );
     });
