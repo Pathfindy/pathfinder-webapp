@@ -21,7 +21,7 @@
     "name": "Bärenstärke",
     "kategorie": "Zauber",
     "aktiv": false,
-    "beschreibung": "BÄRENSTÄRKE\nSchule: Verwandlung; Grad: KLE 2, DRU 2, PAL 2, HXM/MAG 2\nZeitaufwand: 1 Standard-Aktion\nKomponenten: V, G, M/GF (ein paar Haare oder ein wenig Dung \nvon einem Bären)\nReichweite: Berührung\nZiel: Berührte Kreatur\nWirkungsdauer: 1 Min./Stufe\nRettungswurf: Willen, keine Wirkung (harmlos);  \nZauberresistenz: Ja (harmlos) \nDas Ziel wird stärker. Der Zauber verleiht einen Verbesserungsbonus \nvon +4 auf Stärke, was auch die üblichen Vorteile für Nahkampf-\n\nangriffe, Schadenswürfe im Nahkampf und andere Verwendungen \ndes Stärkemodifikators mit sich bringt.",
+    "beschreibung": "BÄRENSTÄRKE\n\nSchule: Verwandlung; Grad: KLE 2, DRU 2, PAL 2, HXM/MAG 2\nZeitaufwand: 1 Standard-Aktion\nKomponenten: V, G, M/GF (ein paar Haare oder ein wenig Dung \nvon einem Bären)\nReichweite: Berührung\nZiel: Berührte Kreatur\nWirkungsdauer: 1 Min./Stufe\nRettungswurf: Willen, keine Wirkung (harmlos);  \nZauberresistenz: Ja (harmlos) \n\nDas Ziel wird stärker. Der Zauber verleiht einen Verbesserungsbonus \nvon +4 auf Stärke, was auch die üblichen Vorteile für Nahkampf-\nangriffe, Schadenswürfe im Nahkampf und andere Verwendungen \ndes Stärkemodifikators mit sich bringt.",
     "quelle": "GRW S.249",
     "boni": [
       {
@@ -33,6 +33,11 @@
         "ziel": "Schaden Nah",
         "bonusart": "Modifikator Attribut",
         "wert": 2
+      },
+      {
+        "ziel": "KMB",
+        "bonusart": "Modifikator Attribut",
+        "wert": 2
       }
     ],
     "gebiet": "",
@@ -40,10 +45,10 @@
   },
   {
     "id": "standard-admin-73cd1beb-c64e-449c-a225-3603b93bde5a",
-    "name": "Defensiv Kämpfen",
+    "name": "Defensiv kämpfen",
     "kategorie": "Kampf",
     "aktiv": false,
-    "beschreibung": "",
+    "beschreibung": "Defensiv kämpfen als Standard-Aktion: Du kannst dich \ndazu entscheiden defensiv zu kämpfen. In diesem Fall erhältst \ndu einen Malus von – 4 auf alle Angriffe in deiner Runde \nund gewinnst bis zum Beginn deines nächsten Zuges einen \nAusweichbonus +2  auf deine RK.",
     "quelle": "GRW S. 184",
     "boni": [
       {
@@ -53,6 +58,16 @@
       },
       {
         "ziel": "Rüstungsklasse",
+        "bonusart": "Ausweichen",
+        "wert": 2
+      },
+      {
+        "ziel": "KMB",
+        "bonusart": "Malus",
+        "wert": -4
+      },
+      {
+        "ziel": "KMV",
         "bonusart": "Ausweichen",
         "wert": 2
       }
@@ -82,11 +97,16 @@
     "name": "Flankieren / In die Zange nehmen",
     "kategorie": "Kampf",
     "aktiv": false,
-    "beschreibung": "Verbündeter auf der gegenüberliegenden Seite des Gegners.\nVerbündeter bedroht von dort den Gegner.",
+    "beschreibung": "Wenn du einen Nahkampfangriff ausführst, erhältst du \neinen Zangenbonus von +2, falls dein Gegner von einem \nanderen ihm feindlich gesinnten Charakter oder Wesenbedroht wird, der sich auf der gegenüberliegenden Seite \ndes Gegners befindet.\nUm herauszufinden, ob zwei verbündete Charaktere einen \nGegner in ihrer Mitte in die Zange nehmen, ziehst du eine \nimaginäre Linie zwischen den Mittelpunkten der Felder, \nin denen sich die verbündeten Charaktere befinden. Wenn \ndiese Linie durch gegenüberliegende Seiten des Feldes des \nGegners verläuft (was die Ecken dieser Seiten mit einschließt), \nwird der Gegner in die Zange genommen. \nAusnahme: Wenn eine der Kreaturen, die in die Zange \nnehmen, mehr als 1 Feld besetzt, dann bekommt sie den \nZangenbonus, wenn auch nur eines der von ihr besetzten \nFelder die Bedingungen für in die Zange nehmen erfüllt.\nNur Kreaturen oder Charaktere, die den Verteidiger bedrohen, \nkönnen einem Angreifer zu diesem Zangenbonus verhelfen.\nKreaturen mit Reichweite 0 können einen Gegner nicht \nin die Zange nehmen.",
     "quelle": "GRW S. 196",
     "boni": [
       {
         "ziel": "Angriff Nah",
+        "bonusart": "Situation",
+        "wert": 2
+      },
+      {
+        "ziel": "KMB",
         "bonusart": "Situation",
         "wert": 2
       }
@@ -99,7 +119,7 @@
     "name": "Gebet",
     "kategorie": "Zauber",
     "aktiv": false,
-    "beschreibung": "GEBET\nSchule: Verzauberung (Zwang) [Geistesbeeinflussung];  \nGrad: KLE 3, PAL 3\nZeitaufwand: 1 Standard-Aktion\nKomponenten: V, G, GF\nReichweite: 12 m\nWirkungsbereich: Alle Verbündeten und Feinde in einem  \nExplosionsradius von 12 m mit dir im Zentrum\nWirkungsdauer: 1 Runde/Stufe\nRettungswurf: Nein; Zauberresistenz: Ja \nDu verschaffst dir und deinen Verbündeten das besondere \nWohlwollen deiner Gottheit und strafst deine Feinde mit der \nMissgunst jener Gottheit. Du und alle deine Verbündeten erhalten \neinen Glücksbonus von +1 auf Angriffs-, Waffenschadens-, \nRettungs- und Fertigkeitswürfe. Deine Feinde erhalten einen \nMalus von – 1 auf dieselben Würfe.",
+    "beschreibung": "GEBET\n\nSchule: Verzauberung (Zwang) [Geistesbeeinflussung];  \nGrad: KLE 3, PAL 3\nZeitaufwand: 1 Standard-Aktion\nKomponenten: V, G, GF\nReichweite: 12 m\nWirkungsbereich: Alle Verbündeten und Feinde in einem  \nExplosionsradius von 12 m mit dir im Zentrum\nWirkungsdauer: 1 Runde/Stufe\nRettungswurf: Nein; Zauberresistenz: Ja\n\nDu verschaffst dir und deinen Verbündeten das besondere \nWohlwollen deiner Gottheit und strafst deine Feinde mit der \nMissgunst jener Gottheit. Du und alle deine Verbündeten erhalten \neinen Glücksbonus von +1 auf Angriffs-, Waffenschadens-, \nRettungs- und Fertigkeitswürfe. Deine Feinde erhalten einen \nMalus von – 1 auf dieselben Würfe.",
     "quelle": "GRW S. 279",
     "boni": [
       {
@@ -136,6 +156,11 @@
         "ziel": "Schaden Fern",
         "bonusart": "Glück",
         "wert": 1
+      },
+      {
+        "ziel": "KMB",
+        "bonusart": "Glück",
+        "wert": 1
       }
     ],
     "gebiet": "",
@@ -151,6 +176,11 @@
     "boni": [
       {
         "ziel": "Angriff Nah",
+        "bonusart": "Namenlos",
+        "wert": 1
+      },
+      {
+        "ziel": "KMB",
         "bonusart": "Namenlos",
         "wert": 1
       }
@@ -291,7 +321,7 @@
     "name": "Hast",
     "kategorie": "Zauber",
     "aktiv": false,
-    "beschreibung": "HAST\nSchule: Verwandlung; Grad: BAR 3, HXM/MAG 3\nZeitaufwand: 1 Standard-Aktion\nKomponenten: V, G, M (ein Stückchen einer Süßholzwurzel)\nReichweite: Nah (7,50 m + 1,50 m/2 Stufen)\nZiele: Eine Kreatur/Stufe, zwei beliebige Ziele dürfen nicht weiter \nals 9 m voneinander entfernt sein\nWirkungsdauer: 1 Runde/Stufe\nRettungswurf: Zähigkeit, keine Wirkung (harmlos);  \nZauberresistenz: Ja (harmlos) \nDie verwandelte Kreatur kann sich schneller bewegen und \nschneller handeln als normal. Diese zusätzliche Geschwindigkeit \nhat mehrere Effekte.\n Bei einer vollen Aktion kann der Betroffene einen weiteren \nzusätzlichen  Angriff mit einer natürlichen oder einer hergestellten \nWaffe ausführen. Dabei darf der volle GAB verwendet werden + \nallen Modifikatoren, die der Situation angemessen sind. (Dieser \nEffekt ist weder kumulativ mit ähnlichen Effekten, wie etwa denen \neiner Waffe der Geschwindigkeit, noch gewährt er dem Betroffenen \nwirklich eine zusätzliche Aktion. Du kannst die zweite Aktion also \nnicht dafür verwenden, einen weiteren Zauber zu wirken oder sonst \neine andere Art von zweiter Aktion in der Runde auszuführen.)\n Der Betroffene erhält außerdem einen Bonus von +1 auf Angriffs- \nund Reflexwürfe, sowie einen Ausweichbonus von +1 auf die RK. \nJeglicher Umstand, der den Verlust des Geschicklichkeitsbonus \nfür die RK mit sich bringt, lässt dich auch diese Ausweichboni \nverlieren. \n Alle Bewegungsraten der betroffenen Kreatur (also bei der \nBewegung zu Lande, sowie beim Graben, Klettern, Fliegen und \nSchwimmen) steigen um 9 m, bis zu einem Maximum, das dem \nDoppelten der jeweiligen normalen Bewegungsrate der Kreatur \nentspricht. Diese Steigerung zählt als Verbesserungsbonus und \nbetrifft auch die Sprungreichweite der Kreatur, wie es bei einer \ngesteigerten Bewegungsrate der Fall ist. \nHast ist nicht mit sich selbst kumulativ. Hast bannt und ist der \nGegenzauber zu Verlangsamen.",
+    "beschreibung": "HAST\n\nSchule: Verwandlung; Grad: BAR 3, HXM/MAG 3\nZeitaufwand: 1 Standard-Aktion\nKomponenten: V, G, M (ein Stückchen einer Süßholzwurzel)\nReichweite: Nah (7,50 m + 1,50 m/2 Stufen)\nZiele: Eine Kreatur/Stufe, zwei beliebige Ziele dürfen nicht weiter \nals 9 m voneinander entfernt sein\nWirkungsdauer: 1 Runde/Stufe\nRettungswurf: Zähigkeit, keine Wirkung (harmlos);  \nZauberresistenz: Ja (harmlos) \n\nDie verwandelte Kreatur kann sich schneller bewegen und \nschneller handeln als normal. Diese zusätzliche Geschwindigkeit \nhat mehrere Effekte.\n Bei einer vollen Aktion kann der Betroffene einen weiteren \nzusätzlichen  Angriff mit einer natürlichen oder einer hergestellten \nWaffe ausführen. Dabei darf der volle GAB verwendet werden + \nallen Modifikatoren, die der Situation angemessen sind. (Dieser \nEffekt ist weder kumulativ mit ähnlichen Effekten, wie etwa denen \neiner Waffe der Geschwindigkeit, noch gewährt er dem Betroffenen \nwirklich eine zusätzliche Aktion. Du kannst die zweite Aktion also \nnicht dafür verwenden, einen weiteren Zauber zu wirken oder sonst \neine andere Art von zweiter Aktion in der Runde auszuführen.)\n Der Betroffene erhält außerdem einen Bonus von +1 auf Angriffs- \nund Reflexwürfe, sowie einen Ausweichbonus von +1 auf die RK. \nJeglicher Umstand, der den Verlust des Geschicklichkeitsbonus \nfür die RK mit sich bringt, lässt dich auch diese Ausweichboni \nverlieren. \n Alle Bewegungsraten der betroffenen Kreatur (also bei der \nBewegung zu Lande, sowie beim Graben, Klettern, Fliegen und \nSchwimmen) steigen um 9 m, bis zu einem Maximum, das dem \nDoppelten der jeweiligen normalen Bewegungsrate der Kreatur \nentspricht. Diese Steigerung zählt als Verbesserungsbonus und \nbetrifft auch die Sprungreichweite der Kreatur, wie es bei einer \ngesteigerten Bewegungsrate der Fall ist. \nHast ist nicht mit sich selbst kumulativ. Hast bannt und ist der \nGegenzauber zu Verlangsamen.",
     "quelle": "GRW S. 286",
     "boni": [
       {
@@ -312,6 +342,16 @@
       {
         "ziel": "RW-Reflex",
         "bonusart": "Namenlos",
+        "wert": 1
+      },
+      {
+        "ziel": "KMB",
+        "bonusart": "Namenlos",
+        "wert": 1
+      },
+      {
+        "ziel": "KMV",
+        "bonusart": "Ausweichen",
         "wert": 1
       }
     ],
@@ -335,6 +375,11 @@
         "ziel": "Schaden Nah",
         "bonusart": "Namenlos",
         "wert": 2
+      },
+      {
+        "ziel": "KMB",
+        "bonusart": "Malus",
+        "wert": -1
       }
     ],
     "gebiet": "selbst",
@@ -357,6 +402,11 @@
         "ziel": "Schaden Nah",
         "bonusart": "Namenlos",
         "wert": 8
+      },
+      {
+        "ziel": "KMB",
+        "bonusart": "Malus",
+        "wert": -4
       }
     ],
     "gebiet": "selbst",
@@ -379,6 +429,11 @@
         "ziel": "Schaden Nah",
         "bonusart": "Namenlos",
         "wert": 4
+      },
+      {
+        "ziel": "KMB",
+        "bonusart": "Malus",
+        "wert": -2
       }
     ],
     "gebiet": "selbst",
@@ -401,6 +456,11 @@
         "ziel": "Schaden Nah",
         "bonusart": "Namenlos",
         "wert": 6
+      },
+      {
+        "ziel": "KMB",
+        "bonusart": "Malus",
+        "wert": -3
       }
     ],
     "gebiet": "selbst",
@@ -438,6 +498,11 @@
         "ziel": "RW-Furcht",
         "bonusart": "Moral",
         "wert": 4
+      },
+      {
+        "ziel": "KMB",
+        "bonusart": "Moral",
+        "wert": 1
       }
     ],
     "gebiet": "",
@@ -475,6 +540,11 @@
         "ziel": "RW-Zähigkeit",
         "bonusart": "Moral",
         "wert": 2
+      },
+      {
+        "ziel": "KMB",
+        "bonusart": "Moral",
+        "wert": 2
       }
     ],
     "gebiet": "",
@@ -482,10 +552,10 @@
   },
   {
     "id": "standard-admin-52da5c4d-f682-4193-be6e-d7e1faadbbfc",
-    "name": "Kampfrausch (Barbat)",
+    "name": "Kampfrausch (Barbar, +4 ST und. KO (Moralbonus))",
     "kategorie": "Klassenmerkmale",
     "aktiv": false,
-    "beschreibung": "+4 ST und. KO (Moralbonus)",
+    "beschreibung": "Kampfrausch (AF): \nEin Barbar kann seine innere Kraft \nund Wildheit freisetzen, um zusätzliche Kampfkraft zu \ngewinnen. Ab der 1. Stufe kann ein Barbar für eine Anzahl \nvon Runden am Tag in Kampfrausch verfallen, welche der \nHöhe seines KO-Modifikators +4 entspricht. Beim Erreichen \njeder weiteren Stufe verlängert sich der Kampfrausch \num 2 zusätzliche Runden. Kurzfristige Erhöhungen des \nKonstitutionsattributs durch den Kampfrausch oder durch \nZauber wie Ausdauer des Ochsen, erhöhen die Anzahl von \nRunden jedoch nicht, die der Barbar am Tag in Kampfrausch \nverfallen kann. Der Barbar kann sich mit Hilfe einer freien \nAktion in den Kampfrausch versetzten. Die Gesamtzahl der \nRunden, die der Barbar am Tag in Kampfrausch sein kann, \nerneuert sich nach 8 Stunden Rast, wobei diese Rast nicht \nunbedingt an einem Stück gehalten werden muss.\nWährend des Kampfrauschs erhält der Barbar einen \nMoralbonus von +4 auf Stärke und Konstitution, ebenso wie \neinen Moralbonus von +2 auf alle Willenswürfe. Dafür muss \ner einen Malus von – 2 auf die Rüstungsklasse hinnehmen. \nDie Erhöhung des Konstitutionsattributs gibt dem Barbaren \n+2 zusätzliche Trefferpunkte pro Stufe, die jedoch am Ende \ndes Rauschs wieder verschwinden und nicht wie temporäre \nTrefferpunkte zuerst abgezogen werden. Während des \n\nKampfrauschs kann der Barbar weder Fertigkeiten benutzen, \ndie auf Geschicklichkeit, Intelligenz oder Charisma basieren \n(außer Akrobatik, Einschüchtern, Fliegen oder Reiten), \nnoch Fähigkeiten die besonderer Ruhe und Konzentration \nbedürfen.\nDer Barbar kann den Kampfrausch mit einer freien Aktion \nbeenden und ist dann eine Anzahl von Runden erschöpft, \ndie doppelt so hoch ist, wie die Anzahl der Runden, die der \nBarbar in Kampfrausch gewesen ist. Während der Barbar \nerschöpft ist, kann er nicht in einen weiteren Kampfrausch \nverfallen. Ansonsten ist es aber durchaus möglich, innerhalb \ndes gleichen Kampfs mehrfach in den Kampfrausch zu gehen. \nWenn ein Barbar ohnmächtig wird, endet sein Kampfrausch \nautomatisch, wodurch er in Todesgefahr gerät.",
     "quelle": "GRW S. 32",
     "boni": [
       {
@@ -507,6 +577,16 @@
         "ziel": "RW-Wille",
         "bonusart": "Moral",
         "wert": 2
+      },
+      {
+        "ziel": "KMB",
+        "bonusart": "Modifikator Attribut",
+        "wert": 2
+      },
+      {
+        "ziel": "KMV",
+        "bonusart": "Malus",
+        "wert": -2
       }
     ],
     "gebiet": "selbst",
@@ -534,6 +614,11 @@
         "ziel": "RW-Reflex",
         "bonusart": "Modifikator Attribut",
         "wert": 2
+      },
+      {
+        "ziel": "KMV",
+        "bonusart": "Modifikator Attribut",
+        "wert": 2
       }
     ],
     "gebiet": "",
@@ -544,7 +629,7 @@
     "name": "Lied des Mutes (1. bis 4. Stufe, Bardenauftritt)",
     "kategorie": "Klassenmerkmale",
     "aktiv": false,
-    "beschreibung": "",
+    "beschreibung": "Lied des Mutes (ÜF): Ein Barde kann ab der 1. Stufe mit \ndiesem Auftritt den Mut seiner Verbündeten (inklusive seiner \nselbst) verbessern, stärkt sie gegen Furcht und verbessert \nihre Kampfkraft. Die Verbündeten müssen in der Lage sein, \nden Barden zu hören, um von dieser Fähigkeit zu profi-\ntieren. Ein Verbündeter erhält einen Moralbonus von +1 auf \nRettungswürfe gegen Bezaubern und Furcht. Zusätzlich erhält \ner einen Kompetenzbonus von +1 auf Angriffswürfe und \nWaffen-Schadenswürfe. Ab der 5. Stufe und alle weiteren \nsechs Stufen erhöht sich dieser Bonus um +1 bis zu einem \nMaximum von +4 auf der 17. Stufe. Das Lied des Mutes ist \neine geistesbeeinflussende Fähigkeit. Das Lied des Mutes ist \nauf sichtbare oder hörbare Komponenten angewiesen. Der \nBarde muss zu Beginn seines Auftritts auswählen, welche \nArt der Komponente er verwendet.",
     "quelle": "GRW S. 37",
     "boni": [
       {
@@ -575,6 +660,11 @@
       {
         "ziel": "RW-Bezauberung",
         "bonusart": "Moral",
+        "wert": 1
+      },
+      {
+        "ziel": "KMB",
+        "bonusart": "Kompetenz",
         "wert": 1
       }
     ],
@@ -586,7 +676,7 @@
     "name": "Lied des Mutes (11. bis 16. Stufe, Bardenauftritt)",
     "kategorie": "Klassenmerkmale",
     "aktiv": false,
-    "beschreibung": "",
+    "beschreibung": "Lied des Mutes (ÜF): Ein Barde kann ab der 1. Stufe mit \ndiesem Auftritt den Mut seiner Verbündeten (inklusive seiner \nselbst) verbessern, stärkt sie gegen Furcht und verbessert \nihre Kampfkraft. Die Verbündeten müssen in der Lage sein, \nden Barden zu hören, um von dieser Fähigkeit zu profi-\ntieren. Ein Verbündeter erhält einen Moralbonus von +1 auf \nRettungswürfe gegen Bezaubern und Furcht. Zusätzlich erhält \ner einen Kompetenzbonus von +1 auf Angriffswürfe und \nWaffen-Schadenswürfe. Ab der 5. Stufe und alle weiteren \nsechs Stufen erhöht sich dieser Bonus um +1 bis zu einem \nMaximum von +4 auf der 17. Stufe. Das Lied des Mutes ist \neine geistesbeeinflussende Fähigkeit. Das Lied des Mutes ist \nauf sichtbare oder hörbare Komponenten angewiesen. Der \nBarde muss zu Beginn seines Auftritts auswählen, welche \nArt der Komponente er verwendet.",
     "quelle": "GRW S. 37",
     "boni": [
       {
@@ -617,6 +707,11 @@
       {
         "ziel": "RW-Bezauberung",
         "bonusart": "Moral",
+        "wert": 3
+      },
+      {
+        "ziel": "KMB",
+        "bonusart": "Kompetenz",
         "wert": 3
       }
     ],
@@ -628,7 +723,7 @@
     "name": "Lied des Mutes (5. bis 10. Stufe, Bardenauftritt)",
     "kategorie": "Klassenmerkmale",
     "aktiv": false,
-    "beschreibung": "",
+    "beschreibung": "Lied des Mutes (ÜF): Ein Barde kann ab der 1. Stufe mit \ndiesem Auftritt den Mut seiner Verbündeten (inklusive seiner \nselbst) verbessern, stärkt sie gegen Furcht und verbessert \nihre Kampfkraft. Die Verbündeten müssen in der Lage sein, \nden Barden zu hören, um von dieser Fähigkeit zu profi-\ntieren. Ein Verbündeter erhält einen Moralbonus von +1 auf \nRettungswürfe gegen Bezaubern und Furcht. Zusätzlich erhält \ner einen Kompetenzbonus von +1 auf Angriffswürfe und \nWaffen-Schadenswürfe. Ab der 5. Stufe und alle weiteren \nsechs Stufen erhöht sich dieser Bonus um +1 bis zu einem \nMaximum von +4 auf der 17. Stufe. Das Lied des Mutes ist \neine geistesbeeinflussende Fähigkeit. Das Lied des Mutes ist \nauf sichtbare oder hörbare Komponenten angewiesen. Der \nBarde muss zu Beginn seines Auftritts auswählen, welche \nArt der Komponente er verwendet.",
     "quelle": "GRW S. 37",
     "boni": [
       {
@@ -659,6 +754,11 @@
       {
         "ziel": "RW-Bezauberung",
         "bonusart": "Moral",
+        "wert": 2
+      },
+      {
+        "ziel": "KMB",
+        "bonusart": "Kompetenz",
         "wert": 2
       }
     ],
@@ -670,7 +770,7 @@
     "name": "Lied des Mutes (ab 17. Stufe, Bardenauftritt)",
     "kategorie": "Klassenmerkmale",
     "aktiv": false,
-    "beschreibung": "",
+    "beschreibung": "Lied des Mutes (ÜF): Ein Barde kann ab der 1. Stufe mit \ndiesem Auftritt den Mut seiner Verbündeten (inklusive seiner \nselbst) verbessern, stärkt sie gegen Furcht und verbessert \nihre Kampfkraft. Die Verbündeten müssen in der Lage sein, \nden Barden zu hören, um von dieser Fähigkeit zu profi-\ntieren. Ein Verbündeter erhält einen Moralbonus von +1 auf \nRettungswürfe gegen Bezaubern und Furcht. Zusätzlich erhält \ner einen Kompetenzbonus von +1 auf Angriffswürfe und \nWaffen-Schadenswürfe. Ab der 5. Stufe und alle weiteren \nsechs Stufen erhöht sich dieser Bonus um +1 bis zu einem \nMaximum von +4 auf der 17. Stufe. Das Lied des Mutes ist \neine geistesbeeinflussende Fähigkeit. Das Lied des Mutes ist \nauf sichtbare oder hörbare Komponenten angewiesen. Der \nBarde muss zu Beginn seines Auftritts auswählen, welche \nArt der Komponente er verwendet.",
     "quelle": "GRW S. 37",
     "boni": [
       {
@@ -701,6 +801,11 @@
       {
         "ziel": "RW-Bezauberung",
         "bonusart": "Moral",
+        "wert": 4
+      },
+      {
+        "ziel": "KMB",
+        "bonusart": "Kompetenz",
         "wert": 4
       }
     ],
@@ -721,7 +826,12 @@
         "wert": 1
       },
       {
-        "ziel": "Schaden",
+        "ziel": "Schaden Nah",
+        "bonusart": "Verbesserung",
+        "wert": 1
+      },
+      {
+        "ziel": "KMB",
         "bonusart": "Verbesserung",
         "wert": 1
       }
@@ -862,6 +972,16 @@
       },
       {
         "ziel": "RW-Reflex",
+        "bonusart": "Malus",
+        "wert": -1
+      },
+      {
+        "ziel": "KMB",
+        "bonusart": "Größe",
+        "wert": 1
+      },
+      {
+        "ziel": "KMV",
         "bonusart": "Malus",
         "wert": -1
       }
@@ -1071,6 +1191,11 @@
         "ziel": "RW-Furcht",
         "bonusart": "Moral",
         "wert": 1
+      },
+      {
+        "ziel": "KMB",
+        "bonusart": "Moral",
+        "wert": 1
       }
     ],
     "gebiet": "",
@@ -1125,6 +1250,11 @@
         "ziel": "Angriff Fern",
         "bonusart": "Situation",
         "wert": 2
+      },
+      {
+        "ziel": "KMB",
+        "bonusart": "Situation",
+        "wert": 2
       }
     ],
     "gebiet": "",
@@ -1135,7 +1265,7 @@
     "name": "Unsichtbarkeit",
     "kategorie": "Zustände",
     "aktiv": false,
-    "beschreibung": "Unsichtbar: Kreaturen, die unsichtbar sind, können nicht mit \nHilfe des Sehsinns wahrgenommen werden. Eine unsichtbare \nKreatur erhält einen Bonus von +2 auf Angriffswürfe gegen \nGegner, die sie sehen kann und kann deren GE­Boni auf die RK \n(falls vorhanden) ignorieren. Siehe ansonsten „Unsichtbarkeit“ \nbei den besonderen Fähigkeiten.\n\nTarnung 50% Fehlschlagchance",
+    "beschreibung": "Unsichtbar: \nKreaturen, die unsichtbar sind, können nicht mit \nHilfe des Sehsinns wahrgenommen werden. Eine unsichtbare \nKreatur erhält einen Bonus von +2 auf Angriffswürfe gegen \nGegner, die sie sehen kann und kann deren GE­Boni auf die RK \n(falls vorhanden) ignorieren. Siehe ansonsten „Unsichtbarkeit“ \nbei den besonderen Fähigkeiten.\n\nTarnung 50% Fehlschlagchance",
     "quelle": "GRW S. 568",
     "boni": [
       {
@@ -1145,6 +1275,11 @@
       },
       {
         "ziel": "Angriff Fern",
+        "bonusart": "Situation",
+        "wert": 2
+      },
+      {
+        "ziel": "KMB",
         "bonusart": "Situation",
         "wert": 2
       }
@@ -1189,11 +1324,16 @@
     "name": "Volle Verteidigung",
     "kategorie": "Kampf",
     "aktiv": false,
-    "beschreibung": "Keine Angriffe\n\nStandard-Aktion",
+    "beschreibung": "Volle Verteidigung\nDu kannst dich mit einer Standard­Aktion verteidigen. Dabei \nerhältst du eine Runde lang einen Ausweichbonus von +4 \nauf deine RK. Diese verbessert sich sofort bei Beginn dieser \nAktion. Du darfst Volle Verteidigung allerdings weder mit \ndefensivem Kämpfen oder dem Talent Defensive Kampfweise \nkombinieren. Aus einer Vollen Verteidigung heraus kannst \ndu keine Gelegenheitsangriffe ausführen.",
     "quelle": "GRW S. 186",
     "boni": [
       {
         "ziel": "Rüstungsklasse",
+        "bonusart": "Ausweichen",
+        "wert": 4
+      },
+      {
+        "ziel": "KMV",
         "bonusart": "Ausweichen",
         "wert": 4
       }
