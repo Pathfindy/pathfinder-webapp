@@ -1,4 +1,4 @@
-// Commit 27: Spezial-Rettungswürfe von Wille und Zähigkeit ableiten
+// Commit 27.1: Unterrettungswürfe strikt getrennt berechnen
 (() => {
   "use strict";
 
@@ -157,14 +157,39 @@
     return bewertet;
   }
 
-  function bonusBerechnung(ziel) {
-    const spezial = SPEZIAL_ZIELE.get(ziel);
-    const erlaubteZiele = spezial
-      ? new Set([spezial.basisZiel, spezial.ziel])
-      : new Set([ziel]);
+  function bonusBerechnung(eintrag) {
+    if (!eintrag) return { gesamt: 0, boni: [] };
 
-    const boni = aktiveBoni().filter(bonus => erlaubteZiele.has(bonus.ziel));
-    const bewertet = bewerteBonusListe(boni);
+    const alleBoni = aktiveBoni();
+
+    // Basis-Rettungswürfe und andere normale Werte:
+    // ausschließlich Boni, deren Ziel exakt diesem Wert entspricht.
+    if (eintrag.eingabe || !eintrag.basisZiel) {
+      const eigeneBoni = alleBoni.filter(
+        bonus => bonus.ziel === eintrag.ziel
+      );
+      const bewertet = bewerteBonusListe(eigeneBoni);
+      const gesamt = bewertet
+        .filter(bonus => bonus.beruecksichtigt)
+        .reduce((summe, bonus) => summe + ganzeZahl(bonus.wert), 0);
+
+      return { gesamt, boni: bewertet };
+    }
+
+    // Spezial-Rettungswurf:
+    // nur Boni des Basis-Rettungswurfs plus Boni dieses einen Spezialziels.
+    // Boni anderer Spezial-Rettungswürfe werden ausdrücklich ausgeschlossen.
+    const basisBoni = alleBoni.filter(
+      bonus => bonus.ziel === eintrag.basisZiel
+    );
+    const spezialBoni = alleBoni.filter(
+      bonus => bonus.ziel === eintrag.ziel
+    );
+
+    const bewertet = bewerteBonusListe([
+      ...basisBoni,
+      ...spezialBoni
+    ]);
     const gesamt = bewertet
       .filter(bonus => bonus.beruecksichtigt)
       .reduce((summe, bonus) => summe + ganzeZahl(bonus.wert), 0);
@@ -178,7 +203,7 @@
   }
 
   function gesamtwertFuer(eintrag, charakter) {
-    return grundwertFuer(eintrag, charakter) + bonusBerechnung(eintrag.ziel).gesamt;
+    return grundwertFuer(eintrag, charakter) + bonusBerechnung(eintrag).gesamt;
   }
 
   function erstelleBereich() {
@@ -281,7 +306,7 @@
 
     const dialog = detailDialog();
     const grundwert = grundwertFuer(eintrag, charakter);
-    const berechnung = bonusBerechnung(eintrag.ziel);
+    const berechnung = bonusBerechnung(eintrag);
     const gesamt = grundwert + berechnung.gesamt;
 
     dialog.querySelector("#bonusDetailTitel").textContent = eintrag.label;
