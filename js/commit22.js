@@ -37,16 +37,10 @@
     }
 
     const status = sichereKopie(ladeStatusFuerCharakter(charakter.id));
-    const aktiveBenutzerEffektIds = new Set(
-      Object.entries(status)
-        .filter(([, aktiv]) => !!aktiv)
-        .map(([id]) => id)
-    );
-
+    // Alle selbst angelegten Effekte exportieren. Der Aktivstatus bleibt
+    // davon getrennt in effektStatus gespeichert.
     const benutzerEffekte = typeof listeBenutzerEffekte === "function"
-      ? listeBenutzerEffekte()
-          .filter(effekt => aktiveBenutzerEffektIds.has(effekt.id))
-          .map(sichereKopie)
+      ? listeBenutzerEffekte().map(sichereKopie)
       : [];
 
     const exportDaten = {
