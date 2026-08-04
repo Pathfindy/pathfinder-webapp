@@ -267,11 +267,19 @@
 
       const notiz = document.createElement("textarea");
       notiz.className = "charakter-notiz-29";
-      notiz.rows = 4;
+      notiz.rows = 1;
       notiz.placeholder = "Freitext …";
       notiz.value = charakter.notizen || "";
       notiz.setAttribute("aria-label", `Freitext für ${charakter.name}`);
+
+      const passeNotizHoeheAn = () => {
+        notiz.style.height = "42px";
+        notiz.style.height = `${Math.min(240, Math.max(42, notiz.scrollHeight))}px`;
+        notiz.style.overflowY = notiz.scrollHeight > 240 ? "auto" : "hidden";
+      };
+
       notiz.addEventListener("input", () => {
+        passeNotizHoeheAn();
         charakter.notizen = notiz.value;
         try {
           speichereCharaktere();
@@ -279,6 +287,8 @@
           console.error("Charakternotiz konnte nicht gespeichert werden:", fehler);
         }
       });
+
+      requestAnimationFrame(passeNotizHoeheAn);
 
       eintrag.append(kopf, notiz);
       liste.appendChild(eintrag);
