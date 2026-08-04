@@ -104,3 +104,21 @@
         justify-content: flex-end;
     }
 }
+
+
+/* Commit 29.1 UI-Feinschliff */
+.charakter-notizen{
+    height:42px;
+    min-height:42px;
+    resize:vertical;
+}
+
+.portraet-loeschen{
+    background:transparent !important;
+    color:#666;
+    border:1px solid #bbb;
+}
+
+.portraet-loeschen:hover{
+    background:#f2f2f2;
+}
