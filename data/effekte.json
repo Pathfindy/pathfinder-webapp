@@ -1,5 +1,125 @@
 [
   {
+    "id": "standard-admin-19bb9efe-70be-40bf-b98c-515efcd374e7",
+    "name": "Andere Schützen",
+    "kategorie": "Zauber",
+    "aktiv": false,
+    "beschreibung": "ANDEREN SCHÜTZEN\nSchule: Bannzauber; Grad: KLE 2, PAL 2\nZeitaufwand: 1 Standard-Aktion\nKomponenten: V, G, F (ein Paar Platinringe im Wert von 50 GM, \ndie von dir und dem Ziel getragen werden müssen)\nReichweite: Nah (7,50 m + 1,50 m/2 Stufen)\nZiel: Eine Kreatur\nWirkungsdauer: 1 Stunde/Stufe (A)\nRettungswurf: Willen, keine Wirkung (harmlos); Zauberresistenz: \nJa (harmlos) \nDer Zauber schützt das Ziel und erschafft ein mystisches Band \nzwischen dem Geschützten und dir, so dass einige seiner \nWunden auf dich übertragen werden. Das Ziel erhält einen \nAblenkungsbonus von +1 auf seine RK und einen Resistenzbonus \nvon +1 für Rettungswürfe. Es nimmt außerdem nur den halben \nSchaden von  Wunden und Angriffen (auch von Schaden, der durch \nbesondere Fähigkeiten verursacht wird), die Trefferpunktschaden \nverursachen. Die andere Hälfte des Schadens erleidest du. Andere \nFormen von Schaden, die nicht die Trefferpunkte betreffen, wie etwa \nBezauberungseffekte, temporärer Attributsschaden, Stufenentzug \nund Todeseffekte werden nicht geteilt. Verliert der Geschützte \nTrefferpunkte, weil seine Konstitution sinkt, wird dies nicht unter \neuch beiden aufgeteilt, da es sich nicht um Trefferpunkteschaden \nhandelt. Endet der Zauber, wird der Schaden nicht mehr zwischen \neuch aufgeteilt, allerdings wird bereits aufgeteilter Schaden auch \nnicht wieder zurückgelenkt. \nBewegt sich einer von euch beiden außerhalb der Reichweite des \nanderen, endet der Zauber.",
+    "quelle": "GRW S. 243",
+    "boni": [
+      {
+        "ziel": "Rüstungsklasse",
+        "bonusart": "Ablenkung",
+        "wert": 1
+      },
+      {
+        "ziel": "RW-Reflex",
+        "bonusart": "Resistenz",
+        "wert": 1
+      },
+      {
+        "ziel": "RW-Wille",
+        "bonusart": "Resistenz",
+        "wert": 1
+      },
+      {
+        "ziel": "RW-Zähigkeit",
+        "bonusart": "Resistenz",
+        "wert": 1
+      }
+    ],
+    "gebiet": "selbst",
+    "dauer": "1 Std./Stufe"
+  },
+  {
+    "id": "standard-admin-1384890b-a7fc-4980-806e-9894aa9fda14",
+    "name": "Arkaner Schlag (1. bis 4. Stufe)",
+    "kategorie": "Talente",
+    "aktiv": false,
+    "beschreibung": "Arkaner Schlag [Kampf]\nDu nutzt deine arkane Macht, um deine Waffen mit magischer \nEnergie anzureichern. \nVoraussetzung: Fähigkeit, arkane Zauber zu wirken\nVorteil: Mit einer Schnellen Aktion kannst du deinen \nWaffen einen Bruchteil deiner magischen Macht einflößen. \nEine Runde lang erhöht sich der Schaden deiner Waffen \num +1. Außerdem werden deine Waffen in Bezug auf die \nÜberwindung von Schadensreduzierung als magisch \nbehandelt. Der Bonus steigt für je fünf Zauberstufen um +1 \nbis auf ein Maximum von +5 auf der 20. Stufe.",
+    "quelle": "GRW S. 119",
+    "boni": [
+      {
+        "ziel": "Schaden Nah",
+        "bonusart": "Namenlos",
+        "wert": 1
+      },
+      {
+        "ziel": "Schaden Fern",
+        "bonusart": "Namenlos",
+        "wert": 1
+      }
+    ],
+    "gebiet": "selbst",
+    "dauer": "1 Runde"
+  },
+  {
+    "id": "standard-admin-759eabe7-79d3-40e9-8d32-ca7a1c9dbb35",
+    "name": "Arkaner Schlag (10. bis 14. Stufe)",
+    "kategorie": "Talente",
+    "aktiv": false,
+    "beschreibung": "Arkaner Schlag [Kampf]\nDu nutzt deine arkane Macht, um deine Waffen mit magischer \nEnergie anzureichern. \nVoraussetzung: Fähigkeit, arkane Zauber zu wirken\nVorteil: Mit einer Schnellen Aktion kannst du deinen \nWaffen einen Bruchteil deiner magischen Macht einflößen. \nEine Runde lang erhöht sich der Schaden deiner Waffen \num +1. Außerdem werden deine Waffen in Bezug auf die \nÜberwindung von Schadensreduzierung als magisch \nbehandelt. Der Bonus steigt für je fünf Zauberstufen um +1 \nbis auf ein Maximum von +5 auf der 20. Stufe.",
+    "quelle": "GRW S. 119",
+    "boni": [
+      {
+        "ziel": "Schaden Nah",
+        "bonusart": "Namenlos",
+        "wert": 3
+      },
+      {
+        "ziel": "Schaden Fern",
+        "bonusart": "Namenlos",
+        "wert": 3
+      }
+    ],
+    "gebiet": "selbst",
+    "dauer": "1 Runde"
+  },
+  {
+    "id": "standard-admin-9ca78340-1f5f-42cc-83c1-77d0a4ec1727",
+    "name": "Arkaner Schlag (15. bis 19. Stufe)",
+    "kategorie": "Talente",
+    "aktiv": false,
+    "beschreibung": "Arkaner Schlag [Kampf]\nDu nutzt deine arkane Macht, um deine Waffen mit magischer \nEnergie anzureichern. \nVoraussetzung: Fähigkeit, arkane Zauber zu wirken\nVorteil: Mit einer Schnellen Aktion kannst du deinen \nWaffen einen Bruchteil deiner magischen Macht einflößen. \nEine Runde lang erhöht sich der Schaden deiner Waffen \num +1. Außerdem werden deine Waffen in Bezug auf die \nÜberwindung von Schadensreduzierung als magisch \nbehandelt. Der Bonus steigt für je fünf Zauberstufen um +1 \nbis auf ein Maximum von +5 auf der 20. Stufe.",
+    "quelle": "GRW S. 119",
+    "boni": [
+      {
+        "ziel": "Schaden Nah",
+        "bonusart": "Namenlos",
+        "wert": 4
+      },
+      {
+        "ziel": "Schaden Fern",
+        "bonusart": "Namenlos",
+        "wert": 4
+      }
+    ],
+    "gebiet": "selbst",
+    "dauer": "1 Runde"
+  },
+  {
+    "id": "standard-admin-5ef53042-68f4-4455-9fdd-8bc07892a009",
+    "name": "Arkaner Schlag (5. bis 9. Stufe)",
+    "kategorie": "Talente",
+    "aktiv": false,
+    "beschreibung": "Arkaner Schlag [Kampf]\nDu nutzt deine arkane Macht, um deine Waffen mit magischer \nEnergie anzureichern. \nVoraussetzung: Fähigkeit, arkane Zauber zu wirken\nVorteil: Mit einer Schnellen Aktion kannst du deinen \nWaffen einen Bruchteil deiner magischen Macht einflößen. \nEine Runde lang erhöht sich der Schaden deiner Waffen \num +1. Außerdem werden deine Waffen in Bezug auf die \nÜberwindung von Schadensreduzierung als magisch \nbehandelt. Der Bonus steigt für je fünf Zauberstufen um +1 \nbis auf ein Maximum von +5 auf der 20. Stufe.",
+    "quelle": "GRW S. 119",
+    "boni": [
+      {
+        "ziel": "Schaden Nah",
+        "bonusart": "Namenlos",
+        "wert": 2
+      },
+      {
+        "ziel": "Schaden Fern",
+        "bonusart": "Namenlos",
+        "wert": 2
+      }
+    ],
+    "gebiet": "selbst",
+    "dauer": "1 Runde"
+  },
+  {
     "id": "standard-admin-b202a69e-2c47-4ab0-a310-934466466df9",
     "name": "Ausdauer des Ochsen (+4 KO)",
     "kategorie": "Zauber",
@@ -41,6 +161,28 @@
       }
     ],
     "gebiet": "",
+    "dauer": "1 Min./Stufe"
+  },
+  {
+    "id": "standard-admin-44c61dea-9fd7-47d5-bcdc-df1e125220e4",
+    "name": "Beistand",
+    "kategorie": "Zauber",
+    "aktiv": false,
+    "beschreibung": "BEISTAND\nSchule: Verzauberung (Zwang) [Geistesbeeinflussung]; Grad: KLE 2\nZeitaufwand: 1 Standard-Aktion\nKomponenten: V, G, GF\nReichweite: Berührung\nZiel: Berührte lebende Kreatur\nWirkungsdauer: 1 Min./Stufe\nRettungswurf: Nein; Zauberresistenz: Ja (harmlos)\nBeistand verleiht dem Ziel einen Moralbonus von +1 auf Angriffs-\nwürfe und Rettungswürfe gegen Furchteffekte, so wie eine Anzahl \ntemporärer Trefferpunkte, die 1W8 + deiner Zauberstufe entspricht \n(bis zu einem Maximum von 1W8+10 temporären Trefferpunkten \nauf der 10. Zauberstufe).",
+    "quelle": "GRW S. 251",
+    "boni": [
+      {
+        "ziel": "Angriff Nah",
+        "bonusart": "Moral",
+        "wert": 1
+      },
+      {
+        "ziel": "RW-Furcht",
+        "bonusart": "Moral",
+        "wert": 1
+      }
+    ],
+    "gebiet": "Berührung",
     "dauer": "1 Min./Stufe"
   },
   {
@@ -151,6 +293,95 @@
         "ziel": "KMV",
         "bonusart": "Modifikator Attribut",
         "wert": -3
+      }
+    ],
+    "gebiet": "selbst",
+    "dauer": "Nach Angabe SL"
+  },
+  {
+    "id": "standard-admin-bff93ccf-92bf-4c7a-b169-bc8f9583c04c",
+    "name": "Entkräftet",
+    "kategorie": "Zustände",
+    "aktiv": false,
+    "beschreibung": "Entkräftet:\nEin entkräfteter Charakter kann sich nur mit \nseiner halben Bewegungsrate fortbewegen, kann nicht rennen \nund keine Sturmangriffe ausführen und erhält einen Malus \nvon – 6 auf Stärke und Geschicklichkeit. Hat ein entkräfteter \nCharakter sich 1 Stunde lang ausgeruht, ist er nur noch \nerschöpft. Ein erschöpfter Charakter wird wieder entkräftet, \nwenn er etwas macht, das ihn normalerweise erschöpfen \nwürde.",
+    "quelle": "GRW S. 566",
+    "boni": [
+      {
+        "ziel": "Angriff Nah",
+        "bonusart": "Modifikator Attribut",
+        "wert": -3
+      },
+      {
+        "ziel": "Angriff Fern",
+        "bonusart": "Modifikator Attribut",
+        "wert": -3
+      },
+      {
+        "ziel": "Schaden Nah",
+        "bonusart": "Modifikator Attribut",
+        "wert": -3
+      },
+      {
+        "ziel": "Rüstungsklasse",
+        "bonusart": "Modifikator Attribut",
+        "wert": -3
+      },
+      {
+        "ziel": "RW-Reflex",
+        "bonusart": "Modifikator Attribut",
+        "wert": -3
+      },
+      {
+        "ziel": "KMB",
+        "bonusart": "Modifikator Attribut",
+        "wert": -3
+      },
+      {
+        "ziel": "KMV",
+        "bonusart": "Modifikator Attribut",
+        "wert": -3
+      }
+    ],
+    "gebiet": "selbst",
+    "dauer": "Nach Angabe SL"
+  },
+  {
+    "id": "standard-admin-5d7d2cfa-c27a-41f9-9e4e-da1ea6f9cd48",
+    "name": "Erschöpft",
+    "kategorie": "Zustände",
+    "aktiv": false,
+    "beschreibung": "Erschöpft: \nEin erschöpfter Charakter kann weder rennen, \nnoch Sturmangriffe ausführen und erhält einen Malus von \n– 2 auf Stärke und Geschicklichkeit. Macht der Erschöpfte\nirgendetwas, das ihn normalerweise erschöpfen würde, wird \ner dadurch entkräftet. Hat der Charakter sich 8 Stunden lang \nausgeruht, ist er nicht länger erschöpft.",
+    "quelle": "GRW S. 566",
+    "boni": [
+      {
+        "ziel": "Angriff Nah",
+        "bonusart": "Modifikator Attribut",
+        "wert": -1
+      },
+      {
+        "ziel": "Angriff Fern",
+        "bonusart": "Modifikator Attribut",
+        "wert": -1
+      },
+      {
+        "ziel": "Schaden Nah",
+        "bonusart": "Modifikator Attribut",
+        "wert": -1
+      },
+      {
+        "ziel": "RW-Reflex",
+        "bonusart": "Modifikator Attribut",
+        "wert": -1
+      },
+      {
+        "ziel": "KMB",
+        "bonusart": "Modifikator Attribut",
+        "wert": -1
+      },
+      {
+        "ziel": "KMV",
+        "bonusart": "Modifikator Attribut",
+        "wert": -1
       }
     ],
     "gebiet": "selbst",
@@ -393,6 +624,109 @@
     "dauer": ""
   },
   {
+    "id": "standard-admin-7fe36631-7d99-47be-af87-b5486e4c05c2",
+    "name": "Göttliche Gunst (1. bis 3. Stufe)",
+    "kategorie": "Zauber",
+    "aktiv": false,
+    "beschreibung": "GÖTTLICHE GUNST\nSchule: Hervorrufung; Grad: KLE 1, PAL 1\nZeitaufwand: 1 Standard-Aktion\nKomponenten: V, G, GF\nReichweite: Persönlich\nZiel: Du\nWirkungsdauer: 1 Minute\nDu rufst die Stärke und Weisheit einer Gottheit an und erhältst \ndadurch einen Glücksbonus von +1 pro drei Zauberstufen\n(mindestens +1, maximal +3) auf Angriffs- und Schadenswürfe mit \ndeiner Waffe. Der Bonus gilt nicht für Schaden, der durch Zauber \nverursacht wird.",
+    "quelle": "GRW S. 285",
+    "boni": [
+      {
+        "ziel": "Angriff Nah",
+        "bonusart": "Glück",
+        "wert": 1
+      },
+      {
+        "ziel": "Angriff Fern",
+        "bonusart": "Glück",
+        "wert": 1
+      }
+    ],
+    "gebiet": "selbst",
+    "dauer": ""
+  },
+  {
+    "id": "standard-admin-ecec0086-889b-45c9-a6df-9158bafa95b3",
+    "name": "Göttliche Gunst (4. bis 6. Stufe)",
+    "kategorie": "Zauber",
+    "aktiv": false,
+    "beschreibung": "GÖTTLICHE GUNST\nSchule: Hervorrufung; Grad: KLE 1, PAL 1\nZeitaufwand: 1 Standard-Aktion\nKomponenten: V, G, GF\nReichweite: Persönlich\nZiel: Du\nWirkungsdauer: 1 Minute\nDu rufst die Stärke und Weisheit einer Gottheit an und erhältst \ndadurch einen Glücksbonus von +1 pro drei Zauberstufen\n(mindestens +1, maximal +3) auf Angriffs- und Schadenswürfe mit \ndeiner Waffe. Der Bonus gilt nicht für Schaden, der durch Zauber \nverursacht wird.",
+    "quelle": "GRW S. 285",
+    "boni": [
+      {
+        "ziel": "Angriff Nah",
+        "bonusart": "Glück",
+        "wert": 2
+      },
+      {
+        "ziel": "Angriff Fern",
+        "bonusart": "Glück",
+        "wert": 2
+      }
+    ],
+    "gebiet": "selbst",
+    "dauer": ""
+  },
+  {
+    "id": "standard-admin-264bf126-4972-429a-ba76-9f7613ae9e3f",
+    "name": "Göttliche Gunst (ab 7. Stufe)",
+    "kategorie": "Zauber",
+    "aktiv": false,
+    "beschreibung": "GÖTTLICHE GUNST\nSchule: Hervorrufung; Grad: KLE 1, PAL 1\nZeitaufwand: 1 Standard-Aktion\nKomponenten: V, G, GF\nReichweite: Persönlich\nZiel: Du\nWirkungsdauer: 1 Minute\nDu rufst die Stärke und Weisheit einer Gottheit an und erhältst \ndadurch einen Glücksbonus von +1 pro drei Zauberstufen\n(mindestens +1, maximal +3) auf Angriffs- und Schadenswürfe mit \ndeiner Waffe. Der Bonus gilt nicht für Schaden, der durch Zauber \nverursacht wird.",
+    "quelle": "GRW S. 285",
+    "boni": [
+      {
+        "ziel": "Angriff Nah",
+        "bonusart": "Glück",
+        "wert": 3
+      },
+      {
+        "ziel": "Angriff Fern",
+        "bonusart": "Glück",
+        "wert": 3
+      }
+    ],
+    "gebiet": "selbst",
+    "dauer": ""
+  },
+  {
+    "id": "standard-admin-75538f17-4740-4735-99e8-c72d73f5f0a0",
+    "name": "Großer Heldenmut",
+    "kategorie": "Zauber",
+    "aktiv": false,
+    "beschreibung": "GROSSER HELDENMUT\nSchule: Verzauberung (Zwang) [Geistesbeeinflussung];  \nGrad: BAR 5, HXM/MAG 6\nWirkungsdauer: 1 Min./Stufe\nDieser Zauber funktioniert wie Heldenmut, verleiht der betroffenen \nKreatur aber einen Moralbonus von +4 auf Angriffs-, Rettungs- und \nFertigkeitswürfe, eine Immunität gegen Furchteffekte und so viele \ntemporäre Trefferpunkte, wie es deiner Zauberstufe entspricht \n(maximal 20).",
+    "quelle": "GRW S. 285",
+    "boni": [
+      {
+        "ziel": "Angriff Nah",
+        "bonusart": "Moral",
+        "wert": 4
+      },
+      {
+        "ziel": "Angriff Fern",
+        "bonusart": "Moral",
+        "wert": 4
+      },
+      {
+        "ziel": "RW-Reflex",
+        "bonusart": "Moral",
+        "wert": 4
+      },
+      {
+        "ziel": "RW-Wille",
+        "bonusart": "Moral",
+        "wert": 4
+      },
+      {
+        "ziel": "RW-Zähigkeit",
+        "bonusart": "Moral",
+        "wert": 4
+      }
+    ],
+    "gebiet": "Berührung",
+    "dauer": "1 Min./Stufe"
+  },
+  {
     "id": "standard-admin-57b2d3ba-ed3c-4d61-a80f-6f4503afac9b",
     "name": "Halbelfen (Elfische Immunität)",
     "kategorie": "Volksmerkmale",
@@ -617,6 +951,38 @@
     "dauer": "1 Runde"
   },
   {
+    "id": "standard-admin-44f2d12a-01ca-4129-8b35-0ec199dcb9e5",
+    "name": "Heilige Aura",
+    "kategorie": "Zauber",
+    "aktiv": false,
+    "beschreibung": "HEILIGE AURA \nSchule: Bannzauber [Gutes]; Grad: KLE 8\nZeitaufwand: 1 Standard-Aktion\nKomponenten: V, G, F (eine kleine Reliquie im Wert von 500 GM)\nReichweite: 6 m\nZiele: Eine Kreatur/Stufe in einem Explosionsradius von 6 m mit \ndir im Zentrum\nWirkungsdauer: 1 Runde/Stufe (A)\nRettungswurf: Siehe Text; Zauberresistenz: Ja (harmlos) \nEine leuchtende göttliche Aura umgibt das Ziel und schützt es vor \nAngriffen, verleiht ihm eine Resistenz gegen Zauber, die von bösen \nKreaturen gewirkt werden, und lässt böse Kreaturen erblinden, die \nes treffen. Der Bannzauber hat vier Effekte.\nErstens erhält jede geschützte Kreatur einen Ablenkungsbonus von \n+4 auf ihre RK und einen Resistenzbonus von +4 auf Rettungswürfe. \nIm Gegensatz zu Schutz vor Bösem gelten diese Vorteile gegen alle \nAngriffe, nicht nur gegen die von bösen Kreaturen. \nZweitens erhalten alle Geschützten eine Zauberresistenz von 25 \ngegen böse Zauber und gegen Zauber, die von bösen Kreaturen \ngewirkt werden.\nDrittens verhindert dieser Bannzauber Besessenheit und geistige \nBeeinflussung, wie es auch Schutz vor Bösem tut.\nViertens erblindet eine böse Kreatur, die einen erfolgreichen \nNahkampfangriff gegen einen Geschützten ausführt (ein \nerfolgreicher Zähigkeitswurf verhindert dies wie auch bei \nBlind- oder Taubheit verursachen, als SG für den Rettungswurf gilt \nallerdings der von Heilige Aura).",
+    "quelle": "GRW S. 286",
+    "boni": [
+      {
+        "ziel": "Rüstungsklasse",
+        "bonusart": "Ablenkung",
+        "wert": 4
+      },
+      {
+        "ziel": "RW-Reflex",
+        "bonusart": "Resistenz",
+        "wert": 4
+      },
+      {
+        "ziel": "RW-Wille",
+        "bonusart": "Resistenz",
+        "wert": 4
+      },
+      {
+        "ziel": "RW-Zähigkeit",
+        "bonusart": "Resistenz",
+        "wert": 4
+      }
+    ],
+    "gebiet": "",
+    "dauer": "1 Runde/Stufe"
+  },
+  {
     "id": "standard-admin-0971dd97-ed91-4505-ad8b-0bd8fbaef78e",
     "name": "Heldenmahl",
     "kategorie": "Zauber",
@@ -718,6 +1084,23 @@
     "dauer": "Nach Angabe SL"
   },
   {
+    "id": "standard-admin-7f01bbe9-eb55-45d8-94b5-142b31a4e7ec",
+    "name": "Im Haltegriff",
+    "kategorie": "Zustände",
+    "aktiv": false,
+    "beschreibung": "Im Haltegriff: Eine Kreatur im Haltegriff ist tatsächlich \nfest verschnürt und kann nur wenige Aktionen unternehmen. \nSie kann sich nicht bewegen und verliert ihren GE­Bonus \nund erhält zusätzlich noch einen Malus von – 4 auf ihre RK. \nEine Kreatur im Haltegriff kann nur einige wenige Aktionen \nausführen: Sie kann versuchen sich zu befreien, entweder mit\nHilfe eines Kampfmanöverwurfs oder mit einem Wurf auf \nEntfesslungskunst. Sie kann verbale und geistige Aktionen \nausführen, aber keine Zauber wirken, die eine Gesten­ oder eine \nMaterialkomponente benötigen. Eine Kreatur im Haltegriff, \ndie einen Zauber wirken oder Zauberähnliche Fähigkeiten \neinsetzen möchte, muss einen Konzentrationswurf (SG 10 \n+ KMB desjenigen, der sie im Haltegriff hat + Zaubergrad) \nmachen. Bei einem Fehlschlag geht der Zauber verloren. Im \nHaltegriff ist eine schwerwiegendere Version des Zustands \nringend und die beiden Zustände sind nicht kumulativ.",
+    "quelle": "GRW S. 566-567",
+    "boni": [
+      {
+        "ziel": "Rüstungsklasse",
+        "bonusart": "Malus",
+        "wert": -4
+      }
+    ],
+    "gebiet": "selbst",
+    "dauer": "Nach Angabe SL"
+  },
+  {
     "id": "standard-admin-52da5c4d-f682-4193-be6e-d7e1faadbbfc",
     "name": "Kampfrausch (Barbar, +4 ST und. KO (Moralbonus))",
     "kategorie": "Klassenmerkmale",
@@ -790,6 +1173,53 @@
     ],
     "gebiet": "",
     "dauer": "1 Min./Stufe"
+  },
+  {
+    "id": "standard-admin-216039b2-705a-45b6-aac7-fecc4e830b95",
+    "name": "Kränkelnd",
+    "kategorie": "Zustände",
+    "aktiv": false,
+    "beschreibung": "Kränkelnd: \nDer betroffene Charakter erhält einen Malus \nvon – 2 auf alle Angriffs­, Waffenschadens­, Rettungs­, Fertig­\nkeits­ und Attributswürfe.",
+    "quelle": "GRW S. 567",
+    "boni": [
+      {
+        "ziel": "Angriff Nah",
+        "bonusart": "Malus",
+        "wert": -2
+      },
+      {
+        "ziel": "Angriff Fern",
+        "bonusart": "Malus",
+        "wert": -2
+      },
+      {
+        "ziel": "Schaden Nah",
+        "bonusart": "Malus",
+        "wert": -2
+      },
+      {
+        "ziel": "Schaden Fern",
+        "bonusart": "Malus",
+        "wert": -2
+      },
+      {
+        "ziel": "RW-Reflex",
+        "bonusart": "Malus",
+        "wert": -2
+      },
+      {
+        "ziel": "RW-Wille",
+        "bonusart": "Malus",
+        "wert": -2
+      },
+      {
+        "ziel": "RW-Zähigkeit",
+        "bonusart": "Malus",
+        "wert": -2
+      }
+    ],
+    "gebiet": "selbst",
+    "dauer": "Nach Angabe SL"
   },
   {
     "id": "standard-admin-216039b2-705a-45b6-aac7-fecc4e830b95",
@@ -1331,6 +1761,38 @@
     "dauer": "Nach Angabe SL"
   },
   {
+    "id": "standard-admin-1799d8bc-b469-4ed6-8016-45c5c00e3da8",
+    "name": "Ringend",
+    "kategorie": "Zustände",
+    "aktiv": false,
+    "beschreibung": "Ringend: \nEine ringende Kreatur wird durch eine andere \nKreatur, eine Falle oder einen Effekt festgehalten. Ringende \nKreaturen können sich nicht bewegen und erhalten einen \nMalus von – 4 auf ihre Geschicklichkeit. Außerdem erhält eine \nringende Kreatur einen Malus von – 2 auf alle Angriffs­ und \nKampfmanöverwürfe, außer auf solche, um selbst jemanden \nin den Ringkampf zu verwickeln oder dem ringenden Zustand \nzu entkommen. Des Weiteren können ringende Kreaturen \nkeine Aktionen ausführen, für die sie beide Hände bräuchten. \nEin ringender Charakter, der zaubern oder Zauberähnliche \nFähigkeiten einsetzen möchte, muss einen Konzentrationswurf \n(SG 10 + KMB desjenigen, der ihn in den Ringkampf verwickelt \nhat + Zaubergrad) machen. Misslingt dieser Wurf, geht \nder Zauber verloren. Ringende Kreaturen können keine \nGelegenheitsangriffe ausführen.\nEiner ringenden Kreatur ist es nicht möglich, Heimlichkeit \neinzusetzen, um sich vor demjenigen zu verstecken, der sie \nin den Ringkampf verwickelt hat, selbst wenn eine besondere \nFähigkeit, wie etwa Meisterliches Verstecken, ihr dies erlauben \nwürde. Wenn eine ringende Kreatur unsichtbar wird, entweder \nmit Hilfe eines Zaubers oder einer anderen Fähigkeit, erhält sie \neinen Situationsbonus von +2 auf ihre KMV, um den Ringkampf \nzu vermeiden. Ansonsten erhält sie keine Vorteile.",
+    "quelle": "GRW S. 567",
+    "boni": [
+      {
+        "ziel": "Rüstungsklasse",
+        "bonusart": "Modifikator Attribut",
+        "wert": -2
+      },
+      {
+        "ziel": "KMV",
+        "bonusart": "Modifikator Attribut",
+        "wert": -2
+      },
+      {
+        "ziel": "Angriff Nah",
+        "bonusart": "Malus",
+        "wert": -2
+      },
+      {
+        "ziel": "KMB",
+        "bonusart": "Malus",
+        "wert": -2
+      }
+    ],
+    "gebiet": "selbst",
+    "dauer": "Nach Angabe SL"
+  },
+  {
     "id": "standard-admin-11cf5018-7753-41e4-b670-bfb644036ce5",
     "name": "Rüstungsarmschienen +3",
     "kategorie": "Ausrüstung",
@@ -1478,6 +1940,28 @@
     ],
     "gebiet": "Sicht",
     "dauer": "in Reichweite"
+  },
+  {
+    "id": "standard-admin-a1a48c7a-e2e7-41a7-bb3d-cb417d784423",
+    "name": "Sturmangriff",
+    "kategorie": "Kampf",
+    "aktiv": false,
+    "beschreibung": "Sturmangriff\nEin Sturmangriff ist eine besondere Volle Aktion, die es \ndir erlaubt, dich mit doppelter Bewegungsrate zu bewegen \nund während dieser Aktion anzugreifen. Ein Sturmangriff \nunterliegt allerdings strengen Regelungen, wie du dich \nbewegen darfst.\nBewegung während eines Sturmangriffs: Du musst dich \nvor deinem Angriff mindestens 3 m weit (2 Felder) bewegen \nund darfst dich mit bis zu deiner doppelter Bewegungsrate \ndirekt auf das von dir bestimmte Ziel zu bewegen. Wenn du \ndich mit maximal einfacher Bewegungsreichweite bewegst \nund dein Grund­Angriffsbonus wenigstens +1 beträgt, darfst \ndu während dieser Bewegung  außerdem eine Waffe ziehen.\nDu musst freie Bahn auf den Gegner haben, nichts darf \ndeine Bewegung behindern (wie z.B. schwieriges Gelände \noder Hindernisse). Du musst dich bis zu dem dir nächsten \nFeld bewegen, von dem aus du den Gegner angreifen kannst. \nIst dieses Feld besetzt oder blockiert, kannst du keinen \nSturmangriff ausführen. Falls irgendeine Linie von deinem \nStartfeld zu deinem Zielfeld durch ein Feld verläuft, das die \nBewegung blockiert, verlangsamt oder eine Kreatur enthält \n(auch einen Verbündeten), kannst du keinen Sturmangriff \nausführen. Hilflose Kreaturen halten einen Sturmangriff \nallerdings nicht auf.\nWenn du zu Beginn deiner Runde keine freie Sichtlinie \nauf den Gegner hast, kannst du keinen Sturmangriff auf \nihn ausführen.\nDu kannst in einer Runde, in der du einen Sturmangriff \nausführst, keinen 1,50 m­Schritt machen.\nWenn du bei deinem Zug nur eine Standard­Aktion \nausführen kannst, kannst du immer noch einen Sturmangriff \nausführen,  darfst dich aber nur mit maximal deiner einfachen \nBewegungsrate (nicht deiner doppelten Bewegungsrate) \nbewegen. Außerdem darfst du keine Waffe ziehen, sofern \ndu nicht das Talent Schnelle Waffenbereitschaft besitzt. Diese \nMöglichkeit darfst du jedoch nur nutzen, wenn du in deiner \nRunde auf eine Standardaktion beschränkt bist.\nAngriff bei einem Sturmangriff: Am Ende deiner Bewegung \ndarfst du einen einzelnen Nahkampfangriff ausführen. Du \nerhältst einen Bonus von +2 auf deinen Angriffswurf sowie \nbis zum Beginn deiner nächsten Runde einen Malus von \n– 2 auf deine RK.\nEin Charakter, der einen Sturmangriff ausführt, erhält \neinen Bonus von +2 gegen einen Gegner, wenn er das \nKampfmanöver Ansturm anwendet (siehe Ansturm auf \nSeite 199).\nSelbst wenn du mehrere Angriffe ausführen kannst, weil \nbeispielsweise dein Grund­Angriffsbonus hoch genug ist \noder weil du mehrere Waffen benutzt, darfst du bei einem \nSturmangriff nur einen Angriff ausführen.\nLanzen und Sturmangriffe: Eine Lanze verursacht \ndoppelten Schaden, wenn sie von einem berittenen Charakter \nfür einen Sturmangriff eingesetzt wird.\nGegen einen Sturmangriff eingesetzte Waffen: Dreizacke, \nSpeere und bestimmte andere Stichwaffen mit der \nEigenschaft Abwehr verursachen doppelten Schaden, wenn \nsie gegen einen Charakter bereitgemacht und eingesetzt \nwerden, der einen Sturmangriff ausführt.",
+    "quelle": "GRW S. 197",
+    "boni": [
+      {
+        "ziel": "Angriff Nah",
+        "bonusart": "Namenlos",
+        "wert": 2
+      },
+      {
+        "ziel": "Rüstungsklasse",
+        "bonusart": "Malus",
+        "wert": -2
+      }
+    ],
+    "gebiet": "selbst",
+    "dauer": "1 Runde"
   },
   {
     "id": "standard-admin-c7207538-3323-478b-9288-d407efda201e",
@@ -1640,6 +2124,38 @@
     "dauer": "Nach Angabe SL"
   },
   {
+    "id": "standard-admin-2c1006cb-9b9e-44fb-8dd0-f52a66dbbaa8",
+    "name": "Verstrickt",
+    "kategorie": "Zustände",
+    "aktiv": false,
+    "beschreibung": "Verstrickt: \nEin verstrickter Charakter ist in seiner Bewegung \neingeschränkt. Solange seine Fesseln nicht an einem unbeweg­\nlichen Objekt befestigt sind oder von einer Kraft festgehalten \nwerden, kann er sich aber noch bewegen. Eine verstrickte \nKreatur bewegt sich mit ihrer halben Bewegungsrate, kann \nnicht rennen oder Sturmangriffe ausführen, erhält einen \nMalus von – 2 auf alle Angriffswürfe und einen Malus von \n– 4 auf Geschicklichkeit. Ein verstrickter Charakter, der \nversucht, einen Zauber zu wirken, muss einen erfolgreichen \nKonzentrationswurf (SG 15 + Zaubergrad) machen, oder er \nverliert den Zauber.",
+    "quelle": "GRW S. 568",
+    "boni": [
+      {
+        "ziel": "Angriff Nah",
+        "bonusart": "Malus",
+        "wert": -2
+      },
+      {
+        "ziel": "Angriff Fern",
+        "bonusart": "Modifikator Attribut",
+        "wert": -2
+      },
+      {
+        "ziel": "Rüstungsklasse",
+        "bonusart": "Modifikator Attribut",
+        "wert": -2
+      },
+      {
+        "ziel": "KMV",
+        "bonusart": "Modifikator Attribut",
+        "wert": -2
+      }
+    ],
+    "gebiet": "selbst",
+    "dauer": "Nach Angabe SL"
+  },
+  {
     "id": "standard-admin-6ea6c7d8-5f39-4abc-89bc-13581aeb29e2",
     "name": "Volle Verteidigung",
     "kategorie": "Kampf",
@@ -1677,6 +2193,48 @@
     ],
     "gebiet": "",
     "dauer": "1 Min./Stufe"
+  },
+  {
+    "id": "standard-admin-cd552f0a-ccf7-4edb-893a-8fc4626fe9d4",
+    "name": "Wut",
+    "kategorie": "Zauber",
+    "aktiv": false,
+    "beschreibung": "WUT\nSchule: Verzauberung (Zwang) [Geistesbeeinflussung];  \nGrad: BAR 2, HXM/MAG 3\nZeitaufwand: 1 Standard-Aktion\nKomponenten: V, G\nReichweite: Mittel (30 m + 3 m/Stufe)\nZiele: Eine bereitwillige Kreatur pro 3 Stufen, keine zwei  \nbeliebigen Ziele dürfen weiter als 9 m voneinander entfernt sein\nWirkungsdauer: Konzentration + 1 Runde/Stufe (A)\nRettungswurf: Nein; Zauberresistenz: Ja \nJede betroffene Kreatur erhält einen Moralbonus von +2 auf Stärke \nund Konstitution, einen Moralbonus von +1 auf Willenswürfe und \neinen Malus von – 2 auf die RK. Der Effekt ist ansonsten mit dem\nbarbarischen Kampfrausch identisch, außer dass das Ziel am Ende \ndes Kampfrauschs nicht erschöpft ist.",
+    "quelle": "GRW S. 367",
+    "boni": [
+      {
+        "ziel": "Angriff Nah",
+        "bonusart": "Modifikator Attribut",
+        "wert": 1
+      },
+      {
+        "ziel": "Schaden Nah",
+        "bonusart": "Modifikator Attribut",
+        "wert": 1
+      },
+      {
+        "ziel": "KMB",
+        "bonusart": "Modifikator Attribut",
+        "wert": 1
+      },
+      {
+        "ziel": "RW-Wille",
+        "bonusart": "Moral",
+        "wert": 1
+      },
+      {
+        "ziel": "RW-Zähigkeit",
+        "bonusart": "Modifikator Attribut",
+        "wert": 1
+      },
+      {
+        "ziel": "Rüstungsklasse",
+        "bonusart": "Malus",
+        "wert": -2
+      }
+    ],
+    "gebiet": "",
+    "dauer": ""
   },
   {
     "id": "standard-admin-128d469b-f666-4315-871d-a27e5428b2f6",
