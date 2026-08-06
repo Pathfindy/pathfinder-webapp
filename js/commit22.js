@@ -50,6 +50,9 @@
       appVersion: typeof APP_VERSION === "string" ? APP_VERSION : null,
       charakter: sichereKopie(charakter),
       effektStatus: status,
+      effektAngriffsziele: typeof ladeEffektAngriffszieleFuerCharakter === "function"
+        ? sichereKopie(ladeEffektAngriffszieleFuerCharakter(charakter.id))
+        : {},
       benutzerEffekte
     };
 
@@ -84,6 +87,12 @@
         typeof daten.effektStatus === "object" &&
         !Array.isArray(daten.effektStatus)
           ? daten.effektStatus
+          : {},
+      effektAngriffsziele:
+        daten.effektAngriffsziele &&
+        typeof daten.effektAngriffsziele === "object" &&
+        !Array.isArray(daten.effektAngriffsziele)
+          ? daten.effektAngriffsziele
           : {},
       benutzerEffekte: Array.isArray(daten.benutzerEffekte)
         ? daten.benutzerEffekte
@@ -124,6 +133,7 @@
       normalisiereVergleichstext(effekt.name),
       normalisiereVergleichstext(effekt.kategorie),
       normalisiereVergleichstext(effekt.quelle),
+      effekt.angriffZuweisbar ? "angriff-zuweisbar" : "global",
       boni
     ].join("|");
   }
@@ -299,6 +309,11 @@
     speichereAlleCharakterStatus(alleStatus);
   }
 
+  function speichereImportAngriffsziele(charakterId, ziele) {
+    if (typeof speichereEffektAngriffszieleFuerCharakter !== "function") return;
+    speichereEffektAngriffszieleFuerCharakter(charakterId, ziele || {});
+  }
+
   function mappeImportFavoriten(favoriten, idZuBehalten) {
     if (!Array.isArray(favoriten)) return [];
     return [...new Set(
@@ -342,6 +357,7 @@
     charaktere.push(charakter);
     aktiverCharakterId = charakter.id;
     speichereImportStatus(charakter.id, importDaten.effektStatus);
+    speichereImportAngriffsziele(charakter.id, importDaten.effektAngriffsziele);
     speichereImportFavoriten(
       charakter.id,
       mappeImportFavoriten(importDaten.favoriten, idZuBehalten)
@@ -369,6 +385,7 @@
 
     charaktere[index] = importiert;
     speichereImportStatus(ziel.id, importDaten.effektStatus);
+    speichereImportAngriffsziele(ziel.id, importDaten.effektAngriffsziele);
     speichereImportFavoriten(
       ziel.id,
       mappeImportFavoriten(importDaten.favoriten, idZuBehalten)

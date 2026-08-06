@@ -182,6 +182,9 @@
       exportiertAm: new Date().toISOString(),
       charakter: JSON.parse(JSON.stringify(charakter)),
       effektStatus: JSON.parse(JSON.stringify(ladeStatusFuerCharakter(charakter.id))),
+      effektAngriffsziele: typeof ladeEffektAngriffszieleFuerCharakter === "function"
+        ? JSON.parse(JSON.stringify(ladeEffektAngriffszieleFuerCharakter(charakter.id)))
+        : {},
       favoriten: favoritenFuerCharakter(charakter.id),
       benutzerEffekte: listeBenutzerEffekte().map(effekt => JSON.parse(JSON.stringify(effekt)))
     };

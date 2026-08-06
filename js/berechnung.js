@@ -42,19 +42,32 @@ function sammleAktiveBoni(effektListe = []) {
         .flatMap(effekt => {
             if (!Array.isArray(effekt.boni)) return [];
 
+            const angriffZiel = typeof angriffszielFuerEffekt === "function"
+                ? angriffszielFuerEffekt(effekt)
+                : "-";
+
             return effekt.boni.map(bonus => ({
                 ...normalisiereBerechnungsBonus(bonus),
                 effektId: effekt.id || null,
-                effektName: effekt.name || ""
+                effektName: effekt.name || "",
+                angriffZuweisbar: !!effekt.angriffZuweisbar,
+                angriffZiel
             }));
         })
         .filter(bonus => bonus.ziel && bonus.wert !== 0);
 }
 
-function berechneBonusErgebnis(effektListe = []) {
+const ANGRIFFSGEBUNDENE_ZIELE = new Set([
+    "Angriff Nah",
+    "Angriff Fern",
+    "Schaden Nah",
+    "Schaden Fern"
+]);
+
+function berechneBonusErgebnisAusBoni(bonusListe = []) {
     const gruppen = new Map();
 
-    sammleAktiveBoni(effektListe).forEach(bonus => {
+    bonusListe.forEach(bonus => {
         if (!gruppen.has(bonus.ziel)) {
             gruppen.set(bonus.ziel, {
                 stapelbar: 0,
@@ -104,6 +117,20 @@ function berechneBonusErgebnis(effektListe = []) {
     });
 
     return ergebnis;
+}
+
+function berechneBonusErgebnis(effektListe = []) {
+    return berechneBonusErgebnisAusBoni(sammleAktiveBoni(effektListe));
+}
+
+function berechneBonusErgebnisFuerAngriff(effektListe = [], angriffsIndex = 0) {
+    const angriffsZiel = `A${Number(angriffsIndex) + 1}`;
+    const boni = sammleAktiveBoni(effektListe).filter(bonus => {
+        if (!ANGRIFFSGEBUNDENE_ZIELE.has(bonus.ziel)) return true;
+        if (!bonus.angriffZuweisbar) return true;
+        return bonus.angriffZiel === "-" || bonus.angriffZiel === angriffsZiel;
+    });
+    return berechneBonusErgebnisAusBoni(boni);
 }
 
 const DASHBOARD_ZIELE = {
@@ -157,6 +184,7 @@ if (typeof window !== "undefined") {
     window.DASHBOARD_ZIELE = DASHBOARD_ZIELE;
     window.sammleAktiveBoni = sammleAktiveBoni;
     window.berechneBonusErgebnis = berechneBonusErgebnis;
+    window.berechneBonusErgebnisFuerAngriff = berechneBonusErgebnisFuerAngriff;
     window.aktualisiereDashboard = aktualisiereDashboard;
     window.berechneWerte = berechneWerte;
 }

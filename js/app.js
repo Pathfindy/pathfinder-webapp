@@ -1,7 +1,7 @@
 // Das azlantische Helferlein der Boni
 // app.js
-// Version 0.18.1
-const APP_VERSION="0.18.1";
+// Version 0.30
+const APP_VERSION="0.30";
 
 const seiten={
  dashboard:document.getElementById("dashboard"),
@@ -29,6 +29,7 @@ const STORAGE_KEYS={
  charaktere:"pf-charaktere",
  aktiverCharakter:"pf-aktiver-charakter",
  charakterEffekte:"pf-charakter-effekte",
+ charakterEffektAngriffe:"pf-charakter-effekt-angriffe",
  adminPinHash:"pf-admin-pin-hash",
  adminStandardAenderungen:"pf-admin-standard-aenderungen",
  adminStandardNeu:"pf-admin-standard-neu"
@@ -285,6 +286,53 @@ function speichereStatus(status){
  speichereAlleCharakterStatus(statusNachCharakter);
 }
 
+function ladeAlleEffektAngriffsziele(){
+ const gespeichert=ladeJson(STORAGE_KEYS.charakterEffektAngriffe,{});
+ return gespeichert && typeof gespeichert==="object" && !Array.isArray(gespeichert)
+   ?gespeichert
+   :{};
+}
+
+function speichereAlleEffektAngriffsziele(zieleNachCharakter){
+ speichereJson(STORAGE_KEYS.charakterEffektAngriffe,zieleNachCharakter);
+}
+
+function normalisiereAngriffsziel(wert){
+ const ziel=String(wert||"-");
+ return ["-","A1","A2","A3","A4","A5","A6"].includes(ziel)?ziel:"-";
+}
+
+function ladeEffektAngriffszieleFuerCharakter(charakterId=aktiverCharakterId){
+ if(!charakterId) return {};
+ const alle=ladeAlleEffektAngriffsziele();
+ const ziele=alle[charakterId];
+ return ziele && typeof ziele==="object" && !Array.isArray(ziele)?ziele:{};
+}
+
+function speichereEffektAngriffszieleFuerCharakter(charakterId,ziele){
+ if(!charakterId) return;
+ const alle=ladeAlleEffektAngriffsziele();
+ alle[charakterId]={};
+ Object.entries(ziele||{}).forEach(([effektId,ziel])=>{
+   alle[charakterId][String(effektId)]=normalisiereAngriffsziel(ziel);
+ });
+ speichereAlleEffektAngriffsziele(alle);
+}
+
+function angriffszielFuerEffekt(effekt,charakterId=aktiverCharakterId){
+ if(!effekt?.angriffZuweisbar) return "-";
+ const ziele=ladeEffektAngriffszieleFuerCharakter(charakterId);
+ return normalisiereAngriffsziel(ziele[String(effekt.id)]);
+}
+
+function setzeAngriffszielFuerEffekt(effekt,ziel,charakterId=aktiverCharakterId){
+ if(!effekt?.angriffZuweisbar || !charakterId) return false;
+ const ziele=ladeEffektAngriffszieleFuerCharakter(charakterId);
+ ziele[String(effekt.id)]=normalisiereAngriffsziel(ziel);
+ speichereEffektAngriffszieleFuerCharakter(charakterId,ziele);
+ return true;
+}
+
 function kopiereEffektstatus(quelleId,zielId){
  const quelle=findeCharakter(quelleId);
  const ziel=findeCharakter(zielId);
@@ -294,6 +342,9 @@ function kopiereEffektstatus(quelleId,zielId){
  const quellStatus=ladeStatusFuerCharakter(quelleId);
  statusNachCharakter[zielId]={...quellStatus};
  speichereAlleCharakterStatus(statusNachCharakter);
+
+ const quellZiele=ladeEffektAngriffszieleFuerCharakter(quelleId);
+ speichereEffektAngriffszieleFuerCharakter(zielId,{...quellZiele});
 
  if(zielId===aktiverCharakterId){
    baueEffektliste();
@@ -305,9 +356,16 @@ function kopiereEffektstatus(quelleId,zielId){
 
 function loescheCharakterStatus(charakterId){
  const statusNachCharakter=ladeAlleCharakterStatus();
- if(!Object.prototype.hasOwnProperty.call(statusNachCharakter,charakterId)) return;
- delete statusNachCharakter[charakterId];
- speichereAlleCharakterStatus(statusNachCharakter);
+ if(Object.prototype.hasOwnProperty.call(statusNachCharakter,charakterId)){
+   delete statusNachCharakter[charakterId];
+   speichereAlleCharakterStatus(statusNachCharakter);
+ }
+
+ const zieleNachCharakter=ladeAlleEffektAngriffsziele();
+ if(Object.prototype.hasOwnProperty.call(zieleNachCharakter,charakterId)){
+   delete zieleNachCharakter[charakterId];
+   speichereAlleEffektAngriffsziele(zieleNachCharakter);
+ }
 }
 
 function ladeBenutzerEffekte(){
@@ -365,6 +423,7 @@ function normalisiereEffekt(effekt={}){
    kategorie:normalisiereKategorie(effekt.kategorie),
    beschreibung:effekt.beschreibung||"",
    quelle:effekt.quelle||"",
+   angriffZuweisbar:!!effekt.angriffZuweisbar,
    boni:Array.isArray(effekt.boni)?effekt.boni.map(normalisiereBonus):[]
  };
 }
@@ -662,6 +721,31 @@ function baueEffektliste(){
    info.className="effekt-info";
    info.innerHTML=`<div class="effekt-name">${effekt.name}</div><div class="effekt-kategorie">${effekt.kategorie}</div>`;
 
+   let angriffsAuswahl=null;
+   if(effekt.angriffZuweisbar){
+     const zuweisung=document.createElement("label");
+     zuweisung.className="effekt-angriffsziel-30";
+     const beschriftung=document.createElement("span");
+     beschriftung.textContent="Angriff";
+     angriffsAuswahl=document.createElement("select");
+     angriffsAuswahl.setAttribute("aria-label",`${effekt.name}: betroffenen Angriff wählen`);
+     ["-","A1","A2","A3","A4","A5","A6"].forEach(wert=>{
+       const option=document.createElement("option");
+       option.value=wert;
+       option.textContent=wert;
+       angriffsAuswahl.appendChild(option);
+     });
+     angriffsAuswahl.value=angriffszielFuerEffekt(effekt);
+     angriffsAuswahl.addEventListener("click",event=>event.stopPropagation());
+     angriffsAuswahl.addEventListener("change",event=>{
+       event.stopPropagation();
+       setzeAngriffszielFuerEffekt(effekt,angriffsAuswahl.value);
+       if(typeof berechneWerte==="function") berechneWerte();
+     });
+     zuweisung.append(beschriftung,angriffsAuswahl);
+     info.appendChild(zuweisung);
+   }
+
    const darfBearbeiten=!effekt.standard || istAdminEntsperrt();
    if(darfBearbeiten){
       const aktionen=document.createElement("div");
@@ -788,6 +872,7 @@ function leseEditorFormular(){
    kategorie:document.getElementById("effektKategorie")?.value||"",
    beschreibung:document.getElementById("effektBeschreibung")?.value.trim()||"",
    quelle:document.getElementById("effektQuelle")?.value.trim()||"",
+   angriffZuweisbar:!!document.getElementById("effektAngriffZuweisbar")?.checked,
    boni:editorState.entwurf.boni.map(normalisiereBonus)
  };
 
@@ -801,12 +886,14 @@ function schreibeEditorFormular(){
  const kategorie=document.getElementById("effektKategorie");
  const beschreibung=document.getElementById("effektBeschreibung");
  const quelle=document.getElementById("effektQuelle");
+ const angriffZuweisbar=document.getElementById("effektAngriffZuweisbar");
  const titel=document.querySelector("#effektDialog h3");
 
  if(name) name.value=editorState.entwurf.name;
  if(kategorie) kategorie.value=editorState.entwurf.kategorie;
  if(beschreibung) beschreibung.value=editorState.entwurf.beschreibung;
  if(quelle) quelle.value=editorState.entwurf.quelle;
+ if(angriffZuweisbar) angriffZuweisbar.checked=!!editorState.entwurf.angriffZuweisbar;
  if(titel){
    titel.textContent=editorState.effektId
      ?"Effekt bearbeiten"
@@ -1016,6 +1103,7 @@ function bereiteStandardEffektFuerExportVor(effekt){
    aktiv:false,
    beschreibung:effekt.beschreibung||"",
    quelle:effekt.quelle||"",
+   angriffZuweisbar:!!effekt.angriffZuweisbar,
    boni:Array.isArray(effekt.boni)?effekt.boni.map(normalisiereBonus):[]
  };
 }

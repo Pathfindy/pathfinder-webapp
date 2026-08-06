@@ -245,9 +245,15 @@
       return;
     }
 
-    const boni = aktuelleBonuswerte();
+    const globaleBoni = aktuelleBonuswerte();
 
     angriffe.forEach((angriff, index) => {
+      const boni = typeof berechneBonusErgebnisFuerAngriff === "function"
+        ? berechneBonusErgebnisFuerAngriff(
+            typeof effekte !== "undefined" ? effekte : [],
+            index
+          )
+        : globaleBoni;
       const karte = document.createElement("article");
       karte.className = "angriff-karte";
 
