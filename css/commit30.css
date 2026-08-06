@@ -1,0 +1,52 @@
+/* Commit 30: Angriffszuweisbare Effekte und Versionsanzeige */
+
+.app-version-30 {
+  margin-left: .45rem;
+  font-size: .45em;
+  font-weight: 400;
+  opacity: .72;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+.effekt-zuweisbar-editor-30 {
+  display: inline-flex;
+  align-items: center;
+  gap: .55rem;
+  font-weight: 650;
+}
+
+.effekt-zuweisbar-editor-30 input {
+  width: 1.15rem;
+  height: 1.15rem;
+}
+
+.effekt-angriffsziel-30 {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  margin-top: .35rem;
+  color: #4c5968;
+  font-size: .82rem;
+  font-weight: 650;
+}
+
+.effekt-angriffsziel-30 select {
+  min-width: 4.2rem;
+  padding: .28rem .45rem;
+  border: 1px solid #aeb8c4;
+  border-radius: 7px;
+  background: #fff;
+  font: inherit;
+}
+
+@media (max-width: 520px) {
+  .app-version-30 {
+    display: inline-block;
+    margin-left: .25rem;
+  }
+
+  .effekt-angriffsziel-30 {
+    margin-top: .25rem;
+  }
+}
