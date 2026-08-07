@@ -80,7 +80,7 @@
     "aktiv": false,
     "beschreibung": "Arkaner Schlag [Kampf]\nDu nutzt deine arkane Macht, um deine Waffen mit magischer \nEnergie anzureichern. \nVoraussetzung: Fähigkeit, arkane Zauber zu wirken\nVorteil: Mit einer Schnellen Aktion kannst du deinen \nWaffen einen Bruchteil deiner magischen Macht einflößen. \nEine Runde lang erhöht sich der Schaden deiner Waffen \num +1. Außerdem werden deine Waffen in Bezug auf die \nÜberwindung von Schadensreduzierung als magisch \nbehandelt. Der Bonus steigt für je fünf Zauberstufen um +1 \nbis auf ein Maximum von +5 auf der 20. Stufe.",
     "quelle": "GRW S. 119",
-    "angriffZuweisbar": false,
+    "angriffZuweisbar": true,
     "boni": [
       {
         "ziel": "Schaden Nah",
@@ -103,7 +103,7 @@
     "aktiv": false,
     "beschreibung": "Arkaner Schlag [Kampf]\nDu nutzt deine arkane Macht, um deine Waffen mit magischer \nEnergie anzureichern. \nVoraussetzung: Fähigkeit, arkane Zauber zu wirken\nVorteil: Mit einer Schnellen Aktion kannst du deinen \nWaffen einen Bruchteil deiner magischen Macht einflößen. \nEine Runde lang erhöht sich der Schaden deiner Waffen \num +1. Außerdem werden deine Waffen in Bezug auf die \nÜberwindung von Schadensreduzierung als magisch \nbehandelt. Der Bonus steigt für je fünf Zauberstufen um +1 \nbis auf ein Maximum von +5 auf der 20. Stufe.",
     "quelle": "GRW S. 119",
-    "angriffZuweisbar": false,
+    "angriffZuweisbar": true,
     "boni": [
       {
         "ziel": "Schaden Nah",
@@ -126,7 +126,7 @@
     "aktiv": false,
     "beschreibung": "Arkaner Schlag [Kampf]\nDu nutzt deine arkane Macht, um deine Waffen mit magischer \nEnergie anzureichern. \nVoraussetzung: Fähigkeit, arkane Zauber zu wirken\nVorteil: Mit einer Schnellen Aktion kannst du deinen \nWaffen einen Bruchteil deiner magischen Macht einflößen. \nEine Runde lang erhöht sich der Schaden deiner Waffen \num +1. Außerdem werden deine Waffen in Bezug auf die \nÜberwindung von Schadensreduzierung als magisch \nbehandelt. Der Bonus steigt für je fünf Zauberstufen um +1 \nbis auf ein Maximum von +5 auf der 20. Stufe.",
     "quelle": "GRW S. 119",
-    "angriffZuweisbar": false,
+    "angriffZuweisbar": true,
     "boni": [
       {
         "ziel": "Schaden Nah",
@@ -149,7 +149,7 @@
     "aktiv": false,
     "beschreibung": "Arkaner Schlag [Kampf]\nDu nutzt deine arkane Macht, um deine Waffen mit magischer \nEnergie anzureichern. \nVoraussetzung: Fähigkeit, arkane Zauber zu wirken\nVorteil: Mit einer Schnellen Aktion kannst du deinen \nWaffen einen Bruchteil deiner magischen Macht einflößen. \nEine Runde lang erhöht sich der Schaden deiner Waffen \num +1. Außerdem werden deine Waffen in Bezug auf die \nÜberwindung von Schadensreduzierung als magisch \nbehandelt. Der Bonus steigt für je fünf Zauberstufen um +1 \nbis auf ein Maximum von +5 auf der 20. Stufe.",
     "quelle": "GRW S. 119",
-    "angriffZuweisbar": false,
+    "angriffZuweisbar": true,
     "boni": [
       {
         "ziel": "Schaden Nah",
@@ -1902,7 +1902,7 @@
     "aktiv": false,
     "beschreibung": "MÄCHTIGE MAGISCHE FÄNGE \nSchule: Verwandlung; Grad: DRU 3, WAL 3\nReichweite: Nah (7,50 m + 1,50 m/2 Stufen)\nZiel: Eine lebende Kreatur\nWirkungsdauer: 1 Stunde/Stufe\nFunktioniert wie Magische Fänge, der Verbesserungsbonus auf \nAngriffs- und Schadenswürfe steigt aber alle 4 Zauberstufen um +1 \n(maximal +5). Der Bonus ermöglicht es natürlichen Waffen jedoch \nnicht, Schadensreduzierung außer gegen Magie zu umgehen.\nDu kannst alternativ dazu auch allen natürlichen Waffen des Ziels \neinen Verbesserungsbonus von +1 verleihen (ungeachtet deiner \nZauberstufe).\nMächtige Magische Fänge kann mit Dauerhaftigkeit permanent \ngemacht werden.",
     "quelle": "GRW S. 302",
-    "angriffZuweisbar": false,
+    "angriffZuweisbar": true,
     "boni": [
       {
         "ziel": "Angriff Nah",
