@@ -1,0 +1,90 @@
+/* Commit 26: Grundwerte auf der Werte-Seite */
+
+.grundwerte-26 {
+    max-width: 920px;
+    display: grid;
+    gap: 16px;
+    margin-top: 16px;
+}
+
+.grundwerte-gruppe-26 {
+    padding: 16px;
+    border-radius: 10px;
+    background: white;
+    box-shadow: 0 1px 4px rgba(0,0,0,.08);
+}
+
+.grundwerte-gruppe-26 h3 {
+    margin: 0 0 12px;
+}
+
+.grundwerte-kopf-26,
+.grundwert-zeile-26 {
+    display: grid;
+    grid-template-columns: minmax(150px, 1.5fr) minmax(100px, .8fr) minmax(100px, .8fr);
+    gap: 10px;
+    align-items: center;
+}
+
+.grundwerte-kopf-26 {
+    padding: 0 4px 6px;
+    color: #667;
+    font-size: .78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.grundwert-zeile-26 {
+    padding: 8px 4px;
+    border-top: 1px solid #e1e5ea;
+}
+
+.grundwert-zeile-26 label {
+    font-weight: 650;
+}
+
+.grundwert-zeile-26 input,
+.grundwert-gesamt-26 {
+    width: 100%;
+    min-height: 42px;
+    padding: 7px 9px;
+    border: 1px solid #b8c0ca;
+    border-radius: 8px;
+    background: white;
+    font: inherit;
+    text-align: center;
+}
+
+.grundwert-gesamt-26 {
+    border: 0;
+    background: #e6eaf0;
+    color: #1e3a5f;
+    font-size: 1.05rem;
+    font-weight: 750;
+    cursor: pointer;
+}
+
+.grundwert-gesamt-26:hover {
+    background: #d9e0e9;
+}
+
+.grundwert-gesamt-26:focus-visible {
+    outline: 3px solid #7ca1cc;
+    outline-offset: 2px;
+}
+
+@media (max-width: 520px) {
+    .grundwerte-kopf-26,
+    .grundwert-zeile-26 {
+        grid-template-columns: minmax(115px, 1.2fr) minmax(72px, .75fr) minmax(72px, .75fr);
+        gap: 6px;
+    }
+
+    .grundwerte-gruppe-26 {
+        padding: 12px 9px;
+    }
+
+    .grundwert-zeile-26 {
+        padding-inline: 0;
+    }
+}

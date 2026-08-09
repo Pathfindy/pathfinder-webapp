@@ -1,0 +1,387 @@
+/* Commit 19: Charakterwerte und Trefferpunkte */
+
+.tp-bereich {
+    max-width: 720px;
+    padding: 16px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 1px 4px rgba(0,0,0,.08);
+}
+
+.tp-bereich h3 {
+    margin-bottom: 14px;
+}
+
+.tp-werte {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+    margin-bottom: 18px;
+}
+
+.tp-feld {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-weight: 600;
+}
+
+.tp-feld input,
+.tp-aktionszeile input {
+    width: 100%;
+    min-height: 46px;
+    padding: 9px 10px;
+    border: 1px solid #bbb;
+    border-radius: 8px;
+    font: inherit;
+}
+
+.tp-aktuell output {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 46px;
+    padding: 9px 10px;
+    border-radius: 8px;
+    background: #e6eaf0;
+    font-size: 1.35rem;
+    font-weight: 700;
+}
+
+.tp-aktuell output.tp-gruen {
+    background: #d9f2e2;
+    color: #176b35;
+}
+
+.tp-aktuell output.tp-gelb {
+    background: #fff2bf;
+    color: #725b00;
+}
+
+.tp-aktuell output.tp-orange {
+    background: #ffe0bf;
+    color: #914800;
+}
+
+.tp-aktuell output.tp-rot {
+    background: #f7d6d6;
+    color: #9f1d1d;
+}
+
+.tp-aktionen {
+    display: grid;
+    grid-template-columns: auto minmax(130px, 1fr);
+    gap: 10px 12px;
+    align-items: center;
+}
+
+.tp-aktionen > label {
+    font-weight: 600;
+}
+
+.tp-aktionszeile {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 48px;
+    gap: 8px;
+}
+
+.tp-aktionszeile button {
+    min-width: 48px;
+    min-height: 46px;
+    border: 0;
+    border-radius: 8px;
+    background: #1e3a5f;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.tp-aktionszeile button:hover {
+    background: #294f7d;
+}
+
+.tp-meldung {
+    min-height: 1.3em;
+    margin-top: 10px;
+    color: #667;
+}
+
+.tp-meldung.fehler {
+    color: #a21f1f;
+}
+
+@media (max-width: 600px) {
+    .tp-werte {
+        grid-template-columns: 1fr;
+    }
+
+    .tp-aktionen {
+        grid-template-columns: 1fr;
+        gap: 6px;
+    }
+
+    .tp-aktionen > label:not(:first-child) {
+        margin-top: 6px;
+    }
+}
+
+/* ==========================
+   Commit 20: Angriffe
+========================== */
+
+.angriffe-bereich {
+    max-width: 920px;
+    margin-top: 16px;
+    padding: 16px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 1px 4px rgba(0,0,0,.08);
+}
+
+.angriffe-kopf {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+.angriffe-kopf h3 { margin-bottom: 4px; }
+.angriffe-kopf p { color: #667; font-size: .9rem; }
+
+#btnAngriffHinzufuegen {
+    flex: 0 0 auto;
+    border: 0;
+    border-radius: 8px;
+    padding: 10px 12px;
+    background: #1e3a5f;
+    color: white;
+    font: inherit;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+#btnAngriffHinzufuegen:disabled { opacity: .45; cursor: not-allowed; }
+.angriffe-liste { display: grid; gap: 12px; }
+
+.angriff-karte {
+    padding: 12px;
+    border: 1px solid #d7dce2;
+    border-radius: 10px;
+    background: #f8fafc;
+}
+
+.angriff-kopf {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 44px;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.angriff-name,
+.angriff-felder input,
+.angriff-felder select {
+    width: 100%;
+    min-height: 42px;
+    padding: 8px 9px;
+    border: 1px solid #bbb;
+    border-radius: 8px;
+    font: inherit;
+    background: white;
+}
+
+.angriff-name { font-weight: 700; }
+
+.angriff-loeschen {
+    width: 44px;
+    min-height: 42px;
+    border: 0;
+    border-radius: 8px;
+    background: #e6eaf0;
+    cursor: pointer;
+}
+
+.angriff-felder {
+    display: grid;
+    grid-template-columns: minmax(110px, .8fr) minmax(120px, 1fr) minmax(170px, 1.3fr) minmax(120px, 1fr);
+    gap: 8px;
+}
+
+.angriff-felder label {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    min-width: 0;
+    font-size: .85rem;
+    font-weight: 600;
+}
+
+.wuerfel-zeile {
+    display: grid;
+    grid-template-columns: minmax(64px, .8fr) minmax(76px, 1fr);
+    gap: 6px;
+}
+
+.angriff-ergebnis {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.angriff-ergebnis div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    padding: 10px;
+    border-radius: 8px;
+    background: #e6eaf0;
+}
+
+.angriff-ergebnis span { color: #5c6673; font-size: .85rem; font-weight: 600; }
+.angriff-ergebnis strong { color: #1e3a5f; font-size: 1.15rem; }
+
+.angriffe-leer {
+    padding: 14px;
+    border-radius: 8px;
+    background: #f4f6f8;
+    color: #667;
+    text-align: center;
+}
+
+.angriffe-meldung { min-height: 1.3em; margin-top: 10px; color: #667; }
+.angriffe-meldung.fehler { color: #a21f1f; }
+
+@media (max-width: 720px) {
+    .angriffe-kopf { flex-direction: column; align-items: stretch; }
+    #btnAngriffHinzufuegen { width: 100%; }
+    .angriff-felder { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 480px) {
+    .angriff-felder,
+    .angriff-ergebnis { grid-template-columns: 1fr; }
+}
+
+/* ==========================
+   Commit 20.2: gezielte Layout-Ergänzungen
+========================== */
+
+/* Bestehende App-Grafik bleibt unverändert. */
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Drei TP-Werte in einer Zeile. */
+.tp-werte {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+/* Schaden und Heilung in einer Zeile. */
+.tp-aktionen.tp-aktionen-kompakt {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: end;
+}
+
+.tp-aktion {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.tp-aktion > label {
+    font-weight: 600;
+}
+
+/* Angriffsergebnis bleibt sichtbar; Eingabefelder sind ausklappbar. */
+.angriff-details {
+    margin-top: 10px;
+}
+
+.angriff-details[hidden] {
+    display: none;
+}
+
+.angriff-toggle {
+    min-width: 44px;
+    min-height: 42px;
+    border: 0;
+    border-radius: 8px;
+    background: #e6eaf0;
+    color: inherit;
+    font: inherit;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.angriff-details .angriff-loeschen {
+    width: auto;
+    margin-top: 10px;
+    padding: 8px 12px;
+}
+
+@media (max-width: 600px) {
+    .tp-werte {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 6px;
+    }
+
+    .tp-aktionen.tp-aktionen-kompakt {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+    }
+}
+
+@media (max-width: 380px) {
+    .tp-aktionen.tp-aktionen-kompakt {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* ==========================
+   Commit 24
+========================== */
+
+.angriff-notiz {
+    width: 100%;
+    min-height: 58px;
+    margin-top: 8px;
+    padding: 8px 9px;
+    border: 1px solid #bbb;
+    border-radius: 8px;
+    background: white;
+    font: inherit;
+    resize: vertical;
+}
+
+.effekt-favorit {
+    flex: 0 0 auto;
+    min-width: 42px;
+    min-height: 42px;
+    border: 0;
+    border-radius: 8px;
+    background: #e6eaf0;
+    color: #8a6d00;
+    font-size: 1.3rem;
+    cursor: pointer;
+}
+
+.effekt-favorit.aktiv {
+    background: #fff2bf;
+}
+
+.effekt-filter {
+    grid-template-columns: minmax(170px, 1fr) auto auto;
+}
+
+@media (max-width:600px) {
+    .effekt-filter {
+        grid-template-columns: 1fr;
+    }
+}

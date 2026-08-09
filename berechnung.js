@@ -1,0 +1,190 @@
+// Das azlantische Helferlein der Boni
+// berechnung.js
+// Commit 24
+
+const STAPELBARE_BONUSARTEN = new Set([
+    "Ausweichen",
+    "Situation",
+    "Namenlos",
+    "Malus",
+    "Modifikator Attribut"
+]);
+
+function normalisiereBerechnungsBonusart(bonusart) {
+    const wert = typeof bonusart === "string" ? bonusart.trim() : "Namenlos";
+    const migration = {
+        "Ausweich": "Ausweichen",
+        "Umstand": "Situation",
+        "Unbenannt": "Namenlos",
+        "Unbekannt": "Namenlos",
+        "Natürlich": "Natürliche Rüstung",
+        "Natürliche": "Natürliche Rüstung",
+        "Natür. Rüstung": "Natürliche Rüstung"
+    };
+    return migration[wert] || wert;
+}
+
+function normalisiereBerechnungsBonus(bonus = {}) {
+    const wert = Number(bonus.wert);
+
+    return {
+        ziel: typeof bonus.ziel === "string" ? bonus.ziel.trim() : "",
+        bonusart: normalisiereBerechnungsBonusart(bonus.bonusart),
+        wert: Number.isFinite(wert) ? wert : 0
+    };
+}
+
+function sammleAktiveBoni(effektListe = []) {
+    if (!Array.isArray(effektListe)) return [];
+
+    return effektListe
+        .filter(effekt => effekt && effekt.aktiv)
+        .flatMap(effekt => {
+            if (!Array.isArray(effekt.boni)) return [];
+
+            const angriffZiel = typeof angriffszielFuerEffekt === "function"
+                ? angriffszielFuerEffekt(effekt)
+                : "-";
+
+            return effekt.boni.map(bonus => ({
+                ...normalisiereBerechnungsBonus(bonus),
+                effektId: effekt.id || null,
+                effektName: effekt.name || "",
+                angriffZuweisbar: !!effekt.angriffZuweisbar,
+                angriffZiel
+            }));
+        })
+        .filter(bonus => bonus.ziel && bonus.wert !== 0);
+}
+
+const ANGRIFFSGEBUNDENE_ZIELE = new Set([
+    "Angriff Nah",
+    "Angriff Fern",
+    "Schaden Nah",
+    "Schaden Fern"
+]);
+
+function berechneBonusErgebnisAusBoni(bonusListe = []) {
+    const gruppen = new Map();
+
+    bonusListe.forEach(bonus => {
+        if (!gruppen.has(bonus.ziel)) {
+            gruppen.set(bonus.ziel, {
+                stapelbar: 0,
+                nachBonusart: new Map()
+            });
+        }
+
+        const zielGruppe = gruppen.get(bonus.ziel);
+
+        if (STAPELBARE_BONUSARTEN.has(bonus.bonusart)) {
+            zielGruppe.stapelbar += bonus.wert;
+            return;
+        }
+
+        if (!zielGruppe.nachBonusart.has(bonus.bonusart)) {
+            zielGruppe.nachBonusart.set(bonus.bonusart, {
+                hoechsterBonus: 0,
+                niedrigsterMalus: 0
+            });
+        }
+
+        const artGruppe = zielGruppe.nachBonusart.get(bonus.bonusart);
+
+        if (bonus.wert > 0) {
+            artGruppe.hoechsterBonus = Math.max(
+                artGruppe.hoechsterBonus,
+                bonus.wert
+            );
+        } else {
+            artGruppe.niedrigsterMalus = Math.min(
+                artGruppe.niedrigsterMalus,
+                bonus.wert
+            );
+        }
+    });
+
+    const ergebnis = {};
+
+    gruppen.forEach((zielGruppe, ziel) => {
+        let gesamt = zielGruppe.stapelbar;
+
+        zielGruppe.nachBonusart.forEach(artGruppe => {
+            gesamt += artGruppe.hoechsterBonus + artGruppe.niedrigsterMalus;
+        });
+
+        ergebnis[ziel] = gesamt;
+    });
+
+    return ergebnis;
+}
+
+function berechneBonusErgebnis(effektListe = []) {
+    return berechneBonusErgebnisAusBoni(sammleAktiveBoni(effektListe));
+}
+
+function berechneBonusErgebnisFuerAngriff(effektListe = [], angriffsIndex = 0) {
+    const angriffsZiel = `A${Number(angriffsIndex) + 1}`;
+    const boni = sammleAktiveBoni(effektListe).filter(bonus => {
+        if (!ANGRIFFSGEBUNDENE_ZIELE.has(bonus.ziel)) return true;
+        if (!bonus.angriffZuweisbar) return true;
+        return bonus.angriffZiel === "-" || bonus.angriffZiel === angriffsZiel;
+    });
+    return berechneBonusErgebnisAusBoni(boni);
+}
+
+const DASHBOARD_ZIELE = {
+    "Angriff Nah": "angriffNah",
+    "Angriff Fern": "angriffFern",
+    "Schaden Nah": "schadenNah",
+    "Schaden Fern": "schadenFern",
+    "Rüstungsklasse": "rk",
+    "RW-Zähigkeit": "zaehigkeit",
+    "RW-Gift": "gift",
+    "KMB": "kmb",
+    "KMV": "kmv",
+    "RW-Reflex": "reflex",
+    "RW-Wille": "wille",
+    "RW-Furcht": "furcht",
+    "RW-Verzauberung": "verzauberung",
+    "RW-Bezauberung": "bezauberung"
+};
+
+function formatiereDashboardWert(wert) {
+    const zahl = Number(wert);
+    const sichererWert = Number.isFinite(zahl) ? zahl : 0;
+    return sichererWert > 0 ? `+${sichererWert}` : String(sichererWert);
+}
+
+function aktualisiereDashboard(ergebnis = {}) {
+    if (typeof document === "undefined") return ergebnis;
+
+    Object.entries(DASHBOARD_ZIELE).forEach(([ziel, elementId]) => {
+        const element = document.getElementById(elementId);
+        if (element) {
+            element.textContent = formatiereDashboardWert(ergebnis[ziel] ?? 0);
+        }
+    });
+
+    return ergebnis;
+}
+
+function berechneWerte() {
+    const effektListe = typeof effekte !== "undefined" ? effekte : [];
+    const ergebnis = berechneBonusErgebnis(effektListe);
+    const altSchaden = Number(ergebnis.Schaden ?? 0);
+    ergebnis["Schaden Nah"] = Number(ergebnis["Schaden Nah"] ?? 0) + altSchaden;
+    ergebnis["Schaden Fern"] = Number(ergebnis["Schaden Fern"] ?? 0) + altSchaden;
+    aktualisiereDashboard(ergebnis);
+    return ergebnis;
+}
+
+if (typeof window !== "undefined") {
+    window.STAPELBARE_BONUSARTEN = STAPELBARE_BONUSARTEN;
+    window.DASHBOARD_ZIELE = DASHBOARD_ZIELE;
+    window.sammleAktiveBoni = sammleAktiveBoni;
+    window.berechneBonusErgebnis = berechneBonusErgebnis;
+    window.berechneBonusErgebnisFuerAngriff = berechneBonusErgebnisFuerAngriff;
+    window.aktualisiereDashboard = aktualisiereDashboard;
+    window.berechneWerte = berechneWerte;
+}

@@ -1,0 +1,532 @@
+/* ==========================
+   Das azlantische Helferlein der Boni
+   Style v0.5.0
+========================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f6f8;
+    color: #222;
+}
+
+/* ==========================
+   Header
+========================== */
+
+header {
+    background: #1e3a5f;
+    color: white;
+    padding: 10px 16px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+/* ==========================
+   Navigation
+========================== */
+
+nav {
+    display: flex;
+    gap: 6px;
+    padding: 8px;
+    background: white;
+    border-bottom: 1px solid #ddd;
+}
+
+nav button {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background: #e6eaf0;
+    cursor: pointer;
+    font-size: .95rem;
+}
+
+nav button:hover {
+    background: #d3dce8;
+}
+
+/* ==========================
+   Inhalt
+========================== */
+
+main {
+    padding: 12px;
+}
+
+section h2 {
+    margin-bottom: 12px;
+}
+
+/* ==========================
+   Dashboard
+========================== */
+
+.werte {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px,1fr));
+    gap: 10px;
+}
+
+.karte {
+    background: white;
+    border-radius: 10px;
+    padding: 12px;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,.08);
+}
+
+.karte h3 {
+    font-size: .9rem;
+    margin-bottom: 8px;
+}
+
+.karte span {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #1e3a5f;
+}
+
+/* ==========================
+   Suche
+========================== */
+
+#suche {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 12px;
+    border: 1px solid #bbb;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+/* ==========================
+   Effektliste
+========================== */
+
+#boniListe {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.effekt {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: white;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0,0,0,.08);
+}
+
+.effekt input[type="checkbox"] {
+    transform: scale(1.2);
+}
+
+.effekt-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.effekt-name {
+    font-weight: bold;
+}
+
+.effekt-kategorie {
+    font-size: .85rem;
+    color: #666;
+}
+
+.effekt-aktionen {
+    display: flex;
+    gap: 4px;
+}
+
+.icon-button {
+    border: 0;
+    border-radius: 8px;
+    background: #e6eaf0;
+    min-width: 40px;
+    min-height: 40px;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.icon-button:hover {
+    background: #d3dce8;
+}
+
+/* ==========================
+   Effekteditor
+========================== */
+
+#effektDialog {
+    width: min(94vw, 720px);
+    max-height: 92vh;
+    margin: auto;
+    padding: 18px;
+    border: 0;
+    border-radius: 12px;
+    overflow: auto;
+}
+
+#effektDialog::backdrop {
+    background: rgba(0,0,0,.45);
+}
+
+#effektDialog input,
+#effektDialog textarea,
+#effektDialog select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #bbb;
+    border-radius: 8px;
+    font: inherit;
+}
+
+#effektDialog textarea {
+    min-height: 90px;
+    resize: vertical;
+}
+
+#bonusEditor {
+    margin: 12px 0;
+}
+
+#bonusContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 8px 0;
+}
+
+.bonus-zeile {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1.5fr) minmax(76px, .7fr) 40px;
+    gap: 6px;
+    align-items: center;
+}
+
+.bonus-entfernen {
+    min-width: 40px;
+    width: 40px;
+}
+
+.bonus-leer {
+    padding: 10px;
+    color: #666;
+    background: #f4f6f8;
+    border-radius: 8px;
+}
+
+/* ==========================
+   Smartphone
+========================== */
+
+@media (max-width:600px){
+
+    header h1{
+        font-size:1.05rem;
+    }
+
+    nav button{
+        font-size:.85rem;
+        padding:8px;
+    }
+
+    .karte span{
+        font-size:1.2rem;
+    }
+
+    .bonus-zeile {
+        grid-template-columns: 1fr 1fr 76px 40px;
+    }
+}
+
+/* Seiten */
+
+.page {
+    display: none;
+}
+
+.page.active {
+    display: block;
+}
+
+/* Navigation */
+
+nav button.active {
+    background: #1e3a5f;
+    color: white;
+}
+
+
+/* ==========================
+   Charakterverwaltung
+========================== */
+
+.seitenkopf {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.seitenkopf h2 {
+    margin-bottom: 4px;
+}
+
+.seitenkopf p,
+.aktiver-charakter-hinweis {
+    color: #5c6673;
+}
+
+.aktiver-charakter-hinweis {
+    margin: -4px 0 12px;
+}
+
+#btnNeuerCharakter {
+    border: 0;
+    border-radius: 8px;
+    padding: 10px 12px;
+    background: #1e3a5f;
+    color: white;
+    font: inherit;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+#charakterListe {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.charakter-eintrag {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px;
+    background: white;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    box-shadow: 0 1px 4px rgba(0,0,0,.08);
+}
+
+.charakter-eintrag.aktiv {
+    border-color: #1e3a5f;
+}
+
+.charakter-auswahl {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+    padding: 8px;
+    border: 0;
+    background: transparent;
+    text-align: left;
+    font: inherit;
+    cursor: pointer;
+}
+
+.charakter-auswahl strong {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.charakter-auswahl span {
+    color: #667;
+    font-size: .85rem;
+}
+
+.charakter-aktionen {
+    display: flex;
+    gap: 4px;
+}
+
+.icon-button:disabled {
+    opacity: .45;
+    cursor: not-allowed;
+}
+
+@media (max-width:600px) {
+    .seitenkopf {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    #btnNeuerCharakter {
+        width: 100%;
+    }
+}
+
+
+/* Effektstatus zwischen Charakteren kopieren */
+.charakter-aktionen .icon-button[title] {
+    position: relative;
+}
+
+@media (max-width:600px) {
+    .charakter-eintrag {
+        align-items: stretch;
+    }
+
+    .charakter-aktionen {
+        align-items: center;
+    }
+}
+
+
+/* ==========================
+   Effektfilter
+========================== */
+
+.effekt-filter {
+    display: grid;
+    grid-template-columns: minmax(170px, 1fr) auto auto;
+    gap: 8px;
+    align-items: end;
+    margin-bottom: 8px;
+    padding: 10px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 1px 4px rgba(0,0,0,.08);
+}
+
+.effekt-filter label {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    font-size: .9rem;
+    font-weight: 600;
+}
+
+.effekt-filter select,
+
+.filter-schalter {
+    min-height: 44px;
+    flex-direction: row !important;
+    align-items: center;
+    padding: 0 8px;
+    border: 1px solid #bbb;
+    border-radius: 8px;
+    white-space: nowrap;
+}
+
+.filter-schalter input {
+    width: 20px;
+    height: 20px;
+}
+
+
+.filter-ergebnis {
+    margin: 4px 0 10px;
+    color: #667;
+    font-size: .9rem;
+}
+
+.filter-leer {
+    padding: 14px;
+    background: white;
+    border-radius: 8px;
+    color: #667;
+    text-align: center;
+}
+
+@media (max-width:600px) {
+    .effekt-filter {
+        grid-template-columns: 1fr;
+        align-items: stretch;
+    }
+
+    .filter-schalter {
+        justify-content: flex-start;
+    }
+}
+
+
+/* ==========================
+   Admin-Modus
+========================== */
+.admin-karte {
+    padding: 16px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 1px 4px rgba(0,0,0,.08);
+}
+
+.admin-status {
+    margin: 4px 0 0;
+    color: #8b1e1e;
+    font-weight: 700;
+}
+
+.admin-status.aktiv {
+    color: #176b35;
+}
+
+.admin-pin-dialog form {
+    display: grid;
+    gap: 10px;
+    min-width: min(320px, 80vw);
+}
+
+.admin-pin-dialog input {
+    width: 100%;
+    min-height: 48px;
+    box-sizing: border-box;
+    font-size: 1.35rem;
+    letter-spacing: .45em;
+    text-align: center;
+}
+
+.admin-fehler {
+    min-height: 1.3em;
+    margin: 0;
+    color: #a21f1f;
+}
+
+.dialog-aktionen {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+@media (max-width:600px) {
+    .dialog-aktionen button,
+    #btnAdminSperren,
+    #btnAdminEntsperren {
+        width: 100%;
+    }
+}
+
+
+/* Commit 16: Admin-Arbeitsstand für Standardeffekte */
+.admin-statistik{display:grid;gap:.75rem;margin:1rem 0 0}
+.admin-statistik div{display:flex;justify-content:space-between;align-items:center;padding:.75rem;border:1px solid #cbd5e1;border-radius:.6rem}
+.admin-statistik dt{font-weight:600}
+.admin-statistik dd{margin:0;font-size:1.2rem;font-weight:700}
+
+/* Commit 20.1: Navigation beim Scrollen sichtbar halten */
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}

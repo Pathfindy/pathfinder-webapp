@@ -1,0 +1,115 @@
+/* Commit 29: Charakterporträts und allgemeine Charakternotizen */
+
+.charakter-eintrag-29 {
+    display: block;
+    padding: 8px;
+}
+
+.charakter-kopf-29 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 56px;
+}
+
+.charakter-eintrag-29.mit-portraet .charakter-kopf-29 {
+    min-height: 112px;
+    align-items: stretch;
+}
+
+.charakter-portraet-bereich-29 {
+    position: relative;
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.charakter-portraet-button-29 {
+    width: 96px;
+    height: 96px;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #b8c0ca;
+    border-radius: 10px;
+    background: #e6eaf0;
+    cursor: pointer;
+}
+
+.charakter-portraet-29 {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.charakter-portraet-platzhalter-29 {
+    font-size: 2rem;
+}
+
+.charakter-portraet-entfernen-29 {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    width: 28px;
+    height: 28px;
+    border: 1px solid rgba(80, 90, 105, .45);
+    border-radius: 50%;
+    background: transparent;
+    color: #5c6673;
+    font-size: 1.25rem;
+    line-height: 1;
+    cursor: pointer;
+    box-shadow: none;
+}
+
+.charakter-portraet-entfernen-29:hover,
+.charakter-portraet-entfernen-29:focus-visible {
+    background: rgba(255, 255, 255, .88);
+    color: #263442;
+}
+
+.charakter-aktionen .nur-dateifeld-29 {
+    display: none;
+}
+
+.charakter-notiz-29 {
+    width: 100%;
+    height: 42px;
+    min-height: 42px;
+    max-height: 240px;
+    margin-top: 8px;
+    padding: 9px 10px;
+    overflow-y: hidden;
+    border: 1px solid #b8c0ca;
+    border-radius: 8px;
+    background: white;
+    font: inherit;
+    line-height: 1.4;
+    resize: vertical;
+}
+
+.charakter-notiz-29:focus {
+    border-color: #6f8fb2;
+    outline: 2px solid rgba(111,143,178,.24);
+}
+
+@media (max-width: 600px) {
+    .charakter-kopf-29 {
+        align-items: flex-start;
+    }
+
+    .charakter-eintrag-29.mit-portraet .charakter-kopf-29 {
+        min-height: 104px;
+    }
+
+    .charakter-portraet-button-29 {
+        width: 88px;
+        height: 88px;
+    }
+
+    .charakter-kopf-29 .charakter-aktionen {
+        flex-wrap: wrap;
+        justify-content: flex-end;
+    }
+}
