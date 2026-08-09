@@ -1,7 +1,7 @@
 // Das azlantische Helferlein der Boni
 // app.js
-// Version 0.30
-const APP_VERSION="0.30";
+// Version 0.31
+const APP_VERSION="0.31";
 
 const seiten={
  dashboard:document.getElementById("dashboard"),
@@ -583,6 +583,77 @@ function loescheNeuenStandardEffekt(id){
  return true;
 }
 
+
+// Commit 31: Effekt-Duplikate dauerhaft verhindern.
+function normalisiereEffektVergleichstext31(wert){
+ return String(wert||"")
+   .trim()
+   .toLocaleLowerCase("de-DE")
+   .replace(/\s+/g," ");
+}
+
+function effektBonusSignatur31(bonus={}){
+ const wert=Number(bonus.wert);
+ return [
+   normalisiereEffektVergleichstext31(bonus.ziel),
+   normalisiereEffektVergleichstext31(bonus.bonusart),
+   Number.isFinite(wert)?String(wert):"0"
+ ].join(":");
+}
+
+function effektSignatur31(effekt={}){
+ const boni=Array.isArray(effekt.boni)
+   ?effekt.boni.map(effektBonusSignatur31).sort().join(";")
+   :"";
+ return [
+   normalisiereEffektVergleichstext31(effekt.name),
+   normalisiereEffektVergleichstext31(effekt.kategorie),
+   normalisiereEffektVergleichstext31(effekt.quelle),
+   effekt.angriffZuweisbar?"angriff-zuweisbar":"global",
+   boni
+ ].join("|");
+}
+
+function dedupliziereEffekte31(liste=[]){
+ const ids=new Set();
+ const signaturen=new Set();
+ const ergebnis=[];
+
+ (Array.isArray(liste)?liste:[]).forEach(effekt=>{
+   if(!effekt || typeof effekt!=="object") return;
+
+   const id=String(effekt.id??"").trim();
+   const signatur=effektSignatur31(effekt);
+
+   if((id && ids.has(id)) || (signatur && signaturen.has(signatur))) return;
+
+   if(id) ids.add(id);
+   if(signatur) signaturen.add(signatur);
+   ergebnis.push(effekt);
+ });
+
+ return ergebnis;
+}
+
+function entferneDuplikateGegenBasis31(liste=[],basis=[]){
+ const basisIds=new Set(
+   (Array.isArray(basis)?basis:[])
+     .map(effekt=>String(effekt?.id??"").trim())
+     .filter(Boolean)
+ );
+ const basisSignaturen=new Set(
+   (Array.isArray(basis)?basis:[])
+     .map(effekt=>effektSignatur31(effekt))
+     .filter(Boolean)
+ );
+
+ return dedupliziereEffekte31(liste).filter(effekt=>{
+   const id=String(effekt?.id??"").trim();
+   const signatur=effektSignatur31(effekt);
+   return !(id && basisIds.has(id)) && !(signatur && basisSignaturen.has(signatur));
+ });
+}
+
 async function ladeEffekte(){
  try{
    const antwort=await fetch(
@@ -592,15 +663,40 @@ async function ladeEffekte(){
    const standardEffekte=await antwort.json();
    const status=ladeStatus();
 
+   // Reihenfolge der Priorität:
+   // 1. Repository-Standardeffekte, 2. neue Admin-Standardeffekte,
+   // 3. Benutzereffekte. Bei gleicher ID ODER gleicher Effekt-Signatur
+   // bleibt der zuerst vorhandene Eintrag erhalten.
+   const standardBasis=dedupliziereEffekte31(
+     standardEffekte.map(effekt=>
+       angewendeterStandardEffekt(
+         normalisiereEffekt({...effekt,standard:true})
+       )
+     )
+   );
+
+   const neueStandardEffekte=entferneDuplikateGegenBasis31(
+     ladeAdminStandardNeu(),
+     standardBasis
+   );
+   speichereAdminStandardNeu(neueStandardEffekte);
+
+   const standardGesamt=[...standardBasis,...neueStandardEffekte];
+
    const benutzerRohdaten=ladeBenutzerEffekte();
-   const benutzer=benutzerRohdaten.map(effekt=>normalisiereEffekt({...effekt,standard:false}));
+   const benutzerNormalisiert=benutzerRohdaten.map(effekt=>
+     normalisiereEffekt({...effekt,standard:false})
+   );
+   const benutzer=entferneDuplikateGegenBasis31(
+     benutzerNormalisiert,
+     standardGesamt
+   );
+
+   // Bereinigten Benutzerbestand zurückschreiben, damit ein beim Import
+   // erkanntes Standard-Duplikat nicht beim nächsten Export erneut auftaucht.
    speichereBenutzerEffekte(benutzer);
 
-   const neueStandardEffekte=ladeAdminStandardNeu();
-
-   effekte=standardEffekte
-     .map(effekt=>angewendeterStandardEffekt(normalisiereEffekt({...effekt,standard:true})))
-     .concat(neueStandardEffekte,benutzer);
+   effekte=dedupliziereEffekte31([...standardGesamt,...benutzer]);
    effekte.forEach(effekt=>effekt.aktiv=!!status[effekt.name]);
 
    console.log("Effekte geladen:",effekte.length);

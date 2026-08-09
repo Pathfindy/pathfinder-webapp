@@ -1,0 +1,13 @@
+Commit 31 – Effekt-Duplikate
+
+Separate effekte.json als Quelle verwendet.
+Effekte vorher: 137
+Effekte nach Bereinigung identischer IDs: 106
+Entfernte doppelte ID-Einträge: 31
+
+Dauerhafter Schutz:
+- Deduplizierung nach ID und Effekt-Signatur beim Laden.
+- Priorität: Repository-Standard > Admin-Standard > Benutzereffekt.
+- Doppelte Benutzereffekte gegenüber Standards werden aus localStorage entfernt.
+- Doppelte neue Admin-Standardeffekte werden ebenfalls bereinigt.
+- Keine Änderungen an Bonuswerten, Beschreibungen oder angriffZuweisbar.
