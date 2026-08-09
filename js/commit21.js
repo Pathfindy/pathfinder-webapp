@@ -239,14 +239,6 @@
       .filter(Boolean)
       .forEach(button => nav?.appendChild(button));
 
-    const effekteSeite = document.getElementById("effekte");
-    if (effekteSeite && !effekteSeite.querySelector(".effekt-charakter-hinweis")) {
-      const hinweis = document.createElement("p");
-      hinweis.className = "aktiver-charakter-hinweis effekt-charakter-hinweis";
-      hinweis.innerHTML =
-        'Aktiv: <strong data-aktiver-charakter>Mein Charakter</strong>';
-      effekteSeite.prepend(hinweis);
-    }
 
     ergaenzeEditorFelder();
     aktualisiereAktivenCharakterHinweis();
