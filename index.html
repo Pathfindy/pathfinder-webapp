@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="css/commit28.css?v=28">
     <link rel="stylesheet" href="css/commit29.css?v=29.1">
     <link rel="stylesheet" href="css/commit30.css?v=30">
+    <link rel="stylesheet" href="css/leben.css?v=32">
     
     <meta name="theme-color" content="#1e3a5f">
 </head>
@@ -27,7 +28,7 @@
 
 <header>
 
-    <h1>Das azlantische Helferlein der Boni <span class="app-version-30">v0.31</span></h1>
+    <h1>Das azlantische Helferlein der Boni <span class="app-version-30">v0.32</span></h1>
 
 </header>
 
@@ -36,6 +37,7 @@
     <button id="btnDashboard">Dashboard</button>
     <button id="btnEffekte">Effekte</button>
     <button id="btnCharakterwerte">Werte</button>
+    <button id="btnLeben">Leben</button>
     <button id="btnCharaktere">Charaktere</button>
     <button id="btnAdmin">Admin</button>
 
@@ -183,6 +185,29 @@
             </div>
         </div>
 
+
+        <div class="angriffe-bereich" aria-labelledby="angriffe-ueberschrift">
+            <div class="angriffe-kopf">
+                <div>
+                    <h3 id="angriffe-ueberschrift">Angriffe</h3>
+                </div>
+                <button type="button" id="btnAngriffHinzufuegen">+ Angriff</button>
+            </div>
+
+            <div id="angriffeListe" class="angriffe-liste" aria-live="polite"></div>
+            <p id="angriffeMeldung" class="angriffe-meldung" aria-live="polite"></p>
+        </div>
+    </section>
+
+    <!-- ========================= -->
+    <!-- Leben                     -->
+    <!-- ========================= -->
+
+    <section id="leben" class="page">
+        <div class="seitenkopf">
+            <div><h2>Leben</h2></div>
+        </div>
+
         <div class="tp-bereich" aria-labelledby="tp-ueberschrift">
             <h3 id="tp-ueberschrift">Trefferpunkte</h3>
 
@@ -224,18 +249,19 @@
             <p id="tpMeldung" class="tp-meldung" aria-live="polite"></p>
         </div>
 
+        <section class="energie-bereich" aria-labelledby="energie-widerstehen-titel">
+            <h3 id="energie-widerstehen-titel">Energien widerstehen</h3>
+            <p class="energie-hinweis">1.–6. ZS = 10 Punkte · 7.–10. ZS = 20 Punkte · ab 11. ZS = 30 Punkte</p>
+            <div class="energie-tabelle energie-widerstehen-tabelle" id="energieWiderstehenListe"></div>
+            <p id="energieWiderstehenMeldung" class="tp-meldung" aria-live="polite"></p>
+        </section>
 
-        <div class="angriffe-bereich" aria-labelledby="angriffe-ueberschrift">
-            <div class="angriffe-kopf">
-                <div>
-                    <h3 id="angriffe-ueberschrift">Angriffe</h3>
-                </div>
-                <button type="button" id="btnAngriffHinzufuegen">+ Angriff</button>
-            </div>
-
-            <div id="angriffeListe" class="angriffe-liste" aria-live="polite"></div>
-            <p id="angriffeMeldung" class="angriffe-meldung" aria-live="polite"></p>
-        </div>
+        <section class="energie-bereich" aria-labelledby="energie-schutz-titel">
+            <h3 id="energie-schutz-titel">Schutz vor Energien</h3>
+            <p class="energie-hinweis">12 Punkte / ZS, maximal 120 Punkte</p>
+            <div class="energie-tabelle energie-schutz-tabelle" id="energieSchutzListe"></div>
+            <p id="energieSchutzMeldung" class="tp-meldung" aria-live="polite"></p>
+        </section>
     </section>
 
     <!-- ========================= -->
@@ -288,7 +314,8 @@
 </main>
 
 <script src="js/app.js?v=31"></script>
-<script src="js/charakterwerte.js?v=30"></script>
+<script src="js/charakterwerte.js?v=32"></script>
+<script src="js/leben.js?v=32"></script>
 <script src="js/filter.js"></script>
 <script src="js/berechnung.js?v=30"></script>
 <script src="js/makros.js"></script>
