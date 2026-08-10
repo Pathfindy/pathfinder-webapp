@@ -1,4 +1,4 @@
-// Version 0.35: Steinhaut auf Seite Leben
+// Version 0.35.1: freie Energieresistenz und kombinierte Energielogik
 (() => {
   "use strict";
 
@@ -29,6 +29,7 @@
     return Object.fromEntries(ENERGIEN.map(typ => [typ, {
       aktiv: false,
       reduktion: 10,
+      reduktionFrei: "",
       schaden: "",
       notiz: ""
     }]));
@@ -59,9 +60,16 @@
     ENERGIEN.forEach(typ => {
       const eintrag = daten?.[typ] || {};
       const reduktion = WIDERSTAND_WERTE.includes(Number(eintrag.reduktion)) ? Number(eintrag.reduktion) : 10;
+      const reduktionFrei =
+        eintrag.reduktionFrei === "" ||
+        eintrag.reduktionFrei === null ||
+        typeof eintrag.reduktionFrei === "undefined"
+          ? ""
+          : ganzeZahl(eintrag.reduktionFrei, 0, 9999);
       basis[typ] = {
         aktiv: !!eintrag.aktiv,
         reduktion,
+        reduktionFrei,
         schaden: "",
         notiz: typeof eintrag.notiz === "string" ? eintrag.notiz : ""
       };
@@ -132,6 +140,15 @@
     if (!element) return;
     element.textContent = text;
     element.classList.toggle("fehler", fehler);
+  }
+
+  function effektiveEnergieReduktion(daten) {
+    if (!daten?.aktiv) return 0;
+    const frei = daten.reduktionFrei;
+    if (frei !== "" && frei !== null && typeof frei !== "undefined") {
+      return ganzeZahl(frei, 0, 9999);
+    }
+    return ganzeZahl(daten.reduktion, 0, 9999);
   }
 
   function applyTrefferpunktSchaden(charakter, schaden) {
@@ -219,11 +236,27 @@
       const name = document.createElement("strong");
       name.textContent = typ;
 
+      const reduktionFeld = document.createElement("div");
+      reduktionFeld.className = "energie-reduktion-stack";
+
       const reduktion = selectMitWerten(WIDERSTAND_WERTE, daten.reduktion, `${typ}: Schadensreduzierung`);
       reduktion.addEventListener("change", () => {
         daten.reduktion = Number(reduktion.value);
         speichereCharaktere();
       });
+
+      const reduktionFrei = zahlenfeld(`${typ}: freie Schadensreduzierung`);
+      reduktionFrei.className = "energie-reduktion-frei";
+      reduktionFrei.placeholder = "frei";
+      reduktionFrei.value = daten.reduktionFrei === "" ? "" : String(daten.reduktionFrei);
+      reduktionFrei.addEventListener("input", () => {
+        daten.reduktionFrei = reduktionFrei.value === ""
+          ? ""
+          : ganzeZahl(reduktionFrei.value, 0, 9999);
+        speichereCharaktere();
+      });
+
+      reduktionFeld.append(reduktion, reduktionFrei);
 
       const schaden = zahlenfeld(`${typ}: Energieschaden`);
       const anwenden = document.createElement("button");
@@ -239,7 +272,7 @@
           schaden.focus();
           return;
         }
-        const reduktionWert = daten.aktiv ? daten.reduktion : 0;
+        const reduktionWert = effektiveEnergieReduktion(daten);
         const rest = Math.max(0, eingabe - reduktionWert);
         const verteilt = applyTrefferpunktSchaden(charakter, rest);
         schaden.value = "";
@@ -256,7 +289,7 @@
         speichereCharaktere();
       });
 
-      zeile.append(aktiv, name, reduktion, schaden, anwenden, notiz);
+      zeile.append(aktiv, name, reduktionFeld, schaden, anwenden, notiz);
       widerstehenListe.appendChild(zeile);
     });
   }
@@ -309,15 +342,28 @@
           schaden.focus();
           return;
         }
+        // Zuerst wird ein aktiver Widerstand desselben Energietyps berücksichtigt.
+        const widerstandDaten = charakter.energieWiderstand?.[typ];
+        const widerstand = effektiveEnergieReduktion(widerstandDaten);
+        const nachWiderstand = Math.max(0, eingabe - widerstand);
+
+        // Erst der nach dem Widerstand verbleibende Schaden wird vom Schutzpool absorbiert.
         const absorbierbar = daten.aktiv ? daten.rest : 0;
-        const absorbiert = Math.min(absorbierbar, eingabe);
+        const absorbiert = Math.min(absorbierbar, nachWiderstand);
         if (daten.aktiv) daten.rest -= absorbiert;
-        const restschaden = eingabe - absorbiert;
+
+        const restschaden = nachWiderstand - absorbiert;
         const verteilt = applyTrefferpunktSchaden(charakter, restschaden);
         schaden.value = "";
-        zeigeMeldung(schutzMeldung,
-          `${typ}: ${absorbiert} absorbiert, ${restschaden} Restschaden` +
-          (restschaden ? ` (${verteilt.temp} Temp-TP, ${verteilt.tp} TP).` : "."));
+
+        const widerstandsText = widerstand > 0
+          ? ` − ${widerstand} Widerstand = ${nachWiderstand}`
+          : "";
+        zeigeMeldung(
+          schutzMeldung,
+          `${typ}: ${eingabe} Schaden${widerstandsText}; ${absorbiert} Schutz absorbiert, ${restschaden} Restschaden` +
+          (restschaden ? ` (${verteilt.temp} Temp-TP, ${verteilt.tp} TP).` : ".")
+        );
         speichereUndAktualisiere();
       };
       anwenden.addEventListener("click", ausfuehren);
