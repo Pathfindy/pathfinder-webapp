@@ -1,18 +1,21 @@
-// Version 0.32.1: Korrektur Restwert Schutz vor Energien
+// Version 0.35: Steinhaut auf Seite Leben
 (() => {
   "use strict";
 
   const ENERGIEN = ["Elektro", "Feuer", "Kälte", "Säure", "Schall"];
   const WIDERSTAND_WERTE = [10, 20, 30];
   const SCHUTZ_WERTE = Array.from({ length: 10 }, (_, i) => (i + 1) * 12);
+  const STEINHAUT_WERTE = Array.from({ length: 15 }, (_, i) => (i + 1) * 10);
 
   const seite = document.getElementById("leben");
   const btnSeite = document.getElementById("btnLeben");
   const widerstehenListe = document.getElementById("energieWiderstehenListe");
   const schutzListe = document.getElementById("energieSchutzListe");
+  const steinhautListe = document.getElementById("steinhautListe");
   const widerstehenMeldung = document.getElementById("energieWiderstehenMeldung");
   const schutzMeldung = document.getElementById("energieSchutzMeldung");
-  if (!seite || !btnSeite || !widerstehenListe || !schutzListe) return;
+  const steinhautMeldung = document.getElementById("steinhautMeldung");
+  if (!seite || !btnSeite || !widerstehenListe || !schutzListe || !steinhautListe) return;
 
   seiten.leben = seite;
 
@@ -39,6 +42,16 @@
       schaden: "",
       notiz: ""
     }]));
+  }
+
+  function standardSteinhaut() {
+    return {
+      aktiv: false,
+      maximum: 10,
+      rest: 10,
+      schaden: "",
+      notiz: ""
+    };
   }
 
   function normalisiereWiderstand(daten = {}) {
@@ -79,13 +92,32 @@
     return basis;
   }
 
+
+  function normalisiereSteinhaut(daten = {}) {
+    const maximum = STEINHAUT_WERTE.includes(Number(daten.maximum)) ? Number(daten.maximum) : 10;
+    const restVorhanden =
+      daten.rest !== null &&
+      typeof daten.rest !== "undefined" &&
+      daten.rest !== "";
+    return {
+      aktiv: !!daten.aktiv,
+      maximum,
+      rest: restVorhanden
+        ? Math.min(maximum, ganzeZahl(daten.rest, 0, maximum))
+        : maximum,
+      schaden: "",
+      notiz: typeof daten.notiz === "string" ? daten.notiz : ""
+    };
+  }
+
   const bisherigeNormalisierung = normalisiereCharakter;
   normalisiereCharakter = function (charakter = {}) {
     const basis = bisherigeNormalisierung(charakter);
     return {
       ...basis,
       energieWiderstand: normalisiereWiderstand(charakter.energieWiderstand),
-      energieSchutz: normalisiereSchutz(charakter.energieSchutz)
+      energieSchutz: normalisiereSchutz(charakter.energieSchutz),
+      steinhaut: normalisiereSteinhaut(charakter.steinhaut)
     };
   };
 
@@ -93,6 +125,7 @@
     if (!charakter) return;
     charakter.energieWiderstand = normalisiereWiderstand(charakter.energieWiderstand);
     charakter.energieSchutz = normalisiereSchutz(charakter.energieSchutz);
+    charakter.steinhaut = normalisiereSteinhaut(charakter.steinhaut);
   }
 
   function zeigeMeldung(element, text = "", fehler = false) {
@@ -300,16 +333,98 @@
     });
   }
 
+
+  function rendereSteinhaut(charakter) {
+    steinhautListe.innerHTML = "";
+    steinhautListe.appendChild(
+      erstelleKopf(["Aktiv", "Effekt", "Maximum", "Rest", "Schaden", "✓", "Notiz"], "steinhaut-zeile")
+    );
+
+    const daten = charakter.steinhaut;
+    const zeile = document.createElement("div");
+    zeile.className = "energie-zeile steinhaut-zeile";
+
+    const aktiv = document.createElement("input");
+    aktiv.type = "checkbox";
+    aktiv.checked = daten.aktiv;
+    aktiv.setAttribute("aria-label", "Steinhaut aktiv");
+    aktiv.addEventListener("change", () => {
+      daten.aktiv = aktiv.checked;
+      speichereCharaktere();
+    });
+
+    const name = document.createElement("strong");
+    name.textContent = "Steinhaut";
+
+    const maximum = selectMitWerten(STEINHAUT_WERTE, daten.maximum, "Steinhaut: Gesamtpunkte");
+    maximum.addEventListener("change", () => {
+      daten.maximum = Number(maximum.value);
+      daten.rest = daten.maximum;
+      speichereUndAktualisiere();
+    });
+
+    const rest = document.createElement("output");
+    rest.className = "energie-restwert";
+    rest.textContent = String(daten.rest);
+    rest.setAttribute("aria-label", "Steinhaut: verbleibende Punkte");
+
+    const schaden = zahlenfeld("Steinhaut: erlittener Schaden");
+    const anwenden = document.createElement("button");
+    anwenden.type = "button";
+    anwenden.textContent = "✓";
+    anwenden.className = "energie-anwenden";
+    anwenden.setAttribute("aria-label", "Steinhaut: Schaden anwenden");
+
+    const ausfuehren = () => {
+      const eingabe = Number(schaden.value);
+      if (!Number.isInteger(eingabe) || eingabe < 1) {
+        zeigeMeldung(steinhautMeldung, "Bitte einen gültigen Schaden eingeben.", true);
+        schaden.focus();
+        return;
+      }
+
+      // Steinhaut reduziert je Treffer höchstens 10 Schaden, aber nie mehr als ihr Restpool enthält.
+      const moeglicheReduktion = daten.aktiv ? Math.min(10, daten.rest) : 0;
+      const reduziert = Math.min(eingabe, moeglicheReduktion);
+      if (daten.aktiv) daten.rest -= reduziert;
+
+      const restschaden = eingabe - reduziert;
+      const verteilt = applyTrefferpunktSchaden(charakter, restschaden);
+
+      schaden.value = "";
+      zeigeMeldung(
+        steinhautMeldung,
+        `Steinhaut: ${reduziert} reduziert, ${restschaden} Restschaden` +
+        (restschaden ? ` (${verteilt.temp} Temp-TP, ${verteilt.tp} TP).` : ".")
+      );
+      speichereUndAktualisiere();
+    };
+
+    anwenden.addEventListener("click", ausfuehren);
+    schaden.addEventListener("keydown", event => { if (event.key === "Enter") ausfuehren(); });
+
+    const notiz = notizfeld(daten.notiz, "Steinhaut: Notiz", wert => {
+      daten.notiz = wert;
+      speichereCharaktere();
+    });
+
+    zeile.append(aktiv, name, maximum, rest, schaden, anwenden, notiz);
+    steinhautListe.appendChild(zeile);
+  }
+
   function rendereEnergieAnsicht() {
     const charakter = aktiverCharakter();
     widerstehenListe.innerHTML = "";
     schutzListe.innerHTML = "";
+    steinhautListe.innerHTML = "";
     if (!charakter) {
       widerstehenListe.textContent = "Kein aktiver Charakter.";
       schutzListe.textContent = "Kein aktiver Charakter.";
+      steinhautListe.textContent = "Kein aktiver Charakter.";
       return;
     }
     stelleEnergieDatenSicher(charakter);
+    rendereSteinhaut(charakter);
     rendereWiderstehen(charakter);
     rendereSchutz(charakter);
   }
