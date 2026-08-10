@@ -1,4 +1,4 @@
-// Commit 27: Spezial-Rettungswürfe auf fertig berechneten Basis-RW aufbauen
+// Commit 36.1: Spezial-Rettungswürfe mit gemeinsamer Stapelregel auf der Werte-Seite
 (() => {
   "use strict";
 
@@ -162,9 +162,17 @@
   function bonusErgebnis() {
     if (typeof berechneBonusErgebnis !== "function") return {};
 
-    const ergebnis = berechneBonusErgebnis(
-      typeof effekte !== "undefined" ? effekte : []
-    );
+    const effektListe = typeof effekte !== "undefined" ? effekte : [];
+    const ergebnis = berechneBonusErgebnis(effektListe);
+
+    // Dieselbe Spezial-RW-Berechnung wie im Dashboard verwenden:
+    // Haupt-RW-Boni + Spezial-RW-Boni werden VOR der Stapelprüfung kombiniert.
+    if (typeof berechneSpezialRettungswurfBoni === "function") {
+      Object.assign(
+        ergebnis,
+        berechneSpezialRettungswurfBoni(effektListe)
+      );
+    }
 
     const altSchaden = Number(ergebnis.Schaden || 0);
     ergebnis["Schaden Nah"] =
@@ -191,14 +199,16 @@
   }
 
   function gesamtwertFuer(eintrag, charakter, ergebnis) {
-    const basisGesamt = basisGesamtFuer(eintrag, charakter, ergebnis);
+    const grundwert = grundwertFuer(eintrag, charakter);
 
-    if (eintrag.eingabe) return basisGesamt;
+    if (eintrag.eingabe) {
+      return grundwert + bonusFuerZiel(eintrag.ziel, ergebnis);
+    }
 
-    // Der Spezialbonus wird erst auf den bereits fertig berechneten Basis-RW
-    // aufgeschlagen. Die Stapelung des Basiswerts und des Spezialwerts bleibt
-    // dadurch bewusst voneinander getrennt.
-    return basisGesamt + bonusFuerZiel(eintrag.ziel, ergebnis);
+    // Bei Spezial-RW enthält ergebnis[eintrag.ziel] bereits die gemeinsame
+    // Stapelberechnung aus Haupt-RW und Spezial-RW. Den Haupt-RW-Bonus daher
+    // nicht ein zweites Mal addieren.
+    return grundwert + bonusFuerZiel(eintrag.ziel, ergebnis);
   }
 
   function aktiveBoniFuerZiel(ziel) {
@@ -250,6 +260,60 @@
         ...bonus,
         beruecksichtigt: bonus.wert === minimum
       };
+    });
+  }
+
+  function bewerteteBoniFuerSpezial(eintrag) {
+    if (!eintrag || eintrag.eingabe || typeof sammleAktiveBoni !== "function") {
+      return [];
+    }
+
+    const boni = sammleAktiveBoni(
+      typeof effekte !== "undefined" ? effekte : []
+    )
+      .filter(bonus =>
+        bonus.ziel === eintrag.basisZiel ||
+        bonus.ziel === eintrag.ziel
+      )
+      .map(bonus => ({
+        ...bonus,
+        ursprungsZiel: bonus.ziel,
+        ziel: eintrag.ziel
+      }));
+
+    const stapelbar =
+      typeof STAPELBARE_BONUSARTEN !== "undefined"
+        ? STAPELBARE_BONUSARTEN
+        : new Set();
+
+    const gruppen = new Map();
+    boni.forEach(bonus => {
+      if (!gruppen.has(bonus.bonusart)) gruppen.set(bonus.bonusart, []);
+      gruppen.get(bonus.bonusart).push(bonus);
+    });
+
+    return boni.map(bonus => {
+      if (stapelbar.has(bonus.bonusart)) {
+        return { ...bonus, beruecksichtigt: true };
+      }
+
+      const gruppe = gruppen.get(bonus.bonusart) || [];
+
+      if (bonus.wert > 0) {
+        const maximum = Math.max(
+          0,
+          ...gruppe.filter(eintrag => eintrag.wert > 0)
+            .map(eintrag => eintrag.wert)
+        );
+        return { ...bonus, beruecksichtigt: bonus.wert === maximum };
+      }
+
+      const minimum = Math.min(
+        0,
+        ...gruppe.filter(eintrag => eintrag.wert < 0)
+          .map(eintrag => eintrag.wert)
+      );
+      return { ...bonus, beruecksichtigt: bonus.wert === minimum };
     });
   }
 
@@ -443,17 +507,8 @@
 
     const ergebnis = bonusErgebnis();
     const grundwert = grundwertFuer(eintrag, charakter);
-    const basisBonus = bonusFuerZiel(
-      eintrag.eingabe ? eintrag.ziel : eintrag.basisZiel,
-      ergebnis
-    );
-    const basisGesamt = grundwert + basisBonus;
-    const spezialBonus = eintrag.eingabe
-      ? 0
-      : bonusFuerZiel(eintrag.ziel, ergebnis);
-    const gesamt = eintrag.eingabe
-      ? basisGesamt
-      : basisGesamt + spezialBonus;
+    const bonusGesamt = bonusFuerZiel(eintrag.ziel, ergebnis);
+    const gesamt = grundwert + bonusGesamt;
 
     const dialog = detailDialog();
     dialog.querySelector("#bonusDetailTitel").textContent =
@@ -468,12 +523,13 @@
     if (eintrag.eingabe) {
       summe.textContent =
         `Grundwert ${formatiereGesamt(grundwert)} ` +
-        `+ Boni ${formatiereBonus(basisBonus)} ` +
+        `+ Boni ${formatiereBonus(bonusGesamt)} ` +
         `= ${formatiereGesamt(gesamt)}`;
     } else {
       summe.textContent =
-        `Fertiger ${eintrag.basisZiel} ${formatiereGesamt(basisGesamt)} ` +
-        `+ ${eintrag.label}-Boni ${formatiereBonus(spezialBonus)} ` +
+        `Grundwert ${formatiereGesamt(grundwert)} ` +
+        `+ gemeinsam gestapelte Boni aus ${eintrag.basisZiel} und ${eintrag.label} ` +
+        `${formatiereBonus(bonusGesamt)} ` +
         `= ${formatiereGesamt(gesamt)}`;
     }
 
@@ -486,16 +542,43 @@
         eintrag.ziel
       );
     } else {
-      fuegeBonusListeHinzu(
-        inhalt,
-        `Boni im fertigen ${eintrag.basisZiel}`,
-        eintrag.basisZiel
-      );
-      fuegeBonusListeHinzu(
-        inhalt,
-        `Zusätzliche Boni auf ${eintrag.label}`,
-        eintrag.ziel
-      );
+      const ueberschrift = document.createElement("h4");
+      ueberschrift.className = "bonus-detail-untertitel-27";
+      ueberschrift.textContent =
+        `Gemeinsame Stapelprüfung: ${eintrag.basisZiel} + ${eintrag.label}`;
+      inhalt.appendChild(ueberschrift);
+
+      const boni = bewerteteBoniFuerSpezial(eintrag);
+      if (!boni.length) {
+        const leer = document.createElement("p");
+        leer.textContent = "Keine aktiven Boni.";
+        inhalt.appendChild(leer);
+      } else {
+        const liste = document.createElement("div");
+        liste.className = "bonus-detail-liste";
+
+        boni.forEach(bonus => {
+          const zeile = document.createElement("div");
+          zeile.className = "bonus-detail-zeile";
+          if (!bonus.beruecksichtigt) {
+            zeile.classList.add("nicht-beruecksichtigt");
+          }
+
+          zeile.innerHTML = `
+            <strong>${formatiereBonus(bonus.wert)}</strong>
+            <span>${bonus.bonusart}</span>
+            <span>${bonus.effektName || "Unbenannter Effekt"}</span>
+            <small>${bonus.ursprungsZiel}: ${
+              bonus.beruecksichtigt
+                ? "berücksichtigt"
+                : "nicht stapelbar – nicht berücksichtigt"
+            }</small>
+          `;
+          liste.appendChild(zeile);
+        });
+
+        inhalt.appendChild(liste);
+      }
     }
 
     dialog.showModal();
