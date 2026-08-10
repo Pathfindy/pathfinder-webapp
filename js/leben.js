@@ -1,4 +1,4 @@
-// Version 0.32: Seite Leben, Energien widerstehen und Schutz vor Energien
+// Version 0.32.1: Korrektur Restwert Schutz vor Energien
 (() => {
   "use strict";
 
@@ -61,10 +61,17 @@
     ENERGIEN.forEach(typ => {
       const eintrag = daten?.[typ] || {};
       const maximum = SCHUTZ_WERTE.includes(Number(eintrag.maximum)) ? Number(eintrag.maximum) : 12;
+      const restVorhanden =
+        eintrag.rest !== null &&
+        typeof eintrag.rest !== "undefined" &&
+        eintrag.rest !== "";
       basis[typ] = {
         aktiv: !!eintrag.aktiv,
         maximum,
-        rest: Math.min(maximum, ganzeZahl(eintrag.rest, 0, maximum)),
+        // Beim ersten Anlegen entspricht der Restwert immer dem gewählten Maximum.
+        rest: restVorhanden
+          ? Math.min(maximum, ganzeZahl(eintrag.rest, 0, maximum))
+          : maximum,
         schaden: "",
         notiz: typeof eintrag.notiz === "string" ? eintrag.notiz : ""
       };
@@ -244,9 +251,9 @@
 
       const maximum = selectMitWerten(SCHUTZ_WERTE, daten.maximum, `${typ}: absorbierbarer Energieschaden`);
       maximum.addEventListener("change", () => {
-        const alt = daten.maximum;
         daten.maximum = Number(maximum.value);
-        if (daten.rest === alt || daten.rest > daten.maximum) daten.rest = daten.maximum;
+        // Eine neue Auswahl setzt den Schutzpool auf den gewählten Gesamtwert.
+        daten.rest = daten.maximum;
         speichereUndAktualisiere();
       });
 
