@@ -1,4 +1,4 @@
-/* Version 0.32: Leben und Energieschutz */
+/* Version 0.32.2: kompakte Energiespalten */
 #leben .tp-bereich,
 #leben .energie-bereich {
   max-width: 1100px;
@@ -15,12 +15,12 @@
 
 .energie-bereich h3 { margin-bottom: 4px; }
 .energie-hinweis { margin: 0 0 12px; color: #667; }
-.energie-tabelle { min-width: 780px; display: grid; gap: 6px; }
+.energie-tabelle { min-width: 0; display: grid; gap: 5px; }
 .energie-zeile {
   display: grid;
   align-items: center;
-  gap: 8px;
-  padding: 7px 8px;
+  gap: 5px;
+  padding: 6px;
   border: 1px solid #e0e4e9;
   border-radius: 8px;
   background: #f8fafc;
@@ -31,15 +31,15 @@
   color: #56606c;
   background: #eef2f6;
 }
-.energie-widerstehen-zeile { grid-template-columns: 58px 100px 110px 120px 48px minmax(180px,1fr); }
-.energie-schutz-zeile { grid-template-columns: 58px 100px 110px 80px 120px 48px minmax(180px,1fr); }
+.energie-widerstehen-zeile { grid-template-columns: 42px 76px 82px 82px 40px minmax(220px,1fr); }
+.energie-schutz-zeile { grid-template-columns: 42px 76px 82px 58px 82px 40px minmax(220px,1fr); }
 .energie-zeile input[type="checkbox"] { width: 20px; height: 20px; justify-self: center; }
 .energie-zeile input[type="number"],
 .energie-zeile input[type="text"],
 .energie-zeile select {
   width: 100%;
-  min-height: 38px;
-  padding: 6px 8px;
+  min-height: 34px;
+  padding: 4px 6px;
   border: 1px solid #bbb;
   border-radius: 7px;
   font: inherit;
@@ -47,7 +47,7 @@
 }
 .energie-restwert {
   display: flex;
-  min-height: 38px;
+  min-height: 34px;
   align-items: center;
   justify-content: center;
   border-radius: 7px;
@@ -55,8 +55,8 @@
   font-weight: 700;
 }
 .energie-anwenden {
-  width: 44px;
-  min-height: 38px;
+  width: 36px;
+  min-height: 34px;
   border: 0;
   border-radius: 7px;
   background: #1e3a5f;
@@ -68,4 +68,19 @@
 
 @media (max-width: 700px) {
   .energie-bereich { padding: 12px; }
+}
+
+
+/* Kompakte Spalten: nur die Notizspalte nutzt den freien Platz. */
+.energie-zeile > strong {
+  white-space: nowrap;
+  font-size: .92rem;
+}
+.energie-kopf > span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.energie-zeile input[type="text"] {
+  min-width: 0;
 }
