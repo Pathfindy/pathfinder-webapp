@@ -1,6 +1,6 @@
 // Das azlantische Helferlein der Boni
 // berechnung.js
-// Commit 24
+// Commit 36: Spezial-Rettungswürfe erben Haupt-RW-Boni mit gemeinsamer Stapelregel
 
 const STAPELBARE_BONUSARTEN = new Set([
     "Ausweichen",
@@ -123,6 +123,32 @@ function berechneBonusErgebnis(effektListe = []) {
     return berechneBonusErgebnisAusBoni(sammleAktiveBoni(effektListe));
 }
 
+
+const SPEZIAL_RW_BASIS = {
+    "RW-Furcht": "RW-Wille",
+    "RW-Verzauberung": "RW-Wille",
+    "RW-Bezauberung": "RW-Wille",
+    "RW-Gift": "RW-Zähigkeit"
+};
+
+function berechneSpezialRettungswurfBoni(effektListe = []) {
+    const alleBoni = sammleAktiveBoni(effektListe);
+    const ergebnis = {};
+
+    Object.entries(SPEZIAL_RW_BASIS).forEach(([spezialZiel, hauptZiel]) => {
+        // Für den Spezial-RW werden Boni des Haupt-RW und des Spezial-RW
+        // gemeinsam gestapelt. Dadurch gilt die Stapelregel über beide Ziele hinweg.
+        const kombiniert = alleBoni
+            .filter(bonus => bonus.ziel === hauptZiel || bonus.ziel === spezialZiel)
+            .map(bonus => ({ ...bonus, ziel: spezialZiel }));
+
+        const kombiniertErgebnis = berechneBonusErgebnisAusBoni(kombiniert);
+        ergebnis[spezialZiel] = Number(kombiniertErgebnis[spezialZiel] ?? 0);
+    });
+
+    return ergebnis;
+}
+
 function berechneBonusErgebnisFuerAngriff(effektListe = [], angriffsIndex = 0) {
     const angriffsZiel = `A${Number(angriffsIndex) + 1}`;
     const boni = sammleAktiveBoni(effektListe).filter(bonus => {
@@ -172,6 +198,10 @@ function aktualisiereDashboard(ergebnis = {}) {
 function berechneWerte() {
     const effektListe = typeof effekte !== "undefined" ? effekte : [];
     const ergebnis = berechneBonusErgebnis(effektListe);
+    const spezialRw = berechneSpezialRettungswurfBoni(effektListe);
+
+    Object.assign(ergebnis, spezialRw);
+
     const altSchaden = Number(ergebnis.Schaden ?? 0);
     ergebnis["Schaden Nah"] = Number(ergebnis["Schaden Nah"] ?? 0) + altSchaden;
     ergebnis["Schaden Fern"] = Number(ergebnis["Schaden Fern"] ?? 0) + altSchaden;
@@ -184,6 +214,7 @@ if (typeof window !== "undefined") {
     window.DASHBOARD_ZIELE = DASHBOARD_ZIELE;
     window.sammleAktiveBoni = sammleAktiveBoni;
     window.berechneBonusErgebnis = berechneBonusErgebnis;
+    window.berechneSpezialRettungswurfBoni = berechneSpezialRettungswurfBoni;
     window.berechneBonusErgebnisFuerAngriff = berechneBonusErgebnisFuerAngriff;
     window.aktualisiereDashboard = aktualisiereDashboard;
     window.berechneWerte = berechneWerte;
