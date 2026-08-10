@@ -158,9 +158,10 @@
       daten.reduktionFrei !== "" &&
       daten.reduktionFrei !== null &&
       typeof daten.reduktionFrei !== "undefined";
+    const aktiv = !!daten.aktiv;
 
-    select.classList.toggle("energie-wert-aktiv", !freiAktiv);
-    freiFeld.classList.toggle("energie-wert-aktiv", freiAktiv);
+    select.classList.toggle("energie-wert-aktiv", aktiv && !freiAktiv);
+    freiFeld.classList.toggle("energie-wert-aktiv", aktiv && freiAktiv);
   }
 
   function applyTrefferpunktSchaden(charakter, schaden) {
@@ -312,6 +313,7 @@
       aktiv.setAttribute("aria-label", `${typ}: Energiewiderstand aktiv`);
       aktiv.addEventListener("change", () => {
         daten.aktiv = aktiv.checked;
+        aktualisiereReduktionsMarkierung(reduktion, reduktionFrei, daten);
         speichereCharaktere();
       });
 
@@ -376,6 +378,7 @@
       aktiv.setAttribute("aria-label", `${typ}: Schutz vor Energien aktiv`);
       aktiv.addEventListener("change", () => {
         daten.aktiv = aktiv.checked;
+        aktualisiereRestMarkierung();
         speichereCharaktere();
       });
 
@@ -400,6 +403,11 @@
         "aria-label",
         `${typ}: verbleibender absorbierbarer Energieschaden`
       );
+
+      const aktualisiereRestMarkierung = () => {
+        rest.classList.toggle("energie-rest-aktiv", !!daten.aktiv);
+      };
+      aktualisiereRestMarkierung();
 
       const notiz = notizfeld(daten.notiz, `${typ}: Notiz`, wert => {
         daten.notiz = wert;
