@@ -240,3 +240,18 @@
   box-shadow: 0 0 0 2px rgba(184, 134, 11, .16);
   font-weight: 700;
 }
+
+
+/* Commit 37.2: aktive Lebenswerte wie die aktive Menüseite blau hervorheben. */
+.energie-reduktion-stack select.energie-wert-aktiv,
+.energie-reduktion-stack input.energie-wert-aktiv,
+.energie-restwert.energie-rest-aktiv {
+  background: #dbeafe;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, .20);
+  font-weight: 700;
+  color: #1e3a8a;
+}
+.energie-restwert.energie-rest-aktiv {
+  border-width: 2px;
+}
