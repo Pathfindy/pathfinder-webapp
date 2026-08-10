@@ -1,4 +1,4 @@
-// Version 0.35.1: freie Energieresistenz und kombinierte Energielogik
+// Version 0.37: zentrale Schadenseingabe, Steinhaut und Energieschutz
 (() => {
   "use strict";
 
@@ -15,7 +15,9 @@
   const widerstehenMeldung = document.getElementById("energieWiderstehenMeldung");
   const schutzMeldung = document.getElementById("energieSchutzMeldung");
   const steinhautMeldung = document.getElementById("steinhautMeldung");
-  if (!seite || !btnSeite || !widerstehenListe || !schutzListe || !steinhautListe) return;
+  const energieSchadenEingaben = document.getElementById("energieSchadenEingaben");
+  const energieSchadenMeldung = document.getElementById("energieSchadenMeldung");
+  if (!seite || !btnSeite || !widerstehenListe || !schutzListe || !steinhautListe || !energieSchadenEingaben) return;
 
   seiten.leben = seite;
 
@@ -161,6 +163,74 @@
     return { temp: vonTemp, tp: vonTp };
   }
 
+  function verarbeiteNormalenSchaden(charakter, schaden) {
+    stelleEnergieDatenSicher(charakter);
+    const eingabe = ganzeZahl(schaden, 0, 9999);
+    const steinhaut = charakter.steinhaut;
+
+    // Steinhaut gilt nur für normalen Schaden, niemals für Energieschaden.
+    const moeglicheReduktion =
+      steinhaut?.aktiv ? Math.min(10, ganzeZahl(steinhaut.rest, 0, 9999)) : 0;
+    const reduziert = Math.min(eingabe, moeglicheReduktion);
+
+    if (steinhaut?.aktiv && reduziert > 0) {
+      steinhaut.rest -= reduziert;
+    }
+
+    const restschaden = eingabe - reduziert;
+    const verteilt = applyTrefferpunktSchaden(charakter, restschaden);
+
+    return {
+      eingabe,
+      reduziert,
+      restschaden,
+      verteilt,
+      meldung:
+        reduziert > 0
+          ? `Steinhaut reduziert ${reduziert}. ${restschaden} Restschaden` +
+            (restschaden ? ` (${verteilt.temp} Temp-TP, ${verteilt.tp} TP).` : ".")
+          : `${eingabe} Schaden angewendet` +
+            (eingabe ? ` (${verteilt.temp} Temp-TP, ${verteilt.tp} TP).` : ".")
+    };
+  }
+
+  function verarbeiteEnergieschaden(charakter, typ, schaden) {
+    stelleEnergieDatenSicher(charakter);
+    const eingabe = ganzeZahl(schaden, 0, 9999);
+
+    // 1. Aktiver Widerstand desselben Energietyps.
+    const widerstandDaten = charakter.energieWiderstand?.[typ];
+    const widerstand = effektiveEnergieReduktion(widerstandDaten);
+    const nachWiderstand = Math.max(0, eingabe - widerstand);
+
+    // 2. Aktiver Schutz vor Energien desselben Energietyps.
+    const schutzDaten = charakter.energieSchutz?.[typ];
+    const absorbierbar = schutzDaten?.aktiv
+      ? ganzeZahl(schutzDaten.rest, 0, 9999)
+      : 0;
+    const absorbiert = Math.min(absorbierbar, nachWiderstand);
+
+    if (schutzDaten?.aktiv && absorbiert > 0) {
+      schutzDaten.rest -= absorbiert;
+    }
+
+    // 3. Nur der Überschuss trifft Temp-TP und danach aktuelle TP.
+    // Steinhaut wird bei Energieschaden absichtlich nicht berücksichtigt.
+    const restschaden = nachWiderstand - absorbiert;
+    const verteilt = applyTrefferpunktSchaden(charakter, restschaden);
+
+    return {
+      eingabe,
+      widerstand,
+      nachWiderstand,
+      absorbiert,
+      restschaden,
+      verteilt
+    };
+  }
+
+  window.verarbeiteLebensSchaden = verarbeiteNormalenSchaden;
+
   function speichereUndAktualisiere() {
     speichereCharaktere();
     if (typeof window.aktualisiereTrefferpunkteAnsicht === "function") {
@@ -217,7 +287,9 @@
 
   function rendereWiderstehen(charakter) {
     widerstehenListe.innerHTML = "";
-    widerstehenListe.appendChild(erstelleKopf(["Aktiv", "Energie", "Reduktion", "Schaden", "", "Notiz"], "energie-widerstehen-zeile"));
+    widerstehenListe.appendChild(
+      erstelleKopf(["Aktiv", "Energie", "Reduktion", "Notiz"], "energie-widerstehen-zeile")
+    );
 
     ENERGIEN.forEach(typ => {
       const daten = charakter.energieWiderstand[typ];
@@ -239,7 +311,11 @@
       const reduktionFeld = document.createElement("div");
       reduktionFeld.className = "energie-reduktion-stack";
 
-      const reduktion = selectMitWerten(WIDERSTAND_WERTE, daten.reduktion, `${typ}: Schadensreduzierung`);
+      const reduktion = selectMitWerten(
+        WIDERSTAND_WERTE,
+        daten.reduktion,
+        `${typ}: Schadensreduzierung`
+      );
       reduktion.addEventListener("change", () => {
         daten.reduktion = Number(reduktion.value);
         speichereCharaktere();
@@ -248,55 +324,33 @@
       const reduktionFrei = zahlenfeld(`${typ}: freie Schadensreduzierung`);
       reduktionFrei.className = "energie-reduktion-frei";
       reduktionFrei.placeholder = "frei";
-      reduktionFrei.value = daten.reduktionFrei === "" ? "" : String(daten.reduktionFrei);
+      reduktionFrei.value =
+        daten.reduktionFrei === "" ? "" : String(daten.reduktionFrei);
       reduktionFrei.addEventListener("input", () => {
-        daten.reduktionFrei = reduktionFrei.value === ""
-          ? ""
-          : ganzeZahl(reduktionFrei.value, 0, 9999);
+        daten.reduktionFrei =
+          reduktionFrei.value === ""
+            ? ""
+            : ganzeZahl(reduktionFrei.value, 0, 9999);
         speichereCharaktere();
       });
 
       reduktionFeld.append(reduktion, reduktionFrei);
-
-      const schaden = zahlenfeld(`${typ}: Energieschaden`);
-      const anwenden = document.createElement("button");
-      anwenden.type = "button";
-      anwenden.textContent = "✓";
-      anwenden.className = "energie-anwenden";
-      anwenden.setAttribute("aria-label", `${typ}: Energieschaden anwenden`);
-
-      const ausfuehren = () => {
-        const eingabe = Number(schaden.value);
-        if (!Number.isInteger(eingabe) || eingabe < 1) {
-          zeigeMeldung(widerstehenMeldung, "Bitte einen gültigen Energieschaden eingeben.", true);
-          schaden.focus();
-          return;
-        }
-        const reduktionWert = effektiveEnergieReduktion(daten);
-        const rest = Math.max(0, eingabe - reduktionWert);
-        const verteilt = applyTrefferpunktSchaden(charakter, rest);
-        schaden.value = "";
-        zeigeMeldung(widerstehenMeldung,
-          `${typ}: ${eingabe} Schaden − ${reduktionWert} Widerstand = ${rest} Restschaden` +
-          (rest ? ` (${verteilt.temp} Temp-TP, ${verteilt.tp} TP).` : "."));
-        speichereUndAktualisiere();
-      };
-      anwenden.addEventListener("click", ausfuehren);
-      schaden.addEventListener("keydown", event => { if (event.key === "Enter") ausfuehren(); });
 
       const notiz = notizfeld(daten.notiz, `${typ}: Notiz`, wert => {
         daten.notiz = wert;
         speichereCharaktere();
       });
 
-      zeile.append(aktiv, name, reduktionFeld, schaden, anwenden, notiz);
+      zeile.append(aktiv, name, reduktionFeld, notiz);
       widerstehenListe.appendChild(zeile);
     });
   }
 
   function rendereSchutz(charakter) {
     schutzListe.innerHTML = "";
-    schutzListe.appendChild(erstelleKopf(["Aktiv", "Energie", "Maximum", "Rest", "Schaden", "✓", "Notiz"], "energie-schutz-zeile"));
+    schutzListe.appendChild(
+      erstelleKopf(["Aktiv", "Energie", "Maximum", "Rest", "Notiz"], "energie-schutz-zeile")
+    );
 
     ENERGIEN.forEach(typ => {
       const daten = charakter.energieSchutz[typ];
@@ -315,10 +369,13 @@
       const name = document.createElement("strong");
       name.textContent = typ;
 
-      const maximum = selectMitWerten(SCHUTZ_WERTE, daten.maximum, `${typ}: absorbierbarer Energieschaden`);
+      const maximum = selectMitWerten(
+        SCHUTZ_WERTE,
+        daten.maximum,
+        `${typ}: absorbierbarer Energieschaden`
+      );
       maximum.addEventListener("change", () => {
         daten.maximum = Number(maximum.value);
-        // Eine neue Auswahl setzt den Schutzpool auf den gewählten Gesamtwert.
         daten.rest = daten.maximum;
         speichereUndAktualisiere();
       });
@@ -326,55 +383,17 @@
       const rest = document.createElement("output");
       rest.className = "energie-restwert";
       rest.textContent = String(daten.rest);
-      rest.setAttribute("aria-label", `${typ}: verbleibender absorbierbarer Energieschaden`);
-
-      const schaden = zahlenfeld(`${typ}: erlittener Energieschaden`);
-      const anwenden = document.createElement("button");
-      anwenden.type = "button";
-      anwenden.textContent = "✓";
-      anwenden.className = "energie-anwenden";
-      anwenden.setAttribute("aria-label", `${typ}: Schutz anwenden`);
-
-      const ausfuehren = () => {
-        const eingabe = Number(schaden.value);
-        if (!Number.isInteger(eingabe) || eingabe < 1) {
-          zeigeMeldung(schutzMeldung, "Bitte einen gültigen Energieschaden eingeben.", true);
-          schaden.focus();
-          return;
-        }
-        // Zuerst wird ein aktiver Widerstand desselben Energietyps berücksichtigt.
-        const widerstandDaten = charakter.energieWiderstand?.[typ];
-        const widerstand = effektiveEnergieReduktion(widerstandDaten);
-        const nachWiderstand = Math.max(0, eingabe - widerstand);
-
-        // Erst der nach dem Widerstand verbleibende Schaden wird vom Schutzpool absorbiert.
-        const absorbierbar = daten.aktiv ? daten.rest : 0;
-        const absorbiert = Math.min(absorbierbar, nachWiderstand);
-        if (daten.aktiv) daten.rest -= absorbiert;
-
-        const restschaden = nachWiderstand - absorbiert;
-        const verteilt = applyTrefferpunktSchaden(charakter, restschaden);
-        schaden.value = "";
-
-        const widerstandsText = widerstand > 0
-          ? ` − ${widerstand} Widerstand = ${nachWiderstand}`
-          : "";
-        zeigeMeldung(
-          schutzMeldung,
-          `${typ}: ${eingabe} Schaden${widerstandsText}; ${absorbiert} Schutz absorbiert, ${restschaden} Restschaden` +
-          (restschaden ? ` (${verteilt.temp} Temp-TP, ${verteilt.tp} TP).` : ".")
-        );
-        speichereUndAktualisiere();
-      };
-      anwenden.addEventListener("click", ausfuehren);
-      schaden.addEventListener("keydown", event => { if (event.key === "Enter") ausfuehren(); });
+      rest.setAttribute(
+        "aria-label",
+        `${typ}: verbleibender absorbierbarer Energieschaden`
+      );
 
       const notiz = notizfeld(daten.notiz, `${typ}: Notiz`, wert => {
         daten.notiz = wert;
         speichereCharaktere();
       });
 
-      zeile.append(aktiv, name, maximum, rest, schaden, anwenden, notiz);
+      zeile.append(aktiv, name, maximum, rest, notiz);
       schutzListe.appendChild(zeile);
     });
   }
@@ -383,7 +402,7 @@
   function rendereSteinhaut(charakter) {
     steinhautListe.innerHTML = "";
     steinhautListe.appendChild(
-      erstelleKopf(["Aktiv", "Effekt", "Maximum", "Rest", "Schaden", "✓", "Notiz"], "steinhaut-zeile")
+      erstelleKopf(["Aktiv", "Effekt", "Maximum", "Rest", "Notiz"], "steinhaut-zeile")
     );
 
     const daten = charakter.steinhaut;
@@ -402,7 +421,11 @@
     const name = document.createElement("strong");
     name.textContent = "Steinhaut";
 
-    const maximum = selectMitWerten(STEINHAUT_WERTE, daten.maximum, "Steinhaut: Gesamtpunkte");
+    const maximum = selectMitWerten(
+      STEINHAUT_WERTE,
+      daten.maximum,
+      "Steinhaut: Gesamtpunkte"
+    );
     maximum.addEventListener("change", () => {
       daten.maximum = Number(maximum.value);
       daten.rest = daten.maximum;
@@ -414,48 +437,84 @@
     rest.textContent = String(daten.rest);
     rest.setAttribute("aria-label", "Steinhaut: verbleibende Punkte");
 
-    const schaden = zahlenfeld("Steinhaut: erlittener Schaden");
-    const anwenden = document.createElement("button");
-    anwenden.type = "button";
-    anwenden.textContent = "✓";
-    anwenden.className = "energie-anwenden";
-    anwenden.setAttribute("aria-label", "Steinhaut: Schaden anwenden");
-
-    const ausfuehren = () => {
-      const eingabe = Number(schaden.value);
-      if (!Number.isInteger(eingabe) || eingabe < 1) {
-        zeigeMeldung(steinhautMeldung, "Bitte einen gültigen Schaden eingeben.", true);
-        schaden.focus();
-        return;
-      }
-
-      // Steinhaut reduziert je Treffer höchstens 10 Schaden, aber nie mehr als ihr Restpool enthält.
-      const moeglicheReduktion = daten.aktiv ? Math.min(10, daten.rest) : 0;
-      const reduziert = Math.min(eingabe, moeglicheReduktion);
-      if (daten.aktiv) daten.rest -= reduziert;
-
-      const restschaden = eingabe - reduziert;
-      const verteilt = applyTrefferpunktSchaden(charakter, restschaden);
-
-      schaden.value = "";
-      zeigeMeldung(
-        steinhautMeldung,
-        `Steinhaut: ${reduziert} reduziert, ${restschaden} Restschaden` +
-        (restschaden ? ` (${verteilt.temp} Temp-TP, ${verteilt.tp} TP).` : ".")
-      );
-      speichereUndAktualisiere();
-    };
-
-    anwenden.addEventListener("click", ausfuehren);
-    schaden.addEventListener("keydown", event => { if (event.key === "Enter") ausfuehren(); });
-
     const notiz = notizfeld(daten.notiz, "Steinhaut: Notiz", wert => {
       daten.notiz = wert;
       speichereCharaktere();
     });
 
-    zeile.append(aktiv, name, maximum, rest, schaden, anwenden, notiz);
+    zeile.append(aktiv, name, maximum, rest, notiz);
     steinhautListe.appendChild(zeile);
+  }
+
+  function rendereEnergieSchadenEingaben() {
+    energieSchadenEingaben.innerHTML = "";
+
+    ENERGIEN.forEach(typ => {
+      const zeile = document.createElement("div");
+      zeile.className = "energie-schaden-zeile";
+
+      const label = document.createElement("label");
+      label.textContent = typ;
+      label.htmlFor = `energieSchaden-${typ}`;
+
+      const gruppe = document.createElement("div");
+      gruppe.className = "energie-schaden-eingabe";
+
+      const feld = zahlenfeld(`${typ}: Energieschaden`);
+      feld.id = `energieSchaden-${typ}`;
+
+      const anwenden = document.createElement("button");
+      anwenden.type = "button";
+      anwenden.textContent = "✓";
+      anwenden.className = "energie-anwenden";
+      anwenden.setAttribute("aria-label", `${typ}: Energieschaden anwenden`);
+
+      const ausfuehren = () => {
+        const charakter = aktiverCharakter();
+        const eingabe = Number(feld.value);
+
+        if (!charakter || !Number.isInteger(eingabe) || eingabe < 1) {
+          zeigeMeldung(
+            energieSchadenMeldung,
+            "Bitte einen gültigen Energieschaden eingeben.",
+            true
+          );
+          feld.focus();
+          return;
+        }
+
+        const ergebnis = verarbeiteEnergieschaden(charakter, typ, eingabe);
+        feld.value = "";
+
+        const teile = [`${typ}: ${ergebnis.eingabe} Schaden`];
+        if (ergebnis.widerstand > 0) {
+          teile.push(`${ergebnis.widerstand} widerstanden`);
+        }
+        if (ergebnis.absorbiert > 0) {
+          teile.push(`${ergebnis.absorbiert} durch Schutz absorbiert`);
+        }
+        teile.push(`${ergebnis.restschaden} Restschaden`);
+
+        zeigeMeldung(
+          energieSchadenMeldung,
+          teile.join(" · ") +
+            (ergebnis.restschaden
+              ? ` (${ergebnis.verteilt.temp} Temp-TP, ${ergebnis.verteilt.tp} TP).`
+              : ".")
+        );
+
+        speichereUndAktualisiere();
+      };
+
+      anwenden.addEventListener("click", ausfuehren);
+      feld.addEventListener("keydown", event => {
+        if (event.key === "Enter") ausfuehren();
+      });
+
+      gruppe.append(feld, anwenden);
+      zeile.append(label, gruppe);
+      energieSchadenEingaben.appendChild(zeile);
+    });
   }
 
   function rendereEnergieAnsicht() {
@@ -473,6 +532,9 @@
     rendereSteinhaut(charakter);
     rendereWiderstehen(charakter);
     rendereSchutz(charakter);
+    if (!energieSchadenEingaben.children.length) {
+      rendereEnergieSchadenEingaben();
+    }
   }
 
   btnSeite.addEventListener("click", () => {
@@ -489,5 +551,6 @@
   };
 
   window.rendereEnergieAnsicht = rendereEnergieAnsicht;
+  rendereEnergieSchadenEingaben();
   rendereEnergieAnsicht();
 })();

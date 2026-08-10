@@ -188,6 +188,19 @@
     const schaden = liesAktionswert(schadenFeld);
     if (!charakter || schaden === null) return;
 
+    // Commit 37: Normaler Schaden läuft über die zentrale Lebenslogik.
+    // Dort wird ggf. Steinhaut berücksichtigt. Energieschaden hat eigene Felder.
+    if (typeof window.verarbeiteLebensSchaden === "function") {
+      const ergebnis = window.verarbeiteLebensSchaden(charakter, schaden);
+      schadenFeld.value = "";
+      zeigeMeldung(ergebnis?.meldung || `${schaden} Schaden angewendet.`);
+      speichereTpAenderung();
+      if (typeof window.rendereEnergieAnsicht === "function") {
+        window.rendereEnergieAnsicht();
+      }
+      return;
+    }
+
     const vonTemp = Math.min(charakter.temporaereTp, schaden);
     charakter.temporaereTp -= vonTemp;
     charakter.aktuelleTp -= schaden - vonTemp;
