@@ -3,7 +3,7 @@
   "use strict";
 
   const ENERGIEN = ["Elektro", "Feuer", "Kälte", "Säure", "Schall"];
-  const WIDERSTAND_WERTE = [10, 20, 30];
+  const WIDERSTAND_WERTE = [0, 10, 20, 30];
   const SCHUTZ_WERTE = Array.from({ length: 10 }, (_, i) => (i + 1) * 12);
   const STEINHAUT_WERTE = Array.from({ length: 15 }, (_, i) => (i + 1) * 10);
 
@@ -30,7 +30,7 @@
   function standardWiderstand() {
     return Object.fromEntries(ENERGIEN.map(typ => [typ, {
       aktiv: false,
-      reduktion: 10,
+      reduktion: 0,
       reduktionFrei: "",
       schaden: "",
       notiz: ""
@@ -61,7 +61,7 @@
     const basis = standardWiderstand();
     ENERGIEN.forEach(typ => {
       const eintrag = daten?.[typ] || {};
-      const reduktion = WIDERSTAND_WERTE.includes(Number(eintrag.reduktion)) ? Number(eintrag.reduktion) : 10;
+      const reduktion = WIDERSTAND_WERTE.includes(Number(eintrag.reduktion)) ? Number(eintrag.reduktion) : 0;
       const reduktionFrei =
         eintrag.reduktionFrei === "" ||
         eintrag.reduktionFrei === null ||
@@ -151,6 +151,16 @@
       return ganzeZahl(frei, 0, 9999);
     }
     return ganzeZahl(daten.reduktion, 0, 9999);
+  }
+
+  function aktualisiereReduktionsMarkierung(select, freiFeld, daten) {
+    const freiAktiv =
+      daten.reduktionFrei !== "" &&
+      daten.reduktionFrei !== null &&
+      typeof daten.reduktionFrei !== "undefined";
+
+    select.classList.toggle("energie-wert-aktiv", !freiAktiv);
+    freiFeld.classList.toggle("energie-wert-aktiv", freiAktiv);
   }
 
   function applyTrefferpunktSchaden(charakter, schaden) {
@@ -318,6 +328,7 @@
       );
       reduktion.addEventListener("change", () => {
         daten.reduktion = Number(reduktion.value);
+        aktualisiereReduktionsMarkierung(reduktion, reduktionFrei, daten);
         speichereCharaktere();
       });
 
@@ -331,9 +342,11 @@
           reduktionFrei.value === ""
             ? ""
             : ganzeZahl(reduktionFrei.value, 0, 9999);
+        aktualisiereReduktionsMarkierung(reduktion, reduktionFrei, daten);
         speichereCharaktere();
       });
 
+      aktualisiereReduktionsMarkierung(reduktion, reduktionFrei, daten);
       reduktionFeld.append(reduktion, reduktionFrei);
 
       const notiz = notizfeld(daten.notiz, `${typ}: Notiz`, wert => {
