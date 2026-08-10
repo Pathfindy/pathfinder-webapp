@@ -1,4 +1,4 @@
-/* Version 0.35.1: freie Energieresistenz und kombinierte Energielogik */
+/* Version 0.37: zentrale Schadenseingabe und mobile Lebensansicht */
 #leben .tp-bereich,
 #leben .energie-bereich {
   max-width: 1100px;
@@ -31,8 +31,8 @@
   color: #56606c;
   background: #eef2f6;
 }
-.energie-widerstehen-zeile { grid-template-columns: 42px 76px 82px 82px 40px minmax(220px,1fr); }
-.energie-schutz-zeile { grid-template-columns: 42px 76px 82px 58px 82px 40px minmax(220px,1fr); }
+.energie-widerstehen-zeile { grid-template-columns: 38px 68px 78px minmax(120px,1fr); }
+.energie-schutz-zeile { grid-template-columns: 38px 68px 76px 52px minmax(120px,1fr); }
 .energie-zeile input[type="checkbox"] { width: 20px; height: 20px; justify-self: center; }
 .energie-zeile input[type="number"],
 .energie-zeile input[type="text"],
@@ -85,9 +85,7 @@
   min-width: 0;
 }
 
-.steinhaut-zeile {
-  grid-template-columns: 42px 76px 82px 58px 82px 40px minmax(220px,1fr);
-}
+.steinhaut-zeile { grid-template-columns: 38px 68px 76px 52px minmax(120px,1fr); }
 
 
 /* Commit 35.1: Auswahl + freie Eingabe in der Reduktionsspalte */
@@ -103,4 +101,132 @@
 }
 .energie-reduktion-stack .energie-reduktion-frei {
   font-size: .88rem;
+}
+
+
+/* Commit 37: zentrale Schadenseingaben direkt im TP-Bereich */
+.energie-schaden-kompakt {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #e0e4e9;
+}
+.energie-schaden-kompakt h4 {
+  margin: 0 0 7px;
+  font-size: .95rem;
+}
+.energie-schaden-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(92px, 1fr));
+  gap: 6px;
+}
+.energie-schaden-zeile {
+  min-width: 0;
+}
+.energie-schaden-zeile > label {
+  display: block;
+  margin-bottom: 3px;
+  font-size: .78rem;
+  font-weight: 700;
+  color: #56606c;
+}
+.energie-schaden-eingabe {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 34px;
+  gap: 4px;
+}
+.energie-schaden-eingabe input {
+  width: 100%;
+  min-width: 0;
+  min-height: 34px;
+  padding: 4px 6px;
+  border: 1px solid #bbb;
+  border-radius: 7px;
+  font: inherit;
+  box-sizing: border-box;
+}
+
+/* Mobil: Platz maximal ausnutzen, Karten und Tabellen enger setzen. */
+@media (max-width: 700px) {
+  #leben .seitenkopf {
+    margin-bottom: 8px;
+  }
+  #leben .tp-bereich,
+  #leben .energie-bereich {
+    margin-bottom: 10px;
+  }
+  .energie-bereich {
+    padding: 9px;
+    border-radius: 8px;
+  }
+  .energie-bereich h3 {
+    margin: 0 0 2px;
+    font-size: 1rem;
+  }
+  .energie-hinweis {
+    margin: 0 0 7px;
+    font-size: .76rem;
+    line-height: 1.25;
+  }
+  .energie-zeile {
+    gap: 4px;
+    padding: 5px 4px;
+  }
+  .energie-kopf {
+    font-size: .69rem;
+  }
+  .energie-zeile > strong {
+    font-size: .82rem;
+  }
+  .energie-widerstehen-zeile {
+    grid-template-columns: 32px 58px 70px minmax(92px,1fr);
+  }
+  .energie-schutz-zeile,
+  .steinhaut-zeile {
+    grid-template-columns: 32px 58px 66px 46px minmax(92px,1fr);
+  }
+  .energie-zeile input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+  }
+  .energie-zeile input[type="number"],
+  .energie-zeile input[type="text"],
+  .energie-zeile select,
+  .energie-restwert {
+    min-height: 30px;
+    padding: 3px 4px;
+    font-size: .8rem;
+  }
+  .energie-reduktion-stack select,
+  .energie-reduktion-stack .energie-reduktion-frei {
+    min-height: 28px;
+  }
+  .energie-schaden-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px 8px;
+  }
+  .energie-schaden-zeile:last-child {
+    grid-column: 1 / -1;
+    max-width: calc(50% - 4px);
+  }
+  .energie-schaden-kompakt {
+    margin-top: 8px;
+    padding-top: 8px;
+  }
+  .energie-anwenden {
+    width: 34px;
+    min-height: 32px;
+  }
+}
+
+@media (max-width: 390px) {
+  .energie-widerstehen-zeile {
+    grid-template-columns: 30px 54px 66px minmax(78px,1fr);
+  }
+  .energie-schutz-zeile,
+  .steinhaut-zeile {
+    grid-template-columns: 30px 54px 62px 42px minmax(78px,1fr);
+  }
+  .energie-kopf {
+    font-size: .63rem;
+  }
 }
