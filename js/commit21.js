@@ -225,6 +225,7 @@
     const zuordnung = {
       charaktere: "btnCharaktere",
       charakterwerte: "btnCharakterwerte",
+      leben: "btnLeben",
       effekte: "btnEffekte",
       dashboard: "btnDashboard",
       admin: "btnAdmin"
@@ -234,7 +235,7 @@
 
   function initialisiereCommit21() {
     const nav = document.querySelector("nav");
-    ["btnCharaktere", "btnCharakterwerte", "btnEffekte", "btnDashboard", "btnAdmin"]
+    ["btnCharaktere", "btnCharakterwerte", "btnLeben", "btnEffekte", "btnDashboard", "btnAdmin"]
       .map(id => document.getElementById(id))
       .filter(Boolean)
       .forEach(button => nav?.appendChild(button));
@@ -247,6 +248,8 @@
       () => zeigeSeite("charaktere");
     document.getElementById("btnCharakterwerte").onclick =
       () => zeigeSeite("charakterwerte");
+    document.getElementById("btnLeben").onclick =
+      () => zeigeSeite("leben");
     document.getElementById("btnEffekte").onclick =
       () => zeigeSeite("effekte");
     document.getElementById("btnDashboard").onclick =

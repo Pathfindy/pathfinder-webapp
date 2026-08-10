@@ -418,7 +418,6 @@
 
   btnSeite.addEventListener("click", () => {
     zeigeSeite("charakterwerte");
-    aktualisiereTrefferpunkteAnsicht();
     aktualisiereAngriffeAnsicht();
   });
 
@@ -494,6 +493,7 @@
   }
 
   window.aktualisiereAngriffeAnsicht = aktualisiereAngriffeAnsicht;
+  window.aktualisiereTrefferpunkteAnsicht = aktualisiereTrefferpunkteAnsicht;
   aktualisiereTrefferpunkteAnsicht();
   aktualisiereAngriffeAnsicht();
 })();
