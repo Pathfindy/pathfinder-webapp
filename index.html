@@ -9,17 +9,17 @@
 
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/charakterwerte.css?v=24">
+    <link rel="stylesheet" href="css/charakterwerte.css?v=38.1">
     <link rel="stylesheet" href="css/commit21.css?v=21">
     <link rel="stylesheet" href="css/commit22.css?v=22">
     <link rel="stylesheet" href="css/commit24.css?v=24">
-    <link rel="stylesheet" href="css/commit25.css?v=25">
+    <link rel="stylesheet" href="css/commit25.css?v=38.2">
     <link rel="stylesheet" href="css/commit26.css?v=26">
     <link rel="stylesheet" href="css/commit27.css?v=27">
     <link rel="stylesheet" href="css/commit28.css?v=28">
     <link rel="stylesheet" href="css/commit29.css?v=29.1">
     <link rel="stylesheet" href="css/commit30.css?v=30">
-    <link rel="stylesheet" href="css/leben.css?v=37.2">
+    <link rel="stylesheet" href="css/leben.css?v=38">
     
     <meta name="theme-color" content="#1e3a5f">
 </head>
@@ -28,7 +28,7 @@
 
 <header>
 
-    <h1>Das azlantische Helferlein der Boni <span class="app-version-30">v0.37.2</span></h1>
+    <h1>Das azlantische Helferlein der Boni <span class="app-version-30">v0.38.2</span></h1>
 
 </header>
 
@@ -36,7 +36,7 @@
 
     <button id="btnDashboard">Dashboard</button>
     <button id="btnEffekte">Effekte</button>
-    <button id="btnCharakterwerte">Werte</button>
+    <button id="btnCharakterwerte">Kampf</button>
     <button id="btnLeben">Leben</button>
     <button id="btnCharaktere">Charaktere</button>
     <button id="btnAdmin">Admin</button>
@@ -222,6 +222,11 @@
                     <output id="aktuelleTp" aria-live="polite">0</output>
                 </div>
 
+                <div class="tp-feld tp-schaden">
+                    <span>Schaden</span>
+                    <output id="erlittenerSchaden" aria-live="polite">0</output>
+                </div>
+
                 <label class="tp-feld" for="temporaereTp">
                     <span>Temp TP</span>
                     <input id="temporaereTp" type="number" min="0" max="9999" step="1" inputmode="numeric">
@@ -291,7 +296,21 @@
             <button type="button" id="btnNeuerCharakter">+ Neuer Charakter</button>
         </div>
 
-        <div id="charakterListe" aria-live="polite"></div>
+        <section class="kampagnen-verwaltung" aria-labelledby="kampagnenTitel">
+            <div class="kampagnen-verwaltung-kopf">
+                <div>
+                    <h3 id="kampagnenTitel">Kampagnen</h3>
+                    <p>Charaktere werden ihrer Kampagne untergeordnet angezeigt. Es werden auf den folge Seiten nur Charakter der aktiven Kampagne zur Auswahl gestellt.</p>
+                </div>
+                <div class="kampagne-neu-zeile">
+                    <input id="neueKampagneName" type="text" maxlength="60" placeholder="Neue Kampagne">
+                    <button type="button" id="btnKampagneHinzufuegen">+ Kampagne</button>
+                </div>
+            </div>
+            <div id="kampagnenBaum" class="kampagnen-baum" aria-live="polite"></div>
+        </section>
+
+        <div id="charakterListe" aria-live="polite" hidden></div>
 
     </section>
 
@@ -326,20 +345,20 @@
 
 </main>
 
-<script src="js/app.js?v=31"></script>
-<script src="js/charakterwerte.js?v=37"></script>
-<script src="js/leben.js?v=37.2"></script>
+<script src="js/app.js?v=38.2"></script>
+<script src="js/charakterwerte.js?v=38"></script>
+<script src="js/leben.js?v=38"></script>
 <script src="js/filter.js"></script>
 <script src="js/berechnung.js?v=36"></script>
 <script src="js/makros.js"></script>
 <script src="js/speicher.js"></script>
 <script src="js/commit21.js?v=21.1"></script>
-<script src="js/commit22.js?v=30"></script>
+<script src="js/commit22.js?v=38.2"></script>
 <script src="js/commit23.js?v=23"></script>
 <script src="js/commit24.js?v=30"></script>
-<script src="js/commit25.js?v=25"></script>
+<script src="js/commit25.js?v=38.1"></script>
 <script src="js/commit26.js?v=36.1"></script>
-<script src="js/commit29.js?v=29.1"></script>    
+<script src="js/commit29.js?v=38.2"></script>    
 
 <dialog id="effektDialog">
 <h3>Neuen Effekt anlegen</h3>
