@@ -349,8 +349,16 @@
   function alsNeuenCharakterImportieren(importDaten) {
     const idZuBehalten = importiereBenutzerEffekte(importDaten.benutzerEffekte);
 
+    const importCharakter = sichereKopie(importDaten.charakter);
+    if (!importCharakter.kampagne) {
+      importCharakter.kampagne =
+        typeof aktiveKampagne === "function"
+          ? aktiveKampagne()
+          : "Charakter ohne Kampagnenzuordnung";
+    }
+
     const charakter = normalisiereCharakter({
-      ...sichereKopie(importDaten.charakter),
+      ...importCharakter,
       id: neueCharakterId()
     });
 
@@ -378,8 +386,17 @@
     const index = charaktere.findIndex(charakter => charakter.id === ziel.id);
     if (index < 0) return;
 
+    const importCharakter = sichereKopie(importDaten.charakter);
+    if (!importCharakter.kampagne) {
+      importCharakter.kampagne =
+        ziel.kampagne ||
+        (typeof aktiveKampagne === "function"
+          ? aktiveKampagne()
+          : "Charakter ohne Kampagnenzuordnung");
+    }
+
     const importiert = normalisiereCharakter({
-      ...sichereKopie(importDaten.charakter),
+      ...importCharakter,
       id: ziel.id
     });
 

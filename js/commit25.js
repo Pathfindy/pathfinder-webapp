@@ -233,7 +233,7 @@
     `;
     nav.after(leiste);
 
-    leiste.querySelector("select").addEventListener("change", event => {
+    leiste.querySelector("#globaleCharakterAuswahl").addEventListener("change", event => {
       if (typeof waehleCharakter === "function") waehleCharakter(event.target.value);
       aktualisiereCharakterauswahl();
       setTimeout(aktualisiereErweiterungen, 0);
@@ -244,21 +244,26 @@
   function aktualisiereCharakterauswahl() {
     const select = document.getElementById("globaleCharakterAuswahl");
     if (!select || typeof charaktere === "undefined") return;
-    const bisher = select.value;
+
+    const aktive = typeof aktiveKampagne === "function" ? aktiveKampagne() : "Standard";
+
     select.innerHTML = "";
-    charaktere.forEach(charakter => {
-      const option = document.createElement("option");
-      option.value = charakter.id;
-      option.textContent = charakter.name;
-      option.selected = charakter.id === aktiverCharakterId;
-      select.appendChild(option);
-    });
+    charaktere
+      .filter(charakter => (charakter.kampagne || "Standard") === aktive)
+      .forEach(charakter => {
+        const option = document.createElement("option");
+        option.value = charakter.id;
+        option.textContent = charakter.name;
+        option.selected = charakter.id === aktiverCharakterId;
+        select.appendChild(option);
+      });
+
     if ([...select.options].some(option => option.value === aktiverCharakterId)) {
       select.value = aktiverCharakterId;
-    } else if (bisher) {
-      select.value = bisher;
     }
   }
+
+  window.aktualisiereGlobaleCharakterauswahl = aktualisiereCharakterauswahl;
 
   function erstelleFixierteFilterleiste() {
     const seite = document.getElementById("effekte");

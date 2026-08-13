@@ -84,6 +84,7 @@
   const btnSeite = document.getElementById("btnCharakterwerte");
   const maxTpFeld = document.getElementById("maxTp");
   const aktuelleTpAusgabe = document.getElementById("aktuelleTp");
+  const erlittenerSchadenAusgabe = document.getElementById("erlittenerSchaden");
   const temporaereTpFeld = document.getElementById("temporaereTp");
   const schadenFeld = document.getElementById("schadenEingabe");
   const heilungFeld = document.getElementById("heilungEingabe");
@@ -158,6 +159,10 @@
       temporaereTpFeld.value = 0;
       aktuelleTpAusgabe.value = 0;
       aktuelleTpAusgabe.textContent = "0";
+      if (erlittenerSchadenAusgabe) {
+        erlittenerSchadenAusgabe.value = 0;
+        erlittenerSchadenAusgabe.textContent = "0";
+      }
       return;
     }
 
@@ -166,6 +171,11 @@
     aktuelleTpAusgabe.value = charakter.aktuelleTp;
     aktuelleTpAusgabe.textContent = String(charakter.aktuelleTp);
     aktuelleTpAusgabe.className = tpFarbklasse(charakter);
+    if (erlittenerSchadenAusgabe) {
+      const schaden = Math.max(0, charakter.maxTp - charakter.aktuelleTp);
+      erlittenerSchadenAusgabe.value = schaden;
+      erlittenerSchadenAusgabe.textContent = String(schaden);
+    }
   }
 
   function speichereTpAenderung() {

@@ -243,11 +243,13 @@
   window.verarbeiteLebensSchaden = verarbeiteNormalenSchaden;
 
   function speichereUndAktualisiere() {
+    const scrollY = window.scrollY;
     speichereCharaktere();
     if (typeof window.aktualisiereTrefferpunkteAnsicht === "function") {
       window.aktualisiereTrefferpunkteAnsicht();
     }
     rendereEnergieAnsicht();
+    requestAnimationFrame(() => window.scrollTo({ top: scrollY, left: 0, behavior: "auto" }));
   }
 
   function erstelleKopf(texte, klasse) {

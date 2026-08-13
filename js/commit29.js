@@ -294,4 +294,216 @@
       liste.appendChild(eintrag);
     });
   };
+  function rendereKampagnenBaum() {
+    const container = document.getElementById("kampagnenBaum");
+    if (!container || typeof charaktere === "undefined") return;
+
+    container.innerHTML = "";
+    const kampagnen = typeof kampagnenListe === "function" ? kampagnenListe() : ["Charakter ohne Kampagnenzuordnung"];
+    const aktive = typeof aktiveKampagne === "function" ? aktiveKampagne() : "Charakter ohne Kampagnenzuordnung";
+
+    kampagnen.forEach(kampagnenName => {
+      const gruppe = document.createElement("section");
+      gruppe.className = "kampagnen-gruppe";
+      if (kampagnenName === aktive) gruppe.classList.add("aktiv");
+
+      const kopfZeileKampagne = document.createElement("div");
+      kopfZeileKampagne.className = "kampagnen-gruppe-kopfzeile";
+
+      const kopf = document.createElement("button");
+      kopf.type = "button";
+      kopf.className = "kampagnen-gruppe-kopf";
+      kopf.innerHTML = `<strong>${kampagnenName}</strong><span>${kampagnenName === aktive ? "Aktive Kampagne" : "Aktivieren"}</span>`;
+      kopf.addEventListener("click", () => {
+        if (typeof setzeAktiveKampagne === "function") setzeAktiveKampagne(kampagnenName);
+        rendereKampagnenBaum();
+      });
+      kopfZeileKampagne.appendChild(kopf);
+
+      if (kampagnenName !== "Charakter ohne Kampagnenzuordnung") {
+        const kampagneLoeschen = document.createElement("button");
+        kampagneLoeschen.type = "button";
+        kampagneLoeschen.className = "kampagne-loeschen";
+        kampagneLoeschen.textContent = "🗑";
+        kampagneLoeschen.title = "Kampagne löschen";
+        kampagneLoeschen.setAttribute("aria-label", `Kampagne ${kampagnenName} löschen`);
+        kampagneLoeschen.addEventListener("click", () => {
+          if (confirm(`Kampagne "${kampagnenName}" löschen? Zugeordnete Charaktere werden nach "Charakter ohne Kampagnenzuordnung" verschoben.`)) {
+            if (typeof loescheKampagne === "function") loescheKampagne(kampagnenName);
+            rendereKampagnenBaum();
+          }
+        });
+        kopfZeileKampagne.appendChild(kampagneLoeschen);
+      }
+
+      gruppe.appendChild(kopfZeileKampagne);
+
+      const liste = document.createElement("div");
+      liste.className = "kampagnen-charaktere";
+      const zugeordnet = charaktere.filter(c => (c.kampagne || "Charakter ohne Kampagnenzuordnung") === kampagnenName);
+
+      if (!zugeordnet.length) {
+        const leer = document.createElement("p");
+        leer.className = "kampagnen-leer";
+        leer.textContent = "Noch keine Charaktere zugeordnet.";
+        liste.appendChild(leer);
+      }
+
+      zugeordnet.forEach(charakter => {
+        const karte = document.createElement("article");
+        karte.className = "kampagnen-charakter";
+        if (charakter.id === aktiverCharakterId) karte.classList.add("aktiv");
+
+        const kopfZeile = document.createElement("div");
+        kopfZeile.className = "kampagnen-charakter-kopf";
+
+        const portraet = erstellePortraetBereich(charakter);
+        const info = document.createElement("div");
+        info.className = "kampagnen-charakter-info";
+
+        const name = document.createElement("button");
+        name.type = "button";
+        name.className = "kampagnen-charakter-name";
+        name.textContent = charakter.name;
+        name.addEventListener("click", () => {
+          if (typeof setzeAktiveKampagne === "function") setzeAktiveKampagne(kampagnenName);
+          if (typeof waehleCharakter === "function") waehleCharakter(charakter.id);
+          rendereKampagnenBaum();
+        });
+
+        const status = document.createElement("small");
+        status.textContent = charakter.id === aktiverCharakterId ? "Aktiv" : "Charakter";
+
+        const aktionen = document.createElement("div");
+        aktionen.className = "kampagnen-charakter-aktionen";
+
+        const bearbeiten = document.createElement("button");
+        bearbeiten.type = "button";
+        bearbeiten.className = "icon-button";
+        bearbeiten.textContent = "✏️";
+        bearbeiten.title = "Charakter umbenennen";
+        bearbeiten.setAttribute("aria-label", `${charakter.name} umbenennen`);
+        bearbeiten.addEventListener("click", () => {
+          const neuerName = prompt("Neuer Charaktername:", charakter.name);
+          if (neuerName !== null && typeof benenneCharakterUm === "function") {
+            benenneCharakterUm(charakter.id, neuerName);
+            rendereKampagnenBaum();
+          }
+        });
+
+        const kopieren = document.createElement("button");
+        kopieren.type = "button";
+        kopieren.className = "icon-button";
+        kopieren.textContent = "📋";
+        kopieren.title = "Effektaktivierungen auf aktiven Charakter kopieren";
+        kopieren.disabled = charakter.id === aktiverCharakterId;
+        kopieren.addEventListener("click", () => {
+          const ziel = typeof aktiverCharakter === "function" ? aktiverCharakter() : null;
+          if (!ziel || charakter.id === ziel.id) return;
+          if (confirm(`Die Effektaktivierungen von "${charakter.name}" werden auf "${ziel.name}" kopiert. Fortfahren?`)) {
+            if (typeof kopiereEffektstatus === "function" && kopiereEffektstatus(charakter.id, ziel.id)) {
+              alert(`Effektaktivierungen von "${charakter.name}" wurden auf "${ziel.name}" kopiert.`);
+            }
+          }
+        });
+
+        const loeschen = document.createElement("button");
+        loeschen.type = "button";
+        loeschen.className = "icon-button";
+        loeschen.textContent = "🗑";
+        loeschen.title = "Charakter löschen";
+        loeschen.disabled = charaktere.length <= 1;
+        loeschen.addEventListener("click", () => {
+          if (charaktere.length <= 1) {
+            alert("Mindestens ein Charakter muss erhalten bleiben.");
+            return;
+          }
+          if (confirm(`Charakter "${charakter.name}" wirklich löschen?`)) {
+            if (typeof loescheCharakter === "function") loescheCharakter(charakter.id);
+            rendereKampagnenBaum();
+          }
+        });
+
+        aktionen.append(bearbeiten, kopieren, loeschen);
+        info.append(name, status, aktionen);
+
+        const zuweisung = document.createElement("label");
+        zuweisung.className = "kampagnen-zuweisung";
+        zuweisung.innerHTML = "<span>Kampagne</span>";
+        const select = document.createElement("select");
+        kampagnenListe().forEach(k => {
+          const option = document.createElement("option");
+          option.value = k;
+          option.textContent = k;
+          option.selected = k === kampagnenName;
+          select.appendChild(option);
+        });
+        select.addEventListener("change", () => {
+          if (typeof setzeCharakterKampagne === "function") setzeCharakterKampagne(charakter.id, select.value);
+          rendereKampagnenBaum();
+        });
+        zuweisung.appendChild(select);
+
+        kopfZeile.append(portraet, info, zuweisung);
+
+        const notiz = document.createElement("textarea");
+        notiz.className = "charakter-notiz-29";
+        notiz.rows = 1;
+        notiz.placeholder = "Freitext …";
+        notiz.value = charakter.notizen || "";
+        notiz.setAttribute("aria-label", `Freitext für ${charakter.name}`);
+        const passeNotizHoeheAn = () => {
+          notiz.style.height = "42px";
+          notiz.style.height = `${Math.min(240, Math.max(42, notiz.scrollHeight))}px`;
+          notiz.style.overflowY = notiz.scrollHeight > 240 ? "auto" : "hidden";
+        };
+        notiz.addEventListener("input", () => {
+          passeNotizHoeheAn();
+          charakter.notizen = notiz.value;
+          if (typeof speichereCharaktere === "function") speichereCharaktere();
+        });
+        requestAnimationFrame(passeNotizHoeheAn);
+
+        karte.append(kopfZeile, notiz);
+        liste.appendChild(karte);
+      });
+
+      gruppe.appendChild(liste);
+      container.appendChild(gruppe);
+    });
+  }
+
+  window.rendereKampagnenBaum = rendereKampagnenBaum;
+
+  function initialisiereKampagnenVerwaltung() {
+    const input = document.getElementById("neueKampagneName");
+    const button = document.getElementById("btnKampagneHinzufuegen");
+    if (button && !button.dataset.bound) {
+      button.dataset.bound = "1";
+      const anlegen = () => {
+        const name = String(input?.value || "").trim();
+        if (!name) {
+          input?.focus();
+          return;
+        }
+        if (typeof erstelleKampagne === "function") {
+          erstelleKampagne(name);
+          if (input) input.value = "";
+          rendereKampagnenBaum();
+        }
+      };
+      button.addEventListener("click", anlegen);
+      input?.addEventListener("keydown", event => {
+        if (event.key === "Enter") anlegen();
+      });
+    }
+    rendereKampagnenBaum();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initialisiereKampagnenVerwaltung, { once: true });
+  } else {
+    initialisiereKampagnenVerwaltung();
+  }
+
 })();
