@@ -134,7 +134,7 @@
       try {
         const portraet = await skalierePortraet(datei);
         if (speichereCharakterAenderung(charakter, "portraet", portraet)) {
-          rendereCharaktere();
+          if (typeof window.rendereKampagnenBaum === "function") window.rendereKampagnenBaum();
         }
       } catch (fehler) {
         console.error("Porträt konnte nicht verarbeitet werden:", fehler);
@@ -156,7 +156,7 @@
       entfernen.addEventListener("click", () => {
         if (!confirm(`Porträt von "${charakter.name}" entfernen?`)) return;
         if (speichereCharakterAenderung(charakter, "portraet", "")) {
-          rendereCharaktere();
+          if (typeof window.rendereKampagnenBaum === "function") window.rendereKampagnenBaum();
         }
       });
       bereich.appendChild(entfernen);
@@ -166,134 +166,27 @@
   }
 
   rendereCharaktere = function () {
-    const liste = document.getElementById("charakterListe");
-    if (!liste) return;
-
-    liste.innerHTML = "";
-    charaktere.forEach(charakter => {
-      const eintrag = document.createElement("article");
-      eintrag.className = "charakter-eintrag charakter-eintrag-29";
-      if (charakter.id === aktiverCharakterId) eintrag.classList.add("aktiv");
-      if (charakter.portraet) eintrag.classList.add("mit-portraet");
-
-      const kopf = document.createElement("div");
-      kopf.className = "charakter-kopf-29";
-
-      if (charakter.portraet) {
-        kopf.appendChild(erstellePortraetBereich(charakter));
-      }
-
-      const auswahl = document.createElement("button");
-      auswahl.type = "button";
-      auswahl.className = "charakter-auswahl";
-      auswahl.setAttribute("aria-pressed", String(charakter.id === aktiverCharakterId));
-      auswahl.innerHTML = `<strong>${charakter.name}</strong><span>${
-        charakter.id === aktiverCharakterId ? "Aktiv" : "Auswählen"
-      }</span>`;
-      auswahl.addEventListener("click", () => waehleCharakter(charakter.id));
-
-      const aktionen = document.createElement("div");
-      aktionen.className = "charakter-aktionen";
-
-      if (!charakter.portraet) {
-        const portraetHinzufuegen = document.createElement("button");
-        portraetHinzufuegen.type = "button";
-        portraetHinzufuegen.className = "icon-button";
-        portraetHinzufuegen.textContent = "📷";
-        portraetHinzufuegen.title = "Porträt hinzufügen";
-        portraetHinzufuegen.setAttribute(
-          "aria-label",
-          `Porträt für ${charakter.name} hinzufügen`
-        );
-        const versteckterBereich = erstellePortraetBereich(charakter);
-        const dateiFeld = versteckterBereich.querySelector('input[type="file"]');
-        portraetHinzufuegen.addEventListener("click", () => dateiFeld?.click());
-        aktionen.append(portraetHinzufuegen, versteckterBereich);
-        versteckterBereich.classList.add("nur-dateifeld-29");
-      }
-
-      const umbenennen = document.createElement("button");
-      umbenennen.type = "button";
-      umbenennen.className = "icon-button";
-      umbenennen.textContent = "✏️";
-      umbenennen.setAttribute("aria-label", `${charakter.name} umbenennen`);
-      umbenennen.addEventListener("click", () => {
-        const name = prompt("Neuer Charaktername:", charakter.name);
-        if (name !== null) benenneCharakterUm(charakter.id, name);
-      });
-
-      const kopieren = document.createElement("button");
-      kopieren.type = "button";
-      kopieren.className = "icon-button";
-      kopieren.textContent = "📋";
-      kopieren.disabled = charakter.id === aktiverCharakterId;
-      kopieren.setAttribute(
-        "aria-label",
-        `Effekte von ${charakter.name} auf den aktiven Charakter kopieren`
-      );
-      kopieren.title = charakter.id === aktiverCharakterId
-        ? "Dieser Charakter ist bereits aktiv."
-        : "Effektaktivierungen auf den aktiven Charakter kopieren";
-      kopieren.addEventListener("click", () => {
-        const ziel = aktiverCharakter();
-        if (!ziel || charakter.id === ziel.id) return;
-        const bestaetigt = confirm(
-          `Die Effektaktivierungen von "${charakter.name}" werden auf "${ziel.name}" kopiert. ` +
-          `Die bisherigen Aktivierungen von "${ziel.name}" werden ersetzt. Fortfahren?`
-        );
-        if (bestaetigt && kopiereEffektstatus(charakter.id, ziel.id)) {
-          alert(`Effektaktivierungen von "${charakter.name}" wurden auf "${ziel.name}" kopiert.`);
-        }
-      });
-
-      const loeschen = document.createElement("button");
-      loeschen.type = "button";
-      loeschen.className = "icon-button";
-      loeschen.textContent = "🗑";
-      loeschen.disabled = charaktere.length <= 1;
-      loeschen.setAttribute("aria-label", `${charakter.name} löschen`);
-      loeschen.addEventListener("click", () => {
-        if (charaktere.length <= 1) {
-          alert("Mindestens ein Charakter muss erhalten bleiben.");
-          return;
-        }
-        if (confirm(`Charakter "${charakter.name}" wirklich löschen?`)) {
-          loescheCharakter(charakter.id);
-        }
-      });
-
-      aktionen.append(umbenennen, kopieren, loeschen);
-      kopf.append(auswahl, aktionen);
-
-      const notiz = document.createElement("textarea");
-      notiz.className = "charakter-notiz-29";
-      notiz.rows = 1;
-      notiz.placeholder = "Freitext …";
-      notiz.value = charakter.notizen || "";
-      notiz.setAttribute("aria-label", `Freitext für ${charakter.name}`);
-
-      const passeNotizHoeheAn = () => {
-        notiz.style.height = "42px";
-        notiz.style.height = `${Math.min(240, Math.max(42, notiz.scrollHeight))}px`;
-        notiz.style.overflowY = notiz.scrollHeight > 240 ? "auto" : "hidden";
-      };
-
-      notiz.addEventListener("input", () => {
-        passeNotizHoeheAn();
-        charakter.notizen = notiz.value;
-        try {
-          speichereCharaktere();
-        } catch (fehler) {
-          console.error("Charakternotiz konnte nicht gespeichert werden:", fehler);
-        }
-      });
-
-      requestAnimationFrame(passeNotizHoeheAn);
-
-      eintrag.append(kopf, notiz);
-      liste.appendChild(eintrag);
-    });
+    if (typeof window.rendereKampagnenBaum === "function") {
+      window.rendereKampagnenBaum();
+    }
   };
+
+  const KAMPAGNEN_OFFEN_KEY = "pf-kampagnen-offen";
+
+  function ladeOffeneKampagnen() {
+    try {
+      const roh = localStorage.getItem(KAMPAGNEN_OFFEN_KEY);
+      const wert = roh ? JSON.parse(roh) : [];
+      return new Set(Array.isArray(wert) ? wert : []);
+    } catch {
+      return new Set();
+    }
+  }
+
+  function speichereOffeneKampagnen(set) {
+    localStorage.setItem(KAMPAGNEN_OFFEN_KEY, JSON.stringify([...set]));
+  }
+
   function rendereKampagnenBaum() {
     const container = document.getElementById("kampagnenBaum");
     if (!container || typeof charaktere === "undefined") return;
@@ -301,8 +194,14 @@
     container.innerHTML = "";
     const kampagnen = typeof kampagnenListe === "function" ? kampagnenListe() : ["Charakter ohne Kampagnenzuordnung"];
     const aktive = typeof aktiveKampagne === "function" ? aktiveKampagne() : "Charakter ohne Kampagnenzuordnung";
+    const offeneKampagnen = ladeOffeneKampagnen();
 
-    kampagnen.forEach(kampagnenName => {
+    if (!localStorage.getItem(KAMPAGNEN_OFFEN_KEY)) {
+      offeneKampagnen.add(aktive);
+      speichereOffeneKampagnen(offeneKampagnen);
+    }
+
+    kampagnen.forEach((kampagnenName, kampagnenIndex) => {
       const gruppe = document.createElement("section");
       gruppe.className = "kampagnen-gruppe";
       if (kampagnenName === aktive) gruppe.classList.add("aktiv");
@@ -313,12 +212,58 @@
       const kopf = document.createElement("button");
       kopf.type = "button";
       kopf.className = "kampagnen-gruppe-kopf";
-      kopf.innerHTML = `<strong>${kampagnenName}</strong><span>${kampagnenName === aktive ? "Aktive Kampagne" : "Aktivieren"}</span>`;
+      const istOffen = offeneKampagnen.has(kampagnenName);
+      kopf.setAttribute("aria-expanded", String(istOffen));
+      kopf.innerHTML = `<strong><span class="kampagnen-pfeil">${istOffen ? "▾" : "▸"}</span>${kampagnenName}</strong><span>${kampagnenName === aktive ? "Aktive Kampagne" : "Inaktiv"}</span>`;
       kopf.addEventListener("click", () => {
-        if (typeof setzeAktiveKampagne === "function") setzeAktiveKampagne(kampagnenName);
+        if (offeneKampagnen.has(kampagnenName)) {
+          offeneKampagnen.delete(kampagnenName);
+        } else {
+          offeneKampagnen.add(kampagnenName);
+        }
+        speichereOffeneKampagnen(offeneKampagnen);
         rendereKampagnenBaum();
       });
       kopfZeileKampagne.appendChild(kopf);
+
+      const kampagnenAktionen = document.createElement("div");
+      kampagnenAktionen.className = "kampagnen-aktionen";
+
+      const aktivieren = document.createElement("button");
+      aktivieren.type = "button";
+      aktivieren.className = "kampagne-aktivieren";
+      aktivieren.textContent = kampagnenName === aktive ? "✓" : "●";
+      aktivieren.title = kampagnenName === aktive ? "Aktive Kampagne" : "Kampagne aktivieren";
+      aktivieren.disabled = kampagnenName === aktive;
+      aktivieren.addEventListener("click", () => {
+        if (typeof setzeAktiveKampagne === "function") setzeAktiveKampagne(kampagnenName);
+        offeneKampagnen.add(kampagnenName);
+        speichereOffeneKampagnen(offeneKampagnen);
+        rendereKampagnenBaum();
+      });
+      kampagnenAktionen.appendChild(aktivieren);
+
+      const hoch = document.createElement("button");
+      hoch.type = "button";
+      hoch.className = "kampagne-verschieben";
+      hoch.textContent = "↑";
+      hoch.title = "Kampagne nach oben verschieben";
+      hoch.disabled = kampagnenIndex === 0;
+      hoch.addEventListener("click", () => {
+        if (typeof verschiebeKampagne === "function") verschiebeKampagne(kampagnenName, "hoch");
+      });
+      kampagnenAktionen.appendChild(hoch);
+
+      const runter = document.createElement("button");
+      runter.type = "button";
+      runter.className = "kampagne-verschieben";
+      runter.textContent = "↓";
+      runter.title = "Kampagne nach unten verschieben";
+      runter.disabled = kampagnenIndex === kampagnen.length - 1;
+      runter.addEventListener("click", () => {
+        if (typeof verschiebeKampagne === "function") verschiebeKampagne(kampagnenName, "runter");
+      });
+      kampagnenAktionen.appendChild(runter);
 
       if (kampagnenName !== "Charakter ohne Kampagnenzuordnung") {
         const kampagneLoeschen = document.createElement("button");
@@ -326,20 +271,23 @@
         kampagneLoeschen.className = "kampagne-loeschen";
         kampagneLoeschen.textContent = "🗑";
         kampagneLoeschen.title = "Kampagne löschen";
-        kampagneLoeschen.setAttribute("aria-label", `Kampagne ${kampagnenName} löschen`);
         kampagneLoeschen.addEventListener("click", () => {
           if (confirm(`Kampagne "${kampagnenName}" löschen? Zugeordnete Charaktere werden nach "Charakter ohne Kampagnenzuordnung" verschoben.`)) {
             if (typeof loescheKampagne === "function") loescheKampagne(kampagnenName);
+            offeneKampagnen.delete(kampagnenName);
+            speichereOffeneKampagnen(offeneKampagnen);
             rendereKampagnenBaum();
           }
         });
-        kopfZeileKampagne.appendChild(kampagneLoeschen);
+        kampagnenAktionen.appendChild(kampagneLoeschen);
       }
 
+      kopfZeileKampagne.appendChild(kampagnenAktionen);
       gruppe.appendChild(kopfZeileKampagne);
 
       const liste = document.createElement("div");
       liste.className = "kampagnen-charaktere";
+      liste.hidden = !offeneKampagnen.has(kampagnenName);
       const zugeordnet = charaktere.filter(c => (c.kampagne || "Charakter ohne Kampagnenzuordnung") === kampagnenName);
 
       if (!zugeordnet.length) {

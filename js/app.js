@@ -90,16 +90,27 @@ function aktiverCharakter(){
 
 function kampagnenListe(){
  const gespeichert=ladeJson(STORAGE_KEYS.kampagnen,[]);
- const namen=new Set(
-   (Array.isArray(gespeichert)?gespeichert:[])
-     .map(name=>String(name||"").trim())
-     .filter(Boolean)
- );
- charaktere.forEach(charakter=>{
-   namen.add(String(charakter.kampagne||"Charakter ohne Kampagnenzuordnung").trim()||"Charakter ohne Kampagnenzuordnung");
+ const vorhanden=new Set();
+ const liste=[];
+
+ (Array.isArray(gespeichert)?gespeichert:[]).forEach(name=>{
+   const bereinigt=String(name||"").trim();
+   if(bereinigt && !vorhanden.has(bereinigt)){
+     vorhanden.add(bereinigt);
+     liste.push(bereinigt);
+   }
  });
- if(namen.size===0) namen.add("Charakter ohne Kampagnenzuordnung");
- return [...namen].sort((a,b)=>a.localeCompare(b,"de"));
+
+ charaktere.forEach(charakter=>{
+   const name=String(charakter.kampagne||"Charakter ohne Kampagnenzuordnung").trim()||"Charakter ohne Kampagnenzuordnung";
+   if(!vorhanden.has(name)){
+     vorhanden.add(name);
+     liste.push(name);
+   }
+ });
+
+ if(!vorhanden.has("Charakter ohne Kampagnenzuordnung")) liste.push("Charakter ohne Kampagnenzuordnung");
+ return liste;
 }
 
 function speichereKampagnen(namen){
@@ -112,9 +123,24 @@ function erstelleKampagne(name){
  if(!neu) return false;
  const kampagnen=kampagnenListe();
  if(!kampagnen.includes(neu)){
-   kampagnen.push(neu);
+   kampagnen.unshift(neu);
    speichereKampagnen(kampagnen);
  }
+ if(typeof window.rendereKampagnenBaum==="function") window.rendereKampagnenBaum();
+ return true;
+}
+
+function verschiebeKampagne(name,richtung){
+ const kampagne=String(name||"").trim();
+ const liste=kampagnenListe();
+ const index=liste.indexOf(kampagne);
+ if(index<0) return false;
+
+ const zielIndex=richtung==="hoch" ? index-1 : index+1;
+ if(zielIndex<0 || zielIndex>=liste.length) return false;
+
+ [liste[index],liste[zielIndex]]=[liste[zielIndex],liste[index]];
+ speichereKampagnen(liste);
  if(typeof window.rendereKampagnenBaum==="function") window.rendereKampagnenBaum();
  return true;
 }
