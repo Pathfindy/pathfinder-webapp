@@ -1,7 +1,7 @@
 // Commit 24: Angriffe mit Notizen und getrenntem Schaden
 (() => {
   const TP_MAX = 9999;
-  const ANGRIFF_MAX = 6;
+  const ANGRIFF_MAX = 12;
   const WUERFELSEITEN = [0, 3, 4, 6, 8, 10, 12, 20];
 
   function ganzeZahl(wert, minimum = 0, maximum = TP_MAX) {
@@ -36,6 +36,7 @@
         ? angriff.name.trim()
         : `Angriff ${index + 1}`,
       art: angriff.art === "Fern" ? "Fern" : "Nah",
+      modus:angriff.modus==="iterativ"?"iterativ":"einzeln",
       grundAngriff: ganzeZahl(angriff.grundAngriff, -999, 999),
       wuerfelAnzahl: ganzeZahl(angriff.wuerfelAnzahl, 0, 20),
       wuerfelSeiten,
@@ -250,6 +251,26 @@
     return feld;
   }
 
+  function anzahlIterativeAngriffe(charakter){
+    const gab=typeof charakterGAB==="function"
+      ?charakterGAB(charakter)
+      :Number(charakter?.gab||0);
+    if(gab>=16) return 4;
+    if(gab>=11) return 3;
+    if(gab>=6) return 2;
+    return 1;
+  }
+
+  function angriffsfolge(angriff,charakter,gesamtAngriff){
+    if(angriff.modus!=="iterativ") return [gesamtAngriff];
+    const anzahl=anzahlIterativeAngriffe(charakter);
+    return Array.from({length:anzahl},(_,index)=>gesamtAngriff-(index*5));
+  }
+
+  function formatiereAngriffsfolge(werte){
+    return werte.map(vorzeichen).join(" / ");
+  }
+
   function aktualisiereAngriffeAnsicht() {
     if (!angriffeListe || !btnAngriffHinzufuegen) return;
 
@@ -307,8 +328,10 @@
       const ergebnis = document.createElement("div");
       ergebnis.className = "angriff-ergebnis";
       const gesamtAngriff = angriff.grundAngriff + angriffsBonus(angriff, boni);
+      const folge=angriffsfolge(angriff,charakter,gesamtAngriff);
+      const angriffsText=formatiereAngriffsfolge(folge);
       ergebnis.innerHTML = `
-        <div><span>Angriff</span><strong>${vorzeichen(gesamtAngriff)}</strong></div>
+        <div><span>Angriff</span><strong>${angriffsText}</strong></div>
         <div><span>Schaden</span><strong>${formatiereSchaden(angriff, boni)}</strong></div>
       `;
 
@@ -331,6 +354,26 @@
 
       const felder = document.createElement("div");
       felder.className = "angriff-felder";
+
+      const modusLabel=document.createElement("label");
+      modusLabel.innerHTML="<span>Angriffsmodus</span>";
+      const modus=document.createElement("select");
+      [
+        ["einzeln","Einzelangriff"],
+        ["iterativ","Einzel- + Zusatzangriffe"]
+      ].forEach(([wert,text])=>{
+        const option=document.createElement("option");
+        option.value=wert;
+        option.textContent=text;
+        option.selected=angriff.modus===wert;
+        modus.appendChild(option);
+      });
+      modus.addEventListener("change",()=>{
+        angriff.modus=modus.value;
+        speichereCharaktere();
+        aktualisiereAngriffeAnsicht();
+      });
+      modusLabel.appendChild(modus);
 
       const artLabel = document.createElement("label");
       artLabel.innerHTML = "<span>Art</span>";
@@ -394,7 +437,18 @@
       });
       schadenLabel.appendChild(schaden);
 
-      felder.append(artLabel, grundLabel, wuerfelLabel, schadenLabel);
+      felder.append(modusLabel, artLabel, grundLabel, wuerfelLabel, schadenLabel);
+
+      if(angriff.modus==="iterativ"){
+        const folgeInfo=document.createElement("div");
+        folgeInfo.className="angriff-iterativ-info-41";
+        const gab=typeof charakterGAB==="function"?charakterGAB(charakter):Number(charakter.gab||0);
+        const anzahlIter=anzahlIterativeAngriffe(charakter);
+        folgeInfo.textContent=`GAB ${vorzeichen(gab)} → ${anzahlIter} Angriff${anzahlIter===1?"":"e"} mit −5-Schritten`;
+        felder.appendChild(folgeInfo);
+      }
+
+
 
       const loeschen = document.createElement("button");
       loeschen.type = "button";
@@ -429,7 +483,7 @@
     if (!charakter) return;
 
     if (charakter.kampfwerte.angriffe.length >= ANGRIFF_MAX) {
-      zeigeAngriffeMeldung("Es können höchstens sechs Angriffe angelegt werden.", true);
+      zeigeAngriffeMeldung(`Es können höchstens ${ANGRIFF_MAX} Angriffe angelegt werden.`, true);
       return;
     }
 

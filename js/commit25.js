@@ -19,6 +19,49 @@
     return alle.filter(bonus => ziele.has(bonus.ziel));
   }
 
+  function aktiveBoniFuerAngriff(ziel, angriffsIndex) {
+    if (typeof sammleAktiveBoni !== "function") return [];
+    const angriffsZiel = `A${Number(angriffsIndex) + 1}`;
+    const ziele = ziel === "Schaden Nah" || ziel === "Schaden Fern"
+      ? new Set([ziel, "Schaden"])
+      : new Set([ziel]);
+
+    return sammleAktiveBoni(typeof effekte !== "undefined" ? effekte : [])
+      .filter(bonus => {
+        if (!ziele.has(bonus.ziel)) return false;
+        if (!bonus.angriffZuweisbar) return true;
+        if (bonus.angriffsModus === "alle") return true;
+        const ausgewaehlt = Array.isArray(bonus.angriffZiele)
+          ? bonus.angriffZiele
+          : (bonus.angriffZiel && bonus.angriffZiel !== "-" ? [bonus.angriffZiel] : []);
+        return ausgewaehlt.includes(angriffsZiel);
+      });
+  }
+
+  function bewerteBoniFuerAngriff(ziel, angriffsIndex) {
+    const boni = aktiveBoniFuerAngriff(ziel, angriffsIndex);
+    const stapelbar = typeof STAPELBARE_BONUSARTEN !== "undefined"
+      ? STAPELBARE_BONUSARTEN
+      : new Set();
+
+    const gruppen = new Map();
+    boni.forEach(bonus => {
+      if (!gruppen.has(bonus.bonusart)) gruppen.set(bonus.bonusart, []);
+      gruppen.get(bonus.bonusart).push(bonus);
+    });
+
+    return boni.map(bonus => {
+      if (stapelbar.has(bonus.bonusart)) return { ...bonus, beruecksichtigt: true };
+      const gruppe = gruppen.get(bonus.bonusart) || [];
+      if (bonus.wert > 0) {
+        const max = Math.max(0, ...gruppe.filter(e => e.wert > 0).map(e => e.wert));
+        return { ...bonus, beruecksichtigt: bonus.wert === max };
+      }
+      const min = Math.min(0, ...gruppe.filter(e => e.wert < 0).map(e => e.wert));
+      return { ...bonus, beruecksichtigt: bonus.wert === min };
+    });
+  }
+
   function bewerteBoni(ziel) {
     const boni = aktiveBoniFuerZiel(ziel);
     const stapelbar = typeof STAPELBARE_BONUSARTEN !== "undefined"
@@ -62,6 +105,56 @@
       if (event.target === detailDialog) detailDialog.close();
     });
     return detailDialog;
+  }
+
+  function zeigeBonusDetailsFuerAngriff(titel, ziel, grundwert, angriffsIndex) {
+    const dialog = erstelleDetailDialog();
+    const boni = bewerteBoniFuerAngriff(ziel, angriffsIndex);
+    const ergebnis = typeof berechneBonusErgebnisFuerAngriff === "function"
+      ? berechneBonusErgebnisFuerAngriff(
+          typeof effekte !== "undefined" ? effekte : [],
+          angriffsIndex
+        )
+      : {};
+
+    let bonusGesamt = Number(ergebnis[ziel] ?? 0);
+    if (ziel === "Schaden Nah" || ziel === "Schaden Fern") {
+      bonusGesamt += Number(ergebnis.Schaden ?? 0);
+    }
+
+    dialog.querySelector("#bonusDetailTitel").textContent = titel;
+    const inhalt = dialog.querySelector("#bonusDetailInhalt");
+    inhalt.innerHTML = "";
+
+    const summe = document.createElement("p");
+    summe.className = "bonus-detail-summe";
+    summe.textContent =
+      `Grundwert ${formatWert(grundwert)} + Boni ${formatWert(bonusGesamt)} = ${formatWert(Number(grundwert) + bonusGesamt)}`;
+    inhalt.appendChild(summe);
+
+    if (!boni.length) {
+      const leer = document.createElement("p");
+      leer.textContent = "Keine aktiven Boni für diesen Angriff.";
+      inhalt.appendChild(leer);
+    } else {
+      const liste = document.createElement("div");
+      liste.className = "bonus-detail-liste";
+      boni.forEach(bonus => {
+        const zeile = document.createElement("div");
+        zeile.className = "bonus-detail-zeile";
+        if (!bonus.beruecksichtigt) zeile.classList.add("nicht-beruecksichtigt");
+        zeile.innerHTML = `
+          <strong>${formatWert(bonus.wert)}</strong>
+          <span>${bonus.bonusart}</span>
+          <span>${bonus.effektName || "Unbenannter Effekt"}</span>
+          <small>${bonus.beruecksichtigt ? "berücksichtigt" : "nicht stapelbar – nicht berücksichtigt"}</small>
+        `;
+        liste.appendChild(zeile);
+      });
+      inhalt.appendChild(liste);
+    }
+
+    dialog.showModal();
   }
 
   function zeigeBonusDetails(titel, ziel, grundwert = null) {
@@ -145,7 +238,7 @@
         felder[0].classList.add("bonus-klickbar");
         felder[0].addEventListener("click", () => {
           const ziel = angriff.art === "Fern" ? "Angriff Fern" : "Angriff Nah";
-          zeigeBonusDetails(`${angriff.name}: Angriff`, ziel, angriff.grundAngriff);
+          zeigeBonusDetailsFuerAngriff(`${angriff.name}: Angriff`, ziel, angriff.grundAngriff, index);
         });
       }
       if (felder[1]) {
@@ -153,7 +246,7 @@
         felder[1].addEventListener("click", () => {
           const ziel = angriff.art === "Fern" ? "Schaden Fern" : "Schaden Nah";
           const grund = angriff.schadenModifikator === null ? 0 : angriff.schadenModifikator;
-          zeigeBonusDetails(`${angriff.name}: Schaden`, ziel, grund);
+          zeigeBonusDetailsFuerAngriff(`${angriff.name}: Schaden`, ziel, grund, index);
         });
       }
     });

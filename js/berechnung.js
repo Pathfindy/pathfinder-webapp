@@ -30,8 +30,83 @@ function normalisiereBerechnungsBonus(bonus = {}) {
     return {
         ziel: typeof bonus.ziel === "string" ? bonus.ziel.trim() : "",
         bonusart: normalisiereBerechnungsBonusart(bonus.bonusart),
-        wert: Number.isFinite(wert) ? wert : 0
+        wert: Number.isFinite(wert) ? wert : 0,
+        wertQuelle: ["stufenwert","nutzerwert"].includes(bonus.wertQuelle) ? bonus.wertQuelle : "fest",
+        stufenFaktor: Number.isFinite(Number(bonus.stufenFaktor)) ? Number(bonus.stufenFaktor) : 1
     };
+}
+
+function effektOptionenBerechnung(effekt){
+    return typeof effektOptionenFuerCharakter === "function"
+        ? effektOptionenFuerCharakter(effekt?.id)
+        : {};
+}
+
+function dynamischerBonuswert(effekt, bonus, normalisiert) {
+    if (!effekt || !bonus) return normalisiert.wert;
+
+    // Commit 40.2:
+    // "Boni nach Nutzereingabe" ist eine globale Effekt-Einstellung.
+    // Ist sie aktiv, ersetzt der im Effektbanner gewählte Wert den
+    // Grundwert ALLER Bonuszeilen des Effekts. Dadurch genügt es,
+    // die Bonuszeilen normal mit +1 anzulegen.
+    if (effekt?.nutzerBonus?.aktiv) {
+        if (Number.isFinite(Number(effekt.nutzerBonusWertAktuell))) {
+            return Number(effekt.nutzerBonusWertAktuell);
+        }
+        if (typeof nutzerBonusWertFuerEffekt === "function") {
+            return nutzerBonusWertFuerEffekt(effekt);
+        }
+        return 1;
+    }
+
+    if (effekt.sonderlogik === "heftiger-angriff") {
+        const stufe = typeof effektStufenwert === "function" ? effektStufenwert(effekt) : 0;
+        const optionen = effektOptionenBerechnung(effekt);
+        if (bonus.ziel === "Angriff Nah" || bonus.ziel === "KMB") return -stufe;
+        if (bonus.ziel === "Schaden Nah") {
+            const faktor = optionen.schadensart === "zweihand"
+                ? 3
+                : optionen.schadensart === "zweithand"
+                    ? 1
+                    : 2;
+            return stufe * faktor;
+        }
+    }
+
+    if (effekt.sonderlogik === "maechtige-magische-faenge") {
+        const optionen = effektOptionenBerechnung(effekt);
+        if (optionen.modus === "einzeln") {
+            return typeof effektStufenwert === "function" ? effektStufenwert(effekt) : 1;
+        }
+        return 1;
+    }
+
+    if (
+        normalisiert.wertQuelle === "stufenwert" &&
+        effekt?.stufenlogik?.aktiv &&
+        typeof effektStufenwert === "function"
+    ) {
+        const faktor = Number.isFinite(Number(bonus.stufenFaktor))
+            ? Number(bonus.stufenFaktor)
+            : 1;
+
+        // Commit 40.3: Stufenwert bestimmt die Höhe; das Vorzeichen
+        // bleibt vom angelegten Grundwert der Bonuszeile erhalten.
+        const grundwert = Number(normalisiert.wert);
+        const vorzeichen = Number.isFinite(grundwert) && grundwert < 0 ? -1 : 1;
+        return effektStufenwert(effekt) * faktor * vorzeichen;
+    }
+
+    return normalisiert.wert;
+}
+
+function effektiverAngriffsModusBerechnung(effekt){
+    if(effekt?.sonderlogik==="maechtige-magische-faenge"){
+        const optionen=effektOptionenBerechnung(effekt);
+        return optionen.modus==="einzeln"?"einer":"alle";
+    }
+    return effekt?.angriffZuweisbar?"einer":"alle";
 }
 
 function sammleAktiveBoni(effektListe = []) {
@@ -42,17 +117,28 @@ function sammleAktiveBoni(effektListe = []) {
         .flatMap(effekt => {
             if (!Array.isArray(effekt.boni)) return [];
 
-            const angriffZiel = typeof angriffszielFuerEffekt === "function"
-                ? angriffszielFuerEffekt(effekt)
-                : "-";
+            const angriffZiele = typeof angriffszieleFuerEffekt === "function"
+                ? angriffszieleFuerEffekt(effekt)
+                : (typeof angriffszielFuerEffekt === "function"
+                    ? [angriffszielFuerEffekt(effekt)].filter(ziel => ziel && ziel !== "-")
+                    : []);
 
-            return effekt.boni.map(bonus => ({
-                ...normalisiereBerechnungsBonus(bonus),
-                effektId: effekt.id || null,
-                effektName: effekt.name || "",
-                angriffZuweisbar: !!effekt.angriffZuweisbar,
-                angriffZiel
-            }));
+            return effekt.boni.map(bonus => {
+                const normalisiert = normalisiereBerechnungsBonus(bonus);
+                const dynamischerWert =
+                    dynamischerBonuswert(effekt, bonus, normalisiert);
+
+                return {
+                    ...normalisiert,
+                    wert: Number(dynamischerWert) || 0,
+                    effektId: effekt.id || null,
+                    effektName: effekt.name || "",
+                    angriffZuweisbar: !!effekt.angriffZuweisbar,
+                    angriffsModus: effektiverAngriffsModusBerechnung(effekt),
+                    angriffZiele,
+                    angriffZiel: angriffZiele[0] || "-"
+                };
+            });
         })
         .filter(bonus => bonus.ziel && bonus.wert !== 0);
 }
@@ -154,7 +240,14 @@ function berechneBonusErgebnisFuerAngriff(effektListe = [], angriffsIndex = 0) {
     const boni = sammleAktiveBoni(effektListe).filter(bonus => {
         if (!ANGRIFFSGEBUNDENE_ZIELE.has(bonus.ziel)) return true;
         if (!bonus.angriffZuweisbar) return true;
-        return bonus.angriffZiel === "-" || bonus.angriffZiel === angriffsZiel;
+        if (bonus.angriffsModus === "alle") return true;
+
+        const ziele=Array.isArray(bonus.angriffZiele)
+            ?bonus.angriffZiele
+            :(bonus.angriffZiel && bonus.angriffZiel!=="-"?[bonus.angriffZiel]:[]);
+
+        // Ein zuweisbarer Effekt im Einzelmodus wirkt nur auf explizit gewählte Ziele.
+        return ziele.includes(angriffsZiel);
     });
     return berechneBonusErgebnisAusBoni(boni);
 }

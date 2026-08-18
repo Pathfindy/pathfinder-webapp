@@ -1,7 +1,7 @@
 // Das azlantische Helferlein der Boni
 // app.js
 // Version 0.32
-const APP_VERSION="0.32";
+const APP_VERSION="0.41.5";
 
 const seiten={
  dashboard:document.getElementById("dashboard"),
@@ -30,11 +30,15 @@ const STORAGE_KEYS={
  aktiverCharakter:"pf-aktiver-charakter",
  charakterEffekte:"pf-charakter-effekte",
  charakterEffektAngriffe:"pf-charakter-effekt-angriffe",
+ charakterEffektStufen:"pf-charakter-effekt-stufen",
+ charakterEffektOptionen:"pf-charakter-effekt-optionen",
+ charakterEffektFilter:"pf-charakter-effekt-filter",
  aktiveKampagne:"pf-aktive-kampagne",
  kampagnen:"pf-kampagnen",
  adminPinHash:"pf-admin-pin-hash",
  adminStandardAenderungen:"pf-admin-standard-aenderungen",
- adminStandardNeu:"pf-admin-standard-neu"
+ adminStandardNeu:"pf-admin-standard-neu",
+ adminStandardGeloescht:"pf-admin-standard-geloescht"
 };
 
 function ladeJson(key,standardwert){
@@ -61,6 +65,18 @@ function neueCharakterId(){
  return "charakter-"+Date.now()+"-"+Math.random().toString(36).slice(2);
 }
 
+function normalisiereKlassen(klassen){
+ const quelle=Array.isArray(klassen)?klassen:[];
+ return quelle
+   .map(eintrag=>({
+     name:typeof eintrag?.name==="string"?eintrag.name.trim():"",
+     stufe:Number.isFinite(Number(eintrag?.stufe))
+       ?Math.max(0,Math.min(99,Math.trunc(Number(eintrag.stufe))))
+       :0
+   }))
+   .filter(eintrag=>eintrag.name || eintrag.stufe>0);
+}
+
 function normalisiereCharakter(charakter={}){
  return {
    id:charakter.id||neueCharakterId(),
@@ -69,8 +85,55 @@ function normalisiereCharakter(charakter={}){
      :"Unbenannter Charakter",
    kampagne:typeof charakter.kampagne==="string" && charakter.kampagne.trim()
      ?charakter.kampagne.trim()
-     :"Charakter ohne Kampagnenzuordnung"
+     :"Charakter ohne Kampagnenzuordnung",
+   klassen:normalisiereKlassen(charakter.klassen),
+   gab:Number.isFinite(Number(charakter.gab))
+     ?Math.max(0,Math.min(99,Math.trunc(Number(charakter.gab))))
+     :0
  };
+}
+
+function charakterGesamtstufe(charakter=aktiverCharakter()){
+ if(!charakter) return 0;
+ return normalisiereKlassen(charakter.klassen)
+   .reduce((summe,eintrag)=>summe+Number(eintrag.stufe||0),0);
+}
+
+function charakterGAB(charakter=aktiverCharakter()){
+ if(!charakter) return 0;
+ const wert=Number(charakter.gab);
+ return Number.isFinite(wert)?Math.max(0,Math.trunc(wert)):0;
+}
+
+function setzeCharakterGAB(id,wert){
+ const charakter=findeCharakter(id);
+ if(!charakter) return false;
+ charakter.gab=Math.max(0,Math.min(99,Math.trunc(Number(wert)||0)));
+ speichereCharaktere();
+ if(id===aktiverCharakterId && typeof baueEffektliste==="function") baueEffektliste();
+ if(typeof berechneWerte==="function") berechneWerte();
+ if(typeof window.aktualisiereAlleAnsichten==="function") window.aktualisiereAlleAnsichten();
+ return true;
+}
+
+
+function charakterKlassenstufe(charakter,klasse){
+ const name=String(klasse||"").trim().toLocaleLowerCase("de");
+ if(!charakter || !name) return 0;
+ return normalisiereKlassen(charakter.klassen)
+   .filter(eintrag=>eintrag.name.toLocaleLowerCase("de")===name)
+   .reduce((summe,eintrag)=>summe+Number(eintrag.stufe||0),0);
+}
+
+function setzeCharakterKlassen(id,klassen){
+ const charakter=findeCharakter(id);
+ if(!charakter) return false;
+ charakter.klassen=normalisiereKlassen(klassen);
+ speichereCharaktere();
+ if(typeof window.rendereKampagnenBaum==="function") window.rendereKampagnenBaum();
+ if(id===aktiverCharakterId && typeof baueEffektliste==="function") baueEffektliste();
+ if(typeof window.aktualisiereAlleAnsichten==="function") window.aktualisiereAlleAnsichten();
+ return true;
 }
 
 function speichereCharaktere(){
@@ -79,6 +142,14 @@ function speichereCharaktere(){
    localStorage.setItem(STORAGE_KEYS.aktiverCharakter,aktiverCharakterId);
  }
 }
+
+function speichereCharaktereSofort(){
+ speichereCharaktere();
+}
+
+window.addEventListener("pagehide",speichereCharaktereSofort);
+window.addEventListener("beforeunload",speichereCharaktereSofort);
+
 
 function findeCharakter(id){
  return charaktere.find(charakter=>charakter.id===id)||null;
@@ -186,6 +257,7 @@ function setzeAktiveKampagne(name){
  if(kandidaten.length && !kandidaten.some(charakter=>charakter.id===aktiverCharakterId)){
    aktiverCharakterId=kandidaten[0].id;
    speichereCharaktere();
+   setzeStandardEffektFilterFuerCharakter(aktiverCharakterId);
    ladeStatusFuerCharakter(aktiverCharakterId);
    baueEffektliste();
  }
@@ -260,8 +332,10 @@ function erstelleCharakter(name){
 
 function waehleCharakter(id){
  if(!findeCharakter(id)) return false;
+ speichereCharaktere();
  aktiverCharakterId=id;
  speichereCharaktere();
+ setzeStandardEffektFilterFuerCharakter(id);
  rendereCharaktere();
  aktualisiereAktivenCharakterHinweis();
  baueEffektliste();
@@ -414,12 +488,31 @@ function normalisiereStatus(status){
  return status && typeof status==="object" && !Array.isArray(status)?status:{};
 }
 
+function migriereEffektStatus39_8(status){
+ const neu={...normalisiereStatus(status)};
+
+ if(!Object.prototype.hasOwnProperty.call(neu,"Heftiger Angriff")){
+   const alte=Object.keys(neu).filter(name=>name.startsWith("Heftiger Angriff ("));
+   if(alte.some(name=>!!neu[name])) neu["Heftiger Angriff"]=true;
+ }
+
+ if(!Object.prototype.hasOwnProperty.call(neu,"Mächtige magische Fänge")){
+   const alte=Object.keys(neu).filter(name=>name.startsWith("Mächtige magische Fänge ("));
+   if(alte.some(name=>!!neu[name])) neu["Mächtige magische Fänge"]=true;
+ }
+
+ return neu;
+}
+
 function ladeStatusFuerCharakter(charakterId){
  if(!charakterId) return {};
 
  const statusNachCharakter=ladeAlleCharakterStatus();
  if(Object.prototype.hasOwnProperty.call(statusNachCharakter,charakterId)){
-   return normalisiereStatus(statusNachCharakter[charakterId]);
+   const migriert=migriereEffektStatus39_8(statusNachCharakter[charakterId]);
+   statusNachCharakter[charakterId]=migriert;
+   speichereAlleCharakterStatus(statusNachCharakter);
+   return migriert;
  }
 
  // Einmalige Migration des bisherigen globalen Effektstatus auf den aktiven Charakter.
@@ -451,9 +544,24 @@ function speichereAlleEffektAngriffsziele(zieleNachCharakter){
  speichereJson(STORAGE_KEYS.charakterEffektAngriffe,zieleNachCharakter);
 }
 
+const EFFEKT_ANGRIFFSZIELE=["A1","A2","A3","A4","A5","A6"];
+const EFFEKT_ANGRIFFSZIELE_MAX=3;
+
 function normalisiereAngriffsziel(wert){
  const ziel=String(wert||"-");
- return ["-","A1","A2","A3","A4","A5","A6"].includes(ziel)?ziel:"-";
+ return ["-",...EFFEKT_ANGRIFFSZIELE].includes(ziel)?ziel:"-";
+}
+
+function normalisiereAngriffsziele(wert,maximal=EFFEKT_ANGRIFFSZIELE_MAX){
+ const quelle=Array.isArray(wert)?wert:[wert];
+ const ergebnis=[];
+ quelle.forEach(eintrag=>{
+   const ziel=normalisiereAngriffsziel(eintrag);
+   if(ziel!=="-" && !ergebnis.includes(ziel) && ergebnis.length<maximal){
+     ergebnis.push(ziel);
+   }
+ });
+ return ergebnis;
 }
 
 function ladeEffektAngriffszieleFuerCharakter(charakterId=aktiverCharakterId){
@@ -467,23 +575,133 @@ function speichereEffektAngriffszieleFuerCharakter(charakterId,ziele){
  if(!charakterId) return;
  const alle=ladeAlleEffektAngriffsziele();
  alle[charakterId]={};
- Object.entries(ziele||{}).forEach(([effektId,ziel])=>{
-   alle[charakterId][String(effektId)]=normalisiereAngriffsziel(ziel);
+ Object.entries(ziele||{}).forEach(([effektId,wert])=>{
+   alle[charakterId][String(effektId)]=normalisiereAngriffsziele(wert);
  });
  speichereAlleEffektAngriffsziele(alle);
 }
 
-function angriffszielFuerEffekt(effekt,charakterId=aktiverCharakterId){
- if(!effekt?.angriffZuweisbar) return "-";
+function angriffszieleFuerEffekt(effekt,charakterId=aktiverCharakterId){
+ if(!effekt?.angriffZuweisbar) return [];
  const ziele=ladeEffektAngriffszieleFuerCharakter(charakterId);
- return normalisiereAngriffsziel(ziele[String(effekt.id)]);
+ const maximal=effekt?.sonderlogik==="maechtige-magische-faenge"?1:EFFEKT_ANGRIFFSZIELE_MAX;
+ return normalisiereAngriffsziele(ziele[String(effekt.id)],maximal);
+}
+
+function angriffszielFuerEffekt(effekt,charakterId=aktiverCharakterId){
+ return angriffszieleFuerEffekt(effekt,charakterId)[0]||"-";
+}
+
+function setzeAngriffszieleFuerEffekt(effekt,neueZiele,charakterId=aktiverCharakterId){
+ if(!effekt?.angriffZuweisbar || !charakterId) return false;
+ const maximal=effekt?.sonderlogik==="maechtige-magische-faenge"?1:EFFEKT_ANGRIFFSZIELE_MAX;
+ const ziele=ladeEffektAngriffszieleFuerCharakter(charakterId);
+ ziele[String(effekt.id)]=normalisiereAngriffsziele(neueZiele,maximal);
+ speichereEffektAngriffszieleFuerCharakter(charakterId,ziele);
+ return true;
 }
 
 function setzeAngriffszielFuerEffekt(effekt,ziel,charakterId=aktiverCharakterId){
- if(!effekt?.angriffZuweisbar || !charakterId) return false;
- const ziele=ladeEffektAngriffszieleFuerCharakter(charakterId);
- ziele[String(effekt.id)]=normalisiereAngriffsziel(ziel);
- speichereEffektAngriffszieleFuerCharakter(charakterId,ziele);
+ return setzeAngriffszieleFuerEffekt(effekt,ziel==="-"?[]:[ziel],charakterId);
+}
+
+function ladeAlleEffektOptionen(){
+ const gespeichert=ladeJson(STORAGE_KEYS.charakterEffektOptionen,{});
+ return gespeichert && typeof gespeichert==="object" && !Array.isArray(gespeichert)
+   ?gespeichert
+   :{};
+}
+
+function effektOptionenFuerCharakter(effektId,charakterId=aktiverCharakterId){
+ if(!effektId || !charakterId) return {};
+ const alle=ladeAlleEffektOptionen();
+ const optionen=alle?.[charakterId]?.[String(effektId)];
+ return optionen && typeof optionen==="object" && !Array.isArray(optionen)
+   ?{...optionen}
+   :{};
+}
+
+function setzeEffektOptionenFuerCharakter(effektId,optionen,charakterId=aktiverCharakterId){
+ if(!effektId || !charakterId) return false;
+ const alle=ladeAlleEffektOptionen();
+ if(!alle[charakterId]) alle[charakterId]={};
+ alle[charakterId][String(effektId)]={
+   ...(alle[charakterId][String(effektId)]||{}),
+   ...(optionen||{})
+ };
+ speichereJson(STORAGE_KEYS.charakterEffektOptionen,alle);
+ return true;
+}
+
+function ladeAlleEffektFilter(){
+ const gespeichert=ladeJson(STORAGE_KEYS.charakterEffektFilter,{});
+ return gespeichert && typeof gespeichert==="object" && !Array.isArray(gespeichert)
+   ?gespeichert
+   :{};
+}
+
+function effektFilterFuerCharakter(charakterId=aktiverCharakterId){
+ if(!charakterId) return {kategorien:null,suche:"",nurAktiv:false,nurFavoriten:false};
+ const alle=ladeAlleEffektFilter();
+ const wert=alle[charakterId];
+ if(!wert || typeof wert!=="object" || Array.isArray(wert)){
+   return {kategorien:null,suche:"",nurAktiv:false,nurFavoriten:false};
+ }
+ return {
+   kategorien:Array.isArray(wert.kategorien)?wert.kategorien.map(String):null,
+   suche:typeof wert.suche==="string"?wert.suche:"",
+   nurAktiv:!!wert.nurAktiv,
+   nurFavoriten:!!wert.nurFavoriten
+ };
+}
+
+function speichereEffektFilterFuerCharakter(filter,charakterId=aktiverCharakterId){
+ if(!charakterId) return false;
+ const alle=ladeAlleEffektFilter();
+ alle[charakterId]={
+   kategorien:Array.isArray(filter?.kategorien)?[...new Set(filter.kategorien.map(String))]:null,
+   suche:typeof filter?.suche==="string"?filter.suche:"",
+   nurAktiv:!!filter?.nurAktiv,
+   nurFavoriten:!!filter?.nurFavoriten
+ };
+ speichereJson(STORAGE_KEYS.charakterEffektFilter,alle);
+ return true;
+}
+
+function setzeStandardEffektFilterFuerCharakter(charakterId=aktiverCharakterId){
+ if(!charakterId) return false;
+ return speichereEffektFilterFuerCharakter({
+   kategorien:null,
+   suche:"",
+   nurAktiv:false,
+   nurFavoriten:false
+ },charakterId);
+}
+
+function ladeAlleEffektStufen(){
+ const gespeichert=ladeJson(STORAGE_KEYS.charakterEffektStufen,{});
+ return gespeichert && typeof gespeichert==="object" && !Array.isArray(gespeichert)
+   ?gespeichert
+   :{};
+}
+
+function effektStufeFuerCharakter(effektId,charakterId=aktiverCharakterId){
+ if(!effektId || !charakterId) return "";
+ const alle=ladeAlleEffektStufen();
+ const wert=alle?.[charakterId]?.[String(effektId)];
+ return Number.isFinite(Number(wert))?Math.max(0,Math.trunc(Number(wert))):"";
+}
+
+function setzeEffektStufeFuerCharakter(effektId,wert,charakterId=aktiverCharakterId){
+ if(!effektId || !charakterId) return false;
+ const alle=ladeAlleEffektStufen();
+ if(!alle[charakterId]) alle[charakterId]={};
+ if(wert==="" || wert===null || typeof wert==="undefined"){
+   delete alle[charakterId][String(effektId)];
+ }else{
+   alle[charakterId][String(effektId)]=Math.max(0,Math.min(99,Math.trunc(Number(wert)||0)));
+ }
+ speichereJson(STORAGE_KEYS.charakterEffektStufen,alle);
  return true;
 }
 
@@ -499,6 +717,24 @@ function kopiereEffektstatus(quelleId,zielId){
 
  const quellZiele=ladeEffektAngriffszieleFuerCharakter(quelleId);
  speichereEffektAngriffszieleFuerCharakter(zielId,{...quellZiele});
+
+ const alleStufen=ladeAlleEffektStufen();
+ if(alleStufen[quelleId]){
+   alleStufen[zielId]={...alleStufen[quelleId]};
+   speichereJson(STORAGE_KEYS.charakterEffektStufen,alleStufen);
+ }
+
+ const alleOptionen=ladeAlleEffektOptionen();
+ if(alleOptionen[quelleId]){
+   alleOptionen[zielId]=JSON.parse(JSON.stringify(alleOptionen[quelleId]));
+   speichereJson(STORAGE_KEYS.charakterEffektOptionen,alleOptionen);
+ }
+
+ const alleFilter=ladeAlleEffektFilter();
+ if(alleFilter[quelleId]){
+   alleFilter[zielId]=JSON.parse(JSON.stringify(alleFilter[quelleId]));
+   speichereJson(STORAGE_KEYS.charakterEffektFilter,alleFilter);
+ }
 
  if(zielId===aktiverCharakterId){
    baueEffektliste();
@@ -519,6 +755,24 @@ function loescheCharakterStatus(charakterId){
  if(Object.prototype.hasOwnProperty.call(zieleNachCharakter,charakterId)){
    delete zieleNachCharakter[charakterId];
    speichereAlleEffektAngriffsziele(zieleNachCharakter);
+ }
+
+ const stufenNachCharakter=ladeAlleEffektStufen();
+ if(Object.prototype.hasOwnProperty.call(stufenNachCharakter,charakterId)){
+   delete stufenNachCharakter[charakterId];
+   speichereJson(STORAGE_KEYS.charakterEffektStufen,stufenNachCharakter);
+ }
+
+ const optionenNachCharakter=ladeAlleEffektOptionen();
+ if(Object.prototype.hasOwnProperty.call(optionenNachCharakter,charakterId)){
+   delete optionenNachCharakter[charakterId];
+   speichereJson(STORAGE_KEYS.charakterEffektOptionen,optionenNachCharakter);
+ }
+
+ const filterNachCharakter=ladeAlleEffektFilter();
+ if(Object.prototype.hasOwnProperty.call(filterNachCharakter,charakterId)){
+   delete filterNachCharakter[charakterId];
+   speichereJson(STORAGE_KEYS.charakterEffektFilter,filterNachCharakter);
  }
 }
 
@@ -563,22 +817,81 @@ function normalisiereBonus(bonus={}){
  return {
    ziel:typeof bonus.ziel==="string"?bonus.ziel:"",
    bonusart:normalisiereBonusart(bonus.bonusart),
-   wert:Number.isFinite(wert)?wert:0
+   wert:Number.isFinite(wert)?wert:0,
+   wertQuelle:["stufenwert","nutzerwert"].includes(bonus.wertQuelle)?bonus.wertQuelle:"fest",
+   stufenFaktor:Number.isFinite(Number(bonus.stufenFaktor))
+     ?Math.max(-10,Math.min(10,Math.trunc(Number(bonus.stufenFaktor))))
+     :1
+ };
+}
+
+function normalisiereStufenlogik(logik={}){
+ const bezug=["charakter","klasse","zauberstufe","manuell","gab"].includes(logik?.bezug)
+   ?logik.bezug
+   :"charakter";
+ const bereiche=Array.isArray(logik?.bereiche)
+   ?logik.bereiche.map(bereich=>({
+       min:Math.max(0,Math.min(99,Math.trunc(Number(bereich?.min)||0))),
+       max:Math.max(0,Math.min(99,Math.trunc(Number(bereich?.max)||0))),
+       wert:Math.max(-99,Math.min(99,Math.trunc(Number(bereich?.wert)||0)))
+     })).filter(bereich=>bereich.max>=bereich.min)
+   :[];
+ return {
+   aktiv:!!logik?.aktiv,
+   bezug,
+   klasse:typeof logik?.klasse==="string"?logik.klasse.trim():"",
+   bereiche
  };
 }
 
 function normalisiereEffekt(effekt={}){
  const standard=!!effekt.standard;
+ const effektName=String(effekt.name||"").trim();
+ const erzwungeneSonderlogik=
+   effektName==="Mächtige magische Fänge"
+     ?"maechtige-magische-faenge"
+     :effektName==="Heftiger Angriff"
+       ?"heftiger-angriff"
+       :"";
+ const stufenlogik=normalisiereStufenlogik(effekt.stufenlogik);
+ const roheBoni=Array.isArray(effekt.boni)?effekt.boni:[];
+ let boni=roheBoni.map(bonus=>{
+   const normalisiert=normalisiereBonus(bonus);
+   const hatQuelle=bonus && Object.prototype.hasOwnProperty.call(bonus,"wertQuelle");
+   if(stufenlogik.aktiv && !hatQuelle) normalisiert.wertQuelle="stufenwert";
+   return normalisiert;
+ });
+
+ // Reparatur für bereits in Commit 39 gespeicherte Effekte:
+ // Wenn ein Effekt stufenabhängig ist, aber ALLE Bonuszeilen noch explizit
+ // als "fest" gespeichert wurden, stammt das typischerweise aus dem alten
+ // Fehlerzustand. In diesem eindeutigen Altfall auf Stufenwert migrieren.
+ if(stufenlogik.aktiv && boni.length && boni.every(bonus=>bonus.wertQuelle==="fest")){
+   boni=boni.map(bonus=>({...bonus,wertQuelle:"stufenwert"}));
+ }
  return {
    id:effekt.id||(standard?standardEffektId(effekt):neueEffektId()),
    standard,
    aktiv:!!effekt.aktiv,
-   name:effekt.name||"",
+   name:effektName,
    kategorie:normalisiereKategorie(effekt.kategorie),
    beschreibung:effekt.beschreibung||"",
    quelle:effekt.quelle||"",
    angriffZuweisbar:!!effekt.angriffZuweisbar,
-   boni:Array.isArray(effekt.boni)?effekt.boni.map(normalisiereBonus):[]
+   sonderlogik:erzwungeneSonderlogik ||
+     (["heftiger-angriff","maechtige-magische-faenge"].includes(effekt.sonderlogik)?effekt.sonderlogik:""),
+   nutzerBonus:{
+     aktiv:!!effekt?.nutzerBonus?.aktiv,
+     // Commit 41.5: Die globale Nutzereingabe ist verbindlich +1 bis +10.
+     // Dadurch können alte Admin-Overrides mit max=5 die Auswahl nicht mehr zurücksetzen.
+     min:1,
+     max:10,
+     standard:Number.isFinite(Number(effekt?.nutzerBonus?.standard))
+       ?Math.max(1,Math.min(10,Math.trunc(Number(effekt.nutzerBonus.standard))))
+       :1
+   },
+   stufenlogik,
+   boni
  };
 }
 
@@ -689,10 +1002,11 @@ function speichereAdminStandardAenderungen(aenderungen){
 }
 
 function angewendeterStandardEffekt(effekt){
- if(!istAdminEntsperrt()) return effekt;
  const aenderungen=ladeAdminStandardAenderungen();
  const entwurf=aenderungen[effekt.id];
- return entwurf?normalisiereEffekt({...effekt,...entwurf,id:effekt.id,standard:true}):effekt;
+ return entwurf
+   ?normalisiereEffekt({...effekt,...entwurf,id:effekt.id,standard:true})
+   :effekt;
 }
 
 function aktualisiereStandardEffekt(id,daten={}){
@@ -737,6 +1051,38 @@ function loescheNeuenStandardEffekt(id){
  return true;
 }
 
+
+function ladeAdminStandardGeloescht(){
+ const daten=ladeJson(STORAGE_KEYS.adminStandardGeloescht,[]);
+ return Array.isArray(daten)?daten.map(String):[];
+}
+
+function speichereAdminStandardGeloescht(ids){
+ speichereJson(STORAGE_KEYS.adminStandardGeloescht,[...new Set((ids||[]).map(String))]);
+}
+
+function loescheStandardEffektAlsAdmin(id){
+ if(!istAdminEntsperrt()) return false;
+ const effekt=findeEffekt(id);
+ if(!effekt || !effekt.standard) return false;
+
+ if(istNeuerStandardEffekt(id)){
+   speichereAdminStandardNeu(ladeAdminStandardNeu().filter(e=>e.id!==id));
+ }else{
+   const geloescht=ladeAdminStandardGeloescht();
+   if(!geloescht.includes(String(id))) geloescht.push(String(id));
+   speichereAdminStandardGeloescht(geloescht);
+
+   const aenderungen=ladeAdminStandardAenderungen();
+   if(Object.prototype.hasOwnProperty.call(aenderungen,id)){
+     delete aenderungen[id];
+     speichereAdminStandardAenderungen(aenderungen);
+   }
+ }
+ effekte=effekte.filter(e=>e.id!==id);
+ aktualisiereAdminStatistik();
+ return true;
+}
 
 // Commit 31: Effekt-Duplikate dauerhaft verhindern.
 function normalisiereEffektVergleichstext31(wert){
@@ -821,12 +1167,12 @@ async function ladeEffekte(){
    // 1. Repository-Standardeffekte, 2. neue Admin-Standardeffekte,
    // 3. Benutzereffekte. Bei gleicher ID ODER gleicher Effekt-Signatur
    // bleibt der zuerst vorhandene Eintrag erhalten.
+   const geloeschteStandardIds=new Set(ladeAdminStandardGeloescht());
    const standardBasis=dedupliziereEffekte31(
-     standardEffekte.map(effekt=>
-       angewendeterStandardEffekt(
-         normalisiereEffekt({...effekt,standard:true})
-       )
-     )
+     standardEffekte
+       .map(effekt=>normalisiereEffekt({...effekt,standard:true}))
+       .filter(effekt=>!geloeschteStandardIds.has(String(effekt.id)))
+       .map(effekt=>angewendeterStandardEffekt(effekt))
    );
 
    const neueStandardEffekte=entferneDuplikateGegenBasis31(
@@ -892,27 +1238,228 @@ function effektKategorien(){
 }
 
 function baueKategorieFilter(){
- const auswahl=document.getElementById("filterKategorie");
- if(!auswahl) return;
+ const container=document.getElementById("filterKategorie");
+ if(!container) return;
 
- const bisherigerWert=auswahl.value;
- auswahl.innerHTML="";
+ const kategorien=effektKategorien();
+ const gespeichert=effektFilterFuerCharakter();
+ const aktiveKategorien=Array.isArray(gespeichert.kategorien)
+   ?new Set(gespeichert.kategorien)
+   :new Set(kategorien);
 
- const alle=document.createElement("option");
- alle.value="";
- alle.textContent="Alle Kategorien";
- auswahl.appendChild(alle);
+ container.innerHTML="";
 
- effektKategorien().forEach(kategorie=>{
-   const option=document.createElement("option");
-   option.value=kategorie;
-   option.textContent=kategorie;
-   auswahl.appendChild(option);
+ const alleLabel=document.createElement("label");
+ alleLabel.className="filter-kategorie-option filter-kategorie-alle";
+ const alle=document.createElement("input");
+ alle.type="checkbox";
+ alle.checked=kategorien.length>0 && kategorien.every(k=>aktiveKategorien.has(k));
+ const alleText=document.createElement("span");
+ alleText.textContent="Alle";
+ alleLabel.append(alle,alleText);
+ container.appendChild(alleLabel);
+
+ kategorien.forEach(kategorie=>{
+   const label=document.createElement("label");
+   label.className="filter-kategorie-option";
+   const checkbox=document.createElement("input");
+   checkbox.type="checkbox";
+   checkbox.value=kategorie;
+   checkbox.checked=aktiveKategorien.has(kategorie);
+   const text=document.createElement("span");
+   text.textContent=kategorie;
+   label.append(checkbox,text);
+   container.appendChild(label);
  });
 
- if([...auswahl.options].some(option=>option.value===bisherigerWert)){
-   auswahl.value=bisherigerWert;
+ const speichereAuswahl=()=>{
+   const checkboxen=[...container.querySelectorAll('input[type="checkbox"][value]')];
+   const aktiv=checkboxen.filter(cb=>cb.checked).map(cb=>cb.value);
+   const bisher=effektFilterFuerCharakter();
+   speichereEffektFilterFuerCharakter({...bisher,kategorien:aktiv});
+   alle.checked=checkboxen.length>0 && checkboxen.every(cb=>cb.checked);
+   baueEffektliste();
+ };
+
+ alle.addEventListener("change",()=>{
+   container.querySelectorAll('input[type="checkbox"][value]').forEach(cb=>cb.checked=alle.checked);
+   speichereAuswahl();
+ });
+
+ container.querySelectorAll('input[type="checkbox"][value]').forEach(cb=>{
+   cb.addEventListener("change",speichereAuswahl);
+ });
+}
+
+function synchronisiereEffektFilterUI(){
+ const filter=effektFilterFuerCharakter();
+ const suche=document.getElementById("suche");
+ const nurAktiv=document.getElementById("filterNurAktiv");
+ const nurFavoriten=document.getElementById("filterNurFavoriten");
+ if(suche && document.activeElement!==suche) suche.value=filter.suche||"";
+ if(nurAktiv) nurAktiv.checked=!!filter.nurAktiv;
+ if(nurFavoriten) nurFavoriten.checked=!!filter.nurFavoriten;
+
+ const container=document.getElementById("filterKategorie");
+ if(container){
+   const kategorien=effektKategorien();
+   const aktiv=Array.isArray(filter.kategorien)?new Set(filter.kategorien):new Set(kategorien);
+   container.querySelectorAll('input[type="checkbox"][value]').forEach(cb=>{
+     cb.checked=aktiv.has(cb.value);
+   });
+   const alle=container.querySelector(".filter-kategorie-alle input");
+   if(alle) alle.checked=kategorien.length>0 && kategorien.every(k=>aktiv.has(k));
  }
+}
+
+function effektBezugsstufe(effekt,charakter=aktiverCharakter()){
+ const logik=effekt?.stufenlogik;
+ if(!logik?.aktiv) return 0;
+ if(logik.bezug==="klasse") return charakterKlassenstufe(charakter,logik.klasse);
+ if(logik.bezug==="gab") return charakterGAB(charakter);
+ if(logik.bezug==="zauberstufe" || logik.bezug==="manuell"){
+   return Number(effektStufeFuerCharakter(effekt.id,charakter?.id))||0;
+ }
+ return charakterGesamtstufe(charakter);
+}
+
+function effektStufenwert(effekt,charakter=aktiverCharakter()){
+ const stufe=effektBezugsstufe(effekt,charakter);
+ const bereiche=Array.isArray(effekt?.stufenlogik?.bereiche)?effekt.stufenlogik.bereiche:[];
+ const passend=bereiche.find(bereich=>stufe>=Number(bereich.min) && stufe<=Number(bereich.max));
+ return passend?Number(passend.wert)||0:0;
+}
+
+function aktualisiereEffektStufenAnzeige(effekt,container){
+ const ausgabe=container?.querySelector(".effekt-stufenwert-aktuell");
+ if(!ausgabe) return;
+ const stufe=effektBezugsstufe(effekt);
+ const wert=effektStufenwert(effekt);
+ ausgabe.textContent=`Stufe ${stufe} → ${wert>=0?"+":""}${wert}`;
+}
+
+function nutzerBonusWertFuerEffekt(effekt){
+ const konfig=effekt?.nutzerBonus||{};
+ const optionen=effektOptionenFuerCharakter(effekt?.id);
+ const min=1;
+ const max=10;
+ const standard=Number.isFinite(Number(konfig.standard))
+   ?Math.max(min,Math.min(max,Number(konfig.standard)))
+   :min;
+ const roh=Number(optionen.nutzerBonusWert);
+ const wert=Number.isFinite(roh)?roh:standard;
+ return Math.max(Math.min(wert,Math.max(min,max)),Math.min(min,max));
+}
+
+function setzeNutzerBonusWertFuerEffekt(effektId,wert){
+ const effekt=findeEffekt(effektId);
+ if(!effekt?.nutzerBonus?.aktiv) return false;
+ const min=1;
+ const max=10;
+ const unten=min;
+ const oben=max;
+ const sicher=Math.max(unten,Math.min(oben,Math.trunc(Number(wert)||1)));
+ if(!setzeEffektOptionenFuerCharakter(effektId,{nutzerBonusWert:sicher})) return false;
+
+ effekt.nutzerBonusWertAktuell=sicher;
+ if(typeof berechneWerte==="function") berechneWerte();
+ if(typeof window.aktualisiereAlleAnsichten==="function") window.aktualisiereAlleAnsichten();
+ return true;
+}
+
+
+function maechtigeMagischeFaengeModus(effekt,charakterId=aktiverCharakterId){
+ if(effekt?.sonderlogik!=="maechtige-magische-faenge") return "";
+ const optionen=effektOptionenFuerCharakter(effekt.id,charakterId);
+ return optionen.modus==="einzeln"?"einzeln":"alle";
+}
+
+function effektAngriffsModus(effekt){
+ if(effekt?.sonderlogik==="maechtige-magische-faenge"){
+   return maechtigeMagischeFaengeModus(effekt)==="einzeln"?"einer":"alle";
+ }
+ return effekt?.angriffZuweisbar?"einer":"alle";
+}
+
+function rendereSonderoptionenFuerEffekt(effekt,info){
+ if(!effekt?.sonderlogik || !info) return;
+
+ const box=document.createElement("div");
+ box.className="effekt-sonderoptionen";
+ box.hidden=false;
+
+ if(effekt.sonderlogik==="maechtige-magische-faenge"){
+   const optionen=effektOptionenFuerCharakter(effekt.id);
+   const modusAktuell=maechtigeMagischeFaengeModus(effekt);
+   const label=document.createElement("label");
+   label.appendChild(document.createTextNode("Anwendung "));
+   const select=document.createElement("select");
+   [
+     ["alle","Alle natürlichen Angriffe +1"],
+     ["einzeln","Ein Angriff nach Zauberstufe (+1 bis +5)"]
+   ].forEach(([wert,text])=>{
+     const option=document.createElement("option");
+     option.value=wert;
+     option.textContent=text;
+     select.appendChild(option);
+   });
+   select.value=modusAktuell;
+   select.addEventListener("click",event=>event.stopPropagation());
+   select.addEventListener("change",event=>{
+     event.stopPropagation();
+     setzeEffektOptionenFuerCharakter(effekt.id,{modus:select.value});
+
+     // Commit 41.2: Sondereffekt beibehalten.
+     // "Alle" braucht keine Angriffsauswahl; "Einzeln" darf genau ein Ziel verwenden.
+     if(effekt.sonderlogik==="maechtige-magische-faenge"){
+       if(select.value==="alle"){
+         setzeAngriffszieleFuerEffekt(effekt,[]);
+       }else{
+         const aktuell=angriffszieleFuerEffekt(effekt);
+         if(aktuell.length>1){
+           setzeAngriffszieleFuerEffekt(effekt,[aktuell[0]]);
+         }else if(aktuell.length===0){
+           setzeAngriffszieleFuerEffekt(effekt,["A1"]);
+         }
+       }
+     }
+
+     baueEffektliste();
+     if(typeof berechneWerte==="function") berechneWerte();
+   });
+   label.appendChild(select);
+   box.appendChild(label);
+ }
+
+ if(effekt.sonderlogik==="heftiger-angriff"){
+   const optionen=effektOptionenFuerCharakter(effekt.id);
+   const label=document.createElement("label");
+   label.appendChild(document.createTextNode("Schadensart "));
+   const select=document.createElement("select");
+   [
+     ["normal","Normal / einhändig (+2 je Stufe)"],
+     ["zweihand","Zweihändig / 1½× ST (+3 je Stufe)"],
+     ["zweithand","Zweithand / sekundär (+1 je Stufe)"]
+   ].forEach(([wert,text])=>{
+     const option=document.createElement("option");
+     option.value=wert;
+     option.textContent=text;
+     select.appendChild(option);
+   });
+   select.value=["normal","zweihand","zweithand"].includes(optionen.schadensart)
+     ?optionen.schadensart
+     :"normal";
+   select.addEventListener("click",event=>event.stopPropagation());
+   select.addEventListener("change",event=>{
+     event.stopPropagation();
+     setzeEffektOptionenFuerCharakter(effekt.id,{schadensart:select.value});
+     if(typeof berechneWerte==="function") berechneWerte();
+   });
+   label.appendChild(select);
+   box.appendChild(label);
+ }
+
+ if(box.childNodes.length) info.appendChild(box);
 }
 
 function baueEffektliste(){
@@ -920,12 +1467,29 @@ function baueEffektliste(){
  const suche=document.getElementById("suche");
  const kategorieFilter=document.getElementById("filterKategorie");
  const nurAktivFilter=document.getElementById("filterNurAktiv");
+ const nurFavoritenFilter=document.getElementById("filterNurFavoriten");
  const ergebnis=document.getElementById("filterErgebnis");
  if(!liste) return;
 
+ synchronisiereEffektFilterUI();
+
  const status=ladeStatus();
- const suchtext=(suche?.value||"").trim().toLowerCase();
- const kategorie=kategorieFilter?.value||"";
+
+ effekte.forEach(effekt=>{
+   if(effekt?.nutzerBonus?.aktiv){
+     effekt.nutzerBonusWertAktuell=nutzerBonusWertFuerEffekt(effekt);
+   }else{
+     delete effekt.nutzerBonusWertAktuell;
+   }
+ });
+
+ const filterEinstellungen=effektFilterFuerCharakter();
+ const suchtext=(suche?.value||filterEinstellungen.suche||"").trim().toLowerCase();
+ const aktiveKategorien=new Set(
+   Array.isArray(filterEinstellungen.kategorien)
+     ?filterEinstellungen.kategorien
+     :effektKategorien()
+ );
  const nurAktiv=!!nurAktivFilter?.checked;
 
  liste.innerHTML="";
@@ -939,7 +1503,7 @@ function baueEffektliste(){
      String(effekt.beschreibung||"").toLowerCase().includes(suchtext) ||
      String(effekt.quelle||"").toLowerCase().includes(suchtext);
 
-   const passtZurKategorie=!kategorie || effekt.kategorie===kategorie;
+   const passtZurKategorie=aktiveKategorien.has(effekt.kategorie);
    const passtZumAktivFilter=!nurAktiv || effekt.aktiv;
 
    return passtZurSuche && passtZurKategorie && passtZumAktivFilter;
@@ -971,28 +1535,142 @@ function baueEffektliste(){
    info.className="effekt-info";
    info.innerHTML=`<div class="effekt-name">${effekt.name}</div><div class="effekt-kategorie">${effekt.kategorie}</div>`;
 
-   let angriffsAuswahl=null;
-   if(effekt.angriffZuweisbar){
-     const zuweisung=document.createElement("label");
-     zuweisung.className="effekt-angriffsziel-30";
-     const beschriftung=document.createElement("span");
-     beschriftung.textContent="Angriff";
-     angriffsAuswahl=document.createElement("select");
-     angriffsAuswahl.setAttribute("aria-label",`${effekt.name}: betroffenen Angriff wählen`);
-     ["-","A1","A2","A3","A4","A5","A6"].forEach(wert=>{
+   // Commit 41.4: Sondereinstellungen direkt im Effektbanner anzeigen.
+   rendereSonderoptionenFuerEffekt(effekt,info);
+
+   if(effekt.stufenlogik?.aktiv){
+     const stufenBox=document.createElement("div");
+     stufenBox.className="effekt-stufenbox";
+     if(
+       effekt.sonderlogik==="maechtige-magische-faenge" &&
+       effektOptionenFuerCharakter(effekt.id).modus!=="einzeln"
+     ){
+       stufenBox.hidden=true;
+     }
+     let bezugText="Charakterstufe";
+     if(effekt.stufenlogik.bezug==="klasse"){
+       bezugText=`Klassenstufe${effekt.stufenlogik.klasse?` (${effekt.stufenlogik.klasse})`:""}`;
+     }else if(effekt.stufenlogik.bezug==="zauberstufe"){
+       bezugText="Zauberstufe";
+     }else if(effekt.stufenlogik.bezug==="manuell"){
+       bezugText="Manuelle Stufe";
+     }else if(effekt.stufenlogik.bezug==="gab"){
+       bezugText="GAB";
+     }
+     const labelStufe=document.createElement("span");
+     labelStufe.textContent=bezugText;
+     stufenBox.appendChild(labelStufe);
+
+     if(["zauberstufe","manuell"].includes(effekt.stufenlogik.bezug)){
+       const eingabe=document.createElement("input");
+       eingabe.type="number"; eingabe.min="0"; eingabe.max="99"; eingabe.step="1";
+       const gespeichert=effektStufeFuerCharakter(effekt.id);
+       eingabe.value=gespeichert===""?"":String(gespeichert);
+       eingabe.addEventListener("click",event=>event.stopPropagation());
+       eingabe.addEventListener("input",event=>{
+         event.stopPropagation();
+         setzeEffektStufeFuerCharakter(effekt.id,eingabe.value);
+         if(typeof berechneWerte==="function") berechneWerte();
+         aktualisiereEffektStufenAnzeige(effekt,stufenBox);
+       });
+       stufenBox.appendChild(eingabe);
+     }
+     const aktuell=document.createElement("strong");
+     aktuell.className="effekt-stufenwert-aktuell";
+     stufenBox.appendChild(aktuell);
+     info.appendChild(stufenBox);
+     aktualisiereEffektStufenAnzeige(effekt,stufenBox);
+   }
+
+   if(effekt.nutzerBonus?.aktiv){
+     const box=document.createElement("div");
+     box.className="effekt-nutzerbonus";
+     const label=document.createElement("label");
+     label.appendChild(document.createTextNode("Bonus "));
+     const select=document.createElement("select");
+     const min=1;
+     const max=10;
+     for(let wert=min;wert<=max;wert++){
        const option=document.createElement("option");
-       option.value=wert;
-       option.textContent=wert;
-       angriffsAuswahl.appendChild(option);
-     });
-     angriffsAuswahl.value=angriffszielFuerEffekt(effekt);
-     angriffsAuswahl.addEventListener("click",event=>event.stopPropagation());
-     angriffsAuswahl.addEventListener("change",event=>{
+       option.value=String(wert);
+       option.textContent=wert>0?`+${wert}`:String(wert);
+       select.appendChild(option);
+     }
+     select.value=String(nutzerBonusWertFuerEffekt(effekt));
+     select.addEventListener("click",event=>event.stopPropagation());
+     select.addEventListener("change",event=>{
        event.stopPropagation();
-       setzeAngriffszielFuerEffekt(effekt,angriffsAuswahl.value);
-       if(typeof berechneWerte==="function") berechneWerte();
+       setzeNutzerBonusWertFuerEffekt(effekt.id,Number(select.value));
      });
-     zuweisung.append(beschriftung,angriffsAuswahl);
+     label.appendChild(select);
+     box.appendChild(label);
+     info.appendChild(box);
+   }
+
+   const angriffsModus=effektAngriffsModus(effekt);
+   if(effekt.angriffZuweisbar && angriffsModus==="einer"){
+     const zuweisung=document.createElement("div");
+     zuweisung.className="effekt-angriffsziel-30 effekt-angriffsziele-41";
+
+     if(effekt.sonderlogik==="maechtige-magische-faenge"){
+       const beschriftung=document.createElement("span");
+       beschriftung.textContent="Angriff";
+       const selectZiel=document.createElement("select");
+       selectZiel.setAttribute("aria-label",`${effekt.name}: betroffenen Angriff wählen`);
+       ["-",...EFFEKT_ANGRIFFSZIELE].forEach(wert=>{
+         const option=document.createElement("option");
+         option.value=wert;
+         option.textContent=wert;
+         selectZiel.appendChild(option);
+       });
+       selectZiel.value=angriffszielFuerEffekt(effekt);
+       selectZiel.addEventListener("click",event=>event.stopPropagation());
+       selectZiel.addEventListener("change",event=>{
+         event.stopPropagation();
+         setzeAngriffszielFuerEffekt(effekt,selectZiel.value);
+         if(typeof berechneWerte==="function") berechneWerte();
+       });
+       zuweisung.append(beschriftung,selectZiel);
+     }else{
+       const beschriftung=document.createElement("span");
+       beschriftung.textContent="Angriffe (max. 3)";
+       zuweisung.appendChild(beschriftung);
+
+       const auswahl=document.createElement("div");
+       auswahl.className="effekt-angriffsziele-auswahl-41";
+       const aktiv=new Set(angriffszieleFuerEffekt(effekt));
+
+       EFFEKT_ANGRIFFSZIELE.forEach(wert=>{
+         const labelZiel=document.createElement("label");
+         labelZiel.className="effekt-angriffsziel-option-41";
+         const checkbox=document.createElement("input");
+         checkbox.type="checkbox";
+         checkbox.value=wert;
+         checkbox.checked=aktiv.has(wert);
+         checkbox.setAttribute("aria-label",`${effekt.name}: ${wert}`);
+         checkbox.addEventListener("click",event=>event.stopPropagation());
+         checkbox.addEventListener("change",event=>{
+           event.stopPropagation();
+           const neu=new Set(angriffszieleFuerEffekt(effekt));
+           if(checkbox.checked){
+             if(neu.size<EFFEKT_ANGRIFFSZIELE_MAX) neu.add(wert);
+             else checkbox.checked=false;
+           }else{
+             neu.delete(wert);
+           }
+           setzeAngriffszieleFuerEffekt(effekt,[...neu]);
+           baueEffektliste();
+           if(typeof berechneWerte==="function") berechneWerte();
+         });
+         const text=document.createElement("span");
+         text.textContent=wert;
+         labelZiel.append(checkbox,text);
+         auswahl.appendChild(labelZiel);
+       });
+
+       zuweisung.appendChild(auswahl);
+     }
+
      info.appendChild(zuweisung);
    }
 
@@ -1009,7 +1687,7 @@ function baueEffektliste(){
       bearbeiten.onclick=()=>oeffneEffektEditor(effekt.id);
       aktionen.appendChild(bearbeiten);
 
-      if(!effekt.standard || (effekt.standard && istNeuerStandardEffekt(effekt.id))){
+      if(!effekt.standard || (effekt.standard && istAdminEntsperrt())){
         const del=document.createElement("button");
         del.type="button";
         del.className="icon-button";
@@ -1018,7 +1696,7 @@ function baueEffektliste(){
         del.onclick=()=>{
           if(confirm("Effekt wirklich löschen?")){
             const geloescht=effekt.standard
-              ?loescheNeuenStandardEffekt(effekt.id)
+              ?loescheStandardEffektAlsAdmin(effekt.id)
               :loescheBenutzerEffekt(effekt.id);
             if(geloescht){
               baueEffektliste();
@@ -1045,17 +1723,29 @@ function baueEffektliste(){
 
  if(suche && !suche.dataset.bound){
     suche.dataset.bound="1";
-    suche.addEventListener("input",baueEffektliste);
- }
-
- if(kategorieFilter && !kategorieFilter.dataset.bound){
-    kategorieFilter.dataset.bound="1";
-    kategorieFilter.addEventListener("change",baueEffektliste);
+    suche.addEventListener("input",()=>{
+      const bisher=effektFilterFuerCharakter();
+      speichereEffektFilterFuerCharakter({...bisher,suche:suche.value});
+      baueEffektliste();
+    });
  }
 
  if(nurAktivFilter && !nurAktivFilter.dataset.bound){
     nurAktivFilter.dataset.bound="1";
-    nurAktivFilter.addEventListener("change",baueEffektliste);
+    nurAktivFilter.addEventListener("change",()=>{
+      const bisher=effektFilterFuerCharakter();
+      speichereEffektFilterFuerCharakter({...bisher,nurAktiv:nurAktivFilter.checked});
+      baueEffektliste();
+    });
+ }
+
+ if(nurFavoritenFilter && !nurFavoritenFilter.dataset.bound){
+    nurFavoritenFilter.dataset.bound="1";
+    nurFavoritenFilter.addEventListener("change",()=>{
+      const bisher=effektFilterFuerCharakter();
+      speichereEffektFilterFuerCharakter({...bisher,nurFavoriten:nurFavoritenFilter.checked});
+      baueEffektliste();
+    });
  }
 }
 
@@ -1071,6 +1761,27 @@ const PF_BONUS_ZIELE=[
  "RW-Verzauberung",
  "RW-Bezauberung"
 ];
+
+const PF_KLASSEN=["Alchemist","Antipaladin","Arkanist","Attentäter","Barbar","Barde","Blutwüter","Draufgänger","Druide","Eidolon","Ermittler","Gestaltwandler","Hexe","Hexenmeister","Inquisitor","Jäger","Kampfmagus","Kämpfer","Kinetiker","Kleriker","Kriegspriester","Magier","Medium","Mönch","Mystiker","Ninja","Okkultist","Paladin","Paktmagier","Raufbold","Ritter","Schamane","Schütze","Schurke","Skalde","Tiergefährte","Vertrauter","Waldläufer"];
+
+function erzeugeKlassenOptionen(aktuell="",mitAndere=true){
+ const fragment=document.createDocumentFragment();
+ PF_KLASSEN.forEach(name=>{
+   const option=document.createElement("option");
+   option.value=name;
+   option.textContent=name;
+   option.selected=name===aktuell;
+   fragment.appendChild(option);
+ });
+ if(mitAndere){
+   const option=document.createElement("option");
+   option.value="__andere__";
+   option.textContent="Andere Klasse…";
+   option.selected=!!aktuell && !PF_KLASSEN.includes(aktuell);
+   fragment.appendChild(option);
+ }
+ return fragment;
+}
 
 const PF_BONUSARTEN=[
  "Ablenkung",
@@ -1123,6 +1834,13 @@ function leseEditorFormular(){
    beschreibung:document.getElementById("effektBeschreibung")?.value.trim()||"",
    quelle:document.getElementById("effektQuelle")?.value.trim()||"",
    angriffZuweisbar:!!document.getElementById("effektAngriffZuweisbar")?.checked,
+   nutzerBonus:{
+     aktiv:!!document.getElementById("effektNutzerBonusAktiv")?.checked,
+     min:1,
+     max:10,
+     standard:1
+   },
+   stufenlogik:normalisiereStufenlogik(editorState.entwurf.stufenlogik),
    boni:editorState.entwurf.boni.map(normalisiereBonus)
  };
 
@@ -1137,6 +1855,7 @@ function schreibeEditorFormular(){
  const beschreibung=document.getElementById("effektBeschreibung");
  const quelle=document.getElementById("effektQuelle");
  const angriffZuweisbar=document.getElementById("effektAngriffZuweisbar");
+ const nutzerBonusAktiv=document.getElementById("effektNutzerBonusAktiv");
  const titel=document.querySelector("#effektDialog h3");
 
  if(name) name.value=editorState.entwurf.name;
@@ -1144,12 +1863,14 @@ function schreibeEditorFormular(){
  if(beschreibung) beschreibung.value=editorState.entwurf.beschreibung;
  if(quelle) quelle.value=editorState.entwurf.quelle;
  if(angriffZuweisbar) angriffZuweisbar.checked=!!editorState.entwurf.angriffZuweisbar;
+ if(nutzerBonusAktiv) nutzerBonusAktiv.checked=!!editorState.entwurf.nutzerBonus?.aktiv;
  if(titel){
    titel.textContent=editorState.effektId
      ?"Effekt bearbeiten"
      :(editorState.standardNeu?"Neuen Standardeffekt anlegen":"Neuen Effekt anlegen");
  }
 
+ rendereStufenEditor();
  rendereBonusEditor();
 }
 
@@ -1183,6 +1904,111 @@ function fuegeBonuszeileHinzu(){
  rendereBonusEditor();
 }
 
+function rendereStufenEditor(){
+ const bereich=document.getElementById("stufenEditor");
+ if(!bereich || !editorState.entwurf) return;
+ editorState.entwurf.stufenlogik=normalisiereStufenlogik(editorState.entwurf.stufenlogik);
+ const logik=editorState.entwurf.stufenlogik;
+
+ const aktiv=document.getElementById("effektStufenabhaengig");
+ const bezug=document.getElementById("effektStufenbezug");
+ const klasse=document.getElementById("effektStufenklasse");
+ const klasseAndere=document.getElementById("effektStufenklasseAndere");
+ const bereiche=document.getElementById("stufenBereiche");
+ const hinzufuegen=document.getElementById("btnStufenbereichHinzufuegen");
+
+ if(aktiv){
+   aktiv.checked=!!logik.aktiv;
+   aktiv.onchange=()=>{
+     const warAktiv=!!editorState.entwurf.stufenlogik.aktiv;
+     editorState.entwurf.stufenlogik.aktiv=aktiv.checked;
+
+     if(aktiv.checked && !warAktiv && Array.isArray(editorState.entwurf.boni)){
+       editorState.entwurf.boni=editorState.entwurf.boni.map(bonus=>({
+         ...bonus,
+         wertQuelle:"stufenwert"
+       }));
+     }
+
+     rendereStufenEditor();
+     rendereBonusEditor();
+   };
+ }
+ bereich.classList.toggle("inaktiv",!logik.aktiv);
+
+ if(bezug){
+   bezug.value=logik.bezug||"charakter";
+   bezug.onchange=()=>{
+     editorState.entwurf.stufenlogik.bezug=bezug.value;
+     rendereStufenEditor();
+   };
+ }
+
+ const labelKlasse=klasse?.closest("label");
+ if(labelKlasse) labelKlasse.classList.toggle("versteckt",(logik.bezug||"charakter")!=="klasse");
+
+ if(klasse){
+   const aktuell=String(logik.klasse||"");
+   klasse.innerHTML="";
+   klasse.appendChild(erzeugeKlassenOptionen(aktuell,true));
+   const bekannt=PF_KLASSEN.includes(aktuell);
+   klasse.value=bekannt?aktuell:"__andere__";
+   if(klasseAndere){
+     klasseAndere.hidden=bekannt;
+     klasseAndere.value=bekannt?"":aktuell;
+     klasseAndere.oninput=()=>{
+       if(klasse.value==="__andere__") editorState.entwurf.stufenlogik.klasse=klasseAndere.value;
+     };
+   }
+   klasse.onchange=()=>{
+     const andere=klasse.value==="__andere__";
+     if(klasseAndere) klasseAndere.hidden=!andere;
+     editorState.entwurf.stufenlogik.klasse=andere?(klasseAndere?.value||""):klasse.value;
+   };
+ }
+
+ if(bereiche){
+   bereiche.innerHTML="";
+   logik.bereiche.forEach((eintrag,index)=>{
+     const zeile=document.createElement("div");
+     zeile.className="stufenbereich-zeile";
+     [["min","Von"],["max","Bis"],["wert","Wert"]].forEach(([feld,label])=>{
+       const input=document.createElement("input");
+       input.type="number";
+       input.step="1";
+       input.min=feld==="wert"?"-99":"0";
+       input.max="99";
+       input.value=String(eintrag[feld]??0);
+       input.setAttribute("aria-label",`${label} Bereich ${index+1}`);
+       input.onchange=()=>{editorState.entwurf.stufenlogik.bereiche[index][feld]=Number(input.value)||0;};
+       zeile.appendChild(input);
+     });
+     const del=document.createElement("button");
+     del.type="button";
+     del.className="icon-button";
+     del.textContent="🗑";
+     del.onclick=()=>{
+       editorState.entwurf.stufenlogik.bereiche.splice(index,1);
+       rendereStufenEditor();
+     };
+     zeile.appendChild(del);
+     bereiche.appendChild(zeile);
+   });
+ }
+
+ if(hinzufuegen){
+   hinzufuegen.disabled=!logik.aktiv;
+   hinzufuegen.onclick=()=>{
+     if(!editorState.entwurf.stufenlogik.aktiv) return;
+     const liste=editorState.entwurf.stufenlogik.bereiche;
+     const letzte=liste.at(-1);
+     const min=letzte?Math.min(99,(Number(letzte.max)||0)+1):1;
+     liste.push({min:min,max:min,wert:0});
+     rendereStufenEditor();
+   };
+ }
+}
+
 function rendereBonusEditor(){
  const container=document.getElementById("bonusContainer");
  if(!container || !editorState.entwurf) return;
@@ -1211,10 +2037,50 @@ function rendereBonusEditor(){
    bonusart.append(...erzeugeOptionen(PF_BONUSARTEN,bonus.bonusart));
    bonusart.addEventListener("change",event=>aktualisiereBonus(index,"bonusart",event.target.value));
 
+   const wertQuelle=document.createElement("select");
+   wertQuelle.className="bonus-wertquelle";
+   wertQuelle.setAttribute("aria-label",`Wertquelle der Bonuszeile ${index+1}`);
+   [["fest","Fest"],["stufenwert","Stufenwert"]].forEach(([value,text])=>{
+     const option=document.createElement("option");
+     option.value=value;
+     option.textContent=text;
+     option.selected=(bonus.wertQuelle||"fest")===value;
+     if(value==="stufenwert" && !editorState.entwurf.stufenlogik?.aktiv) option.disabled=true;
+     wertQuelle.appendChild(option);
+   });
+   wertQuelle.addEventListener("change",event=>{
+     aktualisiereBonus(index,"wertQuelle",event.target.value);
+     rendereBonusEditor();
+   });
+
+   const faktor=document.createElement("input");
+   faktor.type="number";
+   faktor.min="-10";
+   faktor.max="10";
+   faktor.step="1";
+   faktor.className="bonus-stufenfaktor";
+   faktor.value=String(Number.isFinite(Number(bonus.stufenFaktor))?bonus.stufenFaktor:1);
+   faktor.title="Faktor für den Stufenwert, z. B. -1, +1, +2 oder +3";
+   faktor.setAttribute("aria-label",`Stufenfaktor der Bonuszeile ${index+1}`);
+   faktor.disabled=bonus.wertQuelle!=="stufenwert";
+   faktor.addEventListener("change",event=>{
+     const faktorWert=Math.max(-10,Math.min(10,Math.trunc(Number(event.target.value)||0)));
+     event.target.value=String(faktorWert);
+     aktualisiereBonus(index,"stufenFaktor",faktorWert);
+   });
+
    const wert=document.createElement("select");
    wert.setAttribute("aria-label",`Wert der Bonuszeile ${index+1}`);
-   wert.append(...erzeugeOptionen(PF_BONUSWERTE,bonus.wert));
-   wert.addEventListener("change",event=>aktualisiereBonus(index,"wert",event.target.value));
+   if(bonus.wertQuelle==="stufenwert"){
+     const option=document.createElement("option");
+     option.value="0";
+     option.textContent="Stufenwert";
+     wert.appendChild(option);
+     wert.disabled=true;
+   }else{
+     wert.append(...erzeugeOptionen(PF_BONUSWERTE,bonus.wert));
+     wert.addEventListener("change",event=>aktualisiereBonus(index,"wert",event.target.value));
+   }
 
    const entfernen=document.createElement("button");
    entfernen.type="button";
@@ -1223,7 +2089,7 @@ function rendereBonusEditor(){
    entfernen.setAttribute("aria-label",`Bonuszeile ${index+1} löschen`);
    entfernen.addEventListener("click",()=>entferneBonuszeile(index));
 
-   zeile.append(ziel,bonusart,wert,entfernen);
+   zeile.append(ziel,bonusart,wertQuelle,faktor,wert,entfernen);
    container.appendChild(zeile);
  });
 }
@@ -1291,6 +2157,8 @@ function speichereEditor(){
  }
 
  baueEffektliste();
+ if(typeof berechneWerte==="function") berechneWerte();
+ if(typeof window.aktualisiereAlleAnsichten==="function") window.aktualisiereAlleAnsichten();
  schliesseEffektEditor();
 }
 
@@ -1354,6 +2222,8 @@ function bereiteStandardEffektFuerExportVor(effekt){
    beschreibung:effekt.beschreibung||"",
    quelle:effekt.quelle||"",
    angriffZuweisbar:!!effekt.angriffZuweisbar,
+   nutzerBonus:{...(effekt.nutzerBonus||{})},
+   stufenlogik:normalisiereStufenlogik(effekt.stufenlogik),
    boni:Array.isArray(effekt.boni)?effekt.boni.map(normalisiereBonus):[]
  };
 }

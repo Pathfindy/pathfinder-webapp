@@ -394,6 +394,124 @@
 
         kopfZeile.append(portraet, info, zuweisung);
 
+        const klassenBereich = document.createElement("div");
+        klassenBereich.className = "charakter-klassen";
+        const klassenTitel = document.createElement("div");
+        klassenTitel.className = "charakter-klassen-kopf";
+        const klassenName = document.createElement("strong");
+        klassenName.textContent = "Klassen & Stufen";
+        const gesamt = document.createElement("span");
+        gesamt.textContent = `Gesamtstufe: ${typeof charakterGesamtstufe === "function" ? charakterGesamtstufe(charakter) : 0}`;
+        klassenTitel.append(klassenName, gesamt);
+        klassenBereich.appendChild(klassenTitel);
+
+        const klassenListe = document.createElement("div");
+        klassenListe.className = "charakter-klassen-liste";
+
+        const speichereKlassen = () => {
+          const neueKlassen = [...klassenListe.querySelectorAll(".charakter-klasse-zeile")].map(zeile => ({
+            name: (() => {
+              const auswahl=zeile.querySelector(".charakter-klasse-name");
+              return auswahl?.value==="__andere__"
+                ? (zeile.querySelector(".charakter-klasse-andere")?.value || "")
+                : (auswahl?.value || "");
+            })(),
+            stufe: Number(zeile.querySelector(".charakter-klasse-stufe")?.value || 0)
+          }));
+          if (typeof setzeCharakterKlassen === "function") setzeCharakterKlassen(charakter.id, neueKlassen);
+        };
+
+        const fuegeKlassenZeileHinzu = (eintrag = { name: "", stufe: 1 }) => {
+          const zeile = document.createElement("div");
+          zeile.className = "charakter-klasse-zeile";
+
+          const nameWrap = document.createElement("div");
+          nameWrap.className = "charakter-klasse-name-wrap";
+
+          const nameFeld = document.createElement("select");
+          nameFeld.className = "charakter-klasse-name";
+          const aktuellerName = eintrag.name || "";
+          if (typeof erzeugeKlassenOptionen === "function") {
+            nameFeld.appendChild(erzeugeKlassenOptionen(aktuellerName, true));
+          }
+          nameFeld.value = PF_KLASSEN.includes(aktuellerName) ? aktuellerName : "__andere__";
+
+          const andereKlasse = document.createElement("input");
+          andereKlasse.type = "text";
+          andereKlasse.className = "charakter-klasse-andere";
+          andereKlasse.placeholder = "Andere Klasse";
+          andereKlasse.value = PF_KLASSEN.includes(aktuellerName) ? "" : aktuellerName;
+          andereKlasse.hidden = nameFeld.value !== "__andere__";
+          nameFeld.addEventListener("change", () => {
+            andereKlasse.hidden = nameFeld.value !== "__andere__";
+            speichereKlassen();
+          });
+          andereKlasse.addEventListener("change", speichereKlassen);
+          nameWrap.append(nameFeld, andereKlasse);
+
+          const stufeFeld = document.createElement("input");
+          stufeFeld.type = "number";
+          stufeFeld.min = "0";
+          stufeFeld.max = "99";
+          stufeFeld.step = "1";
+          stufeFeld.inputMode = "numeric";
+          stufeFeld.className = "charakter-klasse-stufe";
+          stufeFeld.value = String(eintrag.stufe ?? 0);
+
+          const entfernen = document.createElement("button");
+          entfernen.type = "button";
+          entfernen.className = "icon-button";
+          entfernen.textContent = "🗑";
+          entfernen.addEventListener("click", () => {
+            zeile.remove();
+            speichereKlassen();
+          });
+
+          stufeFeld.addEventListener("input", speichereKlassen);
+          stufeFeld.addEventListener("change", speichereKlassen);
+          zeile.append(nameWrap, stufeFeld, entfernen);
+          klassenListe.appendChild(zeile);
+        };
+
+        const klassen = Array.isArray(charakter.klassen) ? charakter.klassen : [];
+        klassen.forEach(fuegeKlassenZeileHinzu);
+        if (!klassen.length) fuegeKlassenZeileHinzu();
+
+        const klasseNeu = document.createElement("button");
+        klasseNeu.type = "button";
+        klasseNeu.className = "charakter-klasse-neu";
+        klasseNeu.textContent = "+ Klasse";
+        klasseNeu.addEventListener("click", () => fuegeKlassenZeileHinzu());
+
+        klassenBereich.append(klassenListe, klasseNeu);
+
+        const gabZeile = document.createElement("label");
+        gabZeile.className = "charakter-gab-zeile";
+        const gabText = document.createElement("span");
+        gabText.textContent = "GAB";
+        const gabFeld = document.createElement("input");
+        gabFeld.type = "number";
+        gabFeld.min = "0";
+        gabFeld.max = "99";
+        gabFeld.step = "1";
+        gabFeld.inputMode = "numeric";
+        gabFeld.value = String(Number(charakter.gab) || 0);
+        gabFeld.setAttribute("aria-label", `GAB für ${charakter.name}`);
+        const speichereGab = () => {
+          if (typeof setzeCharakterGAB === "function") {
+            setzeCharakterGAB(charakter.id, gabFeld.value);
+          }
+        };
+        gabFeld.addEventListener("input", speichereGab);
+        gabFeld.addEventListener("change", speichereGab);
+        gabZeile.append(gabText, gabFeld);
+        klassenBereich.appendChild(gabZeile);
+
+        const gabHinweis = document.createElement("p");
+        gabHinweis.className = "charakter-gab-hinweis";
+        gabHinweis.textContent = "GAB nur für GAB-abhängige Effekte. Wird nicht bei der Berechnung des Angriffswerts berücksichtigt.";
+        klassenBereich.appendChild(gabHinweis);
+
         const notiz = document.createElement("textarea");
         notiz.className = "charakter-notiz-29";
         notiz.rows = 1;
@@ -412,7 +530,7 @@
         });
         requestAnimationFrame(passeNotizHoeheAn);
 
-        karte.append(kopfZeile, notiz);
+        karte.append(kopfZeile, klassenBereich, notiz);
         liste.appendChild(karte);
       });
 

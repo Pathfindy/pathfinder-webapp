@@ -1,7 +1,7 @@
 // Commit 22: Charakter-Import und -Export (JSON)
 (() => {
   const EXPORT_FORMAT = "pathfinder-charakter";
-  const EXPORT_VERSION = 1;
+  const EXPORT_VERSION = 5;
 
   function sichereKopie(wert) {
     return JSON.parse(JSON.stringify(wert));
@@ -53,6 +53,23 @@
       effektAngriffsziele: typeof ladeEffektAngriffszieleFuerCharakter === "function"
         ? sichereKopie(ladeEffektAngriffszieleFuerCharakter(charakter.id))
         : {},
+      effektStufen: typeof ladeAlleEffektStufen === "function"
+        ? sichereKopie(ladeAlleEffektStufen()[charakter.id] || {})
+        : {},
+      effektOptionen: typeof ladeAlleEffektOptionen === "function"
+        ? sichereKopie(ladeAlleEffektOptionen()[charakter.id] || {})
+        : {},
+      effektFilter: typeof effektFilterFuerCharakter === "function"
+        ? sichereKopie(effektFilterFuerCharakter(charakter.id))
+        : {},
+      favoriten: (() => {
+        try {
+          const alle = JSON.parse(localStorage.getItem("pf-charakter-favoriten") || "{}");
+          return Array.isArray(alle[charakter.id]) ? sichereKopie(alle[charakter.id]) : [];
+        } catch {
+          return [];
+        }
+      })(),
       benutzerEffekte
     };
 
@@ -70,7 +87,7 @@
     if (daten.format !== EXPORT_FORMAT) {
       throw new Error("Die Datei ist kein Pathfinder-Charakterexport.");
     }
-    if (![1, 2].includes(Number(daten.version))) {
+    if (![1, 2, 3, 4, 5].includes(Number(daten.version))) {
       throw new Error(`Die Exportversion ${daten.version ?? "?"} wird nicht unterstützt.`);
     }
     if (!daten.charakter || typeof daten.charakter !== "object") {
@@ -93,6 +110,24 @@
         typeof daten.effektAngriffsziele === "object" &&
         !Array.isArray(daten.effektAngriffsziele)
           ? daten.effektAngriffsziele
+          : {},
+      effektStufen:
+        daten.effektStufen &&
+        typeof daten.effektStufen === "object" &&
+        !Array.isArray(daten.effektStufen)
+          ? daten.effektStufen
+          : {},
+      effektOptionen:
+        daten.effektOptionen &&
+        typeof daten.effektOptionen === "object" &&
+        !Array.isArray(daten.effektOptionen)
+          ? daten.effektOptionen
+          : {},
+      effektFilter:
+        daten.effektFilter &&
+        typeof daten.effektFilter === "object" &&
+        !Array.isArray(daten.effektFilter)
+          ? daten.effektFilter
           : {},
       benutzerEffekte: Array.isArray(daten.benutzerEffekte)
         ? daten.benutzerEffekte
@@ -314,6 +349,25 @@
     speichereEffektAngriffszieleFuerCharakter(charakterId, ziele || {});
   }
 
+  function speichereImportEffektStufen(charakterId, stufen) {
+    if (typeof ladeAlleEffektStufen !== "function") return;
+    const alle = ladeAlleEffektStufen();
+    alle[charakterId] = stufen && typeof stufen === "object" ? sichereKopie(stufen) : {};
+    localStorage.setItem("pf-charakter-effekt-stufen", JSON.stringify(alle));
+  }
+
+  function speichereImportEffektOptionen(charakterId, optionen) {
+    if (typeof ladeAlleEffektOptionen !== "function") return;
+    const alle = ladeAlleEffektOptionen();
+    alle[charakterId] = optionen && typeof optionen === "object" ? sichereKopie(optionen) : {};
+    localStorage.setItem("pf-charakter-effekt-optionen", JSON.stringify(alle));
+  }
+
+  function speichereImportEffektFilter(charakterId, filter) {
+    if (typeof speichereEffektFilterFuerCharakter !== "function") return;
+    speichereEffektFilterFuerCharakter(filter || {}, charakterId);
+  }
+
   function mappeImportFavoriten(favoriten, idZuBehalten) {
     if (!Array.isArray(favoriten)) return [];
     return [...new Set(
@@ -366,6 +420,9 @@
     aktiverCharakterId = charakter.id;
     speichereImportStatus(charakter.id, importDaten.effektStatus);
     speichereImportAngriffsziele(charakter.id, importDaten.effektAngriffsziele);
+    speichereImportEffektStufen(charakter.id, importDaten.effektStufen);
+    speichereImportEffektOptionen(charakter.id, importDaten.effektOptionen);
+    speichereImportEffektFilter(charakter.id, importDaten.effektFilter);
     speichereImportFavoriten(
       charakter.id,
       mappeImportFavoriten(importDaten.favoriten, idZuBehalten)
@@ -403,6 +460,9 @@
     charaktere[index] = importiert;
     speichereImportStatus(ziel.id, importDaten.effektStatus);
     speichereImportAngriffsziele(ziel.id, importDaten.effektAngriffsziele);
+    speichereImportEffektStufen(ziel.id, importDaten.effektStufen);
+    speichereImportEffektOptionen(ziel.id, importDaten.effektOptionen);
+    speichereImportEffektFilter(ziel.id, importDaten.effektFilter);
     speichereImportFavoriten(
       ziel.id,
       mappeImportFavoriten(importDaten.favoriten, idZuBehalten)
