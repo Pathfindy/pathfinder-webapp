@@ -8,8 +8,8 @@
     <title>Das azlantische Helferlein der Boni</title>
 
     <link rel="manifest" href="manifest.json">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/charakterwerte.css?v=38.1">
+    <link rel="stylesheet" href="css/style.css?v=41">
+    <link rel="stylesheet" href="css/charakterwerte.css?v=41">
     <link rel="stylesheet" href="css/commit21.css?v=21">
     <link rel="stylesheet" href="css/commit22.css?v=22">
     <link rel="stylesheet" href="css/commit24.css?v=24">
@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="css/commit26.css?v=26">
     <link rel="stylesheet" href="css/commit27.css?v=27">
     <link rel="stylesheet" href="css/commit28.css?v=28">
-    <link rel="stylesheet" href="css/commit29.css?v=29.1">
+    <link rel="stylesheet" href="css/commit29.css?v=39.8">
     <link rel="stylesheet" href="css/commit30.css?v=30">
     <link rel="stylesheet" href="css/leben.css?v=38">
     
@@ -28,7 +28,7 @@
 
 <header>
 
-    <h1>Das azlantische Helferlein der Boni <span class="app-version-30">v0.38.3</span></h1>
+    <h1>Das azlantische Helferlein der Boni <span class="app-version-30">v0.41.5</span></h1>
 
 </header>
 
@@ -146,12 +146,10 @@
             placeholder="Effekt suchen...">
 
         <div class="effekt-filter" aria-label="Effektfilter">
-            <label for="filterKategorie">
-                Kategorie
-                <select id="filterKategorie">
-                    <option value="">Alle Kategorien</option>
-                </select>
-            </label>
+            <fieldset class="filter-kategorien-feld">
+                <legend>Kategorien</legend>
+                <div id="filterKategorie" class="filter-kategorien-mehrfach" aria-label="Kategorien filtern"></div>
+            </fieldset>
 
             <label class="filter-schalter">
                 <input type="checkbox" id="filterNurAktiv">
@@ -342,20 +340,21 @@
 
 </main>
 
-<script src="js/app.js?v=38.3"></script>
-<script src="js/charakterwerte.js?v=38"></script>
+<script src="js/app.js?v=41.5"></script>
+<script src="js/charakterwerte.js?v=41.1"></script>
 <script src="js/leben.js?v=38"></script>
 <script src="js/filter.js"></script>
-<script src="js/berechnung.js?v=36"></script>
+<script src="js/berechnung.js?v=41.5"></script>
 <script src="js/makros.js"></script>
 <script src="js/speicher.js"></script>
 <script src="js/commit21.js?v=21.1"></script>
-<script src="js/commit22.js?v=38.2"></script>
+<script src="js/commit22.js?v=41"></script>
 <script src="js/commit23.js?v=23"></script>
 <script src="js/commit24.js?v=30"></script>
-<script src="js/commit25.js?v=38.1"></script>
+<script src="js/commit25.js?v=41.4"></script>
 <script src="js/commit26.js?v=36.1"></script>
-<script src="js/commit29.js?v=38.3"></script>    
+<script src="js/commit29.js?v=41.1"></script>
+<script src="js/commit41.js?v=41.5"></script>    
 
 <dialog id="effektDialog">
 <h3>Neuen Effekt anlegen</h3>
@@ -371,10 +370,44 @@
 <option>Zauber</option>
 <option>Zustände</option>
 </select></label><br><br>
+<div class="effekt-editor-optionen">
 <label class="effekt-zuweisbar-editor-30">
 <input type="checkbox" id="effektAngriffZuweisbar">
 Angriff zuweisbar
-</label><br><br>
+</label>
+<label class="nutzerbonus-aktiv">
+<input type="checkbox" id="effektNutzerBonusAktiv">
+Boni nach Nutzereingabe
+</label>
+</div><br>
+
+<section id="stufenEditor" class="stufen-editor">
+<h4>Stufenabhängigkeit / GAB</h4>
+<label class="stufen-aktiv">
+<input type="checkbox" id="effektStufenabhaengig">
+Stufenabhängigen Wert verwenden
+</label>
+<div class="stufen-editor-felder">
+<label>Bezug
+<select id="effektStufenbezug">
+<option value="charakter">Charakterstufe</option>
+<option value="klasse">Klassenstufe</option>
+<option value="zauberstufe">Zauberstufe im Effekt</option>
+<option value="manuell">Manuelle Stufe im Effekt</option>
+<option value="gab">GAB</option>
+</select>
+</label>
+<label>Klasse
+<select id="effektStufenklasse"></select>
+<input id="effektStufenklasseAndere" type="text" placeholder="Andere Klasse" hidden>
+</label>
+</div>
+<div class="stufenbereiche-kopf"><span>Von</span><span>Bis</span><span>Wert</span><span></span></div>
+<div id="stufenBereiche"></div>
+<button type="button" id="btnStufenbereichHinzufuegen">+ Stufenbereich</button>
+<p class="stufen-admin-hinweis">Für GAB-abhängige Talente: Bezug „GAB“ wählen, GAB-Bereiche definieren und bei jeder Bonuszeile „Stufenwert“ plus Faktor setzen (z. B. −1 Angriff, +1 RK, +2 Schaden).</p>
+</section>
+
 <div id="bonusEditor">
 <h4>Boni</h4>
 <div id="bonusContainer"></div>
