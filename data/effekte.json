@@ -2849,7 +2849,8 @@
       }
     ],
     "gebiet": "",
-    "dauer": "1 Std./Stufe"
+    "dauer": "1 Std./Stufe",
+    "sonderlogik": "maechtige-magische-faenge"
   },
   {
     "id": "standard-admin-d34dc026-f075-49f8-a95c-176de712d4e7",
