@@ -410,3 +410,12 @@ nav {
  #leben .tp-feld{font-size:.65rem}
  #leben .tp-feld input,#leben .tp-aktuell output,#leben .tp-schaden output{min-height:34px;padding:3px 2px;font-size:.84rem}
 }
+
+
+/* Commit 41: Angriffsmodi */
+.angriff-iterativ-info-41{
+  grid-column:1 / -1;padding:7px 9px;border-radius:7px;
+  background:#e9eef5;color:#40566f;font-size:.8rem;font-weight:600
+}
+.angriff-ergebnis strong{overflow-wrap:anywhere}
+@media(max-width:600px){.angriff-ergebnis strong{font-size:1rem}}

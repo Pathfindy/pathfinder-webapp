@@ -530,3 +530,186 @@ nav {
     top: 0;
     z-index: 1000;
 }
+
+
+/* Commit 39: stufenabhängige Effekte */
+.stufen-editor{margin:12px 0;padding:10px;border:1px solid #d7dce2;border-radius:9px;background:#f8fafc}
+.stufen-editor h4{margin:0 0 8px}
+.stufen-editor.inaktiv .stufen-editor-felder,.stufen-editor.inaktiv .stufenbereiche-kopf,.stufen-editor.inaktiv #stufenBereiche,.stufen-editor.inaktiv #btnStufenbereichHinzufuegen{display:none}
+.stufen-aktiv{display:flex;align-items:center;gap:6px;font-weight:600}
+.stufen-editor-felder{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:8px 0}
+.stufen-editor-felder label{display:grid;gap:4px}.stufen-editor .versteckt{display:none}
+.stufenbereiche-kopf,.stufenbereich-zeile{display:grid;grid-template-columns:70px 70px 70px 40px;gap:6px;align-items:center}
+.stufenbereiche-kopf{margin-top:6px;font-size:.78rem;font-weight:700;color:#667}
+.stufenbereich-zeile{margin-top:5px}.stufenbereich-zeile input{width:100%;min-height:34px}
+.bonus-zeile{grid-template-columns:minmax(0,2fr) minmax(0,1.5fr) minmax(92px,.9fr) minmax(76px,.7fr) 40px}
+.effekt-stufenbox{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:4px;font-size:.78rem;color:#5c6673}
+.effekt-stufenbox input{width:64px;min-height:30px;padding:3px 5px}.effekt-stufenwert-aktuell{color:#1e3a5f}
+@media(max-width:600px){.stufen-editor-felder{grid-template-columns:1fr}.bonus-zeile{grid-template-columns:1fr 1fr}}
+
+/* Commit 39.1 */
+.charakter-klasse-name-wrap{display:grid;gap:4px}
+.charakter-klasse-name-wrap select,.charakter-klasse-name-wrap input{width:100%;min-width:0}
+#effektStufenklasseAndere[hidden]{display:none}
+
+#effektStufenklasse{width:100%;min-height:36px} #effektStufenklasseAndere[hidden]{display:none} #btnStufenbereichHinzufuegen:disabled{opacity:.45}
+
+.effekt-stufenbox{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-top:4px;font-size:.8rem}.effekt-stufenbox input{width:64px}.effekt-stufenwert-aktuell{font-weight:700}
+
+/* Commit 39.8: größere Effekt-Aktivierung */
+#boniListe .effekt-aktiv input[type="checkbox"]{
+  width:1.35rem;
+  height:1.35rem;
+  min-width:1.35rem;
+  cursor:pointer;
+}
+
+/* Commit 39.8: Mehrfach-Kategoriefilter und Sonderoptionen */
+.filter-kategorien-feld{
+  border:1px solid #c8d2df;
+  border-radius:8px;
+  padding:7px 9px;
+  min-width:0;
+}
+.filter-kategorien-feld legend{
+  padding:0 4px;
+  font-size:.82rem;
+  font-weight:700;
+}
+.filter-kategorien-mehrfach{
+  display:flex;
+  flex-wrap:wrap;
+  gap:5px 10px;
+}
+.filter-kategorie-option{
+  display:inline-flex;
+  align-items:center;
+  gap:4px;
+  font-size:.82rem;
+  white-space:nowrap;
+}
+.filter-kategorie-option input{
+  width:1rem;
+  height:1rem;
+}
+.filter-kategorie-alle{
+  font-weight:700;
+}
+.effekt-sonderoptionen{
+  display:grid;
+  gap:5px;
+  margin-top:5px;
+  font-size:.8rem;
+}
+.effekt-sonderoptionen label{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  flex-wrap:wrap;
+}
+.effekt-sonderoptionen select{
+  min-height:31px;
+  max-width:100%;
+}
+@media(max-width:600px){
+  .filter-kategorien-mehrfach{gap:4px 8px}
+  .filter-kategorie-option{font-size:.75rem}
+}
+
+/* Commit 39.9: kompakter, handyfreundlicher Kategorienfilter */
+.effekt-filter{display:grid;grid-template-columns:minmax(0,1fr) auto auto;align-items:center;gap:6px}
+.filter-kategorien-feld{min-width:0;margin:0;padding:4px 6px 5px}
+.filter-kategorien-feld legend{font-size:.72rem;line-height:1}
+.filter-kategorien-mehrfach{display:grid;grid-auto-flow:column;grid-auto-columns:max-content;grid-template-rows:1fr;gap:3px 8px;overflow-x:auto;overflow-y:hidden;padding:1px 0 3px;scrollbar-width:thin}
+.filter-kategorie-option{font-size:.74rem;line-height:1.1;gap:3px}
+.filter-kategorie-option input{width:.92rem;height:.92rem;margin:0}
+.effekt-filter .filter-schalter{font-size:.74rem;white-space:nowrap}
+@media(max-width:600px){
+ .effekt-filter{grid-template-columns:1fr auto auto;gap:4px}
+ .filter-kategorien-mehrfach{grid-template-rows:repeat(2,auto);max-height:42px;gap:3px 7px}
+ .filter-kategorie-option,.effekt-filter .filter-schalter{font-size:.68rem}
+}
+@media(max-width:390px){
+ .effekt-filter{grid-template-columns:1fr}
+ .effekt-filter .filter-schalter{display:inline-flex;margin-right:8px}
+}
+
+/* Commit 39.9: allgemeiner Stufenfaktor im Admin-Effekteditor */
+.bonus-zeile{grid-template-columns:minmax(0,1.7fr) minmax(0,1.2fr) minmax(86px,.8fr) 64px minmax(72px,.65fr) 38px}
+.bonus-stufenfaktor{min-width:0;width:100%;min-height:34px;padding:5px 6px;box-sizing:border-box}
+.stufen-admin-hinweis{margin:7px 0 0;color:#667;font-size:.72rem;line-height:1.3}
+@media(max-width:650px){.bonus-zeile{grid-template-columns:1fr 1fr}}
+
+/* Commit 39.10: Kategorienfilter eigene Zeile oberhalb Favoriten/Aktive */
+.effekt-filter{
+  display:grid;
+  grid-template-columns:auto auto 1fr;
+  align-items:center;
+  gap:5px 8px;
+}
+.effekt-filter .filter-kategorien-feld{
+  grid-column:1 / -1;
+  grid-row:1;
+  width:100%;
+  box-sizing:border-box;
+}
+.effekt-filter .filter-kategorien-mehrfach{
+  grid-template-rows:1fr;
+  max-height:none;
+}
+.effekt-filter .filter-schalter{
+  grid-row:2;
+}
+@media(max-width:600px){
+  .effekt-filter{
+    grid-template-columns:auto auto 1fr;
+  }
+  .effekt-filter .filter-kategorien-feld{
+    grid-column:1 / -1;
+    grid-row:1;
+  }
+  .effekt-filter .filter-kategorien-mehrfach{
+    grid-template-rows:1fr;
+    max-height:none;
+  }
+  .effekt-filter .filter-schalter{
+    grid-row:2;
+  }
+}
+@media(max-width:390px){
+  .effekt-filter{
+    grid-template-columns:auto auto 1fr;
+  }
+}
+
+/* Commit 40: Boni nach Nutzereingabe */
+.nutzerbonus-editor{margin:10px 0;padding:10px;border:1px solid #cbd5e1;border-radius:8px}
+.nutzerbonus-editor h4{margin:0 0 8px}
+.nutzerbonus-aktiv{display:flex;align-items:center;gap:7px;font-weight:700}
+.nutzerbonus-felder{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;margin-top:8px}
+.nutzerbonus-felder label{display:grid;gap:4px;font-size:.8rem}
+.nutzerbonus-felder input{width:100%;min-width:0}
+.nutzerbonus-hinweis{margin:7px 0 0;color:#667;font-size:.72rem;line-height:1.3}
+.effekt-nutzerbonus{margin-top:5px;font-size:.82rem}
+.effekt-nutzerbonus label{display:inline-flex;align-items:center;gap:6px}
+.effekt-nutzerbonus select{min-height:31px;min-width:66px}
+
+/* Commit 40.1 */
+.effekt-editor-optionen{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 14px;align-items:center}
+.effekt-editor-optionen label{display:flex;align-items:center;gap:7px;margin:0}
+@media(max-width:520px){.effekt-editor-optionen{grid-template-columns:1fr 1fr;gap:6px 8px}.effekt-editor-optionen label{font-size:.78rem}}
+
+
+/* Commit 41: Mehrfachzuweisung von Effekten auf Angriffe */
+.effekt-angriffsziele-41{display:flex;align-items:center;gap:.45rem;flex-wrap:wrap}
+.effekt-angriffsziele-auswahl-41{display:flex;gap:.25rem;flex-wrap:wrap}
+.effekt-angriffsziel-option-41{
+  display:inline-flex;align-items:center;gap:.18rem;padding:.18rem .34rem;
+  border:1px solid #aeb8c4;border-radius:6px;background:#fff;
+  font-size:.78rem;font-weight:600
+}
+.effekt-angriffsziel-option-41 input{width:1rem;height:1rem;margin:0}
+@media(max-width:520px){
+  .effekt-angriffsziele-41{align-items:flex-start}
+  .effekt-angriffsziel-option-41{padding:.14rem .28rem;font-size:.72rem}
+}
