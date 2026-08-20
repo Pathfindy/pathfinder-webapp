@@ -10,7 +10,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -63,7 +63,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -102,7 +102,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -134,7 +134,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 5,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -199,7 +199,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -231,7 +231,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -263,7 +263,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 5,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -316,7 +316,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -355,7 +355,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -387,7 +387,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -419,7 +419,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -472,7 +472,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 5,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -539,7 +539,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -571,7 +571,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -603,7 +603,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -677,7 +677,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -744,7 +744,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -811,7 +811,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 5,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -879,7 +879,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -911,7 +911,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -950,7 +950,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 5,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -979,6 +979,160 @@
     "dauer": ""
   },
   {
+    "id": "standard-admin-c714ccc7-71df-4ac5-ae7a-24ff6b0632b8",
+    "name": "GAB (Dynamik)",
+    "kategorie": "Charakterwerte",
+    "aktiv": false,
+    "beschreibung": "GAB-Dynamik für Angriffe, KMB und KMV. Ändert man den GAB im Charakter werden die Angriffe, KMB und KMV automatisch entsprechend angepasst.",
+    "quelle": "",
+    "angriffZuweisbar": false,
+    "nutzerBonus": {
+      "aktiv": false,
+      "min": -5,
+      "max": 17,
+      "standard": 0
+    },
+    "stufenlogik": {
+      "aktiv": true,
+      "bezug": "gab",
+      "klasse": "",
+      "bereiche": [
+        {
+          "min": 1,
+          "max": 1,
+          "wert": 1
+        },
+        {
+          "min": 2,
+          "max": 2,
+          "wert": 2
+        },
+        {
+          "min": 3,
+          "max": 3,
+          "wert": 3
+        },
+        {
+          "min": 4,
+          "max": 4,
+          "wert": 4
+        },
+        {
+          "min": 5,
+          "max": 5,
+          "wert": 5
+        },
+        {
+          "min": 6,
+          "max": 6,
+          "wert": 6
+        },
+        {
+          "min": 7,
+          "max": 7,
+          "wert": 7
+        },
+        {
+          "min": 8,
+          "max": 8,
+          "wert": 8
+        },
+        {
+          "min": 9,
+          "max": 9,
+          "wert": 9
+        },
+        {
+          "min": 10,
+          "max": 10,
+          "wert": 10
+        },
+        {
+          "min": 11,
+          "max": 11,
+          "wert": 11
+        },
+        {
+          "min": 12,
+          "max": 12,
+          "wert": 12
+        },
+        {
+          "min": 13,
+          "max": 13,
+          "wert": 13
+        },
+        {
+          "min": 14,
+          "max": 14,
+          "wert": 14
+        },
+        {
+          "min": 15,
+          "max": 15,
+          "wert": 15
+        },
+        {
+          "min": 16,
+          "max": 16,
+          "wert": 16
+        },
+        {
+          "min": 17,
+          "max": 17,
+          "wert": 17
+        },
+        {
+          "min": 18,
+          "max": 18,
+          "wert": 18
+        },
+        {
+          "min": 19,
+          "max": 19,
+          "wert": 19
+        },
+        {
+          "min": 20,
+          "max": 20,
+          "wert": 20
+        }
+      ]
+    },
+    "boni": [
+      {
+        "ziel": "Angriff Nah",
+        "bonusart": "Namenlos",
+        "wert": 1,
+        "wertQuelle": "stufenwert",
+        "stufenFaktor": 1
+      },
+      {
+        "ziel": "Angriff Fern",
+        "bonusart": "Namenlos",
+        "wert": 1,
+        "wertQuelle": "fest",
+        "stufenFaktor": 1
+      },
+      {
+        "ziel": "KMB",
+        "bonusart": "Namenlos",
+        "wert": 1,
+        "wertQuelle": "fest",
+        "stufenFaktor": 1
+      },
+      {
+        "ziel": "KMV",
+        "bonusart": "Namenlos",
+        "wert": 1,
+        "wertQuelle": "fest",
+        "stufenFaktor": 1
+      }
+    ],
+    "gebiet": "",
+    "dauer": ""
+  },
+  {
     "id": 2,
     "name": "Gebet",
     "kategorie": "Zauber",
@@ -989,7 +1143,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -1070,7 +1224,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -1116,7 +1270,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -1155,7 +1309,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -1215,7 +1369,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -1247,7 +1401,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -1302,7 +1456,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -1334,7 +1488,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -1394,7 +1548,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 5,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -1463,7 +1617,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 5,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -1525,7 +1679,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 5,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -1622,7 +1776,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -1654,7 +1808,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -1742,7 +1896,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -1809,7 +1963,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -1886,7 +2040,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -1939,7 +2093,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -2006,7 +2160,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -2073,7 +2227,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -2105,7 +2259,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -2137,7 +2291,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -2176,7 +2330,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -2208,7 +2362,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 5,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -2279,7 +2433,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 5,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -2317,7 +2471,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -2377,7 +2531,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -2430,7 +2584,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -2469,7 +2623,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -2543,7 +2697,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 5,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -2589,7 +2743,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 5,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -2642,7 +2796,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 5,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -2695,7 +2849,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 5,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -2790,7 +2944,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -2849,8 +3003,7 @@
       }
     ],
     "gebiet": "",
-    "dauer": "1 Std./Stufe",
-    "sonderlogik": "maechtige-magische-faenge"
+    "dauer": "1 Std./Stufe"
   },
   {
     "id": "standard-admin-d34dc026-f075-49f8-a95c-176de712d4e7",
@@ -2863,7 +3016,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 5,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -2916,7 +3069,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 5,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -2969,7 +3122,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -3001,7 +3154,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -3040,7 +3193,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -3086,7 +3239,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 5,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -3146,7 +3299,7 @@
     "nutzerBonus": {
       "aktiv": true,
       "min": 1,
-      "max": 5,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -3192,7 +3345,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 5,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -3245,7 +3398,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -3298,7 +3451,7 @@
     "nutzerBonus": {
       "aktiv": true,
       "min": 1,
-      "max": 5,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -3330,7 +3483,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -3362,7 +3515,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 5,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -3415,7 +3568,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -3447,7 +3600,7 @@
     "nutzerBonus": {
       "aktiv": true,
       "min": 1,
-      "max": 5,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -3486,7 +3639,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -3529,6 +3682,59 @@
     "dauer": "1 Min./Stufe"
   },
   {
+    "id": "standard-admin-435e60e4-812c-4124-8da8-ff8ea32b9010",
+    "name": "ST: Stärke (Attribut)",
+    "kategorie": "Charakterwerte",
+    "aktiv": false,
+    "beschreibung": "",
+    "quelle": "",
+    "angriffZuweisbar": false,
+    "nutzerBonus": {
+      "aktiv": true,
+      "min": -5,
+      "max": 17,
+      "standard": 0
+    },
+    "stufenlogik": {
+      "aktiv": false,
+      "bezug": "charakter",
+      "klasse": "",
+      "bereiche": []
+    },
+    "boni": [
+      {
+        "ziel": "Angriff Nah",
+        "bonusart": "Modifikator Attribut",
+        "wert": 1,
+        "wertQuelle": "fest",
+        "stufenFaktor": 1
+      },
+      {
+        "ziel": "Schaden Nah",
+        "bonusart": "Modifikator Attribut",
+        "wert": 1,
+        "wertQuelle": "fest",
+        "stufenFaktor": 1
+      },
+      {
+        "ziel": "KMB",
+        "bonusart": "Modifikator Attribut",
+        "wert": 1,
+        "wertQuelle": "fest",
+        "stufenFaktor": 1
+      },
+      {
+        "ziel": "KMV",
+        "bonusart": "Modifikator Attribut",
+        "wert": 1,
+        "wertQuelle": "fest",
+        "stufenFaktor": 1
+      }
+    ],
+    "gebiet": "",
+    "dauer": ""
+  },
+  {
     "id": "standard-admin-08ed045d-59a5-475b-aa28-8815e355d181",
     "name": "Standarte von Damien (9m Reichweite)",
     "kategorie": "Ausrüstung",
@@ -3539,7 +3745,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -3592,7 +3798,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -3631,7 +3837,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 5,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -3689,7 +3895,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -3735,7 +3941,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -3781,7 +3987,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -3848,7 +4054,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 5,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -3901,7 +4107,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -3954,7 +4160,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -3983,6 +4189,98 @@
     "dauer": "1 Runde"
   },
   {
+    "id": "standard-admin-dc78e34e-32b1-4e33-aa9f-b0b36f51a276",
+    "name": "Waffe (Meisterarbeit)",
+    "kategorie": "Ausrüstung",
+    "aktiv": false,
+    "beschreibung": "Nah- oder Fernkampfwaffe",
+    "quelle": "GRW ab S.142",
+    "angriffZuweisbar": true,
+    "nutzerBonus": {
+      "aktiv": false,
+      "min": 1,
+      "max": 20,
+      "standard": 1
+    },
+    "stufenlogik": {
+      "aktiv": false,
+      "bezug": "charakter",
+      "klasse": "",
+      "bereiche": []
+    },
+    "boni": [
+      {
+        "ziel": "Angriff Nah",
+        "bonusart": "Namenlos",
+        "wert": 1,
+        "wertQuelle": "fest",
+        "stufenFaktor": 1
+      },
+      {
+        "ziel": "Angriff Fern",
+        "bonusart": "Namenlos",
+        "wert": 1,
+        "wertQuelle": "fest",
+        "stufenFaktor": 1
+      }
+    ],
+    "gebiet": "selbst",
+    "dauer": "getragen"
+  },
+  {
+    "id": "standard-admin-1769b8e5-4a1f-448d-b1fe-c40448c29f3f",
+    "name": "Waffe 1 (Magisch)",
+    "kategorie": "Ausrüstung",
+    "aktiv": false,
+    "beschreibung": "Nah- oder Fernkampfwaffe",
+    "quelle": "GRW ab S.142",
+    "angriffZuweisbar": true,
+    "nutzerBonus": {
+      "aktiv": true,
+      "min": 1,
+      "max": 20,
+      "standard": 1
+    },
+    "stufenlogik": {
+      "aktiv": false,
+      "bezug": "charakter",
+      "klasse": "",
+      "bereiche": []
+    },
+    "boni": [
+      {
+        "ziel": "Angriff Nah",
+        "bonusart": "Namenlos",
+        "wert": 1,
+        "wertQuelle": "fest",
+        "stufenFaktor": 1
+      },
+      {
+        "ziel": "Angriff Fern",
+        "bonusart": "Namenlos",
+        "wert": 1,
+        "wertQuelle": "fest",
+        "stufenFaktor": 1
+      },
+      {
+        "ziel": "Schaden Nah",
+        "bonusart": "Namenlos",
+        "wert": 1,
+        "wertQuelle": "fest",
+        "stufenFaktor": 1
+      },
+      {
+        "ziel": "Schaden Fern",
+        "bonusart": "Namenlos",
+        "wert": 1,
+        "wertQuelle": "fest",
+        "stufenFaktor": 1
+      }
+    ],
+    "gebiet": "selbst",
+    "dauer": "getragen"
+  },
+  {
     "id": "standard-admin-6834e606-62b3-4db8-8788-1b37be02503b",
     "name": "Waffenfokus 1. Waffe",
     "kategorie": "Talente",
@@ -3993,7 +4291,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -4032,7 +4330,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -4071,7 +4369,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -4110,7 +4408,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -4149,7 +4447,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -4188,7 +4486,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -4227,7 +4525,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 5,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -4301,7 +4599,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 5,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -4370,7 +4668,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 5,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -4434,7 +4732,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 5,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -4493,7 +4791,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -4525,7 +4823,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -4592,7 +4890,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -4624,7 +4922,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -4656,7 +4954,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
