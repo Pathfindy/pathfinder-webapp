@@ -68,12 +68,16 @@
     const detail = document.getElementById("vermoegenGesamtDetail");
     const notiz = document.getElementById("vermoegenNotiz");
     if (!vermoegen) {
-      if (gesamt) gesamt.value = "0";
+      if (gesamt) { gesamt.value = "0"; gesamt.textContent = "0"; }
       if (detail) detail.textContent = "0 GM";
       if (notiz) notiz.value = "";
       return;
     }
-    if (gesamt) gesamt.value = formatGold(vermoegen.kupferGesamt);
+    if (gesamt) {
+      const wert = formatGold(vermoegen.kupferGesamt);
+      gesamt.value = wert;
+      gesamt.textContent = wert;
+    }
     if (detail) detail.textContent = formatMuenzen(vermoegen.kupferGesamt);
     if (notiz && document.activeElement !== notiz) notiz.value = vermoegen.notiz;
   }

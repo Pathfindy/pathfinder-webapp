@@ -236,7 +236,7 @@
 
   function initialisiereCommit21() {
     const nav = document.querySelector("nav");
-    ["btnCharaktere", "btnCharakterwerte", "btnLeben", "btnVermoegen", "btnEffekte", "btnDashboard", "btnAdmin"]
+    ["btnCharaktere", "btnCharakterwerte", "btnLeben", "btnEffekte", "btnDashboard", "btnVermoegen", "btnAdmin"]
       .map(id => document.getElementById(id))
       .filter(Boolean)
       .forEach(button => nav?.appendChild(button));
