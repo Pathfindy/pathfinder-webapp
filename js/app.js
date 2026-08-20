@@ -1,7 +1,7 @@
 // Das azlantische Helferlein der Boni
 // app.js
 // Version 0.32
-const APP_VERSION="0.42.1";
+const APP_VERSION="0.42.3";
 
 const seiten={
  dashboard:document.getElementById("dashboard"),
@@ -859,6 +859,11 @@ function normalisiereEffekt(effekt={}){
      :effektName==="Heftiger Angriff"
        ?"heftiger-angriff"
        :"";
+ const effektKategorie=normalisiereKategorie(effekt.kategorie);
+ const istCharakterwerte=effektKategorie==="Charakterwerte";
+ const nutzerBonusMin=istCharakterwerte?-5:1;
+ const nutzerBonusMax=istCharakterwerte?17:20;
+ const nutzerBonusStandard=istCharakterwerte?0:1;
  const stufenlogik=normalisiereStufenlogik(effekt.stufenlogik);
  const roheBoni=Array.isArray(effekt.boni)?effekt.boni:[];
  let boni=roheBoni.map(bonus=>{
@@ -880,7 +885,7 @@ function normalisiereEffekt(effekt={}){
    standard,
    aktiv:!!effekt.aktiv,
    name:effektName,
-   kategorie:normalisiereKategorie(effekt.kategorie),
+   kategorie:effektKategorie,
    beschreibung:effekt.beschreibung||"",
    quelle:effekt.quelle||"",
    angriffZuweisbar:!!effekt.angriffZuweisbar,
@@ -888,13 +893,10 @@ function normalisiereEffekt(effekt={}){
      (["heftiger-angriff","maechtige-magische-faenge"].includes(effekt.sonderlogik)?effekt.sonderlogik:""),
    nutzerBonus:{
      aktiv:!!effekt?.nutzerBonus?.aktiv,
-     // Commit 41.5: Die globale Nutzereingabe ist verbindlich +1 bis +10.
-     // Dadurch können alte Admin-Overrides mit max=5 die Auswahl nicht mehr zurücksetzen.
-     min:1,
-     max:10,
-     standard:Number.isFinite(Number(effekt?.nutzerBonus?.standard))
-       ?Math.max(1,Math.min(10,Math.trunc(Number(effekt.nutzerBonus.standard))))
-       :1
+     min:nutzerBonusMin,
+     max:nutzerBonusMax,
+     // Charakterwerte starten immer bei 0; sonstige Kategorien weiterhin bei +1.
+     standard:nutzerBonusStandard
    },
    stufenlogik,
    boni
@@ -1203,7 +1205,11 @@ async function ladeEffekte(){
    speichereBenutzerEffekte(benutzer);
 
    effekte=dedupliziereEffekte31([...standardGesamt,...benutzer]);
-   effekte.forEach(effekt=>effekt.aktiv=!!status[effekt.name]);
+   effekte.forEach(effekt=>{
+     effekt.aktiv=istCharakterwerteEffekt(effekt)?true:!!status[effekt.name];
+     if(istCharakterwerteEffekt(effekt)) status[effekt.name]=true;
+   });
+   speichereStatus(status);
 
    console.log("Effekte geladen:",effekte.length);
    baueKategorieFilter();
@@ -1216,6 +1222,7 @@ async function ladeEffekte(){
 
 const PF_EFFEKT_KATEGORIEN=[
  "Ausrüstung",
+ "Charakterwerte",
  "Kampf",
  "Klassenmerkmale",
  "Sonstige",
@@ -1225,6 +1232,10 @@ const PF_EFFEKT_KATEGORIEN=[
  "Zustände"
 ];
 
+function istCharakterwerteEffekt(effekt){
+ return normalisiereKategorie(effekt?.kategorie)==="Charakterwerte";
+}
+
 function normalisiereKategorie(kategorie){
  const wert=String(kategorie||"").trim();
  const alteBezeichnungen={
@@ -1233,6 +1244,14 @@ function normalisiereKategorie(kategorie){
    Sonstiges:"Sonstige"
  };
  return alteBezeichnungen[wert]||wert;
+}
+
+function kategorieFilterBezeichnung(kategorie){
+ const kurz={
+   "Klassenmerkmale":"Klassenmerk.",
+   "Volksmerkmale":"Volksmerk."
+ };
+ return kurz[kategorie]||kategorie;
 }
 
 function effektKategorien(){
@@ -1273,7 +1292,8 @@ function baueKategorieFilter(){
    checkbox.value=kategorie;
    checkbox.checked=aktiveKategorien.has(kategorie);
    const text=document.createElement("span");
-   text.textContent=kategorie;
+   text.textContent=kategorieFilterBezeichnung(kategorie);
+   text.title=kategorie;
    label.append(checkbox,text);
    container.appendChild(label);
  });
@@ -1347,24 +1367,27 @@ function aktualisiereEffektStufenAnzeige(effekt,container){
 function nutzerBonusWertFuerEffekt(effekt){
  const konfig=effekt?.nutzerBonus||{};
  const optionen=effektOptionenFuerCharakter(effekt?.id);
- const min=1;
- const max=10;
- const standard=Number.isFinite(Number(konfig.standard))
-   ?Math.max(min,Math.min(max,Number(konfig.standard)))
-   :min;
- const roh=Number(optionen.nutzerBonusWert);
- const wert=Number.isFinite(roh)?roh:standard;
- return Math.max(Math.min(wert,Math.max(min,max)),Math.min(min,max));
+ const istCharakterwerte=normalisiereKategorie(effekt?.kategorie)==="Charakterwerte";
+ const min=istCharakterwerte?-5:1;
+ const max=istCharakterwerte?17:20;
+ const standard=istCharakterwerte?0:1;
+ const roh=optionen.nutzerBonusWert;
+ const zahl=roh==="" || roh===null || typeof roh==="undefined"
+   ?standard
+   :Number(roh);
+ const wert=Number.isFinite(zahl)?zahl:standard;
+ return Math.max(min,Math.min(max,Math.trunc(wert)));
 }
 
 function setzeNutzerBonusWertFuerEffekt(effektId,wert){
  const effekt=findeEffekt(effektId);
  if(!effekt?.nutzerBonus?.aktiv) return false;
- const min=1;
- const max=10;
- const unten=min;
- const oben=max;
- const sicher=Math.max(unten,Math.min(oben,Math.trunc(Number(wert)||1)));
+ const istCharakterwerte=normalisiereKategorie(effekt.kategorie)==="Charakterwerte";
+ const min=istCharakterwerte?-5:1;
+ const max=istCharakterwerte?17:20;
+ const standard=istCharakterwerte?0:1;
+ const zahl=Number(wert);
+ const sicher=Math.max(min,Math.min(max,Math.trunc(Number.isFinite(zahl)?zahl:standard)));
  if(!setzeEffektOptionenFuerCharakter(effektId,{nutzerBonusWert:sicher})) return false;
 
  effekt.nutzerBonusWertAktuell=sicher;
@@ -1502,7 +1525,8 @@ function baueEffektliste(){
  effekte.sort((a,b)=>a.name.localeCompare(b.name,"de"));
 
  const gefilterteEffekte=effekte.filter(effekt=>{
-   effekt.aktiv=!!status[effekt.name];
+   effekt.aktiv=istCharakterwerteEffekt(effekt)?true:!!status[effekt.name];
+   if(istCharakterwerteEffekt(effekt)) status[effekt.name]=true;
 
    const passtZurSuche=!suchtext ||
      effekt.name.toLowerCase().includes(suchtext) ||
@@ -1525,8 +1549,20 @@ function baueEffektliste(){
 
    const cb=document.createElement("input");
    cb.type="checkbox";
-   cb.checked=effekt.aktiv;
+   const immerAktiv=istCharakterwerteEffekt(effekt);
+   cb.checked=immerAktiv?true:effekt.aktiv;
+   cb.disabled=immerAktiv;
+   if(immerAktiv){
+     cb.title="Effekte der Kategorie Charakterwerte sind immer aktiv.";
+   }
    cb.addEventListener("change",()=>{
+      if(immerAktiv){
+        cb.checked=true;
+        status[effekt.name]=true;
+        effekt.aktiv=true;
+        speichereStatus(status);
+        return;
+      }
       status[effekt.name]=cb.checked;
       speichereStatus(status);
       effekt.aktiv=cb.checked;
@@ -1594,8 +1630,9 @@ function baueEffektliste(){
      const label=document.createElement("label");
      label.appendChild(document.createTextNode("Bonus "));
      const select=document.createElement("select");
-     const min=1;
-     const max=10;
+     const istCharakterwerte=normalisiereKategorie(effekt.kategorie)==="Charakterwerte";
+     const min=istCharakterwerte?-5:1;
+     const max=istCharakterwerte?17:20;
      for(let wert=min;wert<=max;wert++){
        const option=document.createElement("option");
        option.value=String(wert);
@@ -1842,9 +1879,9 @@ function leseEditorFormular(){
    angriffZuweisbar:!!document.getElementById("effektAngriffZuweisbar")?.checked,
    nutzerBonus:{
      aktiv:!!document.getElementById("effektNutzerBonusAktiv")?.checked,
-     min:1,
-     max:10,
-     standard:1
+     min:(document.getElementById("effektKategorie")?.value==="Charakterwerte"?-5:1),
+     max:(document.getElementById("effektKategorie")?.value==="Charakterwerte"?17:20),
+     standard:(document.getElementById("effektKategorie")?.value==="Charakterwerte"?0:1)
    },
    stufenlogik:normalisiereStufenlogik(editorState.entwurf.stufenlogik),
    boni:editorState.entwurf.boni.map(normalisiereBonus)

@@ -509,7 +509,7 @@
 
         const gabHinweis = document.createElement("p");
         gabHinweis.className = "charakter-gab-hinweis";
-        gabHinweis.textContent = "GAB nur für GAB-abhängige Effekte. Wird nicht bei der Berechnung des Angriffswerts berücksichtigt.";
+        gabHinweis.textContent = "GAB-Wert hat Einfluss auf GAB-abhängige Effekte und beeinflusst deine Angriffswerte.";
         klassenBereich.appendChild(gabHinweis);
 
         const notiz = document.createElement("textarea");

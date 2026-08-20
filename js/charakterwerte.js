@@ -444,7 +444,9 @@
         folgeInfo.className="angriff-iterativ-info-41";
         const gab=typeof charakterGAB==="function"?charakterGAB(charakter):Number(charakter.gab||0);
         const anzahlIter=anzahlIterativeAngriffe(charakter);
-        folgeInfo.textContent=`GAB ${vorzeichen(gab)} → ${anzahlIter} Angriff${anzahlIter===1?"":"e"} mit −5-Schritten`;
+        folgeInfo.textContent=anzahlIter===1
+          ?`GAB ${vorzeichen(gab)} → 1 Angriff`
+          :`GAB ${vorzeichen(gab)} → ${anzahlIter} Angriffe mit −5-Schritten`;
         felder.appendChild(folgeInfo);
       }
 
