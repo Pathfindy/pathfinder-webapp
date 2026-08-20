@@ -397,6 +397,7 @@
     aktualisiereAktivenCharakterHinweis();
     baueEffektliste();
     if (typeof berechneWerte === "function") berechneWerte();
+    if (typeof window.aktualisiereVermoegenAnsicht === "function") window.aktualisiereVermoegenAnsicht();
     document.dispatchEvent(new CustomEvent("pf-charakter-importiert"));
   }
 

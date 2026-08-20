@@ -7,6 +7,7 @@
     { seite: "charaktere", button: "btnCharaktere" },
     { seite: "charakterwerte", button: "btnCharakterwerte" },
     { seite: "leben", button: "btnLeben" },
+    { seite: "vermoegen", button: "btnVermoegen" },
     { seite: "effekte", button: "btnEffekte" },
     { seite: "dashboard", button: "btnDashboard" },
     { seite: "admin", button: "btnAdmin" }

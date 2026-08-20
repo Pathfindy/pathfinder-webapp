@@ -226,6 +226,7 @@
       charaktere: "btnCharaktere",
       charakterwerte: "btnCharakterwerte",
       leben: "btnLeben",
+      vermoegen: "btnVermoegen",
       effekte: "btnEffekte",
       dashboard: "btnDashboard",
       admin: "btnAdmin"
@@ -235,7 +236,7 @@
 
   function initialisiereCommit21() {
     const nav = document.querySelector("nav");
-    ["btnCharaktere", "btnCharakterwerte", "btnLeben", "btnEffekte", "btnDashboard", "btnAdmin"]
+    ["btnCharaktere", "btnCharakterwerte", "btnLeben", "btnVermoegen", "btnEffekte", "btnDashboard", "btnAdmin"]
       .map(id => document.getElementById(id))
       .filter(Boolean)
       .forEach(button => nav?.appendChild(button));
@@ -250,6 +251,8 @@
       () => zeigeSeite("charakterwerte");
     document.getElementById("btnLeben").onclick =
       () => zeigeSeite("leben");
+    document.getElementById("btnVermoegen").onclick =
+      () => zeigeSeite("vermoegen");
     document.getElementById("btnEffekte").onclick =
       () => zeigeSeite("effekte");
     document.getElementById("btnDashboard").onclick =
