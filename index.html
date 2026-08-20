@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="css/commit29.css?v=39.8">
     <link rel="stylesheet" href="css/commit30.css?v=30">
     <link rel="stylesheet" href="css/leben.css?v=38">
+    <link rel="stylesheet" href="css/vermoegen.css?v=42">
     
     <meta name="theme-color" content="#1e3a5f">
 </head>
@@ -28,7 +29,7 @@
 
 <header>
 
-    <h1>Das azlantische Helferlein der Boni <span class="app-version-30">v0.41.5</span></h1>
+    <h1>Das azlantische Helferlein der Boni <span class="app-version-30">v0.42.0</span></h1>
 
 </header>
 
@@ -38,6 +39,7 @@
     <button id="btnEffekte">Effekte</button>
     <button id="btnCharakterwerte">Kampf</button>
     <button id="btnLeben">Leben</button>
+    <button id="btnVermoegen">Vermögen</button>
     <button id="btnCharaktere">Charaktere</button>
     <button id="btnAdmin">Admin</button>
 
@@ -280,6 +282,44 @@
         </section>
     </section>
 
+
+    <!-- ========================= -->
+    <!-- Vermögen                  -->
+    <!-- ========================= -->
+
+    <section id="vermoegen" class="page">
+        <div class="seitenkopf"><div><h2>Vermögen</h2></div></div>
+        <div class="vermoegen-bereich">
+            <section class="vermoegen-karte vermoegen-gesamt">
+                <label for="vermoegenGesamt">Gesamtvermögen (Goldmünzen)</label>
+                <output id="vermoegenGesamt" aria-live="polite">0</output>
+                <div id="vermoegenGesamtDetail" class="vermoegen-gesamt-detail">0 GM</div>
+            </section>
+
+            <section class="vermoegen-karte">
+                <div class="vermoegen-muenzen">
+                    <div class="vermoegen-muenze"><label for="vermoegenPlatin">Platinmünzen</label><div class="vermoegen-buchung"><button type="button" data-vermoegen-minus="platin" aria-label="Platinmünzen abziehen">−</button><input id="vermoegenPlatin" data-vermoegen-eingabe="platin" type="number" min="0" step="1" inputmode="numeric"><button type="button" data-vermoegen-plus="platin" aria-label="Platinmünzen hinzufügen">+</button></div></div>
+                    <div class="vermoegen-muenze"><label for="vermoegenGold">Goldmünzen</label><div class="vermoegen-buchung"><button type="button" data-vermoegen-minus="gold" aria-label="Goldmünzen abziehen">−</button><input id="vermoegenGold" data-vermoegen-eingabe="gold" type="number" min="0" step="1" inputmode="numeric"><button type="button" data-vermoegen-plus="gold" aria-label="Goldmünzen hinzufügen">+</button></div></div>
+                    <div class="vermoegen-muenze"><label for="vermoegenSilber">Silbermünzen</label><div class="vermoegen-buchung"><button type="button" data-vermoegen-minus="silber" aria-label="Silbermünzen abziehen">−</button><input id="vermoegenSilber" data-vermoegen-eingabe="silber" type="number" min="0" step="1" inputmode="numeric"><button type="button" data-vermoegen-plus="silber" aria-label="Silbermünzen hinzufügen">+</button></div></div>
+                    <div class="vermoegen-muenze"><label for="vermoegenKupfer">Kupfermünzen</label><div class="vermoegen-buchung"><button type="button" data-vermoegen-minus="kupfer" aria-label="Kupfermünzen abziehen">−</button><input id="vermoegenKupfer" data-vermoegen-eingabe="kupfer" type="number" min="0" step="1" inputmode="numeric"><button type="button" data-vermoegen-plus="kupfer" aria-label="Kupfermünzen hinzufügen">+</button></div></div>
+                </div>
+                <p class="vermoegen-hinweis">10 Kupfermünzen = 1 Silbermünze · 10 Silbermünzen = 1 Goldmünze · 10 Goldmünzen = 1 Platinmünze</p>
+            </section>
+
+            <section class="vermoegen-karte">
+                <div class="vermoegen-rechner-kopf"><h3>Vermögensrechner</h3><button type="button" id="btnVermoegenRechnerZeile">+ Betrag</button></div>
+                <div id="vermoegenRechnerZeilen" class="vermoegen-rechner-zeilen"></div>
+                <div class="vermoegen-rechner-fuss"><label for="vermoegenRechnerTeiler">Teilen durch</label><input id="vermoegenRechnerTeiler" type="number" min="1" max="999" step="1" value="1" inputmode="numeric"><output id="vermoegenRechnerErgebnis" class="vermoegen-rechner-ergebnis">0 GM</output></div>
+                <div class="vermoegen-rechner-aktionen"><button type="button" id="btnVermoegenRechnerPlus">Ergebnis zum Vermögen hinzufügen</button><button type="button" id="btnVermoegenRechnerMinus">Ergebnis vom Vermögen abziehen</button></div>
+            </section>
+
+            <section class="vermoegen-karte">
+                <label for="vermoegenNotiz"><strong>Notizen / andere Wertgegenstände</strong></label>
+                <textarea id="vermoegenNotiz" rows="5" placeholder="Edelsteine, Schmuck, Kunstgegenstände, Schuldscheine …"></textarea>
+            </section>
+        </div>
+    </section>
+
     <!-- ========================= -->
     <!-- Charaktere                -->
     <!-- ========================= -->
@@ -340,21 +380,22 @@
 
 </main>
 
-<script src="js/app.js?v=41.5"></script>
+<script src="js/app.js?v=42"></script>
 <script src="js/charakterwerte.js?v=41.1"></script>
 <script src="js/leben.js?v=38"></script>
+<script src="js/vermoegen.js?v=42"></script>
 <script src="js/filter.js"></script>
 <script src="js/berechnung.js?v=41.5"></script>
 <script src="js/makros.js"></script>
 <script src="js/speicher.js"></script>
-<script src="js/commit21.js?v=21.1"></script>
-<script src="js/commit22.js?v=41"></script>
+<script src="js/commit21.js?v=42"></script>
+<script src="js/commit22.js?v=42"></script>
 <script src="js/commit23.js?v=23"></script>
 <script src="js/commit24.js?v=30"></script>
 <script src="js/commit25.js?v=41.4"></script>
 <script src="js/commit26.js?v=36.1"></script>
 <script src="js/commit29.js?v=41.1"></script>
-<script src="js/commit41.js?v=41.5"></script>    
+<script src="js/commit41.js?v=42"></script>    
 
 <dialog id="effektDialog">
 <h3>Neuen Effekt anlegen</h3>
