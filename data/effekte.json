@@ -1,5 +1,37 @@
 [
   {
+    "id": "standard-admin-e53d227f-a0a8-48ad-ae63-b813fb49274c",
+    "name": "Amulett der natürlichen Rüstung",
+    "kategorie": "Ausrüstung",
+    "aktiv": false,
+    "beschreibung": "AMULETT DER NATÜRLICHEN RÜSTUNG\n\nDieses Amulett besteht in der Regel aus magisch konserviertem Fell eines Monsters \noder anderer natürlicher Rüstung wie Knochen, Horn, Chitin oder Schuppen. Es härtet \nden Leib des Trägers ab und verleiht ihm einen Verbesserungsbonus von +1 bis +5 auf \nseine natürliche Rüstung.\n\nPreis variiert\nBonus +1 2.000 GM\nBonus +2 8.000 GM\nBonus +3 18.000 GM\nBonus +4 32.000 GM\nBonus +5 50.000 GM\n\nAURA Schwache Verwandlung ZS 5 GEWICHT -",
+    "quelle": "ARK S.230",
+    "angriffZuweisbar": false,
+    "nutzerBonus": {
+      "aktiv": true,
+      "min": 1,
+      "max": 20,
+      "standard": 1
+    },
+    "stufenlogik": {
+      "aktiv": false,
+      "bezug": "charakter",
+      "klasse": "",
+      "bereiche": []
+    },
+    "boni": [
+      {
+        "ziel": "Rüstungsklasse",
+        "bonusart": "Natürliche Rüstung",
+        "wert": 1,
+        "wertQuelle": "fest",
+        "stufenFaktor": 1
+      }
+    ],
+    "gebiet": "selbst",
+    "dauer": "getragen"
+  },
+  {
     "id": "standard-admin-19bb9efe-70be-40bf-b98c-515efcd374e7",
     "name": "Andere Schützen",
     "kategorie": "Zauber",
@@ -10,7 +42,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -63,7 +95,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -102,7 +134,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -134,7 +166,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -199,7 +231,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -231,7 +263,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -263,7 +295,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -316,7 +348,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -355,7 +387,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -387,7 +419,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -409,6 +441,30 @@
     "dauer": "unbegrenzt"
   },
   {
+    "id": "standard-admin-5d6e3dc4-6926-4df3-8fdc-f4d7f8182cf5",
+    "name": "CH: Charisma (Attribut)",
+    "kategorie": "Charakterwerte",
+    "aktiv": false,
+    "beschreibung": "",
+    "quelle": "",
+    "angriffZuweisbar": false,
+    "nutzerBonus": {
+      "aktiv": true,
+      "min": -5,
+      "max": 17,
+      "standard": 0
+    },
+    "stufenlogik": {
+      "aktiv": false,
+      "bezug": "charakter",
+      "klasse": "",
+      "bereiche": []
+    },
+    "boni": [],
+    "gebiet": "",
+    "dauer": ""
+  },
+  {
     "id": "standard-admin-73cd1beb-c64e-449c-a225-3603b93bde5a",
     "name": "Defensiv kämpfen",
     "kategorie": "Kampf",
@@ -419,7 +475,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -472,7 +528,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -539,7 +595,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -571,7 +627,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -603,7 +659,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -677,7 +733,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -744,7 +800,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -811,7 +867,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -879,7 +935,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -911,7 +967,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -950,7 +1006,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -1133,6 +1189,59 @@
     "dauer": ""
   },
   {
+    "id": "standard-admin-f4d458c3-e477-42f6-8f04-a35920f473ba",
+    "name": "GE: Geschicklichkeit (Attribut)",
+    "kategorie": "Charakterwerte",
+    "aktiv": false,
+    "beschreibung": "",
+    "quelle": "",
+    "angriffZuweisbar": false,
+    "nutzerBonus": {
+      "aktiv": true,
+      "min": -5,
+      "max": 17,
+      "standard": 0
+    },
+    "stufenlogik": {
+      "aktiv": false,
+      "bezug": "charakter",
+      "klasse": "",
+      "bereiche": []
+    },
+    "boni": [
+      {
+        "ziel": "Angriff Fern",
+        "bonusart": "Modifikator Attribut",
+        "wert": 1,
+        "wertQuelle": "fest",
+        "stufenFaktor": 1
+      },
+      {
+        "ziel": "Rüstungsklasse",
+        "bonusart": "Modifikator Attribut",
+        "wert": 1,
+        "wertQuelle": "fest",
+        "stufenFaktor": 1
+      },
+      {
+        "ziel": "KMV",
+        "bonusart": "Modifikator Attribut",
+        "wert": 1,
+        "wertQuelle": "fest",
+        "stufenFaktor": 1
+      },
+      {
+        "ziel": "RW-Reflex",
+        "bonusart": "Modifikator Attribut",
+        "wert": 1,
+        "wertQuelle": "fest",
+        "stufenFaktor": 1
+      }
+    ],
+    "gebiet": "",
+    "dauer": ""
+  },
+  {
     "id": 2,
     "name": "Gebet",
     "kategorie": "Zauber",
@@ -1143,7 +1252,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -1224,7 +1333,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -1270,7 +1379,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -1309,7 +1418,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -1369,7 +1478,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -1401,7 +1510,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -1456,7 +1565,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -1488,7 +1597,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -1548,7 +1657,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -1617,7 +1726,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -1679,7 +1788,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -1776,7 +1885,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -1808,7 +1917,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -1896,7 +2005,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -1963,7 +2072,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -2040,7 +2149,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -2093,7 +2202,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -2160,7 +2269,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -2227,7 +2336,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -2259,7 +2368,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -2291,7 +2400,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -2320,6 +2429,30 @@
     "dauer": ""
   },
   {
+    "id": "standard-admin-5b781d77-ec60-4aa1-9eb5-3e54427b957d",
+    "name": "IN: Intelligenz (Attribut)",
+    "kategorie": "Charakterwerte",
+    "aktiv": false,
+    "beschreibung": "",
+    "quelle": "",
+    "angriffZuweisbar": false,
+    "nutzerBonus": {
+      "aktiv": true,
+      "min": -5,
+      "max": 17,
+      "standard": 0
+    },
+    "stufenlogik": {
+      "aktiv": false,
+      "bezug": "charakter",
+      "klasse": "",
+      "bereiche": []
+    },
+    "boni": [],
+    "gebiet": "",
+    "dauer": ""
+  },
+  {
     "id": "standard-admin-8c00c613-593c-4e88-9ef9-6b1bc291081f",
     "name": "Kampf mit improvisierter Waffe",
     "kategorie": "Kampf",
@@ -2330,7 +2463,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -2362,7 +2495,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -2433,7 +2566,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -2471,7 +2604,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -2531,7 +2664,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -2584,7 +2717,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -2613,6 +2746,38 @@
     "dauer": ""
   },
   {
+    "id": "standard-admin-6d4e5031-fe33-4136-8b58-b38cc7d60ed5",
+    "name": "KO: Konstitution (Attribut)",
+    "kategorie": "Charakterwerte",
+    "aktiv": false,
+    "beschreibung": "",
+    "quelle": "",
+    "angriffZuweisbar": false,
+    "nutzerBonus": {
+      "aktiv": true,
+      "min": -5,
+      "max": 17,
+      "standard": 0
+    },
+    "stufenlogik": {
+      "aktiv": false,
+      "bezug": "charakter",
+      "klasse": "",
+      "bereiche": []
+    },
+    "boni": [
+      {
+        "ziel": "RW-Zähigkeit",
+        "bonusart": "Modifikator Attribut",
+        "wert": 1,
+        "wertQuelle": "fest",
+        "stufenFaktor": 1
+      }
+    ],
+    "gebiet": "",
+    "dauer": ""
+  },
+  {
     "id": "standard-admin-216039b2-705a-45b6-aac7-fecc4e830b95",
     "name": "Kränkelnd",
     "kategorie": "Zustände",
@@ -2623,7 +2788,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -2697,7 +2862,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -2743,7 +2908,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -2796,7 +2961,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -2849,7 +3014,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -2944,7 +3109,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -3016,7 +3181,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -3069,7 +3234,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -3122,7 +3287,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -3154,7 +3319,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -3183,6 +3348,38 @@
     "dauer": "1 Min./Stufe"
   },
   {
+    "id": "standard-admin-0f507685-0b6e-4a24-abe5-fbfe49b3e8a1",
+    "name": "Natürliche Rüstung (Tiergefährte, Eidolon, ...)",
+    "kategorie": "Klassenmerkmale",
+    "aktiv": false,
+    "beschreibung": "gem. Tabelle Tiergefährten oder Eidolon oder ...",
+    "quelle": "",
+    "angriffZuweisbar": false,
+    "nutzerBonus": {
+      "aktiv": true,
+      "min": 1,
+      "max": 20,
+      "standard": 1
+    },
+    "stufenlogik": {
+      "aktiv": false,
+      "bezug": "charakter",
+      "klasse": "",
+      "bereiche": []
+    },
+    "boni": [
+      {
+        "ziel": "Rüstungsklasse",
+        "bonusart": "Namenlos",
+        "wert": 1,
+        "wertQuelle": "fest",
+        "stufenFaktor": 1
+      }
+    ],
+    "gebiet": "selbst",
+    "dauer": "unbegrenzt"
+  },
+  {
     "id": "standard-admin-1d59b687-8648-4dfd-aa13-4259ff925874",
     "name": "Pantheros-Segen",
     "kategorie": "Sonstige",
@@ -3193,7 +3390,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -3239,7 +3436,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -3299,7 +3496,7 @@
     "nutzerBonus": {
       "aktiv": true,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -3345,7 +3542,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -3398,7 +3595,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -3441,6 +3638,38 @@
     "dauer": "Nach Angabe SL"
   },
   {
+    "id": "standard-admin-24c8861a-30de-4cf7-b9e5-2eb169d84825",
+    "name": "Rüstungen (nicht und magisch)",
+    "kategorie": "Ausrüstung",
+    "aktiv": false,
+    "beschreibung": "Tabelle 3-1: Preise von Rüstungen und Schilden nach Bonus\n\nRüstungs- oder Schildbonus - Grundpreis\n +1 - 1.000 GM\n +2 - 4.000 GM\n +3 - 9.000 GM\n +4 - 16.000 GM\n +5 - 25.000 GM\n +6* - 36.000 GM\n +7* - 49.000 GM\n +8* - 64.000 GM\n +9* - 81.000 GM\n +10* - 100.000 GM\n\n* Eine Rüstung oder ein Schild kann niemals einen Verbesserungsbo-\nnus besitzen, der einen Wert von +5 übersteigt. Nutze diese Zeilen nur \num den Preis zu bestimmen, wenn besondere Eigenschaften, die wie \nzusätzliche Boni gelten, hinzuaddiert werden.",
+    "quelle": "ARK S.9 + 115",
+    "angriffZuweisbar": false,
+    "nutzerBonus": {
+      "aktiv": true,
+      "min": 1,
+      "max": 20,
+      "standard": 1
+    },
+    "stufenlogik": {
+      "aktiv": false,
+      "bezug": "charakter",
+      "klasse": "",
+      "bereiche": []
+    },
+    "boni": [
+      {
+        "ziel": "Rüstungsklasse",
+        "bonusart": "Rüstung",
+        "wert": 1,
+        "wertQuelle": "fest",
+        "stufenFaktor": 1
+      }
+    ],
+    "gebiet": "selbst",
+    "dauer": "getragen"
+  },
+  {
     "id": "standard-admin-11cf5018-7753-41e4-b670-bfb644036ce5",
     "name": "Rüstungsarmschienen",
     "kategorie": "Ausrüstung",
@@ -3451,7 +3680,7 @@
     "nutzerBonus": {
       "aktiv": true,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -3483,7 +3712,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -3515,7 +3744,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -3558,6 +3787,38 @@
     "dauer": "1 Min./Stufe"
   },
   {
+    "id": "standard-admin-af53d6a3-2c67-4d33-948d-cda80983c14f",
+    "name": "Schilde (nicht und magisch)",
+    "kategorie": "Ausrüstung",
+    "aktiv": false,
+    "beschreibung": "Tabelle 3-1: Preise von Rüstungen und Schilden nach Bonus\n\nRüstungs- oder Schildbonus - Grundpreis\n +1 - 1.000 GM\n +2 - 4.000 GM\n +3 - 9.000 GM\n +4 - 16.000 GM\n +5 - 25.000 GM\n +6* - 36.000 GM\n +7* - 49.000 GM\n +8* - 64.000 GM\n +9* - 81.000 GM\n +10* - 100.000 GM\n\n* Eine Rüstung oder ein Schild kann niemals einen Verbesserungsbo-\nnus besitzen, der einen Wert von +5 übersteigt. Nutze diese Zeilen nur \num den Preis zu bestimmen, wenn besondere Eigenschaften, die wie \nzusätzliche Boni gelten, hinzuaddiert werden.",
+    "quelle": "ARK S.9 + 115",
+    "angriffZuweisbar": false,
+    "nutzerBonus": {
+      "aktiv": true,
+      "min": 1,
+      "max": 20,
+      "standard": 1
+    },
+    "stufenlogik": {
+      "aktiv": false,
+      "bezug": "charakter",
+      "klasse": "",
+      "bereiche": []
+    },
+    "boni": [
+      {
+        "ziel": "Rüstungsklasse",
+        "bonusart": "Schild",
+        "wert": 1,
+        "wertQuelle": "fest",
+        "stufenFaktor": 1
+      }
+    ],
+    "gebiet": "",
+    "dauer": ""
+  },
+  {
     "id": "standard-admin-01de7eda-6fef-4a1c-819b-51fe55eb90b5",
     "name": "Schnelles Schießen",
     "kategorie": "Talente",
@@ -3568,7 +3829,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -3600,7 +3861,7 @@
     "nutzerBonus": {
       "aktiv": true,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -3639,7 +3900,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -3745,7 +4006,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -3798,7 +4059,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -3837,7 +4098,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -3895,7 +4156,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -3941,7 +4202,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -3987,7 +4248,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -4054,7 +4315,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -4107,7 +4368,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -4160,7 +4421,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -4193,13 +4454,13 @@
     "name": "Waffe (Meisterarbeit)",
     "kategorie": "Ausrüstung",
     "aktiv": false,
-    "beschreibung": "Nah- oder Fernkampfwaffe",
-    "quelle": "GRW ab S.142",
+    "beschreibung": "MEISTERARBEITEN VON WAFFEN\nEine Waffe [Meisterarbeit] ist eine qualitativ hochwertige Ausführung einer gewöhnlichen Waffe. Wird sie eingesetzt, verleiht sie einen Verbesserungsbonus von +1 auf alle Angriffswürfe. Nachdem eine Waffe hergestellt wurde, kann man ihr die Eigenschaft Meisterarbeit nicht ohne den Einsatz von Magie verleihen, sondern sie muss bereits als Meisterarbeit angefertigt werden (siehe die Fertigkeit Handwerk im Grundregelwerk, S. 95). Der Zauber Meisterarbeit (Ausbauregeln: Magie) verwandelt eine Waffe, \ndie keine Meisterarbeit ist, in eine Waffe [Meisterarbeit]. Mit der Eigenschaft Meisterarbeit erhöht sich der Preis einer gewöhnlichen Waffe um 300 GM (oder um 6 GM für einen einzelnen Schuss Munition). Wird die Eigenschaft Meisterarbeit einer Doppelwaffe hinzugefügt, so gilt dieser Aufschlag jeweils für beide Waffenenden (zusammen also 600 GM). Wenn Munition [Meisterarbeit] verwendet wird, gilt sie danach als beschä-\ndigt (und effektiv zerstört). Der Verbesserungsbonus von Munition [Meisterarbeit] ist nicht mit dem Verbesserungsbonus der Schusswaffe kumulativ, die sie verschießt.\nAlle magischen Waffen gelten automatisch als Meisterarbeiten. Der Verbesserungsbonus durch die Eigenschaft Meisterarbeit ist nicht mit dem Verbesserungsbonus durch die Magie einer Waffe kumulativ. Obwohl einige Arten von Rüstungen und Schilden als Waffen eingesetzt werden können, kann man keine Meisterarbeit eines \nGegenstandes herstellen, der Verbesserungsboni auf Angriffswürfe verleiht. Stattdessen verringern als Meisterarbeiten gefertigte Rüstungen und Schilde den Rüstungsmalus.",
+    "quelle": "ARK S.40",
     "angriffZuweisbar": true,
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -4232,13 +4493,66 @@
     "name": "Waffe 1 (Magisch)",
     "kategorie": "Ausrüstung",
     "aktiv": false,
-    "beschreibung": "Nah- oder Fernkampfwaffe",
-    "quelle": "GRW ab S.142",
+    "beschreibung": "Tabelle 3-9 Preise von Waffen nach Bonus\nWaffenbonus - Grundpreis\n +1 - 2.000 GM\n +2 - 8.000 GM\n +3 - 18.000 GM\n +4 - 32.000 GM\n +5 - 50.000 GM\n +6 (2) - 72.000 GM\n +7 (2) - 98.000 GM\n +8 (2) - 128.000 GM\n +9 (2) - 162.000 GM\n +10 (2) - 200.000 GM\n\n(1) Dieser Preis gilt auch für 50 Pfeile, Bolzen, Schleuderkugeln, Kugeln \noder Feuerwaffenmunition.\n(2) Eine Waffe kann keinen Verbesserungsbonus besitzen, der einen \nWert von +5 übersteigt. Benutze diese Einträge, um den Preis für eine \nWaffe zu bestimmen, sobald sie besondere Eigenschaften erhält.",
+    "quelle": "ARK S.138",
     "angriffZuweisbar": true,
     "nutzerBonus": {
       "aktiv": true,
       "min": 1,
-      "max": 10,
+      "max": 20,
+      "standard": 1
+    },
+    "stufenlogik": {
+      "aktiv": false,
+      "bezug": "charakter",
+      "klasse": "",
+      "bereiche": []
+    },
+    "boni": [
+      {
+        "ziel": "Angriff Nah",
+        "bonusart": "Namenlos",
+        "wert": 1,
+        "wertQuelle": "fest",
+        "stufenFaktor": 1
+      },
+      {
+        "ziel": "Angriff Fern",
+        "bonusart": "Namenlos",
+        "wert": 1,
+        "wertQuelle": "fest",
+        "stufenFaktor": 1
+      },
+      {
+        "ziel": "Schaden Nah",
+        "bonusart": "Namenlos",
+        "wert": 1,
+        "wertQuelle": "fest",
+        "stufenFaktor": 1
+      },
+      {
+        "ziel": "Schaden Fern",
+        "bonusart": "Namenlos",
+        "wert": 1,
+        "wertQuelle": "fest",
+        "stufenFaktor": 1
+      }
+    ],
+    "gebiet": "selbst",
+    "dauer": "getragen"
+  },
+  {
+    "id": "standard-admin-47bb89b6-fd37-444f-a186-3f0200cf3f68",
+    "name": "Waffe 2 (Magisch)",
+    "kategorie": "Ausrüstung",
+    "aktiv": false,
+    "beschreibung": "Tabelle 3-9 Preise von Waffen nach Bonus\nWaffenbonus - Grundpreis\n +1 - 2.000 GM\n +2 - 8.000 GM\n +3 - 18.000 GM\n +4 - 32.000 GM\n +5 - 50.000 GM\n +6 (2) - 72.000 GM\n +7 (2) - 98.000 GM\n +8 (2) - 128.000 GM\n +9 (2) - 162.000 GM\n +10 (2) - 200.000 GM\n\n(1) Dieser Preis gilt auch für 50 Pfeile, Bolzen, Schleuderkugeln, Kugeln \noder Feuerwaffenmunition.\n(2) Eine Waffe kann keinen Verbesserungsbonus besitzen, der einen \nWert von +5 übersteigt. Benutze diese Einträge, um den Preis für eine \nWaffe zu bestimmen, sobald sie besondere Eigenschaften erhält.",
+    "quelle": "ARK S. 138",
+    "angriffZuweisbar": true,
+    "nutzerBonus": {
+      "aktiv": true,
+      "min": 1,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -4291,7 +4605,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -4330,7 +4644,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -4369,7 +4683,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -4408,7 +4722,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -4447,7 +4761,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -4486,7 +4800,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -4525,7 +4839,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -4599,7 +4913,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -4668,7 +4982,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -4732,7 +5046,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -4781,6 +5095,38 @@
     "dauer": "unbegrenzt"
   },
   {
+    "id": "standard-admin-ecb36aca-0f07-4e85-a616-cce6541ce286",
+    "name": "WE: Weisheit (Attribut)",
+    "kategorie": "Charakterwerte",
+    "aktiv": false,
+    "beschreibung": "",
+    "quelle": "",
+    "angriffZuweisbar": false,
+    "nutzerBonus": {
+      "aktiv": true,
+      "min": -5,
+      "max": 17,
+      "standard": 0
+    },
+    "stufenlogik": {
+      "aktiv": false,
+      "bezug": "charakter",
+      "klasse": "",
+      "bereiche": []
+    },
+    "boni": [
+      {
+        "ziel": "RW-Wille",
+        "bonusart": "Modifikator Attribut",
+        "wert": 1,
+        "wertQuelle": "fest",
+        "stufenFaktor": 1
+      }
+    ],
+    "gebiet": "",
+    "dauer": ""
+  },
+  {
     "id": "standard-admin-a7a742e2-bebf-4a78-9b22-6dcb4cc6ffc2",
     "name": "Weisheit der Eule (+4 WE)",
     "kategorie": "Zauber",
@@ -4791,7 +5137,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -4823,7 +5169,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -4890,7 +5236,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -4922,7 +5268,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
@@ -4954,7 +5300,7 @@
     "nutzerBonus": {
       "aktiv": false,
       "min": 1,
-      "max": 10,
+      "max": 20,
       "standard": 1
     },
     "stufenlogik": {
