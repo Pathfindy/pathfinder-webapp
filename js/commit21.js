@@ -108,10 +108,22 @@
     if (dauer) dauer.value = editorState.entwurf?.dauer || "";
   };
 
+  // Commit 42.6:
+  // Commit 21 überschreibt den Bonus-Editor nach app.js. Daher muss die
+  // Wertquellen-/Faktor-Logik hier ebenfalls vollständig enthalten sein.
   rendereBonusEditor = function () {
     const container = document.getElementById("bonusContainer");
     if (!container || !editorState.entwurf) return;
     container.innerHTML = "";
+
+    const kopf = document.createElement("div");
+    kopf.className = "bonus-zeile bonus-zeile-kopf-425";
+    ["Ziel", "Bonusart", "Wertquelle", "Faktor", "Wert", ""].forEach(text => {
+      const span = document.createElement("span");
+      span.textContent = text;
+      kopf.appendChild(span);
+    });
+    container.appendChild(kopf);
 
     if (editorState.entwurf.boni.length === 0) {
       const hinweis = document.createElement("p");
@@ -138,11 +150,70 @@
       bonusart.addEventListener("change", event =>
         aktualisiereBonus(index, "bonusart", event.target.value));
 
+      const wertQuelle = document.createElement("select");
+      wertQuelle.className = "bonus-wertquelle";
+      wertQuelle.title =
+        "Fest = eingetragener Wert; Stufenwert = Wert aus der Stufen-/GAB-Logik";
+      wertQuelle.setAttribute("aria-label", `Wertquelle der Bonuszeile ${index + 1}`);
+      [["fest", "Fest"], ["stufenwert", "Stufenwert"]].forEach(([value, text]) => {
+        const option = document.createElement("option");
+        option.value = value;
+        option.textContent = text;
+        option.selected = (bonus.wertQuelle || "fest") === value;
+        if (value === "stufenwert" && !editorState.entwurf.stufenlogik?.aktiv) {
+          option.disabled = true;
+        }
+        wertQuelle.appendChild(option);
+      });
+      wertQuelle.addEventListener("change", event => {
+        const neueQuelle = event.target.value;
+        aktualisiereBonus(index, "wertQuelle", neueQuelle);
+        if (
+          neueQuelle === "stufenwert" &&
+          Number(editorState.entwurf.boni[index].wert) === 0
+        ) {
+          aktualisiereBonus(index, "wert", 1);
+        }
+        rendereBonusEditor();
+      });
+
+      const faktor = document.createElement("input");
+      faktor.type = "number";
+      faktor.min = "-10";
+      faktor.max = "10";
+      faktor.step = "1";
+      faktor.className = "bonus-stufenfaktor";
+      faktor.value = String(
+        Number.isFinite(Number(bonus.stufenFaktor)) ? bonus.stufenFaktor : 1
+      );
+      faktor.title = "Faktor für den Stufenwert, z. B. -1, +1, +2 oder +3";
+      faktor.setAttribute("aria-label", `Stufenfaktor der Bonuszeile ${index + 1}`);
+      faktor.disabled = bonus.wertQuelle !== "stufenwert";
+      faktor.addEventListener("change", event => {
+        const faktorWert = Math.max(
+          -10,
+          Math.min(10, Math.trunc(Number(event.target.value) || 0))
+        );
+        event.target.value = String(faktorWert);
+        aktualisiereBonus(index, "stufenFaktor", faktorWert);
+      });
+
       const wert = document.createElement("select");
       wert.setAttribute("aria-label", `Wert der Bonuszeile ${index + 1}`);
-      wert.append(...erzeugeOptionen(PF_BONUSWERTE, bonus.wert));
-      wert.addEventListener("change", event =>
-        aktualisiereBonus(index, "wert", event.target.value));
+      if (bonus.wertQuelle === "stufenwert") {
+        const option = document.createElement("option");
+        option.value = String(bonus.wert ?? 1);
+        option.textContent =
+          Number(bonus.wert) < 0 ? "Stufenwert (−)" : "Stufenwert (+)";
+        wert.appendChild(option);
+        wert.disabled = true;
+        wert.title =
+          "Die Höhe kommt aus der Stufen-/GAB-Logik. Das Vorzeichen richtet sich nach dem Grundwert.";
+      } else {
+        wert.append(...erzeugeOptionen(PF_BONUSWERTE, bonus.wert));
+        wert.addEventListener("change", event =>
+          aktualisiereBonus(index, "wert", event.target.value));
+      }
 
       const entfernen = document.createElement("button");
       entfernen.type = "button";
@@ -151,7 +222,7 @@
       entfernen.setAttribute("aria-label", `Bonuszeile ${index + 1} löschen`);
       entfernen.addEventListener("click", () => entferneBonuszeile(index));
 
-      zeile.append(ziel, bonusart, wert, entfernen);
+      zeile.append(ziel, bonusart, wertQuelle, faktor, wert, entfernen);
       container.appendChild(zeile);
     });
   };
