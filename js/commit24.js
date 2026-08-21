@@ -123,54 +123,11 @@
     });
   }
 
-  rendereBonusEditor = function () {
-    const container = document.getElementById("bonusContainer");
-    if (!container || !editorState.entwurf) return;
-    container.innerHTML = "";
+  // Commit 42.8:
+  // Kein eigener Bonus-Editor mehr in Commit 24.
+  // Die zentrale/aktuelle Implementierung aus app.js + commit21.js bleibt wirksam,
+  // damit Wertquelle (Fest/Stufenwert) und Faktor nicht wieder überschrieben werden.
 
-    if (editorState.entwurf.boni.length === 0) {
-      const hinweis = document.createElement("p");
-      hinweis.className = "bonus-leer";
-      hinweis.textContent = "Noch keine Bonuszeile angelegt.";
-      container.appendChild(hinweis);
-      return;
-    }
-
-    editorState.entwurf.boni.forEach((bonus, index) => {
-      const zeile = document.createElement("div");
-      zeile.className = "bonus-zeile";
-
-      const ziel = document.createElement("select");
-      ziel.setAttribute("aria-label", `Ziel der Bonuszeile ${index + 1}`);
-      ziel.append(...erzeugeOptionen24(ZIELE_24, bonus.ziel));
-      ziel.addEventListener("change", event =>
-        aktualisiereBonus(index, "ziel", event.target.value));
-
-      const bonusart = document.createElement("select");
-      bonusart.setAttribute("aria-label", `Bonusart der Bonuszeile ${index + 1}`);
-      bonusart.append(...erzeugeOptionen24(BONUSARTEN_24, normalisiereBonusart(bonus.bonusart)));
-      bonusart.addEventListener("change", event =>
-        aktualisiereBonus(index, "bonusart", event.target.value));
-
-      const wert = document.createElement("select");
-      wert.setAttribute("aria-label", `Wert der Bonuszeile ${index + 1}`);
-      wert.append(...erzeugeOptionen(PF_BONUSWERTE, bonus.wert));
-      wert.addEventListener("change", event =>
-        aktualisiereBonus(index, "wert", event.target.value));
-
-      const entfernen = document.createElement("button");
-      entfernen.type = "button";
-      entfernen.className = "icon-button bonus-entfernen";
-      entfernen.textContent = "🗑";
-      entfernen.setAttribute("aria-label", `Bonuszeile ${index + 1} löschen`);
-      entfernen.addEventListener("click", () => entferneBonuszeile(index));
-
-      zeile.append(ziel, bonusart, wert, entfernen);
-      container.appendChild(zeile);
-    });
-
-    ergaenzeBeruehrung();
-  };
 
   function exportiereCharakter24() {
     const charakter = aktiverCharakter();
