@@ -713,3 +713,41 @@ nav {
   .effekt-angriffsziele-41{align-items:flex-start}
   .effekt-angriffsziel-option-41{padding:.14rem .28rem;font-size:.72rem}
 }
+
+
+/* Commit 42.5: Wertquelle im Bonus-Editor klar sichtbar */
+.bonus-zeile-kopf-425{
+  margin-bottom:4px;
+  padding:0 2px;
+  background:transparent;
+  border:0;
+  color:#5b6674;
+  font-size:.7rem;
+  font-weight:700;
+}
+.bonus-zeile-kopf-425 span{
+  min-width:0;
+}
+.bonus-editor-hinweis-425{
+  margin:0 0 8px;
+  padding:7px 9px;
+  border-radius:7px;
+  background:#eef3f8;
+  color:#4d5d70;
+  font-size:.76rem;
+  line-height:1.35;
+}
+.bonus-wertquelle{
+  font-weight:700;
+}
+@media(max-width:650px){
+  .bonus-zeile-kopf-425{display:none}
+  .bonus-zeile:not(.bonus-zeile-kopf-425){
+    position:relative;
+    padding-top:4px;
+  }
+  .bonus-zeile:not(.bonus-zeile-kopf-425) .bonus-wertquelle{
+    border-color:#6f8fb2;
+    background:#f4f8fc;
+  }
+}
