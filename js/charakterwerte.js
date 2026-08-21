@@ -38,6 +38,7 @@
       art: angriff.art === "Fern" ? "Fern" : "Nah",
       modus:angriff.modus==="iterativ"?"iterativ":"einzeln",
       grundAngriff: ganzeZahl(angriff.grundAngriff, -999, 999),
+      waffenfinesse: !!angriff.waffenfinesse,
       wuerfelAnzahl: ganzeZahl(angriff.wuerfelAnzahl, 0, 20),
       wuerfelSeiten,
       schadenModifikator: optionaleGanzeZahl(angriff.schadenModifikator, -999, 999),
@@ -122,9 +123,28 @@
       : {};
   }
 
-  function angriffsBonus(angriff, boni = aktuelleBonuswerte()) {
+  function istAttributEffekt(effekt, name) {
+    return !!effekt && effekt.aktiv && String(effekt.name || "").trim() === name;
+  }
+
+  function attributAngriffsBonus(effektName, ziel, angriffsIndex) {
+    if (typeof effekte === "undefined" || typeof berechneBonusErgebnisFuerAngriff !== "function") return 0;
+    const ausgewaehlt = effekte.filter(effekt => istAttributEffekt(effekt, effektName));
+    if (!ausgewaehlt.length) return 0;
+    const ergebnis = berechneBonusErgebnisFuerAngriff(ausgewaehlt, angriffsIndex);
+    return Number(ergebnis[ziel] ?? 0);
+  }
+
+  function angriffsBonus(angriff, boni = aktuelleBonuswerte(), angriffsIndex = 0) {
     const ziel = angriff.art === "Fern" ? "Angriff Fern" : "Angriff Nah";
-    return Number(boni[ziel] ?? 0);
+    let gesamt = Number(boni[ziel] ?? 0);
+
+    if (angriff.waffenfinesse) {
+      const staerkeNah = attributAngriffsBonus("ST: Stärke (Attribut)", "Angriff Nah", angriffsIndex);
+      const geschickFern = attributAngriffsBonus("GE: Geschicklichkeit (Attribut)", "Angriff Fern", angriffsIndex);
+      gesamt = gesamt - staerkeNah + geschickFern;
+    }
+    return gesamt;
   }
 
   function schadenBonus(angriff, boni = aktuelleBonuswerte()) {
@@ -327,7 +347,7 @@
 
       const ergebnis = document.createElement("div");
       ergebnis.className = "angriff-ergebnis";
-      const gesamtAngriff = angriff.grundAngriff + angriffsBonus(angriff, boni);
+      const gesamtAngriff = angriff.grundAngriff + angriffsBonus(angriff, boni, index);
       const folge=angriffsfolge(angriff,charakter,gesamtAngriff);
       const angriffsText=formatiereAngriffsfolge(folge);
       ergebnis.innerHTML = `
@@ -438,6 +458,21 @@
       schadenLabel.appendChild(schaden);
 
       felder.append(modusLabel, artLabel, grundLabel, wuerfelLabel, schadenLabel);
+
+      const finesseLabel=document.createElement("label");
+      finesseLabel.className="angriff-waffenfinesse-43";
+      const finesse=document.createElement("input");
+      finesse.type="checkbox";
+      finesse.checked=!!angriff.waffenfinesse;
+      const finesseText=document.createElement("span");
+      finesseText.textContent="Waffenfinesse – GE statt ST für Angriff";
+      finesseLabel.append(finesse,finesseText);
+      finesse.addEventListener("change",()=>{
+        angriff.waffenfinesse=finesse.checked;
+        speichereCharaktere();
+        aktualisiereAngriffeAnsicht();
+      });
+      felder.appendChild(finesseLabel);
 
       if(angriff.modus==="iterativ"){
         const folgeInfo=document.createElement("div");

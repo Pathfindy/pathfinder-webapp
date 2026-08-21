@@ -131,6 +131,7 @@
         ...basis.kampfwerte,
         rk: ganzeZahl(kampfwerteQuelle.rk ?? basis.kampfwerte?.rk),
         kmb: ganzeZahl(kampfwerteQuelle.kmb ?? basis.kampfwerte?.kmb),
+        flinkeManoever: !!(kampfwerteQuelle.flinkeManoever ?? basis.kampfwerte?.flinkeManoever),
         kmv: ganzeZahl(kampfwerteQuelle.kmv ?? basis.kampfwerte?.kmv),
         notizen: {
           ...(basis.kampfwerte?.notizen || {}),
@@ -187,6 +188,27 @@
     return ganzeZahl(ergebnis[ziel] || 0);
   }
 
+  function attributEffektBonus26(effektName, ziel) {
+    if (typeof berechneBonusErgebnis !== "function" || typeof effekte === "undefined") return 0;
+    const liste=effekte.filter(effekt =>
+      effekt?.aktiv && String(effekt.name || "").trim() === effektName
+    );
+    if (!liste.length) return 0;
+    return ganzeZahl(berechneBonusErgebnis(liste)[ziel] || 0);
+  }
+
+  function kmbBonusMitFlinkenManoever(charakter, ergebnis) {
+    let bonus=bonusFuerZiel("KMB",ergebnis);
+    if (!charakter?.kampfwerte?.flinkeManoever) return bonus;
+
+    // Identische Attributquellen wie bei Waffenfinesse:
+    // ST: Stärke (Attribut) -> Angriff Nah wird ersetzt durch
+    // GE: Geschicklichkeit (Attribut) -> Angriff Fern.
+    const staerke=attributEffektBonus26("ST: Stärke (Attribut)","Angriff Nah");
+    const geschick=attributEffektBonus26("GE: Geschicklichkeit (Attribut)","Angriff Fern");
+    return bonus - staerke + geschick;
+  }
+
   function grundwertFuer(eintrag, charakter) {
     const pfad = eintrag.eingabe ? eintrag.key : eintrag.basisKey;
     return ganzeZahl(lesePfad(charakter?.kampfwerte, pfad));
@@ -202,6 +224,9 @@
     const grundwert = grundwertFuer(eintrag, charakter);
 
     if (eintrag.eingabe) {
+      if (eintrag.ziel === "KMB") {
+        return grundwert + kmbBonusMitFlinkenManoever(charakter, ergebnis);
+      }
       return grundwert + bonusFuerZiel(eintrag.ziel, ergebnis);
     }
 
@@ -404,6 +429,25 @@
             zeile.append(label, mitte, gesamt);
             gruppe.appendChild(zeile);
 
+            if (eintrag.ziel === "KMB") {
+              const flinkLabel=document.createElement("label");
+              flinkLabel.className="flinke-manoever-431";
+              const flink=document.createElement("input");
+              flink.type="checkbox";
+              flink.dataset.flinkeManoever="1";
+              const flinkText=document.createElement("span");
+              flinkText.textContent="Flinke Manöver – GE statt ST für KMB";
+              flinkLabel.append(flink,flinkText);
+              flink.addEventListener("change",()=>{
+                const charakter=aktiverCharakter();
+                if(!charakter) return;
+                charakter.kampfwerte.flinkeManoever=flink.checked;
+                speichereCharaktere();
+                aktualisiereAnsicht();
+              });
+              gruppe.appendChild(flinkLabel);
+            }
+
             if (eintrag.notizKey) {
               const notizFeld = document.createElement("textarea");
               notizFeld.className = "grundwert-notiz-28";
@@ -507,7 +551,9 @@
 
     const ergebnis = bonusErgebnis();
     const grundwert = grundwertFuer(eintrag, charakter);
-    const bonusGesamt = bonusFuerZiel(eintrag.ziel, ergebnis);
+    const bonusGesamt = eintrag.ziel === "KMB"
+      ? kmbBonusMitFlinkenManoever(charakter, ergebnis)
+      : bonusFuerZiel(eintrag.ziel, ergebnis);
     const gesamt = grundwert + bonusGesamt;
 
     const dialog = detailDialog();
@@ -626,6 +672,12 @@
           gesamtwertFuer(eintrag, charakter, ergebnis)
         );
       });
+
+    const flink=document.querySelector('[data-flinke-manoever="1"]');
+    if(flink){
+      flink.disabled=!charakter;
+      flink.checked=!!charakter?.kampfwerte?.flinkeManoever;
+    }
 
     document.querySelectorAll(".grundwert-notiz-28").forEach(notizFeld => {
       if (!charakter) {
