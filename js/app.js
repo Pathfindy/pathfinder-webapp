@@ -1,7 +1,7 @@
 // Das azlantische Helferlein der Boni
 // app.js
 // Version 0.32
-const APP_VERSION="0.42.3";
+const APP_VERSION="0.42.5";
 
 const seiten={
  dashboard:document.getElementById("dashboard"),
@@ -873,13 +873,6 @@ function normalisiereEffekt(effekt={}){
    return normalisiert;
  });
 
- // Reparatur für bereits in Commit 39 gespeicherte Effekte:
- // Wenn ein Effekt stufenabhängig ist, aber ALLE Bonuszeilen noch explizit
- // als "fest" gespeichert wurden, stammt das typischerweise aus dem alten
- // Fehlerzustand. In diesem eindeutigen Altfall auf Stufenwert migrieren.
- if(stufenlogik.aktiv && boni.length && boni.every(bonus=>bonus.wertQuelle==="fest")){
-   boni=boni.map(bonus=>({...bonus,wertQuelle:"stufenwert"}));
- }
  return {
    id:effekt.id||(standard?standardEffektId(effekt):neueEffektId()),
    standard,
@@ -2058,6 +2051,15 @@ function rendereBonusEditor(){
 
  container.innerHTML="";
 
+ const kopf=document.createElement("div");
+ kopf.className="bonus-zeile bonus-zeile-kopf-425";
+ ["Ziel","Bonusart","Wertquelle","Faktor","Wert",""].forEach(text=>{
+   const span=document.createElement("span");
+   span.textContent=text;
+   kopf.appendChild(span);
+ });
+ container.appendChild(kopf);
+
  if(editorState.entwurf.boni.length===0){
    const hinweis=document.createElement("p");
    hinweis.className="bonus-leer";
@@ -2082,6 +2084,7 @@ function rendereBonusEditor(){
 
    const wertQuelle=document.createElement("select");
    wertQuelle.className="bonus-wertquelle";
+   wertQuelle.title="Fest = eingetragener Wert; Stufenwert = Wert aus der Stufen-/GAB-Logik";
    wertQuelle.setAttribute("aria-label",`Wertquelle der Bonuszeile ${index+1}`);
    [["fest","Fest"],["stufenwert","Stufenwert"]].forEach(([value,text])=>{
      const option=document.createElement("option");
@@ -2092,7 +2095,11 @@ function rendereBonusEditor(){
      wertQuelle.appendChild(option);
    });
    wertQuelle.addEventListener("change",event=>{
-     aktualisiereBonus(index,"wertQuelle",event.target.value);
+     const neueQuelle=event.target.value;
+     aktualisiereBonus(index,"wertQuelle",neueQuelle);
+     if(neueQuelle==="stufenwert" && Number(editorState.entwurf.boni[index].wert)===0){
+       aktualisiereBonus(index,"wert",1);
+     }
      rendereBonusEditor();
    });
 
@@ -2116,10 +2123,11 @@ function rendereBonusEditor(){
    wert.setAttribute("aria-label",`Wert der Bonuszeile ${index+1}`);
    if(bonus.wertQuelle==="stufenwert"){
      const option=document.createElement("option");
-     option.value="0";
-     option.textContent="Stufenwert";
+     option.value=String(bonus.wert ?? 1);
+     option.textContent=Number(bonus.wert)<0?"Stufenwert (−)":"Stufenwert (+)";
      wert.appendChild(option);
      wert.disabled=true;
+     wert.title="Die Höhe kommt aus der Stufen-/GAB-Logik. Das Vorzeichen richtet sich nach dem gespeicherten Grundwert.";
    }else{
      wert.append(...erzeugeOptionen(PF_BONUSWERTE,bonus.wert));
      wert.addEventListener("change",event=>aktualisiereBonus(index,"wert",event.target.value));
