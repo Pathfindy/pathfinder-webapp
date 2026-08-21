@@ -751,3 +751,13 @@ nav {
     background:#f4f8fc;
   }
 }
+
+/* Commit 43 – Waffenfinesse pro Angriff */
+.angriff-waffenfinesse-43{grid-column:1/-1;display:flex!important;flex-direction:row!important;align-items:center;gap:8px;min-height:34px;padding:6px 8px;border-radius:7px;background:#eef3f8}
+.angriff-waffenfinesse-43 input[type="checkbox"]{width:20px;height:20px;margin:0;flex:0 0 auto}
+.angriff-waffenfinesse-43 span{font-weight:700}
+
+/* Commit 43.1 – Flinke Manöver */
+.flinke-manoever-431{display:flex!important;flex-direction:row!important;align-items:center;gap:8px;margin:4px 0 7px;padding:6px 8px;border-radius:7px;background:#eef3f8}
+.flinke-manoever-431 input[type="checkbox"]{width:20px;height:20px;margin:0;flex:0 0 auto}
+.flinke-manoever-431 span{font-weight:700}
