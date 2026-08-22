@@ -490,7 +490,6 @@
             aktualisiereAnsicht();
           });
           maxGeZeile.append(maxGeText,maxGeInput);
-          gruppe.appendChild(maxGeZeile);
 
           const rkRaster=document.createElement("div");
           rkRaster.className="rk-varianten-47";
@@ -498,12 +497,14 @@
             const karte=document.createElement("button");
             karte.type="button";
             karte.className="rk-variante-47";
+            if(variante.modus==="normal") karte.classList.add("rk-variante-haupt-472");
             karte.dataset.rkModus47=variante.modus;
             karte.innerHTML=`<span>${variante.label}</span><strong>10</strong>`;
             karte.addEventListener("click",()=>zeigeRkDetails47(variante.modus,variante.label));
             rkRaster.appendChild(karte);
           });
           gruppe.appendChild(rkRaster);
+          gruppe.appendChild(maxGeZeile);
           bereich.appendChild(gruppe);
           return;
         }
