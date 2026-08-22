@@ -1,7 +1,7 @@
 // Das azlantische Helferlein der Boni
 // app.js
 // Version 0.32
-const APP_VERSION="0.47.0";
+const APP_VERSION="0.47.1";
 
 const seiten={
  dashboard:document.getElementById("dashboard"),
@@ -2233,12 +2233,18 @@ function rendereBonusEditor(){
    const ziel=document.createElement("select");
    ziel.setAttribute("aria-label",`Ziel der Bonuszeile ${index+1}`);
    ziel.append(...erzeugeOptionen(PF_BONUS_ZIELE,bonus.ziel));
-   ziel.addEventListener("change",event=>aktualisiereBonus(index,"ziel",event.target.value));
+   ziel.addEventListener("change",event=>{
+     aktualisiereBonus(index,"ziel",event.target.value);
+     rendereBonusEditor();
+   });
 
    const bonusart=document.createElement("select");
    bonusart.setAttribute("aria-label",`Bonusart der Bonuszeile ${index+1}`);
    bonusart.append(...erzeugeOptionen(PF_BONUSARTEN,bonus.bonusart));
-   bonusart.addEventListener("change",event=>aktualisiereBonus(index,"bonusart",event.target.value));
+   bonusart.addEventListener("change",event=>{
+     aktualisiereBonus(index,"bonusart",event.target.value);
+     rendereBonusEditor();
+   });
 
    const wertQuelle=document.createElement("select");
    wertQuelle.className="bonus-wertquelle";
