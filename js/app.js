@@ -1,7 +1,7 @@
 // Das azlantische Helferlein der Boni
 // app.js
 // Version 0.32
-const APP_VERSION="0.47.2";
+const APP_VERSION="0.48.0";
 
 const seiten={
  dashboard:document.getElementById("dashboard"),
@@ -2240,7 +2240,22 @@ function rendereBonusEditor(){
 
    const bonusart=document.createElement("select");
    bonusart.setAttribute("aria-label",`Bonusart der Bonuszeile ${index+1}`);
-   bonusart.append(...erzeugeOptionen(PF_BONUSARTEN,bonus.bonusart));
+   const bonusartOptionen48=erzeugeOptionen(PF_BONUSARTEN,bonus.bonusart);
+   const stapelbareArten48=typeof STAPELBARE_BONUSARTEN!=="undefined"
+     ?STAPELBARE_BONUSARTEN:new Set();
+   bonusartOptionen48.forEach(option=>{
+     const norm=normalisiereBonusart(option.value);
+     if(stapelbareArten48.has(norm)){
+       option.classList.add("bonusart-stapelbar-48");
+       option.textContent=`● ${option.textContent}`;
+       option.title="Stapelbare Bonusart";
+     }
+   });
+   bonusart.append(...bonusartOptionen48);
+   bonusart.classList.toggle(
+     "bonusart-auswahl-stapelbar-48",
+     stapelbareArten48.has(normalisiereBonusart(bonus.bonusart))
+   );
    bonusart.addEventListener("change",event=>{
      aktualisiereBonus(index,"bonusart",event.target.value);
      rendereBonusEditor();

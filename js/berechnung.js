@@ -7,7 +7,8 @@ const STAPELBARE_BONUSARTEN = new Set([
     "Situation",
     "Namenlos",
     "Malus",
-    "Modifikator Attribut"
+    "Modifikator Attribut",
+    "Natürliche Rüstung"
 ]);
 
 function normalisiereBerechnungsBonusart(bonusart) {

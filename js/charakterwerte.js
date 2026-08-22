@@ -426,7 +426,7 @@
       const folge=angriffsfolge(angriff,charakter,gesamtAngriff);
       const angriffsText=formatiereAngriffsfolge(folge);
       ergebnis.innerHTML = `
-        <div><span>Angriff</span><strong>${angriffsText}</strong></div>
+        <div class="angriff-ergebnis-haupt-48"><span>Angriff</span><strong>${angriffsText}</strong></div>
         <div><span>Schaden</span><strong>${formatiereSchaden(angriff, boni)}</strong></div>
       `;
 

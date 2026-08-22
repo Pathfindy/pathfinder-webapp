@@ -15,14 +15,14 @@
     {
       key: "rw.reflex",
       ziel: "RW-Reflex",
-      label: "RW-Reflex (GE)",
+      label: "Reflex (GE)",
       gruppe: "Rettungswürfe",
       eingabe: true
     },
     {
       key: "rw.wille",
       ziel: "RW-Wille",
-      label: "RW-Wille (WE)",
+      label: "Wille (WE)",
       gruppe: "Rettungswürfe",
       eingabe: true
     },
@@ -53,7 +53,7 @@
     {
       key: "rw.zaehigkeit",
       ziel: "RW-Zähigkeit",
-      label: "RW-Zähigkeit (KO)",
+      label: "Zähigkeit (KO)",
       gruppe: "Rettungswürfe",
       eingabe: true
     },
@@ -526,7 +526,18 @@
             }
 
             const label = document.createElement("label");
-            label.textContent = eintrag.label;
+            const labelTreffer=String(eintrag.label).match(/^(.*?)\s*(\([^)]*\))$/);
+            if(labelTreffer){
+              const haupt=document.createElement("span");
+              haupt.className="grundwert-label-haupt-48";
+              haupt.textContent=labelTreffer[1].trim();
+              const attribut=document.createElement("span");
+              attribut.className="grundwert-label-attribut-48";
+              attribut.textContent=labelTreffer[2];
+              label.append(haupt,attribut);
+            }else{
+              label.textContent=eintrag.label;
+            }
 
             let mitte;
 
@@ -573,6 +584,9 @@
             const gesamt = document.createElement("button");
             gesamt.type = "button";
             gesamt.className = "grundwert-gesamt-26";
+            if(["RW-Reflex","RW-Wille","RW-Zähigkeit","KMB","KMV"].includes(eintrag.ziel)){
+              gesamt.classList.add("grundwert-gesamt-haupt-48");
+            }
             gesamt.setAttribute(
               "aria-label",
               `${eintrag.label} Bonusdetails anzeigen`

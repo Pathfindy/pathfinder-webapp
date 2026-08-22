@@ -147,8 +147,25 @@
 
       const bonusart = document.createElement("select");
       bonusart.setAttribute("aria-label", `Bonusart der Bonuszeile ${index + 1}`);
-      bonusart.append(...erzeugeOptionen(
-        BONUSARTEN, normalisiereBonusart(bonus.bonusart)));
+      const bonusartOptionen=erzeugeOptionen(
+        BONUSARTEN, normalisiereBonusart(bonus.bonusart));
+      const stapelbareArten=typeof STAPELBARE_BONUSARTEN!=="undefined"
+        ?STAPELBARE_BONUSARTEN
+        :new Set();
+      bonusartOptionen.forEach(option=>{
+        const norm=normalisiereBonusart(option.value);
+        if(stapelbareArten.has(norm)){
+          option.classList.add("bonusart-stapelbar-48");
+          option.textContent=`● ${option.textContent}`;
+          option.title="Stapelbare Bonusart";
+        }
+      });
+      bonusart.append(...bonusartOptionen);
+      const bonusartNormAktuell=normalisiereBonusart(bonus.bonusart);
+      bonusart.classList.toggle(
+        "bonusart-auswahl-stapelbar-48",
+        stapelbareArten.has(bonusartNormAktuell)
+      );
       bonusart.addEventListener("change", event => {
         aktualisiereBonus(index, "bonusart", event.target.value);
         rendereBonusEditor();
