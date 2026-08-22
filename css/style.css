@@ -798,3 +798,14 @@ nav {
 .bonus-koerperlos-47 input[type="checkbox"]{
   margin-left:0 !important;
 }
+
+
+/* Commit 48 – stapelbare Bonusarten im Effekteditor leicht hervorheben */
+.bonusart-auswahl-stapelbar-48{
+  background:#edf5ff !important;
+  border-color:#91aac7 !important;
+}
+.bonusart-stapelbar-48{
+  background:#edf5ff;
+  font-weight:700;
+}

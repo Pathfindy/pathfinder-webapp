@@ -125,3 +125,31 @@
   font-size:1.22rem !important;
   font-weight:850 !important;
 }
+
+
+/* Commit 48 – Haupt-Gesamtwerte und kompakte Attributzuordnung */
+.grundwert-gesamt-haupt-48{
+  background:#d6e4f2 !important;
+  border:1px solid #7899bd !important;
+  color:#173b63 !important;
+  box-shadow:0 1px 2px rgba(30,58,95,.08);
+  font-size:1.22rem !important;
+  font-weight:850 !important;
+}
+.grundwert-gesamt-haupt-48:hover{
+  background:#c8daec !important;
+}
+.grundwert-zeile-26 label{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:baseline;
+  gap:4px;
+}
+.grundwert-label-haupt-48{
+  font-weight:650;
+}
+.grundwert-label-attribut-48{
+  font-size:.72rem;
+  font-weight:400;
+  color:#6b7786;
+}
