@@ -419,3 +419,41 @@ nav {
 }
 .angriff-ergebnis strong{overflow-wrap:anywhere}
 @media(max-width:600px){.angriff-ergebnis strong{font-size:1rem}}
+
+
+/* Commit 46 – Angriffsmodi und Talente */
+.angriff-optionen-46{
+  grid-column:1 / -1;
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px 12px;
+  align-items:center;
+  padding:7px 8px;
+  border-radius:8px;
+  background:#eef3f8;
+}
+.angriff-option-46{
+  display:inline-flex !important;
+  flex-direction:row !important;
+  align-items:center;
+  gap:6px;
+  width:auto !important;
+  min-width:0;
+  font-size:.82rem;
+  font-weight:700;
+}
+.angriff-option-46 input[type="checkbox"]{
+  width:20px;
+  height:20px;
+  margin:0;
+  flex:0 0 auto;
+}
+@media(max-width:600px){
+  .angriff-optionen-46{
+    gap:5px 9px;
+    padding:6px;
+  }
+  .angriff-option-46{
+    font-size:.75rem;
+  }
+}
