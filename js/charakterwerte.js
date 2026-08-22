@@ -36,9 +36,21 @@
         ? angriff.name.trim()
         : `Angriff ${index + 1}`,
       art: angriff.art === "Fern" ? "Fern" : "Nah",
-      modus:angriff.modus==="iterativ"?"iterativ":"einzeln",
+      modus:(()=>{
+        const alt=String(angriff.modus||"");
+        if(alt==="iterativ") return "haupthand_zusatz";
+        if(alt==="einzeln") return "haupthand";
+        return ["haupthand","haupthand_zusatz","zweithand","primaer","sekundaer"].includes(alt)
+          ?alt
+          :"haupthand";
+      })(),
       grundAngriff: ganzeZahl(angriff.grundAngriff, -999, 999),
       waffenfinesse: !!angriff.waffenfinesse,
+      waffeZweihand: !!angriff.waffeZweihand,
+      doppelschnitt: !!angriff.doppelschnitt,
+      verbesserterZweiwaffenkampf: !!angriff.verbesserterZweiwaffenkampf,
+      mehrfachangriff: !!angriff.mehrfachangriff,
+      einzigerNatuerlicherAngriff: !!angriff.einzigerNatuerlicherAngriff,
       wuerfelAnzahl: ganzeZahl(angriff.wuerfelAnzahl, 0, 20),
       wuerfelSeiten,
       schadenModifikator: optionaleGanzeZahl(angriff.schadenModifikator, -999, 999),
@@ -130,11 +142,64 @@
       : 0;
   }
 
+  function angriffsAttributKey46(angriff) {
+    return angriff?.waffenfinesse
+      ? "GE"
+      : (angriff?.art === "Fern" ? "GE" : "ST");
+  }
+
+  function halberStaerkeBonus46(wert) {
+    const st=Number(wert)||0;
+    // Stärke-Mali werden nie reduziert.
+    if(st<0) return st;
+    const halb=st*0.5;
+    // Pathfinder: mindestens +1, sobald ein positiver halber Bonus entsteht;
+    // danach abrunden: 0→0, 0,5→1, 1→1, 1,5→1, 2→2 ...
+    if(halb>0 && halb<1) return 1;
+    return Math.floor(halb);
+  }
+
+  function anderthalbStaerkeBonus46(wert) {
+    const st=Number(wert)||0;
+    // Mali werden nicht mit 1,5 vervielfacht.
+    if(st<0) return st;
+    return Math.floor(st*1.5);
+  }
+
+  function staerkeSchadenModifikator46(angriff, charakter=aktiverCharakter()) {
+    if(!angriff || angriff.art==="Fern") return 0;
+    const st=charakter && typeof attributModifikator==="function"
+      ?Number(attributModifikator(charakter,"ST")||0)
+      :nativerAttributModifikator("ST");
+
+    switch(angriff.modus){
+      case "zweithand":
+        return angriff.doppelschnitt ? st : halberStaerkeBonus46(st);
+      case "sekundaer":
+        return halberStaerkeBonus46(st);
+      case "primaer":
+        return angriff.einzigerNatuerlicherAngriff
+          ?anderthalbStaerkeBonus46(st)
+          :st;
+      case "haupthand":
+      case "haupthand_zusatz":
+      default:
+        return angriff.waffeZweihand
+          ?anderthalbStaerkeBonus46(st)
+          :st;
+    }
+  }
+
+  function angriffsGrundMalus46(angriff) {
+    if(angriff?.modus==="sekundaer"){
+      return angriff.mehrfachangriff ? -2 : -5;
+    }
+    return 0;
+  }
+
   function angriffsBonus(angriff, boni = aktuelleBonuswerte(), angriffsIndex = 0) {
     const ziel = angriff.art === "Fern" ? "Angriff Fern" : "Angriff Nah";
-    const attributKey = angriff.waffenfinesse
-      ? "GE"
-      : (angriff.art === "Fern" ? "GE" : "ST");
+    const attributKey = angriffsAttributKey46(angriff);
     const groesse=typeof groessenModifikatorAngriffRk==="function"
       ?Number(groessenModifikatorAngriffRk(aktiverCharakter())||0)
       :0;
@@ -143,8 +208,9 @@
 
   function schadenBonus(angriff, boni = aktuelleBonuswerte()) {
     const ziel = angriff.art === "Fern" ? "Schaden Fern" : "Schaden Nah";
-    const attribut = angriff.art === "Nah" ? nativerAttributModifikator("ST") : 0;
-    return Number(boni[ziel] ?? 0) + Number(boni.Schaden ?? 0) + attribut;
+    return Number(boni[ziel] ?? 0) +
+      Number(boni.Schaden ?? 0) +
+      staerkeSchadenModifikator46(angriff);
   }
 
   function formatiereSchaden(angriff, boni = aktuelleBonuswerte()) {
@@ -277,9 +343,23 @@
   }
 
   function angriffsfolge(angriff,charakter,gesamtAngriff){
-    if(angriff.modus!=="iterativ") return [gesamtAngriff];
-    const anzahl=anzahlIterativeAngriffe(charakter);
-    return Array.from({length:anzahl},(_,index)=>gesamtAngriff-(index*5));
+    const basis=gesamtAngriff+angriffsGrundMalus46(angriff);
+
+    if(angriff.modus==="haupthand_zusatz"){
+      const anzahl=anzahlIterativeAngriffe(charakter);
+      return Array.from({length:anzahl},(_,index)=>basis-(index*5));
+    }
+
+    if(angriff.modus==="zweithand"){
+      const gab=typeof charakterGAB==="function"
+        ?charakterGAB(charakter)
+        :Number(charakter?.gab||0);
+      if(angriff.verbesserterZweiwaffenkampf && gab>=6){
+        return [basis,basis-5];
+      }
+    }
+
+    return [basis];
   }
 
   function formatiereAngriffsfolge(werte){
@@ -374,8 +454,11 @@
       modusLabel.innerHTML="<span>Angriffsmodus</span>";
       const modus=document.createElement("select");
       [
-        ["einzeln","Einzelangriff"],
-        ["iterativ","Einzel- + Zusatzangriffe"]
+        ["haupthand","Haupthand"],
+        ["haupthand_zusatz","Haupth. + Zusatzangriffe"],
+        ["zweithand","Zweithand"],
+        ["primaer","Primärangriff"],
+        ["sekundaer","Sekundärangriff"]
       ].forEach(([wert,text])=>{
         const option=document.createElement("option");
         option.value=wert;
@@ -454,22 +537,52 @@
 
       felder.append(modusLabel, artLabel, grundLabel, wuerfelLabel, schadenLabel);
 
-      const finesseLabel=document.createElement("label");
-      finesseLabel.className="angriff-waffenfinesse-43";
-      const finesse=document.createElement("input");
-      finesse.type="checkbox";
-      finesse.checked=!!angriff.waffenfinesse;
-      const finesseText=document.createElement("span");
-      finesseText.textContent="Waffenfinesse – GE statt ST für Angriff";
-      finesseLabel.append(finesse,finesseText);
-      finesse.addEventListener("change",()=>{
-        angriff.waffenfinesse=finesse.checked;
-        speichereCharaktere();
-        aktualisiereAngriffeAnsicht();
-      });
-      felder.appendChild(finesseLabel);
+      const optionen46=document.createElement("div");
+      optionen46.className="angriff-optionen-46";
 
-      if(angriff.modus==="iterativ"){
+      function checkboxOption46(text,feld){
+        const label=document.createElement("label");
+        label.className="angriff-option-46";
+        const input=document.createElement("input");
+        input.type="checkbox";
+        input.checked=!!angriff[feld];
+        const span=document.createElement("span");
+        span.textContent=text;
+        label.append(input,span);
+        input.addEventListener("change",()=>{
+          angriff[feld]=input.checked;
+          speichereCharaktere();
+          aktualisiereAngriffeAnsicht();
+        });
+        return label;
+      }
+
+      optionen46.appendChild(checkboxOption46("Waffenfinesse","waffenfinesse"));
+
+      if(angriff.modus==="haupthand" || angriff.modus==="haupthand_zusatz"){
+        optionen46.appendChild(checkboxOption46("Waffe zweihändig","waffeZweihand"));
+      }
+
+      if(angriff.modus==="zweithand"){
+        optionen46.appendChild(checkboxOption46("Doppelschnitt","doppelschnitt"));
+        optionen46.appendChild(
+          checkboxOption46("Verbesserter Kampf mit zwei Waffen","verbesserterZweiwaffenkampf")
+        );
+      }
+
+      if(angriff.modus==="primaer"){
+        optionen46.appendChild(
+          checkboxOption46("Einziger natürlicher Angriff","einzigerNatuerlicherAngriff")
+        );
+      }
+
+      if(angriff.modus==="sekundaer"){
+        optionen46.appendChild(checkboxOption46("Mehrfachangriff","mehrfachangriff"));
+      }
+
+      felder.appendChild(optionen46);
+
+      if(angriff.modus==="haupthand_zusatz"){
         const folgeInfo=document.createElement("div");
         folgeInfo.className="angriff-iterativ-info-41";
         const gab=typeof charakterGAB==="function"?charakterGAB(charakter):Number(charakter.gab||0);
@@ -480,7 +593,32 @@
         felder.appendChild(folgeInfo);
       }
 
+      if(angriff.modus==="zweithand"){
+        const info=document.createElement("div");
+        info.className="angriff-iterativ-info-41";
+        const gab=typeof charakterGAB==="function"?charakterGAB(charakter):Number(charakter.gab||0);
+        const st=staerkeSchadenModifikator46(angriff,charakter);
+        info.textContent=angriff.verbesserterZweiwaffenkampf && gab>=6
+          ?`Zweithand: ST-Schaden ${vorzeichen(st)} · 1 Zusatzangriff mit −5`
+          :`Zweithand: ST-Schaden ${vorzeichen(st)} · Angriffsmali über Grund-Angriff`;
+        felder.appendChild(info);
+      }
 
+      if(angriff.modus==="sekundaer"){
+        const info=document.createElement("div");
+        info.className="angriff-iterativ-info-41";
+        info.textContent=angriff.mehrfachangriff
+          ?"Sekundärangriff: Angriff −2 · halber ST-Modifikator auf Schaden"
+          :"Sekundärangriff: Angriff −5 · halber ST-Modifikator auf Schaden";
+        felder.appendChild(info);
+      }
+
+      if(angriff.modus==="primaer" && angriff.einzigerNatuerlicherAngriff){
+        const info=document.createElement("div");
+        info.className="angriff-iterativ-info-41";
+        info.textContent="Einziger natürlicher Angriff: 1,5 × ST-Modifikator auf Schaden";
+        felder.appendChild(info);
+      }
 
       const loeschen = document.createElement("button");
       loeschen.type = "button";
@@ -601,6 +739,9 @@
     window.berechneWerte = berechneWerte;
   }
 
+  window.angriffsAttributKey46 = angriffsAttributKey46;
+  window.staerkeSchadenModifikator46 = staerkeSchadenModifikator46;
+  window.angriffsGrundMalus46 = angriffsGrundMalus46;
   window.aktualisiereAngriffeAnsicht = aktualisiereAngriffeAnsicht;
   window.aktualisiereTrefferpunkteAnsicht = aktualisiereTrefferpunkteAnsicht;
   aktualisiereTrefferpunkteAnsicht();

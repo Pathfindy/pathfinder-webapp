@@ -129,17 +129,32 @@
 
     if (angriff && charakter && typeof attributModifikator === "function") {
       if (ziel === "Angriff Nah" || ziel === "Angriff Fern") {
-        attributKey = angriff.waffenfinesse
-          ? "GE"
-          : (angriff.art === "Fern" ? "GE" : "ST");
+        attributKey = typeof window.angriffsAttributKey46==="function"
+          ?window.angriffsAttributKey46(angriff)
+          :(angriff.waffenfinesse ? "GE" : (angriff.art === "Fern" ? "GE" : "ST"));
         attributWert = Number(attributModifikator(charakter, attributKey) || 0);
         attributText = angriff.waffenfinesse && angriff.art !== "Fern"
           ? "GE-Modifikator (Waffenfinesse)"
           : `${attributKey}-Modifikator`;
       } else if (ziel === "Schaden Nah") {
         attributKey = "ST";
-        attributWert = Number(attributModifikator(charakter, "ST") || 0);
-        attributText = "ST-Modifikator";
+        attributWert = typeof window.staerkeSchadenModifikator46==="function"
+          ?Number(window.staerkeSchadenModifikator46(angriff,charakter)||0)
+          :Number(attributModifikator(charakter, "ST") || 0);
+        if(angriff.modus==="zweithand" && !angriff.doppelschnitt){
+          attributText="½ ST-Modifikator (Zweithand)";
+        }else if(angriff.modus==="sekundaer"){
+          attributText="½ ST-Modifikator (Sekundärangriff)";
+        }else if(
+          (angriff.modus==="haupthand" || angriff.modus==="haupthand_zusatz") &&
+          angriff.waffeZweihand
+        ){
+          attributText="1,5 × ST-Modifikator (zweihändig)";
+        }else if(angriff.modus==="primaer" && angriff.einzigerNatuerlicherAngriff){
+          attributText="1,5 × ST-Modifikator (einziger natürlicher Angriff)";
+        }else{
+          attributText="ST-Modifikator";
+        }
       }
     }
 
@@ -148,7 +163,12 @@
       typeof groessenModifikatorAngriffRk === "function"
         ? Number(groessenModifikatorAngriffRk(charakter) || 0)
         : 0;
-    const gesamt = Number(grundwert) + attributWert + groesseWert + bonusGesamt;
+    const modusMalus = angriff &&
+      (ziel === "Angriff Nah" || ziel === "Angriff Fern") &&
+      typeof window.angriffsGrundMalus46==="function"
+        ?Number(window.angriffsGrundMalus46(angriff)||0)
+        :0;
+    const gesamt = Number(grundwert) + attributWert + groesseWert + modusMalus + bonusGesamt;
 
     dialog.querySelector("#bonusDetailTitel").textContent = titel;
     const inhalt = dialog.querySelector("#bonusDetailInhalt");
@@ -157,7 +177,7 @@
     const summe = document.createElement("p");
     summe.className = "bonus-detail-summe";
     summe.textContent = attributText
-      ? `Grundwert ${formatWert(grundwert)} + ${attributText} ${formatWert(attributWert)} + Größe ${formatWert(groesseWert)} + sonstige Boni ${formatWert(bonusGesamt)} = ${formatWert(gesamt)}`
+      ? `Grundwert ${formatWert(grundwert)} + ${attributText} ${formatWert(attributWert)} + Größe ${formatWert(groesseWert)} + Modus ${formatWert(modusMalus)} + sonstige Boni ${formatWert(bonusGesamt)} = ${formatWert(gesamt)}`
       : `Grundwert ${formatWert(grundwert)} + Boni ${formatWert(bonusGesamt)} = ${formatWert(gesamt)}`;
     inhalt.appendChild(summe);
 

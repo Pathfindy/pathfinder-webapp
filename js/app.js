@@ -1,7 +1,7 @@
 // Das azlantische Helferlein der Boni
 // app.js
 // Version 0.32
-const APP_VERSION="0.45.1";
+const APP_VERSION="0.46.0";
 
 const seiten={
  dashboard:document.getElementById("dashboard"),
