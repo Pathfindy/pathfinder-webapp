@@ -306,30 +306,9 @@
     },
     "boni": [
       {
-        "ziel": "Angriff Nah",
-        "bonusart": "Modifikator Attribut",
-        "wert": 2,
-        "wertQuelle": "fest",
-        "stufenFaktor": 1
-      },
-      {
-        "ziel": "Schaden Nah",
-        "bonusart": "Modifikator Attribut",
-        "wert": 2,
-        "wertQuelle": "fest",
-        "stufenFaktor": 1
-      },
-      {
-        "ziel": "KMB",
-        "bonusart": "Modifikator Attribut",
-        "wert": 2,
-        "wertQuelle": "fest",
-        "stufenFaktor": 1
-      },
-      {
-        "ziel": "KMV",
-        "bonusart": "Modifikator Attribut",
-        "wert": 2,
+        "ziel": "Attribut ST",
+        "bonusart": "Verbesserung",
+        "wert": 4,
         "wertQuelle": "fest",
         "stufenFaktor": 1
       }
@@ -1607,32 +1586,11 @@
     },
     "boni": [
       {
-        "ziel": "Angriff Nah",
-        "bonusart": "Modifikator Attribut",
+        "ziel": "Attribut ST",
+        "bonusart": "Verbesserung",
         "wert": 1,
         "wertQuelle": "stufenwert",
-        "stufenFaktor": 1
-      },
-      {
-        "ziel": "Schaden Nah",
-        "bonusart": "Modifikator Attribut",
-        "wert": 1,
-        "wertQuelle": "fest",
-        "stufenFaktor": 1
-      },
-      {
-        "ziel": "KMB",
-        "bonusart": "Modifikator Attribut",
-        "wert": 1,
-        "wertQuelle": "fest",
-        "stufenFaktor": 1
-      },
-      {
-        "ziel": "KMV",
-        "bonusart": "Modifikator Attribut",
-        "wert": 1,
-        "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 2
       }
     ],
     "gebiet": "selbst",
@@ -1676,25 +1634,11 @@
     },
     "boni": [
       {
-        "ziel": "Angriff Fern",
-        "bonusart": "Modifikator Attribut",
+        "ziel": "Attribut GE",
+        "bonusart": "Verbesserung",
         "wert": 1,
         "wertQuelle": "stufenwert",
-        "stufenFaktor": 1
-      },
-      {
-        "ziel": "KMV",
-        "bonusart": "Modifikator Attribut",
-        "wert": 1,
-        "wertQuelle": "fest",
-        "stufenFaktor": 1
-      },
-      {
-        "ziel": "RW-Reflex",
-        "bonusart": "Modifikator Attribut",
-        "wert": 1,
-        "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 2
       }
     ],
     "gebiet": "selbst",
@@ -1738,60 +1682,25 @@
     },
     "boni": [
       {
-        "ziel": "Angriff Nah",
-        "bonusart": "Modifikator Attribut",
+        "ziel": "Attribut ST",
+        "bonusart": "Verbesserung",
         "wert": 1,
         "wertQuelle": "stufenwert",
-        "stufenFaktor": 1
+        "stufenFaktor": 2
       },
       {
-        "ziel": "Schaden Nah",
-        "bonusart": "Modifikator Attribut",
+        "ziel": "Attribut GE",
+        "bonusart": "Verbesserung",
         "wert": 1,
         "wertQuelle": "stufenwert",
-        "stufenFaktor": 1
+        "stufenFaktor": 2
       },
       {
-        "ziel": "KMB",
-        "bonusart": "Modifikator Attribut",
+        "ziel": "Attribut KO",
+        "bonusart": "Verbesserung",
         "wert": 1,
         "wertQuelle": "stufenwert",
-        "stufenFaktor": 1
-      },
-      {
-        "ziel": "KMV",
-        "bonusart": "Modifikator Attribut",
-        "wert": 1,
-        "wertQuelle": "stufenwert",
-        "stufenFaktor": 1
-      },
-      {
-        "ziel": "Angriff Fern",
-        "bonusart": "Modifikator Attribut",
-        "wert": 1,
-        "wertQuelle": "stufenwert",
-        "stufenFaktor": 1
-      },
-      {
-        "ziel": "KMV",
-        "bonusart": "Modifikator Attribut",
-        "wert": 1,
-        "wertQuelle": "stufenwert",
-        "stufenFaktor": 1
-      },
-      {
-        "ziel": "RW-Reflex",
-        "bonusart": "Modifikator Attribut",
-        "wert": 1,
-        "wertQuelle": "stufenwert",
-        "stufenFaktor": 1
-      },
-      {
-        "ziel": "RW-Zähigkeit",
-        "bonusart": "Modifikator Attribut",
-        "wert": 1,
-        "wertQuelle": "stufenwert",
-        "stufenFaktor": 1
+        "stufenFaktor": 2
       }
     ],
     "gebiet": "selbst",
@@ -2388,7 +2297,7 @@
     "name": "Kampfrausch (Barbar, ST und KO (Moralbonus))",
     "kategorie": "Klassenmerkmale",
     "aktiv": false,
-    "beschreibung": "Kampfrausch (AF): \nEin Barbar kann seine innere Kraft \nund Wildheit freisetzen, um zusätzliche Kampfkraft zu \ngewinnen. Ab der 1. Stufe kann ein Barbar für eine Anzahl \nvon Runden am Tag in Kampfrausch verfallen, welche der \nHöhe seines KO-Modifikators +4 entspricht. Beim Erreichen \njeder weiteren Stufe verlängert sich der Kampfrausch \num 2 zusätzliche Runden. Kurzfristige Erhöhungen des \nKonstitutionsattributs durch den Kampfrausch oder durch \nZauber wie Ausdauer des Ochsen, erhöhen die Anzahl von \nRunden jedoch nicht, die der Barbar am Tag in Kampfrausch \nverfallen kann. Der Barbar kann sich mit Hilfe einer freien \nAktion in den Kampfrausch versetzten. Die Gesamtzahl der \nRunden, die der Barbar am Tag in Kampfrausch sein kann, \nerneuert sich nach 8 Stunden Rast, wobei diese Rast nicht \nunbedingt an einem Stück gehalten werden muss.\nWährend des Kampfrauschs erhält der Barbar einen \nMoralbonus von +4 auf Stärke und Konstitution, ebenso wie \neinen Moralbonus von +2 auf alle Willenswürfe. Dafür muss \ner einen Malus von – 2 auf die Rüstungsklasse hinnehmen. \nDie Erhöhung des Konstitutionsattributs gibt dem Barbaren \n+2 zusätzliche Trefferpunkte pro Stufe, die jedoch am Ende \ndes Rauschs wieder verschwinden und nicht wie temporäre \nTrefferpunkte zuerst abgezogen werden. Während des \n\nKampfrauschs kann der Barbar weder Fertigkeiten benutzen, \ndie auf Geschicklichkeit, Intelligenz oder Charisma basieren \n(außer Akrobatik, Einschüchtern, Fliegen oder Reiten), \nnoch Fähigkeiten die besonderer Ruhe und Konzentration \nbedürfen.\nDer Barbar kann den Kampfrausch mit einer freien Aktion \nbeenden und ist dann eine Anzahl von Runden erschöpft, \ndie doppelt so hoch ist, wie die Anzahl der Runden, die der \nBarbar in Kampfrausch gewesen ist. Während der Barbar \nerschöpft ist, kann er nicht in einen weiteren Kampfrausch \nverfallen. Ansonsten ist es aber durchaus möglich, innerhalb \ndes gleichen Kampfs mehrfach in den Kampfrausch zu gehen. \nWenn ein Barbar ohnmächtig wird, endet sein Kampfrausch \nautomatisch, wodurch er in Todesgefahr gerät.",
+    "beschreibung": "Kampfrausch (AF): \nEin Barbar kann seine innere Kraft \nund Wildheit freisetzen, um zusätzliche Kampfkraft zu \ngewinnen. Ab der 1. Stufe kann ein Barbar für eine Anzahl \nvon Runden am Tag in Kampfrausch verfallen, welche der \nHöhe seines KO-Modifikators +4 entspricht. Beim Erreichen \njeder weiteren Stufe verlängert sich der Kampfrausch \num 2 zusätzliche Runden. Kurzfristige Erhöhungen des \nKonstitutionsattributs durch den Kampfrausch oder durch \nZauber wie Ausdauer des Ochsen, erhöhen die Anzahl von \nRunden jedoch nicht, die der Barbar am Tag in Kampfrausch \nverfallen kann. Der Barbar kann sich mit Hilfe einer freien \nAktion in den Kampfrausch versetzten. Die Gesamtzahl der \nRunden, die der Barbar am Tag in Kampfrausch sein kann, \nerneuert sich nach 8 Stunden Rast, wobei diese Rast nicht \nunbedingt an einem Stück gehalten werden muss.\nWährend des Kampfrauschs erhält der Barbar einen \nMoralbonus von +4 auf Stärke und Konstitution, ebenso wie \neinen Moralbonus von +2 auf alle Willenswürfe. Dafür muss \ner einen Malus von – 2 auf die Rüstungsklasse hinnehmen. \nDie Erhöhung des Konstitutionsattributs gibt dem Barbaren \n+2 zusätzliche Trefferpunkte pro Stufe, die jedoch am Ende \ndes Rauschs wieder verschwinden und nicht wie temporäre \nTrefferpunkte zuerst abgezogen werden. Während des \nKampfrauschs kann der Barbar weder Fertigkeiten benutzen, \ndie auf Geschicklichkeit, Intelligenz oder Charisma basieren \n(außer Akrobatik, Einschüchtern, Fliegen oder Reiten), \nnoch Fähigkeiten die besonderer Ruhe und Konzentration \nbedürfen.\nDer Barbar kann den Kampfrausch mit einer freien Aktion \nbeenden und ist dann eine Anzahl von Runden erschöpft, \ndie doppelt so hoch ist, wie die Anzahl der Runden, die der \nBarbar in Kampfrausch gewesen ist. Während der Barbar \nerschöpft ist, kann er nicht in einen weiteren Kampfrausch \nverfallen. Ansonsten ist es aber durchaus möglich, innerhalb \ndes gleichen Kampfs mehrfach in den Kampfrausch zu gehen. \nWenn ein Barbar ohnmächtig wird, endet sein Kampfrausch \nautomatisch, wodurch er in Todesgefahr gerät.",
     "quelle": "GRW S. 32",
     "angriffZuweisbar": false,
     "nutzerBonus": {
@@ -2416,36 +2325,29 @@
     },
     "boni": [
       {
-        "ziel": "Angriff Nah",
-        "bonusart": "Modifikator Attribut",
+        "ziel": "Attribut ST",
+        "bonusart": "Moral",
         "wert": 2,
         "wertQuelle": "stufenwert",
-        "stufenFaktor": 1
+        "stufenFaktor": 4
       },
       {
-        "ziel": "Schaden Nah",
-        "bonusart": "Modifikator Attribut",
+        "ziel": "Attribut KO",
+        "bonusart": "Moral",
         "wert": 2,
         "wertQuelle": "stufenwert",
-        "stufenFaktor": 1
+        "stufenFaktor": 4
       },
       {
         "ziel": "Rüstungsklasse",
         "bonusart": "Malus",
         "wert": -2,
-        "wertQuelle": "stufenwert",
+        "wertQuelle": "fest",
         "stufenFaktor": 1
       },
       {
         "ziel": "RW-Wille",
         "bonusart": "Moral",
-        "wert": 2,
-        "wertQuelle": "stufenwert",
-        "stufenFaktor": 1
-      },
-      {
-        "ziel": "KMB",
-        "bonusart": "Modifikator Attribut",
         "wert": 2,
         "wertQuelle": "stufenwert",
         "stufenFaktor": 1
@@ -2574,30 +2476,9 @@
     },
     "boni": [
       {
-        "ziel": "Angriff Fern",
-        "bonusart": "Modifikator Attribut",
-        "wert": 2,
-        "wertQuelle": "fest",
-        "stufenFaktor": 1
-      },
-      {
-        "ziel": "Rüstungsklasse",
-        "bonusart": "Modifikator Attribut",
-        "wert": 2,
-        "wertQuelle": "fest",
-        "stufenFaktor": 1
-      },
-      {
-        "ziel": "RW-Reflex",
-        "bonusart": "Modifikator Attribut",
-        "wert": 2,
-        "wertQuelle": "fest",
-        "stufenFaktor": 1
-      },
-      {
-        "ziel": "KMV",
-        "bonusart": "Modifikator Attribut",
-        "wert": 2,
+        "ziel": "Attribut GE",
+        "bonusart": "Verbesserung",
+        "wert": 4,
         "wertQuelle": "fest",
         "stufenFaktor": 1
       }
@@ -4930,9 +4811,9 @@
     },
     "boni": [
       {
-        "ziel": "RW-Wille",
-        "bonusart": "Modifikator Attribut",
-        "wert": 2,
+        "ziel": "Attribut WE",
+        "bonusart": "Verbesserung",
+        "wert": 4,
         "wertQuelle": "fest",
         "stufenFaktor": 1
       }
