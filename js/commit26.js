@@ -84,6 +84,82 @@
     }
   ];
 
+  const RK_VARIANTEN_47=[
+    {id:"rk-normal",label:"Rüstungsklasse",modus:"normal"},
+    {id:"rk-falscher-fuss",label:"Auf dem falschen Fuß",modus:"falscherFuss"},
+    {id:"rk-beruehrung",label:"Berührung",modus:"beruehrung"},
+    {id:"rk-koerperlos",label:"Berührung gegen Körperlose",modus:"koerperlos"}
+  ];
+
+  function maxGeRk47(charakter){
+    const wert=charakter?.kampfwerte?.maxGeRk;
+    return wert===null || wert==="" || typeof wert==="undefined"
+      ?null
+      :Math.max(0,ganzeZahl(wert));
+  }
+
+  function begrenzterGeMod47(charakter,aufFalschemFuss=false){
+    const ge=attributMod26(charakter,"GE");
+    // Negative GE-Modifikatoren bleiben immer bestehen.
+    if(ge<=0) return ge;
+    if(aufFalschemFuss) return 0;
+    const maximum=maxGeRk47(charakter);
+    return maximum===null?ge:Math.min(ge,maximum);
+  }
+
+  function rkBoniBewertet47(modus="normal"){
+    const alle=aktiveBoniFuerZiel("Rüstungsklasse");
+    const erlaubt=alle.filter(bonus=>{
+      const art=bonus.bonusart;
+      if(modus==="falscherFuss" && art==="Ausweichen") return false;
+      if(modus==="beruehrung"){
+        return !["Rüstung","Schild","Natürliche Rüstung"].includes(art);
+      }
+      if(modus==="koerperlos"){
+        if(art==="Natürliche Rüstung") return false;
+        if(["Rüstung","Schild"].includes(art)){
+          return !!bonus.wirktGegenKoerperloseBeruehrung;
+        }
+      }
+      return true;
+    });
+    return bewerteBonusListe47(erlaubt);
+  }
+
+  function bewerteBonusListe47(boni=[]){
+    const stapelbar=typeof STAPELBARE_BONUSARTEN!=="undefined"
+      ?STAPELBARE_BONUSARTEN:new Set();
+    const gruppen=new Map();
+    boni.forEach(b=>{
+      if(!gruppen.has(b.bonusart)) gruppen.set(b.bonusart,[]);
+      gruppen.get(b.bonusart).push(b);
+    });
+    return boni.map(bonus=>{
+      if(stapelbar.has(bonus.bonusart)) return {...bonus,beruecksichtigt:true};
+      const gruppe=gruppen.get(bonus.bonusart)||[];
+      if(bonus.wert>0){
+        const max=Math.max(0,...gruppe.filter(x=>x.wert>0).map(x=>x.wert));
+        return {...bonus,beruecksichtigt:bonus.wert===max};
+      }
+      const min=Math.min(0,...gruppe.filter(x=>x.wert<0).map(x=>x.wert));
+      return {...bonus,beruecksichtigt:bonus.wert===min};
+    });
+  }
+
+  function summeBewerteteBoni47(boni=[]){
+    return boni.filter(b=>b.beruecksichtigt).reduce((sum,b)=>sum+ganzeZahl(b.wert),0);
+  }
+
+  function rkWert47(charakter,modus="normal"){
+    if(!charakter) return 0;
+    const grund=10;
+    const ge=begrenzterGeMod47(charakter,modus==="falscherFuss");
+    const groesse=typeof groessenModifikatorAngriffRk==="function"
+      ?ganzeZahl(groessenModifikatorAngriffRk(charakter)):0;
+    const boni=rkBoniBewertet47(modus);
+    return grund+ge+groesse+summeBewerteteBoni47(boni);
+  }
+
   function ganzeZahl(wert) {
     if (wert === "" || wert === null || typeof wert === "undefined") return 0;
     const zahl = Number(wert);
@@ -132,6 +208,11 @@
       kampfwerte: {
         ...basis.kampfwerte,
         rk: ganzeZahl(kampfwerteQuelle.rk ?? basis.kampfwerte?.rk),
+        maxGeRk: (kampfwerteQuelle.maxGeRk === "" ||
+                  kampfwerteQuelle.maxGeRk === null ||
+                  typeof kampfwerteQuelle.maxGeRk === "undefined")
+          ? null
+          : Math.max(0, ganzeZahl(kampfwerteQuelle.maxGeRk)),
         kmb: ganzeZahl(kampfwerteQuelle.kmb ?? basis.kampfwerte?.kmb),
         flinkeManoever: !!(kampfwerteQuelle.flinkeManoever ?? basis.kampfwerte?.flinkeManoever),
         kmv: ganzeZahl(kampfwerteQuelle.kmv ?? basis.kampfwerte?.kmv),
@@ -198,7 +279,7 @@
 
   function attributModFuerWert26(eintrag,charakter) {
     switch(eintrag.ziel) {
-      case "Rüstungsklasse": return attributMod26(charakter,"GE");
+      case "Rüstungsklasse": return begrenzterGeMod47(charakter,false);
       case "RW-Reflex": return attributMod26(charakter,"GE");
       case "RW-Zähigkeit": return attributMod26(charakter,"KO");
       case "RW-Wille": return attributMod26(charakter,"WE");
@@ -382,6 +463,50 @@
         const gruppe = document.createElement("section");
         gruppe.className = "grundwerte-gruppe-26";
         gruppe.innerHTML = `<h3>${gruppenname}</h3>`;
+
+        if(gruppenname==="Rüstungsklasse"){
+          const maxGeZeile=document.createElement("label");
+          maxGeZeile.className="rk-max-ge-47";
+          const maxGeText=document.createElement("span");
+          maxGeText.textContent="Max. GE-Bonus durch Rüstung";
+          const maxGeInput=document.createElement("input");
+          maxGeInput.type="number";
+          maxGeInput.min="0";
+          maxGeInput.max="99";
+          maxGeInput.step="1";
+          maxGeInput.inputMode="numeric";
+          maxGeInput.placeholder="–";
+          maxGeInput.title="Leer = keine Begrenzung. Negative GE-Modifikatoren werden nie begrenzt.";
+          maxGeInput.dataset.maxGeRk47="1";
+          maxGeInput.addEventListener("change",()=>{
+            const charakter=aktiverCharakter();
+            if(!charakter) return;
+            const roh=maxGeInput.value.trim();
+            charakter.kampfwerte.maxGeRk=roh===""?null:Math.max(0,ganzeZahl(roh));
+            maxGeInput.value=charakter.kampfwerte.maxGeRk===null
+              ?""
+              :String(charakter.kampfwerte.maxGeRk);
+            speichereCharaktere();
+            aktualisiereAnsicht();
+          });
+          maxGeZeile.append(maxGeText,maxGeInput);
+          gruppe.appendChild(maxGeZeile);
+
+          const rkRaster=document.createElement("div");
+          rkRaster.className="rk-varianten-47";
+          RK_VARIANTEN_47.forEach(variante=>{
+            const karte=document.createElement("button");
+            karte.type="button";
+            karte.className="rk-variante-47";
+            karte.dataset.rkModus47=variante.modus;
+            karte.innerHTML=`<span>${variante.label}</span><strong>10</strong>`;
+            karte.addEventListener("click",()=>zeigeRkDetails47(variante.modus,variante.label));
+            rkRaster.appendChild(karte);
+          });
+          gruppe.appendChild(rkRaster);
+          bereich.appendChild(gruppe);
+          return;
+        }
 
         const kopf = document.createElement("div");
         kopf.className = "grundwerte-kopf-26";
@@ -574,6 +699,83 @@
     inhalt.appendChild(liste);
   }
 
+  function zeigeRkDetails47(modus,label){
+    const charakter=aktiverCharakter();
+    if(!charakter) return;
+    const grund=10;
+    const ge=begrenzterGeMod47(charakter,modus==="falscherFuss");
+    const groesse=typeof groessenModifikatorAngriffRk==="function"
+      ?ganzeZahl(groessenModifikatorAngriffRk(charakter)):0;
+    const alle=aktiveBoniFuerZiel("Rüstungsklasse");
+    const bewertet=rkBoniBewertet47(modus);
+    const bonusSumme=summeBewerteteBoni47(bewertet);
+    const gesamt=grund+ge+groesse+bonusSumme;
+
+    const dialog=detailDialog();
+    dialog.querySelector("#bonusDetailTitel").textContent=label;
+    const inhalt=dialog.querySelector("#bonusDetailInhalt");
+    inhalt.innerHTML="";
+
+    const summe=document.createElement("p");
+    summe.className="bonus-detail-summe";
+    summe.textContent=`Grundwert 10 + GE ${formatiereBonus(ge)} + Größe ${formatiereBonus(groesse)} + sonstige Boni ${formatiereBonus(bonusSumme)} = ${gesamt}`;
+    inhalt.appendChild(summe);
+
+    const max=maxGeRk47(charakter);
+    const geInfo=document.createElement("p");
+    geInfo.className="rk-detail-hinweis-47";
+    geInfo.textContent=modus==="falscherFuss"
+      ?"Auf dem falschen Fuß: positiver GE-Bonus und Ausweichen-Boni entfallen; ein GE-Malus bleibt bestehen."
+      :`Max. GE-Bonus: ${max===null?"keine Begrenzung":`+${max}`}.`;
+    inhalt.appendChild(geInfo);
+
+    const liste=document.createElement("div");
+    liste.className="bonus-detail-liste";
+
+    // Separate Schleife ohne Identitätsannahmen: gleiche Stapellogik anhand Reihenfolge/Art/Wert.
+    const bewertetKopie=[...bewertet];
+    alle.forEach(bonus=>{
+      let ignoriert=false, status="";
+      if(modus==="falscherFuss" && bonus.bonusart==="Ausweichen"){
+        ignoriert=true; status="entfällt auf dem falschen Fuß";
+      }else if(modus==="beruehrung" && ["Rüstung","Schild","Natürliche Rüstung"].includes(bonus.bonusart)){
+        ignoriert=true; status="bei Berührung ignoriert";
+      }else if(modus==="koerperlos" && bonus.bonusart==="Natürliche Rüstung"){
+        ignoriert=true; status="bei körperloser Berührung ignoriert";
+      }else if(modus==="koerperlos" && ["Rüstung","Schild"].includes(bonus.bonusart) && !bonus.wirktGegenKoerperloseBeruehrung){
+        ignoriert=true; status="nicht gegen körperlose Berührung wirksam";
+      }
+
+      let beruecksichtigt=false;
+      if(!ignoriert){
+        const idx=bewertetKopie.findIndex(x=>
+          x.effektId===bonus.effektId &&
+          x.bonusart===bonus.bonusart &&
+          x.wert===bonus.wert
+        );
+        if(idx>=0){
+          beruecksichtigt=!!bewertetKopie[idx].beruecksichtigt;
+          bewertetKopie.splice(idx,1);
+        }
+        status=beruecksichtigt?"berücksichtigt":"nicht stapelbar – nicht berücksichtigt";
+      }
+
+      const zeile=document.createElement("div");
+      zeile.className="bonus-detail-zeile";
+      if(ignoriert || !beruecksichtigt) zeile.classList.add("nicht-beruecksichtigt");
+      zeile.innerHTML=`<strong>${formatiereBonus(bonus.wert)}</strong><span>${bonus.bonusart}</span><span>${bonus.effektName||"Unbenannter Effekt"}</span><small>${status}</small>`;
+      liste.appendChild(zeile);
+    });
+    if(!alle.length){
+      const leer=document.createElement("p");
+      leer.textContent="Keine aktiven RK-Boni.";
+      inhalt.appendChild(leer);
+    }else{
+      inhalt.appendChild(liste);
+    }
+    dialog.showModal();
+  }
+
   function zeigeDetails(eintrag) {
     const charakter = aktiverCharakter();
     if (!charakter) return;
@@ -677,6 +879,24 @@
     const charakter = aktiverCharakter();
     const ergebnis = bonusErgebnis();
 
+    const maxGeInput47=document.querySelector("[data-max-ge-rk47]");
+    if(maxGeInput47){
+      maxGeInput47.disabled=!charakter;
+      maxGeInput47.value=!charakter || maxGeRk47(charakter)===null
+        ?""
+        :String(maxGeRk47(charakter));
+    }
+    document.querySelectorAll(".rk-variante-47").forEach(karte=>{
+      const stark=karte.querySelector("strong");
+      if(!charakter){
+        karte.disabled=true;
+        if(stark) stark.textContent="0";
+      }else{
+        karte.disabled=false;
+        if(stark) stark.textContent=String(rkWert47(charakter,karte.dataset.rkModus47||"normal"));
+      }
+    });
+
     document.querySelectorAll(".grundwert-zeile-26")
       .forEach(zeile => {
         const eintrag = WERTE.find(
@@ -730,6 +950,11 @@
         lesePfad(charakter.kampfwerte, notizFeld.dataset.notizKey) || ""
       );
     });
+
+    const dashboardRk=document.getElementById("rk");
+    if(dashboardRk && charakter){
+      dashboardRk.textContent=String(rkWert47(charakter,"normal"));
+    }
   }
 
   function initialisiereCommit27() {

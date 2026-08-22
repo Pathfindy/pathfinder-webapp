@@ -32,7 +32,8 @@ function normalisiereBerechnungsBonus(bonus = {}) {
         bonusart: normalisiereBerechnungsBonusart(bonus.bonusart),
         wert: Number.isFinite(wert) ? wert : 0,
         wertQuelle: ["stufenwert","nutzerwert"].includes(bonus.wertQuelle) ? bonus.wertQuelle : "fest",
-        stufenFaktor: Number.isFinite(Number(bonus.stufenFaktor)) ? Number(bonus.stufenFaktor) : 1
+        stufenFaktor: Number.isFinite(Number(bonus.stufenFaktor)) ? Number(bonus.stufenFaktor) : 1,
+        wirktGegenKoerperloseBeruehrung: !!bonus.wirktGegenKoerperloseBeruehrung
     };
 }
 

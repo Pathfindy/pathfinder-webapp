@@ -1,7 +1,7 @@
 // Das azlantische Helferlein der Boni
 // app.js
 // Version 0.32
-const APP_VERSION="0.46.0";
+const APP_VERSION="0.47.0";
 
 const seiten={
  dashboard:document.getElementById("dashboard"),
@@ -945,7 +945,8 @@ function normalisiereBonus(bonus={}){
    wertQuelle:["stufenwert","nutzerwert"].includes(bonus.wertQuelle)?bonus.wertQuelle:"fest",
    stufenFaktor:Number.isFinite(Number(bonus.stufenFaktor))
      ?Math.max(-10,Math.min(10,Math.trunc(Number(bonus.stufenFaktor))))
-     :1
+     :1,
+   wirktGegenKoerperloseBeruehrung:!!bonus.wirktGegenKoerperloseBeruehrung
  };
 }
 
@@ -2298,6 +2299,23 @@ function rendereBonusEditor(){
    entfernen.addEventListener("click",()=>entferneBonuszeile(index));
 
    zeile.append(ziel,bonusart,wertQuelle,faktor,wert,entfernen);
+
+   if(bonus.ziel==="Rüstungsklasse" &&
+      ["Rüstung","Schild"].includes(normalisiereBonusart(bonus.bonusart))){
+     const koerperlos=document.createElement("label");
+     koerperlos.className="bonus-koerperlos-47";
+     const koerperlosInput=document.createElement("input");
+     koerperlosInput.type="checkbox";
+     koerperlosInput.checked=!!bonus.wirktGegenKoerperloseBeruehrung;
+     const koerperlosText=document.createElement("span");
+     koerperlosText.textContent="Wirkt gegen körperlose Berührung";
+     koerperlos.append(koerperlosInput,koerperlosText);
+     koerperlosInput.addEventListener("change",()=>{
+       aktualisiereBonus(index,"wirktGegenKoerperloseBeruehrung",koerperlosInput.checked);
+     });
+     zeile.appendChild(koerperlos);
+   }
+
    container.appendChild(zeile);
  });
 }
