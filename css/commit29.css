@@ -200,3 +200,29 @@ button.charakter-attribut-aktuell-44:focus-visible{
   outline:2px solid rgba(111,143,178,.28);
   outline-offset:1px;
 }
+
+
+/* Commit 45 – Größenkategorie */
+.charakter-groesse-zeile-45{
+  display:grid;
+  grid-template-columns:auto minmax(130px,180px);
+  align-items:center;
+  justify-content:start;
+  gap:8px;
+  margin-top:8px;
+  font-size:.84rem;
+  font-weight:700;
+}
+.charakter-groesse-select-45{
+  min-height:34px;
+  padding:5px 7px;
+  border:1px solid #aeb9c7;
+  border-radius:7px;
+  background:#fff;
+  font:inherit;
+}
+@media(max-width:520px){
+  .charakter-groesse-zeile-45{
+    grid-template-columns:auto minmax(120px,1fr);
+  }
+}
