@@ -135,7 +135,10 @@
     const attributKey = angriff.waffenfinesse
       ? "GE"
       : (angriff.art === "Fern" ? "GE" : "ST");
-    return Number(boni[ziel] ?? 0) + nativerAttributModifikator(attributKey);
+    const groesse=typeof groessenModifikatorAngriffRk==="function"
+      ?Number(groessenModifikatorAngriffRk(aktiverCharakter())||0)
+      :0;
+    return Number(boni[ziel] ?? 0) + nativerAttributModifikator(attributKey) + groesse;
   }
 
   function schadenBonus(angriff, boni = aktuelleBonuswerte()) {

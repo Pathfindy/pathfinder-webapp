@@ -242,6 +242,22 @@
     dialog.showModal();
   }
 
+  function aktualisiereGroesseAnsicht45(charakterId = aktiverCharakterId) {
+    const charakter = typeof findeCharakter === "function"
+      ? findeCharakter(charakterId)
+      : null;
+    if (!charakter) return;
+    document.querySelectorAll(".charakter-groesse-select-45").forEach(select=>{
+      if(String(select.dataset.charakterId)!==String(charakter.id)) return;
+      const wert=typeof charakterGroesse==="function"
+        ?charakterGroesse(charakter)
+        :(charakter.groesse||"Mittelgroß");
+      if(document.activeElement!==select) select.value=wert;
+    });
+  }
+
+  window.aktualisiereGroesseAnsicht45 = aktualisiereGroesseAnsicht45;
+
   function aktualisiereAttributeAnsicht44(charakterId = aktiverCharakterId) {
     const charakter = typeof findeCharakter === "function"
       ? findeCharakter(charakterId)
@@ -579,6 +595,33 @@
         klasseNeu.addEventListener("click", () => fuegeKlassenZeileHinzu());
 
         klassenBereich.append(klassenListe, klasseNeu);
+
+        const groesseZeile45=document.createElement("label");
+        groesseZeile45.className="charakter-groesse-zeile-45";
+        const groesseText45=document.createElement("span");
+        groesseText45.textContent="Größe";
+        const groesseSelect45=document.createElement("select");
+        groesseSelect45.className="charakter-groesse-select-45";
+        groesseSelect45.dataset.charakterId=charakter.id;
+        const groessenListe45=typeof PF_GROESSEN!=="undefined"
+          ?PF_GROESSEN
+          :["Mini","Winzig","Sehr klein","Klein","Mittelgroß","Groß","Riesig","Gigantisch","Kolossal"];
+        groessenListe45.forEach(groesse=>{
+          const option=document.createElement("option");
+          option.value=groesse;
+          option.textContent=groesse;
+          groesseSelect45.appendChild(option);
+        });
+        groesseSelect45.value=typeof charakterGroesse==="function"
+          ?charakterGroesse(charakter)
+          :(charakter.groesse||"Mittelgroß");
+        groesseSelect45.addEventListener("change",()=>{
+          if(typeof setzeCharakterGroesse==="function"){
+            setzeCharakterGroesse(charakter.id,groesseSelect45.value);
+          }
+        });
+        groesseZeile45.append(groesseText45,groesseSelect45);
+        klassenBereich.appendChild(groesseZeile45);
 
         const attributeBereich=document.createElement("details");
         attributeBereich.className="charakter-attribute-44";

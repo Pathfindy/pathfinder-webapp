@@ -203,13 +203,29 @@
       case "RW-Zähigkeit": return attributMod26(charakter,"KO");
       case "RW-Wille": return attributMod26(charakter,"WE");
       case "KMB":
-        return charakter?.kampfwerte?.flinkeManoever
+        return (charakter?.kampfwerte?.flinkeManoever ||
+                (typeof kmbVerwendetGeschickWegenGroesse==="function" &&
+                 kmbVerwendetGeschickWegenGroesse(charakter)))
           ? attributMod26(charakter,"GE")
           : attributMod26(charakter,"ST");
       case "KMV":
         return attributMod26(charakter,"ST") + attributMod26(charakter,"GE");
       default: return 0;
     }
+  }
+
+  function groessenModFuerWert45(eintrag,charakter){
+    if(eintrag.ziel==="Rüstungsklasse"){
+      return typeof groessenModifikatorAngriffRk==="function"
+        ?ganzeZahl(groessenModifikatorAngriffRk(charakter))
+        :0;
+    }
+    if(eintrag.ziel==="KMB" || eintrag.ziel==="KMV"){
+      return typeof groessenModifikatorKmbKmv==="function"
+        ?ganzeZahl(groessenModifikatorKmbKmv(charakter))
+        :0;
+    }
+    return 0;
   }
 
 
@@ -233,6 +249,7 @@
     if (eintrag.eingabe) {
       return grundwert +
         attributModFuerWert26(eintrag,charakter) +
+        groessenModFuerWert45(eintrag,charakter) +
         bonusFuerZiel(eintrag.ziel, ergebnis);
     }
 
@@ -569,8 +586,11 @@
           const basisEintrag=WERTE.find(wert=>wert.ziel===eintrag.basisZiel);
           return basisEintrag ? attributModFuerWert26(basisEintrag,charakter) : 0;
         })();
+    const groesseGesamt = eintrag.eingabe
+      ? groessenModFuerWert45(eintrag,charakter)
+      : 0;
     const bonusGesamt = bonusFuerZiel(eintrag.ziel, ergebnis);
-    const gesamt = grundwert + attributGesamt + bonusGesamt;
+    const gesamt = grundwert + attributGesamt + groesseGesamt + bonusGesamt;
 
     const dialog = detailDialog();
     dialog.querySelector("#bonusDetailTitel").textContent =
@@ -586,6 +606,7 @@
       summe.textContent =
         `Grundwert ${formatiereGesamt(grundwert)} ` +
         `+ Attribut ${formatiereBonus(attributGesamt)} ` +
+        `+ Größe ${formatiereBonus(groesseGesamt)} ` +
         `+ sonstige Boni ${formatiereBonus(bonusGesamt)} ` +
         `= ${formatiereGesamt(gesamt)}`;
     } else {

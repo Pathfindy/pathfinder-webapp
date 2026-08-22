@@ -143,7 +143,12 @@
       }
     }
 
-    const gesamt = Number(grundwert) + attributWert + bonusGesamt;
+    const groesseWert = angriff && charakter &&
+      (ziel === "Angriff Nah" || ziel === "Angriff Fern") &&
+      typeof groessenModifikatorAngriffRk === "function"
+        ? Number(groessenModifikatorAngriffRk(charakter) || 0)
+        : 0;
+    const gesamt = Number(grundwert) + attributWert + groesseWert + bonusGesamt;
 
     dialog.querySelector("#bonusDetailTitel").textContent = titel;
     const inhalt = dialog.querySelector("#bonusDetailInhalt");
@@ -152,7 +157,7 @@
     const summe = document.createElement("p");
     summe.className = "bonus-detail-summe";
     summe.textContent = attributText
-      ? `Grundwert ${formatWert(grundwert)} + ${attributText} ${formatWert(attributWert)} + sonstige Boni ${formatWert(bonusGesamt)} = ${formatWert(gesamt)}`
+      ? `Grundwert ${formatWert(grundwert)} + ${attributText} ${formatWert(attributWert)} + Größe ${formatWert(groesseWert)} + sonstige Boni ${formatWert(bonusGesamt)} = ${formatWert(gesamt)}`
       : `Grundwert ${formatWert(grundwert)} + Boni ${formatWert(bonusGesamt)} = ${formatWert(gesamt)}`;
     inhalt.appendChild(summe);
 
@@ -166,6 +171,21 @@
         <small>Grundkomponente – immer berücksichtigt</small>
       `;
       inhalt.appendChild(attributZeile);
+    }
+
+    if (groesseWert !== 0 || (angriff && (ziel === "Angriff Nah" || ziel === "Angriff Fern"))) {
+      const groesseZeile = document.createElement("div");
+      groesseZeile.className = "bonus-detail-zeile";
+      const groesseName = charakter && typeof charakterGroesse === "function"
+        ? charakterGroesse(charakter)
+        : "Mittelgroß";
+      groesseZeile.innerHTML = `
+        <strong>${formatWert(groesseWert)}</strong>
+        <span>Größe</span>
+        <span>${groesseName}</span>
+        <small>Größenmodifikator – immer berücksichtigt</small>
+      `;
+      inhalt.appendChild(groesseZeile);
     }
 
     if (!boni.length) {

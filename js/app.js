@@ -1,7 +1,7 @@
 // Das azlantische Helferlein der Boni
 // app.js
 // Version 0.32
-const APP_VERSION="0.44.4";
+const APP_VERSION="0.45.0";
 
 const seiten={
  dashboard:document.getElementById("dashboard"),
@@ -82,6 +82,65 @@ function normalisiereKlassen(klassen){
 
 
 const PF_ATTRIBUTE=["ST","GE","KO","IN","WE","CH"];
+const PF_GROESSEN=[
+ "Mini",
+ "Winzig",
+ "Sehr klein",
+ "Klein",
+ "Mittelgroß",
+ "Groß",
+ "Riesig",
+ "Gigantisch",
+ "Kolossal"
+];
+
+const PF_GROESSEN_MODIFIKATOREN={
+ "Mini":{angriffRk:8,kmbKmv:-8},
+ "Winzig":{angriffRk:4,kmbKmv:-4},
+ "Sehr klein":{angriffRk:2,kmbKmv:-2},
+ "Klein":{angriffRk:1,kmbKmv:-1},
+ "Mittelgroß":{angriffRk:0,kmbKmv:0},
+ "Groß":{angriffRk:-1,kmbKmv:1},
+ "Riesig":{angriffRk:-2,kmbKmv:2},
+ "Gigantisch":{angriffRk:-4,kmbKmv:4},
+ "Kolossal":{angriffRk:-8,kmbKmv:8}
+};
+
+function normalisiereGroesse(groesse){
+ return PF_GROESSEN.includes(groesse)?groesse:"Mittelgroß";
+}
+
+function charakterGroesse(charakter=aktiverCharakter()){
+ return normalisiereGroesse(charakter?.groesse);
+}
+
+function groessenModifikatorAngriffRk(charakter=aktiverCharakter()){
+ return Number(PF_GROESSEN_MODIFIKATOREN[charakterGroesse(charakter)]?.angriffRk||0);
+}
+
+function groessenModifikatorKmbKmv(charakter=aktiverCharakter()){
+ return Number(PF_GROESSEN_MODIFIKATOREN[charakterGroesse(charakter)]?.kmbKmv||0);
+}
+
+function kmbVerwendetGeschickWegenGroesse(charakter=aktiverCharakter()){
+ return ["Mini","Winzig","Sehr klein"].includes(charakterGroesse(charakter));
+}
+
+function setzeCharakterGroesse(id,groesse){
+ const charakter=findeCharakter(id);
+ if(!charakter) return false;
+ charakter.groesse=normalisiereGroesse(groesse);
+ speichereCharaktere();
+ if(typeof berechneWerte==="function") berechneWerte();
+ if(typeof window.aktualisiereGroesseAnsicht45==="function"){
+   window.aktualisiereGroesseAnsicht45(id);
+ }
+ if(typeof window.aktualisiereAlleAnsichten==="function"){
+   window.aktualisiereAlleAnsichten();
+ }
+ return true;
+}
+
 
 function normalisiereAttribute(attribute){
  const quelle=attribute && typeof attribute==="object" && !Array.isArray(attribute)
@@ -148,6 +207,7 @@ function normalisiereCharakter(charakter={}){
      :"Charakter ohne Kampagnenzuordnung",
    klassen:normalisiereKlassen(charakter.klassen),
    attribute:normalisiereAttribute(charakter.attribute),
+   groesse:normalisiereGroesse(charakter.groesse),
    gab:Number.isFinite(Number(charakter.gab))
      ?Math.max(0,Math.min(99,Math.trunc(Number(charakter.gab))))
      :0,
