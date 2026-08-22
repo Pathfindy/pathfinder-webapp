@@ -441,30 +441,6 @@
     "dauer": "unbegrenzt"
   },
   {
-    "id": "standard-admin-5d6e3dc4-6926-4df3-8fdc-f4d7f8182cf5",
-    "name": "CH: Charisma (Attribut)",
-    "kategorie": "Charakterwerte",
-    "aktiv": false,
-    "beschreibung": "",
-    "quelle": "",
-    "angriffZuweisbar": false,
-    "nutzerBonus": {
-      "aktiv": true,
-      "min": -5,
-      "max": 17,
-      "standard": 0
-    },
-    "stufenlogik": {
-      "aktiv": false,
-      "bezug": "charakter",
-      "klasse": "",
-      "bereiche": []
-    },
-    "boni": [],
-    "gebiet": "",
-    "dauer": ""
-  },
-  {
     "id": "standard-admin-73cd1beb-c64e-449c-a225-3603b93bde5a",
     "name": "Defensiv kämpfen",
     "kategorie": "Kampf",
@@ -1182,59 +1158,6 @@
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "stufenwert",
-        "stufenFaktor": 1
-      }
-    ],
-    "gebiet": "",
-    "dauer": ""
-  },
-  {
-    "id": "standard-admin-f4d458c3-e477-42f6-8f04-a35920f473ba",
-    "name": "GE: Geschicklichkeit (Attribut)",
-    "kategorie": "Charakterwerte",
-    "aktiv": false,
-    "beschreibung": "",
-    "quelle": "",
-    "angriffZuweisbar": false,
-    "nutzerBonus": {
-      "aktiv": true,
-      "min": -5,
-      "max": 17,
-      "standard": 0
-    },
-    "stufenlogik": {
-      "aktiv": false,
-      "bezug": "charakter",
-      "klasse": "",
-      "bereiche": []
-    },
-    "boni": [
-      {
-        "ziel": "Angriff Fern",
-        "bonusart": "Modifikator Attribut",
-        "wert": 1,
-        "wertQuelle": "fest",
-        "stufenFaktor": 1
-      },
-      {
-        "ziel": "Rüstungsklasse",
-        "bonusart": "Modifikator Attribut",
-        "wert": 1,
-        "wertQuelle": "fest",
-        "stufenFaktor": 1
-      },
-      {
-        "ziel": "KMV",
-        "bonusart": "Modifikator Attribut",
-        "wert": 1,
-        "wertQuelle": "fest",
-        "stufenFaktor": 1
-      },
-      {
-        "ziel": "RW-Reflex",
-        "bonusart": "Modifikator Attribut",
-        "wert": 1,
-        "wertQuelle": "fest",
         "stufenFaktor": 1
       }
     ],
@@ -2429,30 +2352,6 @@
     "dauer": ""
   },
   {
-    "id": "standard-admin-5b781d77-ec60-4aa1-9eb5-3e54427b957d",
-    "name": "IN: Intelligenz (Attribut)",
-    "kategorie": "Charakterwerte",
-    "aktiv": false,
-    "beschreibung": "",
-    "quelle": "",
-    "angriffZuweisbar": false,
-    "nutzerBonus": {
-      "aktiv": true,
-      "min": -5,
-      "max": 17,
-      "standard": 0
-    },
-    "stufenlogik": {
-      "aktiv": false,
-      "bezug": "charakter",
-      "klasse": "",
-      "bereiche": []
-    },
-    "boni": [],
-    "gebiet": "",
-    "dauer": ""
-  },
-  {
     "id": "standard-admin-8c00c613-593c-4e88-9ef9-6b1bc291081f",
     "name": "Kampf mit improvisierter Waffe",
     "kategorie": "Kampf",
@@ -2743,38 +2642,6 @@
       }
     ],
     "gebiet": "selbst",
-    "dauer": ""
-  },
-  {
-    "id": "standard-admin-6d4e5031-fe33-4136-8b58-b38cc7d60ed5",
-    "name": "KO: Konstitution (Attribut)",
-    "kategorie": "Charakterwerte",
-    "aktiv": false,
-    "beschreibung": "",
-    "quelle": "",
-    "angriffZuweisbar": false,
-    "nutzerBonus": {
-      "aktiv": true,
-      "min": -5,
-      "max": 17,
-      "standard": 0
-    },
-    "stufenlogik": {
-      "aktiv": false,
-      "bezug": "charakter",
-      "klasse": "",
-      "bereiche": []
-    },
-    "boni": [
-      {
-        "ziel": "RW-Zähigkeit",
-        "bonusart": "Modifikator Attribut",
-        "wert": 1,
-        "wertQuelle": "fest",
-        "stufenFaktor": 1
-      }
-    ],
-    "gebiet": "",
     "dauer": ""
   },
   {
@@ -3943,59 +3810,6 @@
     "dauer": "1 Min./Stufe"
   },
   {
-    "id": "standard-admin-435e60e4-812c-4124-8da8-ff8ea32b9010",
-    "name": "ST: Stärke (Attribut)",
-    "kategorie": "Charakterwerte",
-    "aktiv": false,
-    "beschreibung": "",
-    "quelle": "",
-    "angriffZuweisbar": false,
-    "nutzerBonus": {
-      "aktiv": true,
-      "min": -5,
-      "max": 17,
-      "standard": 0
-    },
-    "stufenlogik": {
-      "aktiv": false,
-      "bezug": "charakter",
-      "klasse": "",
-      "bereiche": []
-    },
-    "boni": [
-      {
-        "ziel": "Angriff Nah",
-        "bonusart": "Modifikator Attribut",
-        "wert": 1,
-        "wertQuelle": "fest",
-        "stufenFaktor": 1
-      },
-      {
-        "ziel": "Schaden Nah",
-        "bonusart": "Modifikator Attribut",
-        "wert": 1,
-        "wertQuelle": "fest",
-        "stufenFaktor": 1
-      },
-      {
-        "ziel": "KMB",
-        "bonusart": "Modifikator Attribut",
-        "wert": 1,
-        "wertQuelle": "fest",
-        "stufenFaktor": 1
-      },
-      {
-        "ziel": "KMV",
-        "bonusart": "Modifikator Attribut",
-        "wert": 1,
-        "wertQuelle": "fest",
-        "stufenFaktor": 1
-      }
-    ],
-    "gebiet": "",
-    "dauer": ""
-  },
-  {
     "id": "standard-admin-08ed045d-59a5-475b-aa28-8815e355d181",
     "name": "Standarte von Damien (9m Reichweite)",
     "kategorie": "Ausrüstung",
@@ -5093,38 +4907,6 @@
     ],
     "gebiet": "selbst",
     "dauer": "unbegrenzt"
-  },
-  {
-    "id": "standard-admin-ecb36aca-0f07-4e85-a616-cce6541ce286",
-    "name": "WE: Weisheit (Attribut)",
-    "kategorie": "Charakterwerte",
-    "aktiv": false,
-    "beschreibung": "",
-    "quelle": "",
-    "angriffZuweisbar": false,
-    "nutzerBonus": {
-      "aktiv": true,
-      "min": -5,
-      "max": 17,
-      "standard": 0
-    },
-    "stufenlogik": {
-      "aktiv": false,
-      "bezug": "charakter",
-      "klasse": "",
-      "bereiche": []
-    },
-    "boni": [
-      {
-        "ziel": "RW-Wille",
-        "bonusart": "Modifikator Attribut",
-        "wert": 1,
-        "wertQuelle": "fest",
-        "stufenFaktor": 1
-      }
-    ],
-    "gebiet": "",
-    "dauer": ""
   },
   {
     "id": "standard-admin-a7a742e2-bebf-4a78-9b22-6dcb4cc6ffc2",
