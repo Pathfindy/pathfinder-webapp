@@ -171,7 +171,7 @@
     },
     "stufenlogik": {
       "aktiv": true,
-      "bezug": "charakter",
+      "bezug": "zauberstufe",
       "klasse": "",
       "bereiche": [
         {
@@ -1310,68 +1310,8 @@
     "dauer": ""
   },
   {
-    "id": "standard-admin-dd5db1a6-8a8b-47f2-a655-2b7fe2814106",
-    "name": "Gnome (Klein)",
-    "kategorie": "Volksmerkmale",
-    "aktiv": false,
-    "beschreibung": "",
-    "quelle": "GRW S. 22",
-    "angriffZuweisbar": false,
-    "nutzerBonus": {
-      "aktiv": false,
-      "min": 1,
-      "max": 20,
-      "standard": 1
-    },
-    "stufenlogik": {
-      "aktiv": false,
-      "bezug": "charakter",
-      "klasse": "",
-      "bereiche": []
-    },
-    "boni": [
-      {
-        "ziel": "Angriff Nah",
-        "bonusart": "Größe",
-        "wert": 1,
-        "wertQuelle": "fest",
-        "stufenFaktor": 1
-      },
-      {
-        "ziel": "Angriff Fern",
-        "bonusart": "Größe",
-        "wert": 1,
-        "wertQuelle": "fest",
-        "stufenFaktor": 1
-      },
-      {
-        "ziel": "Rüstungsklasse",
-        "bonusart": "Größe",
-        "wert": 1,
-        "wertQuelle": "fest",
-        "stufenFaktor": 1
-      },
-      {
-        "ziel": "KMB",
-        "bonusart": "Malus",
-        "wert": -1,
-        "wertQuelle": "fest",
-        "stufenFaktor": 1
-      },
-      {
-        "ziel": "KMV",
-        "bonusart": "Malus",
-        "wert": -1,
-        "wertQuelle": "fest",
-        "stufenFaktor": 1
-      }
-    ],
-    "gebiet": "",
-    "dauer": ""
-  },
-  {
     "id": "standard-admin-67c158f3-25f9-4cea-be35-9d38ab1dca6e",
-    "name": "Gnome (Verteidigundsschule, Riese)",
+    "name": "Gnome (Verteidigungsschule, Riese)",
     "kategorie": "Volksmerkmale",
     "aktiv": false,
     "beschreibung": "",
@@ -1740,7 +1680,7 @@
   },
   {
     "id": "standard-admin-c43a769b-6744-4681-bdc8-7fbe14511bad",
-    "name": "Halbling (Klein, Halblingsglück, Furchtlos)",
+    "name": "Halbling (Halblingsglück, Furchtlos)",
     "kategorie": "Volksmerkmale",
     "aktiv": false,
     "beschreibung": "",
@@ -1759,27 +1699,6 @@
       "bereiche": []
     },
     "boni": [
-      {
-        "ziel": "Angriff Nah",
-        "bonusart": "Größe",
-        "wert": 1,
-        "wertQuelle": "fest",
-        "stufenFaktor": 1
-      },
-      {
-        "ziel": "Angriff Fern",
-        "bonusart": "Größe",
-        "wert": 1,
-        "wertQuelle": "fest",
-        "stufenFaktor": 1
-      },
-      {
-        "ziel": "Rüstungsklasse",
-        "bonusart": "Größe",
-        "wert": 1,
-        "wertQuelle": "fest",
-        "stufenFaktor": 1
-      },
       {
         "ziel": "RW-Reflex",
         "bonusart": "Namenlos",
@@ -1805,20 +1724,6 @@
         "ziel": "RW-Furcht",
         "bonusart": "Namenlos",
         "wert": 2,
-        "wertQuelle": "fest",
-        "stufenFaktor": 1
-      },
-      {
-        "ziel": "KMB",
-        "bonusart": "Malus",
-        "wert": -1,
-        "wertQuelle": "fest",
-        "stufenFaktor": 1
-      },
-      {
-        "ziel": "KMV",
-        "bonusart": "Malus",
-        "wert": -1,
         "wertQuelle": "fest",
         "stufenFaktor": 1
       }
@@ -3175,7 +3080,7 @@
   },
   {
     "id": "standard-admin-7467bc5a-1ef2-4a89-9944-69960bcf29ef",
-    "name": "Person vergrößern (+2 ST, -2 GE)",
+    "name": "Person vergrößern",
     "kategorie": "Zauber",
     "aktiv": false,
     "beschreibung": "PERSON VERGRÖSSERN\n\nSchule: Verwandlung; Grad: HXM/MAG 1\nZeitaufwand: 1 Runde\nKomponenten: V, G, M (Eisenpulver)\nReichweite: Nah (7,50 m + 1,50 m/2 Stufen)\nZiel: Eine humanoide Kreatur\nWirkungsdauer: 1 Min./Stufe\nRettungswurf: Zähigkeit, keine Wirkung; Zauberresistenz: Ja\n\nDieser Zauber lässt eine humanoide Kreatur sofort auf das Doppelte \nihrer Größe anwachsen und achtmal so schwer werden. Die Kreatur \nwächst so um eine Größenkategorie. Sie erhält einen Größenbonus \nvon +2 auf Stärke, einen Größenmalus von – 2 auf Geschicklichkeit \n(bis zu einem Minimum von 1) und aufgrund der gesteigerten \nGröße einen Malus von – 1 auf Angriffswürfe und die RK. \nEine humanoide Kreatur, die dadurch „groß“ wird, hat eine \nAngriffsfläche von 3 m und eine natürliche Reichweite von 3 m. Die \nBewegungsrate des Ziels verändert sich nicht.\nSollte nicht genug Raum für das Wachstum vorhanden sein, \nnimmt die Kreatur die maximal mögliche Größe an und darf einen \nStärkewurf machen (mit der erhöhten Stärke), um ihr Gefängnis \nzu sprengen. Schlägt dieser Wurf fehl, wird die Kreatur von dem \nsie umgebenden Material eingeschränkt, ohne dadurch Schaden \nzu erleiden – der Zauber kann nicht verwendet werden, um eine \nKreatur aufgrund ihrer Größe zu zerquetschen.\nJegliche Ausrüstung, die von der Kreatur getragen wird, wird \nebenfalls vergrößert. Nahkampfwaffen verursachen dadurch \nmehr Schaden. Andere magische Eigenschaften werden durch den \nZauber nicht betroffen. Jeder vergrößerte Gegenstand, der den \nBesitz einer vergrößerten Kreatur verlässt (auch geworfene oder \nverschossene Projektile), nimmt sofort wieder seine ursprüngliche \nGröße an. Wurf- und Projektilwaffen verursachen also ihren \nnormalen Schaden und Projektile verursachen soviel Schaden, wie \nes die Größe der Waffe vorgibt, mit der sie abgefeuert wurden. Die \nmagischen Eigenschaften von vergrößerten Waffen werden nicht \ndurch den Zauber verbessert.\nUnterschiedliche magische Effekte, welche die Größe erhöhen, \nsind nicht kumulativ.\nPerson vergrößern bannt und ist der Gegenzauber zu Person \nverkleinern.\nPerson vergrößern kann mit Hilfe von Dauerhaftigkeit permanent \ngemacht werden.",
@@ -3195,9 +3100,23 @@
     },
     "boni": [
       {
-        "ziel": "Angriff Nah",
+        "ziel": "Attribut ST",
         "bonusart": "Größe",
-        "wert": 1,
+        "wert": 2,
+        "wertQuelle": "fest",
+        "stufenFaktor": 1
+      },
+      {
+        "ziel": "Attribut GE",
+        "bonusart": "Malus",
+        "wert": -2,
+        "wertQuelle": "fest",
+        "stufenFaktor": 1
+      },
+      {
+        "ziel": "Angriff Nah",
+        "bonusart": "Malus",
+        "wert": -1,
         "wertQuelle": "fest",
         "stufenFaktor": 1
       },
@@ -3214,17 +3133,63 @@
         "wert": -1,
         "wertQuelle": "fest",
         "stufenFaktor": 1
-      },
+      }
+    ],
+    "gebiet": "",
+    "dauer": ""
+  },
+  {
+    "id": "standard-admin-d70e1442-b55d-4f08-9d4a-7b5ad3fc67df",
+    "name": "Person verkleinern",
+    "kategorie": "Zauber",
+    "aktiv": false,
+    "beschreibung": "PERSON VERKLEINERN\nSchule: Verwandlung; Grad: HXM/MAG 1\nZeitaufwand: 1 Runde \nKomponenten: V, G, M (ein wenig Eisenpulver)\nReichweite: Nah (7,50 m + 1,50 m/2 Stufen)\nZiel: Eine humanoide Kreatur\nWirkungsdauer: 1 Min./Stufe\nRettungswurf: Zähigkeit, keine Wirkung; Zauberresistenz: Ja\n\nDieser Zauber lässt eine humanoide Kreatur sofort schrumpfen, so \ndass sie nur noch halb so groß und breit ist und nur noch ein Achtel \nsoviel wiegt. Die Größenkategorie sinkt dadurch um einen Schritt. \nDas Ziel erhält einen Größenbonus von +2 auf seine Geschicklichkeit, \neinen Größenmalus von – 2 auf seine Stärke (bis zu einem Minimum \nvon 1) und einen Bonus von +1 auf Angriffswürfe und die RK.\nEine kleine humanoide Kreatur, die durch den Zauber sehr klein \nwird, hat eine Angriffsfläche von 75 cm und eine natürliche Reichweite \nvon 0 m (was bedeutet, dass sie das Feld eines Gegners betreten \nmuss, um diesen anzugreifen). Eine große Kreatur, die durch den \nZauber mittelgroß wird, hat eine Angriffsfläche von 1,50 m und eine \nnatürliche Reichweite von 1,50 m. Die Bewegungsrate ändert sich \ndurch den Zauber nicht.\nJegliche Ausrüstung, die von dem Betroffenen getragen wird, \nwird durch den Zauber ebenfalls verkleinert.\nNahkampf- und Fernkampfwaffen verursachen weniger Schaden. \nAndere magische Eigenschaften werden durch den Zauber nicht \nbetroffen. Ein verkleinerter Gegenstand, der den Besitz einer \nverkleinerten Kreatur verlässt (auch Projektile und Wurfwaffen), \nnimmt sofort wieder seine normale Größe an. Das bedeutet, dass \nWurfwaffen normalen Schaden verursachen (Projektile hingegen \nverursachen Schaden, der auf der Größe der Waffe basiert, mit der \nsie verschossen werden).\nMehrere magische Effekte, die jemanden verkleinern, sind nicht \nkumulativ. Person verkleinern bannt und ist der Gegenzauber zu \nPerson vergrößern. \nPerson verkleinern kann mit Dauerhaftigkeit permanent gemacht \nwerden.",
+    "quelle": "GRW S.313",
+    "angriffZuweisbar": false,
+    "nutzerBonus": {
+      "aktiv": false,
+      "min": 1,
+      "max": 20,
+      "standard": 1
+    },
+    "stufenlogik": {
+      "aktiv": false,
+      "bezug": "charakter",
+      "klasse": "",
+      "bereiche": []
+    },
+    "boni": [
       {
-        "ziel": "RW-Reflex",
-        "bonusart": "Malus",
-        "wert": -1,
+        "ziel": "Attribut GE",
+        "bonusart": "Größe",
+        "wert": 2,
         "wertQuelle": "fest",
         "stufenFaktor": 1
       },
       {
-        "ziel": "KMB",
-        "bonusart": "Größe",
+        "ziel": "Attribut ST",
+        "bonusart": "Malus",
+        "wert": -2,
+        "wertQuelle": "fest",
+        "stufenFaktor": 1
+      },
+      {
+        "ziel": "Angriff Nah",
+        "bonusart": "Namenlos",
+        "wert": 1,
+        "wertQuelle": "fest",
+        "stufenFaktor": 1
+      },
+      {
+        "ziel": "Angriff Fern",
+        "bonusart": "Namenlos",
+        "wert": 1,
+        "wertQuelle": "fest",
+        "stufenFaktor": 1
+      },
+      {
+        "ziel": "Rüstungsklasse",
+        "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
         "stufenFaktor": 1
@@ -3419,7 +3384,7 @@
   },
   {
     "id": "standard-admin-11cf5018-7753-41e4-b670-bfb644036ce5",
-    "name": "Rüstungsarmschienen",
+    "name": "Rüstungsarmschienen (magisch)",
     "kategorie": "Ausrüstung",
     "aktiv": false,
     "beschreibung": "RÜSTUNGSARMSCHIENEN \nDiese Handgelenk- oder Unterarmschützer tragen manchmal Schutzsymbole \noder Abbildungen wachsam blickender Tiere. Sie umgeben den Träger mit ei-\nnem unsichtbaren, aber spürbaren Energiefeld, das ihm einen Rüstungsbonus \nvon +1 bis +8 verleiht, als trüge er eine Rüstung. Beide Armschienen müssen \nhierzu getragen werden. Rüstungsarmschienen können alternativ auch mit besonderen \nRüstungseigenschaften versehen werden. Der Preis des Gegenstandes richtet sich dann nach dem modifizierten Bonus, auch wenn die RK nicht verbessert wird; der modifizierte Bonus aus Verbesserungsbonus und dem Bonusäquivalent der Eigenschaften kann maximal +8 betragen. Ferner müssen Rüstungsarmschienen mindestens über \neinen Verbesserungsbonus von +1 verfügen, um mit besonderen Rüs-\ntungseigenschaften belegt zu werden. Sie können nicht mit Rüstungs-\neigenschaften versehen werden, welche einen festgelegten Preis in \nGM besitzen. Rüstungsarmschienen sind nicht kumulativ mit gewöhn-\nlicher Rüstung; sollte der Träger aus einer anderen Quelle einen grö-\nßeren Rüstungsbonus erhalten, stellen die Rüstungsarmschienen die \nFunktion ein und verleihen weder einen Rüstungsbonus noch beson-\ndere Rüstungseigenschaften. Sollten die Rüstungsarmschienen den \nhöheren Rüstungsbonus bieten, stellt umgekehrt die andere Quelle \ndes Rüstungsbonus‘ die Funktion ein.\n\nPreis variiert\nRüstung +1 1.000 GM\nRüstung +2 4.000 GM\nRüstung +3 9.000 GM\nRüstung +4 16.000 GM\nRüstung +5 25.000 GM\nRüstung +6 36.000 GM\nRüstung +7 49.000 GM\nRüstung +8 64.000 GM\n\nAURA Durchschnittliche Beschwörung ZS 7 GEWICHT 1 Pfd.",
@@ -3497,7 +3462,7 @@
     },
     "stufenlogik": {
       "aktiv": true,
-      "bezug": "manuell",
+      "bezug": "zauberstufe",
       "klasse": "",
       "bereiche": [
         {
@@ -3600,7 +3565,7 @@
   },
   {
     "id": "standard-admin-422a5dd2-98d4-4e8d-89ef-40adcbbf10ae",
-    "name": "Schutzring",
+    "name": "Schutzring (magisch)",
     "kategorie": "Ausrüstung",
     "aktiv": false,
     "beschreibung": "SCHUTZRING \nDieser Ring gewährt dauerhaft magischen Schutz in Form eines \nAblenkungsbonus von +1 bis +5 auf die RK.\n\nPreis variiert\nBonus +1 2000 GM\nBonus +2 8.000 GM\nBonus +3 18.000 GM\nBonus +4 32.000 GM\nBonus +5 50.000 GM\n\nAURA Schwacher Bannzauber ZS 5 GEWICHT -",
