@@ -151,3 +151,52 @@
   font-size:.72rem;
   line-height:1.3;
 }
+
+
+/* Commit 44: Attribute im Charakterbanner */
+.charakter-attribute-44{margin-top:10px;border:1px solid #cbd5e1;border-radius:9px;background:#f8fafc;overflow:hidden}
+.charakter-attribute-44>summary{padding:9px 10px;cursor:pointer;font-weight:750;color:#1e3a5f;user-select:none}
+.charakter-attribute-44[open]>summary{border-bottom:1px solid #d8e0e8}
+.charakter-attribute-tabelle-44{padding:7px 9px 9px}
+.charakter-attribut-zeile-44{display:grid;grid-template-columns:minmax(58px,.55fr) minmax(80px,.75fr) minmax(95px,.9fr) minmax(85px,.75fr);gap:7px;align-items:center;padding:5px 0;border-top:1px solid #e5e9ef}
+.charakter-attribut-kopf-44{border-top:0;color:#657383;font-size:.72rem;font-weight:700}
+.charakter-attribut-zeile-44 select,.charakter-attribut-zeile-44 output{width:100%;min-height:34px;padding:5px 7px;border:1px solid #b8c0ca;border-radius:7px;background:#fff;text-align:center;font:inherit}
+.charakter-attribut-zeile-44 output{display:flex;align-items:center;justify-content:center;background:#eef2f6;color:#1e3a5f;font-weight:750}
+@media(max-width:520px){
+ .charakter-attribute-tabelle-44{padding-inline:6px}
+ .charakter-attribut-zeile-44{grid-template-columns:48px 72px minmax(82px,1fr) 76px;gap:4px}
+ .charakter-attribut-kopf-44{font-size:.62rem}
+}
+
+/* Commit 44.2 – aktueller Attributswert ist anklickbar */
+button.charakter-attribut-aktuell-44{cursor:pointer}
+button.charakter-attribut-aktuell-44:hover{background:#dfe7f0}
+
+
+/* Commit 44.4 – Aktueller Attributswert wieder wie zuvor darstellen */
+button.charakter-attribut-aktuell-44{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+  min-height:34px;
+  padding:5px 7px;
+  border:1px solid #b8c0ca;
+  border-radius:7px;
+  background:#eef2f6;
+  color:#1e3a5f;
+  font:inherit;
+  font-weight:750;
+  text-align:center;
+  box-shadow:none;
+  cursor:pointer;
+}
+button.charakter-attribut-aktuell-44:hover,
+button.charakter-attribut-aktuell-44:focus-visible{
+  background:#dfe7f0;
+  border-color:#8ea5bf;
+}
+button.charakter-attribut-aktuell-44:focus-visible{
+  outline:2px solid rgba(111,143,178,.28);
+  outline-offset:1px;
+}
