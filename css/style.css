@@ -784,3 +784,17 @@ nav {
   margin:0;
   flex:0 0 auto;
 }
+
+
+/* Commit 47.2 – körperlose Berührung Checkbox linksbündig */
+.bonus-koerperlos-47{
+  justify-content:flex-start !important;
+  align-self:start;
+  justify-self:start;
+  text-align:left;
+  padding-left:2px !important;
+  background:transparent !important;
+}
+.bonus-koerperlos-47 input[type="checkbox"]{
+  margin-left:0 !important;
+}
