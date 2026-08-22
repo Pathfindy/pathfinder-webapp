@@ -25,7 +25,8 @@
         "bonusart": "Natürliche Rüstung",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "selbst",
@@ -57,28 +58,32 @@
         "bonusart": "Ablenkung",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "RW-Reflex",
         "bonusart": "Resistenz",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "RW-Wille",
         "bonusart": "Resistenz",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "RW-Zähigkeit",
         "bonusart": "Resistenz",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "selbst",
@@ -110,14 +115,16 @@
         "bonusart": "Situation",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Angriff Fern",
         "bonusart": "Situation",
         "wert": 0,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "",
@@ -149,7 +156,8 @@
         "bonusart": "Malus",
         "wert": -2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "selbst",
@@ -207,14 +215,16 @@
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "stufenwert",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Schaden Fern",
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "stufenwert",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "selbst",
@@ -246,7 +256,8 @@
         "bonusart": "Verbesserung",
         "wert": 2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "",
@@ -278,7 +289,8 @@
         "bonusart": "Ausweichen",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "selbst",
@@ -310,7 +322,8 @@
         "bonusart": "Verbesserung",
         "wert": 4,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "",
@@ -342,14 +355,16 @@
         "bonusart": "Moral",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "RW-Furcht",
         "bonusart": "Moral",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "Berührung",
@@ -381,7 +396,8 @@
         "bonusart": "Malus",
         "wert": -2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "selbst",
@@ -413,7 +429,8 @@
         "bonusart": "Namenlos",
         "wert": 2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "selbst",
@@ -445,28 +462,32 @@
         "bonusart": "Malus",
         "wert": -4,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Rüstungsklasse",
         "bonusart": "Ausweichen",
         "wert": 2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "KMB",
         "bonusart": "Malus",
         "wert": -4,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "KMV",
         "bonusart": "Ausweichen",
         "wert": 2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "selbst",
@@ -519,21 +540,24 @@
         "bonusart": "Malus",
         "wert": -1,
         "wertQuelle": "stufenwert",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "KMB",
         "bonusart": "Malus",
         "wert": -1,
         "wertQuelle": "stufenwert",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Rüstungsklasse",
         "bonusart": "Ausweichen",
         "wert": 1,
         "wertQuelle": "stufenwert",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "selbst",
@@ -565,7 +589,8 @@
         "bonusart": "Namenlos",
         "wert": 2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "selbst",
@@ -597,7 +622,8 @@
         "bonusart": "Namenlos",
         "wert": 2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "",
@@ -629,49 +655,56 @@
         "bonusart": "Modifikator Attribut",
         "wert": -3,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Angriff Fern",
         "bonusart": "Modifikator Attribut",
         "wert": -3,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Schaden Nah",
         "bonusart": "Modifikator Attribut",
         "wert": -3,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Rüstungsklasse",
         "bonusart": "Modifikator Attribut",
         "wert": -3,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "RW-Reflex",
         "bonusart": "Modifikator Attribut",
         "wert": -3,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "KMB",
         "bonusart": "Modifikator Attribut",
         "wert": -3,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "KMV",
         "bonusart": "Modifikator Attribut",
         "wert": -3,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "selbst",
@@ -703,42 +736,48 @@
         "bonusart": "Modifikator Attribut",
         "wert": -1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Angriff Fern",
         "bonusart": "Modifikator Attribut",
         "wert": -1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Schaden Nah",
         "bonusart": "Modifikator Attribut",
         "wert": -1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "RW-Reflex",
         "bonusart": "Modifikator Attribut",
         "wert": -1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "KMB",
         "bonusart": "Modifikator Attribut",
         "wert": -1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "KMV",
         "bonusart": "Modifikator Attribut",
         "wert": -1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "selbst",
@@ -770,42 +809,48 @@
         "bonusart": "Malus",
         "wert": -2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Angriff Fern",
         "bonusart": "Malus",
         "wert": -2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "RW-Reflex",
         "bonusart": "Malus",
         "wert": -2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "RW-Wille",
         "bonusart": "Malus",
         "wert": -2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "RW-Zähigkeit",
         "bonusart": "Malus",
         "wert": -2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "KMB",
         "bonusart": "Malus",
         "wert": -2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "selbst",
@@ -873,7 +918,8 @@
         "bonusart": "Malus",
         "wert": 0,
         "wertQuelle": "stufenwert",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "selbst",
@@ -905,7 +951,8 @@
         "bonusart": "Malus",
         "wert": -4,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "selbst",
@@ -937,14 +984,16 @@
         "bonusart": "Situation",
         "wert": 2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "KMB",
         "bonusart": "Situation",
         "wert": 2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "selbst",
@@ -976,14 +1025,16 @@
         "bonusart": "Situation",
         "wert": 4,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "KMB",
         "bonusart": "Situation",
         "wert": 4,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "",
@@ -1116,28 +1167,32 @@
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "stufenwert",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Angriff Fern",
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "stufenwert",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "KMB",
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "stufenwert",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "KMV",
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "stufenwert",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "",
@@ -1169,56 +1224,64 @@
         "bonusart": "Glück",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Angriff Fern",
         "bonusart": "Glück",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "RW-Reflex",
         "bonusart": "Glück",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "RW-Wille",
         "bonusart": "Glück",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "RW-Zähigkeit",
         "bonusart": "Glück",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Schaden Nah",
         "bonusart": "Glück",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Schaden Fern",
         "bonusart": "Glück",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "KMB",
         "bonusart": "Glück",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "",
@@ -1250,21 +1313,24 @@
         "bonusart": "Malus",
         "wert": -1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Angriff Fern",
         "bonusart": "Malus",
         "wert": -1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "KMB",
         "bonusart": "Malus",
         "wert": -1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "selbst",
@@ -1296,14 +1362,16 @@
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "KMB",
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "",
@@ -1335,7 +1403,8 @@
         "bonusart": "Ausweichen",
         "wert": 4,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "",
@@ -1383,14 +1452,16 @@
         "bonusart": "Glück",
         "wert": 1,
         "wertQuelle": "stufenwert",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Angriff Fern",
         "bonusart": "Glück",
         "wert": 1,
         "wertQuelle": "stufenwert",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "selbst",
@@ -1422,7 +1493,8 @@
         "bonusart": "Namenlos",
         "wert": 2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "selbst",
@@ -1454,35 +1526,40 @@
         "bonusart": "Moral",
         "wert": 4,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Angriff Fern",
         "bonusart": "Moral",
         "wert": 4,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "RW-Reflex",
         "bonusart": "Moral",
         "wert": 4,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "RW-Wille",
         "bonusart": "Moral",
         "wert": 4,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "RW-Zähigkeit",
         "bonusart": "Moral",
         "wert": 4,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "Berührung",
@@ -1530,7 +1607,8 @@
         "bonusart": "Verbesserung",
         "wert": 1,
         "wertQuelle": "stufenwert",
-        "stufenFaktor": 2
+        "stufenFaktor": 2,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "selbst",
@@ -1578,7 +1656,8 @@
         "bonusart": "Verbesserung",
         "wert": 1,
         "wertQuelle": "stufenwert",
-        "stufenFaktor": 2
+        "stufenFaktor": 2,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "selbst",
@@ -1626,21 +1705,24 @@
         "bonusart": "Verbesserung",
         "wert": 1,
         "wertQuelle": "stufenwert",
-        "stufenFaktor": 2
+        "stufenFaktor": 2,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Attribut GE",
         "bonusart": "Verbesserung",
         "wert": 1,
         "wertQuelle": "stufenwert",
-        "stufenFaktor": 2
+        "stufenFaktor": 2,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Attribut KO",
         "bonusart": "Verbesserung",
         "wert": 1,
         "wertQuelle": "stufenwert",
-        "stufenFaktor": 2
+        "stufenFaktor": 2,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "selbst",
@@ -1672,7 +1754,8 @@
         "bonusart": "Namenlos",
         "wert": 2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "",
@@ -1704,28 +1787,32 @@
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "RW-Wille",
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "RW-Zähigkeit",
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "RW-Furcht",
         "bonusart": "Namenlos",
         "wert": 2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "",
@@ -1757,42 +1844,48 @@
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Angriff Fern",
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Rüstungsklasse",
         "bonusart": "Ausweichen",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "RW-Reflex",
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "KMB",
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "KMV",
         "bonusart": "Ausweichen",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "",
@@ -1855,21 +1948,24 @@
         "bonusart": "Malus",
         "wert": -1,
         "wertQuelle": "stufenwert",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Schaden Nah",
         "bonusart": "Namenlos",
         "wert": 2,
         "wertQuelle": "stufenwert",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "KMB",
         "bonusart": "Malus",
         "wert": -1,
         "wertQuelle": "stufenwert",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "selbst",
@@ -1901,28 +1997,32 @@
         "bonusart": "Ablenkung",
         "wert": 4,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "RW-Reflex",
         "bonusart": "Resistenz",
         "wert": 4,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "RW-Wille",
         "bonusart": "Resistenz",
         "wert": 4,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "RW-Zähigkeit",
         "bonusart": "Resistenz",
         "wert": 4,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "",
@@ -1954,42 +2054,48 @@
         "bonusart": "Moral",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Angriff Fern",
         "bonusart": "Moral",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "RW-Wille",
         "bonusart": "Moral",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "RW-Gift",
         "bonusart": "Moral",
         "wert": 4,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "RW-Furcht",
         "bonusart": "Moral",
         "wert": 4,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "KMB",
         "bonusart": "Moral",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "",
@@ -2021,42 +2127,48 @@
         "bonusart": "Moral",
         "wert": 2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Angriff Fern",
         "bonusart": "Moral",
         "wert": 2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "RW-Reflex",
         "bonusart": "Moral",
         "wert": 2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "RW-Wille",
         "bonusart": "Moral",
         "wert": 2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "RW-Zähigkeit",
         "bonusart": "Moral",
         "wert": 2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "KMB",
         "bonusart": "Moral",
         "wert": 2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "",
@@ -2088,7 +2200,8 @@
         "bonusart": "Malus",
         "wert": -4,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "selbst",
@@ -2120,7 +2233,8 @@
         "bonusart": "Situation",
         "wert": 2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "selbst",
@@ -2152,14 +2266,16 @@
         "bonusart": "Situation",
         "wert": 2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "KMV",
         "bonusart": "Situation",
         "wert": 2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "selbst",
@@ -2191,7 +2307,8 @@
         "bonusart": "Malus",
         "wert": -4,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "selbst",
@@ -2234,28 +2351,32 @@
         "bonusart": "Moral",
         "wert": 2,
         "wertQuelle": "stufenwert",
-        "stufenFaktor": 4
+        "stufenFaktor": 4,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Attribut KO",
         "bonusart": "Moral",
         "wert": 2,
         "wertQuelle": "stufenwert",
-        "stufenFaktor": 4
+        "stufenFaktor": 4,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Rüstungsklasse",
         "bonusart": "Malus",
         "wert": -2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "RW-Wille",
         "bonusart": "Moral",
         "wert": 2,
         "wertQuelle": "stufenwert",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "selbst",
@@ -2293,7 +2414,8 @@
         "bonusart": "Namenlos",
         "wert": 4,
         "wertQuelle": "stufenwert",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "selbst",
@@ -2325,35 +2447,40 @@
         "bonusart": "Malus",
         "wert": -4,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Angriff Fern",
         "bonusart": "Malus",
         "wert": -4,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "KMB",
         "bonusart": "Malus",
         "wert": -4,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Rüstungsklasse",
         "bonusart": "Malus",
         "wert": -4,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "KMV",
         "bonusart": "Malus",
         "wert": -4,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "selbst",
@@ -2385,7 +2512,8 @@
         "bonusart": "Verbesserung",
         "wert": 4,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "",
@@ -2417,14 +2545,16 @@
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Schaden Fern",
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "selbst",
@@ -2456,49 +2586,56 @@
         "bonusart": "Malus",
         "wert": -2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Angriff Fern",
         "bonusart": "Malus",
         "wert": -2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Schaden Nah",
         "bonusart": "Malus",
         "wert": -2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Schaden Fern",
         "bonusart": "Malus",
         "wert": -2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "RW-Reflex",
         "bonusart": "Malus",
         "wert": -2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "RW-Wille",
         "bonusart": "Malus",
         "wert": -2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "RW-Zähigkeit",
         "bonusart": "Malus",
         "wert": -2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "selbst",
@@ -2530,21 +2667,24 @@
         "bonusart": "Kompetenz",
         "wert": 2,
         "wertQuelle": "stufenwert",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Angriff Fern",
         "bonusart": "Kompetenz",
         "wert": 2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "RW-Zähigkeit",
         "bonusart": "Kompetenz",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "Hören",
@@ -2576,28 +2716,32 @@
         "bonusart": "Moral",
         "wert": 4,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "RW-Wille",
         "bonusart": "Moral",
         "wert": 4,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "RW-Zähigkeit",
         "bonusart": "Moral",
         "wert": 4,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Rüstungsklasse",
         "bonusart": "Ausweichen",
         "wert": 4,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "Hören",
@@ -2629,28 +2773,32 @@
         "bonusart": "Moral",
         "wert": 4,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "RW-Wille",
         "bonusart": "Moral",
         "wert": 4,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "RW-Zähigkeit",
         "bonusart": "Moral",
         "wert": 4,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Rüstungsklasse",
         "bonusart": "Ausweichen",
         "wert": 4,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "Hören",
@@ -2703,49 +2851,56 @@
         "bonusart": "Kompetenz",
         "wert": 1,
         "wertQuelle": "stufenwert",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Angriff Fern",
         "bonusart": "Kompetenz",
         "wert": 1,
         "wertQuelle": "stufenwert",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Schaden Nah",
         "bonusart": "Kompetenz",
         "wert": 1,
         "wertQuelle": "stufenwert",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Schaden Fern",
         "bonusart": "Kompetenz",
         "wert": 1,
         "wertQuelle": "stufenwert",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "RW-Furcht",
         "bonusart": "Moral",
         "wert": 1,
         "wertQuelle": "stufenwert",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "RW-Bezauberung",
         "bonusart": "Moral",
         "wert": 1,
         "wertQuelle": "stufenwert",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "KMB",
         "bonusart": "Kompetenz",
         "wert": 1,
         "wertQuelle": "stufenwert",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "Hören",
@@ -2803,21 +2958,24 @@
         "bonusart": "Verbesserung",
         "wert": 1,
         "wertQuelle": "stufenwert",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Schaden Nah",
         "bonusart": "Verbesserung",
         "wert": 1,
         "wertQuelle": "stufenwert",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "KMB",
         "bonusart": "Verbesserung",
         "wert": 1,
         "wertQuelle": "stufenwert",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "",
@@ -2849,28 +3007,32 @@
         "bonusart": "Schild",
         "wert": 4,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "RW-Reflex",
         "bonusart": "Situation",
         "wert": 4,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "RW-Wille",
         "bonusart": "Situation",
         "wert": 4,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "RW-Zähigkeit",
         "bonusart": "Situation",
         "wert": 4,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "Reichweite Eidolon",
@@ -2902,28 +3064,32 @@
         "bonusart": "Schild",
         "wert": 2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "RW-Reflex",
         "bonusart": "Situation",
         "wert": 2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "RW-Wille",
         "bonusart": "Situation",
         "wert": 2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "RW-Zähigkeit",
         "bonusart": "Situation",
         "wert": 2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "Reichweite Eidolon",
@@ -2955,7 +3121,8 @@
         "bonusart": "Rüstung",
         "wert": 4,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": true
       }
     ],
     "gebiet": "",
@@ -2987,14 +3154,16 @@
         "bonusart": "Verbesserung",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Schaden Nah",
         "bonusart": "Verbesserung",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "Berührung",
@@ -3026,7 +3195,8 @@
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "selbst",
@@ -3058,21 +3228,24 @@
         "bonusart": "Resistenz",
         "wert": 2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "RW-Wille",
         "bonusart": "Resistenz",
         "wert": 2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "RW-Zähigkeit",
         "bonusart": "Resistenz",
         "wert": 2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "selbst",
@@ -3104,35 +3277,40 @@
         "bonusart": "Größe",
         "wert": 2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Attribut GE",
         "bonusart": "Malus",
         "wert": -2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Angriff Nah",
         "bonusart": "Malus",
         "wert": -1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Angriff Fern",
         "bonusart": "Malus",
         "wert": -1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Rüstungsklasse",
         "bonusart": "Malus",
         "wert": -1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "",
@@ -3164,35 +3342,40 @@
         "bonusart": "Größe",
         "wert": 2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Attribut ST",
         "bonusart": "Malus",
         "wert": -2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Angriff Nah",
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Angriff Fern",
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Rüstungsklasse",
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "",
@@ -3224,21 +3407,24 @@
         "bonusart": "Resistenz",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "RW-Wille",
         "bonusart": "Resistenz",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "RW-Zähigkeit",
         "bonusart": "Resistenz",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "selbst",
@@ -3291,7 +3477,8 @@
         "bonusart": "Natürliche Rüstung",
         "wert": 2,
         "wertQuelle": "stufenwert",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "Berührung",
@@ -3323,28 +3510,32 @@
         "bonusart": "Modifikator Attribut",
         "wert": -2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "KMV",
         "bonusart": "Modifikator Attribut",
         "wert": -2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Angriff Nah",
         "bonusart": "Malus",
         "wert": -2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "KMB",
         "bonusart": "Malus",
         "wert": -2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "selbst",
@@ -3376,7 +3567,8 @@
         "bonusart": "Rüstung",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "selbst",
@@ -3408,7 +3600,8 @@
         "bonusart": "Rüstung",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "selbst",
@@ -3440,7 +3633,8 @@
         "bonusart": "Schild",
         "wert": 4,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": true
       }
     ],
     "gebiet": "selbst",
@@ -3493,7 +3687,8 @@
         "bonusart": "Ablenkung",
         "wert": 2,
         "wertQuelle": "stufenwert",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "",
@@ -3525,7 +3720,8 @@
         "bonusart": "Schild",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "",
@@ -3557,7 +3753,8 @@
         "bonusart": "Malus",
         "wert": -2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "selbst",
@@ -3589,14 +3786,16 @@
         "bonusart": "Ablenkung",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "KMV",
         "bonusart": "Ablenkung",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "selbst",
@@ -3628,28 +3827,32 @@
         "bonusart": "Moral",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Angriff Fern",
         "bonusart": "Moral",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "RW-Furcht",
         "bonusart": "Moral",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "KMB",
         "bonusart": "Moral",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "",
@@ -3681,28 +3884,32 @@
         "bonusart": "Moral",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Angriff Fern",
         "bonusart": "Moral",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Schaden Nah",
         "bonusart": "Moral",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Schaden Fern",
         "bonusart": "Moral",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "Sicht",
@@ -3734,14 +3941,16 @@
         "bonusart": "Namenlos",
         "wert": 2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Rüstungsklasse",
         "bonusart": "Malus",
         "wert": -2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "selbst",
@@ -3799,7 +4008,8 @@
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "stufenwert",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "",
@@ -3831,21 +4041,24 @@
         "bonusart": "Situation",
         "wert": 2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Angriff Fern",
         "bonusart": "Situation",
         "wert": 2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "KMB",
         "bonusart": "Situation",
         "wert": 2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "",
@@ -3877,21 +4090,24 @@
         "bonusart": "Situation",
         "wert": 2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Angriff Fern",
         "bonusart": "Situation",
         "wert": 2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "KMB",
         "bonusart": "Situation",
         "wert": 2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "selbst",
@@ -3923,42 +4139,48 @@
         "bonusart": "Malus",
         "wert": -2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Angriff Fern",
         "bonusart": "Malus",
         "wert": -2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "KMB",
         "bonusart": "Malus",
         "wert": -2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "RW-Reflex",
         "bonusart": "Malus",
         "wert": -2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "RW-Wille",
         "bonusart": "Malus",
         "wert": -2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "RW-Zähigkeit",
         "bonusart": "Malus",
         "wert": -2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "selbst",
@@ -3990,28 +4212,32 @@
         "bonusart": "Schild",
         "wert": 2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "RW-Reflex",
         "bonusart": "Situation",
         "wert": 2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "RW-Wille",
         "bonusart": "Situation",
         "wert": 2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "RW-Zähigkeit",
         "bonusart": "Situation",
         "wert": 2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "Reichweite Eidolon",
@@ -4043,28 +4269,32 @@
         "bonusart": "Malus",
         "wert": -2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Angriff Fern",
         "bonusart": "Modifikator Attribut",
         "wert": -2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Rüstungsklasse",
         "bonusart": "Modifikator Attribut",
         "wert": -2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "KMV",
         "bonusart": "Modifikator Attribut",
         "wert": -2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "selbst",
@@ -4096,14 +4326,16 @@
         "bonusart": "Ausweichen",
         "wert": 4,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "KMV",
         "bonusart": "Ausweichen",
         "wert": 4,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "selbst",
@@ -4135,14 +4367,16 @@
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Angriff Fern",
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "selbst",
@@ -4174,28 +4408,32 @@
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Angriff Fern",
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Schaden Nah",
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Schaden Fern",
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "selbst",
@@ -4227,28 +4465,32 @@
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Angriff Fern",
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Schaden Nah",
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Schaden Fern",
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "selbst",
@@ -4280,14 +4522,16 @@
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Angriff Fern",
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "",
@@ -4319,14 +4563,16 @@
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Angriff Fern",
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "",
@@ -4358,14 +4604,16 @@
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Angriff Fern",
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "selbst",
@@ -4397,14 +4645,16 @@
         "bonusart": "Namenlos",
         "wert": 2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Schaden Fern",
         "bonusart": "Namenlos",
         "wert": 2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "",
@@ -4436,14 +4686,16 @@
         "bonusart": "Namenlos",
         "wert": 2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Schaden Fern",
         "bonusart": "Namenlos",
         "wert": 2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "selbst",
@@ -4475,14 +4727,16 @@
         "bonusart": "Namenlos",
         "wert": 2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Schaden Fern",
         "bonusart": "Namenlos",
         "wert": 2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "selbst",
@@ -4535,28 +4789,32 @@
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "stufenwert",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Angriff Fern",
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Schaden Nah",
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Schaden Fern",
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "selbst",
@@ -4604,28 +4862,32 @@
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "stufenwert",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Angriff Fern",
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Schaden Nah",
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Schaden Fern",
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "selbst",
@@ -4668,28 +4930,32 @@
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "stufenwert",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Angriff Fern",
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "stufenwert",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Schaden Nah",
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "stufenwert",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Schaden Fern",
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "stufenwert",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "selbst",
@@ -4727,28 +4993,32 @@
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "stufenwert",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Angriff Fern",
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Schaden Nah",
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Schaden Fern",
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "selbst",
@@ -4780,7 +5050,8 @@
         "bonusart": "Verbesserung",
         "wert": 4,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "",
@@ -4812,42 +5083,48 @@
         "bonusart": "Modifikator Attribut",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Schaden Nah",
         "bonusart": "Modifikator Attribut",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "KMB",
         "bonusart": "Modifikator Attribut",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "RW-Wille",
         "bonusart": "Moral",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "RW-Zähigkeit",
         "bonusart": "Modifikator Attribut",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Rüstungsklasse",
         "bonusart": "Malus",
         "wert": -2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "",
@@ -4879,7 +5156,8 @@
         "bonusart": "Ausweichen",
         "wert": 4,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "",
@@ -4911,7 +5189,8 @@
         "bonusart": "Ablenkung",
         "wert": 2,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "",
@@ -4943,14 +5222,16 @@
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       },
       {
         "ziel": "Angriff Fern",
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
-        "stufenFaktor": 1
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "",
