@@ -761,3 +761,26 @@ nav {
 .flinke-manoever-431{display:flex!important;flex-direction:row!important;align-items:center;gap:8px;margin:4px 0 7px;padding:6px 8px;border-radius:7px;background:#eef3f8}
 .flinke-manoever-431 input[type="checkbox"]{width:20px;height:20px;margin:0;flex:0 0 auto}
 .flinke-manoever-431 span{font-weight:700}
+
+
+/* Commit 47.1 – körperlose Berührung im effektiven Bonus-Editor */
+.bonus-koerperlos-47{
+  grid-column:1 / -1;
+  display:flex !important;
+  flex-direction:row !important;
+  align-items:center;
+  gap:7px;
+  width:auto !important;
+  padding:5px 7px;
+  margin-top:2px;
+  border-radius:7px;
+  background:#eef3f8;
+  font-size:.78rem;
+  font-weight:700;
+}
+.bonus-koerperlos-47 input[type="checkbox"]{
+  width:19px;
+  height:19px;
+  margin:0;
+  flex:0 0 auto;
+}
