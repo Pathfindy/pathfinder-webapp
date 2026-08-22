@@ -6,22 +6,23 @@
     {
       key: "rk",
       ziel: "Rüstungsklasse",
-      label: "Rüstungsklasse",
+      label: "Rüstungsklasse (GE)",
       gruppe: "Rüstungsklasse",
       eingabe: true,
+      festerGrundwert: 10,
       notizKey: "notizen.rk"
     },
     {
       key: "rw.reflex",
       ziel: "RW-Reflex",
-      label: "RW-Reflex",
+      label: "RW-Reflex (GE)",
       gruppe: "Rettungswürfe",
       eingabe: true
     },
     {
       key: "rw.wille",
       ziel: "RW-Wille",
-      label: "RW-Wille",
+      label: "RW-Wille (WE)",
       gruppe: "Rettungswürfe",
       eingabe: true
     },
@@ -52,7 +53,7 @@
     {
       key: "rw.zaehigkeit",
       ziel: "RW-Zähigkeit",
-      label: "RW-Zähigkeit",
+      label: "RW-Zähigkeit (KO)",
       gruppe: "Rettungswürfe",
       eingabe: true
     },
@@ -67,7 +68,7 @@
     {
       key: "kmb",
       ziel: "KMB",
-      label: "KMB",
+      label: "KMB (ST)",
       gruppe: "Kampfmanöver",
       eingabe: true,
       notizKey: "notizen.kmb"
@@ -75,9 +76,10 @@
     {
       key: "kmv",
       ziel: "KMV",
-      label: "KMV",
+      label: "KMV (ST + GE)",
       gruppe: "Kampfmanöver",
       eingabe: true,
+      festerGrundwert: 10,
       notizKey: "notizen.kmv"
     }
   ];
@@ -188,28 +190,33 @@
     return ganzeZahl(ergebnis[ziel] || 0);
   }
 
-  function attributEffektBonus26(effektName, ziel) {
-    if (typeof berechneBonusErgebnis !== "function" || typeof effekte === "undefined") return 0;
-    const liste=effekte.filter(effekt =>
-      effekt?.aktiv && String(effekt.name || "").trim() === effektName
-    );
-    if (!liste.length) return 0;
-    return ganzeZahl(berechneBonusErgebnis(liste)[ziel] || 0);
+  function attributMod26(charakter,key) {
+    return charakter && typeof attributModifikator==="function"
+      ? ganzeZahl(attributModifikator(charakter,key))
+      : 0;
   }
 
-  function kmbBonusMitFlinkenManoever(charakter, ergebnis) {
-    let bonus=bonusFuerZiel("KMB",ergebnis);
-    if (!charakter?.kampfwerte?.flinkeManoever) return bonus;
-
-    // Identische Attributquellen wie bei Waffenfinesse:
-    // ST: Stärke (Attribut) -> Angriff Nah wird ersetzt durch
-    // GE: Geschicklichkeit (Attribut) -> Angriff Fern.
-    const staerke=attributEffektBonus26("ST: Stärke (Attribut)","Angriff Nah");
-    const geschick=attributEffektBonus26("GE: Geschicklichkeit (Attribut)","Angriff Fern");
-    return bonus - staerke + geschick;
+  function attributModFuerWert26(eintrag,charakter) {
+    switch(eintrag.ziel) {
+      case "Rüstungsklasse": return attributMod26(charakter,"GE");
+      case "RW-Reflex": return attributMod26(charakter,"GE");
+      case "RW-Zähigkeit": return attributMod26(charakter,"KO");
+      case "RW-Wille": return attributMod26(charakter,"WE");
+      case "KMB":
+        return charakter?.kampfwerte?.flinkeManoever
+          ? attributMod26(charakter,"GE")
+          : attributMod26(charakter,"ST");
+      case "KMV":
+        return attributMod26(charakter,"ST") + attributMod26(charakter,"GE");
+      default: return 0;
+    }
   }
+
 
   function grundwertFuer(eintrag, charakter) {
+    if (Number.isFinite(Number(eintrag.festerGrundwert))) {
+      return ganzeZahl(eintrag.festerGrundwert);
+    }
     const pfad = eintrag.eingabe ? eintrag.key : eintrag.basisKey;
     return ganzeZahl(lesePfad(charakter?.kampfwerte, pfad));
   }
@@ -224,16 +231,15 @@
     const grundwert = grundwertFuer(eintrag, charakter);
 
     if (eintrag.eingabe) {
-      if (eintrag.ziel === "KMB") {
-        return grundwert + kmbBonusMitFlinkenManoever(charakter, ergebnis);
-      }
-      return grundwert + bonusFuerZiel(eintrag.ziel, ergebnis);
+      return grundwert +
+        attributModFuerWert26(eintrag,charakter) +
+        bonusFuerZiel(eintrag.ziel, ergebnis);
     }
 
-    // Bei Spezial-RW enthält ergebnis[eintrag.ziel] bereits die gemeinsame
-    // Stapelberechnung aus Haupt-RW und Spezial-RW. Den Haupt-RW-Bonus daher
-    // nicht ein zweites Mal addieren.
-    return grundwert + bonusFuerZiel(eintrag.ziel, ergebnis);
+    // Spezial-RW erben den Attributsmodifikator ihres Haupt-RW genau einmal.
+    const basisEintrag=WERTE.find(wert=>wert.ziel===eintrag.basisZiel);
+    const attribut=basisEintrag ? attributModFuerWert26(basisEintrag,charakter) : 0;
+    return grundwert + attribut + bonusFuerZiel(eintrag.ziel, ergebnis);
   }
 
   function aktiveBoniFuerZiel(ziel) {
@@ -381,7 +387,13 @@
 
             let mitte;
 
-            if (eintrag.eingabe) {
+            if (eintrag.eingabe && Number.isFinite(Number(eintrag.festerGrundwert))) {
+              const basis=document.createElement("span");
+              basis.className="fester-grundwert-442";
+              basis.textContent=String(eintrag.festerGrundwert);
+              basis.title="Fester Pathfinder-Grundwert";
+              mitte=basis;
+            } else if (eintrag.eingabe) {
               const input = document.createElement("input");
               input.id =
                 `grundwert26-${eintrag.key.replace(".", "-")}`;
@@ -551,10 +563,14 @@
 
     const ergebnis = bonusErgebnis();
     const grundwert = grundwertFuer(eintrag, charakter);
-    const bonusGesamt = eintrag.ziel === "KMB"
-      ? kmbBonusMitFlinkenManoever(charakter, ergebnis)
-      : bonusFuerZiel(eintrag.ziel, ergebnis);
-    const gesamt = grundwert + bonusGesamt;
+    const attributGesamt = eintrag.eingabe
+      ? attributModFuerWert26(eintrag,charakter)
+      : (() => {
+          const basisEintrag=WERTE.find(wert=>wert.ziel===eintrag.basisZiel);
+          return basisEintrag ? attributModFuerWert26(basisEintrag,charakter) : 0;
+        })();
+    const bonusGesamt = bonusFuerZiel(eintrag.ziel, ergebnis);
+    const gesamt = grundwert + attributGesamt + bonusGesamt;
 
     const dialog = detailDialog();
     dialog.querySelector("#bonusDetailTitel").textContent =
@@ -569,11 +585,13 @@
     if (eintrag.eingabe) {
       summe.textContent =
         `Grundwert ${formatiereGesamt(grundwert)} ` +
-        `+ Boni ${formatiereBonus(bonusGesamt)} ` +
+        `+ Attribut ${formatiereBonus(attributGesamt)} ` +
+        `+ sonstige Boni ${formatiereBonus(bonusGesamt)} ` +
         `= ${formatiereGesamt(gesamt)}`;
     } else {
       summe.textContent =
         `Grundwert ${formatiereGesamt(grundwert)} ` +
+        `+ Attribut ${formatiereBonus(attributGesamt)} ` +
         `+ gemeinsam gestapelte Boni aus ${eintrag.basisZiel} und ${eintrag.label} ` +
         `${formatiereBonus(bonusGesamt)} ` +
         `= ${formatiereGesamt(gesamt)}`;

@@ -299,6 +299,10 @@ function berechneWerte() {
     ergebnis["Schaden Nah"] = Number(ergebnis["Schaden Nah"] ?? 0) + altSchaden;
     ergebnis["Schaden Fern"] = Number(ergebnis["Schaden Fern"] ?? 0) + altSchaden;
     aktualisiereDashboard(ergebnis);
+    if (typeof window !== "undefined" &&
+        typeof window.aktualisiereAttributeAnsicht44 === "function") {
+        window.aktualisiereAttributeAnsicht44();
+    }
     return ergebnis;
 }
 

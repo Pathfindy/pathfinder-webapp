@@ -187,6 +187,101 @@
     localStorage.setItem(KAMPAGNEN_OFFEN_KEY, JSON.stringify([...set]));
   }
 
+  function attributDetailDialog442(){
+    let dialog=document.getElementById("attributDetailDialog442");
+    if(dialog) return dialog;
+    dialog=document.createElement("dialog");
+    dialog.id="attributDetailDialog442";
+    dialog.className="bonus-detail-dialog";
+    dialog.innerHTML=`<div class="bonus-detail-kopf">
+      <h3 id="attributDetailTitel442">Attribut</h3>
+      <button type="button" aria-label="Schließen">×</button>
+    </div><div id="attributDetailInhalt442"></div>`;
+    document.body.appendChild(dialog);
+    dialog.querySelector("button").addEventListener("click",()=>dialog.close());
+    return dialog;
+  }
+
+  function zeigeAttributDetails442(charakter,key){
+    if(!charakter) return;
+    const lang={ST:"Stärke",GE:"Geschicklichkeit",KO:"Konstitution",IN:"Intelligenz",WE:"Weisheit",CH:"Charisma"};
+    const grund=typeof attributGrundwert==="function"?attributGrundwert(charakter,key):10;
+    const aktuell=typeof attributAktuellerWert==="function"?attributAktuellerWert(charakter,key):grund;
+    const mod=typeof attributModifikatorAusWert==="function"?attributModifikatorAusWert(aktuell):Math.floor((aktuell-10)/2);
+    const ziel=`Attribut ${key}`;
+    const boni=typeof sammleAktiveBoni==="function"
+      ?sammleAktiveBoni(typeof effekte!=="undefined"?effekte:[]).filter(b=>b.ziel===ziel)
+      :[];
+
+    const dialog=attributDetailDialog442();
+    dialog.querySelector("#attributDetailTitel442").textContent=`${key}: ${lang[key]||key}`;
+    const inhalt=dialog.querySelector("#attributDetailInhalt442");
+    inhalt.innerHTML="";
+    const summe=document.createElement("p");
+    summe.className="bonus-detail-summe";
+    const bonusSumme=aktuell-grund;
+    const fmt=n=>Number(n)>=0?`+${Number(n)}`:String(Number(n));
+    summe.textContent=`Grundwert ${grund} + Boni ${fmt(bonusSumme)} = ${aktuell} · Modifikator ${fmt(mod)}`;
+    inhalt.appendChild(summe);
+
+    if(!boni.length){
+      const leer=document.createElement("p");
+      leer.textContent="Keine aktiven Boni auf dieses Attribut.";
+      inhalt.appendChild(leer);
+    }else{
+      const liste=document.createElement("div");
+      liste.className="bonus-detail-liste";
+      boni.forEach(b=>{
+        const zeile=document.createElement("div");
+        zeile.className="bonus-detail-zeile";
+        zeile.innerHTML=`<strong>${fmt(b.wert)}</strong><span>${b.bonusart}</span><span>${b.effektName||"Unbenannter Effekt"}</span>`;
+        liste.appendChild(zeile);
+      });
+      inhalt.appendChild(liste);
+    }
+    dialog.showModal();
+  }
+
+  function aktualisiereAttributeAnsicht44(charakterId = aktiverCharakterId) {
+    const charakter = typeof findeCharakter === "function"
+      ? findeCharakter(charakterId)
+      : null;
+    if (!charakter) return;
+
+    document.querySelectorAll(
+      `.charakter-attribut-zeile-44[data-charakter-id="${CSS.escape(String(charakter.id))}"][data-attribut-key]`
+    ).forEach(zeile => {
+      const key = zeile.dataset.attributKey;
+      const grund = zeile.querySelector(".charakter-attribut-grund-44");
+      const aktuell = zeile.querySelector(".charakter-attribut-aktuell-44");
+      const mod = zeile.querySelector(".charakter-attribut-mod-44");
+
+      const grundwert = typeof attributGrundwert === "function"
+        ? attributGrundwert(charakter, key)
+        : Number(charakter.attribute?.[key] || 10);
+      const aktuellerWert = typeof attributAktuellerWert === "function"
+        ? attributAktuellerWert(charakter, key)
+        : grundwert;
+      const modWert = typeof attributModifikatorAusWert === "function"
+        ? attributModifikatorAusWert(aktuellerWert)
+        : Math.floor((aktuellerWert - 10) / 2);
+
+      if (grund && document.activeElement !== grund) {
+        grund.value = String(grundwert);
+      }
+      if (aktuell) {
+        aktuell.value = String(aktuellerWert);
+        aktuell.textContent = String(aktuellerWert);
+      }
+      if (mod) {
+        mod.value = String(modWert);
+        mod.textContent = modWert >= 0 ? `+${modWert}` : String(modWert);
+      }
+    });
+  }
+
+  window.aktualisiereAttributeAnsicht44 = aktualisiereAttributeAnsicht44;
+
   function rendereKampagnenBaum() {
     const container = document.getElementById("kampagnenBaum");
     if (!container || typeof charaktere === "undefined") return;
@@ -484,6 +579,87 @@
         klasseNeu.addEventListener("click", () => fuegeKlassenZeileHinzu());
 
         klassenBereich.append(klassenListe, klasseNeu);
+
+        const attributeBereich=document.createElement("details");
+        attributeBereich.className="charakter-attribute-44";
+        const attributeTitel=document.createElement("summary");
+        attributeTitel.textContent="Attribute";
+        attributeBereich.appendChild(attributeTitel);
+
+        const attributeTabelle=document.createElement("div");
+        attributeTabelle.className="charakter-attribute-tabelle-44";
+
+        const attributeKopf=document.createElement("div");
+        attributeKopf.className="charakter-attribut-zeile-44 charakter-attribut-kopf-44";
+        ["Attribut","Grundwert","Aktueller Wert","Modifikator"].forEach(text=>{
+          const span=document.createElement("span");
+          span.textContent=text;
+          attributeKopf.appendChild(span);
+        });
+        attributeTabelle.appendChild(attributeKopf);
+
+        const attributLangnamen={
+          ST:"Stärke",GE:"Geschicklichkeit",KO:"Konstitution",
+          IN:"Intelligenz",WE:"Weisheit",CH:"Charisma"
+        };
+
+        (typeof PF_ATTRIBUTE!=="undefined"?PF_ATTRIBUTE:["ST","GE","KO","IN","WE","CH"]).forEach(key=>{
+          const zeile=document.createElement("div");
+          zeile.className="charakter-attribut-zeile-44";
+          zeile.dataset.attributKey=key;
+          zeile.dataset.charakterId=charakter.id;
+
+          const name=document.createElement("strong");
+          name.textContent=key;
+          name.title=attributLangnamen[key]||key;
+
+          const grund=document.createElement("select");
+          grund.className="charakter-attribut-grund-44";
+          grund.setAttribute("aria-label",`${name.title} Grundwert`);
+          for(let wert=1;wert<=40;wert++){
+            const option=document.createElement("option");
+            option.value=String(wert);
+            option.textContent=String(wert);
+            grund.appendChild(option);
+          }
+          grund.value=String(
+            typeof attributGrundwert==="function"
+              ?attributGrundwert(charakter,key)
+              :Number(charakter.attribute?.[key]||10)
+          );
+
+          const aktuell=document.createElement("button");
+          aktuell.type="button";
+          aktuell.className="charakter-attribut-aktuell-44";
+          aktuell.title="Berechnung des aktuellen Attributswerts anzeigen";
+          const aktuellerWert=typeof attributAktuellerWert==="function"
+            ?attributAktuellerWert(charakter,key)
+            :Number(grund.value);
+          aktuell.value=String(aktuellerWert);
+          aktuell.textContent=String(aktuellerWert);
+
+          const mod=document.createElement("output");
+          mod.className="charakter-attribut-mod-44";
+          const modWert=typeof attributModifikatorAusWert==="function"
+            ?attributModifikatorAusWert(aktuellerWert)
+            :Math.floor((aktuellerWert-10)/2);
+          mod.value=String(modWert);
+          mod.textContent=modWert>=0?`+${modWert}`:String(modWert);
+
+          grund.addEventListener("change",()=>{
+            if(typeof setzeCharakterAttribut==="function"){
+              setzeCharakterAttribut(charakter.id,key,grund.value);
+            }
+          });
+
+          aktuell.addEventListener("click",()=>zeigeAttributDetails442(charakter,key));
+
+          zeile.append(name,grund,aktuell,mod);
+          attributeTabelle.appendChild(zeile);
+        });
+
+        attributeBereich.appendChild(attributeTabelle);
+        klassenBereich.appendChild(attributeBereich);
 
         const gabZeile = document.createElement("label");
         gabZeile.className = "charakter-gab-zeile";

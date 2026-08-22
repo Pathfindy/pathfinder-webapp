@@ -123,33 +123,25 @@
       : {};
   }
 
-  function istAttributEffekt(effekt, name) {
-    return !!effekt && effekt.aktiv && String(effekt.name || "").trim() === name;
-  }
-
-  function attributAngriffsBonus(effektName, ziel, angriffsIndex) {
-    if (typeof effekte === "undefined" || typeof berechneBonusErgebnisFuerAngriff !== "function") return 0;
-    const ausgewaehlt = effekte.filter(effekt => istAttributEffekt(effekt, effektName));
-    if (!ausgewaehlt.length) return 0;
-    const ergebnis = berechneBonusErgebnisFuerAngriff(ausgewaehlt, angriffsIndex);
-    return Number(ergebnis[ziel] ?? 0);
+  function nativerAttributModifikator(key) {
+    const charakter=aktiverCharakter();
+    return charakter && typeof attributModifikator==="function"
+      ? Number(attributModifikator(charakter,key)||0)
+      : 0;
   }
 
   function angriffsBonus(angriff, boni = aktuelleBonuswerte(), angriffsIndex = 0) {
     const ziel = angriff.art === "Fern" ? "Angriff Fern" : "Angriff Nah";
-    let gesamt = Number(boni[ziel] ?? 0);
-
-    if (angriff.waffenfinesse) {
-      const staerkeNah = attributAngriffsBonus("ST: Stärke (Attribut)", "Angriff Nah", angriffsIndex);
-      const geschickFern = attributAngriffsBonus("GE: Geschicklichkeit (Attribut)", "Angriff Fern", angriffsIndex);
-      gesamt = gesamt - staerkeNah + geschickFern;
-    }
-    return gesamt;
+    const attributKey = angriff.waffenfinesse
+      ? "GE"
+      : (angriff.art === "Fern" ? "GE" : "ST");
+    return Number(boni[ziel] ?? 0) + nativerAttributModifikator(attributKey);
   }
 
   function schadenBonus(angriff, boni = aktuelleBonuswerte()) {
     const ziel = angriff.art === "Fern" ? "Schaden Fern" : "Schaden Nah";
-    return Number(boni[ziel] ?? 0) + Number(boni.Schaden ?? 0);
+    const attribut = angriff.art === "Nah" ? nativerAttributModifikator("ST") : 0;
+    return Number(boni[ziel] ?? 0) + Number(boni.Schaden ?? 0) + attribut;
   }
 
   function formatiereSchaden(angriff, boni = aktuelleBonuswerte()) {

@@ -107,7 +107,7 @@
     return detailDialog;
   }
 
-  function zeigeBonusDetailsFuerAngriff(titel, ziel, grundwert, angriffsIndex) {
+  function zeigeBonusDetailsFuerAngriff(titel, ziel, grundwert, angriffsIndex, angriff = null) {
     const dialog = erstelleDetailDialog();
     const boni = bewerteBoniFuerAngriff(ziel, angriffsIndex);
     const ergebnis = typeof berechneBonusErgebnisFuerAngriff === "function"
@@ -122,19 +122,57 @@
       bonusGesamt += Number(ergebnis.Schaden ?? 0);
     }
 
+    const charakter = typeof aktiverCharakter === "function" ? aktiverCharakter() : null;
+    let attributKey = "";
+    let attributWert = 0;
+    let attributText = "";
+
+    if (angriff && charakter && typeof attributModifikator === "function") {
+      if (ziel === "Angriff Nah" || ziel === "Angriff Fern") {
+        attributKey = angriff.waffenfinesse
+          ? "GE"
+          : (angriff.art === "Fern" ? "GE" : "ST");
+        attributWert = Number(attributModifikator(charakter, attributKey) || 0);
+        attributText = angriff.waffenfinesse && angriff.art !== "Fern"
+          ? "GE-Modifikator (Waffenfinesse)"
+          : `${attributKey}-Modifikator`;
+      } else if (ziel === "Schaden Nah") {
+        attributKey = "ST";
+        attributWert = Number(attributModifikator(charakter, "ST") || 0);
+        attributText = "ST-Modifikator";
+      }
+    }
+
+    const gesamt = Number(grundwert) + attributWert + bonusGesamt;
+
     dialog.querySelector("#bonusDetailTitel").textContent = titel;
     const inhalt = dialog.querySelector("#bonusDetailInhalt");
     inhalt.innerHTML = "";
 
     const summe = document.createElement("p");
     summe.className = "bonus-detail-summe";
-    summe.textContent =
-      `Grundwert ${formatWert(grundwert)} + Boni ${formatWert(bonusGesamt)} = ${formatWert(Number(grundwert) + bonusGesamt)}`;
+    summe.textContent = attributText
+      ? `Grundwert ${formatWert(grundwert)} + ${attributText} ${formatWert(attributWert)} + sonstige Boni ${formatWert(bonusGesamt)} = ${formatWert(gesamt)}`
+      : `Grundwert ${formatWert(grundwert)} + Boni ${formatWert(bonusGesamt)} = ${formatWert(gesamt)}`;
     inhalt.appendChild(summe);
+
+    if (attributText) {
+      const attributZeile = document.createElement("div");
+      attributZeile.className = "bonus-detail-zeile";
+      attributZeile.innerHTML = `
+        <strong>${formatWert(attributWert)}</strong>
+        <span>Modifikator Attribut</span>
+        <span>${attributText}</span>
+        <small>Grundkomponente – immer berücksichtigt</small>
+      `;
+      inhalt.appendChild(attributZeile);
+    }
 
     if (!boni.length) {
       const leer = document.createElement("p");
-      leer.textContent = "Keine aktiven Boni für diesen Angriff.";
+      leer.textContent = attributText
+        ? "Keine weiteren aktiven Boni für diesen Wert."
+        : "Keine aktiven Boni für diesen Angriff.";
       inhalt.appendChild(leer);
     } else {
       const liste = document.createElement("div");
@@ -238,7 +276,7 @@
         felder[0].classList.add("bonus-klickbar");
         felder[0].addEventListener("click", () => {
           const ziel = angriff.art === "Fern" ? "Angriff Fern" : "Angriff Nah";
-          zeigeBonusDetailsFuerAngriff(`${angriff.name}: Angriff`, ziel, angriff.grundAngriff, index);
+          zeigeBonusDetailsFuerAngriff(`${angriff.name}: Angriff`, ziel, angriff.grundAngriff, index, angriff);
         });
       }
       if (felder[1]) {
@@ -246,7 +284,7 @@
         felder[1].addEventListener("click", () => {
           const ziel = angriff.art === "Fern" ? "Schaden Fern" : "Schaden Nah";
           const grund = angriff.schadenModifikator === null ? 0 : angriff.schadenModifikator;
-          zeigeBonusDetailsFuerAngriff(`${angriff.name}: Schaden`, ziel, grund, index);
+          zeigeBonusDetailsFuerAngriff(`${angriff.name}: Schaden`, ziel, grund, index, angriff);
         });
       }
     });

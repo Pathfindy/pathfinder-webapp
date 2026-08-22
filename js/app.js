@@ -1,7 +1,7 @@
 // Das azlantische Helferlein der Boni
 // app.js
 // Version 0.32
-const APP_VERSION="0.43.1";
+const APP_VERSION="0.44.4";
 
 const seiten={
  dashboard:document.getElementById("dashboard"),
@@ -80,6 +80,63 @@ function normalisiereKlassen(klassen){
    .filter(eintrag=>eintrag.name || eintrag.stufe>0);
 }
 
+
+const PF_ATTRIBUTE=["ST","GE","KO","IN","WE","CH"];
+
+function normalisiereAttribute(attribute){
+ const quelle=attribute && typeof attribute==="object" && !Array.isArray(attribute)
+   ?attribute
+   :{};
+ const ergebnis={};
+ PF_ATTRIBUTE.forEach(key=>{
+   const wert=Number(quelle[key]);
+   ergebnis[key]=Number.isFinite(wert)
+     ?Math.max(1,Math.min(40,Math.trunc(wert)))
+     :10;
+ });
+ return ergebnis;
+}
+
+function attributGrundwert(charakter,key){
+ const attribute=normalisiereAttribute(charakter?.attribute);
+ return attribute[key] ?? 10;
+}
+
+function attributBonusZiel(key){
+ return `Attribut ${key}`;
+}
+
+function attributAktuellerWert(charakter,key){
+ const grund=attributGrundwert(charakter,key);
+ if(typeof berechneBonusErgebnis!=="function") return grund;
+ const ergebnis=berechneBonusErgebnis(typeof effekte!=="undefined"?effekte:[]);
+ return grund + Number(ergebnis[attributBonusZiel(key)]||0);
+}
+
+function attributModifikatorAusWert(wert){
+ const zahl=Number(wert);
+ const sicher=Number.isFinite(zahl)?Math.trunc(zahl):10;
+ return Math.floor((sicher-10)/2);
+}
+
+function attributModifikator(charakter,key){
+ return attributModifikatorAusWert(attributAktuellerWert(charakter,key));
+}
+
+function setzeCharakterAttribut(id,key,wert){
+ if(!PF_ATTRIBUTE.includes(key)) return false;
+ const charakter=findeCharakter(id);
+ if(!charakter) return false;
+ charakter.attribute=normalisiereAttribute(charakter.attribute);
+ charakter.attribute[key]=Math.max(1,Math.min(40,Math.trunc(Number(wert)||10)));
+ speichereCharaktere();
+ if(typeof berechneWerte==="function") berechneWerte();
+ if(typeof window.aktualisiereAttributeAnsicht44==="function"){
+   window.aktualisiereAttributeAnsicht44(id);
+ }
+ return true;
+}
+
 function normalisiereCharakter(charakter={}){
  return {
    id:charakter.id||neueCharakterId(),
@@ -90,6 +147,7 @@ function normalisiereCharakter(charakter={}){
      ?charakter.kampagne.trim()
      :"Charakter ohne Kampagnenzuordnung",
    klassen:normalisiereKlassen(charakter.klassen),
+   attribute:normalisiereAttribute(charakter.attribute),
    gab:Number.isFinite(Number(charakter.gab))
      ?Math.max(0,Math.min(99,Math.trunc(Number(charakter.gab))))
      :0,
@@ -1155,8 +1213,35 @@ function entferneDuplikateGegenBasis31(liste=[],basis=[]){
  });
 }
 
+
+const ENTFALLENE_ATTRIBUT_EFFEKTE_44=new Set(["CH: Charisma (Attribut)", "GE: Geschicklichkeit (Attribut)", "IN: Intelligenz (Attribut)", "KO: Konstitution (Attribut)", "ST: Stärke (Attribut)", "WE: Weisheit (Attribut)"]);
+const ENTFALLENE_ATTRIBUT_EFFEKT_IDS_44=new Set(["standard-admin-435e60e4-812c-4124-8da8-ff8ea32b9010", "standard-admin-5b781d77-ec60-4aa1-9eb5-3e54427b957d", "standard-admin-5d6e3dc4-6926-4df3-8fdc-f4d7f8182cf5", "standard-admin-6d4e5031-fe33-4136-8b58-b38cc7d60ed5", "standard-admin-ecb36aca-0f07-4e85-a616-cce6541ce286", "standard-admin-f4d458c3-e477-42f6-8f04-a35920f473ba"]);
+
+function istEntfallenerAttributEffekt44(effekt){
+ return ENTFALLENE_ATTRIBUT_EFFEKTE_44.has(String(effekt?.name||"").trim());
+}
+
+function bereinigeAlteAttributEffekte44(){
+ const aenderungen=ladeAdminStandardAenderungen();
+ let aenderungenGeaendert=false;
+ Object.entries(aenderungen).forEach(([id,effekt])=>{
+   if(istEntfallenerAttributEffekt44(effekt) || ENTFALLENE_ATTRIBUT_EFFEKT_IDS_44.has(String(id))){
+     delete aenderungen[id];
+     aenderungenGeaendert=true;
+   }
+ });
+ if(aenderungenGeaendert) speichereAdminStandardAenderungen(aenderungen);
+
+ const neue=ladeAdminStandardNeu().filter(effekt=>!istEntfallenerAttributEffekt44(effekt));
+ speichereAdminStandardNeu(neue);
+
+ const benutzer=ladeBenutzerEffekte().filter(effekt=>!istEntfallenerAttributEffekt44(effekt));
+ speichereBenutzerEffekte(benutzer);
+}
+
 async function ladeEffekte(){
  try{
+   bereinigeAlteAttributEffekte44();
    const antwort=await fetch(
      `data/effekte.json?v=${encodeURIComponent(APP_VERSION)}`,
      {cache:"no-store"}
@@ -1197,7 +1282,8 @@ async function ladeEffekte(){
    // erkanntes Standard-Duplikat nicht beim nächsten Export erneut auftaucht.
    speichereBenutzerEffekte(benutzer);
 
-   effekte=dedupliziereEffekte31([...standardGesamt,...benutzer]);
+   effekte=dedupliziereEffekte31([...standardGesamt,...benutzer])
+     .filter(effekt=>!istEntfallenerAttributEffekt44(effekt));
    effekte.forEach(effekt=>{
      effekt.aktiv=istCharakterwerteEffekt(effekt)?true:!!status[effekt.name];
      if(istCharakterwerteEffekt(effekt)) status[effekt.name]=true;
@@ -1215,7 +1301,6 @@ async function ladeEffekte(){
 
 const PF_EFFEKT_KATEGORIEN=[
  "Ausrüstung",
- "Charakterwerte",
  "Kampf",
  "Klassenmerkmale",
  "Sonstige",
@@ -1250,7 +1335,7 @@ function kategorieFilterBezeichnung(kategorie){
 function effektKategorien(){
  const vorhandene=effekte
    .map(effekt=>normalisiereKategorie(effekt.kategorie))
-   .filter(Boolean);
+   .filter(kategorie=>!!kategorie && kategorie!=="Charakterwerte");
  return [...new Set([...PF_EFFEKT_KATEGORIEN,...vorhandene])]
    .sort((a,b)=>a.localeCompare(b,"de"));
 }
@@ -1526,7 +1611,13 @@ function baueEffektliste(){
      String(effekt.beschreibung||"").toLowerCase().includes(suchtext) ||
      String(effekt.quelle||"").toLowerCase().includes(suchtext);
 
-   const passtZurKategorie=aktiveKategorien.has(effekt.kategorie);
+   const sichtbareKategorien=effektKategorien();
+   const alleKategorienAktiv=sichtbareKategorien.length>0 &&
+     sichtbareKategorien.every(kategorie=>aktiveKategorien.has(kategorie));
+   const istInternerCharakterwert=normalisiereKategorie(effekt.kategorie)==="Charakterwerte";
+   const passtZurKategorie=istInternerCharakterwert
+     ?alleKategorienAktiv
+     :aktiveKategorien.has(normalisiereKategorie(effekt.kategorie));
    const passtZumAktivFilter=!nurAktiv || effekt.aktiv;
 
    return passtZurSuche && passtZurKategorie && passtZumAktivFilter;
@@ -1786,6 +1877,12 @@ function baueEffektliste(){
 }
 
 const PF_BONUS_ZIELE=[
+ "Attribut ST",
+ "Attribut GE",
+ "Attribut KO",
+ "Attribut IN",
+ "Attribut WE",
+ "Attribut CH",
  "Angriff Nah",
  "Angriff Fern",
  "Schaden",
