@@ -152,3 +152,97 @@
   .effekt-schnellchips-50{gap:4px;padding:4px 5px 6px}
   .effekt-schnellchip-50{font-size:.71rem;min-height:28px;padding:4px 7px}
 }
+
+
+/* Commit 50.1 – kompaktere Schnellleisten und klarere Symbolik */
+
+/* Keine Leerzeile zwischen Kopf/Aktivem Charakter und Schnellleisten. */
+#charakterwerte .seitenkopf{
+  margin-bottom:0 !important;
+  padding-bottom:0 !important;
+}
+#charakterwerte .seitenkopf + .effekt-schnellleisten-50{
+  margin-top:0 !important;
+}
+
+/* Die beiden Schnellleisten bleiben auch auf dem Handy eine schlanke Zeile. */
+.effekt-schnellleisten-50{
+  grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+  gap:4px !important;
+  margin:0 0 6px !important;
+  padding:0 0 4px !important;
+}
+.effekt-schnellleiste-50{
+  border-radius:7px !important;
+}
+.effekt-schnellleiste-50 summary{
+  min-height:27px !important;
+  padding:2px 6px !important;
+  gap:4px !important;
+  font-size:.76rem;
+}
+.effekt-schnellleiste-50 summary strong{
+  font-size:.76rem;
+}
+.effekt-schnellleiste-50 summary small{
+  font-size:.62rem !important;
+}
+.effekt-schnell-dreieck-501{
+  display:inline-block;
+  width:.75em;
+  color:#52677d;
+  font-size:.8rem;
+  line-height:1;
+  transition:transform .12s ease;
+}
+.effekt-schnellleiste-50[open] .effekt-schnell-dreieck-501{
+  transform:rotate(90deg);
+}
+.effekt-schnellchips-50{
+  gap:4px !important;
+  padding:4px 5px 5px !important;
+}
+.effekt-schnellchip-50{
+  min-height:26px !important;
+  padding:3px 7px !important;
+  font-size:.7rem !important;
+}
+
+/* Zuweissymbole sind in jedem Effektbanner sichtbar. */
+.effekt-schnellzuweisung-box-50{
+  flex:0 0 auto;
+  order:3;
+  display:flex !important;
+  align-items:center;
+  gap:3px;
+  visibility:visible !important;
+}
+.effekt-schnellzuweisung-50{
+  width:28px !important;
+  height:28px !important;
+  padding:4px !important;
+}
+
+/* SVGs mit Stroke (Bogen) nicht durch globale Fill-Regel zerstören. */
+.kampf-icon-50 svg,
+.effekt-schnellzuweisung-50 svg{
+  overflow:visible;
+}
+.kampf-icon-50 svg path[fill="none"],
+.effekt-schnellzuweisung-50 svg path[fill="none"]{
+  fill:none !important;
+}
+
+@media(max-width:600px){
+  .effekt-schnellleisten-50{
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+    gap:3px !important;
+  }
+  .effekt-schnellleiste-50 summary{
+    min-height:26px !important;
+    padding:2px 5px !important;
+  }
+  .effekt-schnellleiste-50 summary small{
+    font-size:.58rem !important;
+  }
+}
