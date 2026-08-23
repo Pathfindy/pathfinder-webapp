@@ -49,6 +49,7 @@
       : [...favoriten, id];
     speichereFavoriten(aktiverCharakterId, neu);
     baueEffektliste();
+    if (window.pfSchnellleisten50?.rendern) window.pfSchnellleisten50.rendern();
   }
 
   function findeEffektZuKarte(karte) {
@@ -201,6 +202,8 @@
 
   window.pfFavoriten = {
     laden: favoritenFuerCharakter,
-    speichern: speichereFavoriten
+    speichern: speichereFavoriten,
+    umschalten: schalteFavorit,
+    istFavorit
   };
 })();

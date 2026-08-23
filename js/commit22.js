@@ -1,7 +1,7 @@
 // Commit 22: Charakter-Import und -Export (JSON)
 (() => {
   const EXPORT_FORMAT = "pathfinder-charakter";
-  const EXPORT_VERSION = 5;
+  const EXPORT_VERSION = 6;
 
   function sichereKopie(wert) {
     return JSON.parse(JSON.stringify(wert));
@@ -70,6 +70,9 @@
           return [];
         }
       })(),
+      effektSchnellleisten: window.pfSchnellleisten50?.laden
+        ? sichereKopie(window.pfSchnellleisten50.laden(charakter.id))
+        : {},
       benutzerEffekte
     };
 
@@ -87,7 +90,7 @@
     if (daten.format !== EXPORT_FORMAT) {
       throw new Error("Die Datei ist kein Pathfinder-Charakterexport.");
     }
-    if (![1, 2, 3, 4, 5].includes(Number(daten.version))) {
+    if (![1, 2, 3, 4, 5, 6].includes(Number(daten.version))) {
       throw new Error(`Die Exportversion ${daten.version ?? "?"} wird nicht unterstützt.`);
     }
     if (!daten.charakter || typeof daten.charakter !== "object") {
@@ -134,7 +137,11 @@
         : [],
       favoriten: Array.isArray(daten.favoriten)
         ? daten.favoriten.map(String)
-        : []
+        : [],
+      effektSchnellleisten:
+        daten.effektSchnellleisten && typeof daten.effektSchnellleisten === "object" && !Array.isArray(daten.effektSchnellleisten)
+          ? daten.effektSchnellleisten
+          : {}
     };
   }
 
@@ -379,6 +386,29 @@
     )];
   }
 
+  function mappeImportSchnellleisten(zuweisungen, idZuBehalten) {
+    const ergebnis = {};
+    if (!zuweisungen || typeof zuweisungen !== "object" || Array.isArray(zuweisungen)) return ergebnis;
+    Object.entries(zuweisungen).forEach(([id, wert]) => {
+      const neuId = idZuBehalten instanceof Map ? idZuBehalten.get(String(id)) || String(id) : String(id);
+      if (wert && typeof wert === "object" && (wert.nah || wert.fern)) {
+        ergebnis[neuId] = { nah: !!wert.nah, fern: !!wert.fern };
+      }
+    });
+    return ergebnis;
+  }
+
+  function speichereImportSchnellleisten(charakterId, zuweisungen) {
+    if (window.pfSchnellleisten50?.speichern) {
+      window.pfSchnellleisten50.speichern(charakterId, zuweisungen || {});
+      return;
+    }
+    const key = "pf-charakter-effekt-schnellleisten";
+    const alle = JSON.parse(localStorage.getItem(key) || "{}");
+    alle[charakterId] = zuweisungen || {};
+    localStorage.setItem(key, JSON.stringify(alle));
+  }
+
   function speichereImportFavoriten(charakterId, favoriten) {
     if (!Array.isArray(favoriten)) return;
     if (window.pfFavoriten && typeof window.pfFavoriten.speichern === "function") {
@@ -428,6 +458,10 @@
       charakter.id,
       mappeImportFavoriten(importDaten.favoriten, idZuBehalten)
     );
+    speichereImportSchnellleisten(
+      charakter.id,
+      mappeImportSchnellleisten(importDaten.effektSchnellleisten, idZuBehalten)
+    );
     aktualisiereNachImport();
     alert(`„${charakter.name}“ wurde als neuer Charakter importiert.`);
   }
@@ -467,6 +501,10 @@
     speichereImportFavoriten(
       ziel.id,
       mappeImportFavoriten(importDaten.favoriten, idZuBehalten)
+    );
+    speichereImportSchnellleisten(
+      ziel.id,
+      mappeImportSchnellleisten(importDaten.effektSchnellleisten, idZuBehalten)
     );
     aktualisiereNachImport();
     alert(`Der aktive Charakter wurde durch „${importiert.name}“ ersetzt.`);
