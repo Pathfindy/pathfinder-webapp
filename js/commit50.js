@@ -7,9 +7,22 @@
   const LONG_PRESS_MS = 560;
 
   const ICONS = {
-    sword: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.8 3.2 20.8 2l-1.2 6-9.2 9.2-3.6-3.6 8-10.4ZM5.9 14.5l3.6 3.6-1.7 1.7-1.5-1.5-2.2 2.2-1.4-1.4 2.2-2.2-1.5-1.5 2.5-.9Z"/></svg>`,
-    bow: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.2 2.7c4.3 3 6.4 6.1 6.4 9.3s-2.1 6.3-6.4 9.3l-1.1-1.6c3.7-2.6 5.5-5.2 5.5-7.7S7.8 6.9 4.1 4.3l1.1-1.6Zm12.9.2 1.8.8-7 16.2-1.8-.8 7-16.2ZM7.3 11h13v2h-13v-2Z"/></svg>`,
-    shield: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2 20 5v6.1c0 5.1-3.1 8.8-8 10.7-4.9-1.9-8-5.6-8-10.7V5l8-2.8Zm0 2.1L6 6.4v4.7c0 4 2.2 6.9 6 8.5 3.8-1.6 6-4.5 6-8.5V6.4l-6-2.1Z"/></svg>`,
+    // Gekreuzte Schwerter – klar als Nahkampf erkennbar.
+    sword: `<svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M4.1 2.6 9 7.5 7.5 9 2.6 4.1 2 2l2.1.6Zm15.8 0L15 7.5 16.5 9l4.9-4.9L22 2l-2.1.6ZM8.4 10.6l5 5-1.7 1.7-5-5 1.7-1.7Zm7.2 0 1.7 1.7-5 5-1.7-1.7 5-5ZM5.4 14l4.6 4.6-1.5 1.5-1.4-1.4-2.2 2.2-1.8-1.8 2.2-2.2-1.4-1.4L5.4 14Zm13.2 0 1.5 1.5-1.4 1.4 2.2 2.2-1.8 1.8-2.2-2.2-1.4 1.4-1.5-1.5 4.6-4.6Z"/>
+    </svg>`,
+    // Deutlicher Bogen mit Sehne und Pfeil.
+    bow: `<svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M5 2.5c4.8 3 7.2 6.2 7.2 9.5S9.8 18.5 5 21.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <path d="M5 2.5 5 21.5" fill="none" stroke="currentColor" stroke-width="1.4"/>
+      <path d="M3 12h17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="m20 12-3-2v4l3-2Z"/>
+    </svg>`,
+    // Dezent gefüllter Schild.
+    shield: `<svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M12 2.2 20 5v6.1c0 5.1-3.1 8.8-8 10.7-4.9-1.9-8-5.6-8-10.7V5l8-2.8Z" opacity=".28"/>
+      <path d="M12 2.2 20 5v6.1c0 5.1-3.1 8.8-8 10.7-4.9-1.9-8-5.6-8-10.7V5l8-2.8Zm0 2.1L6 6.4v4.7c0 4 2.2 6.9 6 8.5 3.8-1.6 6-4.5 6-8.5V6.4l-6-2.1Z"/>
+    </svg>`,
     star: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 1.8 1.6 6.1 5.5-3.2-3.2 5.5 6.1 1.6-6.1 1.6 3.2 5.5-5.5-3.2-1.6 6.1-1.6-6.1-5.5 3.2 3.2-5.5L2 11.8l6.1-1.6-3.2-5.5 5.5 3.2L12 1.8Z"/></svg>`
   };
 
@@ -41,6 +54,15 @@
   }
   function setzeZuweisung(effektId, feld, wert) {
     if (!aktiverCharakterId) return;
+
+    // Eine Schnellleisten-Zuweisung macht den Effekt automatisch zum Favoriten.
+    // Dadurch sind die Symbole in jedem Effektbanner nutzbar und die
+    // Schnellleisten bleiben weiterhin reine Favoriten-Auswahlen.
+    if (wert && !istFavorit50(effektId) &&
+        window.pfFavoriten && typeof window.pfFavoriten.umschalten === "function") {
+      window.pfFavoriten.umschalten(String(effektId));
+    }
+
     const daten = zuweisungenFuerCharakter();
     const id = String(effektId);
     const aktuell = daten[id] || {};
@@ -138,7 +160,6 @@
       const effekt = findeEffektZuKarte50(karte);
       if (!effekt) return;
       karte.querySelector(".effekt-schnellzuweisung-box-50")?.remove();
-      if (!istFavorit50(effekt.id)) return;
 
       const z = zuweisungFuerEffekt(effekt.id);
       const box = document.createElement("div");
@@ -176,7 +197,12 @@
     bereich = document.createElement("div");
     bereich.id = "effektSchnellleisten50";
     bereich.className = "effekt-schnellleisten-50";
-    angriffe.before(bereich);
+    const seitenkopf=seite.querySelector(".seitenkopf");
+    if(seitenkopf){
+      seitenkopf.insertAdjacentElement("afterend",bereich);
+    }else{
+      angriffe.before(bereich);
+    }
     return bereich;
   }
 
@@ -188,7 +214,7 @@
 
     const aktiv = effekteListe.filter(e => e.aktiv).length;
     const summary = document.createElement("summary");
-    summary.innerHTML = `<span class="kampf-icon-50">${ICONS[icon]}</span><strong>${titel}</strong><small>${aktiv} aktiv</small>`;
+    summary.innerHTML = `<span class="effekt-schnell-dreieck-501" aria-hidden="true">▸</span><span class="kampf-icon-50">${ICONS[icon]}</span><strong>${titel}</strong><small>${aktiv} aktiv</small>`;
     details.appendChild(summary);
 
     const chips = document.createElement("div");
