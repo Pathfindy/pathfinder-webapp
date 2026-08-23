@@ -136,12 +136,23 @@
         attributText = angriff.waffenfinesse && angriff.art !== "Fern"
           ? "GE-Modifikator (Waffenfinesse)"
           : `${attributKey}-Modifikator`;
-      } else if (ziel === "Schaden Nah") {
+      } else if (ziel === "Schaden Nah" || ziel === "Schaden Fern") {
         attributKey = "ST";
         attributWert = typeof window.staerkeSchadenModifikator46==="function"
           ?Number(window.staerkeSchadenModifikator46(angriff,charakter)||0)
           :Number(attributModifikator(charakter, "ST") || 0);
-        if(angriff.modus==="zweithand" && !angriff.doppelschnitt){
+
+        if(ziel==="Schaden Fern"){
+          if(angriff.fernkampfWaffentyp==="wurfwaffe"){
+            attributText="ST-Modifikator (Wurfwaffe)";
+          }else if(angriff.fernkampfWaffentyp==="kompositbogen"){
+            attributText=`ST-Modifikator (Kompositbogen, max. +${Number(angriff.kompositStaerkeauslegung)||0})`;
+          }else{
+            attributText=attributWert<0
+              ?"ST-Malus (Bogen)"
+              :"ST-Modifikator (Bogen: positiver Bonus entfällt)";
+          }
+        }else if(angriff.modus==="zweithand" && !angriff.doppelschnitt){
           attributText="½ ST-Modifikator (Zweithand)";
         }else if(angriff.modus==="sekundaer"){
           attributText="½ ST-Modifikator (Sekundärangriff)";
