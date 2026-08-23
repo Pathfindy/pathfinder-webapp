@@ -502,3 +502,27 @@ nav {
   min-height:34px;
   text-align:center;
 }
+
+
+/* Commit 49.1 – neutrale Fernkampfwaffe + kompakte Komposit-Auslegung */
+.komposit-auslegung-49{
+  display:inline-grid !important;
+  grid-template-columns:auto 72px !important;
+  width:auto !important;
+  justify-self:start;
+  justify-content:start;
+  gap:6px !important;
+  padding:4px 6px !important;
+}
+.komposit-auslegung-49 input{
+  min-height:32px !important;
+  width:72px !important;
+}
+@media(max-width:520px){
+  .komposit-auslegung-49{
+    grid-template-columns:auto 66px !important;
+  }
+  .komposit-auslegung-49 input{
+    width:66px !important;
+  }
+}
