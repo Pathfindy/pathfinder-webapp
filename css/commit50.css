@@ -246,3 +246,74 @@
     font-size:.58rem !important;
   }
 }
+
+
+/* Commit 50.2 – Schnellleisten direkt am Kopf, dunkler und Hover-Automatik */
+
+/* Kopf + Schnellleisten bilden beim Scrollen EINEN geschlossenen Block.
+   So kann Seiteninhalt nicht mehr durch einen Zwischenraum sichtbar werden. */
+.kampf-sticky-kopf-502{
+  position:sticky;
+  top:0;
+  z-index:970;
+  margin:0 -4px 6px;
+  padding:0 4px 4px;
+  background:#f4f6f8;
+  box-shadow:0 2px 4px rgba(30,58,95,.08);
+}
+.kampf-sticky-kopf-502 > #charakterwerte .seitenkopf,
+.kampf-sticky-kopf-502 > .seitenkopf{
+  position:static !important;
+  top:auto !important;
+  margin:0 !important;
+  padding:2px 0 0 !important;
+  background:#f4f6f8 !important;
+  backdrop-filter:none !important;
+}
+.kampf-sticky-kopf-502 .effekt-schnellleisten-50{
+  position:static !important;
+  top:auto !important;
+  margin:0 !important;
+  padding:0 !important;
+  background:transparent !important;
+  backdrop-filter:none !important;
+}
+
+/* Dunkleres Blau für bessere Ablesbarkeit. */
+.effekt-schnellleiste-50{
+  border-color:#315b86 !important;
+  background:#274f77 !important;
+}
+.effekt-schnellleiste-50 summary{
+  color:#fff !important;
+  background:#274f77 !important;
+}
+.effekt-schnellleiste-50 summary small{
+  color:#d8e5f1 !important;
+}
+.effekt-schnell-dreieck-501{
+  color:#d8e5f1 !important;
+}
+.effekt-schnellleiste-50 .kampf-icon-50{
+  color:#fff !important;
+}
+.effekt-schnellchips-50{
+  border-top-color:#466d94 !important;
+  background:#eef3f8;
+}
+
+/* Auf Hover-Geräten öffnet/schließt JS automatisch.
+   Auf Touch-Geräten bleibt das bekannte Tippen zum Aufklappen erhalten. */
+@media(hover:hover) and (pointer:fine){
+  .effekt-schnellleiste-50 summary{
+    cursor:default;
+  }
+}
+
+/* Handy: ebenfalls ohne Lücke; kein künstlicher Sticky-Offset. */
+@media(max-width:600px){
+  .kampf-sticky-kopf-502{
+    top:0;
+    margin-bottom:5px;
+  }
+}

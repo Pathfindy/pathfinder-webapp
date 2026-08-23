@@ -809,3 +809,42 @@ nav {
   background:#edf5ff;
   font-weight:700;
 }
+
+
+/* Commit 50.2 – schnelles Löschen der Effektsuche */
+.effekt-suche-502{
+  position:relative;
+  width:100%;
+  margin-bottom:12px;
+}
+.effekt-suche-502 #suche{
+  margin-bottom:0;
+  padding-left:36px;
+}
+.effekt-suche-loeschen-502{
+  position:absolute;
+  z-index:2;
+  left:7px;
+  top:50%;
+  transform:translateY(-50%);
+  display:grid;
+  place-items:center;
+  width:24px;
+  height:24px;
+  padding:0;
+  border:0;
+  border-radius:50%;
+  background:#dfe5ec;
+  color:#41556b;
+  font:700 18px/1 Arial,Helvetica,sans-serif;
+  cursor:pointer;
+  opacity:.28;
+}
+.effekt-suche-loeschen-502.sichtbar{
+  opacity:1;
+}
+.effekt-suche-loeschen-502:hover,
+.effekt-suche-loeschen-502:focus-visible{
+  background:#cbd6e2;
+  color:#173b63;
+}
