@@ -476,3 +476,29 @@ nav {
   font-size:1.22rem;
   font-weight:850;
 }
+
+
+/* Commit 49 – Fernkampf-Stärkeregeln */
+.angriff-optionen-46 input[type="radio"]{
+  width:20px;
+  height:20px;
+  margin:0;
+  flex:0 0 auto;
+}
+.komposit-auslegung-49{
+  grid-column:1 / -1;
+  display:grid !important;
+  grid-template-columns:minmax(0,1fr) 88px;
+  align-items:center;
+  gap:8px;
+  padding:6px 8px;
+  border-radius:8px;
+  background:#eef3f8;
+  font-size:.82rem;
+  font-weight:700;
+}
+.komposit-auslegung-49 input{
+  width:100%;
+  min-height:34px;
+  text-align:center;
+}
