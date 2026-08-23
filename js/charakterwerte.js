@@ -51,9 +51,9 @@
       verbesserterZweiwaffenkampf: !!angriff.verbesserterZweiwaffenkampf,
       mehrfachangriff: !!angriff.mehrfachangriff,
       einzigerNatuerlicherAngriff: !!angriff.einzigerNatuerlicherAngriff,
-      fernkampfWaffentyp:["bogen","kompositbogen","wurfwaffe"].includes(angriff.fernkampfWaffentyp)
+      fernkampfWaffentyp:["","bogen","kompositbogen","wurfwaffe"].includes(angriff.fernkampfWaffentyp)
         ?angriff.fernkampfWaffentyp
-        :"bogen",
+        :"",
       kompositStaerkeauslegung: Math.max(
         0,
         Math.min(20, ganzeZahl(angriff.kompositStaerkeauslegung, 0, 20))
@@ -189,8 +189,9 @@
           return Math.min(st,auslegung);
         }
         case "bogen":
-        default:
           return st<0?st:0;
+        default:
+          return 0;
       }
     }
 
@@ -600,7 +601,7 @@
           input.type="radio";
           input.name=`fernkampf-typ-${index}`;
           input.value=wert;
-          input.checked=(angriff.fernkampfWaffentyp||"bogen")===wert;
+          input.checked=(angriff.fernkampfWaffentyp||"")===wert;
           const span=document.createElement("span");
           span.textContent=text;
           label.append(input,span);
@@ -613,6 +614,7 @@
           return label;
         }
 
+        optionen46.appendChild(fernkampfTypOption49("Ohne Sonderregel",""));
         optionen46.appendChild(fernkampfTypOption49("Bogen","bogen"));
         optionen46.appendChild(fernkampfTypOption49("Kompositbogen","kompositbogen"));
         optionen46.appendChild(fernkampfTypOption49("Wurfwaffe","wurfwaffe"));
