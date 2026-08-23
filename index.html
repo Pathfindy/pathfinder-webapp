@@ -8,7 +8,7 @@
     <title>Das azlantische Helferlein der Boni</title>
 
     <link rel="manifest" href="manifest.json">
-    <link rel="stylesheet" href="css/style.css?v=48">
+    <link rel="stylesheet" href="css/style.css?v=50.2">
     <link rel="stylesheet" href="css/charakterwerte.css?v=49.1">
     <link rel="stylesheet" href="css/commit21.css?v=21">
     <link rel="stylesheet" href="css/commit22.css?v=22">
@@ -23,14 +23,14 @@
     <link rel="stylesheet" href="css/vermoegen.css?v=42">
     
     <meta name="theme-color" content="#1e3a5f">
-    <link rel="stylesheet" href="css/commit50.css?v=50.1">
+    <link rel="stylesheet" href="css/commit50.css?v=50.2">
 </head>
 
 <body>
 
 <header>
 
-    <h1>Das azlantische Helferlein der Boni <span class="app-version-30">v0.50.1</span></h1>
+    <h1>Das azlantische Helferlein der Boni <span class="app-version-30">v0.50.2</span></h1>
 
 </header>
 
@@ -143,10 +143,14 @@
 
         <button id="btnNeuerEffekt">+ Neuer Effekt</button>
 
-        <input
-            type="text"
-            id="suche"
-            placeholder="Effekt suchen...">
+        <div class="effekt-suche-502">
+            <button type="button" id="btnSucheLeeren502" class="effekt-suche-loeschen-502"
+                aria-label="Effektsuche leeren" title="Suche leeren">×</button>
+            <input
+                type="text"
+                id="suche"
+                placeholder="Effekt suchen...">
+        </div>
 
         <div class="effekt-filter" aria-label="Effektfilter">
             <fieldset class="filter-kategorien-feld">
@@ -479,7 +483,7 @@ Stufenabhängigen Wert verwenden
     </form>
 </dialog>
 
-<script src="js/commit50.js?v=50.1"></script>
+<script src="js/commit50.js?v=50.2"></script>
 </body>
 
 </html>
