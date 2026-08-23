@@ -1,0 +1,154 @@
+/* Commit 50 – Effekt-Schnellauswahl und Kampf-Symbole */
+
+/* Kopf bis einschließlich Schnellleisten sticky halten */
+#charakterwerte .seitenkopf{
+  position:sticky;
+  top:calc(var(--pf-nav-hoehe, 48px) + 51px);
+  z-index:970;
+  margin-left:-4px;
+  margin-right:-4px;
+  padding:5px 4px 2px;
+  background:rgba(245,247,250,.97);
+  backdrop-filter:blur(5px);
+}
+.effekt-schnellleisten-50{
+  position:sticky;
+  top:calc(var(--pf-nav-hoehe, 48px) + 96px);
+  z-index:965;
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:6px;
+  max-width:920px;
+  margin:0 0 10px;
+  padding:5px 0 7px;
+  background:rgba(245,247,250,.97);
+  backdrop-filter:blur(5px);
+}
+.effekt-schnellleiste-50{
+  min-width:0;
+  border:1px solid #c8d2df;
+  border-radius:9px;
+  background:#f7f9fb;
+  overflow:hidden;
+}
+.effekt-schnellleiste-50 summary{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  min-height:34px;
+  padding:5px 8px;
+  color:#1e3a5f;
+  cursor:pointer;
+  list-style:none;
+  user-select:none;
+}
+.effekt-schnellleiste-50 summary::-webkit-details-marker{display:none}
+.effekt-schnellleiste-50 summary small{
+  margin-left:auto;
+  color:#66788b;
+  font-size:.7rem;
+  font-weight:600;
+}
+.effekt-schnellchips-50{
+  display:flex;
+  flex-wrap:wrap;
+  gap:5px;
+  padding:5px 6px 7px;
+  border-top:1px solid #dbe2ea;
+}
+.effekt-schnellchip-50{
+  min-height:30px;
+  max-width:100%;
+  padding:4px 8px;
+  border:1px solid #b9c4d0;
+  border-radius:999px;
+  background:#eef1f4;
+  color:#34475b;
+  font:inherit;
+  font-size:.76rem;
+  font-weight:700;
+  line-height:1.1;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  cursor:pointer;
+}
+.effekt-schnellchip-50.aktiv{
+  background:#cfdfef;
+  border-color:#6f91b6;
+  color:#14395f;
+  box-shadow:inset 0 0 0 1px rgba(30,58,95,.08);
+}
+.effekt-schnellleer-50{
+  padding:3px 5px;
+  color:#788696;
+  font-size:.72rem;
+}
+
+/* Schwert/Bogen-Zuweisung direkt im Effektbanner */
+.effekt-schnellzuweisung-box-50{
+  order:3;
+  display:flex;
+  align-items:center;
+  gap:3px;
+}
+.effekt-schnellzuweisung-50{
+  display:grid;
+  place-items:center;
+  width:30px;
+  height:30px;
+  padding:5px;
+  border:1px solid #c4ccd5;
+  border-radius:7px;
+  background:#eef1f4;
+  color:#7b8794;
+  cursor:pointer;
+}
+.effekt-schnellzuweisung-50.aktiv{
+  border-color:#6f91b6;
+  background:#cfdfef;
+  color:#173b63;
+}
+.effekt-sprungziel-50{
+  outline:3px solid rgba(63,118,177,.38);
+  outline-offset:2px;
+}
+
+/* Einheitliche Vektor-Symbole */
+.kampf-icon-50{
+  display:inline-flex;
+  width:1.05em;
+  height:1.05em;
+  vertical-align:-.14em;
+  color:currentColor;
+  flex:0 0 auto;
+}
+.kampf-icon-50 svg,
+.effekt-schnellzuweisung-50 svg{
+  width:100%;
+  height:100%;
+  fill:currentColor;
+}
+.kampf-icon-schild-50{color:#244e79}
+.kampf-icon-rw-50{margin-left:2px}
+.kampf-icon-rw-reflex-50{color:#d8aa00}
+.kampf-icon-rw-wille-50{color:#2873be}
+.kampf-icon-rw-zaehigkeit-50{color:#c84444}
+.angriff-ergebnis-haupt-48 .kampf-icon-angriff-50{
+  width:1.12em;
+  height:1.12em;
+}
+
+@media(max-width:600px){
+  #charakterwerte .seitenkopf{
+    top:calc(var(--pf-nav-hoehe, 48px) + 51px);
+  }
+  .effekt-schnellleisten-50{
+    top:calc(var(--pf-nav-hoehe, 48px) + 92px);
+    grid-template-columns:1fr;
+    gap:4px;
+  }
+  .effekt-schnellleiste-50 summary{min-height:31px;padding:4px 7px}
+  .effekt-schnellchips-50{gap:4px;padding:4px 5px 6px}
+  .effekt-schnellchip-50{font-size:.71rem;min-height:28px;padding:4px 7px}
+}
