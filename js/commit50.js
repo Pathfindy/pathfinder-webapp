@@ -199,7 +199,15 @@
     bereich.className = "effekt-schnellleisten-50";
     const seitenkopf=seite.querySelector(".seitenkopf");
     if(seitenkopf){
-      seitenkopf.insertAdjacentElement("afterend",bereich);
+      let sticky=document.getElementById("kampfStickyKopf502");
+      if(!sticky){
+        sticky=document.createElement("div");
+        sticky.id="kampfStickyKopf502";
+        sticky.className="kampf-sticky-kopf-502";
+        seitenkopf.before(sticky);
+        sticky.appendChild(seitenkopf);
+      }
+      sticky.appendChild(bereich);
     }else{
       angriffe.before(bereich);
     }
@@ -209,12 +217,33 @@
   function baueEineSchnellleiste50(art, icon, titel, effekteListe) {
     const details = document.createElement("details");
     details.className = `effekt-schnellleiste-50 effekt-schnellleiste-${art}-50`;
-    details.open = leisteOffen50(art);
-    details.addEventListener("toggle", () => setzeLeisteOffen50(art, details.open));
+    const hoverFaehig=window.matchMedia?.("(hover: hover) and (pointer: fine)")?.matches;
+    details.open = hoverFaehig ? false : leisteOffen50(art);
+
+    if(hoverFaehig){
+      details.addEventListener("pointerenter",()=>{
+        details.open=true;
+      });
+      details.addEventListener("pointerleave",event=>{
+        // Beim Verlassen der gesamten Leiste automatisch wieder schließen.
+        if(!details.contains(event.relatedTarget)) details.open=false;
+      });
+      // Auf Desktop soll ein Klick nicht versehentlich einen dauerhaften Zustand erzeugen.
+      details.addEventListener("toggle",()=>{
+        if(!details.matches(":hover") && details.open) details.open=false;
+      });
+    }else{
+      details.addEventListener("toggle", () => setzeLeisteOffen50(art, details.open));
+    }
 
     const aktiv = effekteListe.filter(e => e.aktiv).length;
     const summary = document.createElement("summary");
     summary.innerHTML = `<span class="effekt-schnell-dreieck-501" aria-hidden="true">▸</span><span class="kampf-icon-50">${ICONS[icon]}</span><strong>${titel}</strong><small>${aktiv} aktiv</small>`;
+    if(hoverFaehig){
+      summary.addEventListener("click",event=>{
+        event.preventDefault();
+      });
+    }
     details.appendChild(summary);
 
     const chips = document.createElement("div");
@@ -326,6 +355,27 @@
     installiereKampfsymbole50();
   }
 
+  function installiereSuchLoeschen502(){
+    const suche=document.getElementById("suche");
+    const button=document.getElementById("btnSucheLeeren502");
+    if(!suche || !button || button.dataset.commit502) return;
+    button.dataset.commit502="1";
+
+    const aktualisiere=()=>{
+      button.classList.toggle("sichtbar",String(suche.value||"").length>0);
+    };
+
+    button.addEventListener("click",event=>{
+      event.preventDefault();
+      suche.value="";
+      suche.dispatchEvent(new Event("input",{bubbles:true}));
+      suche.focus();
+      aktualisiere();
+    });
+    suche.addEventListener("input",aktualisiere);
+    aktualisiere();
+  }
+
   function installiereHooks50() {
     if (typeof baueEffektliste === "function" && !baueEffektliste.__commit50) {
       const alt = baueEffektliste;
@@ -382,6 +432,7 @@
 
   function initialisiere50() {
     installiereHooks50();
+    installiereSuchLoeschen502();
     rendereSchnellleisten50();
     ergaenzeSchnellzuweisungAnEffektkarten50();
     aktualisiereKampfsymbole50();
