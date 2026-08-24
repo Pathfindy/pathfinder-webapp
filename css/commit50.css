@@ -317,3 +317,27 @@
     margin-bottom:5px;
   }
 }
+
+
+/* Commit 50.3 – Kampf: Schnellleiste direkt unter Aktiver Charakter */
+#charakterwerte .effekt-schnellleisten-50{
+  position:sticky !important;
+  top:var(--pf-aktiver-charakter-hoehe, 42px) !important;
+  z-index:970;
+  margin:0 0 6px !important;
+  padding:0 !important;
+  background:#f4f6f8 !important;
+}
+
+/* Alte Sonderfixierung neutralisieren */
+.kampf-sticky-kopf-502{
+  position:static !important;
+  top:auto !important;
+  margin:0 !important;
+  padding:0 !important;
+  background:transparent !important;
+  box-shadow:none !important;
+}
+#charakterwerte > .seitenkopf{
+  display:none !important;
+}

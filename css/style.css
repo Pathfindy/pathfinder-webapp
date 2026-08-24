@@ -848,3 +848,77 @@ nav {
   background:#cbd6e2;
   color:#173b63;
 }
+
+
+/* Commit 50.3 – vereinheitlichte Kopfzeilen */
+header, nav{
+  position:static !important;
+  top:auto !important;
+}
+
+/* Nur die globale "Aktiver Charakter"-Zeile bleibt sticky. */
+.aktiver-charakter-hinweis,
+#aktiverCharakterLeiste,
+.aktiver-charakter-leiste,
+.charakter-global-leiste,
+.global-charakter-leiste{
+  position:sticky;
+  top:0;
+  z-index:980;
+  background:#f4f6f8;
+}
+
+/* Effekt: Suche & Filter einklappbar */
+.effekt-suche-filter-503{
+  margin:8px 0 10px;
+  border:1px solid #c7d1dc;
+  border-radius:9px;
+  background:#f7f9fb;
+  overflow:hidden;
+}
+.effekt-suche-filter-503 > summary{
+  padding:7px 10px;
+  cursor:pointer;
+  color:#1e3a5f;
+  font-weight:750;
+  user-select:none;
+}
+.effekt-suche-filter-503[open] > summary{
+  border-bottom:1px solid #d8e0e8;
+}
+.effekt-suche-zeile-503{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 38px;
+  gap:6px;
+  align-items:center;
+  padding:8px 8px 0;
+}
+.effekt-suche-zeile-503 #suche{
+  width:100%;
+  margin:0 !important;
+  padding:9px 10px !important;
+}
+.effekt-suche-loeschen-502{
+  position:static !important;
+  transform:none !important;
+  width:36px !important;
+  height:36px !important;
+  opacity:1 !important;
+  border-radius:8px !important;
+  background:#1e3a5f !important;
+  color:#fff !important;
+  font-size:20px !important;
+  font-weight:800 !important;
+}
+.effekt-suche-loeschen-502:hover,
+.effekt-suche-loeschen-502:focus-visible{
+  background:#294f7a !important;
+  color:#fff !important;
+}
+.effekt-suche-filter-503 .effekt-filter{
+  margin-top:8px;
+  padding:0 8px;
+}
+.effekt-suche-filter-503 .filter-ergebnis{
+  margin:6px 8px 8px;
+}
