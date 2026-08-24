@@ -526,3 +526,104 @@ nav {
     width:66px !important;
   }
 }
+
+
+/* Commit 51 – Reichweiteabzüge & kritischer Schaden */
+.angriff-schnellzeile-51{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:8px 14px;
+  margin:7px 0 6px;
+  padding:6px 8px;
+  border:1px solid #d5dde6;
+  border-radius:8px;
+  background:#f5f8fb;
+}
+.angriff-reichweite-51,
+.angriff-krit-gruppe-51{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  min-width:0;
+  font-size:.78rem;
+  font-weight:700;
+  color:#334d68;
+}
+.angriff-reichweite-51 select{
+  min-height:30px;
+  width:auto;
+  padding:3px 7px;
+  border:1px solid #b7c3d0;
+  border-radius:7px;
+  background:#fff;
+  font:inherit;
+}
+.angriff-krit-gruppe-51{
+  margin-left:auto;
+}
+.angriff-krit-button-51{
+  min-width:42px;
+  min-height:30px;
+  padding:3px 8px;
+  border:1px solid #9eabb9;
+  border-radius:7px;
+  background:#eef1f4;
+  color:#34475b;
+  font:inherit;
+  font-size:.76rem;
+  font-weight:800;
+  cursor:pointer;
+}
+.angriff-krit-button-51.aktiv{
+  background:#713c46;
+  border-color:#542832;
+  color:#fff;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.10);
+}
+.angriff-schaden-krit-51{
+  background:#f1d9dd !important;
+  border-color:#a56672 !important;
+  color:#57242e !important;
+}
+.angriff-schaden-krit-51 strong{
+  color:#57242e !important;
+}
+.krit-totenkopf-51{
+  display:inline-block;
+  margin-left:3px;
+  font-size:1em;
+  line-height:1;
+  vertical-align:-.05em;
+}
+@media(max-width:600px){
+  .angriff-schnellzeile-51{
+    gap:6px 9px;
+    padding:5px 6px;
+  }
+  .angriff-reichweite-51,
+  .angriff-krit-gruppe-51{
+    font-size:.72rem;
+  }
+  .angriff-krit-gruppe-51{
+    margin-left:0;
+  }
+  .angriff-krit-button-51{
+    min-width:38px;
+    min-height:28px;
+    padding:3px 6px;
+    font-size:.7rem;
+  }
+}
+
+/* Commit 51.1 – Reichweitenrechner */
+.angriff-schnellzeile-51{align-items:flex-end}
+.angriff-reichweite-grid-511{flex:1 1 650px;display:grid;grid-template-columns:minmax(190px,1.25fr) minmax(120px,.8fr) minmax(135px,.85fr) minmax(145px,1fr);gap:7px;align-items:end}
+.angriff-reichweite-feld-511{display:grid;gap:3px;min-width:0;color:#334d68;font-size:.72rem;font-weight:750}
+.angriff-reichweite-feld-511>input,.angriff-reichweite-feld-511>select,.angriff-reichweite-inputeinheit-511 input,.angriff-reichweite-inputeinheit-511 select{min-width:0;width:100%;min-height:31px;margin:0;padding:4px 6px;border:1px solid #b7c3d0;border-radius:7px;background:#fff;font:inherit;color:#263d55}
+.angriff-reichweite-inputeinheit-511{display:grid;grid-template-columns:minmax(70px,1fr) minmax(72px,.9fr);gap:4px}
+.angriff-reichweite-amplitude-511{display:grid;gap:3px;min-width:0;font-size:.72rem;color:#334d68}
+.angriff-reichweite-amplitude-511 strong{display:flex;align-items:center;min-height:31px;padding:4px 7px;border:1px solid #b7c3d0;border-radius:7px;background:#eaf0f6;color:#173b63;white-space:nowrap}
+.angriff-reichweite-amplitude-511.ausserhalb strong{background:#f1d9dd;border-color:#a56672;color:#57242e}
+@media(max-width:850px){.angriff-reichweite-grid-511{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:520px){.angriff-reichweite-grid-511{grid-template-columns:1fr}}
