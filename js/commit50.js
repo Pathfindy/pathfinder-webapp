@@ -193,24 +193,12 @@
     const angriffe = seite?.querySelector(".angriffe-bereich");
     if (!seite || !angriffe) return null;
     let bereich = document.getElementById("effektSchnellleisten50");
-    if (bereich) return bereich;
-    bereich = document.createElement("div");
-    bereich.id = "effektSchnellleisten50";
-    bereich.className = "effekt-schnellleisten-50";
-    const seitenkopf=seite.querySelector(".seitenkopf");
-    if(seitenkopf){
-      let sticky=document.getElementById("kampfStickyKopf502");
-      if(!sticky){
-        sticky=document.createElement("div");
-        sticky.id="kampfStickyKopf502";
-        sticky.className="kampf-sticky-kopf-502";
-        seitenkopf.before(sticky);
-        sticky.appendChild(seitenkopf);
-      }
-      sticky.appendChild(bereich);
-    }else{
-      angriffe.before(bereich);
+    if (!bereich) {
+      bereich = document.createElement("div");
+      bereich.id = "effektSchnellleisten50";
+      bereich.className = "effekt-schnellleisten-50";
     }
+    angriffe.before(bereich);
     return bereich;
   }
 
@@ -430,7 +418,31 @@
     }
   }
 
+  function aktualisiereAktiverCharakterHoehe503(){
+    const kandidaten=[
+      document.getElementById("aktiverCharakterLeiste"),
+      document.querySelector(".aktiver-charakter-leiste"),
+      document.querySelector(".charakter-global-leiste"),
+      document.querySelector(".global-charakter-leiste"),
+      document.querySelector(".aktiver-charakter-hinweis")
+    ].filter(Boolean);
+    const leiste=kandidaten.find(el=>el.offsetParent!==null) || kandidaten[0];
+    const hoehe=leiste ? Math.ceil(leiste.getBoundingClientRect().height) : 42;
+    document.documentElement.style.setProperty("--pf-aktiver-charakter-hoehe",`${hoehe}px`);
+  }
+
+  function setzeStartseite503(){
+    if(typeof zeigeSeite==="function"){
+      zeigeSeite("charaktere");
+    }else{
+      document.querySelectorAll(".page").forEach(seite=>seite.classList.remove("active"));
+      document.getElementById("charaktere")?.classList.add("active");
+    }
+  }
+
   function initialisiere50() {
+    setzeStartseite503();
+    aktualisiereAktiverCharakterHoehe503();
     installiereHooks50();
     installiereSuchLoeschen502();
     rendereSchnellleisten50();
@@ -448,6 +460,7 @@
     if (angriffe) observer.observe(angriffe, { childList: true });
     if (grund) observer.observe(grund, { childList: true, subtree: true });
 
+    window.addEventListener("resize",aktualisiereAktiverCharakterHoehe503);
     document.addEventListener("pf-charakter-importiert", () => setTimeout(() => {
       rendereSchnellleisten50();
       aktualisiereKampfsymbole50();
