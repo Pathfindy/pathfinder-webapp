@@ -58,6 +58,16 @@
         0,
         Math.min(20, ganzeZahl(angriff.kompositStaerkeauslegung, 0, 20))
       ),
+      grundreichweite: Math.max(0, Number(angriff.grundreichweite)||0),
+      reichweitenEinheit: ["m","ft","feld"].includes(angriff.reichweitenEinheit) ? angriff.reichweitenEinheit : "m",
+      zielentfernung: Math.max(0, Number(angriff.zielentfernung)||0),
+      reichweitenMultiplikator: Math.max(
+        1,
+        Math.min(10, ganzeZahl(angriff.reichweitenMultiplikator, 1, 10))
+      ),
+      kritMultiplikator: [1,2,3,4].includes(Number(angriff.kritMultiplikator))
+        ? Number(angriff.kritMultiplikator)
+        : 1,
       wuerfelAnzahl: ganzeZahl(angriff.wuerfelAnzahl, 0, 20),
       wuerfelSeiten,
       schadenModifikator: optionaleGanzeZahl(angriff.schadenModifikator, -999, 999),
@@ -224,12 +234,45 @@
     return st<auslegung ? -2 : 0;
   }
 
+  const REICHWEITEN_EINHEITEN_511={
+    m:{label:"Meter",meter:1,kurz:"m"},
+    ft:{label:"Feet",meter:0.3,kurz:"ft"},
+    feld:{label:"Felder",meter:1.5,kurz:"Felder"}
+  };
+  function reichweiteInMeter511(wert,einheit){ return (Number(wert)||0)*(REICHWEITEN_EINHEITEN_511[einheit]?.meter||1); }
+  function reichweiteAusMeter511(wert,einheit){ return (Number(wert)||0)/(REICHWEITEN_EINHEITEN_511[einheit]?.meter||1); }
+  function rundeReichweite511(wert){
+    const n=Math.round((Number(wert)||0)*100)/100;
+    return Number.isInteger(n)?String(n):String(n).replace(".",",");
+  }
+  function reichweitenFaktorFuerZiel511(angriff){
+    const grund=Number(angriff?.grundreichweite)||0, ziel=Number(angriff?.zielentfernung)||0;
+    return grund>0 && ziel>0 ? Math.ceil(ziel/grund) : 1;
+  }
+  function reichweitenAmplitude511(angriff){
+    const grund=Number(angriff?.grundreichweite)||0;
+    if(grund<=0) return "–";
+    const faktor=Math.max(1,Math.min(10,Number(angriff?.reichweitenMultiplikator)||1));
+    const suffix=REICHWEITEN_EINHEITEN_511[angriff?.reichweitenEinheit||"m"]?.kurz||"";
+    const unten=grund*(faktor-1), oben=grund*faktor;
+    if(faktor===1) return `0–${rundeReichweite511(oben)} ${suffix}`;
+    const anfang=Number.isInteger(grund)&&Number.isInteger(unten) ? unten+1 : unten;
+    return `${rundeReichweite511(anfang)}–${rundeReichweite511(oben)} ${suffix}`;
+  }
+
+  function reichweitenAbzug51(angriff) {
+    if(!angriff || angriff.art!=="Fern") return 0;
+    const faktor=Math.max(1,Math.min(10,Number(angriff.reichweitenMultiplikator)||1));
+    return faktor<=1 ? 0 : -2*(faktor-1);
+  }
+
   function angriffsGrundMalus46(angriff) {
     let malus=0;
     if(angriff?.modus==="sekundaer"){
       malus += angriff.mehrfachangriff ? -2 : -5;
     }
     malus += kompositbogenAngriffsmalus49(angriff);
+    malus += reichweitenAbzug51(angriff);
     return malus;
   }
 
@@ -259,6 +302,16 @@
     if (!wuerfel) return String(modifikator);
     if (modifikator === 0) return wuerfel;
     return `${wuerfel}${vorzeichen(modifikator)}`;
+  }
+
+  function kritischerSchadenText51(angriff, normalText) {
+    const mult=[2,3,4].includes(Number(angriff?.kritMultiplikator)) ? Number(angriff.kritMultiplikator) : 1;
+    if(mult===1) return normalText;
+    const match=String(normalText).trim().match(/^(\d+)W(\d+)([+-]\d+)?$/i);
+    if(!match) return `${mult}×(${normalText})`;
+    const anzahl=Number(match[1])*mult, seiten=match[2];
+    const bonus=match[3] ? Number(match[3])*mult : 0;
+    return `${anzahl}W${seiten}${bonus===0 ? "" : vorzeichen(bonus)}`;
   }
 
   function aktualisiereTrefferpunkteAnsicht() {
@@ -461,10 +514,124 @@
       const gesamtAngriff = angriff.grundAngriff + angriffsBonus(angriff, boni, index);
       const folge=angriffsfolge(angriff,charakter,gesamtAngriff);
       const angriffsText=formatiereAngriffsfolge(folge);
+      const normalSchadenText=formatiereSchaden(angriff, boni);
+      const kritAktiv=[2,3,4].includes(Number(angriff.kritMultiplikator));
+      const schadenText=kritischerSchadenText51(angriff, normalSchadenText);
       ergebnis.innerHTML = `
         <div class="angriff-ergebnis-haupt-48"><span>Angriff</span><strong>${angriffsText}</strong></div>
-        <div><span>Schaden</span><strong>${formatiereSchaden(angriff, boni)}</strong></div>
+        <div class="${kritAktiv ? "angriff-schaden-krit-51" : ""}">
+          <span>Schaden${kritAktiv ? ' <span class="krit-totenkopf-51" aria-hidden="true">☠</span>' : ""}</span>
+          <strong>${schadenText}</strong>
+        </div>
       `;
+
+      const kampfSchnell51=document.createElement("div");
+      kampfSchnell51.className="angriff-schnellzeile-51";
+
+      if(angriff.art==="Fern"){
+        const reichGrid=document.createElement("div");
+        reichGrid.className="angriff-reichweite-grid-511";
+
+        const grundWrap=document.createElement("label");
+        grundWrap.className="angriff-reichweite-feld-511";
+        grundWrap.innerHTML="<span>Grundreichweite</span>";
+        const grundZeile=document.createElement("div");
+        grundZeile.className="angriff-reichweite-inputeinheit-511";
+        const grundInput=document.createElement("input");
+        grundInput.type="number"; grundInput.min="0"; grundInput.step="0.1"; grundInput.inputMode="decimal";
+        grundInput.value=angriff.grundreichweite||""; grundInput.placeholder="z.B. 10";
+        const einheitSelect=document.createElement("select");
+        Object.entries(REICHWEITEN_EINHEITEN_511).forEach(([wert,daten])=>{
+          const option=document.createElement("option"); option.value=wert; option.textContent=daten.label; einheitSelect.appendChild(option);
+        });
+        einheitSelect.value=angriff.reichweitenEinheit||"m";
+        grundZeile.append(grundInput,einheitSelect); grundWrap.appendChild(grundZeile);
+
+        const zielWrap=document.createElement("label");
+        zielWrap.className="angriff-reichweite-feld-511"; zielWrap.innerHTML="<span>Zielentfernung</span>";
+        const zielInput=document.createElement("input");
+        zielInput.type="number"; zielInput.min="0"; zielInput.step="0.1"; zielInput.inputMode="decimal";
+        zielInput.value=angriff.zielentfernung||""; zielInput.placeholder="Entfernung";
+        zielWrap.appendChild(zielInput);
+
+        const reichLabel=document.createElement("label");
+        reichLabel.className="angriff-reichweite-feld-511";
+        const reichText=document.createElement("span"); reichText.textContent="Reichweiteabzüge";
+        const reichSelect=document.createElement("select");
+        for(let faktor=1;faktor<=10;faktor++){
+          const option=document.createElement("option"); option.value=String(faktor);
+          option.textContent=`x${faktor} (${faktor===1 ? "0" : vorzeichen(-2*(faktor-1))})`;
+          reichSelect.appendChild(option);
+        }
+        reichSelect.value=String(Math.max(1,Math.min(10,Number(angriff.reichweitenMultiplikator)||1)));
+        reichLabel.append(reichText,reichSelect);
+
+        const amplitude=document.createElement("div"); amplitude.className="angriff-reichweite-amplitude-511";
+        const ampTitel=document.createElement("span"); ampTitel.textContent="Reichweitenamplitude";
+        const ampWert=document.createElement("strong");
+        const setzeAmplitude=()=>{
+          const faktor=reichweitenFaktorFuerZiel511(angriff);
+          amplitude.classList.toggle("ausserhalb",faktor>10);
+          ampWert.textContent=faktor>10 ? "Außerhalb max. Reichweite" : reichweitenAmplitude511(angriff);
+        };
+        amplitude.append(ampTitel,ampWert);
+
+        grundInput.addEventListener("change",()=>{
+          angriff.grundreichweite=Math.max(0,Number(grundInput.value)||0);
+          const faktor=reichweitenFaktorFuerZiel511(angriff);
+          if(angriff.zielentfernung>0 && faktor<=10) angriff.reichweitenMultiplikator=Math.max(1,faktor);
+          speichereCharaktere(); aktualisiereAngriffeAnsicht();
+        });
+        zielInput.addEventListener("change",()=>{
+          angriff.zielentfernung=Math.max(0,Number(zielInput.value)||0);
+          const faktor=reichweitenFaktorFuerZiel511(angriff);
+          if(angriff.zielentfernung>0 && faktor<=10) angriff.reichweitenMultiplikator=Math.max(1,faktor);
+          speichereCharaktere(); aktualisiereAngriffeAnsicht();
+        });
+        einheitSelect.addEventListener("change",()=>{
+          const alt=angriff.reichweitenEinheit||"m", neu=einheitSelect.value;
+          if(alt!==neu){
+            angriff.grundreichweite=Math.round(reichweiteAusMeter511(reichweiteInMeter511(angriff.grundreichweite,alt),neu)*100)/100;
+            angriff.zielentfernung=Math.round(reichweiteAusMeter511(reichweiteInMeter511(angriff.zielentfernung,alt),neu)*100)/100;
+            angriff.reichweitenEinheit=neu;
+          }
+          speichereCharaktere(); aktualisiereAngriffeAnsicht();
+        });
+        reichSelect.addEventListener("change",()=>{
+          angriff.reichweitenMultiplikator=Number(reichSelect.value)||1;
+          speichereCharaktere(); aktualisiereAngriffeAnsicht();
+        });
+        setzeAmplitude();
+        reichGrid.append(grundWrap,zielWrap,reichLabel,amplitude);
+        kampfSchnell51.appendChild(reichGrid);
+      }
+
+      const kritGruppe=document.createElement("div");
+      kritGruppe.className="angriff-krit-gruppe-51";
+      const kritText=document.createElement("span");
+      kritText.textContent="Krit.:";
+      kritGruppe.appendChild(kritText);
+      [2,3,4].forEach(mult=>{
+        const button=document.createElement("button");
+        button.type="button";
+        button.className="angriff-krit-button-51";
+        button.classList.toggle("aktiv",Number(angriff.kritMultiplikator)===mult);
+        button.textContent=`x${mult}`;
+        button.setAttribute(
+          "aria-label",
+          Number(angriff.kritMultiplikator)===mult
+            ?`Kritischen Schaden x${mult} ausschalten`
+            :`Kritischen Schaden x${mult} anzeigen`
+        );
+        button.addEventListener("click",()=>{
+          angriff.kritMultiplikator=
+            Number(angriff.kritMultiplikator)===mult ? 1 : mult;
+          speichereCharaktere();
+          aktualisiereAngriffeAnsicht();
+        });
+        kritGruppe.appendChild(button);
+      });
+      kampfSchnell51.appendChild(kritGruppe);
 
       const notiz = document.createElement("textarea");
       notiz.className = "angriff-notiz";
@@ -760,7 +927,7 @@
         speichereCharaktere();
       });
 
-      karte.append(kopf, ergebnis, notiz, details);
+      karte.append(kopf, ergebnis, kampfSchnell51, notiz, details);
       angriffeListe.appendChild(karte);
     });
   }
@@ -859,6 +1026,7 @@
   window.angriffsAttributKey46 = angriffsAttributKey46;
   window.staerkeSchadenModifikator46 = staerkeSchadenModifikator46;
   window.angriffsGrundMalus46 = angriffsGrundMalus46;
+  window.reichweitenAbzug51 = reichweitenAbzug51;
   window.kompositbogenAngriffsmalus49 = kompositbogenAngriffsmalus49;
   window.aktualisiereAngriffeAnsicht = aktualisiereAngriffeAnsicht;
   window.aktualisiereTrefferpunkteAnsicht = aktualisiereTrefferpunkteAnsicht;
