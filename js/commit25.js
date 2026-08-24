@@ -448,18 +448,11 @@
   window.aktualisiereGlobaleCharakterauswahl = aktualisiereCharakterauswahl;
 
   function erstelleFixierteFilterleiste() {
-    const seite = document.getElementById("effekte");
-    const suche = document.getElementById("suche");
-    const filter = seite?.querySelector(".effekt-filter");
-    const neu = document.getElementById("btnNeuerEffekt");
-    const ergebnis = document.getElementById("filterErgebnis");
-    if (!seite || !suche || !filter || document.getElementById("effektWerkzeugleiste25")) return;
-
-    const leiste = document.createElement("div");
-    leiste.id = "effektWerkzeugleiste25";
-    leiste.className = "effekt-werkzeugleiste-25";
-    seite.insertBefore(leiste, neu);
-    leiste.append(neu, suche, filter, ergebnis);
+    // Commit 50.4:
+    // Suche und Filter bleiben gemeinsam in ihrem <details>-Block.
+    // Ältere Commit-25-Versionen haben Suche/Filter aus dem Block herausgezogen.
+    const alt = document.getElementById("effektWerkzeugleiste25");
+    if (alt) alt.remove();
   }
 
   function aktualisiereErweiterungen() {

@@ -418,17 +418,21 @@
     }
   }
 
+  function aktualisiereKopfhoehen504(){
+    const nav=document.querySelector("nav");
+    const aktiv=document.getElementById("globaleCharakterleiste");
+    const navHoehe=nav ? Math.ceil(nav.getBoundingClientRect().height) : 48;
+    const aktivHoehe=aktiv ? Math.ceil(aktiv.getBoundingClientRect().height) : 51;
+    document.documentElement.style.setProperty("--pf-nav-hoehe",`${navHoehe}px`);
+    document.documentElement.style.setProperty("--pf-aktiver-charakter-hoehe",`${aktivHoehe}px`);
+    document.documentElement.style.setProperty(
+      "--pf-kopf-sticky-hoehe",
+      `${navHoehe+aktivHoehe}px`
+    );
+  }
+
   function aktualisiereAktiverCharakterHoehe503(){
-    const kandidaten=[
-      document.getElementById("aktiverCharakterLeiste"),
-      document.querySelector(".aktiver-charakter-leiste"),
-      document.querySelector(".charakter-global-leiste"),
-      document.querySelector(".global-charakter-leiste"),
-      document.querySelector(".aktiver-charakter-hinweis")
-    ].filter(Boolean);
-    const leiste=kandidaten.find(el=>el.offsetParent!==null) || kandidaten[0];
-    const hoehe=leiste ? Math.ceil(leiste.getBoundingClientRect().height) : 42;
-    document.documentElement.style.setProperty("--pf-aktiver-charakter-hoehe",`${hoehe}px`);
+    aktualisiereKopfhoehen504();
   }
 
   function setzeStartseite503(){
@@ -442,7 +446,8 @@
 
   function initialisiere50() {
     setzeStartseite503();
-    aktualisiereAktiverCharakterHoehe503();
+    aktualisiereKopfhoehen504();
+    requestAnimationFrame(aktualisiereKopfhoehen504);
     installiereHooks50();
     installiereSuchLoeschen502();
     rendereSchnellleisten50();
@@ -460,7 +465,7 @@
     if (angriffe) observer.observe(angriffe, { childList: true });
     if (grund) observer.observe(grund, { childList: true, subtree: true });
 
-    window.addEventListener("resize",aktualisiereAktiverCharakterHoehe503);
+    window.addEventListener("resize",aktualisiereKopfhoehen504);
     document.addEventListener("pf-charakter-importiert", () => setTimeout(() => {
       rendereSchnellleisten50();
       aktualisiereKampfsymbole50();
