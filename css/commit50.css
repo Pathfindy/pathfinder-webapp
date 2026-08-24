@@ -341,3 +341,15 @@
 #charakterwerte > .seitenkopf{
   display:none !important;
 }
+
+
+/* Commit 50.4 – Schnellleiste als dritte Zeile der gemeinsamen Kopfzeile */
+#charakterwerte .effekt-schnellleisten-50{
+  position:sticky !important;
+  top:var(--pf-kopf-sticky-hoehe, 99px) !important;
+  z-index:980 !important;
+  margin:0 0 6px !important;
+  padding:0 !important;
+  background:#f4f6f8 !important;
+  box-shadow:0 2px 5px rgba(30,58,95,.08);
+}

@@ -394,3 +394,9 @@
         justify-content: flex-end;
     }
 }
+
+
+/* Commit 50.4 – Filterverwaltung liegt nicht mehr in Commit 25. */
+.effekt-werkzeugleiste-25{
+  display:none !important;
+}

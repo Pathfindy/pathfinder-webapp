@@ -922,3 +922,75 @@ header, nav{
 .effekt-suche-filter-503 .filter-ergebnis{
   margin:6px 8px 8px;
 }
+
+
+/* Commit 50.4 – EINHEITLICHE Kopfzeile auf allen Seiten
+   Der App-Titel scrollt weg. Menü + Aktiver Charakter bleiben zusammen stehen. */
+header{
+  position:static !important;
+  top:auto !important;
+}
+
+nav{
+  position:sticky !important;
+  top:0 !important;
+  z-index:1000 !important;
+  background:#fff;
+}
+
+.globale-charakterleiste{
+  position:sticky !important;
+  top:var(--pf-nav-hoehe, 48px) !important;
+  z-index:990 !important;
+  margin:0 !important;
+}
+
+/* Effektseite: DER GESAMTE Block Suche & Filter ist die dritte Kopfzeile. */
+#effekte .effekt-suche-filter-503{
+  position:sticky;
+  top:var(--pf-kopf-sticky-hoehe, 99px);
+  z-index:980;
+  margin:0 0 10px !important;
+  background:#f7f9fb;
+  box-shadow:0 2px 5px rgba(30,58,95,.10);
+}
+
+/* Suchfeld und X bilden eine gemeinsame, klar erkennbare Zeile. */
+#effekte .effekt-suche-zeile-503{
+  display:grid !important;
+  grid-template-columns:minmax(0,1fr) 38px !important;
+  gap:6px !important;
+  align-items:center !important;
+  padding:8px !important;
+}
+#effekte .effekt-suche-zeile-503 #suche{
+  display:block !important;
+  width:100% !important;
+  min-width:0 !important;
+  margin:0 !important;
+  padding:9px 10px !important;
+}
+#effekte .effekt-suche-zeile-503 .effekt-suche-loeschen-502{
+  display:grid !important;
+  place-items:center !important;
+  position:static !important;
+  inset:auto !important;
+  transform:none !important;
+  width:36px !important;
+  min-width:36px !important;
+  height:36px !important;
+  margin:0 !important;
+  padding:0 !important;
+  opacity:1 !important;
+  visibility:visible !important;
+  border:0 !important;
+  border-radius:8px !important;
+  background:#1e3a5f !important;
+  color:#fff !important;
+  font:800 20px/1 Arial,Helvetica,sans-serif !important;
+}
+
+/* Der alte Commit-25-Werkzeugblock darf Suche/Filter nicht mehr darstellen. */
+#effektWerkzeugleiste25{
+  display:none !important;
+}
