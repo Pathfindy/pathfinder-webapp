@@ -8,7 +8,7 @@
     <title>Das azlantische Helferlein der Boni</title>
 
     <link rel="manifest" href="manifest.json">
-    <link rel="stylesheet" href="css/style.css?v=50.2">
+    <link rel="stylesheet" href="css/style.css?v=50.3">
     <link rel="stylesheet" href="css/charakterwerte.css?v=49.1">
     <link rel="stylesheet" href="css/commit21.css?v=21">
     <link rel="stylesheet" href="css/commit22.css?v=22">
@@ -23,14 +23,14 @@
     <link rel="stylesheet" href="css/vermoegen.css?v=42">
     
     <meta name="theme-color" content="#1e3a5f">
-    <link rel="stylesheet" href="css/commit50.css?v=50.2">
+    <link rel="stylesheet" href="css/commit50.css?v=50.3">
 </head>
 
 <body>
 
 <header>
 
-    <h1>Das azlantische Helferlein der Boni <span class="app-version-30">v0.50.2</span></h1>
+    <h1>Das azlantische Helferlein der Boni <span class="app-version-30">v0.50.3</span></h1>
 
 </header>
 
@@ -52,7 +52,7 @@
     <!-- Dashboard                 -->
     <!-- ========================= -->
 
-    <section id="dashboard" class="page active">
+    <section id="dashboard" class="page">
 
         <h2>Aktuelle Werte</h2>
         
@@ -143,33 +143,27 @@
 
         <button id="btnNeuerEffekt">+ Neuer Effekt</button>
 
-        <div class="effekt-suche-502">
-            <button type="button" id="btnSucheLeeren502" class="effekt-suche-loeschen-502"
-                aria-label="Effektsuche leeren" title="Suche leeren">×</button>
-            <input
-                type="text"
-                id="suche"
-                placeholder="Effekt suchen...">
-        </div>
-
-        <div class="effekt-filter" aria-label="Effektfilter">
-            <fieldset class="filter-kategorien-feld">
-                <legend>Kategorien</legend>
-                <div id="filterKategorie" class="filter-kategorien-mehrfach" aria-label="Kategorien filtern"></div>
-            </fieldset>
-
-            <label class="filter-schalter">
-                <input type="checkbox" id="filterNurAktiv">
-                Nur aktive
-            </label>
-
-            <label class="filter-schalter">
-                <input type="checkbox" id="filterNurFavoriten">
-                Nur Favoriten
-            </label>
-        </div>
-
-        <p id="filterErgebnis" class="filter-ergebnis" aria-live="polite"></p>
+        <details class="effekt-suche-filter-503" open>
+            <summary>Suche & Filter</summary>
+            <div class="effekt-suche-zeile-503">
+                <input type="text" id="suche" placeholder="Effekt suchen...">
+                <button type="button" id="btnSucheLeeren502" class="effekt-suche-loeschen-502"
+                    aria-label="Effektsuche leeren" title="Suche leeren">×</button>
+            </div>
+            <div class="effekt-filter" aria-label="Effektfilter">
+                <fieldset class="filter-kategorien-feld">
+                    <legend>Kategorien</legend>
+                    <div id="filterKategorie" class="filter-kategorien-mehrfach" aria-label="Kategorien filtern"></div>
+                </fieldset>
+                <label class="filter-schalter">
+                    <input type="checkbox" id="filterNurAktiv"> Nur aktive
+                </label>
+                <label class="filter-schalter">
+                    <input type="checkbox" id="filterNurFavoriten"> Nur Favoriten
+                </label>
+            </div>
+            <p id="filterErgebnis" class="filter-ergebnis" aria-live="polite"></p>
+        </details>
         <div id="boniListe">
 
             <p>Noch keine Effekte geladen.</p>
@@ -329,7 +323,7 @@
     <!-- Charaktere                -->
     <!-- ========================= -->
 
-    <section id="charaktere" class="page">
+    <section id="charaktere" class="page active">
 
         <div class="seitenkopf">
             <div>
@@ -483,7 +477,7 @@ Stufenabhängigen Wert verwenden
     </form>
 </dialog>
 
-<script src="js/commit50.js?v=50.2"></script>
+<script src="js/commit50.js?v=50.3"></script>
 </body>
 
 </html>
