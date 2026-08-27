@@ -1,6 +1,6 @@
 [
   {
-    "id": "standard-admin-e53d227f-a0a8-48ad-ae63-b813fb49274c",
+    "id": "standard-admin-b0adac5f-a05f-47d6-9066-9d1dcaa526b8",
     "name": "Amulett der natürlichen Rüstung",
     "kategorie": "Ausrüstung",
     "aktiv": false,
@@ -22,15 +22,15 @@
     "boni": [
       {
         "ziel": "Rüstungsklasse",
-        "bonusart": "Natürliche Rüstung",
+        "bonusart": "Verbesserung",
         "wert": 1,
         "wertQuelle": "fest",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
     ],
-    "gebiet": "selbst",
-    "dauer": "getragen"
+    "gebiet": "",
+    "dauer": ""
   },
   {
     "id": "standard-admin-19bb9efe-70be-40bf-b98c-515efcd374e7",
@@ -855,75 +855,6 @@
     ],
     "gebiet": "selbst",
     "dauer": "Nach Angabe SL"
-  },
-  {
-    "id": "standard-admin-c8df1d22-7a61-482d-8546-6a886241c6ca",
-    "name": "Fernkampf Reichweiteabzüge (Stufe = Reichweite, 0-1=Grundreichweite, 2=Reichweite x2, 3=Reichweite x3, ...)",
-    "kategorie": "Kampf",
-    "aktiv": false,
-    "beschreibung": "Grundreichweite: \nJeder Angriff auf ein Ziel jenseits dieser \nAngabe erhält einen Malus aufgrund der Entfernung. Jedes \nMal, wenn die Entfernung zum Ziel die Grundreichweite \num ein volles Maß oder einen Teil davon übersteigt, tritt \nein kumulativer Malus von – 2 auf den Angriffswurf in \nKraft. Ein auf ein 8 m weit entferntes Ziel geworfener Dolch \n(Grundreichweite 3 m) erleidet beispielsweise einen Malus von \n– 4 auf den Angriffswurf. Eine Wurfwaffe hat eine maximale \nReichweite von fünf Grundreichweiten. Eine Schusswaffe kann \nauf Ziele bis zu zehn Grundreichweiten Entfernung eingesetzt \nwerden.",
-    "quelle": "GRW S. 144",
-    "angriffZuweisbar": true,
-    "nutzerBonus": {
-      "aktiv": false,
-      "min": 1,
-      "max": 20,
-      "standard": 1
-    },
-    "stufenlogik": {
-      "aktiv": true,
-      "bezug": "manuell",
-      "klasse": "",
-      "bereiche": [
-        {
-          "min": 0,
-          "max": 1,
-          "wert": 0
-        },
-        {
-          "min": 2,
-          "max": 2,
-          "wert": -2
-        },
-        {
-          "min": 3,
-          "max": 3,
-          "wert": -4
-        },
-        {
-          "min": 4,
-          "max": 4,
-          "wert": -6
-        },
-        {
-          "min": 5,
-          "max": 5,
-          "wert": -8
-        },
-        {
-          "min": 6,
-          "max": 6,
-          "wert": -10
-        },
-        {
-          "min": 7,
-          "max": 7,
-          "wert": -12
-        }
-      ]
-    },
-    "boni": [
-      {
-        "ziel": "Angriff Fern",
-        "bonusart": "Malus",
-        "wert": 0,
-        "wertQuelle": "stufenwert",
-        "stufenFaktor": 1,
-        "wirktGegenKoerperloseBeruehrung": false
-      }
-    ],
-    "gebiet": "selbst",
-    "dauer": ""
   },
   {
     "id": "standard-admin-3291e412-84ce-4407-9e87-fd93fc263755",
