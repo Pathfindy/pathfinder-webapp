@@ -8,6 +8,7 @@ const STAPELBARE_BONUSARTEN = new Set([
     "Namenlos",
     "Malus",
     "Modifikator Attribut",
+    "Attributs Modifikator",
     "Natürliche Rüstung"
 ]);
 
@@ -32,7 +33,10 @@ function normalisiereBerechnungsBonus(bonus = {}) {
         ziel: typeof bonus.ziel === "string" ? bonus.ziel.trim() : "",
         bonusart: normalisiereBerechnungsBonusart(bonus.bonusart),
         wert: Number.isFinite(wert) ? wert : 0,
-        wertQuelle: ["stufenwert","nutzerwert"].includes(bonus.wertQuelle) ? bonus.wertQuelle : "fest",
+        wertQuelle: ["stufenwert","nutzerwert","attributmod"].includes(bonus.wertQuelle) ? bonus.wertQuelle : "fest",
+        attributQuelle: ["ST","GE","KO","IN","WE","CH"].includes(String(bonus.attributQuelle||"").toUpperCase())
+            ? String(bonus.attributQuelle).toUpperCase()
+            : "CH",
         stufenFaktor: Number.isFinite(Number(bonus.stufenFaktor)) ? Number(bonus.stufenFaktor) : 1,
         wirktGegenKoerperloseBeruehrung: !!bonus.wirktGegenKoerperloseBeruehrung
     };
@@ -60,6 +64,15 @@ function dynamischerBonuswert(effekt, bonus, normalisiert) {
             return nutzerBonusWertFuerEffekt(effekt);
         }
         return 1;
+    }
+
+    if (normalisiert.wertQuelle === "attributmod") {
+        const charakter = typeof aktiverCharakter === "function" ? aktiverCharakter() : null;
+        const key = normalisiert.attributQuelle || "CH";
+        if (charakter && typeof attributModifikator === "function") {
+            return Number(attributModifikator(charakter, key) || 0);
+        }
+        return 0;
     }
 
     if (effekt.sonderlogik === "heftiger-angriff") {

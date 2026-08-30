@@ -511,8 +511,9 @@
 
         const kopf = document.createElement("div");
         kopf.className = "grundwerte-kopf-26";
+        const mittelTitel=gruppenname==="Kampfmanöver" ? "Manuelle Modi." : "Grundwert";
         kopf.innerHTML =
-          "<span>Wert</span><span>Grundwert</span><span>Gesamt</span>";
+          `<span>Wert</span><span>${mittelTitel}</span><span>Gesamt</span>`;
         gruppe.appendChild(kopf);
 
         WERTE.filter(eintrag => eintrag.gruppe === gruppenname)
@@ -558,7 +559,7 @@
               input.inputMode = "numeric";
               input.setAttribute(
                 "aria-label",
-                `${eintrag.label} Grundwert`
+                `${eintrag.label} ${eintrag.ziel==="KMB" ? "Manuelle Modi." : "Grundwert"}`
               );
               label.htmlFor = input.id;
 

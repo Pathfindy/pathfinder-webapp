@@ -1,7 +1,7 @@
 // Commit 21: Navigation, Bonusarten und zusätzliche Effektdetails
 (() => {
   const BONUSARTEN = [
-    "Ablenkung", "Alchemistisch", "Ausweichen", "Erkenntnis", "Glück",
+    "Ablenkung", "Alchemistisch", "Attributs Modifikator", "Ausweichen", "Erkenntnis", "Glück",
     "Größe", "Heilig", "Innewohnend", "Kompetenz", "Malus", "Moral",
     "Namenlos", "Natürliche Rüstung", "Profan", "Resistenz", "Rüstung",
     "Schild", "Situation", "Unheilig", "Verbesserung", "Verständnis"
@@ -174,9 +174,9 @@
       const wertQuelle = document.createElement("select");
       wertQuelle.className = "bonus-wertquelle";
       wertQuelle.title =
-        "Fest = eingetragener Wert; Stufenwert = Wert aus der Stufen-/GAB-Logik";
+        "Fest = eingetragener Wert; Stufenwert = Wert aus der Stufen-/GAB-Logik; Attribut-Mod. = aktueller Modifikator eines Attributs";
       wertQuelle.setAttribute("aria-label", `Wertquelle der Bonuszeile ${index + 1}`);
-      [["fest", "Fest"], ["stufenwert", "Stufenwert"]].forEach(([value, text]) => {
+      [["fest", "Fest"], ["stufenwert", "Stufenwert"], ["attributmod", "Attribut-Mod."]].forEach(([value, text]) => {
         const option = document.createElement("option");
         option.value = value;
         option.textContent = text;
@@ -194,6 +194,9 @@
           Number(editorState.entwurf.boni[index].wert) === 0
         ) {
           aktualisiereBonus(index, "wert", 1);
+        }
+        if (neueQuelle === "attributmod" && !editorState.entwurf.boni[index].attributQuelle) {
+          aktualisiereBonus(index, "attributQuelle", "CH");
         }
         rendereBonusEditor();
       });
@@ -230,6 +233,19 @@
         wert.disabled = true;
         wert.title =
           "Die Höhe kommt aus der Stufen-/GAB-Logik. Das Vorzeichen richtet sich nach dem Grundwert.";
+      } else if (bonus.wertQuelle === "attributmod") {
+        [["ST","Stärke (ST)"],["GE","Geschicklichkeit (GE)"],["KO","Konstitution (KO)"],
+         ["IN","Intelligenz (IN)"],["WE","Weisheit (WE)"],["CH","Charisma (CH)"]]
+          .forEach(([key,text])=>{
+            const option=document.createElement("option");
+            option.value=key;
+            option.textContent=text;
+            option.selected=(bonus.attributQuelle||"CH")===key;
+            wert.appendChild(option);
+          });
+        wert.title="Verwendet den aktuellen Attributsmodifikator des gewählten Attributs.";
+        wert.addEventListener("change",event=>
+          aktualisiereBonus(index,"attributQuelle",event.target.value));
       } else {
         wert.append(...erzeugeOptionen(PF_BONUSWERTE, bonus.wert));
         wert.addEventListener("change", event =>
