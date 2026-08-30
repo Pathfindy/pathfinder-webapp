@@ -1,7 +1,7 @@
 // Das azlantische Helferlein der Boni
 // app.js
 // Version 0.32
-const APP_VERSION="0.52.0";
+const APP_VERSION="0.52.1";
 
 const seiten={
  dashboard:document.getElementById("dashboard"),
@@ -931,7 +931,8 @@ function normalisiereBonusart(bonusart){
  const alteBezeichnungen={
    Unbenannt:"Namenlos",
    Unbekannt:"Namenlos",
-   Umstand:"Situation"
+   Umstand:"Situation",
+   "Attributs Modifikator":"Namenlos"
  };
  return alteBezeichnungen[wert]||wert;
 }
@@ -942,10 +943,11 @@ function normalisiereBonus(bonus={}){
    ziel:typeof bonus.ziel==="string"?bonus.ziel:"",
    bonusart:normalisiereBonusart(bonus.bonusart),
    wert:Number.isFinite(wert)?wert:0,
-   wertQuelle:["stufenwert","nutzerwert","attributmod"].includes(bonus.wertQuelle)?bonus.wertQuelle:"fest",
+   wertQuelle:["stufenwert","nutzerwert","attributmod","klassenstufe"].includes(bonus.wertQuelle)?bonus.wertQuelle:"fest",
    attributQuelle:PF_ATTRIBUTE.includes(String(bonus.attributQuelle||"").toUpperCase())
      ?String(bonus.attributQuelle).toUpperCase()
      :"CH",
+   klassenQuelle:typeof bonus.klassenQuelle==="string" ? bonus.klassenQuelle.trim() : "",
    stufenFaktor:Number.isFinite(Number(bonus.stufenFaktor))
      ?Math.max(-10,Math.min(10,Math.trunc(Number(bonus.stufenFaktor))))
      :1,
@@ -1983,7 +1985,6 @@ function erzeugeKlassenOptionen(aktuell="",mitAndere=true){
 const PF_BONUSARTEN=[
  "Ablenkung",
  "Alchemistisch",
- "Attributs Modifikator",
  "Ausweich",
  "Erkenntnis",
  "Glück",
@@ -2007,7 +2008,8 @@ function neuerLeererBonus(){
    ziel:PF_BONUS_ZIELE[0],
    bonusart:PF_BONUSARTEN[0],
    wert:0,
-   attributQuelle:"CH"
+   attributQuelle:"CH",
+   klassenQuelle:""
  };
 }
 
@@ -2270,7 +2272,7 @@ function rendereBonusEditor(){
    wertQuelle.className="bonus-wertquelle";
    wertQuelle.title="Fest = eingetragener Wert; Stufenwert = Wert aus der Stufen-/GAB-Logik";
    wertQuelle.setAttribute("aria-label",`Wertquelle der Bonuszeile ${index+1}`);
-   [["fest","Fest"],["stufenwert","Stufenwert"]].forEach(([value,text])=>{
+   [["fest","Fest"],["stufenwert","Stufenwert"],["attributmod","Attribut-Mod."],["klassenstufe","Klassenstufe"]].forEach(([value,text])=>{
      const option=document.createElement("option");
      option.value=value;
      option.textContent=text;

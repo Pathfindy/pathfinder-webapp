@@ -8,7 +8,6 @@ const STAPELBARE_BONUSARTEN = new Set([
     "Namenlos",
     "Malus",
     "Modifikator Attribut",
-    "Attributs Modifikator",
     "Natürliche Rüstung"
 ]);
 
@@ -21,7 +20,8 @@ function normalisiereBerechnungsBonusart(bonusart) {
         "Unbekannt": "Namenlos",
         "Natürlich": "Natürliche Rüstung",
         "Natürliche": "Natürliche Rüstung",
-        "Natür. Rüstung": "Natürliche Rüstung"
+        "Natür. Rüstung": "Natürliche Rüstung",
+        "Attributs Modifikator": "Namenlos"
     };
     return migration[wert] || wert;
 }
@@ -33,10 +33,11 @@ function normalisiereBerechnungsBonus(bonus = {}) {
         ziel: typeof bonus.ziel === "string" ? bonus.ziel.trim() : "",
         bonusart: normalisiereBerechnungsBonusart(bonus.bonusart),
         wert: Number.isFinite(wert) ? wert : 0,
-        wertQuelle: ["stufenwert","nutzerwert","attributmod"].includes(bonus.wertQuelle) ? bonus.wertQuelle : "fest",
+        wertQuelle: ["stufenwert","nutzerwert","attributmod","klassenstufe"].includes(bonus.wertQuelle) ? bonus.wertQuelle : "fest",
         attributQuelle: ["ST","GE","KO","IN","WE","CH"].includes(String(bonus.attributQuelle||"").toUpperCase())
             ? String(bonus.attributQuelle).toUpperCase()
             : "CH",
+        klassenQuelle: typeof bonus.klassenQuelle === "string" ? bonus.klassenQuelle.trim() : "",
         stufenFaktor: Number.isFinite(Number(bonus.stufenFaktor)) ? Number(bonus.stufenFaktor) : 1,
         wirktGegenKoerperloseBeruehrung: !!bonus.wirktGegenKoerperloseBeruehrung
     };
@@ -71,6 +72,15 @@ function dynamischerBonuswert(effekt, bonus, normalisiert) {
         const key = normalisiert.attributQuelle || "CH";
         if (charakter && typeof attributModifikator === "function") {
             return Number(attributModifikator(charakter, key) || 0);
+        }
+        return 0;
+    }
+
+    if (normalisiert.wertQuelle === "klassenstufe") {
+        const charakter = typeof aktiverCharakter === "function" ? aktiverCharakter() : null;
+        const klasse = normalisiert.klassenQuelle || "";
+        if (charakter && klasse && typeof charakterKlassenstufe === "function") {
+            return Number(charakterKlassenstufe(charakter, klasse) || 0);
         }
         return 0;
     }
