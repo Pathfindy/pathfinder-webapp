@@ -49,6 +49,12 @@ function effektOptionenBerechnung(effekt){
         : {};
 }
 
+// Commit 52.2: Schutz vor rekursiver Auswertung dynamischer Attributquellen.
+// attributModifikator() berücksichtigt aktive Attributseffekte und ruft dafür
+// berechneBonusErgebnis() auf. Ohne Schutz würde eine Bonuszeile mit
+// Wertquelle „Attribut-Mod.“ sich dabei selbst erneut auswerten.
+const DYNAMISCHE_ATTRIBUT_QUELLEN_GUARD_522 = new Set();
+
 function dynamischerBonuswert(effekt, bonus, normalisiert) {
     if (!effekt || !bonus) return normalisiert.wert;
 
@@ -70,17 +76,28 @@ function dynamischerBonuswert(effekt, bonus, normalisiert) {
     if (normalisiert.wertQuelle === "attributmod") {
         const charakter = typeof aktiverCharakter === "function" ? aktiverCharakter() : null;
         const key = normalisiert.attributQuelle || "CH";
-        if (charakter && typeof attributModifikator === "function") {
-            return Number(attributModifikator(charakter, key) || 0);
+        if (!charakter || typeof attributModifikator !== "function") return 0;
+
+        // attributModifikator -> attributAktuellerWert -> berechneBonusErgebnis
+        // kann dieselbe dynamische Bonuszeile erneut erreichen. In diesem
+        // inneren Durchlauf wird genau diese Attributquelle deshalb mit 0
+        // behandelt; reguläre aktive Attributboni werden weiterhin berechnet.
+        if (DYNAMISCHE_ATTRIBUT_QUELLEN_GUARD_522.has(key)) return 0;
+        DYNAMISCHE_ATTRIBUT_QUELLEN_GUARD_522.add(key);
+        try {
+            const wert = Number(attributModifikator(charakter, key));
+            return Number.isFinite(wert) ? wert : 0;
+        } finally {
+            DYNAMISCHE_ATTRIBUT_QUELLEN_GUARD_522.delete(key);
         }
-        return 0;
     }
 
     if (normalisiert.wertQuelle === "klassenstufe") {
         const charakter = typeof aktiverCharakter === "function" ? aktiverCharakter() : null;
         const klasse = normalisiert.klassenQuelle || "";
         if (charakter && klasse && typeof charakterKlassenstufe === "function") {
-            return Number(charakterKlassenstufe(charakter, klasse) || 0);
+            const wert = Number(charakterKlassenstufe(charakter, klasse));
+            return Number.isFinite(wert) ? wert : 0;
         }
         return 0;
     }
