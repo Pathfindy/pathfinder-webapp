@@ -25,6 +25,8 @@
         "bonusart": "Verbesserung",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -58,6 +60,8 @@
         "bonusart": "Ablenkung",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -66,6 +70,8 @@
         "bonusart": "Resistenz",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -74,6 +80,8 @@
         "bonusart": "Resistenz",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -82,6 +90,8 @@
         "bonusart": "Resistenz",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -115,6 +125,8 @@
         "bonusart": "Situation",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -123,6 +135,8 @@
         "bonusart": "Situation",
         "wert": 0,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -156,6 +170,8 @@
         "bonusart": "Malus",
         "wert": -2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -215,6 +231,8 @@
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "stufenwert",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -223,12 +241,84 @@
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "stufenwert",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "selbst",
     "dauer": "1 Runde"
+  },
+  {
+    "id": "standard-admin-0815d691-e625-4ea6-b652-3f6477920967",
+    "name": "Aura der Entschlossenheit (Paladin, Verbündete in 3m / 2 Felder um Paladin)",
+    "kategorie": "Klassenmerkmale",
+    "aktiv": false,
+    "beschreibung": "Aura der Entschlossenheit (ÜF): \nAb der 8. Stufe ist der Paladin gegen Zaubersprüche und zauberähnliche Effekte der \nBezauberungsmagie immun. Verbündete, die sich innerhalb von 3 m in der Nähe des Paladins aufhalten, bekommen einen Moralbonus von +4 auf ihre Rettungswürfe gegen \nBezauberungseffekte. Diese Fähigkeit wirkt nur, wenn der Paladin bei Bewusstsein \nist. Der Bonus fällt weg, wenn er bewusstlos oder tot ist.",
+    "quelle": "GRW S.76",
+    "angriffZuweisbar": false,
+    "nutzerBonus": {
+      "aktiv": false,
+      "min": 1,
+      "max": 20,
+      "standard": 1
+    },
+    "stufenlogik": {
+      "aktiv": false,
+      "bezug": "charakter",
+      "klasse": "",
+      "bereiche": []
+    },
+    "boni": [
+      {
+        "ziel": "RW-Bezauberung",
+        "bonusart": "Moral",
+        "wert": 4,
+        "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
+      }
+    ],
+    "gebiet": "",
+    "dauer": ""
+  },
+  {
+    "id": "standard-admin-0fb22c0c-8add-4b9f-b844-c700c93663d3",
+    "name": "Aura der Tapferkeit (Paladin, Verbündete 3m / 2 Felder um Paladin)",
+    "kategorie": "Klassenmerkmale",
+    "aktiv": false,
+    "beschreibung": "Aura der Tapferkeit (ÜF): \nAuf der 3. Stufe wird der Paladin immun gegen jede Art von Furcht, sei sie natürlichen oder \nmagischen Ursprungs. Zudem erhält jeder Verbündete, wenn er sich innerhalb von 3 m um den Paladin befindet, einen Moralbonus von +4 auf seine Rettungswürfe gegen Furcht. \nDiese Fähigkeit wirkt nur, wenn der Paladin bei Bewusstsein ist. Ist er bewusstlos oder tot, kann er seinen Verbündeten keinen Bonus mehr gewähren.",
+    "quelle": "GRW S.74",
+    "angriffZuweisbar": false,
+    "nutzerBonus": {
+      "aktiv": false,
+      "min": 1,
+      "max": 20,
+      "standard": 1
+    },
+    "stufenlogik": {
+      "aktiv": false,
+      "bezug": "charakter",
+      "klasse": "",
+      "bereiche": []
+    },
+    "boni": [
+      {
+        "ziel": "RW-Furcht",
+        "bonusart": "Moral",
+        "wert": 4,
+        "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
+      }
+    ],
+    "gebiet": "",
+    "dauer": ""
   },
   {
     "id": "standard-admin-b202a69e-2c47-4ab0-a310-934466466df9",
@@ -256,6 +346,8 @@
         "bonusart": "Verbesserung",
         "wert": 2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -289,6 +381,8 @@
         "bonusart": "Ausweichen",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -322,6 +416,8 @@
         "bonusart": "Verbesserung",
         "wert": 4,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -355,6 +451,8 @@
         "bonusart": "Moral",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -363,6 +461,8 @@
         "bonusart": "Moral",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -396,6 +496,8 @@
         "bonusart": "Malus",
         "wert": -2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -429,12 +531,89 @@
         "bonusart": "Namenlos",
         "wert": 2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "selbst",
     "dauer": "unbegrenzt"
+  },
+  {
+    "id": "standard-admin-c3998fe6-d718-48ba-b184-7781fb129a95",
+    "name": "Böses niederstrecken (Paladin)",
+    "kategorie": "Klassenmerkmale",
+    "aktiv": false,
+    "beschreibung": "Böses niederstrecken (ÜF): \nEin Mal pro Tag kann der Paladin die Mächte des Guten anrufen, um ihm in seinem \nKampf gegen das Böse zur Seite zu stehen. Als Schnelle Aktion wählt er ein sichtbares Ziel zum Niederstrecken aus. Wenn das Ziel von böser Gesinnung ist, dann addiert er seinen CH-Bonus (wenn er einen hat) zu allen Angriffswürfen hinzu und addiert seine Paladinstufe zum Schaden, die er seinem Ziel durch Böses niederstrecken zufügt. Ist das Ziel der Fähigkeit Böses niederstrecken gar ein Externar der Unterkategorie böse, ein böse gesinnter Drache oder ein Untoter, erhöht sich der Bonusschaden auf den ersten erfolgreichen Angriff auf 2 Punkte je Paladinstufe. Unabhängig vom Ziel umgehen Angriffe zum Niederstrecken eines bösen Ziels jedwede Schadensreduzierung, die die Kreatur haben mag. Außerdem erhält der Paladin einen Ablenkungsbonus in Höhe seines CH-Bonus (wenn er einen hat) zu seiner Rüstungsklasse gegen Angriffe, die das Ziel seines Niederstreckens macht. Sollte der Paladin einen Gegner als Ziel aussuchen, der nicht böse ist, verpufft das Niederstrecken ohne jegliche Wirkung. Die Effekte des Niederstreckens bleiben so lange aktiv, bis das Ziel tot ist oder bis der Paladin eine ausgiebige Rast einlegt und die Fähigkeit zum Niederstrecken von Bösem wieder erlangt. Auf der 4. Stufe und dann alle drei weiteren Stufen kann der Paladin die Fähigkeit ein weiteres Mal pro Tag bis zu einem Maximum von sieben Mal täglich auf der 19. Stufe einsetzen, wie es in der Tabelle 3-14 angegeben ist.",
+    "quelle": "GRW S.74",
+    "angriffZuweisbar": false,
+    "nutzerBonus": {
+      "aktiv": false,
+      "min": 1,
+      "max": 20,
+      "standard": 1
+    },
+    "stufenlogik": {
+      "aktiv": false,
+      "bezug": "charakter",
+      "klasse": "",
+      "bereiche": []
+    },
+    "boni": [
+      {
+        "ziel": "Angriff Nah",
+        "bonusart": "Namenlos",
+        "wert": 0,
+        "wertQuelle": "attributmod",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
+      },
+      {
+        "ziel": "Angriff Fern",
+        "bonusart": "Namenlos",
+        "wert": 0,
+        "wertQuelle": "attributmod",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
+      },
+      {
+        "ziel": "Rüstungsklasse",
+        "bonusart": "Ablenkung",
+        "wert": 0,
+        "wertQuelle": "attributmod",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
+      },
+      {
+        "ziel": "Schaden Nah",
+        "bonusart": "Namenlos",
+        "wert": 0,
+        "wertQuelle": "klassenstufe",
+        "attributQuelle": "CH",
+        "klassenQuelle": "Paladin",
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
+      },
+      {
+        "ziel": "Schaden Fern",
+        "bonusart": "Namenlos",
+        "wert": 0,
+        "wertQuelle": "klassenstufe",
+        "attributQuelle": "CH",
+        "klassenQuelle": "Paladin",
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
+      }
+    ],
+    "gebiet": "selbst",
+    "dauer": ""
   },
   {
     "id": "standard-admin-73cd1beb-c64e-449c-a225-3603b93bde5a",
@@ -462,6 +641,8 @@
         "bonusart": "Malus",
         "wert": -4,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -470,6 +651,8 @@
         "bonusart": "Ausweichen",
         "wert": 2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -478,6 +661,8 @@
         "bonusart": "Malus",
         "wert": -4,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -486,6 +671,8 @@
         "bonusart": "Ausweichen",
         "wert": 2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -540,6 +727,8 @@
         "bonusart": "Malus",
         "wert": -1,
         "wertQuelle": "stufenwert",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -548,6 +737,8 @@
         "bonusart": "Malus",
         "wert": -1,
         "wertQuelle": "stufenwert",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -556,6 +747,8 @@
         "bonusart": "Ausweichen",
         "wert": 1,
         "wertQuelle": "stufenwert",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -589,6 +782,8 @@
         "bonusart": "Namenlos",
         "wert": 2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -622,6 +817,8 @@
         "bonusart": "Namenlos",
         "wert": 2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -655,6 +852,8 @@
         "bonusart": "Modifikator Attribut",
         "wert": -3,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -663,6 +862,8 @@
         "bonusart": "Modifikator Attribut",
         "wert": -3,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -671,6 +872,8 @@
         "bonusart": "Modifikator Attribut",
         "wert": -3,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -679,6 +882,8 @@
         "bonusart": "Modifikator Attribut",
         "wert": -3,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -687,6 +892,8 @@
         "bonusart": "Modifikator Attribut",
         "wert": -3,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -695,6 +902,8 @@
         "bonusart": "Modifikator Attribut",
         "wert": -3,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -703,6 +912,8 @@
         "bonusart": "Modifikator Attribut",
         "wert": -3,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -736,6 +947,8 @@
         "bonusart": "Modifikator Attribut",
         "wert": -1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -744,6 +957,8 @@
         "bonusart": "Modifikator Attribut",
         "wert": -1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -752,6 +967,8 @@
         "bonusart": "Modifikator Attribut",
         "wert": -1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -760,6 +977,8 @@
         "bonusart": "Modifikator Attribut",
         "wert": -1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -768,6 +987,8 @@
         "bonusart": "Modifikator Attribut",
         "wert": -1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -776,6 +997,8 @@
         "bonusart": "Modifikator Attribut",
         "wert": -1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -809,6 +1032,8 @@
         "bonusart": "Malus",
         "wert": -2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -817,6 +1042,8 @@
         "bonusart": "Malus",
         "wert": -2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -825,6 +1052,8 @@
         "bonusart": "Malus",
         "wert": -2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -833,6 +1062,8 @@
         "bonusart": "Malus",
         "wert": -2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -841,6 +1072,8 @@
         "bonusart": "Malus",
         "wert": -2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -849,6 +1082,8 @@
         "bonusart": "Malus",
         "wert": -2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -882,6 +1117,8 @@
         "bonusart": "Malus",
         "wert": -4,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -915,6 +1152,8 @@
         "bonusart": "Situation",
         "wert": 2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -923,6 +1162,8 @@
         "bonusart": "Situation",
         "wert": 2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -956,6 +1197,8 @@
         "bonusart": "Situation",
         "wert": 4,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -964,6 +1207,8 @@
         "bonusart": "Situation",
         "wert": 4,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -1098,6 +1343,8 @@
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "stufenwert",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -1106,6 +1353,8 @@
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "stufenwert",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -1114,6 +1363,8 @@
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "stufenwert",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -1122,6 +1373,8 @@
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "stufenwert",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -1155,6 +1408,8 @@
         "bonusart": "Glück",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -1163,6 +1418,8 @@
         "bonusart": "Glück",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -1171,6 +1428,8 @@
         "bonusart": "Glück",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -1179,6 +1438,8 @@
         "bonusart": "Glück",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -1187,6 +1448,8 @@
         "bonusart": "Glück",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -1195,6 +1458,8 @@
         "bonusart": "Glück",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -1203,6 +1468,8 @@
         "bonusart": "Glück",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -1211,6 +1478,8 @@
         "bonusart": "Glück",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -1244,6 +1513,8 @@
         "bonusart": "Malus",
         "wert": -1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -1252,6 +1523,8 @@
         "bonusart": "Malus",
         "wert": -1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -1260,6 +1533,8 @@
         "bonusart": "Malus",
         "wert": -1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -1293,6 +1568,8 @@
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -1301,6 +1578,8 @@
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -1334,6 +1613,8 @@
         "bonusart": "Ausweichen",
         "wert": 4,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -1383,6 +1664,8 @@
         "bonusart": "Glück",
         "wert": 1,
         "wertQuelle": "stufenwert",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -1391,11 +1674,164 @@
         "bonusart": "Glück",
         "wert": 1,
         "wertQuelle": "stufenwert",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "selbst",
+    "dauer": ""
+  },
+  {
+    "id": "standard-admin-7f18c8f6-2457-470f-8ebf-084b55cec93c",
+    "name": "Göttliche Würde (Paladin)",
+    "kategorie": "Klassenmerkmale",
+    "aktiv": false,
+    "beschreibung": "Göttliche Würde (ÜF): \nAuf der 2. Stufe erhält der Paladin \nseinen CH-Bonus (wenn er einen hat) auf alle Rettungswürfe.",
+    "quelle": "GRW S.74",
+    "angriffZuweisbar": false,
+    "nutzerBonus": {
+      "aktiv": false,
+      "min": 1,
+      "max": 20,
+      "standard": 1
+    },
+    "stufenlogik": {
+      "aktiv": false,
+      "bezug": "charakter",
+      "klasse": "",
+      "bereiche": []
+    },
+    "boni": [
+      {
+        "ziel": "RW-Reflex",
+        "bonusart": "Namenlos",
+        "wert": 0,
+        "wertQuelle": "attributmod",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
+      },
+      {
+        "ziel": "RW-Wille",
+        "bonusart": "Namenlos",
+        "wert": 0,
+        "wertQuelle": "attributmod",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
+      },
+      {
+        "ziel": "RW-Zähigkeit",
+        "bonusart": "Namenlos",
+        "wert": 0,
+        "wertQuelle": "attributmod",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
+      }
+    ],
+    "gebiet": "selbst",
+    "dauer": "unbegrenzt"
+  },
+  {
+    "id": "standard-admin-4cd70212-b8ce-4eb8-b317-78e938b41949",
+    "name": "Göttlicher Bund (Paladin, Waffe ohne Eigenschaft)",
+    "kategorie": "Klassenmerkmale",
+    "aktiv": false,
+    "beschreibung": "Göttlicher Bund (ZF): \nMit dem Erreichen der 5. Stufe formt der Paladin einen göttlichen Bund mit seiner Gottheit. Dieser Bund kann sich in einer von zwei Formen manifestieren. Ist \ndie Form einmal gewählt, kann sie nicht geändert werden. Die erste Möglichkeit erlaubt es dem Paladin, seine Waffe mit Hilfe einer Standard-Aktion zu verbessern, indem er \neinen göttlichen Geist herbeiruft, der je eine Minute pro Paladinstufe bleibt. Einmal herbeigerufen, lässt der Geist die Waffe mit einem Licht erstrahlen, das die Umgebung wie eine Fackel erleuchtet. Ab der 5. Stufe des Paladins erhält seine Waffe einen Verbesserungsbonus von +1. Für jeweils drei weitere Stufen erhöht sich der Bonus um +1, bis zu einem Maximum von +6 auf der 20. Stufe. Dieser Bonus kann zu bestehenden Boni der Waffe bis zu einem Maximum von +5 addiert werden oder genutzt werden, um eine der folgenden Waffeneigenschaften zu erhalten: Aufflammen, Flammeninferno, Gnade, Grundsatz, Heilig, Schärfe, Schnelligkeit, Schutz, Strahlendes Licht oder Zerschlagen. Das Hinzufügen verbraucht einen Bonus aus dem Göttlichen \nBund, der den Kosten dieser Waffeneigenschaft entspricht (siehe dazu Tabelle 15-9). Diese Fähigkeiten werden zu den anderen Eigenschaften hinzugefügt, die die Waffe schon hat, addieren sich aber nicht, wenn diese Eigenschaft schon vorhanden ist. Ist die Waffe nicht magisch, muss der Paladin erst einmal einen Bonus von +1 wählen, bevor er andere Effekte nutzen kann. Der Bonus und die Waffeneigenschaften werden festgelegt, wenn der Geist herbeigerufen wird, und können nicht geändert werden, bis der Geist erneut gerufen wird. Der göttliche Geist gewährt einem anderen Träger als dem Paladin keinen Bonus, aktiviert den Bonus aber wieder, wenn der Paladin die Waffe zurückerhält. Im Falle einer Doppelwaffe gilt der Bonus nur für ein Ende. Auf der 5. Stufe kann der Paladin den Bund ein Mal pro Tag wirken. Alle vier weiteren Stufen erhält er eine Anwendung pro Tag hinzu, bis zu einem Maximum von vier Mal auf der 17. Stufe.\nSollte die mit göttlichem Geist beseelte Waffe zerstört werden, verliert der Paladin seinen Bund für 30 Tage, oder bis er eine Stufe aufsteigt, je nach dem, was vorher eintritt. \nWährend dieser 30 Tage erleidet der Paladin einen Malus von – 1 auf Angriffe und Waffenschaden.",
+    "quelle": "GRW S.76",
+    "angriffZuweisbar": true,
+    "nutzerBonus": {
+      "aktiv": false,
+      "min": 1,
+      "max": 20,
+      "standard": 1
+    },
+    "stufenlogik": {
+      "aktiv": true,
+      "bezug": "klasse",
+      "klasse": "Paladin",
+      "bereiche": [
+        {
+          "min": 5,
+          "max": 7,
+          "wert": 1
+        },
+        {
+          "min": 8,
+          "max": 10,
+          "wert": 2
+        },
+        {
+          "min": 11,
+          "max": 13,
+          "wert": 3
+        },
+        {
+          "min": 14,
+          "max": 16,
+          "wert": 4
+        },
+        {
+          "min": 17,
+          "max": 19,
+          "wert": 5
+        },
+        {
+          "min": 20,
+          "max": 20,
+          "wert": 6
+        }
+      ]
+    },
+    "boni": [
+      {
+        "ziel": "Angriff Nah",
+        "bonusart": "Verbesserung",
+        "wert": 0,
+        "wertQuelle": "stufenwert",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
+      },
+      {
+        "ziel": "Angriff Fern",
+        "bonusart": "Verbesserung",
+        "wert": 1,
+        "wertQuelle": "stufenwert",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
+      },
+      {
+        "ziel": "Schaden Nah",
+        "bonusart": "Verbesserung",
+        "wert": 1,
+        "wertQuelle": "stufenwert",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
+      },
+      {
+        "ziel": "Schaden Fern",
+        "bonusart": "Verbesserung",
+        "wert": 1,
+        "wertQuelle": "stufenwert",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
+      }
+    ],
+    "gebiet": "",
     "dauer": ""
   },
   {
@@ -1424,6 +1860,8 @@
         "bonusart": "Namenlos",
         "wert": 2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -1457,6 +1895,8 @@
         "bonusart": "Moral",
         "wert": 4,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -1465,6 +1905,8 @@
         "bonusart": "Moral",
         "wert": 4,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -1473,6 +1915,8 @@
         "bonusart": "Moral",
         "wert": 4,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -1481,6 +1925,8 @@
         "bonusart": "Moral",
         "wert": 4,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -1489,6 +1935,8 @@
         "bonusart": "Moral",
         "wert": 4,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -1538,6 +1986,8 @@
         "bonusart": "Verbesserung",
         "wert": 1,
         "wertQuelle": "stufenwert",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 2,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -1587,6 +2037,8 @@
         "bonusart": "Verbesserung",
         "wert": 1,
         "wertQuelle": "stufenwert",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 2,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -1636,6 +2088,8 @@
         "bonusart": "Verbesserung",
         "wert": 1,
         "wertQuelle": "stufenwert",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 2,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -1644,6 +2098,8 @@
         "bonusart": "Verbesserung",
         "wert": 1,
         "wertQuelle": "stufenwert",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 2,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -1652,6 +2108,8 @@
         "bonusart": "Verbesserung",
         "wert": 1,
         "wertQuelle": "stufenwert",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 2,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -1685,6 +2143,8 @@
         "bonusart": "Namenlos",
         "wert": 2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -1718,6 +2178,8 @@
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -1726,6 +2188,8 @@
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -1734,6 +2198,8 @@
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -1742,6 +2208,8 @@
         "bonusart": "Namenlos",
         "wert": 2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -1775,6 +2243,8 @@
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -1783,6 +2253,8 @@
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -1791,6 +2263,8 @@
         "bonusart": "Ausweichen",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -1799,6 +2273,8 @@
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -1807,6 +2283,8 @@
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -1815,6 +2293,8 @@
         "bonusart": "Ausweichen",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -1879,6 +2359,8 @@
         "bonusart": "Malus",
         "wert": -1,
         "wertQuelle": "stufenwert",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -1887,6 +2369,8 @@
         "bonusart": "Namenlos",
         "wert": 2,
         "wertQuelle": "stufenwert",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -1895,6 +2379,8 @@
         "bonusart": "Malus",
         "wert": -1,
         "wertQuelle": "stufenwert",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -1928,6 +2414,8 @@
         "bonusart": "Ablenkung",
         "wert": 4,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -1936,6 +2424,8 @@
         "bonusart": "Resistenz",
         "wert": 4,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -1944,6 +2434,8 @@
         "bonusart": "Resistenz",
         "wert": 4,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -1952,6 +2444,8 @@
         "bonusart": "Resistenz",
         "wert": 4,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -1985,6 +2479,8 @@
         "bonusart": "Moral",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -1993,6 +2489,8 @@
         "bonusart": "Moral",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -2001,6 +2499,8 @@
         "bonusart": "Moral",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -2009,6 +2509,8 @@
         "bonusart": "Moral",
         "wert": 4,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -2017,6 +2519,8 @@
         "bonusart": "Moral",
         "wert": 4,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -2025,6 +2529,8 @@
         "bonusart": "Moral",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -2058,6 +2564,8 @@
         "bonusart": "Moral",
         "wert": 2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -2066,6 +2574,8 @@
         "bonusart": "Moral",
         "wert": 2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -2074,6 +2584,8 @@
         "bonusart": "Moral",
         "wert": 2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -2082,6 +2594,8 @@
         "bonusart": "Moral",
         "wert": 2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -2090,6 +2604,8 @@
         "bonusart": "Moral",
         "wert": 2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -2098,6 +2614,8 @@
         "bonusart": "Moral",
         "wert": 2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -2131,6 +2649,8 @@
         "bonusart": "Malus",
         "wert": -4,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -2164,6 +2684,8 @@
         "bonusart": "Situation",
         "wert": 2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -2197,6 +2719,8 @@
         "bonusart": "Situation",
         "wert": 2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -2205,6 +2729,8 @@
         "bonusart": "Situation",
         "wert": 2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -2238,6 +2764,8 @@
         "bonusart": "Malus",
         "wert": -4,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -2247,7 +2775,7 @@
   },
   {
     "id": "standard-admin-52da5c4d-f682-4193-be6e-d7e1faadbbfc",
-    "name": "Kampfrausch (Barbar, ST und KO (Moralbonus))",
+    "name": "Kampfrausch (Barbar, 1.-10. Stufe)",
     "kategorie": "Klassenmerkmale",
     "aktiv": false,
     "beschreibung": "Kampfrausch (AF): \nEin Barbar kann seine innere Kraft \nund Wildheit freisetzen, um zusätzliche Kampfkraft zu \ngewinnen. Ab der 1. Stufe kann ein Barbar für eine Anzahl \nvon Runden am Tag in Kampfrausch verfallen, welche der \nHöhe seines KO-Modifikators +4 entspricht. Beim Erreichen \njeder weiteren Stufe verlängert sich der Kampfrausch \num 2 zusätzliche Runden. Kurzfristige Erhöhungen des \nKonstitutionsattributs durch den Kampfrausch oder durch \nZauber wie Ausdauer des Ochsen, erhöhen die Anzahl von \nRunden jedoch nicht, die der Barbar am Tag in Kampfrausch \nverfallen kann. Der Barbar kann sich mit Hilfe einer freien \nAktion in den Kampfrausch versetzten. Die Gesamtzahl der \nRunden, die der Barbar am Tag in Kampfrausch sein kann, \nerneuert sich nach 8 Stunden Rast, wobei diese Rast nicht \nunbedingt an einem Stück gehalten werden muss.\nWährend des Kampfrauschs erhält der Barbar einen \nMoralbonus von +4 auf Stärke und Konstitution, ebenso wie \neinen Moralbonus von +2 auf alle Willenswürfe. Dafür muss \ner einen Malus von – 2 auf die Rüstungsklasse hinnehmen. \nDie Erhöhung des Konstitutionsattributs gibt dem Barbaren \n+2 zusätzliche Trefferpunkte pro Stufe, die jedoch am Ende \ndes Rauschs wieder verschwinden und nicht wie temporäre \nTrefferpunkte zuerst abgezogen werden. Während des \nKampfrauschs kann der Barbar weder Fertigkeiten benutzen, \ndie auf Geschicklichkeit, Intelligenz oder Charisma basieren \n(außer Akrobatik, Einschüchtern, Fliegen oder Reiten), \nnoch Fähigkeiten die besonderer Ruhe und Konzentration \nbedürfen.\nDer Barbar kann den Kampfrausch mit einer freien Aktion \nbeenden und ist dann eine Anzahl von Runden erschöpft, \ndie doppelt so hoch ist, wie die Anzahl der Runden, die der \nBarbar in Kampfrausch gewesen ist. Während der Barbar \nerschöpft ist, kann er nicht in einen weiteren Kampfrausch \nverfallen. Ansonsten ist es aber durchaus möglich, innerhalb \ndes gleichen Kampfs mehrfach in den Kampfrausch zu gehen. \nWenn ein Barbar ohnmächtig wird, endet sein Kampfrausch \nautomatisch, wodurch er in Todesgefahr gerät.",
@@ -2260,7 +2788,7 @@
       "standard": 1
     },
     "stufenlogik": {
-      "aktiv": true,
+      "aktiv": false,
       "bezug": "klasse",
       "klasse": "Barbar",
       "bereiche": [
@@ -2282,6 +2810,8 @@
         "bonusart": "Moral",
         "wert": 2,
         "wertQuelle": "stufenwert",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 4,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -2290,6 +2820,8 @@
         "bonusart": "Moral",
         "wert": 2,
         "wertQuelle": "stufenwert",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 4,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -2298,6 +2830,8 @@
         "bonusart": "Malus",
         "wert": -2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -2306,6 +2840,8 @@
         "bonusart": "Moral",
         "wert": 2,
         "wertQuelle": "stufenwert",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -2345,6 +2881,8 @@
         "bonusart": "Namenlos",
         "wert": 4,
         "wertQuelle": "stufenwert",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -2378,6 +2916,8 @@
         "bonusart": "Malus",
         "wert": -4,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -2386,6 +2926,8 @@
         "bonusart": "Malus",
         "wert": -4,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -2394,6 +2936,8 @@
         "bonusart": "Malus",
         "wert": -4,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -2402,6 +2946,8 @@
         "bonusart": "Malus",
         "wert": -4,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -2410,6 +2956,8 @@
         "bonusart": "Malus",
         "wert": -4,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -2443,6 +2991,8 @@
         "bonusart": "Verbesserung",
         "wert": 4,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -2476,6 +3026,8 @@
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -2484,6 +3036,8 @@
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -2517,6 +3071,8 @@
         "bonusart": "Malus",
         "wert": -2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -2525,6 +3081,8 @@
         "bonusart": "Malus",
         "wert": -2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -2533,6 +3091,8 @@
         "bonusart": "Malus",
         "wert": -2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -2541,6 +3101,8 @@
         "bonusart": "Malus",
         "wert": -2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -2549,6 +3111,8 @@
         "bonusart": "Malus",
         "wert": -2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -2557,6 +3121,8 @@
         "bonusart": "Malus",
         "wert": -2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -2565,6 +3131,8 @@
         "bonusart": "Malus",
         "wert": -2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -2598,6 +3166,8 @@
         "bonusart": "Kompetenz",
         "wert": 2,
         "wertQuelle": "stufenwert",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -2606,6 +3176,8 @@
         "bonusart": "Kompetenz",
         "wert": 2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -2614,6 +3186,8 @@
         "bonusart": "Kompetenz",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -2647,6 +3221,8 @@
         "bonusart": "Moral",
         "wert": 4,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -2655,6 +3231,8 @@
         "bonusart": "Moral",
         "wert": 4,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -2663,6 +3241,8 @@
         "bonusart": "Moral",
         "wert": 4,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -2671,6 +3251,8 @@
         "bonusart": "Ausweichen",
         "wert": 4,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -2704,6 +3286,8 @@
         "bonusart": "Moral",
         "wert": 4,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -2712,6 +3296,8 @@
         "bonusart": "Moral",
         "wert": 4,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -2720,6 +3306,8 @@
         "bonusart": "Moral",
         "wert": 4,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -2728,6 +3316,8 @@
         "bonusart": "Ausweichen",
         "wert": 4,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -2782,6 +3372,8 @@
         "bonusart": "Kompetenz",
         "wert": 1,
         "wertQuelle": "stufenwert",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -2790,6 +3382,8 @@
         "bonusart": "Kompetenz",
         "wert": 1,
         "wertQuelle": "stufenwert",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -2798,6 +3392,8 @@
         "bonusart": "Kompetenz",
         "wert": 1,
         "wertQuelle": "stufenwert",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -2806,6 +3402,8 @@
         "bonusart": "Kompetenz",
         "wert": 1,
         "wertQuelle": "stufenwert",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -2814,6 +3412,8 @@
         "bonusart": "Moral",
         "wert": 1,
         "wertQuelle": "stufenwert",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -2822,6 +3422,8 @@
         "bonusart": "Moral",
         "wert": 1,
         "wertQuelle": "stufenwert",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -2830,6 +3432,8 @@
         "bonusart": "Kompetenz",
         "wert": 1,
         "wertQuelle": "stufenwert",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -2889,6 +3493,8 @@
         "bonusart": "Verbesserung",
         "wert": 1,
         "wertQuelle": "stufenwert",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -2897,6 +3503,8 @@
         "bonusart": "Verbesserung",
         "wert": 1,
         "wertQuelle": "stufenwert",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -2905,6 +3513,8 @@
         "bonusart": "Verbesserung",
         "wert": 1,
         "wertQuelle": "stufenwert",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -2938,6 +3548,8 @@
         "bonusart": "Schild",
         "wert": 4,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -2946,6 +3558,8 @@
         "bonusart": "Situation",
         "wert": 4,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -2954,6 +3568,8 @@
         "bonusart": "Situation",
         "wert": 4,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -2962,6 +3578,8 @@
         "bonusart": "Situation",
         "wert": 4,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -2971,7 +3589,7 @@
   },
   {
     "id": "standard-admin-0aa5c036-a9f6-485c-bc68-38cb4b80eab8",
-    "name": "Mächtiges Verbündeten Schützen (Paktmagier, Verbündete)",
+    "name": "Mächtiges Verbündeten Schützen (Paktmagier, Verbündete in Reichweite)",
     "kategorie": "Klassenmerkmale",
     "aktiv": false,
     "beschreibung": "Alle Verbündete, , wenn in Reichweite von Eidolon.",
@@ -2995,6 +3613,8 @@
         "bonusart": "Schild",
         "wert": 2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -3003,6 +3623,8 @@
         "bonusart": "Situation",
         "wert": 2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -3011,6 +3633,8 @@
         "bonusart": "Situation",
         "wert": 2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -3019,6 +3643,8 @@
         "bonusart": "Situation",
         "wert": 2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -3052,6 +3678,8 @@
         "bonusart": "Rüstung",
         "wert": 4,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": true
       }
@@ -3085,6 +3713,8 @@
         "bonusart": "Verbesserung",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -3093,6 +3723,8 @@
         "bonusart": "Verbesserung",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -3126,6 +3758,8 @@
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -3159,6 +3793,8 @@
         "bonusart": "Resistenz",
         "wert": 2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -3167,6 +3803,8 @@
         "bonusart": "Resistenz",
         "wert": 2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -3175,6 +3813,8 @@
         "bonusart": "Resistenz",
         "wert": 2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -3208,6 +3848,8 @@
         "bonusart": "Größe",
         "wert": 2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -3216,6 +3858,8 @@
         "bonusart": "Malus",
         "wert": -2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -3224,6 +3868,8 @@
         "bonusart": "Malus",
         "wert": -1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -3232,6 +3878,8 @@
         "bonusart": "Malus",
         "wert": -1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -3240,6 +3888,8 @@
         "bonusart": "Malus",
         "wert": -1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -3273,6 +3923,8 @@
         "bonusart": "Größe",
         "wert": 2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -3281,6 +3933,8 @@
         "bonusart": "Malus",
         "wert": -2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -3289,6 +3943,8 @@
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -3297,6 +3953,8 @@
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -3305,6 +3963,8 @@
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -3338,6 +3998,8 @@
         "bonusart": "Resistenz",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -3346,6 +4008,8 @@
         "bonusart": "Resistenz",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -3354,6 +4018,8 @@
         "bonusart": "Resistenz",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -3408,6 +4074,8 @@
         "bonusart": "Natürliche Rüstung",
         "wert": 2,
         "wertQuelle": "stufenwert",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -3441,6 +4109,8 @@
         "bonusart": "Modifikator Attribut",
         "wert": -2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -3449,6 +4119,8 @@
         "bonusart": "Modifikator Attribut",
         "wert": -2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -3457,6 +4129,8 @@
         "bonusart": "Malus",
         "wert": -2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -3465,6 +4139,8 @@
         "bonusart": "Malus",
         "wert": -2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -3498,6 +4174,8 @@
         "bonusart": "Rüstung",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -3531,6 +4209,8 @@
         "bonusart": "Rüstung",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -3564,6 +4244,8 @@
         "bonusart": "Schild",
         "wert": 4,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": true
       }
@@ -3618,6 +4300,8 @@
         "bonusart": "Ablenkung",
         "wert": 2,
         "wertQuelle": "stufenwert",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -3651,6 +4335,8 @@
         "bonusart": "Schild",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -3684,6 +4370,8 @@
         "bonusart": "Malus",
         "wert": -2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -3717,6 +4405,8 @@
         "bonusart": "Ablenkung",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -3725,6 +4415,8 @@
         "bonusart": "Ablenkung",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -3758,6 +4450,8 @@
         "bonusart": "Moral",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -3766,6 +4460,8 @@
         "bonusart": "Moral",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -3774,6 +4470,8 @@
         "bonusart": "Moral",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -3782,6 +4480,8 @@
         "bonusart": "Moral",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -3815,6 +4515,8 @@
         "bonusart": "Moral",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -3823,6 +4525,8 @@
         "bonusart": "Moral",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -3831,6 +4535,8 @@
         "bonusart": "Moral",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -3839,12 +4545,293 @@
         "bonusart": "Moral",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "Sicht",
     "dauer": "in Reichweite"
+  },
+  {
+    "id": "standard-admin-a4a3868b-d191-469e-8974-5a7e42f3ae8e",
+    "name": "Stärkerer Kampfrausch (Barbar, ab 11. Stufe)",
+    "kategorie": "Klassenmerkmale",
+    "aktiv": false,
+    "beschreibung": "Stärkerer Kampfrausch (AF): \nAb der 11. Stufe erhöhen sich die Boni zu seiner Stärke und seiner Konstitution auf +6 und \nder Bonus auf Willenswürfe steigt auf +3, wenn der Barbar in einen Kampfrausch verfällt.",
+    "quelle": "GRW S.34",
+    "angriffZuweisbar": false,
+    "nutzerBonus": {
+      "aktiv": false,
+      "min": 1,
+      "max": 20,
+      "standard": 1
+    },
+    "stufenlogik": {
+      "aktiv": false,
+      "bezug": "charakter",
+      "klasse": "",
+      "bereiche": []
+    },
+    "boni": [
+      {
+        "ziel": "Attribut ST",
+        "bonusart": "Moral",
+        "wert": 6,
+        "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
+      },
+      {
+        "ziel": "Attribut KO",
+        "bonusart": "Moral",
+        "wert": 6,
+        "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
+      },
+      {
+        "ziel": "RW-Wille",
+        "bonusart": "Moral",
+        "wert": 3,
+        "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
+      }
+    ],
+    "gebiet": "",
+    "dauer": ""
+  },
+  {
+    "id": "standard-admin-8b5ef9a7-15ec-4017-8eb9-88e4262acc4b",
+    "name": "Stirnreif der enormen Intelligenz (Stufe 1= ST +2, Stufe 2=ST +4, Stufe 3=ST +6)",
+    "kategorie": "Ausrüstung",
+    "aktiv": false,
+    "beschreibung": "STIRNREIF DER ENORMEN INTELLIGENZ \n\nDieser kunstvoll gearbeitete, goldene Stirnreif ist mit mehreren kleinen blauen und dunkelpurpurnen Edelsteinen geschmückt. Er verleiht dem Träger einen Verbesserungsbonus von +2, +4 oder +6 auf Intelligenz. Behandle dies als einen temporären Attributsbonus für die ersten 24 Stunden, in denen der Gegenstand \ngetragen wird. Ein Stirnreif der Enormen Intelligenz ist pro Bonus von +2 mit einer Fertigkeit verbunden; wurde der Stirnreif 24 Stunden lang getragen, verleiht er dem Träger eine Anzahl von Fertigkeitsrängen in diesen Fertigkeiten in Höhe der TW des Trägers. Diese Ränge sind nicht kumulativ mit Fertigkeitsrängen, die der Träger möglicherweise bereits in diesen Fertigkeiten besitzt. Die Fertigkeiten werden bei \nErschaffung des Reifs ausgewählt, sollten keine angegeben sein, verleiht der Reif Fertigkeitsränge in einer zufällig ausgewählten Wissensfertigkeit.\n\n\nPreis variiert\nIntelligenz +2 4.000 GM\nIntelligenz +4 16.000 GM\nIntelligenz +6 36.000 GM\n\nAURA Durchschnittliche Verwandlung ZS 8 GEWICHT 1 Pfd.",
+    "quelle": "ARK S. 272",
+    "angriffZuweisbar": false,
+    "nutzerBonus": {
+      "aktiv": false,
+      "min": 1,
+      "max": 20,
+      "standard": 1
+    },
+    "stufenlogik": {
+      "aktiv": true,
+      "bezug": "manuell",
+      "klasse": "",
+      "bereiche": [
+        {
+          "min": 1,
+          "max": 1,
+          "wert": 2
+        },
+        {
+          "min": 2,
+          "max": 2,
+          "wert": 4
+        },
+        {
+          "min": 3,
+          "max": 3,
+          "wert": 6
+        }
+      ]
+    },
+    "boni": [
+      {
+        "ziel": "Attribut IN",
+        "bonusart": "Verbesserung",
+        "wert": 0,
+        "wertQuelle": "stufenwert",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
+      }
+    ],
+    "gebiet": "",
+    "dauer": ""
+  },
+  {
+    "id": "standard-admin-60add78a-9bb7-4af9-a917-e61e2e27597a",
+    "name": "Stirnreif der erwachten Weisheit (Stufe 1= ST +2, Stufe 2=ST +4, Stufe 3=ST +6)",
+    "kategorie": "Ausrüstung",
+    "aktiv": false,
+    "beschreibung": "STIRNREIF DER ERWACHTEN WEISHEIT \n\nDieser einfache Bronzereif ist mit einem komplizierten Muster grüner Gravuren verziert. \nEr verleiht seinem Träger einen Verbesserungsbonus auf Weisheit von +2, +4 oder +6. Behandle dies als einen temporären Attributsbonus für die ersten 24 Stunden, in denen \nder Gegenstand getragen wird.\n\nWeisheit +2 4.000 GM\nWeisheit +4 16.000 GM\nWeisheit +6 36.000 GM\n\nAURA Durchschnittliche Verwandlung ZS 8 GEWICHT 1 Pfd.",
+    "quelle": "ARK S.272",
+    "angriffZuweisbar": false,
+    "nutzerBonus": {
+      "aktiv": false,
+      "min": 1,
+      "max": 20,
+      "standard": 1
+    },
+    "stufenlogik": {
+      "aktiv": true,
+      "bezug": "manuell",
+      "klasse": "",
+      "bereiche": [
+        {
+          "min": 1,
+          "max": 1,
+          "wert": 2
+        },
+        {
+          "min": 2,
+          "max": 2,
+          "wert": 4
+        },
+        {
+          "min": 3,
+          "max": 3,
+          "wert": 6
+        }
+      ]
+    },
+    "boni": [
+      {
+        "ziel": "Attribut WE",
+        "bonusart": "Verbesserung",
+        "wert": 0,
+        "wertQuelle": "stufenwert",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
+      }
+    ],
+    "gebiet": "",
+    "dauer": ""
+  },
+  {
+    "id": "standard-admin-9de0470d-747e-47f9-af9e-788fa76630f5",
+    "name": "Stirnreif der geistigen Überlegenheit (Stufe 1= ST +2, Stufe 2=ST +4, Stufe 3=ST +6)",
+    "kategorie": "Ausrüstung",
+    "aktiv": false,
+    "beschreibung": "STIRNREIF DER GEISTIGEN ÜBERLEGENHEIT \n\nDieser verzierte Reif ist mit zahlreichen Ansammlungen keiner Edelsteine geschmückt. \nEr verleiht seinem Träger einen Verbesserungsbonus von +2, +4 oder +6 auf alle drei mentalen Attributswerte (IN, WE und CH). Behandle dies als einen temporären \nAttributsbonus für die ersten 24 Stunden, in denen der Gegenstand getragen wird. Der Stirnreif verleiht ferner Fertigkeitsränge wie ein Stirnreif der Enormen Intelligenz.\n\nPreis variiert\nIntelligenz, Weisheit und Charisma +2 16.000 GM\nIntelligenz, Weisheit und Charisma +4 64.000 GM\nIntelligenz, Weisheit und Charisma +6 144.000 GM\n\nAURA Variiert ZS 16 GEWICHT 1 Pfd.",
+    "quelle": "ARK S.273",
+    "angriffZuweisbar": false,
+    "nutzerBonus": {
+      "aktiv": false,
+      "min": 1,
+      "max": 20,
+      "standard": 1
+    },
+    "stufenlogik": {
+      "aktiv": true,
+      "bezug": "manuell",
+      "klasse": "",
+      "bereiche": [
+        {
+          "min": 1,
+          "max": 1,
+          "wert": 2
+        },
+        {
+          "min": 2,
+          "max": 2,
+          "wert": 4
+        },
+        {
+          "min": 3,
+          "max": 3,
+          "wert": 6
+        }
+      ]
+    },
+    "boni": [
+      {
+        "ziel": "Attribut IN",
+        "bonusart": "Verbesserung",
+        "wert": 0,
+        "wertQuelle": "stufenwert",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
+      },
+      {
+        "ziel": "Attribut WE",
+        "bonusart": "Verbesserung",
+        "wert": 0,
+        "wertQuelle": "stufenwert",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
+      },
+      {
+        "ziel": "Attribut CH",
+        "bonusart": "Verbesserung",
+        "wert": 0,
+        "wertQuelle": "stufenwert",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
+      }
+    ],
+    "gebiet": "selbst",
+    "dauer": "getragen"
+  },
+  {
+    "id": "standard-admin-939e4133-8b48-46aa-8f82-970b93bd2ad3",
+    "name": "Stirnreif des verführerischen Charisma (Stufe 1= ST/KO/GE +2, Stufe 2=ST/KO/GE +4, Stufe 3=ST/KO/GE +6)",
+    "kategorie": "Ausrüstung",
+    "aktiv": false,
+    "beschreibung": "STIRNREIF DES VERFÜHRERISCHEN CHARISMAS\n\nDieser ansehnliche Silberreif ist mit mehreren kleinen roten und orangen Edelsteinen verziert. Er verleiht seinem Träger einen Verbesserungsbonus auf Charisma \nvon +2, +4 oder +6. Behandle dies als einen temporären Attributsbonus für die ersten 24 Stunden, in denen der Gegenstand getragen wird.\n\nPreis variiert\nCharisma +2 4.000 GM\nCharisma +4 16.000 GM\nCharisma +6 36.000 GM\n\nAURA Durchschnittliche Verwandlung ZS 8 GEWICHT 1 Pfd.",
+    "quelle": "ARK S.275",
+    "angriffZuweisbar": false,
+    "nutzerBonus": {
+      "aktiv": false,
+      "min": 1,
+      "max": 20,
+      "standard": 1
+    },
+    "stufenlogik": {
+      "aktiv": true,
+      "bezug": "manuell",
+      "klasse": "",
+      "bereiche": [
+        {
+          "min": 1,
+          "max": 1,
+          "wert": 2
+        },
+        {
+          "min": 2,
+          "max": 2,
+          "wert": 4
+        },
+        {
+          "min": 3,
+          "max": 3,
+          "wert": 6
+        }
+      ]
+    },
+    "boni": [
+      {
+        "ziel": "Attribut CH",
+        "bonusart": "Verbesserung",
+        "wert": 0,
+        "wertQuelle": "stufenwert",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
+      }
+    ],
+    "gebiet": "selbst",
+    "dauer": "getragen"
   },
   {
     "id": "standard-admin-a1a48c7a-e2e7-41a7-bb3d-cb417d784423",
@@ -3872,6 +4859,8 @@
         "bonusart": "Namenlos",
         "wert": 2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -3880,6 +4869,8 @@
         "bonusart": "Malus",
         "wert": -2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -3939,6 +4930,43 @@
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "stufenwert",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
+      }
+    ],
+    "gebiet": "",
+    "dauer": ""
+  },
+  {
+    "id": "standard-admin-27888391-d394-46d5-b275-0702fb271d55",
+    "name": "Unbeugsamer Wille (Barbar, ab 14. Stufe)",
+    "kategorie": "Klassenmerkmale",
+    "aktiv": false,
+    "beschreibung": "Unbeugsamer Wille (AF): \nAb der 14. Stufe erhält der Barbar während seines Kampfrauschs einen Bonus von +4 auf \nWillenswürfe gegen Verzauberungen. Dieser Bonus addiert sich mit anderen Modifikatoren, wie dem Moralbonus durch den Kampfrausch.",
+    "quelle": "GRW S. 34",
+    "angriffZuweisbar": false,
+    "nutzerBonus": {
+      "aktiv": false,
+      "min": 1,
+      "max": 20,
+      "standard": 1
+    },
+    "stufenlogik": {
+      "aktiv": false,
+      "bezug": "charakter",
+      "klasse": "",
+      "bereiche": []
+    },
+    "boni": [
+      {
+        "ziel": "RW-Verzauberung",
+        "bonusart": "Moral",
+        "wert": 4,
+        "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -3972,6 +5000,8 @@
         "bonusart": "Situation",
         "wert": 2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -3980,6 +5010,8 @@
         "bonusart": "Situation",
         "wert": 2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -3988,6 +5020,8 @@
         "bonusart": "Situation",
         "wert": 2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -4021,6 +5055,8 @@
         "bonusart": "Situation",
         "wert": 2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -4029,6 +5065,8 @@
         "bonusart": "Situation",
         "wert": 2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -4037,6 +5075,8 @@
         "bonusart": "Situation",
         "wert": 2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -4070,6 +5110,8 @@
         "bonusart": "Malus",
         "wert": -2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -4078,6 +5120,8 @@
         "bonusart": "Malus",
         "wert": -2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -4086,6 +5130,8 @@
         "bonusart": "Malus",
         "wert": -2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -4094,6 +5140,8 @@
         "bonusart": "Malus",
         "wert": -2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -4102,6 +5150,8 @@
         "bonusart": "Malus",
         "wert": -2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -4110,6 +5160,8 @@
         "bonusart": "Malus",
         "wert": -2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -4143,6 +5195,8 @@
         "bonusart": "Schild",
         "wert": 2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -4151,6 +5205,8 @@
         "bonusart": "Situation",
         "wert": 2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -4159,6 +5215,8 @@
         "bonusart": "Situation",
         "wert": 2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -4167,6 +5225,8 @@
         "bonusart": "Situation",
         "wert": 2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -4200,6 +5260,8 @@
         "bonusart": "Malus",
         "wert": -2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -4208,6 +5270,8 @@
         "bonusart": "Modifikator Attribut",
         "wert": -2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -4216,6 +5280,8 @@
         "bonusart": "Modifikator Attribut",
         "wert": -2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -4224,6 +5290,8 @@
         "bonusart": "Modifikator Attribut",
         "wert": -2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -4257,6 +5325,8 @@
         "bonusart": "Ausweichen",
         "wert": 4,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -4265,6 +5335,8 @@
         "bonusart": "Ausweichen",
         "wert": 4,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -4298,6 +5370,8 @@
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -4306,6 +5380,8 @@
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -4339,6 +5415,8 @@
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -4347,6 +5425,8 @@
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -4355,6 +5435,8 @@
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -4363,6 +5445,8 @@
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -4396,6 +5480,8 @@
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -4404,6 +5490,8 @@
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -4412,6 +5500,8 @@
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -4420,6 +5510,8 @@
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -4453,6 +5545,8 @@
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -4461,6 +5555,8 @@
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -4494,6 +5590,8 @@
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -4502,6 +5600,8 @@
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -4535,6 +5635,8 @@
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -4543,6 +5645,8 @@
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -4576,6 +5680,8 @@
         "bonusart": "Namenlos",
         "wert": 2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -4584,6 +5690,8 @@
         "bonusart": "Namenlos",
         "wert": 2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -4617,6 +5725,8 @@
         "bonusart": "Namenlos",
         "wert": 2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -4625,6 +5735,8 @@
         "bonusart": "Namenlos",
         "wert": 2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -4658,6 +5770,8 @@
         "bonusart": "Namenlos",
         "wert": 2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -4666,6 +5780,8 @@
         "bonusart": "Namenlos",
         "wert": 2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -4720,6 +5836,8 @@
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "stufenwert",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -4728,6 +5846,8 @@
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -4736,6 +5856,8 @@
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -4744,6 +5866,8 @@
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -4793,6 +5917,8 @@
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "stufenwert",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -4801,6 +5927,8 @@
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -4809,6 +5937,8 @@
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -4817,6 +5947,8 @@
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -4861,6 +5993,8 @@
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "stufenwert",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -4869,6 +6003,8 @@
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "stufenwert",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -4877,6 +6013,8 @@
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "stufenwert",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -4885,6 +6023,8 @@
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "stufenwert",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -4924,6 +6064,8 @@
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "stufenwert",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -4932,6 +6074,8 @@
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -4940,6 +6084,8 @@
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -4948,6 +6094,8 @@
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -4981,6 +6129,8 @@
         "bonusart": "Verbesserung",
         "wert": 4,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -5014,6 +6164,8 @@
         "bonusart": "Modifikator Attribut",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -5022,6 +6174,8 @@
         "bonusart": "Modifikator Attribut",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -5030,6 +6184,8 @@
         "bonusart": "Modifikator Attribut",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -5038,6 +6194,8 @@
         "bonusart": "Moral",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -5046,6 +6204,8 @@
         "bonusart": "Modifikator Attribut",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -5054,6 +6214,8 @@
         "bonusart": "Malus",
         "wert": -2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -5087,6 +6249,8 @@
         "bonusart": "Ausweichen",
         "wert": 4,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -5120,6 +6284,8 @@
         "bonusart": "Ablenkung",
         "wert": 2,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
@@ -5153,6 +6319,8 @@
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       },
@@ -5161,6 +6329,8 @@
         "bonusart": "Namenlos",
         "wert": 1,
         "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
       }
