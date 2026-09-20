@@ -44,7 +44,10 @@
           ?alt
           :"haupthand";
       })(),
-      grundAngriff: ganzeZahl(angriff.grundAngriff, -999, 999),
+      grundAngriff:
+        angriff.grundAngriff === "" || angriff.grundAngriff === null || typeof angriff.grundAngriff === "undefined"
+          ? 0
+          : ganzeZahl(angriff.grundAngriff, -999, 999),
       waffenfinesse: !!angriff.waffenfinesse,
       waffeZweihand: !!angriff.waffeZweihand,
       doppelschnitt: !!angriff.doppelschnitt,

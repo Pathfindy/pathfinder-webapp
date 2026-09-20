@@ -529,7 +529,9 @@
             })(),
             stufe: Number(zeile.querySelector(".charakter-klasse-stufe")?.value || 0)
           }));
+          const scrollY=window.scrollY;
           if (typeof setzeCharakterKlassen === "function") setzeCharakterKlassen(charakter.id, neueKlassen);
+          requestAnimationFrame(()=>window.scrollTo({top:scrollY,left:0,behavior:"auto"}));
         };
 
         const fuegeKlassenZeileHinzu = (eintrag = { name: "", stufe: 1 }) => {
@@ -578,7 +580,25 @@
             speichereKlassen();
           });
 
-          stufeFeld.addEventListener("input", speichereKlassen);
+          stufeFeld.addEventListener("input", () => {
+            const neueKlassen = [...klassenListe.querySelectorAll(".charakter-klasse-zeile")].map(zeile => ({
+              name: (() => {
+                const auswahl=zeile.querySelector(".charakter-klasse-name");
+                return auswahl?.value==="__andere__"
+                  ? (zeile.querySelector(".charakter-klasse-andere")?.value || "")
+                  : (auswahl?.value || "");
+              })(),
+              stufe: Number(zeile.querySelector(".charakter-klasse-stufe")?.value || 0)
+            }));
+            const aktueller=findeCharakter(charakter.id);
+            if(!aktueller) return;
+            aktueller.klassen=normalisiereKlassen(neueKlassen);
+            speichereCharaktere();
+            gesamt.textContent=`Gesamtstufe: ${typeof charakterGesamtstufe==="function" ? charakterGesamtstufe(aktueller) : 0}`;
+            if(charakter.id===aktiverCharakterId && typeof baueEffektliste==="function") baueEffektliste();
+            if(typeof berechneWerte==="function") berechneWerte();
+            if(typeof window.aktualisiereAlleAnsichten==="function") window.aktualisiereAlleAnsichten();
+          });
           stufeFeld.addEventListener("change", speichereKlassen);
           zeile.append(nameWrap, stufeFeld, entfernen);
           klassenListe.appendChild(zeile);

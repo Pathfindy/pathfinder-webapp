@@ -16,6 +16,7 @@
   const schutzMeldung = document.getElementById("energieSchutzMeldung");
   const steinhautMeldung = document.getElementById("steinhautMeldung");
   const energieSchadenEingaben = document.getElementById("energieSchadenEingaben");
+  const energieSchadenNotiz = document.getElementById("energieSchadenNotiz");
   const energieSchadenMeldung = document.getElementById("energieSchadenMeldung");
   if (!seite || !btnSeite || !widerstehenListe || !schutzListe || !steinhautListe || !energieSchadenEingaben) return;
 
@@ -127,7 +128,8 @@
       ...basis,
       energieWiderstand: normalisiereWiderstand(charakter.energieWiderstand),
       energieSchutz: normalisiereSchutz(charakter.energieSchutz),
-      steinhaut: normalisiereSteinhaut(charakter.steinhaut)
+      steinhaut: normalisiereSteinhaut(charakter.steinhaut),
+      energieSchadenNotiz: typeof charakter.energieSchadenNotiz === "string" ? charakter.energieSchadenNotiz : ""
     };
   };
 
@@ -469,6 +471,30 @@
     steinhautListe.appendChild(zeile);
   }
 
+  function passeEnergieSchadenNotizHoeheAn() {
+    if (!energieSchadenNotiz) return;
+    energieSchadenNotiz.style.height = "auto";
+    energieSchadenNotiz.style.height = `${Math.max(36, energieSchadenNotiz.scrollHeight)}px`;
+  }
+
+  function aktualisiereEnergieSchadenNotiz(charakter) {
+    if (!energieSchadenNotiz) return;
+    const wert = charakter?.energieSchadenNotiz || "";
+    if (energieSchadenNotiz.value !== wert) energieSchadenNotiz.value = wert;
+    passeEnergieSchadenNotizHoeheAn();
+  }
+
+  if (energieSchadenNotiz) {
+    energieSchadenNotiz.addEventListener("input", () => {
+      const charakter = aktiverCharakter();
+      if (charakter) {
+        charakter.energieSchadenNotiz = energieSchadenNotiz.value;
+        speichereCharaktere();
+      }
+      passeEnergieSchadenNotizHoeheAn();
+    });
+  }
+
   function rendereEnergieSchadenEingaben() {
     energieSchadenEingaben.innerHTML = "";
 
@@ -552,6 +578,7 @@
       return;
     }
     stelleEnergieDatenSicher(charakter);
+    aktualisiereEnergieSchadenNotiz(charakter);
     rendereSteinhaut(charakter);
     rendereWiderstehen(charakter);
     rendereSchutz(charakter);
