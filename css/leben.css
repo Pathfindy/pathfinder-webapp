@@ -255,3 +255,24 @@
 .energie-restwert.energie-rest-aktiv {
   border-width: 2px;
 }
+
+
+/* Commit 53: frei beschreibbare, automatisch wachsende Energieschaden-Notiz. */
+.energie-schaden-notiz-53 {
+  display: block;
+  width: 100%;
+  min-height: 36px;
+  margin-top: 8px;
+  padding: 7px 9px;
+  box-sizing: border-box;
+  resize: none;
+  overflow: hidden;
+  border: 1px solid #bbb;
+  border-radius: 7px;
+  font: inherit;
+  line-height: 1.35;
+}
+.energie-schaden-notiz-53:focus {
+  outline: 2px solid rgba(37, 99, 235, .22);
+  border-color: #2563eb;
+}
