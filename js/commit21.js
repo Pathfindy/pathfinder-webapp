@@ -394,6 +394,7 @@
       leben: "btnLeben",
       vermoegen: "btnVermoegen",
       effekte: "btnEffekte",
+      zeit: "btnZeit",
       dashboard: "btnDashboard",
       admin: "btnAdmin"
     };
@@ -402,7 +403,7 @@
 
   function initialisiereCommit21() {
     const nav = document.querySelector("nav");
-    ["btnCharaktere", "btnCharakterwerte", "btnLeben", "btnEffekte", "btnDashboard", "btnVermoegen", "btnAdmin"]
+    ["btnCharaktere", "btnCharakterwerte", "btnLeben", "btnEffekte", "btnZeit", "btnVermoegen", "btnAdmin"]
       .map(id => document.getElementById(id))
       .filter(Boolean)
       .forEach(button => nav?.appendChild(button));
@@ -421,14 +422,14 @@
       () => zeigeSeite("vermoegen");
     document.getElementById("btnEffekte").onclick =
       () => zeigeSeite("effekte");
-    document.getElementById("btnDashboard").onclick =
-      () => zeigeSeite("dashboard");
+    document.getElementById("btnZeit").onclick =
+      () => zeigeSeite("zeit");
     document.getElementById("btnAdmin").onclick = () => {
       zeigeSeite("admin");
       aktualisiereAdminAnsicht();
     };
 
-    zeigeSeite("dashboard");
+    zeigeSeite("charaktere");
   }
 
   if (document.readyState === "loading") {

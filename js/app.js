@@ -1,13 +1,14 @@
 // Das azlantische Helferlein der Boni
 // app.js
 // Version 0.32
-const APP_VERSION="0.53.0";
+const APP_VERSION="0.54.3";
 
 const seiten={
  dashboard:document.getElementById("dashboard"),
  effekte:document.getElementById("effekte"),
  charakterwerte:document.getElementById("charakterwerte"),
  leben:document.getElementById("leben"),
+ zeit:document.getElementById("zeit"),
  vermoegen:document.getElementById("vermoegen"),
  charaktere:document.getElementById("charaktere"),
  admin:document.getElementById("admin")
