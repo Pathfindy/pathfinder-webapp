@@ -1,0 +1,100 @@
+.zeit-runde-54,.zeit-karte-54{background:var(--card-bg,#fff);border:1px solid rgba(0,0,0,.14);border-radius:12px;padding:16px;margin:0 0 16px}
+.zeit-runde-54{text-align:center}
+.zeit-runde-label-54{font-weight:700}
+.zeit-runde-wert-54{display:block;font-size:3rem;font-weight:800;line-height:1.15;margin:6px}
+.zeit-runde-aktionen-54,.zeit-neu-54,.zeit-frei-neu-54,.zeit-start-54{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.zeit-runde-aktionen-54{justify-content:center}
+.zeit-init-54{display:grid;grid-template-columns:72px minmax(0,1fr) auto;gap:8px;align-items:center;padding:7px 0;border-bottom:1px solid rgba(0,0,0,.1)}
+.zeit-init-54 input[type=number]{width:68px}
+.zeit-init-54>span:not(.zeit-init-actions-54){min-width:0;overflow-wrap:anywhere}
+.zeit-init-actions-54{display:flex;gap:4px;white-space:nowrap;justify-self:end}
+.zeit-effekt-54{padding:10px 0;border-bottom:1px solid rgba(0,0,0,.1)}
+.zeit-effekt-54 strong{display:block}
+.zeit-rest-54{font-weight:700;margin-top:3px}
+.zeit-abgelaufen-54{font-weight:600}
+.zeit-neu-54,.zeit-frei-neu-54{margin-top:12px}
+.zeit-neu-54 input,.zeit-neu-54 select,.zeit-frei-neu-54 input,.zeit-frei-neu-54 select{min-width:120px;flex:1}
+.zeit-start-54{margin-top:7px}
+.zeit-start-54 input{width:100px}
+.zeit-start-54 label{display:inline-flex;gap:6px;align-items:center}
+.zeit-start-54 select{min-width:118px}
+.zeit-start-54 .zeit-dauer-54,.zeit-start-54 .zeit-zs-54,.zeit-start-54 .zeit-minuten-54{width:90px}
+.zeit-leer-54{opacity:.65;font-style:italic}
+.zeit-naechste-runde-54{background:#163a63;color:#fff;font-weight:400;border-color:#163a63;box-shadow:none;transform:none}
+.zeit-naechste-runde-54:hover,.zeit-naechste-runde-54:focus-visible{background:#0f2d4e;color:#fff}
+.zeit-effekt-abgelaufen-54,.zeit-effekt-abgelaufen-54 strong,.zeit-effekt-abgelaufen-54 .zeit-rest-54,.zeit-effekt-abgelaufen-54 button{color:#8a8f98!important}
+.zeit-effekt-abgelaufen-54{opacity:1}
+@media(max-width:620px){
+  .zeit-init-54{grid-template-columns:60px minmax(0,1fr) auto;gap:6px}
+  .zeit-init-actions-54{grid-column:auto;justify-self:end}
+  .zeit-init-actions-54 button{padding-left:8px;padding-right:8px}
+  .zeit-neu-54>*,.zeit-frei-neu-54>*{flex-basis:100%}
+}
+@media(max-width:390px){
+  .zeit-init-54{grid-template-columns:58px minmax(0,1fr)}
+  .zeit-init-actions-54{grid-column:2;justify-self:start}
+}
+
+/* v0.54.5 */
+.zeit-start-54{display:grid;grid-template-columns:auto minmax(72px,110px) minmax(100px,130px) auto auto minmax(72px,100px) auto;align-items:center;gap:8px}
+.zeit-start-54 .zeit-dauer-wert-54{width:100%;min-width:0}
+.zeit-start-54 .zeit-dauer-art-54{width:100%;min-width:0}
+.zeit-dauer-label-54{white-space:nowrap}
+.effekt-zeitstatus-54{margin-top:5px;font-size:.92em;font-weight:600;color:var(--text-color,#222)}
+.effekt-zeitstatus-abgelaufen-54{color:#8a8f98!important}
+@media(max-width:700px){.zeit-start-54{grid-template-columns:auto minmax(64px,90px) minmax(92px,115px) auto;}.zeit-start-54>span:nth-of-type(2){grid-column:1}.zeit-start-54 .zeit-start-runde-54{grid-column:2}.zeit-start-54 button:last-child{grid-column:3}}
+
+
+/* v0.54.6: Timerstatus auf Effektseite hervorheben */
+.zeit-status-effektseite-54,
+.effekt-zeitstatus-54,
+[data-zeitstatus-effekt] {
+  display: inline-block;
+  margin-top: .35rem;
+  padding: .3rem .55rem;
+  border-radius: .4rem;
+  background: #123b6d;
+  color: #fff !important;
+  font-weight: 400 !important;
+  line-height: 1.25;
+}
+
+/* v0.54.6: Initiative auf kleinen Displays ohne Überlagerungen */
+.zeit-init-54 {
+  display: grid;
+  grid-template-columns: minmax(3.7rem, 4.8rem) minmax(0, 1fr) auto;
+  align-items: center;
+  gap: .45rem;
+}
+.zeit-init-54 > input {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+.zeit-init-54 > span:not(.zeit-init-actions-54) {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.zeit-init-actions-54 {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: .2rem;
+  justify-self: end;
+}
+.zeit-init-actions-54 button {
+  flex: 0 0 auto;
+  min-width: 2rem;
+  padding-left: .35rem;
+  padding-right: .35rem;
+}
+@media (max-width: 420px) {
+  .zeit-init-54 {
+    grid-template-columns: 3.7rem minmax(0, 1fr) auto;
+    gap: .3rem;
+  }
+  .zeit-init-actions-54 button {
+    min-width: 1.8rem;
+    padding-left: .25rem;
+    padding-right: .25rem;
+  }
+}
