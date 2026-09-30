@@ -98,3 +98,12 @@
     padding-right: .25rem;
   }
 }
+
+
+/* v0.55.5: Initiative mobil – Wert und Name strikt getrennt */
+@media (max-width:620px){
+  .zeit-init-54{grid-template-columns:4.25rem minmax(0,1fr);align-items:center;column-gap:.55rem;row-gap:.35rem}
+  .zeit-init-54>input[type=number]{grid-column:1;grid-row:1;width:4.25rem!important;max-width:4.25rem;min-width:0}
+  .zeit-init-54>span:not(.zeit-init-actions-54){grid-column:2;grid-row:1;min-width:0;padding-left:.1rem;overflow-wrap:anywhere}
+  .zeit-init-actions-54{grid-column:2;grid-row:2;justify-self:end}
+}
