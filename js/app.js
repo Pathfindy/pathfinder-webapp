@@ -1,7 +1,7 @@
 // Das azlantische Helferlein der Boni
 // app.js
 // Version 0.32
-const APP_VERSION="0.54.3";
+const APP_VERSION="0.55.5";
 
 const seiten={
  dashboard:document.getElementById("dashboard"),
@@ -9,6 +9,7 @@ const seiten={
  charakterwerte:document.getElementById("charakterwerte"),
  leben:document.getElementById("leben"),
  zeit:document.getElementById("zeit"),
+ zauber:document.getElementById("zauber"),
  vermoegen:document.getElementById("vermoegen"),
  charaktere:document.getElementById("charaktere"),
  admin:document.getElementById("admin")
