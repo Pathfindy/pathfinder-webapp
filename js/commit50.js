@@ -307,7 +307,13 @@
       const icon = document.createElement("span");
       icon.className = "kampf-icon-50 kampf-icon-schild-50";
       icon.innerHTML = ICONS.shield;
-      label.append(" ", icon);
+      const armorRune = document.createElement("img");
+      armorRune.src = "assets/runes/armor.png";
+      armorRune.alt = "";
+      armorRune.setAttribute("aria-hidden", "true");
+      armorRune.className = "rk-armor-rune-0574";
+      icon.replaceChildren(armorRune);
+      label.prepend(icon);
     });
 
     // Rettungswurf-Zaubersterne

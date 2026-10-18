@@ -1,7 +1,7 @@
 // Commit 22: Charakter-Import und -Export (JSON)
 (() => {
   const EXPORT_FORMAT = "pathfinder-charakter";
-  const EXPORT_VERSION = 6;
+  const EXPORT_VERSION = 7;
 
   function sichereKopie(wert) {
     return JSON.parse(JSON.stringify(wert));
@@ -49,6 +49,8 @@
       exportiertAm: new Date().toISOString(),
       appVersion: typeof APP_VERSION === "string" ? APP_VERSION : null,
       charakter: sichereKopie(charakter),
+      kampagne: String(charakter.kampagne || ""),
+      zauberBenutzerdefiniert: (() => { try { return JSON.parse(localStorage.getItem("pf-benutzer-zauber") || "[]"); } catch { return []; } })(),
       effektStatus: status,
       effektAngriffsziele: typeof ladeEffektAngriffszieleFuerCharakter === "function"
         ? sichereKopie(ladeEffektAngriffszieleFuerCharakter(charakter.id))
@@ -90,7 +92,7 @@
     if (daten.format !== EXPORT_FORMAT) {
       throw new Error("Die Datei ist kein Pathfinder-Charakterexport.");
     }
-    if (![1, 2, 3, 4, 5, 6].includes(Number(daten.version))) {
+    if (![1, 2, 3, 4, 5, 6, 7].includes(Number(daten.version))) {
       throw new Error(`Die Exportversion ${daten.version ?? "?"} wird nicht unterstützt.`);
     }
     if (!daten.charakter || typeof daten.charakter !== "object") {
@@ -102,6 +104,8 @@
 
     return {
       charakter: daten.charakter,
+      kampagne: typeof daten.kampagne === "string" ? daten.kampagne : (daten.charakter.kampagne || ""),
+      zauberBenutzerdefiniert: Array.isArray(daten.zauberBenutzerdefiniert) ? daten.zauberBenutzerdefiniert : [],
       effektStatus:
         daten.effektStatus &&
         typeof daten.effektStatus === "object" &&
@@ -431,10 +435,32 @@
     document.dispatchEvent(new CustomEvent("pf-charakter-importiert"));
   }
 
+  function ergaenzeImportKampagneUndZauber(daten) {
+    const name = String(daten.kampagne || daten.charakter?.kampagne || "").trim();
+    if (name && typeof kampagnenListe === "function" && typeof speichereKampagnen === "function") {
+      const liste = kampagnenListe();
+      if (!liste.includes(name)) speichereKampagnen([...liste, name]);
+    }
+    if (Array.isArray(daten.zauberBenutzerdefiniert) && daten.zauberBenutzerdefiniert.length) {
+      const key = "pf-benutzer-zauber";
+      let bisher = [];
+      try { bisher = JSON.parse(localStorage.getItem(key) || "[]"); } catch {}
+      if (!Array.isArray(bisher)) bisher = [];
+      const ids = new Set(bisher.map(z => String(z.id)));
+      daten.zauberBenutzerdefiniert.forEach(z => {
+        if (!z || typeof z !== "object" || !z.id || ids.has(String(z.id))) return;
+        bisher.push(sichereKopie(z)); ids.add(String(z.id));
+      });
+      localStorage.setItem(key, JSON.stringify(bisher));
+    }
+  }
+
   function alsNeuenCharakterImportieren(importDaten) {
+    ergaenzeImportKampagneUndZauber(importDaten);
     const idZuBehalten = importiereBenutzerEffekte(importDaten.benutzerEffekte);
 
     const importCharakter = sichereKopie(importDaten.charakter);
+    if (importDaten.kampagne) importCharakter.kampagne = importDaten.kampagne;
     if (!importCharakter.kampagne) {
       importCharakter.kampagne =
         typeof aktiveKampagne === "function"
@@ -473,12 +499,14 @@
       return;
     }
 
+    ergaenzeImportKampagneUndZauber(importDaten);
     const idZuBehalten = importiereBenutzerEffekte(importDaten.benutzerEffekte);
 
     const index = charaktere.findIndex(charakter => charakter.id === ziel.id);
     if (index < 0) return;
 
     const importCharakter = sichereKopie(importDaten.charakter);
+    if (importDaten.kampagne) importCharakter.kampagne = importDaten.kampagne;
     if (!importCharakter.kampagne) {
       importCharakter.kampagne =
         ziel.kampagne ||

@@ -1514,9 +1514,9 @@ function nutzerBonusWertFuerEffekt(effekt){
  const konfig=effekt?.nutzerBonus||{};
  const optionen=effektOptionenFuerCharakter(effekt?.id);
  const istCharakterwerte=normalisiereKategorie(effekt?.kategorie)==="Charakterwerte";
- const min=istCharakterwerte?-5:1;
- const max=istCharakterwerte?17:20;
- const standard=istCharakterwerte?0:1;
+ const min=-20;
+ const max=20;
+ const standard=0;
  const roh=optionen.nutzerBonusWert;
  const zahl=roh==="" || roh===null || typeof roh==="undefined"
    ?standard
@@ -1529,9 +1529,9 @@ function setzeNutzerBonusWertFuerEffekt(effektId,wert){
  const effekt=findeEffekt(effektId);
  if(!effekt?.nutzerBonus?.aktiv) return false;
  const istCharakterwerte=normalisiereKategorie(effekt.kategorie)==="Charakterwerte";
- const min=istCharakterwerte?-5:1;
- const max=istCharakterwerte?17:20;
- const standard=istCharakterwerte?0:1;
+ const min=-20;
+ const max=20;
+ const standard=0;
  const zahl=Number(wert);
  const sicher=Math.max(min,Math.min(max,Math.trunc(Number.isFinite(zahl)?zahl:standard)));
  if(!setzeEffektOptionenFuerCharakter(effektId,{nutzerBonusWert:sicher})) return false;
@@ -1783,8 +1783,8 @@ function baueEffektliste(){
      label.appendChild(document.createTextNode("Bonus "));
      const select=document.createElement("select");
      const istCharakterwerte=normalisiereKategorie(effekt.kategorie)==="Charakterwerte";
-     const min=istCharakterwerte?-5:1;
-     const max=istCharakterwerte?17:20;
+     const min=-20;
+     const max=20;
      for(let wert=min;wert<=max;wert++){
        const option=document.createElement("option");
        option.value=String(wert);
@@ -1792,6 +1792,8 @@ function baueEffektliste(){
        select.appendChild(option);
      }
      select.value=String(nutzerBonusWertFuerEffekt(effekt));
+     // Beim Öffnen die Null mittig in der Auswahl positionieren.
+     select.addEventListener("focus",()=>{ if(!select.dataset.pf0582Focus){select.dataset.pf0582Focus="1";select.value=select.value||"0";} });
      select.addEventListener("click",event=>event.stopPropagation());
      select.addEventListener("change",event=>{
        event.stopPropagation();
@@ -2039,9 +2041,9 @@ function leseEditorFormular(){
    angriffZuweisbar:!!document.getElementById("effektAngriffZuweisbar")?.checked,
    nutzerBonus:{
      aktiv:!!document.getElementById("effektNutzerBonusAktiv")?.checked,
-     min:(document.getElementById("effektKategorie")?.value==="Charakterwerte"?-5:1),
-     max:(document.getElementById("effektKategorie")?.value==="Charakterwerte"?17:20),
-     standard:(document.getElementById("effektKategorie")?.value==="Charakterwerte"?0:1)
+     min:-20,
+     max:20,
+     standard:0
    },
    stufenlogik:normalisiereStufenlogik(editorState.entwurf.stufenlogik),
    boni:editorState.entwurf.boni.map(normalisiereBonus)

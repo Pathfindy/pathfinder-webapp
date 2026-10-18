@@ -184,7 +184,7 @@
     }
     ergaenzeBeruehrung();
     installiereFavoritenFilter();
-    installiereExport24();
+    // Export aus commit22.js beibehalten: enthält Effektoptionen, Schnellzugriff und Zauberdaten.
     baueEffektliste();
 
     const dialog = document.getElementById("effektDialog");

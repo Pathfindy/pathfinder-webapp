@@ -697,7 +697,7 @@
       artLabel.appendChild(art);
 
       const grundLabel = document.createElement("label");
-      grundLabel.innerHTML = "<span>Manuelle Modi.</span>";
+      grundLabel.innerHTML = "<span>Manuelle Modi. für Angriff</span>";
       const grund = erstelleZahlenfeld(angriff.grundAngriff, "Manuelle Modi. Angriff", -999, 999);
       grund.addEventListener("change", () => speichereAngriffsfeld(angriff, grund, "grundAngriff", -999, 999));
       grundLabel.appendChild(grund);
@@ -725,7 +725,7 @@
       wuerfelLabel.appendChild(wuerfelZeile);
 
       const schadenLabel = document.createElement("label");
-      schadenLabel.innerHTML = "<span>Manuelle Modi.</span>";
+      schadenLabel.innerHTML = "<span>Manuelle Modi. für Schaden</span>";
       const schaden = erstelleZahlenfeld(
         angriff.schadenModifikator === null ? "" : angriff.schadenModifikator,
         "Manuelle Modi. Schaden",
