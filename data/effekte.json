@@ -4611,7 +4611,7 @@
   },
   {
     "id": "standard-admin-8b5ef9a7-15ec-4017-8eb9-88e4262acc4b",
-    "name": "Stirnreif der enormen Intelligenz (Stufe 1= ST +2, Stufe 2=ST +4, Stufe 3=ST +6)",
+    "name": "Stirnreif der enormen Intelligenz (Stufe 1= IN +2, Stufe 2=IN +4, Stufe 3=IN +6)",
     "kategorie": "Ausrüstung",
     "aktiv": false,
     "beschreibung": "STIRNREIF DER ENORMEN INTELLIGENZ \n\nDieser kunstvoll gearbeitete, goldene Stirnreif ist mit mehreren kleinen blauen und dunkelpurpurnen Edelsteinen geschmückt. Er verleiht dem Träger einen Verbesserungsbonus von +2, +4 oder +6 auf Intelligenz. Behandle dies als einen temporären Attributsbonus für die ersten 24 Stunden, in denen der Gegenstand \ngetragen wird. Ein Stirnreif der Enormen Intelligenz ist pro Bonus von +2 mit einer Fertigkeit verbunden; wurde der Stirnreif 24 Stunden lang getragen, verleiht er dem Träger eine Anzahl von Fertigkeitsrängen in diesen Fertigkeiten in Höhe der TW des Trägers. Diese Ränge sind nicht kumulativ mit Fertigkeitsrängen, die der Träger möglicherweise bereits in diesen Fertigkeiten besitzt. Die Fertigkeiten werden bei \nErschaffung des Reifs ausgewählt, sollten keine angegeben sein, verleiht der Reif Fertigkeitsränge in einer zufällig ausgewählten Wissensfertigkeit.\n\n\nPreis variiert\nIntelligenz +2 4.000 GM\nIntelligenz +4 16.000 GM\nIntelligenz +6 36.000 GM\n\nAURA Durchschnittliche Verwandlung ZS 8 GEWICHT 1 Pfd.",
@@ -4662,7 +4662,7 @@
   },
   {
     "id": "standard-admin-60add78a-9bb7-4af9-a917-e61e2e27597a",
-    "name": "Stirnreif der erwachten Weisheit (Stufe 1= ST +2, Stufe 2=ST +4, Stufe 3=ST +6)",
+    "name": "Stirnreif der erwachten Weisheit (Stufe 1= WE +2, Stufe 2=WE +4, Stufe 3=WE +6)",
     "kategorie": "Ausrüstung",
     "aktiv": false,
     "beschreibung": "STIRNREIF DER ERWACHTEN WEISHEIT \n\nDieser einfache Bronzereif ist mit einem komplizierten Muster grüner Gravuren verziert. \nEr verleiht seinem Träger einen Verbesserungsbonus auf Weisheit von +2, +4 oder +6. Behandle dies als einen temporären Attributsbonus für die ersten 24 Stunden, in denen \nder Gegenstand getragen wird.\n\nWeisheit +2 4.000 GM\nWeisheit +4 16.000 GM\nWeisheit +6 36.000 GM\n\nAURA Durchschnittliche Verwandlung ZS 8 GEWICHT 1 Pfd.",
@@ -4713,7 +4713,7 @@
   },
   {
     "id": "standard-admin-9de0470d-747e-47f9-af9e-788fa76630f5",
-    "name": "Stirnreif der geistigen Überlegenheit (Stufe 1= ST +2, Stufe 2=ST +4, Stufe 3=ST +6)",
+    "name": "Stirnreif der geistigen Überlegenheit (Stufe 1= IN/WE/CH +2, Stufe 2=IN/WE/CH +4, Stufe 3=IN/WE/CH +6)",
     "kategorie": "Ausrüstung",
     "aktiv": false,
     "beschreibung": "STIRNREIF DER GEISTIGEN ÜBERLEGENHEIT \n\nDieser verzierte Reif ist mit zahlreichen Ansammlungen keiner Edelsteine geschmückt. \nEr verleiht seinem Träger einen Verbesserungsbonus von +2, +4 oder +6 auf alle drei mentalen Attributswerte (IN, WE und CH). Behandle dies als einen temporären \nAttributsbonus für die ersten 24 Stunden, in denen der Gegenstand getragen wird. Der Stirnreif verleiht ferner Fertigkeitsränge wie ein Stirnreif der Enormen Intelligenz.\n\nPreis variiert\nIntelligenz, Weisheit und Charisma +2 16.000 GM\nIntelligenz, Weisheit und Charisma +4 64.000 GM\nIntelligenz, Weisheit und Charisma +6 144.000 GM\n\nAURA Variiert ZS 16 GEWICHT 1 Pfd.",
@@ -4784,7 +4784,7 @@
   },
   {
     "id": "standard-admin-939e4133-8b48-46aa-8f82-970b93bd2ad3",
-    "name": "Stirnreif des verführerischen Charisma (Stufe 1= ST/KO/GE +2, Stufe 2=ST/KO/GE +4, Stufe 3=ST/KO/GE +6)",
+    "name": "Stirnreif des verführerischen Charisma (Stufe 1= CH +2, Stufe 2=CH +4, Stufe 3=CH +6)",
     "kategorie": "Ausrüstung",
     "aktiv": false,
     "beschreibung": "STIRNREIF DES VERFÜHRERISCHEN CHARISMAS\n\nDieser ansehnliche Silberreif ist mit mehreren kleinen roten und orangen Edelsteinen verziert. Er verleiht seinem Träger einen Verbesserungsbonus auf Charisma \nvon +2, +4 oder +6. Behandle dies als einen temporären Attributsbonus für die ersten 24 Stunden, in denen der Gegenstand getragen wird.\n\nPreis variiert\nCharisma +2 4.000 GM\nCharisma +4 16.000 GM\nCharisma +6 36.000 GM\n\nAURA Durchschnittliche Verwandlung ZS 8 GEWICHT 1 Pfd.",
