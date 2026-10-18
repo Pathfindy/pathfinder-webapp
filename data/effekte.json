@@ -3768,6 +3768,101 @@
     "dauer": "unbegrenzt"
   },
   {
+    "id": "standard-admin-b05d8eaf-aefd-4f35-a976-65e7dd0118f2",
+    "name": "Negative Stufe / Lebenkraftentzug",
+    "kategorie": "Zustände",
+    "aktiv": false,
+    "beschreibung": "Lebenskraftentzug und Negative Stufen\nPro negativer Stufe, die eine Kreatur hat, erhält sie folgende kumulativen Mali: Malus von - 1 auf alle Attributs-, Angriffs-, Kampfmanöver-, Kampfverteidigungs-, Rettungs- und Fertigkeitswürfe; außerdem reduziert jede negative Stufe die aktuellen wie auch die gesamten TP der betroffenen Kreatur um 5. Desweiteren erhält die Kreatur pro negative Stufe einen Malus von - 1 auf ihre effektive Stufe (mit der stufenabhängige Variablen wie das Wirken von Zaubern berechnet werden). Zauberkundige verlieren jedoch keine vorbereiteten Zauber oder Zauberplätze auf Grund von negativen Stufen. Gleicht oder übersteigt die Anzahl an negativen Stufen die Gesamt-Trefferwürfel einer Kreatur, stirbt diese.\n\n\nEine Kreatur mit temporären negativen Stufen darf jeden Tag einen erneuten Rettungswurf machen, um die negativen Stufen zu entfernen. Der SG dieses Rettungswurfs entspricht dem SG des Rettungswurfs gegen den Effekt, der die negativen Stufen hervorgerufen hat.\n\n\nManche Fähigkeiten und Zauber (wie etwa Tote erwecken) entziehen einer Kreatur permanent Stufen. Diese werden wie negative Stufen behandelt, es darf allerdings nicht jeden Tag ein Rettungswurf gemacht werden, um sie zu entfernen. Ein Stufenentzug kann aber durch Zauber wie Genesung rückgängig gemacht werden. Die permanenten negativen Stufen bleiben auch bestehen, wenn ein verstorbener Charakter wieder zum Leben erweckt wurde. Eine Kreatur, deren permanente negative Stufen ihren Trefferwürfeln entsprechen, kann nicht mit Zaubern wie Tote erwecken oder Auferstehung zum Leben erweckt werden, wenn nicht auch zugleich Genesung auf sie gewirkt wird - also in der Runde, nachdem die Kreatur zum Leben erweckt wurde.",
+    "quelle": "",
+    "angriffZuweisbar": false,
+    "nutzerBonus": {
+      "aktiv": true,
+      "min": 1,
+      "max": 20,
+      "standard": 1
+    },
+    "stufenlogik": {
+      "aktiv": false,
+      "bezug": "charakter",
+      "klasse": "",
+      "bereiche": []
+    },
+    "boni": [
+      {
+        "ziel": "Angriff Nah",
+        "bonusart": "Malus",
+        "wert": -1,
+        "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
+      },
+      {
+        "ziel": "Angriff Fern",
+        "bonusart": "Malus",
+        "wert": -1,
+        "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
+      },
+      {
+        "ziel": "KMB",
+        "bonusart": "Malus",
+        "wert": -1,
+        "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
+      },
+      {
+        "ziel": "KMV",
+        "bonusart": "Malus",
+        "wert": -1,
+        "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
+      },
+      {
+        "ziel": "RW-Reflex",
+        "bonusart": "Malus",
+        "wert": -1,
+        "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
+      },
+      {
+        "ziel": "RW-Wille",
+        "bonusart": "Malus",
+        "wert": -1,
+        "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
+      },
+      {
+        "ziel": "RW-Zähigkeit",
+        "bonusart": "Malus",
+        "wert": -1,
+        "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
+      }
+    ],
+    "gebiet": "selbst",
+    "dauer": "Nach Angabe SL"
+  },
+  {
     "id": "standard-admin-1d59b687-8648-4dfd-aa13-4259ff925874",
     "name": "Pantheros-Segen",
     "kategorie": "Sonstige",
