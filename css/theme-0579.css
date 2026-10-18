@@ -1,0 +1,26 @@
+/* v0.57.9 – UI refinement */
+/* Compact attack creation in the heading row. */
+#charakterwerte .angriffe-kopf{display:flex!important;align-items:center!important;justify-content:space-between!important;flex-wrap:nowrap!important}
+#charakterwerte .angriffe-kopf>div{min-width:0}
+#charakterwerte #btnAngriffHinzufuegen{width:auto!important;min-width:0!important;flex:0 0 auto!important;margin-left:auto!important;padding:5px 10px!important;font-size:.82em!important;line-height:1.35!important}
+/* Match damage label to attack label. */
+#charakterwerte .angriff-ergebnis>div>span{font-size:1em!important;color:#1e3a5f!important;font-weight:600!important}
+/* 15% white surfaces for armor, saves and maneuvers. */
+#charakterwerte .rk-variante-47,#charakterwerte .grundwert-zeile-26,#charakterwerte .grundwert-zeile-26 input,#charakterwerte .grundwert-zeile-26 output,#charakterwerte .grundwert-zeile-26 textarea,#charakterwerte .grundwert-zeile-26 .grundwert-gesamt-26{background-color:rgba(255,255,255,.15)!important}
+/* Current HP: forest green at 50% opacity, stronger larger number. */
+#leben .tp-feld.tp-aktuell #aktuelleTp{background:rgba(34,100,53,.50)!important;color:#123e24!important;font-weight:800!important;font-size:1.22em!important;text-align:center!important}
+/* Active life rune: actual DOM is .energie-zeile and .steinhaut-zeile; glow applied to image layer via box shadow. */
+#leben .energie-zeile:not(.energie-kopf) input[type=checkbox]:checked{width:32px!important;height:32px!important;min-width:32px!important;border:0!important;border-radius:8px!important;background:transparent url('../assets/runes/Leben.png') center/contain no-repeat!important;box-shadow:0 0 9px 3px var(--element-glow,#a9a9a9),0 0 17px 5px var(--element-glow,#a9a9a9)!important;filter:drop-shadow(0 0 5px var(--element-glow,#a9a9a9)) brightness(1.2)!important}
+#leben .energie-zeile:has(strong){--element-glow:#aaa}
+#leben .energie-zeile:has(strong):has(input[aria-label*="Feuer"]){--element-glow:#e64b3d}
+#leben .energie-zeile:has(strong):has(input[aria-label*="Kälte"]){--element-glow:#4d9fe8}
+#leben .energie-zeile:has(strong):has(input[aria-label*="Elektro"]){--element-glow:#e9cf35}
+#leben .energie-zeile:has(strong):has(input[aria-label*="Säure"]){--element-glow:#5bbf61}
+#leben .energie-zeile:has(strong):has(input[aria-label*="Schall"]){--element-glow:#b26bd5}
+/* Beige opaque filter surface, based on parchment palette. */
+#effekte .effekt-suche-filter-503,#effekte .effekt-suche-filter-503>summary,#effekte .effekt-suche-filter-503 .effekt-filter,#effekte .effekt-suche-filter-503 fieldset,#effekte .effekt-suche-filter-503 .filter-ergebnis,#effekte .effekt-suche-zeile-503{background:#b9a58e!important}
+/* Time page: section opacity via background alpha (not opacity, preserving legibility). */
+#zeit .zeit-runde-54{background:rgba(255,255,255,.20)!important}
+#zeit .zeit-karte-54:nth-of-type(2){background:rgba(255,255,255,.10)!important}
+#zeit .zeit-karte-54:nth-of-type(3),#zeit .zeit-karte-54:nth-of-type(4){background:rgba(255,255,255,.15)!important}
+#zeit .zeit-init-54 input[type=number],#zeit #zeitTeilnehmerRang{text-align:center!important;font-weight:800!important}

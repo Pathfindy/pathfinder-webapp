@@ -1,0 +1,35 @@
+/* v0.57.7 – targeted mobile visual corrections */
+:root{--pf-group-0577:rgba(255,255,255,.10);--pf-line-0577:rgba(73,45,28,.42)}
+/* Attribute columns: constrain the actual output, not just inputs. */
+#charaktere .charakter-attribut-zeile-44{grid-template-columns:minmax(35px,.55fr) minmax(0,.9fr) minmax(0,1fr) minmax(0,.72fr)!important;gap:5px!important;min-width:0!important}
+#charaktere .charakter-attribut-zeile-44>*{min-width:0!important;max-width:100%!important;box-sizing:border-box!important}
+#charaktere .charakter-attribut-zeile-44 output{width:100%!important;padding:4px 2px!important;background:rgba(255,255,255,.20)!important;overflow:hidden!important}
+#charaktere .charakter-attribute-44,#charaktere .charakter-attribute-44[open]{background:var(--pf-group-0577)!important}
+.kampagne-aktivieren.rune-action-icon{background:transparent!important;opacity:1!important}
+.kampagne-aktivieren.rune-action-icon img{opacity:1!important}
+.kampagne-aktivieren.rune-action-icon:disabled{opacity:1!important;filter:drop-shadow(0 0 5px #ffda57) drop-shadow(0 0 3px #e6ae24)!important}
+/* Attack panels */
+#charakterwerte .angriff-karte .angriff-wert,#charakterwerte .angriff-karte .angriff-schaden,#charakterwerte .angriff-karte textarea{background:rgba(255,255,255,.10)!important}
+#charakterwerte .angriff-reichweite-amplitude-511 strong{background:rgba(255,255,255,.15)!important;border:1px solid var(--pf-line-0577)!important;border-radius:12px!important;color:#29180f!important}
+#charakterwerte .angriff-reichweite-feld-511 input,#charakterwerte .angriff-reichweite-inputeinheit-511 input{background:rgba(255,255,255,.15)!important}
+#charakterwerte [class*="sonder"]{background-color:var(--pf-group-0577)!important}
+/* Armor rune after title */
+#charakterwerte .rk-variante-47[data-rk-modus-47="normal"] span:has(.kampf-icon-schild-50){display:inline-flex!important;align-items:center!important;gap:9px!important}
+#charakterwerte .rk-variante-47[data-rk-modus-47="normal"] .kampf-icon-schild-50{order:2!important;width:36px!important;height:36px!important;flex:0 0 36px!important}
+#charakterwerte .rk-variante-47[data-rk-modus-47="normal"] .rk-armor-rune-0574{width:34px!important;height:34px!important;max-width:34px!important;max-height:34px!important}
+#charakterwerte .rw-bereich input,#charakterwerte .kampfmanoever-bereich input,#charakterwerte .kampfmanoever-bereich textarea,#charakterwerte .rw-bereich output{background:rgba(255,255,255,.20)!important;border:1px solid var(--pf-line-0577)!important}
+/* Shared group surfaces: preserve the parchment underneath. */
+#effekte .effekt-suche-filter-503,#effekte .effekt-suche-filter-503>summary,#effekte #boniListe>*,#leben .energie-bereich,#leben .energie-zeile,#charakterwerte .angriff-karte{background-color:var(--pf-group-0577)!important}
+#effekte #btnSucheLeeren502{font-size:0!important;background:rgba(73,45,28,.20) url('../assets/runes/delete.png') center / 27px 27px no-repeat!important}
+/* Filter checkboxes match effect activation */
+#effekte .effekt-filter input[type=checkbox]{appearance:none!important;-webkit-appearance:none!important;width:20px!important;height:20px!important;min-width:20px!important;border:2.5px solid #51321f!important;border-radius:50%!important;background:transparent!important;vertical-align:middle!important}
+#effekte .effekt-filter input[type=checkbox]:checked{border:0!important;border-radius:0!important;background:transparent url('../assets/runes/Effekte.png') center / contain no-repeat!important;filter:drop-shadow(0 0 3px #eec549)!important}
+/* Hit points */
+#leben .tp-feld input,#leben .tp-feld output,#leben .tp-schaden output,#leben .tp-aktuell output{text-align:center!important;justify-content:center!important;align-items:center!important;border:1px solid var(--pf-line-0577)!important;border-radius:12px!important;box-sizing:border-box!important}
+#leben .tp-schaden output{background:rgba(135,9,22,.30)!important;color:#52131a!important}
+#leben .energie-anwenden,#leben .tp-aktionszeile button{background:#493021!important;color:white!important}
+/* Life activation runes, tint per energy type; label selectors remain accessible */
+#leben .energie-zeile input[type=checkbox]{appearance:none!important;-webkit-appearance:none!important;width:25px!important;height:25px!important;border:3px solid #51321f!important;border-radius:50%!important;background:transparent!important;cursor:pointer!important}
+#leben .energie-zeile input[type=checkbox]:checked{border:0!important;border-radius:0!important;background:transparent url('../assets/runes/Leben.png') center / contain no-repeat!important;filter:drop-shadow(0 0 4px var(--element-glow,#a5a5a5))!important}
+#leben .energie-zeile:has(strong) {--element-glow:#a5a5a5}
+#leben .energie-zeile:has(strong) input[type=checkbox]:focus-visible{outline:2px solid #8b633c!important}

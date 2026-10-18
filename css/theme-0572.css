@@ -1,0 +1,29 @@
+/* 0.57.2 – shared parchment and translucent controls across all views */
+:root { --pf-brown: 72,43,22; --pf-parchment: url('../assets/runes/background-2-tile.png'); }
+nav, .globale-charakterleiste, .aktiver-charakter-hinweis, #aktiverCharakterLeiste, .aktiver-charakter-leiste, .charakter-global-leiste, .global-charakter-leiste {
+ background-image:var(--pf-parchment) !important; background-repeat:repeat !important; background-size:100% auto !important;
+}
+nav button.rune-nav { background:rgba(var(--pf-brown),.05) !important; border-radius:12px; }
+nav button.rune-nav.active { background:rgba(255,210,54,.18) !important; box-shadow:0 0 13px 3px rgba(255,197,24,.75),inset 0 0 12px rgba(255,210,65,.32) !important; }
+.globale-charakterleiste select, #aktiverCharakterLeiste select, .aktiver-charakter-leiste select, .charakter-global-leiste select {
+ background:rgba(var(--pf-brown),.10) !important; border:1px solid #51331e !important; color:#26170e !important; border-radius:12px !important;
+}
+#btnCharakterExport, #btnCharakterImport, #btnNeuerCharakter, #btnKampagneHinzufuegen {
+ background:rgba(var(--pf-brown),.20) !important; color:#27180f !important; border:1px solid rgba(var(--pf-brown),.42) !important; border-radius:13px !important; box-shadow:none !important;
+}
+#btnCharakterExport:hover, #btnCharakterImport:hover, #btnNeuerCharakter:hover, #btnKampagneHinzufuegen:hover {background:rgba(var(--pf-brown),.32) !important;}
+.kampagnen-gruppe, .kampagnen-charakter {background:rgba(255,255,255,.05) !important;}
+.kampagnen-gruppe-kopf {background:rgba(var(--pf-brown),.20);}
+.kampagnen-gruppe.aktiv .kampagnen-gruppe-kopf {background:rgba(var(--pf-brown),.20);color:#24160d;}
+/* Shared cards: preserve readability and do not alter input/control functionality. */
+.page .karte, .page .card, .page .panel, .page .box, .page .charakter-eintrag {background-color:rgba(255,255,255,.05) !important;}
+/* Icon-only buttons: no opaque colored tile behind the rune. */
+button.rune-action-icon, .kampagnen-aktionen button.rune-action-icon, .kampagnen-charakter-aktionen button.rune-action-icon {
+ background:transparent !important; box-shadow:none !important; border-color:transparent !important;
+}
+button.rune-action-icon > img {object-fit:contain;}
+@media(max-width:600px){
+ #charaktere .seitenkopf, .kampagnen-verwaltung-kopf {min-width:0;}
+ #btnCharakterExport,#btnCharakterImport,#btnNeuerCharakter {max-width:100%;}
+ .kampagnen-gruppe,.kampagnen-charakter {min-width:0;box-sizing:border-box;}
+}

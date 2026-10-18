@@ -1,0 +1,37 @@
+/* Rune theme: v0.55.13 functionality retained */
+@import url('https://fonts.googleapis.com/css2?family=Marcellus&display=swap');
+html, body, body *, button, input, select, textarea, option, table, th, td, dialog { font-family: 'Marcellus', Georgia, serif !important; }
+nav { align-items: center; justify-content: center; gap: clamp(2px, .8vw, 12px); flex-wrap: nowrap; overflow-x: auto; }
+nav button.rune-nav { flex: 1 1 0; min-width: 0; max-width: 112px; padding: 5px 3px; border: 1px solid transparent; background: transparent; box-shadow: none; transition: background .2s, box-shadow .2s, transform .2s; }
+nav button.rune-nav img { display: block; width: 100%; height: clamp(40px, 7vw, 78px); object-fit: contain; filter: drop-shadow(0 1px 2px rgba(0,0,0,.35)); transition: filter .2s; }
+nav button.rune-nav:hover, nav button.rune-nav:focus-visible { background: rgba(15, 115, 154, .12); transform: translateY(-2px); }
+nav button.rune-nav.active { background: radial-gradient(ellipse, rgba(255,211,45,.42), rgba(235,165,25,.16) 65%, transparent); border-color: #cda447; box-shadow: 0 0 13px 3px rgba(255,197,24,.75), inset 0 0 12px rgba(255,210,65,.32); }
+nav button.rune-nav.active img { filter: drop-shadow(0 0 5px #ffe169) drop-shadow(0 0 12px #ffba16) brightness(1.23); }
+@media (max-width: 520px) { nav { padding: 5px 3px; gap: 2px; } nav button.rune-nav { padding: 3px 1px; } nav button.rune-nav img { height: 42px; } }
+
+/* Version 0.57.1: Correct relative paths and stable icon layout. */
+html { background-color: #c9b69c; max-width: 100%; }
+body {
+  background-color: transparent !important;
+  background-image: url('../assets/runes/background-2-tile.png') !important;
+  background-repeat: repeat !important;
+  background-position: center top !important;
+  background-size: 100% auto !important;
+  min-height: 100dvh; max-width: 100%; overflow-x: hidden;
+}
+/* Keep preexisting button footprint (including tight campaign toolbar). */
+button.rune-action-icon { position: relative; vertical-align: middle; }
+button.rune-action-icon > img {
+  display: block; width: min(100%, 25px); height: min(100%, 25px);
+  max-width: 100%; max-height: 100%; object-fit: contain; margin: auto;
+  pointer-events: none;
+}
+button.rune-action-icon.icon-activate > img { width: min(100%, 27px); height: min(100%, 27px); }
+header h1 .app-version { display: inline; font-size: .55em; font-weight: 400; opacity: .82; white-space: nowrap; margin-left: .45em; }
+@media(max-width: 700px) {
+  html, body { width: 100%; }
+  main, header, nav { max-width: 100%; box-sizing: border-box; }
+  nav { width: 100%; } nav button.rune-nav img { height: clamp(28px, 8vw, 48px); }
+  input, select, textarea { max-width: 100%; box-sizing: border-box; }
+  table { max-width: 100%; }
+}

@@ -1,0 +1,24 @@
+/* v0.58.0 – actual section containers, not merely their inner rows. */
+/* Defined originally in css/commit26.css: .grundwerte-gruppe-26 { background:white; } */
+#charakterwerte #grundwerte26 > section.grundwerte-gruppe-26 {
+  background:rgba(255,255,255,.15)!important;
+  background-image:none!important;
+}
+/* Retain the same translucent treatment for the interactive value tiles. */
+#charakterwerte #grundwerte26 .rk-variante-47,
+#charakterwerte #grundwerte26 .grundwert-zeile-26 input,
+#charakterwerte #grundwerte26 .grundwert-gesamt-26 {
+  background:rgba(255,255,255,.15)!important;
+}
+/* Use the active effect rune as visual reference: one warm, soft drop shadow,
+   no saturated element-specific shadows or rectangular box shadow. */
+#leben .energie-zeile:not(.energie-kopf) input[type=checkbox]:checked {
+  width:32px!important;
+  height:32px!important;
+  min-width:32px!important;
+  border:0!important;
+  border-radius:0!important;
+  background:transparent url('../assets/runes/Leben.png') center/contain no-repeat!important;
+  box-shadow:none!important;
+  filter:drop-shadow(0 0 3px rgba(244,196,62,.60))!important;
+}

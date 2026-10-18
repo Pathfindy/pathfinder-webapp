@@ -1,0 +1,28 @@
+/* v0.58.1 – targeted changes, loaded last to override prior theme files. */
+/* Character classes */
+#charaktere .charakter-klasse-name, #charaktere .charakter-klasse-andere,
+.charakter-klasse-name, .charakter-klasse-andere {font-size:1.12rem!important;font-weight:700!important;}
+/* Armor: max Dexterity bonus input. */
+#charakterwerte #grundwerte26 .rk-max-ge-47 input {background:rgba(255,255,255,.15)!important;border:1px solid rgba(76,45,27,.45)!important;border-radius:12px!important;color:#342015!important;}
+/* Armor primary tile */
+#charakterwerte #grundwerte26 .rk-variante-47.rk-variante-haupt-472 {background:rgba(76,43,27,.30)!important;color:#301b11!important;}
+#charakterwerte #grundwerte26 .rk-variante-haupt-472 span {font-size:1.04rem!important;}
+/* Calculated save and maneuver totals. */
+#charakterwerte #grundwerte26 .grundwert-gesamt-26 {background:rgba(76,43,27,.30)!important;color:#301b11!important;border:1px solid rgba(76,43,27,.4)!important;}
+/* Manual modifier inputs for maneuvers, plus free notes. */
+#charakterwerte #grundwerte26 .grundwerte-gruppe-26:last-child .grundwert-zeile-26 input {background:rgba(255,255,255,.10)!important;}
+#charakterwerte #grundwerte26 textarea.grundwert-notiz-28 {background:rgba(255,255,255,.10)!important;border-radius:12px!important;color:#301b11!important;}
+/* Agile Maneuvers switch */
+#charakterwerte #grundwerte26 .flinke-manoever-431 {background:rgba(255,255,255,.10)!important;border-radius:12px!important;}
+#charakterwerte #grundwerte26 .flinke-manoever-431 input[type="checkbox"] {appearance:none!important;-webkit-appearance:none!important;background:transparent!important;width:30px!important;height:30px!important;min-width:30px!important;border:3px solid #50301c!important;border-radius:50%!important;box-shadow:none!important;flex-shrink:0!important;}
+#charakterwerte #grundwerte26 .flinke-manoever-431 input[type="checkbox"]:checked {border:0!important;border-radius:0!important;background:transparent url('../assets/runes/Kampf.png') center/contain no-repeat!important;filter:drop-shadow(0 0 3px rgba(245,190,59,.65))!important;}
+/* Life: make the existing checked-rune halo a little brighter but not harsh. */
+#leben .energie-zeile:not(.energie-kopf) input[type="checkbox"]:checked {filter:drop-shadow(0 0 3px rgba(245,204,89,.8)) drop-shadow(0 0 5px rgba(255,226,145,.48))!important;box-shadow:none!important;}
+#leben .tp-feld.tp-aktuell #aktuelleTp {font-size:1.35em!important;font-weight:800!important;}
+/* Time inputs: dark italic readable labels for user-entered text. */
+#zeit #zeitTeilnehmerName,#zeit #zeitTeilnehmerRang,#zeit #zeitFreierName,#zeit #zeitFreierZielText,#zeit #zeitFreierStart,#zeit #zeitFreierDauer,
+#zeit .zeit-start-runde-54,#zeit .zeit-dauer-wert-54 {color:#3c2418!important;font-style:italic!important;}
+#zeit #zeitTeilnehmerName::placeholder,#zeit #zeitTeilnehmerRang::placeholder,#zeit #zeitFreierName::placeholder,#zeit #zeitFreierZielText::placeholder,#zeit #zeitFreierStart::placeholder,#zeit #zeitFreierDauer::placeholder {color:#634735!important;opacity:1!important;font-style:italic!important;}
+/* Time actions */
+#zeit #btnZeitVorherigeRunde,#zeit #btnZeitReset,#zeit #btnZeitTeilnehmer,#zeit #btnZeitFreierEffekt {background:rgba(76,43,27,.30)!important;color:#322016!important;border:1px solid rgba(76,43,27,.6)!important;border-radius:12px!important;}
+#zeit #btnZeitNaechsteRunde {background:rgba(76,43,27,.70)!important;color:#fff8ec!important;border:1px solid #4c2b1b!important;border-radius:12px!important;}

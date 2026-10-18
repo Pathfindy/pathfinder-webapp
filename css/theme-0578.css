@@ -1,0 +1,25 @@
+/* v0.57.8 – corrections verified against actual class names in v0.57.7 */
+:root{--pf-white10:rgba(255,255,255,.10);--pf-brown30:rgba(73,45,28,.30);--pf-edge:rgba(73,45,28,.42)}
+/* Combat: result tiles are .angriff-ergebnis > div (not .angriff-wert). */
+#charakterwerte .angriff-ergebnis>div,#charakterwerte .angriff-ergebnis .angriff-ergebnis-haupt-48,#charakterwerte .angriff-karte textarea{background:var(--pf-white10)!important;border:1px solid var(--pf-edge)!important}
+#charakterwerte .angriff-schaden-krit-51{background:rgba(135,9,22,.20)!important}
+#charakterwerte .angriff-krit-button-51.aktiv{box-shadow:0 0 9px 2px rgba(255,211,77,.70),0 0 3px #f4c84c,inset 0 0 0 1px rgba(255,255,255,.25)!important;filter:brightness(1.12)}
+/* Armor: icon was prepended inside the label by commit50; move it after text using flex order. */
+#charakterwerte .rk-variante-47{background:var(--pf-white10)!important;border:1px solid var(--pf-edge)!important}
+#charakterwerte .rk-variante-haupt-472>span{display:inline-flex!important;align-items:center!important;flex-direction:row!important;gap:10px!important}
+#charakterwerte .rk-variante-haupt-472 .kampf-icon-schild-50{display:inline-flex!important;order:2!important;width:39px!important;height:39px!important;flex:0 0 39px!important}
+#charakterwerte .rk-variante-haupt-472 .rk-armor-rune-0574{display:block!important;width:39px!important;height:39px!important;max-width:none!important;max-height:none!important;object-fit:contain!important}
+/* Saving throws and combat maneuvers use grundwert-zeile-26, not rw-bereich. */
+#charakterwerte .grundwert-zeile-26 input,#charakterwerte .grundwert-zeile-26 output,#charakterwerte .grundwert-zeile-26 textarea,#charakterwerte .grundwert-zeile-26 .grundwert-gesamt-26{background:var(--pf-white10)!important;border:1px solid var(--pf-edge)!important;border-radius:11px!important}
+#charakterwerte .grundwert-zeile-26{background:var(--pf-white10)!important}
+/* Life: 10% surface, all free-text fields, dark italic explanatory text. */
+#leben .tp-bereich,#leben .tp-bereich>div{background-color:var(--pf-white10)!important}
+#leben input[type=text],#leben input[type=number],#leben textarea{background:var(--pf-white10)!important;border:1px solid var(--pf-edge)!important}
+#leben .energie-hinweis,#leben [class*=hinweis],#leben small,#leben .beschreibung{color:#3d2a1e!important;font-style:italic!important}
+/* Life: energy activation checkboxes and Steinhaut share this visual treatment. */
+#leben .energie-zeile input[type=checkbox],#leben .steinhaut-bereich input[type=checkbox]{width:29px!important;height:29px!important;min-width:29px!important;appearance:none!important;-webkit-appearance:none!important;border:3px solid #51321f!important;border-radius:50%!important;background:transparent!important}
+#leben .energie-zeile input[type=checkbox]:checked,#leben .steinhaut-bereich input[type=checkbox]:checked{border:0!important;border-radius:0!important;background:transparent url('../assets/runes/Leben.png') center/contain no-repeat!important;filter:drop-shadow(0 0 4px var(--element-glow,#d8d8d8)) drop-shadow(0 0 7px var(--element-glow,#d8d8d8))!important}
+#leben .energie-zeile:has(strong){--element-glow:#d8d8d8}
+/* Filter: dark brown 30% throughout the filter region, except search field. */
+#effekte .effekt-suche-filter-503,#effekte .effekt-suche-filter-503>summary,#effekte .effekt-suche-filter-503 .effekt-filter,#effekte .effekt-suche-filter-503 fieldset,#effekte .effekt-suche-filter-503 .filter-ergebnis,#effekte .effekt-suche-zeile-503{background:var(--pf-brown30)!important}
+#effekte .effekt-suche-zeile-503 #suche{background:rgba(255,255,255,.15)!important;border:1px solid var(--pf-edge)!important;outline-offset:2px!important}

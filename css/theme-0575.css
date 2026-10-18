@@ -1,0 +1,12 @@
+/* 0.57.5: reliable overrides after repaired stylesheet imports */
+/* Armor is an icon, never a full-size image */
+img.rk-armor-rune-0574, .rk-armor-rune-0574 {display:inline-block!important;width:24px!important;height:24px!important;max-width:24px!important;max-height:24px!important;min-width:0!important;object-fit:contain!important;vertical-align:middle!important;}
+.kampf-icon-50:has(.rk-armor-rune-0574){display:inline-flex!important;align-items:center;justify-content:center;width:26px!important;height:26px!important;flex:0 0 26px!important;}
+.rk-variante-47 img {max-width:28px!important;max-height:28px!important;}
+/* Protect small screens from horizontal overflow */
+#charakterwerte, #charaktere, main, .page {min-width:0;max-width:100%;box-sizing:border-box;}
+#charakterwerte .rk-variante-47 {min-width:0;max-width:100%;overflow:hidden;}
+/* Force correct visual style on dynamically generated panels */
+#charakterwerte .angriffe-bereich,#charakterwerte .angriff-karte,#charakterwerte .rk-bereich-47,#charakterwerte .rk-variante-47 {background-color:rgba(255,255,255,.10)!important;}
+#charaktere .kampagnen-gruppe {background-color:rgba(255,255,255,.15)!important;}
+#charaktere input,#charaktere select,#charaktere textarea {background-color:rgba(52,30,17,.20)!important;border-radius:12px!important;color:#29180f!important;}

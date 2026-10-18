@@ -1,0 +1,42 @@
+/* v0.57.3 – warmbraune Navigation und Charakterformular */
+:root { --pf-dark-brown: 52,30,17; }
+header { background:#241309 !important; color:#f8edda !important; }
+/* Die Steinstruktur bleibt sichtbar, erhält aber einen dunklen Schleier. */
+nav {
+  background-image:linear-gradient(rgba(40,22,11,.62),rgba(40,22,11,.62)),var(--pf-parchment) !important;
+  background-color:#48311e !important;
+  background-size:auto,100% auto !important;
+  border-bottom:1px solid rgba(255,207,117,.32) !important;
+}
+nav button.rune-nav {background:rgba(255,239,199,.05) !important;}
+nav button.rune-nav img {filter:drop-shadow(0 1px 2px #100900) brightness(1.16) !important;}
+nav button.rune-nav.active { background:rgba(255,204,55,.17) !important;box-shadow:0 0 13px 3px rgba(255,197,24,.76),inset 0 0 12px rgba(255,210,65,.32) !important;}
+nav button.rune-nav.active img {filter:drop-shadow(0 0 6px #ffe169) drop-shadow(0 0 11px #ffb500) brightness(1.23) !important;}
+/* Kampagnenkarte: 15 Prozent Deckkraft. */
+#charaktere .kampagnen-gruppe {background:rgba(255,255,255,.15) !important;}
+/* Formulare und Textfelder auf der Charakterseite einheitlich warmbraun. */
+#charaktere input:not([type=checkbox]):not([type=radio]):not([type=file]),
+#charaktere select, #charaktere textarea,
+#charaktere button:not(.rune-action-icon):not(.icon-button):not(.kampagnen-charakter-name),
+#charaktere summary, #charaktere .kampagnen-gruppe-kopf,
+#charaktere .kampagnen-gruppe-kopfzeile {
+  background-color:rgba(var(--pf-dark-brown),.20) !important;
+  border:1px solid rgba(var(--pf-dark-brown),.45) !important;
+  border-radius:12px !important;
+  color:#2b190e !important;
+}
+#charaktere input::placeholder,#charaktere textarea::placeholder {color:rgba(44,25,15,.72);opacity:1;}
+#charaktere select option {background:#e3d2ba;color:#29180f;}
+/* Bearbeiten / Werte übernehmen behalten die bisherigen Funktionen. */
+#charaktere button[title*="Bearbeiten"],
+#charaktere button[aria-label*="Bearbeiten"],
+#charaktere button[title*="Werte übernehmen"],
+#charaktere button[aria-label*="Werte übernehmen"] {
+  background:rgba(var(--pf-dark-brown),.50) !important;
+  border-radius:10px !important;
+}
+#charaktere .kampagnen-gruppe.aktiv .kampagnen-gruppe-kopf,
+#charaktere .kampagnen-gruppe.aktiv .kampagnen-gruppe-kopfzeile {font-weight:700 !important;font-size:1.08em !important;}
+/* Aktionsrunen weiterhin ohne zusätzliche Farbfläche. */
+#charaktere button.rune-action-icon {background:transparent !important;border-color:transparent !important;box-shadow:none !important;}
+@media(max-width:600px){#charaktere input,#charaktere select,#charaktere textarea{min-width:0;max-width:100%;}#charaktere .kampagnen-gruppe{min-width:0;}}

@@ -1,0 +1,32 @@
+/* v0.57.6: shared parchment controls and mobile layout fixes */
+:root{--pf-field:rgba(52,30,17,.20);--pf-border:rgba(52,30,17,.42)}
+/* Attribute accordion retains the same appearance in both states. */
+#charaktere details:has(summary),#charaktere details[open]:has(summary),#charaktere .attribute-bereich,#charaktere .attribute-panel{background:rgba(255,255,255,.10)!important;border-radius:14px!important}
+#charaktere details summary,#charaktere details[open] summary{background:var(--pf-field)!important;border:1px solid var(--pf-border)!important;border-radius:13px!important;color:#29180f!important}
+#charaktere .attribute-bereich *,#charaktere .attribute-panel *{box-sizing:border-box;min-width:0}
+#charaktere .attribute-bereich input,#charaktere .attribute-panel input{max-width:100%!important}
+#charaktere [class*="modifikator"],#charaktere [class*="modifikator"] input{min-width:0!important;max-width:100%!important;box-sizing:border-box!important;background-color:var(--pf-field)!important}
+#charaktere button[title*="Bearbeiten"],#charaktere button[aria-label*="Bearbeiten"],#charaktere button[title*="Werte übernehmen"],#charaktere button[aria-label*="Werte übernehmen"]{background:rgba(52,30,17,.30)!important}
+/* Quick combat bars: dark brown with readable white labels. */
+#charakterwerte .effekt-schnellleiste-50 summary,#charakterwerte .effekt-schnellleiste-50 summary *{color:#fff8ec!important}
+#charakterwerte .effekt-schnellleiste-50 summary{background:#493021!important;border:1px solid #75533b!important}
+/* Combat cards and controls use the same brown field language as characters. */
+#charakterwerte .angriff-karte,#charakterwerte .angriffe-bereich,#charakterwerte .rk-bereich-47{background:rgba(255,255,255,.10)!important;border-radius:15px!important}
+#charakterwerte .angriff-karte input,#charakterwerte .angriff-karte select,#charakterwerte .angriff-karte textarea,#charakterwerte .angriff-karte button,#charakterwerte .rk-bereich-47 input,#charakterwerte .rk-variante-47{background:var(--pf-field)!important;border:1px solid var(--pf-border)!important;border-radius:12px!important;color:#29180f!important}
+#charakterwerte .rk-armor-rune-0574{display:inline-block!important;width:24px!important;height:24px!important;object-fit:contain!important;vertical-align:middle!important}
+#charakterwerte .rk-variante-47 .kampf-icon-schild-50{display:inline-flex!important;width:26px!important;height:26px!important;align-items:center;justify-content:center}
+/* Reusable parchment treatment on other pages. */
+#leben input,#leben textarea,#leben select,#zeit input,#zeit textarea,#zeit select,#zauber input,#zauber textarea,#zauber select,#vermoegen input,#vermoegen textarea,#vermoegen select,#boni input:not([type=checkbox]),#boni select,#boni textarea{background:var(--pf-field)!important;border:1px solid var(--pf-border)!important;border-radius:12px!important;color:#29180f!important}
+/* Effects activation: empty brown ring or glowing effect rune. Native input remains accessible. */
+#boniListe .effekt-aktiv{display:inline-flex!important;align-items:center;justify-content:center;position:relative;width:42px;height:48px;flex:0 0 42px}
+#boniListe .effekt-aktiv input[type=checkbox]{appearance:none!important;-webkit-appearance:none!important;transform:none!important;width:30px!important;height:30px!important;min-width:30px!important;border:3px solid #51321f!important;border-radius:50%!important;background:transparent!important;cursor:pointer!important;margin:0!important}
+#boniListe .effekt-aktiv input[type=checkbox]:checked{width:39px!important;height:44px!important;border:0!important;border-radius:0!important;background:transparent url('../assets/runes/Effekte.png') center / contain no-repeat!important;filter:drop-shadow(0 0 5px #f4c43e) drop-shadow(0 0 3px #ffd65a)!important}
+#boniListe .effekt-aktiv input[type=checkbox]:focus-visible{outline:2px solid #a87526!important;outline-offset:3px!important}
+/* Initiative: restore compact horizontal control group, prevent buttons dropping below names. */
+#zeit .zeit-init-54,.zeit-init-54{display:grid!important;grid-template-columns:4.25rem minmax(0,1fr) auto!important;align-items:center!important;gap:.45rem!important}
+.zeit-init-54>input[type=number]{grid-column:1!important;grid-row:1!important;width:4.25rem!important}
+.zeit-init-54>span:not(.zeit-init-actions-54){grid-column:2!important;grid-row:1!important}
+.zeit-init-actions-54{grid-column:3!important;grid-row:1!important;display:flex!important;gap:5px!important;justify-self:end!important}
+.zeit-init-actions-54 button{display:inline-flex!important;align-items:center!important;justify-content:center!important;width:32px!important;height:34px!important;padding:3px!important;border-radius:9px!important;background:var(--pf-field)!important;border:1px solid var(--pf-border)!important}
+.zeit-init-actions-54 button img{width:22px!important;height:26px!important;object-fit:contain!important}
+@media(max-width:420px){.zeit-init-54{grid-template-columns:3.4rem minmax(0,1fr) auto!important;gap:4px!important}.zeit-init-54>input[type=number]{width:3.4rem!important}.zeit-init-actions-54 button{width:28px!important;height:30px!important}.zeit-init-actions-54 button img{width:19px!important;height:23px!important}}
