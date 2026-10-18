@@ -1,0 +1,6 @@
+/* v0.58.3: Mobile Effektfilter – Kategoriecontainer in ganzer Breite. */
+#effekte .effekt-filter{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;width:100%!important;min-width:0!important;box-sizing:border-box!important;}
+#effekte .effekt-filter .filter-kategorien-feld{grid-column:1/-1!important;width:100%!important;min-width:0!important;max-width:100%!important;box-sizing:border-box!important;justify-self:stretch!important;}
+#effekte .effekt-filter .filter-kategorien-mehrfach{display:flex!important;width:100%!important;max-width:100%!important;min-width:0!important;box-sizing:border-box!important;overflow-x:auto!important;overflow-y:hidden!important;flex-wrap:nowrap!important;gap:12px!important;}
+#effekte .effekt-filter .filter-kategorie-option{flex:0 0 auto!important;}
+#effekte .effekt-filter .filter-schalter{min-width:0!important;}
