@@ -1,0 +1,1 @@
+Version 0.57: goldgelbe aktive Runen, Marcellus-Schrift, grafische Löschen- und Sortierpfeile, wiederholender Stein-Hintergrund, mobile Navigation. Dynamisch erzeugte Schaltflächen werden über MutationObserver umgestaltet. Browser-Funktionstest noch erforderlich.
