@@ -514,7 +514,7 @@
 
       const anwenden = document.createElement("button");
       anwenden.type = "button";
-      anwenden.textContent = "✓";
+      anwenden.innerHTML = '<img src="assets/runes/Bestaetigung.png" alt="" aria-hidden="true" class="bestaetigung-rune-0585">';
       anwenden.className = "energie-anwenden";
       anwenden.setAttribute("aria-label", `${typ}: Energieschaden anwenden`);
 

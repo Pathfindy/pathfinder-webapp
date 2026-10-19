@@ -329,7 +329,7 @@
       if (!haupt) return;
       const icon = document.createElement("span");
       icon.className = `kampf-icon-50 kampf-icon-rw-50 kampf-icon-rw-${klasse}-50`;
-      icon.innerHTML = ICONS.star;
+      icon.innerHTML = `<img src="assets/runes/${klasse === "zaehigkeit" ? "Zaehigkeit" : klasse === "reflex" ? "Reflex" : "Wille"}.png" alt="" aria-hidden="true">`;
       haupt.append(" ", icon);
     });
   }
@@ -343,7 +343,7 @@
       label.querySelector(".kampf-icon-50")?.remove();
       const icon = document.createElement("span");
       icon.className = "kampf-icon-50 kampf-icon-angriff-50";
-      icon.innerHTML = angriff.art === "Fern" ? ICONS.bow : ICONS.sword;
+      icon.innerHTML = `<img src="assets/runes/${angriff.art === "Fern" ? "Bogen" : "Waffen"}.png" alt="" aria-hidden="true">`;
       label.append(" ", icon);
     });
     installiereKampfsymbole50();

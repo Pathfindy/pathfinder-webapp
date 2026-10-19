@@ -439,7 +439,7 @@
         const bearbeiten = document.createElement("button");
         bearbeiten.type = "button";
         bearbeiten.className = "icon-button";
-        bearbeiten.textContent = "✏️";
+        bearbeiten.innerHTML = '<img src="assets/runes/Bearbeiten.png" alt="" aria-hidden="true" class="bearbeiten-rune-0585">';
         bearbeiten.title = "Charakter umbenennen";
         bearbeiten.setAttribute("aria-label", `${charakter.name} umbenennen`);
         bearbeiten.addEventListener("click", () => {
