@@ -197,7 +197,7 @@
 
   function renderGradListen(k,x){
     const box=document.createElement("section");box.className="zauber-karte-55";const aktive=effektiveGrade(k,x,ch()).filter(g=>gradVorhanden(k,g));
-    const filter=document.createElement("div");filter.className="zauber-filter-55 zauber-filter-mit-loeschen-554";filter.innerHTML=`<input id="zauberSuche55" placeholder="Zauber suchen…" value="${esc(suche)}"><button type="button" id="btnZauberSucheLeeren554" aria-label="Zaubersuche leeren" title="Suche leeren">×</button><button type="button" id="btnNeuerZauber554">+ Zauber</button>`;box.append(filter);
+    const filter=document.createElement("div");filter.className="zauber-filter-55 zauber-filter-mit-loeschen-554";filter.innerHTML=`<input id="zauberSuche55" placeholder="Zauber suchen…" value="${esc(suche)}"><button type="button" id="btnZauberSucheLeeren554" aria-label="Zaubersuche leeren" title="Suche leeren"><img src="assets/runes/delete.png" alt="" aria-hidden="true"></button><button type="button" id="btnNeuerZauber554">+ Zauber</button>`;box.append(filter);
     const listen=document.createElement("div");listen.className="zauber-gradlisten-55";box.append(listen);root.append(box);
     const sucheEl=filter.querySelector('#zauberSuche55'),clear=filter.querySelector('#btnZauberSucheLeeren554');
     const updateClear=()=>clear.classList.toggle('sichtbar',!!sucheEl.value);
@@ -208,7 +208,7 @@
 
   function renderSlotsSpontan(summary,x,g){
     const max=slotMax(x,g),used=verbraucht(x,g),box=document.createElement('span');box.className='zauber-slotkaestchen-554';
-    for(let i=0;i<max;i++){const b=document.createElement('button');b.type='button';b.className='zauber-slot-554'+(i<used?' verbraucht':'');b.dataset.slotUse=String(i);b.title=i<used?'Slot verbraucht – anklicken zum Wiederherstellen':'Freier Slot – anklicken zum Verbrauchen';b.setAttribute('aria-label',b.title);b.textContent=i<used?'✓':'□';box.append(b)}summary.append(box);
+    for(let i=0;i<max;i++){const b=document.createElement('button');b.type='button';b.className='zauber-slot-554'+(i<used?' verbraucht':'');b.dataset.slotUse=String(i);b.title=i<used?'Slot verbraucht – anklicken zum Wiederherstellen':'Freier Slot – anklicken zum Verbrauchen';b.setAttribute('aria-label',b.title);b.innerHTML=i<used?'<img src="assets/runes/delete.png" alt="" aria-hidden="true">':'';box.append(b)}summary.append(box);
     box.querySelectorAll('[data-slot-use]').forEach(b=>b.onclick=e=>{e.preventDefault();e.stopPropagation();const i=Number(b.dataset.slotUse);x.verbraucht[g]=i<used?i:i+1;save();render()});
   }
 
@@ -217,7 +217,7 @@
     for(const g of effektiveGrade(k,x,ch()).filter(g=>gradVorhanden(k,g))){
       const all=(daten.zauber||[]).filter(z=>Object.prototype.hasOwnProperty.call(z.klassen||{},k.name)&&Number(z.klassen[k.name])===g).sort((a,b)=>a.name.localeCompare(b.name,'de')),known=ids(x,g),prepared=prep(x,g),only=!!x.nurGelernt[g];
       let list=all.filter(z=>!q||z.name.toLocaleLowerCase('de').includes(q)).filter(z=>!only||(x.art==="spontan"?known.includes(z.id):prepZauberAnzahl(x,z.id)>0));
-      const max=slotMax(x,g),used=x.art==="vorbereitet"?prepSlotAnzahl(x,g):verbraucht(x,g),frei=Math.max(0,max-used),details=document.createElement('details');details.className='zauber-gradgruppe-55';details.open=offeneGrade.has(g);
+      const max=slotMax(x,g),used=x.art==="vorbereitet"?prepSlotAnzahl(x,g):verbraucht(x,g),frei=Math.max(0,max-used),details=document.createElement('details');details.className='zauber-gradgruppe-55';details.open=q?list.length>0:offeneGrade.has(g);
       details.innerHTML=`<summary><span>Grad ${g}</span><span class="zauber-gradstatus-55"><label onclick="event.stopPropagation()">pro Tag <input data-slot="${g}" type="number" min="0" max="99" value="${max}"></label><strong>${frei} frei / verfügbar</strong><label onclick="event.stopPropagation()"><input data-only="${g}" type="checkbox" ${only?"checked":""}> ${x.art==="spontan"?"nur gelernte":"nur vorbereitete"}</label><span>${list.length} Zauber</span></span></summary><div class="zauber-liste-55">${list.length?list.map(z=>zauberHtml(z,k,x,g)).join(''):'<p class="zauber-leer-55">Keine passenden Zauber gefunden.</p>'}</div>`;
       container.append(details);details.addEventListener('toggle',()=>{if(details.open)offeneGrade.add(g);else offeneGrade.delete(g)});
       if(x.art==="spontan")renderSlotsSpontan(details.querySelector('summary .zauber-gradstatus-55'),x,g);
