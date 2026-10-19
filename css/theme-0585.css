@@ -1,0 +1,11 @@
+/* v0.58.5: Benutzer-Runen für Charakterverwaltung, Kampf, Rettungswürfe und Leben */
+#charaktere .kampagnen-charakter-aktionen {display:flex; align-items:center; gap:6px; flex-wrap:nowrap}
+#charaktere .kampagnen-charakter-aktionen .icon-button {display:inline-flex; align-items:center; justify-content:center; padding:3px 5px}
+#charaktere .bearbeiten-rune-0585 {width:27px; height:30px; object-fit:contain; display:block}
+#charakterwerte .kampf-icon-rw-50 {width:1.55em!important; height:1.65em!important; vertical-align:middle}
+#charakterwerte .kampf-icon-rw-50 img {width:100%;height:100%;object-fit:contain;display:block}
+#charakterwerte .angriff-ergebnis-haupt-48 .kampf-icon-angriff-50 {width:1.65em!important;height:1.65em!important;vertical-align:middle}
+#charakterwerte .kampf-icon-angriff-50 img {width:100%;height:100%;object-fit:contain;display:block}
+#leben .bestaetigung-rune-0585 {display:block;width:28px;height:28px;max-width:100%;object-fit:contain}
+#leben #btnSchadenAnwenden,#leben #btnHeilungAnwenden,#leben .energie-anwenden {display:inline-flex;align-items:center;justify-content:center}
+#leben .energie-anwenden .bestaetigung-rune-0585 {width:25px;height:25px}
