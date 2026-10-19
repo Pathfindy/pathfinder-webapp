@@ -1,0 +1,16 @@
+/* v0.58.4 – gezielte grafische Anpassungen */
+/* Gewählter Charakter erhält eine ruhige, transparente Hervorhebung. */
+#charaktere .kampagnen-charakter.aktiv {background:rgba(77,49,30,.19)!important;border-color:rgba(77,49,30,.55)!important;}
+/* Freitext sowie Bearbeitungsfunktion: 10% transparente, helle Felder. */
+#charaktere textarea.charakter-notiz-29 {background:rgba(255,255,255,.10)!important;background-color:rgba(255,255,255,.10)!important;border-radius:10px!important;}
+#charaktere .kampagnen-charakter-aktionen button[title="Charakter umbenennen"] {background:rgba(255,255,255,.10)!important;background-color:rgba(255,255,255,.10)!important;border-radius:10px!important;}
+/* Beide Kampf-Schnelleffektleisten im dunklen, deckenden Pergamentbeige wie Suche & Filter. */
+#charakterwerte .effekt-schnellleisten-50,#charakterwerte .effekt-schnellleiste-50,#charakterwerte .effekt-schnellleiste-50 summary,#charakterwerte .effekt-schnellchips-50 {background:#b9a58e!important;background-color:#b9a58e!important;color:#2b190e!important;}
+#charakterwerte .effekt-schnellleiste-50 summary,#charakterwerte .effekt-schnellleiste-50 summary * {color:#2b190e!important;}
+#charakterwerte .effekt-schnellchip-50 {background:rgba(255,255,255,.12)!important;color:#2b190e!important;border-color:rgba(70,43,27,.40)!important;}
+#charakterwerte .effekt-schnellchip-50.aktiv {background:rgba(255,220,128,.22)!important;border-color:#9e7836!important;box-shadow:0 0 9px 2px rgba(255,211,77,.70),0 0 3px #f4c84c,inset 0 0 0 1px rgba(255,255,255,.25)!important;filter:brightness(1.08);}
+/* + Angriff auf jeder Displaybreite neben der Überschrift halten. */
+#charakterwerte .angriffe-kopf {display:flex!important;flex-direction:row!important;flex-wrap:nowrap!important;justify-content:space-between!important;align-items:center!important;gap:8px!important;}
+#charakterwerte .angriffe-kopf>div{flex:1 1 auto!important;min-width:0!important;}
+#charakterwerte .angriffe-kopf h3 {margin:0!important;}
+#charakterwerte #btnAngriffHinzufuegen{flex:0 0 auto!important;margin:0 0 0 auto!important;white-space:nowrap!important;width:auto!important;padding:5px 9px!important;font-size:.82rem!important;}
