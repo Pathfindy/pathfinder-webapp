@@ -1,0 +1,6 @@
+/* Version 0.58.6: larger saving-throw runes and translucent life action buttons */
+#charakterwerte .kampf-icon-rw-50{display:inline-flex!important;align-items:center!important;justify-content:center!important;width:2.05em!important;height:2.12em!important;min-width:2.05em!important;vertical-align:middle!important;flex-shrink:0!important}
+#charakterwerte .kampf-icon-rw-50 img{display:block!important;width:100%!important;height:100%!important;object-fit:contain!important}
+#leben #btnSchadenAnwenden,#leben #btnHeilungAnwenden,#leben .energie-anwenden{background:rgba(255,255,255,.05)!important;background-image:none!important;border-radius:8px!important;box-shadow:none!important}
+#leben #btnSchadenAnwenden:hover,#leben #btnHeilungAnwenden:hover,#leben .energie-anwenden:hover{background:rgba(255,255,255,.05)!important}
+#leben #btnSchadenAnwenden .bestaetigung-rune-0585,#leben #btnHeilungAnwenden .bestaetigung-rune-0585,#leben .energie-anwenden .bestaetigung-rune-0585{opacity:1!important;filter:none!important;mix-blend-mode:normal!important;object-fit:contain!important}
