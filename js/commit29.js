@@ -450,22 +450,6 @@
           }
         });
 
-        const kopieren = document.createElement("button");
-        kopieren.type = "button";
-        kopieren.className = "icon-button";
-        kopieren.textContent = "📋";
-        kopieren.title = "Effektaktivierungen auf aktiven Charakter kopieren";
-        kopieren.disabled = charakter.id === aktiverCharakterId;
-        kopieren.addEventListener("click", () => {
-          const ziel = typeof aktiverCharakter === "function" ? aktiverCharakter() : null;
-          if (!ziel || charakter.id === ziel.id) return;
-          if (confirm(`Die Effektaktivierungen von "${charakter.name}" werden auf "${ziel.name}" kopiert. Fortfahren?`)) {
-            if (typeof kopiereEffektstatus === "function" && kopiereEffektstatus(charakter.id, ziel.id)) {
-              alert(`Effektaktivierungen von "${charakter.name}" wurden auf "${ziel.name}" kopiert.`);
-            }
-          }
-        });
-
         const loeschen = document.createElement("button");
         loeschen.type = "button";
         loeschen.className = "icon-button";
@@ -483,7 +467,7 @@
           }
         });
 
-        aktionen.append(bearbeiten, kopieren, loeschen);
+        aktionen.append(bearbeiten, loeschen);
         info.append(name, status, aktionen);
 
         const zuweisung = document.createElement("label");
