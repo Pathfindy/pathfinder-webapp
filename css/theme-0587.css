@@ -1,0 +1,23 @@
+/* Zauberseite – v0.58.7: Pergament, Runen und Suchverhalten */
+#zauber{--zauber-braun:#50331f;--zauber-beige:#b9a58e;color:#35281e}
+#zauber .zauber-karte-55,#zauber .zauber-gradgruppe-55,#zauber .zauber-eintrag-55,#zauber .zauber-wert-55,#zauber .zauber-metamagie-karte-5512{background:rgba(255,255,255,.10)!important;border-color:rgba(80,51,31,.32)!important;color:#35281e!important;box-shadow:none}
+#zauber .zauber-gradgruppe-55>summary,#zauber .zauber-gradgruppe-55[open]>summary,#zauber .zauber-kopf-55,#zauber .zauber-filter-55,#zauber .zauber-metamagie-kopf-5512{background:#b9a58e!important;color:#283d55!important;border-radius:9px}
+#zauber .zauber-eintrag-55{background:rgba(255,255,255,.12)!important}
+#zauber input:not([type=checkbox]),#zauber textarea,#zauber select,#zauber .zauber-klassenwahl-55,#zauber .zauber-sg-55,#zauber .zauber-prep-55 button,#zauber .zauber-eintrag-aktionen-554 button{background:rgba(255,255,255,.15)!important;color:#35281e!important;border:1px solid rgba(80,51,31,.35)!important;border-radius:8px}
+#zauber .zauber-sg-55.aktiv,#zauber .zauber-klassenzeile-55.aktiv .zauber-klassenwahl-55{background:rgba(80,51,31,.30)!important;color:#283d55!important}
+#zauber .zauber-meta-55,#zauber .zauber-hinweis-55,#zauber .zauber-leer-55,#zauber .zauber-beschreibung-55,#zauber .zauber-detail-559{color:#473527!important}
+#zauber .zauber-gradgruppe-55>summary,#zauber .zauber-eintrag-55 h4,#zauber .zauber-wert-55 strong{color:#283d55!important}
+/* Einheitliche Checkbox: Kreis bei inaktiv, Menü-Zauberrune bei aktiv. */
+#zauber input[type=checkbox]{appearance:none!important;-webkit-appearance:none!important;display:inline-block!important;vertical-align:middle!important;flex:0 0 25px!important;width:25px!important;height:25px!important;min-width:25px!important;margin:0 4px 0 0!important;border:3px solid #563822!important;border-radius:50%!important;background:transparent!important;cursor:pointer!important}
+#zauber input[type=checkbox]:checked{border:0!important;border-radius:0!important;background:transparent url('../assets/runes/Zauber.png') center/contain no-repeat!important;filter:drop-shadow(0 0 3px rgba(245,192,69,.62)) drop-shadow(0 0 5px rgba(245,192,69,.33))!important}
+#zauber input[type=checkbox]:focus-visible{outline:2px solid #80602c!important;outline-offset:3px}
+/* Verbrauchte Slots: X-Rune statt Häkchen. */
+#zauber .zauber-slot-554{border:2px solid #563822!important;border-radius:50%!important;background:transparent!important;color:transparent!important;display:inline-flex;align-items:center;justify-content:center;overflow:visible}
+#zauber .zauber-slot-554.verbraucht{border:0!important;background:transparent!important}
+#zauber .zauber-slot-554.verbraucht img{display:block;width:100%;height:100%;object-fit:contain;opacity:1}
+/* Suchfeld und X-Button gleich hoch; Hintergrund nur 2 %. */
+#zauber .zauber-filter-mit-loeschen-554{align-items:stretch!important}
+#zauber #zauberSuche55{height:44px!important;min-height:44px!important;box-sizing:border-box!important}
+#zauber #btnZauberSucheLeeren554{height:44px!important;min-height:44px!important;width:44px!important;padding:4px!important;box-sizing:border-box!important;background:rgba(255,255,255,.02)!important;border:1px solid rgba(80,51,31,.22)!important;border-radius:8px!important;align-items:center;justify-content:center}
+#zauber #btnZauberSucheLeeren554 img{display:block;width:100%;height:100%;object-fit:contain;opacity:1}
+@media(max-width:650px){#zauber .zauber-filter-mit-loeschen-554{grid-template-columns:minmax(0,1fr) 44px!important}}
