@@ -1,0 +1,15 @@
+/* v0.59.3: Aufklappbare, klassenspezifische Bonuszauber */
+#zauber details.zauber-bonus-593{padding:0;overflow:hidden;background:rgba(255,255,255,.15);border-radius:14px}
+#zauber .zauber-bonus-593>summary{cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:8px;background:rgba(76,43,27,.20);padding:12px 14px;color:#39271c}
+#zauber .zauber-bonus-593>summary::-webkit-details-marker{display:none}
+#zauber .zauber-bonus-593>summary h3{font-size:1.05em;margin:0}
+#zauber .zauber-bonus-593 .zauber-bonus-inhalt-592{padding:12px}
+#zauber .zauber-bonus-quellen-593{display:flex;gap:12px;flex-wrap:wrap;margin:12px 0}
+#zauber .zauber-bonus-quellen-593 label{display:inline-flex;align-items:center;gap:7px}
+#zauber .zauber-bonus-593 .zauber-bonus-zeile-592{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+#zauber .zauber-bonus-593 .zauber-bonus-zeile-592>label{flex:1;min-width:150px}
+#zauber .zauber-bonus-zauber-593{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px;margin:8px 0;border:1px solid rgba(76,43,27,.24);border-radius:12px;background:rgba(76,43,27,.10);color:#39271c}
+#zauber .zauber-bonus-zauber-593 strong{display:block;color:#39271c}
+#zauber .zauber-bonus-zauber-593 small{display:block;font-style:italic;color:#493324}
+#zauber .zauber-bonus-zauber-593 button{min-width:40px;min-height:40px;border-radius:50%;border:2px solid #5a3b28;background:rgba(76,43,27,.12);color:#5a3b28;font-size:24px;display:grid;place-items:center}
+#zauber .zauber-bonus-zauber-593 button img{width:26px;height:26px;object-fit:contain}
