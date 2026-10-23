@@ -1,0 +1,11 @@
+/* v0.59.4: Bonuszauber mit Datenbankdetails und Domänenverwaltung */
+#zauber .zauber-bonus-selects-594{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+#zauber .zauber-bonus-selects-594 label{display:flex;gap:8px;align-items:center;flex-wrap:wrap;color:#493324}
+#zauber .zauber-bonus-selects-594 select{max-width:100%;min-height:42px;border-radius:10px;background:rgba(255,255,255,.15);color:#493324}
+#zauber .zauber-bonus-karte-594{margin-bottom:12px}
+#zauber .zauber-bonus-eintrag-594{background:rgba(76,43,27,.20)!important;border:1px solid rgba(76,43,27,.30);border-radius:13px}
+#zauber .zauber-bonus-badge-594{display:block;font-style:italic;font-weight:600;color:#493324;margin:2px 0 9px}
+#zauber .zauber-dom-vorbereiten-594{background:rgba(76,43,27,.15);color:#493324;border-radius:9px;padding:7px 10px;margin-bottom:8px}
+#zauber .zauber-dom-status-594{display:inline-flex;align-items:center;gap:8px;flex-wrap:wrap;color:#493324;font-size:.9em}
+#zauber .zauber-dom-status-594 button{width:33px;height:33px;border-radius:50%;background:rgba(76,43,27,.15);color:#493324;display:inline-flex;align-items:center;justify-content:center}
+#zauber .zauber-dom-status-594 button img{width:24px;height:24px;object-fit:contain}
