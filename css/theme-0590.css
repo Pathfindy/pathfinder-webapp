@@ -1,0 +1,20 @@
+/* v0.59.0 – Zauberseite: gezielte Korrektur der tatsächlichen DOM-Container. */
+#zauber{--z590-brown:rgba(76,43,27,.20);--z590-white:rgba(255,255,255,.15);--z590-text:#493324;--z590-border:rgba(73,45,28,.35);color:var(--z590-text)!important}
+/* Die weiße Klassenfläche stammt aus .zauber-klassendetails-5510 (nicht dem Kopf). */
+#zauber .zauber-klassenbox-5510 .zauber-klassendetails-5510{background:transparent!important;border:1px solid var(--z590-border)!important;overflow:hidden!important}
+#zauber .zauber-klassenbox-5510 .zauber-klassenkopf-5512{background:var(--z590-brown)!important;border:0!important;border-radius:10px 10px 0 0!important}
+#zauber .zauber-klassenbox-5510 .zauber-klasseninhalt-5512{background:var(--z590-white)!important;border-top:1px solid var(--z590-border)!important;border-radius:0 0 10px 10px!important;min-height:0}
+#zauber .zauber-klassenbox-5510 .zauber-klasseninhalt-5512[hidden]{display:none!important}
+#zauber .zauber-klassenbox-5510 .zauber-klassenwahl-55{background:transparent!important;color:var(--z590-text)!important}
+/* Sämtliche bisherigen dunklen Brauntöne auf 20 % statt 30 %. */
+#zauber .zauber-kopf-55,#zauber .zauber-filter-55,#zauber .zauber-wert-55,#zauber .zauber-gradmodus-5510,#zauber .zauber-metamagie-kopf-5512,#zauber .zauber-meta-anwendung-558,#zauber .zauber-meta-hinweise-558,#zauber .zauber-toggle-5512,#zauber .zauber-meta-anwendung-558>summary{background:var(--z590-brown)!important}
+#zauber .zauber-sg-55.aktiv,#zauber .zauber-sg-55.aktiv:disabled{background:var(--z590-brown)!important}
+#zauber .zauber-werte-55{background:var(--z590-white)!important}
+/* Weißer 15-%-Träger hinter den Gradbuttons, ohne ihre individuelle Aktivierung zu ändern. */
+#zauber .zauber-sg-grid-55{background:var(--z590-white)!important;border:1px solid var(--z590-border)!important;border-radius:12px!important;padding:9px!important}
+/* Einheitliche dunkelbraune Texte statt Blau/Grau. */
+#zauber h2,#zauber h3,#zauber h4,#zauber strong,#zauber .zauber-wert-55 strong,#zauber .zauber-gradgruppe-55>summary,#zauber .zauber-eintrag-55 h4,#zauber .zauber-reichweite-55,#zauber .zauber-detail-559,#zauber .zauber-metamagie-kopf-5512,#zauber .zauber-metamagie-kopf-5512>span,#zauber .zauber-sg-55,#zauber .zauber-sg-55.aktiv,#zauber .zauber-meta-55,#zauber .zauber-hinweis-55,#zauber .zauber-leer-55,#zauber .zauber-klassendetails-5510,#zauber .zauber-wert-55 small,#zauber .zauber-gradmodus-5510 small{color:var(--z590-text)!important}
+#zauber .zauber-sg-55:not(.aktiv),#zauber .zauber-sg-55:not(.aktiv):disabled{background:var(--z590-white)!important;color:#594637!important}
+/* Kopfzeile der Zauberwerte bündig zum eingerückten Metamagie-Titel. */
+#zauber .zauber-kopf-55{padding:10px 12px!important;box-sizing:border-box!important}
+#zauber .zauber-kopf-55 h3{margin:0!important}
