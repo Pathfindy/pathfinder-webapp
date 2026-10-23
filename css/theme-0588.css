@@ -1,0 +1,19 @@
+/* v0.58.8 – Zauberseite im Stil der Kampfseite */
+#zauber{--z-dark:rgba(76,43,27,.30);--z-border:rgba(73,45,28,.40);--z-text:#38291d}
+/* Zaubergrade behalten ausdrücklich ihre bisherige beige Darstellung. */
+#zauber .zauber-klassenkopf-5512,#zauber .zauber-kopf-55,#zauber .zauber-filter-55,#zauber .zauber-werte-55,#zauber .zauber-wert-55,#zauber .zauber-gradmodus-5510,#zauber .zauber-sg-grid-55,#zauber .zauber-metamagie-karte-5512,#zauber .zauber-meta-talent-558,#zauber .zauber-meta-anwendung-558,#zauber .zauber-meta-hinweise-558{background:var(--z-dark)!important;border:1px solid var(--z-border)!important;border-radius:12px!important;color:var(--z-text)!important}
+#zauber .zauber-werte-55,#zauber .zauber-sg-grid-55{padding:7px!important}
+#zauber .zauber-wert-55{margin:0!important;min-width:0!important}
+#zauber .zauber-klassenkopf-5512{padding:9px!important}
+#zauber .zauber-klassenwahl-55,#zauber .zauber-klassenwahl-55[aria-pressed=true]{background:rgba(255,255,255,.10)!important;border:1px solid var(--z-border)!important;color:var(--z-text)!important;border-radius:11px!important;font-weight:700!important}
+#zauber .zauber-toggle-5512,#zauber .zauber-gradgruppe-55>summary .zauber-toggle-5512,#zauber .zauber-meta-anwendung-558>summary{background:rgba(76,43,27,.30)!important;border:1px solid var(--z-border)!important;border-radius:10px!important;color:#30251a!important}
+#zauber .zauber-metamagie-kopf-5512{background:rgba(255,255,255,.12)!important;border-radius:10px!important;padding:8px!important;color:#283d55!important}
+#zauber .zauber-meta-talent-558,#zauber .zauber-meta-talent-558.aktiv{background:rgba(255,255,255,.12)!important}
+#zauber .zauber-sg-55,#zauber .zauber-sg-55.aktiv{background:var(--z-dark)!important;color:#283d55!important;border:1px solid var(--z-border)!important;border-radius:10px!important;opacity:1!important}
+#zauber .zauber-sg-55:disabled{background:rgba(255,255,255,.15)!important;color:#655649!important;opacity:1!important}
+#zauber .zauber-gradgruppe-55>summary,#zauber .zauber-gradgruppe-55[open]>summary{background:#b9a58e!important}
+#zauber .zauber-klasseninfo-5512,#zauber .zauber-metamagie-kopf-5512>span,#zauber .zauber-wert-55 small,#zauber .zauber-gradmodus-5510 small,#zauber .zauber-meta-talent-558 small,#zauber .zauber-meta-talent-558 em,#zauber .zauber-hinweis-55,#zauber .zauber-leer-55,#zauber .zauber-meta-auswahl-558 small,#zauber .zauber-meta-55{color:#493829!important}
+#zauber #btnNeuerZauber554{background:var(--z-dark)!important;border:1px solid var(--z-border)!important;border-radius:11px!important;color:#33271e!important;min-height:42px!important;font-weight:600!important}
+#zauber .zauber-eintrag-aktionen-554 button[data-edit]{background:rgba(255,255,255,.10)!important;border:1px solid var(--z-border)!important;border-radius:9px!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;width:43px!important;height:43px!important;padding:4px!important}
+#zauber .zauber-eintrag-aktionen-554 button[data-edit] img{display:block!important;width:100%!important;height:100%!important;object-fit:contain!important;opacity:1!important}
+@media(max-width:650px){#zauber .zauber-klassenkopf-5512{grid-template-columns:minmax(0,1fr) auto!important}#zauber .zauber-klassenwahl-55{width:100%!important;min-width:0!important}#zauber .zauber-werte-55{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
