@@ -11,6 +11,16 @@
   const METAMAGIE_KEY="pf-metamagie-erlernt";
   const METAMAGIE_ANWENDUNG_KEY="pf-metamagie-anwendung";
   const ZAUBERKLASSEN=new Set(["Alchemist","Antipaladin","Arkanist","Barde","Blutwüter","Druide","Ermittler","Hexe","Hexenmeister","Inquisitor","Jäger","Kampfmagus","Kleriker","Kriegspriester","Magier","Mystiker","Paladin","Paktmagier","Schamane","Skalde","Waldläufer"]);
+  // PF1: Energie fokussieren. Mystiker/Schamane nur mit passender Offenbarung/Geist,
+  // Kriegspriester über Inbrunst (kein eigenständiger täglicher Fokuspool).
+  const FOKUS_KLASSEN={
+    Kleriker:"Energie fokussieren",
+    Paladin:"Positive Energie fokussieren (ab Stufe 4; verbraucht Handauflegen-Anwendungen)",
+    Antipaladin:"Negative Energie fokussieren (ab Stufe 4; verbraucht Verderbnis-Anwendungen)",
+    Mystiker:"Nur mit passender Offenbarung, z. B. Mysterium des Lebens",
+    Schamane:"Nur mit passender Geisterfähigkeit, z. B. Lebensgeist",
+    Kriegspriester:"Energie fokussieren über Inbrunst (Kosten beachten)"
+  };
   const STANDARD={Alchemist:["IN","vorbereitet"],Antipaladin:["CH","vorbereitet"],Arkanist:["IN","vorbereitet"],Barde:["CH","spontan"],Blutwüter:["CH","spontan"],Druide:["WE","vorbereitet"],Ermittler:["IN","vorbereitet"],Hexe:["IN","vorbereitet"],Hexenmeister:["CH","spontan"],Inquisitor:["WE","spontan"],Jäger:["WE","spontan"],Kampfmagus:["IN","vorbereitet"],Kleriker:["WE","vorbereitet"],Kriegspriester:["WE","vorbereitet"],Magier:["IN","vorbereitet"],Mystiker:["CH","spontan"],Paladin:["CH","vorbereitet"],Paktmagier:["CH","spontan"],Schamane:["WE","vorbereitet"],Skalde:["CH","spontan"],Waldläufer:["WE","vorbereitet"]};
   // Klassenstufe, auf der der jeweilige Zaubergrad erstmals verfügbar wird.
   const GRAD_START={
@@ -57,6 +67,9 @@
       attribut:d[0],art:d[1],zs:klassenstufe,zsAuto:true,letzteKlassenstufe:klassenstufe,
       konzBonus:0,zrBonus:0,sgBonus:0,aktiveGrade:[],gradeAuto:true,slots:{},gelernt:{},vorbereitet:{},vorbereitungen:[],nurGelernt:{},verbraucht:{}
     });
+    cfg.fokus=cfg.fokus&&typeof cfg.fokus==="object"?cfg.fokus:{max:0,verbraucht:0};
+    cfg.fokus.max=Math.max(0,Math.min(99,Math.trunc(Number(cfg.fokus.max)||0)));
+    cfg.fokus.verbraucht=Math.max(0,Math.min(cfg.fokus.max,Math.trunc(Number(cfg.fokus.verbraucht)||0)));
     cfg.slots=cfg.slots&&typeof cfg.slots==="object"?cfg.slots:{};
     cfg.gelernt=cfg.gelernt&&typeof cfg.gelernt==="object"?cfg.gelernt:{};
     cfg.vorbereitet=cfg.vorbereitet&&typeof cfg.vorbereitet==="object"?cfg.vorbereitet:{};
@@ -141,6 +154,16 @@
       panel.querySelector('[data-zs]').onchange=e=>{offeneKlassen.add(k.name);x.zs=Math.max(0,Number(e.target.value)||0);x.zsAuto=x.zs===Number(k.stufe||0);x.letzteKlassenstufe=Number(k.stufe||0);save();render()};
       box.append(panel);
     }root.append(box);
+  }
+
+  function renderFokus(k,x){
+    if(!Object.prototype.hasOwnProperty.call(FOKUS_KLASSEN,k.name))return;
+    const box=document.createElement("section");box.className="zauber-karte-55 zauber-fokus-591";
+    const max=x.fokus.max,used=x.fokus.verbraucht;
+    box.innerHTML=`<div class="zauber-fokus-kopf-591"><h3>Energie fokussieren</h3><label>Maximum <input type="number" min="0" max="99" inputmode="numeric" data-fokus-max value="${max}" aria-label="Maximale Anwendungen Energie fokussieren"></label></div><p class="zauber-fokus-hinweis-591">${esc(FOKUS_KLASSEN[k.name])} · ${max-used} frei / ${max} gesamt</p><div class="zauber-fokus-slots-591" aria-label="Anwendungen Energie fokussieren">${Array.from({length:max},(_,i)=>`<button type="button" class="zauber-slot-554${i<used?" verbraucht":""}" data-fokus-slot="${i}" aria-label="${i<used?"Verbrauchte Anwendung wiederherstellen":"Anwendung verbrauchen"}" title="${i<used?"Wiederherstellen":"Verbrauchen"}">${i<used?'<img src="assets/runes/delete.png" alt="" aria-hidden="true">':''}</button>`).join("")}</div>`;
+    root.append(box);
+    box.querySelector('[data-fokus-max]').onchange=e=>{x.fokus.max=Math.max(0,Math.min(99,Math.trunc(Number(e.target.value)||0)));x.fokus.verbraucht=Math.min(x.fokus.verbraucht,x.fokus.max);save();render()};
+    box.querySelectorAll('[data-fokus-slot]').forEach(b=>b.onclick=()=>{const i=Number(b.dataset.fokusSlot);x.fokus.verbraucht=i<used?i:i+1;save();render()});
   }
 
   function renderWerte(c,k,x){
@@ -242,7 +265,7 @@
   function editorDaten(){const klassen={};document.querySelectorAll('[data-editor-klasse]').forEach(i=>{if(i.value!=="")klassen[i.dataset.editorKlasse]=Math.max(0,Math.min(9,Number(i.value)||0))});return normZauber({id:editorId||undefined,name:document.getElementById('zauberName554').value,schule:document.getElementById('zauberSchule554').value,regelwerk:document.getElementById('zauberRegelwerk554').value,seite:document.getElementById('zauberSeite554').value,zeitaufwand:document.getElementById('zauberZeit554').value,komponenten:document.getElementById('zauberKomponenten554').value,reichweite:document.getElementById('zauberReichweite554').value,ziel:document.getElementById('zauberZiel554').value,dauer:document.getElementById('zauberDauer554').value,rettungswurf:document.getElementById('zauberRw554').value,zauberresistenz:(()=>{const v=document.getElementById('zauberZr559').value.trim();return /^ja$/i.test(v)?true:/^nein$/i.test(v)?false:v})(),beschreibung:document.getElementById('zauberBeschreibung554').value,klassen});}
   function speichereZauberEditor(){const z=editorDaten();if(!z.name){document.getElementById('zauberName554').focus();return}if(editorId){const basis=(basisDaten?.zauber||[]).some(v=>String(v.id)===String(editorId));if(basis){if(!adminAktiv()){alert('Standardzauber können nur im entsperrten Admin-Modus geändert werden.');return}const o=readJson(ADMIN_AENDERUNGEN_KEY,{});o[editorId]=z;writeJson(ADMIN_AENDERUNGEN_KEY,o)}else{for(const key of [BENUTZER_KEY,ADMIN_NEU_KEY]){const a=readJson(key,[]),idx=a.findIndex(v=>String(v.id)===String(editorId));if(idx>=0){a[idx]=z;writeJson(key,a);break}}}}else{const key=adminAktiv()?ADMIN_NEU_KEY:BENUTZER_KEY,a=readJson(key,[]);a.push(z);writeJson(key,a)}kombiniereDaten();document.getElementById('zauberDialog554').close();render();}
 
-  async function render(){await load();root.innerHTML='';const c=ch();if(!c){root.innerHTML='<section class="zauber-karte-55 zauber-leer-55">Kein aktiver Charakter.</section>';return}const klassen=zauberKlassen(c);if(!klassen.length){root.innerHTML='<section class="zauber-karte-55 zauber-leer-55">Der aktive Charakter besitzt aktuell keine unterstützte Zauberklasse.</section>';return}if(!klassen.some(k=>k.name===klasseAktiv))klasseAktiv=klassen[0].name;renderKlassen(c,klassen);renderMetamagie(c);const k=klassen.find(k=>k.name===klasseAktiv),x=config(c,k.name);renderWerte(c,k,x);renderGradListen(k,x);save();}
+  async function render(){await load();root.innerHTML='';const c=ch();if(!c){root.innerHTML='<section class="zauber-karte-55 zauber-leer-55">Kein aktiver Charakter.</section>';return}const klassen=zauberKlassen(c);if(!klassen.length){root.innerHTML='<section class="zauber-karte-55 zauber-leer-55">Der aktive Charakter besitzt aktuell keine unterstützte Zauberklasse.</section>';return}if(!klassen.some(k=>k.name===klasseAktiv))klasseAktiv=klassen[0].name;renderKlassen(c,klassen);renderMetamagie(c);const k=klassen.find(k=>k.name===klasseAktiv),x=config(c,k.name);renderWerte(c,k,x);renderFokus(k,x);renderGradListen(k,x);save();}
 
   // Zauberdaten sind Teil des Charakterobjekts und müssen Import/Export-Normalisierung überleben.
   if(typeof normalisiereCharakter==="function"&&!normalisiereCharakter.__zauber5510){const altNormalisiere=normalisiereCharakter;const neu=function(charakter={}){const basis=altNormalisiere(charakter);return {...basis,zauberklassen:charakter.zauberklassen&&typeof charakter.zauberklassen==="object"?charakter.zauberklassen:(basis.zauberklassen||{}),metamagieErlernt:Array.isArray(charakter.metamagieErlernt)?charakter.metamagieErlernt:(basis.metamagieErlernt||[]),zauberMetamagie:charakter.zauberMetamagie&&typeof charakter.zauberMetamagie==="object"?charakter.zauberMetamagie:(basis.zauberMetamagie||{})}};neu.__zauber5510=true;normalisiereCharakter=neu;}
