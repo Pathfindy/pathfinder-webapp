@@ -1,0 +1,21 @@
+/* v0.59.2: Fokus direkt nach den Klasseninformationen und editierbare Bonuszauber */
+#zauber .zauber-fokus-kopf-591{flex-wrap:nowrap;gap:8px;padding:10px 12px}
+#zauber .zauber-fokus-kopf-591 h3{font-size:1.02em;flex:1;min-width:0}
+#zauber .zauber-fokus-kopf-591 label{white-space:nowrap;gap:5px;font-size:.91em}
+#zauber .zauber-fokus-kopf-591 input{width:58px;min-height:36px}
+#zauber .zauber-fokus-hinweis-591 em{font-style:italic;color:#493324}
+#zauber .zauber-bonus-592{background:rgba(255,255,255,.15);border-radius:16px;color:#39271c}
+#zauber .zauber-bonus-kopf-592{background:rgba(76,43,27,.20);padding:12px;border-radius:12px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px}
+#zauber .zauber-bonus-kopf-592 h3{margin:0;color:#39271c}
+#zauber .zauber-bonus-inhalt-592{padding:12px 3px}
+#zauber .zauber-bonus-592 label{display:inline-flex;align-items:center;gap:6px;color:#39271c}
+#zauber .zauber-bonus-592 input,#zauber .zauber-bonus-592 select{min-height:38px;max-width:100%;background:rgba(255,255,255,.15);border:1px solid rgba(76,43,27,.4);border-radius:9px;color:#39271c;padding:5px}
+#zauber .zauber-bonus-hinweis-592{font-style:italic;font-size:.9em;color:#493324}
+#zauber .zauber-bonus-zeile-592{display:flex;align-items:center;flex-wrap:wrap;gap:8px;padding:9px 0;border-bottom:1px solid rgba(76,43,27,.2)}
+#zauber .zauber-bonus-zeile-592 label:nth-child(2){flex:1;min-width:140px}
+#zauber .zauber-bonus-zeile-592 label:nth-child(2) input{width:100%}
+#zauber .zauber-bonus-zeile-592 input[type=number]{width:52px}
+#zauber .zauber-bonus-status-592{font-size:.8em;font-style:italic}
+#zauber .zauber-bonus-592 button{background:rgba(76,43,27,.15);color:#39271c;border:1px solid rgba(76,43,27,.3);border-radius:9px;padding:7px 10px}
+#zauber .zauber-bonus-slot-592{min-width:36px;min-height:36px}
+#zauber .zauber-bonus-slot-592 img{width:23px;height:23px;object-fit:contain}
