@@ -1,0 +1,11 @@
+/* v0.59.1 – PF1 Energie fokussieren */
+#zauber .zauber-fokus-591{background:rgba(255,255,255,.15)!important;border:1px solid rgba(80,51,31,.28)!important;border-radius:16px!important;color:#39271c!important}
+#zauber .zauber-fokus-kopf-591{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;background:rgba(76,43,27,.20);border-radius:12px;padding:12px 15px}
+#zauber .zauber-fokus-kopf-591 h3{margin:0;color:#39271c;font-size:1.15em}
+#zauber .zauber-fokus-kopf-591 label{display:inline-flex;align-items:center;gap:8px;color:#39271c}
+#zauber .zauber-fokus-kopf-591 input{width:68px;min-height:38px;border-radius:10px;background:rgba(255,255,255,.15);border:1px solid rgba(76,43,27,.4);color:#39271c;text-align:center;font:inherit}
+#zauber .zauber-fokus-hinweis-591{margin:12px 3px 10px;color:#493324;font-size:.92em}
+#zauber .zauber-fokus-slots-591{display:flex;gap:9px;flex-wrap:wrap;padding:4px 2px 7px}
+#zauber .zauber-fokus-slots-591 .zauber-slot-554{width:38px!important;height:38px!important;border-radius:50%!important;border:2px solid #563822!important;background:rgba(76,43,27,.08)!important;display:inline-flex;align-items:center;justify-content:center;padding:3px!important;cursor:pointer}
+#zauber .zauber-fokus-slots-591 .zauber-slot-554.verbraucht{border-color:transparent!important;background:transparent!important}
+#zauber .zauber-fokus-slots-591 .zauber-slot-554 img{width:100%;height:100%;object-fit:contain;opacity:1}
