@@ -21,10 +21,14 @@
     Schamane:"Nur mit passender Geisterfähigkeit, z. B. Lebensgeist",
     Kriegspriester:"Energie fokussieren über Inbrunst (Kosten beachten)"
   };
+  // GRW S. 50 (Feenblutlinie), S. 57–58 (Erde, Handwerk).
   const BONUS_VORLAGEN={
-    Kleriker:{"Domäne: Heilung":{art:"slots",zauber:{1:"Leichte Wunden heilen",2:"Mittelschwere Wunden heilen",3:"Schwere Wunden heilen"}}},
-    Druide:{"Domäne: Heilung":{art:"slots",zauber:{1:"Leichte Wunden heilen",2:"Mittelschwere Wunden heilen",3:"Schwere Wunden heilen"}}},
-    Hexenmeister:{"Blutlinie: Drakonisch":{art:"bekannt",zauber:{1:"Magierrüstung",2:"Energien widerstehen",3:"Fliegen"}}}
+    Kleriker:{
+      "Handwerk":{art:"slots",zauber:{1:"Seil beleben",2:"Holz formen",3:"Stein formen",4:"Niedere Erschaffung",5:"Verarbeitung",6:"Höhere Erschaffung",7:"Eisenwand",8:"Statue",9:"Regenbogensphäre"}},
+      "Erde":{art:"slots",zauber:{1:"Magischer Stein",2:"Erde und Gestein erweichen",3:"Stein formen",4:"Steindornen",5:"Steinwand",6:"Steinhaut",7:"Elementargestalt IV (nur Erde)",8:"Erdbeben",9:"Elementarhorde (nur Erde)"}}
+    },
+    Druide:{"Erde":{art:"slots",zauber:{1:"Magischer Stein",2:"Erde und Gestein erweichen",3:"Stein formen",4:"Steindornen",5:"Steinwand",6:"Steinhaut",7:"Elementargestalt IV (nur Erde)",8:"Erdbeben",9:"Elementarhorde (nur Erde)"}}},
+    Hexenmeister:{"Feenblutlinie":{art:"bekannt",zauber:{1:"Verstricken",2:"Fürchterlicher Lachanfall",3:"Tiefschlaf",4:"Vergiften",5:"Hölzerner Weg",6:"Ablenkung",7:"Äthertor",8:"Unwiderstehlicher Tanz",9:"Gestaltwandel"}}}
   };
   const STANDARD={Alchemist:["IN","vorbereitet"],Antipaladin:["CH","vorbereitet"],Arkanist:["IN","vorbereitet"],Barde:["CH","spontan"],Blutwüter:["CH","spontan"],Druide:["WE","vorbereitet"],Ermittler:["IN","vorbereitet"],Hexe:["IN","vorbereitet"],Hexenmeister:["CH","spontan"],Inquisitor:["WE","spontan"],Jäger:["WE","spontan"],Kampfmagus:["IN","vorbereitet"],Kleriker:["WE","vorbereitet"],Kriegspriester:["WE","vorbereitet"],Magier:["IN","vorbereitet"],Mystiker:["CH","spontan"],Paladin:["CH","vorbereitet"],Paktmagier:["CH","spontan"],Schamane:["WE","vorbereitet"],Skalde:["CH","spontan"],Waldläufer:["WE","vorbereitet"]};
   // Klassenstufe, auf der der jeweilige Zaubergrad erstmals verfügbar wird.
@@ -176,20 +180,49 @@
     box.querySelectorAll('[data-fokus-slot]').forEach(b=>b.onclick=()=>{const i=Number(b.dataset.fokusSlot);x.fokus.verbraucht=i<used?i:i+1;save();render()});
   }
 
+  function bonusState(x){
+    const b=x.bonus;
+    if(!Array.isArray(b.quellen)){
+      const old=String(b.quelle||"").replace(/^Domäne: |^Blutlinie: /,"");
+      b.quellen=old&&BONUS_VORLAGEN[klasseAktiv]?.[old]?[old]:[];
+      b.aenderungen={};
+      if(b.quellen.length&&b.zauber&&Object.keys(b.zauber).length){
+        const orig=BONUS_VORLAGEN[klasseAktiv][old].zauber;
+        for(const [g,name] of Object.entries(b.zauber))if(name!==orig[g])b.aenderungen[old+":"+g]=name;
+      }
+    }
+    b.aenderungen=b.aenderungen&&typeof b.aenderungen==="object"?b.aenderungen:{};
+    b.verbraucht=b.verbraucht&&typeof b.verbraucht==="object"?b.verbraucht:{};
+    return b;
+  }
+  function bonusEintraege(k,x){
+    const b=bonusState(x),vorlagen=BONUS_VORLAGEN[k.name]||{},result=[];
+    for(const quelle of b.quellen){
+      const preset=vorlagen[quelle];if(!preset)continue;
+      for(const [grad,standard] of Object.entries(preset.zauber)){
+        const g=Number(grad),key=quelle+":"+g;
+        const name=Object.prototype.hasOwnProperty.call(b.aenderungen,key)?b.aenderungen[key]:standard;
+        if(name)result.push({g,quelle,name,art:preset.art,abStufe:preset.art==="bekannt"?g*2+1:(GRAD_START[KLASSEN_PROGRESSION[k.name]]||{})[g]||99});
+      }
+    }
+    return result;
+  }
   function renderBonus(k,x){
-    const vorlagen=BONUS_VORLAGEN[k.name]||{},b=x.bonus,gradMax=klassenMaxGrad(k);
-    const box=document.createElement("section");box.className="zauber-karte-55 zauber-bonus-592";
-    const rows=Object.entries(b.zauber).map(([g,name])=>({g:Number(g),name:String(name)})).filter(v=>v.g>=1&&v.g<=9).sort((a,b)=>a.g-b.g);
-    box.innerHTML=`<div class="zauber-bonus-kopf-592"><h3>Bonuszauber & Sonderzauber</h3><label>Quelle <select data-bonus-quelle><option value="">Keine</option>${Object.keys(vorlagen).map(q=>`<option value="${esc(q)}" ${b.quelle===q?"selected":""}>${esc(q)}</option>`).join("")}<option value="manuell" ${b.quelle==="manuell"?"selected":""}>Eigene Quelle</option></select></label></div><div class="zauber-bonus-inhalt-592" ${b.quelle?"":"hidden"}><label>Art <select data-bonus-art><option value="slots" ${b.art==="slots"?"selected":""}>Zusätzliche Zauberslots (Domäne)</option><option value="bekannt" ${b.art==="bekannt"?"selected":""}>Zusätzlich bekannte Zauber</option></select></label><p class="zauber-bonus-hinweis-592">Vorlagen werden automatisch eingetragen. Alle Einträge sind bearbeitbar; die Freischaltung richtet sich nach der Klassenstufe. Weitere Grade können ergänzt werden.</p><div class="zauber-bonus-zeilen-592">${rows.map(({g,name})=>`<div class="zauber-bonus-zeile-592"><label>Grad <input data-bonus-grad="${g}" type="number" min="1" max="9" value="${g}"></label><label>Zauber <input data-bonus-name="${g}" value="${esc(name)}"></label>${b.art==="slots"&&g<=gradMax?`<button type="button" class="zauber-bonus-slot-592 ${b.verbraucht[g]?"verbraucht":""}" data-bonus-slot="${g}" title="Bonusplatz verbrauchen / wiederherstellen">${b.verbraucht[g]?'<img src="assets/runes/delete.png" alt="Verbraucht">':"○"}</button>`:""}<span class="zauber-bonus-status-592">${g<=gradMax?"verfügbar":"ab höherer Stufe"}</span><button type="button" data-bonus-entfernen="${g}" aria-label="Bonuszauber entfernen">×</button></div>`).join("")}</div><button type="button" data-bonus-hinzufuegen>+ Bonuszauber</button></div>`;
+    const vorlagen=BONUS_VORLAGEN[k.name]||{},b=bonusState(x),dom=k.name==="Kleriker"||k.name==="Druide",titel=dom?"Domänen":k.name==="Hexenmeister"?"Blutlinie":"Bonuszauber & Sonderzauber";
+    const box=document.createElement("details");box.className="zauber-karte-55 zauber-bonus-592 zauber-bonus-593";
+    box.open=!!x.bonusOffen593;
+    const eintraege=bonusEintraege(k,x);
+    box.innerHTML=`<summary class="zauber-bonus-kopf-592"><h3>${titel}</h3><span>${b.quellen.length?esc(b.quellen.join(" · ")):"Auswählen"} ▾</span></summary><div class="zauber-bonus-inhalt-592"><p class="zauber-bonus-hinweis-592">${dom?"Bis zu zwei Domänen. Pro verfügbarem Grad gibt es insgesamt einen gemeinsamen Domänenzauberplatz – nicht einen pro Domäne.":"Bonuszauber werden auf Hexenmeisterstufe 3, 5, 7, 9, 11, 13, 15, 17 und 19 bekannt."} Die Vorschläge können einzeln geändert werden.</p><div class="zauber-bonus-quellen-593">${Object.keys(vorlagen).map(q=>`<label><input type="checkbox" data-bonus-quelle593="${esc(q)}" ${b.quellen.includes(q)?"checked":""}> ${esc(q)}</label>`).join("")||"Für diese Klasse sind noch keine automatischen Vorlagen hinterlegt."}</div><div class="zauber-bonus-zeilen-592">${eintraege.map(e=>`<div class="zauber-bonus-zeile-592"><span>Grad ${e.g} · ${esc(e.quelle)}</span><label>Zauber <input data-bonus-name593="${esc(e.quelle+":"+e.g)}" value="${esc(e.name)}"></label><small>${Number(k.stufe||0)>=e.abStufe?"Verfügbar":`Ab Stufe ${e.abStufe}`}</small><button type="button" data-bonus-reset593="${esc(e.quelle+":"+e.g)}" title="Vorlage wiederherstellen">↶</button></div>`).join("")}</div></div>`;
     root.append(box);
-    box.querySelector('[data-bonus-quelle]').onchange=e=>{const q=e.target.value;b.quelle=q;const preset=vorlagen[q];if(preset){b.art=preset.art;b.zauber={...preset.zauber};b.verbraucht={}}else if(!q){b.zauber={};b.verbraucht={}}save();render()};
-    if(!b.quelle)return;
-    box.querySelector('[data-bonus-art]').onchange=e=>{b.art=e.target.value;save();render()};
-    box.querySelectorAll('[data-bonus-name]').forEach(el=>el.onchange=()=>{b.zauber[el.dataset.bonusName]=el.value.trim();save();render()});
-    box.querySelectorAll('[data-bonus-grad]').forEach(el=>el.onchange=()=>{const old=el.dataset.bonusGrad,g=Math.max(1,Math.min(9,Math.trunc(Number(el.value)||1)));if(String(g)!==old){b.zauber[g]=b.zauber[old];delete b.zauber[old];delete b.verbraucht[old]}save();render()});
-    box.querySelectorAll('[data-bonus-slot]').forEach(el=>el.onclick=()=>{const g=el.dataset.bonusSlot;b.verbraucht[g]=!b.verbraucht[g];save();render()});
-    box.querySelectorAll('[data-bonus-entfernen]').forEach(el=>el.onclick=()=>{delete b.zauber[el.dataset.bonusEntfernen];delete b.verbraucht[el.dataset.bonusEntfernen];save();render()});
-    box.querySelector('[data-bonus-hinzufuegen]').onclick=()=>{const g=Array.from({length:9},(_,i)=>i+1).find(g=>!Object.prototype.hasOwnProperty.call(b.zauber,g));if(!g)return;b.zauber[g]="";save();render()};
+    box.addEventListener("toggle",()=>{x.bonusOffen593=box.open;save()});
+    box.querySelectorAll('[data-bonus-quelle593]').forEach(el=>el.onchange=()=>{
+      const q=el.dataset.bonusQuelle593;
+      if(el.checked){if(dom&&b.quellen.length>=2){el.checked=false;alert("Es können höchstens zwei Domänen ausgewählt werden.");return}if(!dom)b.quellen=[];b.quellen.push(q)}
+      else b.quellen=b.quellen.filter(v=>v!==q);
+      x.bonusOffen593=true;save();render();
+    });
+    box.querySelectorAll('[data-bonus-name593]').forEach(el=>el.onchange=()=>{b.aenderungen[el.dataset.bonusName593]=el.value.trim();save();render()});
+    box.querySelectorAll('[data-bonus-reset593]').forEach(el=>el.onclick=()=>{delete b.aenderungen[el.dataset.bonusReset593];save();render()});
   }
   function renderWerte(c,k,x){
     const am=mod(c,x.attribut),aw=attrWert(c,x.attribut),konz=Number(x.zs||0)+am+Number(x.konzBonus||0),zr=Number(x.zs||0)+Number(x.zrBonus||0),mg=maxGrad(c,x),kg=klassenMaxGrad(k),nah=touchWert(false),fern=touchWert(true);
@@ -267,6 +300,18 @@
       let list=all.filter(z=>!q||z.name.toLocaleLowerCase('de').includes(q)).filter(z=>!only||(x.art==="spontan"?known.includes(z.id):prepZauberAnzahl(x,z.id)>0));
       const max=slotMax(x,g),used=x.art==="vorbereitet"?prepSlotAnzahl(x,g):verbraucht(x,g),frei=Math.max(0,max-used),details=document.createElement('details');details.className='zauber-gradgruppe-55';details.open=q?list.length>0:offeneGrade.has(g);
       details.innerHTML=`<summary><span>Grad ${g}</span><span class="zauber-gradstatus-55"><label onclick="event.stopPropagation()">pro Tag <input data-slot="${g}" type="number" min="0" max="99" value="${max}"></label><strong>${frei} frei / verfügbar</strong><label onclick="event.stopPropagation()"><input data-only="${g}" type="checkbox" ${only?"checked":""}> ${x.art==="spontan"?"nur gelernte":"nur vorbereitete"}</label><span>${list.length} Zauber</span></span></summary><div class="zauber-liste-55">${list.length?list.map(z=>zauberHtml(z,k,x,g)).join(''):'<p class="zauber-leer-55">Keine passenden Zauber gefunden.</p>'}</div>`;
+      const extra=bonusEintraege(k,x).filter(e=>e.g===g&&Number(k.stufe||0)>=e.abStufe&&(!q||e.name.toLocaleLowerCase('de').includes(q)));
+      if(extra.length){
+        const target=details.querySelector('.zauber-liste-55');
+        for(const e of extra){
+          const card=document.createElement('article');card.className='zauber-bonus-zauber-593';
+          const slot=e.art==='slots',used=!!x.bonus.verbraucht[g];
+          card.innerHTML=`<div><strong>${esc(e.name)}</strong><small>${esc(e.quelle)} · ${slot?'Domänenzauber':'Blutlinienbonus (bekannt)'}</small></div>${slot?`<button type="button" data-dom-slot593="${g}" title="Gemeinsamen Domänenslot verbrauchen / wiederherstellen">${used?'<img src="assets/runes/delete.png" alt="Verbraucht">':'○'}</button>`:''}`;
+          target.append(card);
+        }
+        target.querySelectorAll('[data-dom-slot593]').forEach(el=>el.onclick=()=>{const grad=el.dataset.domSlot593;x.bonus.verbraucht[grad]=!x.bonus.verbraucht[grad];save();renderGradInhalte(container,k,x)});
+        if(q)details.open=true;
+      }
       container.append(details);details.addEventListener('toggle',()=>{if(details.open)offeneGrade.add(g);else offeneGrade.delete(g)});
       if(x.art==="spontan")renderSlotsSpontan(details.querySelector('summary .zauber-gradstatus-55'),x,g);
       details.querySelector('[data-slot]').onchange=e=>{x.slots[g]=Math.max(0,Math.trunc(Number(e.target.value)||0));x.verbraucht[g]=Math.min(verbraucht(x,g),x.slots[g]);offeneGrade.add(g);save();renderGradInhalte(container,k,x)};
