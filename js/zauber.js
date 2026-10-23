@@ -193,6 +193,7 @@
     }
     b.aenderungen=b.aenderungen&&typeof b.aenderungen==="object"?b.aenderungen:{};
     b.verbraucht=b.verbraucht&&typeof b.verbraucht==="object"?b.verbraucht:{};
+    b.vorbereitet=b.vorbereitet&&typeof b.vorbereitet==="object"?b.vorbereitet:{};
     return b;
   }
   function bonusEintraege(k,x){
@@ -310,7 +311,7 @@
     if(dom){
       // Domain spells have a separate daily preparation and slot pool.
       const control=article.querySelector('.zauber-prep-wrap-5510, .zauber-lerncheck-55');if(control)control.remove();
-      const label=document.createElement('button');label.type='button';label.className='zauber-dom-vorbereiten-594';label.textContent=selected?'◉ Domänenzauber vorbereitet':'○ Als Domänenzauber vorbereiten';
+      const label=document.createElement('button');label.type='button';label.className='zauber-dom-vorbereiten-594';label.classList.add('zauber-dom-rune-595');label.setAttribute('aria-pressed',String(selected));label.innerHTML=`<span class="zauber-dom-rune-bild-595">${selected?'<img src="assets/runes/Zauber.png" alt="">':''}</span><span>${selected?'Gelernt':'Lernen'}</span>`;
       label.onclick=()=>{x.bonus.vorbereitet=x.bonus.vorbereitet||{};x.bonus.vorbereitet[g]=selected?'':e.quelle;save();render()};badge.after(label);
     } else {
       const learn=article.querySelector('.zauber-lerncheck-55');if(learn){learn.remove();const info=document.createElement('small');info.textContent='Automatisch bekannt (Blutlinie)';badge.after(info);}
@@ -321,7 +322,7 @@
     const q=suche.trim().toLocaleLowerCase('de');container.innerHTML='';
     for(const g of effektiveGrade(k,x,ch()).filter(g=>gradVorhanden(k,g)||bonusEintraege(k,x).some(e=>e.g===g))){
       const all=(daten.zauber||[]).filter(z=>Object.prototype.hasOwnProperty.call(z.klassen||{},k.name)&&Number(z.klassen[k.name])===g).sort((a,b)=>a.name.localeCompare(b.name,'de')),known=ids(x,g),prepared=prep(x,g),only=!!x.nurGelernt[g];
-      const extras=bonusEintraege(k,x).filter(e=>e.g===g&&Number(k.stufe||0)>=e.abStufe&&(!q||e.name.toLocaleLowerCase("de").includes(q)));
+      const extras=bonusEintraege(k,x).filter(e=>e.g===g&&Number(k.stufe||0)>=e.abStufe&&(!q||e.name.toLocaleLowerCase("de").includes(q))&&(!only||e.art!=="slots"||x.bonus.vorbereitet?.[g]===e.quelle));
       const bonusIds=new Set(extras.map(e=>bonusDatenZauber(e.name)?.id).filter(Boolean));
       let list=all.filter(z=>!bonusIds.has(z.id)).filter(z=>!q||z.name.toLocaleLowerCase('de').includes(q)).filter(z=>!only||(x.art==="spontan"?known.includes(z.id):prepZauberAnzahl(x,z.id)>0));
       const max=slotMax(x,g),used=x.art==="vorbereitet"?prepSlotAnzahl(x,g):verbraucht(x,g),frei=Math.max(0,max-used),details=document.createElement('details');details.className='zauber-gradgruppe-55';details.open=q?(list.length>0||extras.length>0):offeneGrade.has(g);
@@ -340,7 +341,7 @@
         const wrapper=document.createElement('span');wrapper.className='zauber-dom-status-594';
         const chosen=dom.find(e=>e.quelle===x.bonus.vorbereitet?.[g]);
         const used=!!x.bonus.verbraucht[g];
-        wrapper.innerHTML=`<span>Domäne: ${chosen?esc(chosen.name):'nicht vorbereitet'}</span><button type="button" data-dom-use594="${g}" ${chosen?'':'disabled'} title="Domänenslot verbrauchen / wiederherstellen">${used?'<img src="assets/runes/delete.png" alt="Verbraucht">':'○'}</button>`;
+        wrapper.innerHTML=`<span>Domäne (1 pro Tag) · ${chosen?`1 verfügbar (${esc(chosen.name)})`:'0 verfügbar – keinen Domänenzauber gelernt'}</span><button type="button" data-dom-use594="${g}" ${chosen?'':'disabled'} title="Domänenslot verbrauchen / wiederherstellen">${used?'<img src="assets/runes/delete.png" alt="Verbraucht">':'○'}</button>`;
         status.append(wrapper);
         wrapper.querySelector('button').onclick=e=>{e.preventDefault();e.stopPropagation();x.bonus.verbraucht[g]=!used;save();render()};
       }
