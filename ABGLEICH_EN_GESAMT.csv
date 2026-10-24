@@ -1,0 +1,1281 @@
+﻿ID;Deutscher Name;Originalname Englisch (Vorschlag);Deutsches Regelwerk;Deutsche Seite;Englisches Regelwerk;Englische Seite;Prüfstatus
+z1;Abdrücke lesen;Residual Tracking;Expertenregeln;202;Advanced Player’s Guide;;vorschlag
+z2;Aberrationen entdecken;Detect Aberration;Expertenregeln;202;Advanced Player’s Guide;;vorschlag
+z3;Ablenkung;Mislead;Grundregelwerk;241;Core Rulebook;;vorschlag
+z5;Abscheu;Unadulterated Loathing;Ausbauregeln: Magie;205;Ultimate Magic;;vorschlag
+z6;Abschirmung;Screen;Grundregelwerk;241;Core Rulebook;;vorschlag
+z7;Absorbierende Barriere;Ablative Barrier;Ausbauregeln II: Kampf;222;Ultimate Combat;;vorschlag
+z8;Absorbierende Hand;Absorbing Touch;Expertenregeln;202;Advanced Player’s Guide;;vorschlag
+z10;Abstoßung;Repulsion;Grundregelwerk;242;Core Rulebook;;vorschlag
+z14;Adlerauge;Eagle Eye;Expertenregeln;202;Advanced Player’s Guide;;vorschlag
+z19;Affenschwarm herbeizaubern;Mad Monkeys;Ausbauregeln: Magie;205;Ultimate Magic;;vorschlag
+z25;Ahnungsloser Verbündeter;Unwitting Ally;Expertenregeln;202;Advanced Player’s Guide;;vorschlag
+z26;Alarm;Alarm;Grundregelwerk;242;Core Rulebook;;vorschlag
+z28;Albtraum;Nightmare;Grundregelwerk;242;Core Rulebook;;vorschlag
+z29;Alchemistische Aufteilung;Alchemical Allocation;Expertenregeln;202;Advanced Player’s Guide;;vorschlag
+z32;Allegro;Allegro;Ausbauregeln: Magie;205;Ultimate Magic;;vorschlag
+z33;Allzweckmittel;Polypurpose Panacea;Ausbauregeln: Magie;205;Ultimate Magic;;vorschlag
+z34;Älteren Purpurwurm herbeizaubern;Summon Elder Worm;Ausbauregeln: Magie;206;Ultimate Magic;;vorschlag
+z36;Ameisenstärke;Ant Haul;Expertenregeln;203;Advanced Player’s Guide;;vorschlag
+z37;Andere verkleiden;Disguise Other;Ausbauregeln: Magie;206;Ultimate Magic;;vorschlag
+z38;Anderen schützen;Shield Other;Grundregelwerk;243;Core Rulebook;;vorschlag
+z39;Angriff zurückwerfen;Deflect Attack;Expertenregeln;203;Advanced Player’s Guide;;vorschlag
+z41;Anmut;Grace;Expertenregeln;203;Advanced Player’s Guide;;vorschlag
+z43;Anprangern;Denounce;Expertenregeln;203;Advanced Player’s Guide;;vorschlag
+z45;Anstacheln;Persuasive Goad;Ausbauregeln: Magie;206;Ultimate Magic;;vorschlag
+z46;Ansteckende Flamme;Contagious Flame;Expertenregeln;203;Advanced Player’s Guide;;vorschlag
+z47;Ansteckung;Contagion;Grundregelwerk;243;Core Rulebook;;vorschlag
+z48;Anthropomorphes Tier;Anthropomorphic Animal;Ausbauregeln: Magie;206;Ultimate Magic;;vorschlag
+z50;Antimagisches Feld;Antimagic Field;Grundregelwerk;243;Core Rulebook;;vorschlag
+z51;Antipathie;Antipathy;Grundregelwerk;243;Core Rulebook;;vorschlag
+z54;Arkane Kanone;Arcane Cannon;Ausbauregeln II: Kampf;222;Ultimate Combat;;vorschlag
+z55;Arkane Spiegelung;Mirage Arcana;Grundregelwerk;244;Core Rulebook;;vorschlag
+z58;Arkaner Blick;Arcane Sight;Grundregelwerk;244;Core Rulebook;;vorschlag
+z59;Arkaner Gleichklang;Arcane Concordance;Expertenregeln;203;Advanced Player’s Guide;;vorschlag
+z60;Arkanes Auge;Arcane Eye;Grundregelwerk;244;Core Rulebook;;vorschlag
+z61;Arkanes Schloss;Arcane Lock;Grundregelwerk;244;Core Rulebook;;vorschlag
+z62;Arkanes Siegel;Arcane Mark;Grundregelwerk;245;Core Rulebook;;vorschlag
+z66;Aschesturm;Ash Storm;Ausbauregeln: Magie;206;Ultimate Magic;;vorschlag
+z67;Aspekt des Adlers;Aspect of the Falcon;Expertenregeln;204;Advanced Player’s Guide;;vorschlag
+z68;Aspekt des Bären;Aspect of the Bear;Expertenregeln;204;Advanced Player’s Guide;;vorschlag
+z69;Aspekt des Hirsches;Aspect of the Stag;Expertenregeln;204;Advanced Player’s Guide;;vorschlag
+z70;Aspekt des Wolfes;Aspect of the Wolf;Expertenregeln;204;Advanced Player’s Guide;;vorschlag
+z71;Astrale Projektion;Astral Projection;Grundregelwerk;245;Core Rulebook;;vorschlag
+z72;Atavismus;Atavism;Ausbauregeln: Magie;206;Ultimate Magic;;vorschlag
+z74;Ätherische Gestalten;Etherealness;Grundregelwerk;245;Core Rulebook;;vorschlag
+z75;Ätherischer Ausflug;Ethereal Jaunt;Grundregelwerk;245;Core Rulebook;;vorschlag
+z76;Äthertor;Phase Door;Grundregelwerk;246;Core Rulebook;;vorschlag
+z77;Ätzbrand;Corrosive Consumption;Ausbauregeln: Magie;207;Ultimate Magic;;vorschlag
+z78;Auf Wasser gehen;Water Walk;Grundregelwerk;246;Core Rulebook;;vorschlag
+z79;Aufblitzen;Flare;Grundregelwerk;246;Core Rulebook;;vorschlag
+z80;Aufbrausen;Flexible Fury;Expertenregeln;204;Advanced Player’s Guide;;vorschlag
+z81;Auferstehung;Resurrection;Grundregelwerk;246;Core Rulebook;;vorschlag
+z82;Aufforderung;Demand;Grundregelwerk;246;Core Rulebook;;vorschlag
+z84;Auflösung;Disintegrate;Grundregelwerk;247;Core Rulebook;;vorschlag
+z86;Aufopferung des Paladins;Paladin's Sacrifice;Expertenregeln;204;Advanced Player’s Guide;;vorschlag
+z87;Aufspüren;Discern Location;Grundregelwerk;247;Core Rulebook;;vorschlag
+z90;Auge des Bombenwerfers;Bomber's Eye;Expertenregeln;205;Advanced Player’s Guide;;vorschlag
+z91;Auge des Jägers;Hunter's Eye;Expertenregeln;205;Advanced Player’s Guide;;vorschlag
+z93;Augenblick der Größe;Moment of Greatness;Ausbauregeln II: Kampf;222;Ultimate Combat;;vorschlag
+z98;Aura des Archonten;Archon's Aura;Ausbauregeln: Magie;207;Ultimate Magic;;vorschlag
+z100;Aura des Unheils;Aura of Doom;Ausbauregeln: Magie;207;Ultimate Magic;;vorschlag
+z101;Aura verfolgen;Follow Aura;Expertenregeln;205;Advanced Player’s Guide;;vorschlag
+z102;Aura verleihen;Imbue with Aura;Ausbauregeln: Magie;207;Ultimate Magic;;vorschlag
+z105;Ausbessern;Mending;Grundregelwerk;247;Core Rulebook;;vorschlag
+z106;Ausbluten;Bleed;Grundregelwerk;247;Core Rulebook;;vorschlag
+z108;Ausdauer des Ochsen;Bear's Endurance;Grundregelwerk;247;Core Rulebook;;vorschlag
+z110;Äußerlichkeiten;Seeming;Grundregelwerk;248;Core Rulebook;;vorschlag
+z111;Aussieben;Sift;Expertenregeln;205;Advanced Player’s Guide;;vorschlag
+z112;Ausspähende Augen;Prying Eyes;Grundregelwerk;248;Core Rulebook;;vorschlag
+z113;Ausspähung;Scrying;Grundregelwerk;248;Core Rulebook;;vorschlag
+z114;Ausspähung entdecken;Detect Scrying;Grundregelwerk;249;Core Rulebook;;vorschlag
+z115;Austilgen;Erase;Grundregelwerk;249;Core Rulebook;;vorschlag
+z116;Austreiben;Exorcise;Expertenregeln;205;Advanced Player’s Guide;;vorschlag
+z117;Bardenabgang;Bard's Escape;Expertenregeln;205;Advanced Player’s Guide;;vorschlag
+z118;Bardenphantom;Shadowbard;Ausbauregeln: Magie;207;Ultimate Magic;;vorschlag
+z119;Bärenstärke;Bull's Strength;Grundregelwerk;249;Core Rulebook;;vorschlag
+z120;Bauchreden;Ventriloquism;Grundregelwerk;249;Core Rulebook;;vorschlag
+z121;Baum;Tree Shape;Grundregelwerk;249;Core Rulebook;;vorschlag
+z122;Baumkatapult;Siege of Trees;Ausbauregeln II: Kampf;223;Ultimate Combat;;vorschlag
+z123;Befehl;Command;Grundregelwerk;249;Core Rulebook;;vorschlag
+z124;Befreiender Befehl;Liberating Command;Ausbauregeln II: Kampf;223;Ultimate Combat;;vorschlag
+z125;Befreiung;Freedom;Grundregelwerk;250;Core Rulebook;;vorschlag
+z126;Befristete Auferstehung;Temporary Resurrection;Ausbauregeln: Magie;208;Ultimate Magic;;vorschlag
+z128;Begrenzter Wunsch;Limited Wish;Grundregelwerk;250;Core Rulebook;;vorschlag
+z129;Beherzte Inspiration;Gallant Inspiration;Expertenregeln;206;Advanced Player’s Guide;;vorschlag
+z130;Behindernde Hand;Interposing Hand;Grundregelwerk;250;Core Rulebook;;vorschlag
+z131;Beichte;Confess;Expertenregeln;206;Advanced Player’s Guide;;vorschlag
+z132;Beistand;Aid;Grundregelwerk;251;Core Rulebook;;vorschlag
+z133;Belagerungsenergiegeschoss;Energy Siege Shot;Ausbauregeln II: Kampf;224;Ultimate Combat;;vorschlag
+z135;Beleben;Invigorate;Expertenregeln;206;Advanced Player’s Guide;;vorschlag
+z137;Belebende Transformation;Resurgent Transformation;Expertenregeln;206;Advanced Player’s Guide;;vorschlag
+z138;Belebender Ausklang;Invigorating Finale;Expertenregeln;206;Advanced Player’s Guide;;vorschlag
+z139;Beliebiges verwandeln;Polymorph Any Object;Grundregelwerk;251;Core Rulebook;;vorschlag
+z140;Benannte Kugel;Named Bullet;Ausbauregeln II: Kampf;224;Ultimate Combat;;vorschlag
+z141;Benommenheit;Daze;Grundregelwerk;251;Core Rulebook;;vorschlag
+z144;Beschädigen;Break;Expertenregeln;207;Advanced Player’s Guide;;vorschlag
+z145;Beschwörer mitverletzen;Summoner Conduit;Ausbauregeln II: Kampf;224;Ultimate Combat;;vorschlag
+z147;Besessene Haut;Skinsend;Ausbauregeln: Magie;208;Ultimate Magic;;vorschlag
+z151;Bestiengestalt II;Beast Shape II;Grundregelwerk;251;Core Rulebook;;vorschlag
+z152;Bestiengestalt III;Beast Shape III;Grundregelwerk;252;Core Rulebook;;vorschlag
+z153;Bestiengestalt IV;Beast Shape IV;Grundregelwerk;252;Core Rulebook;;vorschlag
+z154;Bestrafung;Castigate;Expertenregeln;207;Advanced Player’s Guide;;vorschlag
+z156;Betäubender Ausklang;Stunning Finale;Expertenregeln;207;Advanced Player’s Guide;;vorschlag
+z158;Bewegungsfreiheit;Freedom of Movement;Grundregelwerk;252;Core Rulebook;;vorschlag
+z159;Bewunderung;Adoration;Ausbauregeln II: Kampf;224;Ultimate Combat;;vorschlag
+z162;Bindender Ruf;Planar Binding;Grundregelwerk;252;Core Rulebook;;vorschlag
+z169;Blasphemie;Blasphemy;Grundregelwerk;253;Core Rulebook;;vorschlag
+z170;Bleiklingen;Lead Blades;Expertenregeln;208;Advanced Player’s Guide;;vorschlag
+z173;Blendende Verpuffung;Blinding Ray;Ausbauregeln II: Kampf;225;Ultimate Combat;;vorschlag
+z175;Blick bannen;Lock Gaze;Ausbauregeln II: Kampf;225;Ultimate Combat;;vorschlag
+z176;Blick durch eigene Augen;Enter Image;Expertenregeln;208;Advanced Player’s Guide;;vorschlag
+z179;Blind- oder Taubheit kurieren;Remove Blindness/Deafness;Grundregelwerk;253;Core Rulebook;;vorschlag
+z180;Blind- oder Taubheit verursachen;Blindness/Deafness;Grundregelwerk;252;Core Rulebook;;vorschlag
+z182;Blitz;Lightning Bolt;Grundregelwerk;254;Core Rulebook;;vorschlag
+z185;Blitzbogen;Lightning Arc;Ausbauregeln: Magie;208;Ultimate Magic;;vorschlag
+z186;Blitze herbeirufen;Call Lightning;Grundregelwerk;254;Core Rulebook;;vorschlag
+z187;Blitzendes Vorzeichen;Jolting Portent;Ausbauregeln II: Kampf;225;Ultimate Combat;;vorschlag
+z188;Blitzgewitter;Stormbolts;Expertenregeln;208;Advanced Player’s Guide;;vorschlag
+z189;Blitzkugeln;Ball Lightning;Expertenregeln;208;Advanced Player’s Guide;;vorschlag
+z191;Blitzpeitschen-Bombenzusatz;Lightning Lash Bomb Admixture;Ausbauregeln II: Kampf;225;Ultimate Combat;;vorschlag
+z193;Blitzsprung;Lightning Leap;Ausbauregeln: Magie;208;Ultimate Magic;;vorschlag
+z195;Blut zu Säure;Transmute Blood to Acid;Ausbauregeln: Magie;209;Ultimate Magic;;vorschlag
+z198;Blutendes Auge;Bleeding Eye;Ausbauregeln II: Kampf;226;Ultimate Combat;;vorschlag
+z199;Bluthund;Bloodhound;Expertenregeln;209;Advanced Player’s Guide;;vorschlag
+z200;Blutige Klauen;Bloody Claws;Expertenregeln;209;Advanced Player’s Guide;;vorschlag
+z201;Blutkrähenschlag;Blood Crow Strike;Ausbauregeln: Magie;209;Ultimate Magic;;vorschlag
+z203;Blutnebel;Blood Mist;Ausbauregeln: Magie;209;Ultimate Magic;;vorschlag
+z210;Bogenstock;Bowstaff;Ausbauregeln II: Kampf;226;Ultimate Combat;;vorschlag
+z211;Bösartigkeit;Malicious Spite;Ausbauregeln: Magie;210;Ultimate Magic;;vorschlag
+z212;Böser Blick;Eyebite;Grundregelwerk;254;Core Rulebook;;vorschlag
+z213;Böses bannen;Dispel Evil;Grundregelwerk;254;Core Rulebook;;vorschlag
+z214;Böses entdecken;Detect Evil;Grundregelwerk;254;Core Rulebook;;vorschlag
+z215;Böses herausfordern;Challenge Evil;Expertenregeln;210;Advanced Player’s Guide;;vorschlag
+z216;Bosheit;Spite;Expertenregeln;209;Advanced Player’s Guide;;vorschlag
+z217;Böswillige Verwandlung;Baleful Polymorph;Grundregelwerk;255;Core Rulebook;;vorschlag
+z218;Botschaft;Message;Grundregelwerk;255;Core Rulebook;;vorschlag
+z220;Brandzeichen;Brand;Expertenregeln;210;Advanced Player’s Guide;;vorschlag
+z221;Brennende Hände;Burning Hands;Grundregelwerk;256;Core Rulebook;;vorschlag
+z222;Brennende Schmerzen;Burning Pain;Expertenregeln;210;Advanced Player’s Guide;;vorschlag
+z223;Brennender Blick;Burning Gaze;Expertenregeln;210;Advanced Player’s Guide;;vorschlag
+z226;Brüllen;Shout;Grundregelwerk;256;Core Rulebook;;vorschlag
+z228;Bund mit dem Gelände;Terrain Bond;Ausbauregeln II: Kampf;226;Ultimate Combat;;vorschlag
+z229;Bürde des Mystikers;Oracle's Burden;Expertenregeln;210;Advanced Player’s Guide;;vorschlag
+z230;Buße;Atonement;Grundregelwerk;256;Core Rulebook;;vorschlag
+z234;Chaoshammer;Chaos Hammer;Grundregelwerk;256;Core Rulebook;;vorschlag
+z235;Chaossplitter;Shard of Chaos;Ausbauregeln: Magie;210;Ultimate Magic;;vorschlag
+z238;Chaotisches bannen;Dispel Chaos;Grundregelwerk;257;Core Rulebook;;vorschlag
+z239;Chaotisches entdecken;Detect Chaos;Grundregelwerk;257;Core Rulebook;;vorschlag
+z242;Dämmerstaub;Dust of Twilight;Expertenregeln;211;Advanced Player’s Guide;;vorschlag
+z247;Dauerhafte Flamme;Continual Flame;Grundregelwerk;257;Core Rulebook;;vorschlag
+z248;Dauerhaftes Trugbild;Permanent Image;Grundregelwerk;257;Core Rulebook;;vorschlag
+z249;Dauerhaftigkeit;Permanency;Grundregelwerk;257;Core Rulebook;;vorschlag
+z251;Defensive Entladung;Defensive Shock;Ausbauregeln: Magie;210;Ultimate Magic;;vorschlag
+z252;Der Zeit entrinnen;Elude Time;Expertenregeln;211;Advanced Player’s Guide;;vorschlag
+z254;Des Magiers Erinnerung;Mage's Lucubration;Grundregelwerk;258;Core Rulebook;;vorschlag
+z255;Des Magiers Herrliches Herrenhaus;Mage's Magnificent Mansion;Grundregelwerk;258;Core Rulebook;;vorschlag
+z256;Des Magiers privates Heiligtum;Mage's Private Sanctum;Grundregelwerk;258;Core Rulebook;;vorschlag
+z257;Des Magiers Schwert;Mage's Sword;Grundregelwerk;258;Core Rulebook;;vorschlag
+z258;Des Magiers Treuer Hund;Mage's Faithful Hound;Grundregelwerk;259;Core Rulebook;;vorschlag
+z260;Detonation;Detonate;Expertenregeln;211;Advanced Player’s Guide;;vorschlag
+z261;Devolution;Devolution;Expertenregeln;211;Advanced Player’s Guide;;vorschlag
+z265;Diktum;Dictum;Grundregelwerk;259;Core Rulebook;;vorschlag
+z266;Dimensionsanker;Dimensional Anchor;Grundregelwerk;259;Core Rulebook;;vorschlag
+z267;Dimensionsschloss;Dimensional Lock;Grundregelwerk;259;Core Rulebook;;vorschlag
+z268;Dimensionstür;Dimension Door;Grundregelwerk;260;Core Rulebook;;vorschlag
+z269;Donnernde Trommeln;Thundering Drums;Expertenregeln;211;Advanced Player’s Guide;;vorschlag
+z271;Donnerschuss;Thunder Fire;Ausbauregeln II: Kampf;226;Ultimate Combat;;vorschlag
+z273;Dornenhaut;Thorn Body;Expertenregeln;211;Advanced Player’s Guide;;vorschlag
+z274;Dornenwand;Wall of Thorns;Grundregelwerk;260;Core Rulebook;;vorschlag
+z275;Dornenwuchs;Spike Growth;Grundregelwerk;260;Core Rulebook;;vorschlag
+z277;Drachenfeuerwerk;Snapdragon Fireworks;Ausbauregeln: Magie;210;Ultimate Magic;;vorschlag
+z278;Drachengestalt I;Form of the Dragon I;Grundregelwerk;261;Core Rulebook;;vorschlag
+z279;Drachengestalt II;Form of the Dragon II;Grundregelwerk;261;Core Rulebook;;vorschlag
+z280;Drachengestalt III;Form of the Dragon III;Grundregelwerk;261;Core Rulebook;;vorschlag
+z281;Drachenodem;Dragon's Breath;Expertenregeln;211;Advanced Player’s Guide;;vorschlag
+z285;Drakonisches Reservoir;Draconic Reservoir;Expertenregeln;212;Advanced Player’s Guide;;vorschlag
+z286;Dreigestalt;Threefold Aspect;Expertenregeln;212;Advanced Player’s Guide;;vorschlag
+z287;Dringlicher Schritt;Adjuring Step;Ausbauregeln II: Kampf;226;Ultimate Combat;;vorschlag
+z288;Drückende Langeweile;Oppressive Boredom;Ausbauregeln: Magie;210;Ultimate Magic;;vorschlag
+z289;Duftspur;Scent Trail;Expertenregeln;212;Advanced Player’s Guide;;vorschlag
+z290;Dunkelheit;Darkness;Grundregelwerk;261;Core Rulebook;;vorschlag
+z291;Dunkelsicht;Darkvision;Grundregelwerk;262;Core Rulebook;;vorschlag
+z293;Durchdringendes Kreischen;Piercing Shriek;Ausbauregeln: Magie;211;Ultimate Magic;;vorschlag
+z294;Durchschlagende Geschosse;Gravity Bow;Expertenregeln;213;Advanced Player’s Guide;;vorschlag
+z295;Dürre;Blight;Grundregelwerk;261;Core Rulebook;;vorschlag
+z297;Ebenenwechsel;Plane Shift;Grundregelwerk;262;Core Rulebook;;vorschlag
+z298;Echolot;Echolocation;Ausbauregeln: Magie;211;Ultimate Magic;;vorschlag
+z299;Ehrfurchtgebietende Waffe;Weapon of Awe;Expertenregeln;213;Advanced Player’s Guide;;vorschlag
+z300;Eid der Aufopferung;Sacrificial Oath;Expertenregeln;213;Advanced Player’s Guide;;vorschlag
+z301;Eidolon herbeizaubern;Summon Eidolon;Expertenregeln;213;Advanced Player’s Guide;;vorschlag
+z302;Eidolon loslösen;Unfetter;Expertenregeln;213;Advanced Player’s Guide;;vorschlag
+z303;Eidolon umwandeln;Transmogrify;Expertenregeln;213;Advanced Player’s Guide;;vorschlag
+z304;Eidolongenesung;Restore Eidolon;Ausbauregeln: Magie;211;Ultimate Magic;;vorschlag
+z305;Eidolonregeneration;Rejuvenate Eidolon;Expertenregeln;214;Advanced Player’s Guide;;vorschlag
+z306;Eigenständiges Trugbild;Persistent Image;Grundregelwerk;262;Core Rulebook;;vorschlag
+z307;Einfaches Trugbild;Minor Image;Grundregelwerk;263;Core Rulebook;;vorschlag
+z308;Einflüsterung;Suggestion;Grundregelwerk;263;Core Rulebook;;vorschlag
+z309;Einhalt gebieten;Stay the Hand;Expertenregeln;214;Advanced Player’s Guide;;vorschlag
+z310;Einkerkerung;Imprisonment;Grundregelwerk;263;Core Rulebook;;vorschlag
+z311;Eins mit dem Vertrauten;Familiar Melding;Ausbauregeln: Magie;212;Ultimate Magic;;vorschlag
+z312;Einswerden mit der Natur;Commune with Nature;Grundregelwerk;263;Core Rulebook;;vorschlag
+z313;Eisdolch;Ice Spear;Ausbauregeln: Magie;212;Ultimate Magic;;vorschlag
+z315;Eisenholz;Ironwood;Grundregelwerk;263;Core Rulebook;;vorschlag
+z316;Eisenwand;Wall of Iron;Grundregelwerk;263;Core Rulebook;;vorschlag
+z317;Eiserner Körper;Iron Body;Grundregelwerk;264;Core Rulebook;;vorschlag
+z318;Eisgefängnis;Icy Prison;Ausbauregeln: Magie;212;Ultimate Magic;;vorschlag
+z319;Eiskristallteleport;Ice Crystal Teleport;Ausbauregeln: Magie;212;Ultimate Magic;;vorschlag
+z320;Eisleib;Ice Body;Ausbauregeln: Magie;212;Ultimate Magic;;vorschlag
+z321;Eisschlag;Cold Ice Strike;Ausbauregeln: Magie;213;Ultimate Magic;;vorschlag
+z323;Eissturm;Ice Storm;Grundregelwerk;264;Core Rulebook;;vorschlag
+z324;Eiswand;Wall of Ice;Grundregelwerk;264;Core Rulebook;;vorschlag
+z325;Eitern;Fester;Expertenregeln;214;Advanced Player’s Guide;;vorschlag
+z326;Eiterpusteln;Eruptive Pustules;Ausbauregeln: Magie;213;Ultimate Magic;;vorschlag
+z328;Elementaraura;Elemental Aura;Expertenregeln;214;Advanced Player’s Guide;;vorschlag
+z329;Elementare Zungen;Elemental Speech;Expertenregeln;214;Advanced Player’s Guide;;vorschlag
+z332;Elementargestalt I;Elemental Body I;Grundregelwerk;265;Core Rulebook;;vorschlag
+z333;Elementargestalt II;Elemental Body II;Grundregelwerk;265;Core Rulebook;;vorschlag
+z334;Elementargestalt III;Elemental Body III;Grundregelwerk;265;Core Rulebook;;vorschlag
+z335;Elementargestalt IV;Elemental Body IV;Grundregelwerk;269;Core Rulebook;;vorschlag
+z341;Elementarhorde;Elemental Swarm;Grundregelwerk;265;Core Rulebook;;vorschlag
+z347;Elementen trotzen;Endure Elements;Grundregelwerk;266;Core Rulebook;;vorschlag
+z348;Elixier verstärken;Amplify Elixir;Expertenregeln;215;Advanced Player’s Guide;;vorschlag
+z351;Energiefaust;Force Punch;Ausbauregeln: Magie;213;Ultimate Magic;;vorschlag
+z352;Energiefesseln;Force Anchor;Ausbauregeln: Magie;213;Ultimate Magic;;vorschlag
+z353;Energiekäfig;Forcecage;Grundregelwerk;266;Core Rulebook;;vorschlag
+z354;Energien widerstehen;Resist Energy;Grundregelwerk;266;Core Rulebook;;vorschlag
+z356;Energiewand;Wall of Force;Grundregelwerk;266;Core Rulebook;;vorschlag
+z357;Energiewurfhaken;Force Hook Charge;Ausbauregeln: Magie;214;Ultimate Magic;;vorschlag
+z359;Entkräftender Strahl;Ray of Exhaustion;Grundregelwerk;267;Core Rulebook;;vorschlag
+z360;Entkräftung;Enervation;Grundregelwerk;267;Core Rulebook;;vorschlag
+z363;Entropieschild;Entropic Shield;Grundregelwerk;267;Core Rulebook;;vorschlag
+z364;Entsetzliches Bedauern;Terrible Remorse;Ausbauregeln: Magie;214;Ultimate Magic;;vorschlag
+z365;Entstellende Berührung;Disfiguring Touch;Ausbauregeln: Magie;214;Ultimate Magic;;vorschlag
+z366;Entweihen;Desecrate;Grundregelwerk;267;Core Rulebook;;vorschlag
+z367;Entzug von Lebenskraft;Energy Drain;Grundregelwerk;267;Core Rulebook;;vorschlag
+z369;Epidemie;Epidemic;Ausbauregeln: Magie;215;Ultimate Magic;;vorschlag
+z370;Erdbeben;Earthquake;Grundregelwerk;268;Core Rulebook;;vorschlag
+z371;Erde bewegen;Move Earth;Grundregelwerk;268;Core Rulebook;;vorschlag
+z372;Erde und Gestein erweichen;Soften Earth and Stone;Grundregelwerk;268;Core Rulebook;;vorschlag
+z373;Erdwall;Wall of Earth;Expertenregeln;215;Advanced Player’s Guide;;vorschlag
+z374;Erfrierung;Frostbite;Ausbauregeln: Magie;215;Ultimate Magic;;vorschlag
+z378;Erholsamer Schlaf;Restful Sleep;Expertenregeln;215;Advanced Player’s Guide;;vorschlag
+z379;Erinnerung verändern;Modify Memory;Grundregelwerk;269;Core Rulebook;;vorschlag
+z380;Erleuchtende Fackel;Discovery Torch;Ausbauregeln II: Kampf;227;Ultimate Combat;;vorschlag
+z382;Erscheinung bannen;Dispel Apparition;Expertenregeln;215;Advanced Player’s Guide;;vorschlag
+z383;Erschöpfende Berührung;Touch of Fatigue;Grundregelwerk;269;Core Rulebook;;vorschlag
+z384;Erschöpfungs-Bombenzusatz;Languid Bomb Admixture;Ausbauregeln II: Kampf;227;Ultimate Combat;;vorschlag
+z385;Erschrecken;Scare;Grundregelwerk;269;Core Rulebook;;vorschlag
+z386;Ersticken;Suffocation;Expertenregeln;215;Advanced Player’s Guide;;vorschlag
+z387;Erwecken;Awaken;Grundregelwerk;269;Core Rulebook;;vorschlag
+z389;Erzählende Steine;Stone Tell;Grundregelwerk;269;Core Rulebook;;vorschlag
+z391;Erzwungene Reue;Compel Remorse;Expertenregeln;216;Advanced Player’s Guide;;vorschlag
+z392;Erzwungene Stille;Forced Quiet;Ausbauregeln: Magie;215;Ultimate Magic;;vorschlag
+z393;Erzwungene Verschwendung;Expend;Expertenregeln;216;Advanced Player’s Guide;;vorschlag
+z397;Ewige Ruhe;Rest Eternal;Expertenregeln;216;Advanced Player’s Guide;;vorschlag
+z398;Explosive Runen;Explosive Runes;Grundregelwerk;270;Core Rulebook;;vorschlag
+z399;Explosiver Missklang;Discordant Blast;Expertenregeln;217;Advanced Player’s Guide;;vorschlag
+z400;Externare quälen;Agonize;Ausbauregeln: Magie;215;Ultimate Magic;;vorschlag
+z404;Fallen finden;Find Traps;Grundregelwerk;270;Core Rulebook;;vorschlag
+z405;Falsche Erkenntnis;False Vision;Grundregelwerk;270;Core Rulebook;;vorschlag
+z406;Falsches Leben;False Life;Grundregelwerk;270;Core Rulebook;;vorschlag
+z407;Federfall;Feather Fall;Grundregelwerk;270;Core Rulebook;;vorschlag
+z408;Federleicht;Feather Step;Expertenregeln;217;Advanced Player’s Guide;;vorschlag
+z409;Feenfeuer;Faerie Fire;Grundregelwerk;270;Core Rulebook;;vorschlag
+z412;Fehlfunktion;Malfunction;Ausbauregeln: Magie;215;Ultimate Magic;;vorschlag
+z413;Fehlzündung provozieren;Destabilize Powder;Ausbauregeln II: Kampf;228;Ultimate Combat;;vorschlag
+z414;Feiglings Leid;Coward's Lament;Expertenregeln;217;Advanced Player’s Guide;;vorschlag
+z415;Feind zu Freund;Foe to Friend;Expertenregeln;217;Advanced Player’s Guide;;vorschlag
+z416;Feindseliger Austausch;Hostile Juxtaposition;Ausbauregeln II: Kampf;228;Ultimate Combat;;vorschlag
+z417;Feindseligkeit hervorrufen;Incite Hostility;Ausbauregeln II: Kampf;228;Ultimate Combat;;vorschlag
+z418;Fels- und Ascheregen;Volcanic Storm;Ausbauregeln: Magie;215;Ultimate Magic;;vorschlag
+z420;Fertigkeit ausborgen;Borrow Skill;Expertenregeln;217;Advanced Player’s Guide;;vorschlag
+z421;Fesseln;Enthrall;Grundregelwerk;271;Core Rulebook;;vorschlag
+z422;Fesseln sprengen;Burst Bonds;Expertenregeln;217;Advanced Player’s Guide;;vorschlag
+z425;Feste Hoffnung;Good Hope;Grundregelwerk;271;Core Rulebook;;vorschlag
+z426;Fester Nebel;Solid Fog;Grundregelwerk;271;Core Rulebook;;vorschlag
+z427;Feststehender Ton;Solid Note;Expertenregeln;218;Advanced Player’s Guide;;vorschlag
+z428;Feuchtes Pulver;Damp Powder;Ausbauregeln II: Kampf;228;Ultimate Combat;;vorschlag
+z429;Feuer löschen;Quench;Grundregelwerk;272;Core Rulebook;;vorschlag
+z430;Feuerball;Fireball;Grundregelwerk;272;Core Rulebook;;vorschlag
+z431;Feuerfalle;Fire Trap;Grundregelwerk;272;Core Rulebook;;vorschlag
+z434;Feuersaat;Fire Seeds;Grundregelwerk;272;Core Rulebook;;vorschlag
+z435;Feuerschild;Fire Shield;Grundregelwerk;273;Core Rulebook;;vorschlag
+z436;Feuerschlange;Fire Snake;Expertenregeln;218;Advanced Player’s Guide;;vorschlag
+z437;Feuersegen;Firebrand;Expertenregeln;218;Advanced Player’s Guide;;vorschlag
+z438;Feuerspeien;Fire Breath;Expertenregeln;218;Advanced Player’s Guide;;vorschlag
+z441;Feuersturm;Fire Storm;Grundregelwerk;273;Core Rulebook;;vorschlag
+z442;Feuerwand;Wall of Fire;Grundregelwerk;273;Core Rulebook;;vorschlag
+z443;Feuerwerk;Pyrotechnics;Grundregelwerk;273;Core Rulebook;;vorschlag
+z444;Feurige Gestalt;Fiery Body;Expertenregeln;219;Advanced Player’s Guide;;vorschlag
+z446;Feurige Schuriken;Fiery Shuriken;Ausbauregeln II: Kampf;228;Ultimate Combat;;vorschlag
+z447;Finger des Todes;Finger of Death;Grundregelwerk;274;Core Rulebook;;vorschlag
+z448;Flamme der Herrlichkeit;Blaze of Glory;Expertenregeln;219;Advanced Player’s Guide;;vorschlag
+z450;Flammen der Gläubigen;Flames of the Faithful;Expertenregeln;219;Advanced Player’s Guide;;vorschlag
+z451;Flammende Vergeltung;Fire of Vengeance;Expertenregeln;219;Advanced Player’s Guide;;vorschlag
+z452;Flammende Verstrickung;Burning Entanglement;Expertenregeln;219;Advanced Player’s Guide;;vorschlag
+z453;Flammende Wolke;Incendiary Cloud;Grundregelwerk;274;Core Rulebook;;vorschlag
+z454;Flammendes Urteil;Fire of Judgment;Expertenregeln;219;Advanced Player’s Guide;;vorschlag
+z455;Flammenfontäne;Firefall;Expertenregeln;220;Advanced Player’s Guide;;vorschlag
+z456;Flammenklinge;Flame Blade;Grundregelwerk;274;Core Rulebook;;vorschlag
+z457;Flammenkugel;Flaming Sphere;Grundregelwerk;274;Core Rulebook;;vorschlag
+z458;Flammenpfeil;Flame Arrow;Grundregelwerk;275;Core Rulebook;;vorschlag
+z459;Flammenschlag;Flame Strike;Grundregelwerk;275;Core Rulebook;;vorschlag
+z460;Fleisch zu Stein;Flesh to Stone;Grundregelwerk;275;Core Rulebook;;vorschlag
+z461;Fleischkeule;Enemy Hammer;Expertenregeln;220;Advanced Player’s Guide;;vorschlag
+z462;Fleischwurmbefall;Fleshworm Infestation;Ausbauregeln: Magie;216;Ultimate Magic;;vorschlag
+z465;Fliegen;Fly;Grundregelwerk;276;Core Rulebook;;vorschlag
+z466;Flimmern;Blink;Grundregelwerk;276;Core Rulebook;;vorschlag
+z468;Fluch;Bestow Curse;Grundregelwerk;276;Core Rulebook;;vorschlag
+z469;Fluch brechen;Remove Curse;Grundregelwerk;276;Core Rulebook;;vorschlag
+z470;Fluch der Zauberplage;Curse of Magic Negation;Ausbauregeln: Magie;216;Ultimate Magic;;pruefen
+z471;Fluch des Ekels;Curse of Disgust;Ausbauregeln: Magie;216;Ultimate Magic;;vorschlag
+z474;Flucht;Getaway;Expertenregeln;220;Advanced Player’s Guide;;vorschlag
+z475;Flug der Riesenadler;Eagle Aerie;Ausbauregeln: Magie;216;Ultimate Magic;;vorschlag
+z478;Flüssige Gestalt;Fluid Form;Expertenregeln;221;Advanced Player’s Guide;;vorschlag
+z481;Fortschicken;Dismissal;Grundregelwerk;277;Core Rulebook;;vorschlag
+z482;Friedensschwur;Oath of Peace;Expertenregeln;221;Advanced Player’s Guide;;vorschlag
+z483;Friedenssiegel;Peacebond;Ausbauregeln II: Kampf;229;Ultimate Combat;;vorschlag
+z485;Fröhliche Gelassenheit;Euphoric Tranquility;Expertenregeln;221;Advanced Player’s Guide;;vorschlag
+z486;Froschkoloss herbeizaubern;Summon Froghemoth;Ausbauregeln: Magie;216;Ultimate Magic;;vorschlag
+z487;Froschschwarm herbeizaubern;Summon Frog Swarm;Ausbauregeln: Magie;216;Ultimate Magic;;vorschlag
+z489;Frostsphäre;Freezing Sphere;Grundregelwerk;277;Core Rulebook;;vorschlag
+z490;Funken;Spark;Expertenregeln;222;Advanced Player’s Guide;;vorschlag
+z492;Furcht;Fear;Grundregelwerk;277;Core Rulebook;;vorschlag
+z493;Furcht auslösen;Cause Fear;Grundregelwerk;277;Core Rulebook;;vorschlag
+z494;Furcht bannen;Remove Fear;Grundregelwerk;277;Core Rulebook;;vorschlag
+z495;Furchtbarer Schmerz;Howling Agony;Ausbauregeln: Magie;216;Ultimate Magic;;vorschlag
+z496;Furchteinflößende Erscheinung;Frightful Aspect;Ausbauregeln II: Kampf;229;Ultimate Combat;;vorschlag
+z497;Fürchterlicher Lachanfall;Hideous Laughter;Grundregelwerk;277;Core Rulebook;;vorschlag
+z499;Gasförmige Gestalt;Gaseous Form;Grundregelwerk;278;Core Rulebook;;vorschlag
+z500;Geas/Auftrag;Geas/Quest;Grundregelwerk;278;Core Rulebook;;vorschlag
+z501;Geballte Faust;Clenched Fist;Grundregelwerk;278;Core Rulebook;;vorschlag
+z503;Gebet;Prayer;Grundregelwerk;279;Core Rulebook;;vorschlag
+z505;Gebrechen unterdrücken;Placebo Effect;Ausbauregeln: Magie;217;Ultimate Magic;;vorschlag
+z506;Gedächtniserweiterung;Mnemonic Enhancer;Grundregelwerk;279;Core Rulebook;;vorschlag
+z507;Gedächtnislücke;Memory Lapse;Expertenregeln;222;Advanced Player’s Guide;;vorschlag
+z510;Gedanken suchen;Seek Thoughts;Expertenregeln;222;Advanced Player’s Guide;;vorschlag
+z511;Gedanken wahrnehmen;Detect Thoughts;Grundregelwerk;279;Core Rulebook;;vorschlag
+z512;Gedankenleere;Mind Blank;Grundregelwerk;279;Core Rulebook;;vorschlag
+z513;Gedankennebel;Mind Fog;Grundregelwerk;279;Core Rulebook;;vorschlag
+z514;Gefahrensinn;Anticipate Peril;Ausbauregeln: Magie;217;Ultimate Magic;;vorschlag
+z516;Gefährtenverbindung;Companion Mind Link;Ausbauregeln II: Kampf;229;Ultimate Combat;;vorschlag
+z517;Gefäß des Mystikers;Oracle's Vessel;Ausbauregeln: Magie;218;Ultimate Magic;;vorschlag
+z518;Gefühle besänftigen;Calm Emotions;Grundregelwerk;280;Core Rulebook;;vorschlag
+z519;Gegenstand aufspüren;Locate Object;Grundregelwerk;280;Core Rulebook;;vorschlag
+z520;Gegenstand kontrollieren;Possess Object;Ausbauregeln: Magie;218;Ultimate Magic;;vorschlag
+z521;Gegenstand schrumpfen;Shrink Item;Grundregelwerk;280;Core Rulebook;;vorschlag
+z522;Gegenstand teleportieren;Teleport Object;Grundregelwerk;280;Core Rulebook;;vorschlag
+z523;Gegenstand verbergen;Obscure Object;Grundregelwerk;280;Core Rulebook;;vorschlag
+z524;Gegenstände beleben;Animate Objects;Grundregelwerk;280;Core Rulebook;;vorschlag
+z526;Gegner schweben lassen;Hostile Levitation;Ausbauregeln II: Kampf;229;Ultimate Combat;;vorschlag
+z527;Geheime Truhe;Secret Chest;Grundregelwerk;281;Core Rulebook;;vorschlag
+z528;Geheimtüren entdecken;Detect Secret Doors;Grundregelwerk;281;Core Rulebook;;vorschlag
+z532;Geist des Schützen;Archer's Spirit;Expertenregeln;222;Advanced Player’s Guide;;vorschlag
+z535;Geisterhaftes Geräusch;Ghost Sound;Grundregelwerk;281;Core Rulebook;;vorschlag
+z536;Geisterhaftes Instrument;Exquisite Accompaniment;Ausbauregeln: Magie;218;Ultimate Magic;;vorschlag
+z537;Geisterhand;Spectral Hand;Grundregelwerk;281;Core Rulebook;;vorschlag
+z538;Geisterross;Phantom Steed;Grundregelwerk;282;Core Rulebook;;vorschlag
+z543;Geladene Spiegelbilder;Charged Images;Ausbauregeln II: Kampf;230;Ultimate Combat;;vorschlag
+z572;Genesung;Restoration;Grundregelwerk;282;Core Rulebook;;vorschlag
+z573;Geniale Eingebung;Brilliant Inspiration;Expertenregeln;222;Advanced Player’s Guide;;vorschlag
+z579;Geräusche formen;Sculpt Sound;Grundregelwerk;282;Core Rulebook;;vorschlag
+z580;Geräuschexplosion;Sound Burst;Grundregelwerk;282;Core Rulebook;;vorschlag
+z581;Gerechte Kraft;Righteous Vigor;Expertenregeln;223;Advanced Player’s Guide;;vorschlag
+z582;Gerechte Macht;Righteous Might;Grundregelwerk;282;Core Rulebook;;vorschlag
+z583;Geruchlosigkeit;Negate Aroma;Expertenregeln;223;Advanced Player’s Guide;;vorschlag
+z584;Geschärfte Sinne;Keen Senses;Expertenregeln;223;Advanced Player’s Guide;;vorschlag
+z585;Geschichte des Blutes;Blood Biography;Expertenregeln;223;Advanced Player’s Guide;;vorschlag
+z587;Geschoss des Bösen;Dread Bolt;Ausbauregeln: Magie;218;Ultimate Magic;;vorschlag
+z589;Geschwindigkeitsausbruch;Burst of Speed;Ausbauregeln II: Kampf;230;Ultimate Combat;;vorschlag
+z591;Gesinnung sehen;See Alignment;Ausbauregeln II: Kampf;231;Ultimate Combat;;vorschlag
+z592;Gesinnung verbergen;Undetectable Alignment;Grundregelwerk;283;Core Rulebook;;vorschlag
+z595;Gestalt verändern;Alter Self;Grundregelwerk;283;Core Rulebook;;vorschlag
+z596;Gestaltwandel;Shapechange;Grundregelwerk;283;Core Rulebook;;vorschlag
+z599;Gestickter Schatz;Treasure Stitching;Expertenregeln;224;Advanced Player’s Guide;;vorschlag
+z600;Geteilte Erinnerung;Share Memory;Ausbauregeln: Magie;218;Ultimate Magic;;vorschlag
+z602;Geteilter Zorn;Shared Wrath;Expertenregeln;224;Advanced Player’s Guide;;vorschlag
+z607;Gewittersturm herbeirufen;Call Lightning Storm;Grundregelwerk;283;Core Rulebook;;vorschlag
+z609;Geysir;Geyser;Expertenregeln;224;Advanced Player’s Guide;;vorschlag
+z610;Ghulhand;Ghoul Touch;Grundregelwerk;283;Core Rulebook;;vorschlag
+z612;Gift beschleunigen;Accelerate Poison;Expertenregeln;224;Advanced Player’s Guide;;vorschlag
+z613;Gift entdecken;Detect Poison;Grundregelwerk;283;Core Rulebook;;vorschlag
+z614;Gift neutralisieren;Neutralize Poison;Grundregelwerk;283;Core Rulebook;;vorschlag
+z615;Gift spucken;Spit Venom;Ausbauregeln: Magie;219;Ultimate Magic;;vorschlag
+z616;Gift verzögern;Delay Poison;Grundregelwerk;284;Core Rulebook;;vorschlag
+z617;Giftanfälligkeit;Vulnerability to Poison;Ausbauregeln: Magie;219;Ultimate Magic;;vorschlag
+z618;Giftbolzen;Venomous Bolt;Expertenregeln;224;Advanced Player’s Guide;;vorschlag
+z620;Giftigkeit absorbieren;Absorb Toxicity;Ausbauregeln II: Kampf;231;Ultimate Combat;;vorschlag
+z623;Gleißendes Licht;Searing Light;Grundregelwerk;284;Core Rulebook;;vorschlag
+z624;Gleißendes Metall;Sun Metal;Ausbauregeln II: Kampf;231;Ultimate Combat;;vorschlag
+z625;Gleiten;Glide;Expertenregeln;224;Advanced Player’s Guide;;vorschlag
+z626;Glitzerstaub;Glitterdust;Grundregelwerk;284;Core Rulebook;;vorschlag
+z627;Glück ausborgen;Borrow Fortune;Expertenregeln;225;Advanced Player’s Guide;;vorschlag
+z629;Glyphe der Abwehr;Glyph of Warding;Grundregelwerk;284;Core Rulebook;;vorschlag
+z632;Göttliche Führung;Guidance;Grundregelwerk;285;Core Rulebook;;vorschlag
+z633;Göttliche Gunst;Divine Favor;Grundregelwerk;285;Core Rulebook;;vorschlag
+z634;Göttliche Jagd;Divine Pursuit;Ausbauregeln: Magie;219;Ultimate Magic;;vorschlag
+z635;Göttliche Macht;Divine Power;Grundregelwerk;285;Core Rulebook;;vorschlag
+z636;Göttliche Stärkung;Divine Transfer;Expertenregeln;225;Advanced Player’s Guide;;vorschlag
+z637;Göttlicher Pfeil;Divine Arrow;Ausbauregeln II: Kampf;231;Ultimate Combat;;vorschlag
+z639;Graben;Burrow;Ausbauregeln: Magie;219;Ultimate Magic;;vorschlag
+z642;Große Halbebene erschaffen;Create Demiplane, Greater;Ausbauregeln: Magie;220;Ultimate Magic;;vorschlag
+z644;Grube erschaffen;Create Pit;Expertenregeln;226;Advanced Player’s Guide;;vorschlag
+z647;Gute Beeren;Goodberry;Grundregelwerk;285;Core Rulebook;;vorschlag
+z649;Gutes bannen;Dispel Good;Expertenregeln;285;Advanced Player’s Guide;;vorschlag
+z650;Gutes entdecken;Detect Good;Grundregelwerk;285;Core Rulebook;;vorschlag
+z652;Hain der Erholung;Grove of Respite;Expertenregeln;226;Advanced Player’s Guide;;vorschlag
+z654;Halbebene erschaffen;Create Demiplane;Ausbauregeln: Magie;219;Ultimate Magic;;vorschlag
+z657;Handlung untersagen;Forbid Action;Ausbauregeln: Magie;221;Ultimate Magic;;vorschlag
+z658;Handwerkers Fluch;Crafter's Curse;Expertenregeln;226;Advanced Player’s Guide;;vorschlag
+z659;Handwerkers Glück;Crafter's Fortune;Expertenregeln;226;Advanced Player’s Guide;;vorschlag
+z660;Harmonische Vibrationen;Sympathetic Vibration;Grundregelwerk;286;Core Rulebook;;vorschlag
+z662;Harzige Haut;Resinous Skin;Ausbauregeln II: Kampf;231;Ultimate Combat;;vorschlag
+z663;Hast;Haste;Grundregelwerk;286;Core Rulebook;;vorschlag
+z664;Hauch der Elemente;Elemental Touch;Expertenregeln;226;Advanced Player’s Guide;;vorschlag
+z665;Hauch der See;Touch of the Sea;Expertenregeln;227;Advanced Player’s Guide;;vorschlag
+z666;Hauch der Tollpatschigkeit;Touch of Gracelessness;Expertenregeln;227;Advanced Player’s Guide;;vorschlag
+z667;Hauch des Stumpfsinns;Touch of Idiocy;Grundregelwerk;286;Core Rulebook;;vorschlag
+z670;Heilige Aura;Holy Aura;Grundregelwerk;286;Core Rulebook;;vorschlag
+z671;Heilige Bande;Sacred Bond;Expertenregeln;227;Advanced Player’s Guide;;vorschlag
+z673;Heiliger Schild;Sacred Shield;Ausbauregeln: Magie;221;Ultimate Magic;;vorschlag
+z674;Heiliger Schlag;Holy Smite;Grundregelwerk;286;Core Rulebook;;vorschlag
+z675;Heiliges Eis;Holy Ice;Ausbauregeln: Magie;222;Ultimate Magic;;vorschlag
+z676;Heiliges Flüstern;Holy Whisper;Expertenregeln;227;Advanced Player’s Guide;;vorschlag
+z677;Heiliges Gespräch;Commune;Grundregelwerk;287;Core Rulebook;;vorschlag
+z678;Heiliges Schwert;Holy Sword;Grundregelwerk;287;Core Rulebook;;vorschlag
+z680;Heiliges Wort;Holy Word;Grundregelwerk;287;Core Rulebook;;vorschlag
+z681;Heiligtum;Sanctuary;Grundregelwerk;287;Core Rulebook;;vorschlag
+z682;Heilsamer Ruf;Purified Calling;Expertenregeln;227;Advanced Player’s Guide;;vorschlag
+z683;Heilung;Heal;Grundregelwerk;287;Core Rulebook;;vorschlag
+z684;Heilung stehlen;Healing Thief;Ausbauregeln II: Kampf;232;Ultimate Combat;;vorschlag
+z686;Heldengeschick;Heroic Fortune;Expertenregeln;324;Advanced Player’s Guide;;vorschlag
+z687;Heldenhafte Anrufung;Heroic Invocation;Ausbauregeln II: Kampf;232;Ultimate Combat;;vorschlag
+z688;Heldenhafter Widerstand;Hero's Defiance;Expertenregeln;227;Advanced Player’s Guide;;vorschlag
+z689;Heldenmahl;Heroes' Feast;Grundregelwerk;288;Core Rulebook;;vorschlag
+z690;Heldenmut;Heroism;Grundregelwerk;288;Core Rulebook;;vorschlag
+z691;Hellhören/Hellsehen;Clairaudience/Clairvoyance;Grundregelwerk;288;Core Rulebook;;vorschlag
+z694;Heroischer Ausklang;Heroic Finale;Expertenregeln;228;Advanced Player’s Guide;;vorschlag
+z700;Hilfreiche Hand;Helping Hand;Grundregelwerk;288;Core Rulebook;;vorschlag
+z707;Höhere Erschaffung;Major Creation;Grundregelwerk;289;Core Rulebook;;vorschlag
+z713;Höllische Vision;Vision of Hell;Ausbauregeln: Magie;222;Ultimate Magic;;vorschlag
+z714;Holz formen;Wood Shape;Grundregelwerk;289;Core Rulebook;;vorschlag
+z715;Holz krümmen;Warp Wood;Grundregelwerk;289;Core Rulebook;;vorschlag
+z716;Holz zurücktreiben;Repel Wood;Grundregelwerk;289;Core Rulebook;;vorschlag
+z717;Hölzerne Phalanx;Wooden Phalanx;Ausbauregeln: Magie;222;Ultimate Magic;;vorschlag
+z718;Hölzerner Weg;Tree Stride;Grundregelwerk;289;Core Rulebook;;vorschlag
+z719;Holzhammer;Wooden Fist;Ausbauregeln: Magie;222;Ultimate Magic;;vorschlag
+z721;Hungrige Grube;Hungry Pit;Expertenregeln;228;Advanced Player’s Guide;;vorschlag
+z727;Hypnose;Hypnotism;Grundregelwerk;290;Core Rulebook;;vorschlag
+z728;Hypnotisches Muster;Hypnotic Pattern;Grundregelwerk;290;Core Rulebook;;vorschlag
+z729;Identifizieren;Identify;Grundregelwerk;290;Core Rulebook;;vorschlag
+z730;Illusion der Ruhe;Illusion of Calm;Ausbauregeln II: Kampf;232;Ultimate Combat;;vorschlag
+z732;Illusionsschrift;Illusory Script;Grundregelwerk;290;Core Rulebook;;vorschlag
+z733;Illusionswand;Illusory Wall;Grundregelwerk;291;Core Rulebook;;vorschlag
+z734;Immunität gegen Zauber;Spell Immunity;Grundregelwerk;291;Core Rulebook;;vorschlag
+z735;Implosion;Implosion;Grundregelwerk;291;Core Rulebook;;vorschlag
+z741;Innere Ruhe;Serenity;Ausbauregeln: Magie;223;Ultimate Magic;;vorschlag
+z745;Insektenplage;Insect Plague;Grundregelwerk;291;Core Rulebook;;vorschlag
+z746;Instrument der Pein;Instrument of Agony;Ausbauregeln II: Kampf;232;Ultimate Combat;;vorschlag
+z747;Instrument herbeizaubern;Summon Instrument;Grundregelwerk;291;Core Rulebook;;vorschlag
+z748;Instrument spielen;Play Instrument;Ausbauregeln: Magie;223;Ultimate Magic;;vorschlag
+z749;Interplanetares Teleportieren;Interplanetary Teleport;Ausbauregeln: Magie;223;Ultimate Magic;;vorschlag
+z750;Irreführung;Misdirection;Grundregelwerk;291;Core Rulebook;;vorschlag
+z751;Irrgarten;Maze;Grundregelwerk;292;Core Rulebook;;vorschlag
+z752;Jagdgeheul;Hunter's Howl;Expertenregeln;228;Advanced Player’s Guide;;vorschlag
+z754;Jagdhorn;Hunting Horn;Ausbauregeln: Magie;223;Ultimate Magic;;vorschlag
+z758;Jugendliche Erscheinung;Youthful Appearance;Ausbauregeln: Magie;223;Ultimate Magic;;vorschlag
+z761;Käfig-Bombenzusatz;Caging Bomb Admixture;Ausbauregeln II: Kampf;233;Ultimate Combat;;vorschlag
+z762;Kakophonie;Cacophonous Call;Expertenregeln;228;Advanced Player’s Guide;;vorschlag
+z764;Kalte Hand;Chill Touch;Grundregelwerk;292;Core Rulebook;;vorschlag
+z765;Kältekegel;Cone of Cold;Grundregelwerk;292;Core Rulebook;;vorschlag
+z766;Kalter Hauch;Frigid Touch;Ausbauregeln: Magie;223;Ultimate Magic;;vorschlag
+z767;Kältestrahl;Ray of Frost;Grundregelwerk;292;Core Rulebook;;vorschlag
+z770;Katzenhafte Anmut;Cat's Grace;Grundregelwerk;292;Core Rulebook;;vorschlag
+z772;Kette des Verhängnisses;Chain of Perdition;Ausbauregeln II: Kampf;233;Ultimate Combat;;vorschlag
+z773;Kichernder Totenschädel;Giggling Skull;Ausbauregeln: Magie;224;Ultimate Magic;;vorschlag
+z774;Kind der Wellen;Wave Shield;Ausbauregeln: Magie;224;Ultimate Magic;;vorschlag
+z776;Ki-Pfeil;Ki Arrow;Ausbauregeln: Magie;224;Ultimate Magic;;vorschlag
+z777;Ki-Raub;Ki Leech;Ausbauregeln: Magie;224;Ultimate Magic;;vorschlag
+z778;Ki-Schrei;Ki Shout;Ausbauregeln: Magie;224;Ultimate Magic;;vorschlag
+z780;Klagelied des Geisterbanns;Ghostbane Dirge;Expertenregeln;228;Advanced Player’s Guide;;vorschlag
+z786;Kleine Halbebene erschaffen;Create Demiplane, Lesser;Ausbauregeln: Magie;220;Ultimate Magic;;vorschlag
+z787;Kleinen Verbündeten herbeizaubern;Summon Minor Ally;Ausbauregeln: Magie;224;Ultimate Magic;;vorschlag
+z788;Kleines Monster herbeizaubern;Summon Minor Monster;Ausbauregeln: Magie;224;Ultimate Magic;;vorschlag
+z791;Klinge des strahlenden Sieges;Blade of Bright Victory;Ausbauregeln: Magie;225;Ultimate Magic;;vorschlag
+z792;Klingenbarriere;Blade Barrier;Grundregelwerk;292;Core Rulebook;;vorschlag
+z793;Klingenkranz;Circle of Daggers;Ausbauregeln II: Kampf;233;Ultimate Combat;;vorschlag
+z796;Klon;Clone;Grundregelwerk;293;Core Rulebook;;vorschlag
+z797;Klopfen;Knock;Grundregelwerk;293;Core Rulebook;;vorschlag
+z799;Kochendes Blut;Boiling Blood;Ausbauregeln: Magie;225;Ultimate Magic;;vorschlag
+z801;Konstrukt beruhigen;Soothe Construct;Ausbauregeln: Magie;225;Ultimate Magic;;vorschlag
+z802;Konstrukt herbeizaubern;Call Construct;Ausbauregeln: Magie;225;Ultimate Magic;;vorschlag
+z803;Konstrukt kontrollieren;Control Construct;Ausbauregeln: Magie;225;Ultimate Magic;;vorschlag
+z804;Kontakt zu anderen Ebenen;Contact Other Plane;Grundregelwerk;293;Core Rulebook;;vorschlag
+z805;Konzentrierte Aktion;Coordinated Effort;Expertenregeln;228;Advanced Player’s Guide;;vorschlag
+z806;Kräftige Hand;Forceful Hand;Grundregelwerk;294;Core Rulebook;;vorschlag
+z811;Kränkelnder Strahl;Ray of Sickening;Ausbauregeln: Magie;225;Ultimate Magic;;vorschlag
+z813;Krankheit erkennen;Detect Disease;Ausbauregeln: Magie;225;Ultimate Magic;;vorschlag
+z816;Krätze;Pox Pustules;Expertenregeln;229;Advanced Player’s Guide;;vorschlag
+z817;Kreatur aufspüren;Locate Creature;Grundregelwerk;294;Core Rulebook;;vorschlag
+z818;Kreis der Teleportation;Teleportation Circle;Grundregelwerk;294;Core Rulebook;;vorschlag
+z819;Kreischen;Screech;Expertenregeln;228;Advanced Player’s Guide;;vorschlag
+z821;Kriechender Tod;Creeping Doom;Grundregelwerk;294;Core Rulebook;;vorschlag
+z823;Kritische Wunden heilen;Cure Critical Wounds;Grundregelwerk;295;Core Rulebook;;vorschlag
+z824;Kritische Wunden verursachen;Inflict Critical Wounds;Grundregelwerk;295;Core Rulebook;;vorschlag
+z826;Kugel der Leere;Orb of the Void;Ausbauregeln: Magie;226;Ultimate Magic;;vorschlag
+z827;Kugel der Unverwundbarkeit;Globe of Invulnerability;Grundregelwerk;295;Core Rulebook;;vorschlag
+z829;Kugelblitz;Chain Lightning;Grundregelwerk;295;Core Rulebook;;vorschlag
+z831;Kugelschild;Bullet Shield;Ausbauregeln II: Kampf;234;Ultimate Combat;;vorschlag
+z832;Kurze Rast;Nap Stack;Expertenregeln;229;Advanced Player’s Guide;;vorschlag
+z833;Kurzstreckenteleportation;Dimension Hop;Ausbauregeln II: Kampf;234;Ultimate Combat;;vorschlag
+z835;Lagerplatz verstecken;Hide Campsite;Expertenregeln;230;Advanced Player’s Guide;;vorschlag
+z837;Lähmendes Vorzeichen;Debilitating Portent;Ausbauregeln II: Kampf;234;Ultimate Combat;;vorschlag
+z838;Lähmung aufheben;Remove Paralysis;Grundregelwerk;295;Core Rulebook;;vorschlag
+z839;Lange Schritte;Longstrider;Grundregelwerk;295;Core Rulebook;;vorschlag
+z841;Lavawand;Wall of Lava;Expertenregeln;230;Advanced Player’s Guide;;vorschlag
+z842;Lebensatem;Breath of Life;Grundregelwerk;296;Core Rulebook;;vorschlag
+z847;Lebenskraftübertragung;Life Conduit;Ausbauregeln II: Kampf;234;Ultimate Combat;;vorschlag
+z856;Lehren des Blutes;Blood Transcription;Ausbauregeln: Magie;227;Ultimate Magic;;vorschlag
+z857;Leiche kompostieren;Decompose Corpse;Ausbauregeln: Magie;227;Ultimate Magic;;vorschlag
+z858;Leiche segnen;Sanctify Corpse;Ausbauregeln: Magie;227;Ultimate Magic;;vorschlag
+z859;Leiche verwandeln;Alter Corpse;Expertenregeln;230;Advanced Player’s Guide;;vorschlag
+z860;Leiche wiederherstellen;Restore Corpse;Ausbauregeln: Magie;227;Ultimate Magic;;vorschlag
+z862;Leichte Wunden heilen;Cure Light Wounds;Grundregelwerk;296;Core Rulebook;;vorschlag
+z863;Leichte Wunden verursachen;Inflict Light Wounds;Grundregelwerk;297;Core Rulebook;;vorschlag
+z864;Leid;Harm;Grundregelwerk;297;Core Rulebook;;vorschlag
+z866;Leitstern;Guiding Star;Expertenregeln;230;Advanced Player’s Guide;;vorschlag
+z867;Leuchtender Pfeil;Daybreak Arrow;Ausbauregeln II: Kampf;234;Ultimate Combat;;vorschlag
+z868;Leuchtender Weg;Wake of Light;Expertenregeln;230;Advanced Player’s Guide;;vorschlag
+z869;Licht;Light;Grundregelwerk;297;Core Rulebook;;vorschlag
+z870;Lichtblitze;Flare Burst;Expertenregeln;231;Advanced Player’s Guide;;vorschlag
+z874;Lichtlanze;Light Lance;Expertenregeln;231;Advanced Player’s Guide;;vorschlag
+z876;Lied der Zwietracht;Song of Discord;Grundregelwerk;297;Core Rulebook;;vorschlag
+z880;Litanei der Faulheit;Litany of Sloth;Ausbauregeln II: Kampf;235;Ultimate Combat;;vorschlag
+z881;Litanei der Rache;Litany of Vengeance;Ausbauregeln II: Kampf;235;Ultimate Combat;;vorschlag
+z882;Litanei der Reaktion;Litany of Warding;Ausbauregeln II: Kampf;235;Ultimate Combat;;vorschlag
+z883;Litanei der Rechtschaffenheit;Litany of Righteousness;Ausbauregeln II: Kampf;235;Ultimate Combat;;vorschlag
+z884;Litanei der Redegewandtheit;Litany of Eloquence;Ausbauregeln II: Kampf;235;Ultimate Combat;;vorschlag
+z885;Litanei der Schwäche;Litany of Weakness;Ausbauregeln II: Kampf;235;Ultimate Combat;;vorschlag
+z886;Litanei der Verstrickung;Litany of Entanglement;Ausbauregeln II: Kampf;236;Ultimate Combat;;vorschlag
+z887;Litanei der Verteidigung;Litany of Defense;Ausbauregeln II: Kampf;236;Ultimate Combat;;vorschlag
+z888;Litanei des Donners;Litany of Thunder;Ausbauregeln II: Kampf;235;Ultimate Combat;;vorschlag
+z889;Litanei des Entkommens;Litany of Escape;Ausbauregeln II: Kampf;235;Ultimate Combat;;vorschlag
+z890;Litanei des Sehvermögens;Litany of Sight;Ausbauregeln II: Kampf;236;Ultimate Combat;;vorschlag
+z891;Litanei des Wahnsinns;Litany of Madness;Ausbauregeln II: Kampf;236;Ultimate Combat;;vorschlag
+z892;Luftblase;Air Bubble;Ausbauregeln II: Kampf;236;Ultimate Combat;;vorschlag
+z894;Luftweg;Air Walk;Grundregelwerk;297;Core Rulebook;;vorschlag
+z895;Lügen erkennen;Discern Lies;Grundregelwerk;298;Core Rulebook;;vorschlag
+z919;Mächtige Ansteckung;Contagion, Greater;Ausbauregeln: Magie;206;Ultimate Magic;;vorschlag
+z921;Mächtige Ausspähende Augen;Prying Eyes, Greater;Grundregelwerk;248;Core Rulebook;;vorschlag
+z922;Mächtige Ausspähung;Scrying, Greater;Grundregelwerk;248;Core Rulebook;;vorschlag
+z923;Mächtige Benannte Kugel;Named Bullet, Greater;Ausbauregeln II: Kampf;224;Ultimate Combat;;vorschlag
+z924;Mächtige Dunkelsicht;Darkvision, Greater;Ausbauregeln: Magie;211;Ultimate Magic;;vorschlag
+z925;Mächtige Eidolonregeneration;Rejuvenate Eidolon, Greater;Expertenregeln;214;Advanced Player’s Guide;;vorschlag
+z929;Mächtige Immunität gegen Zauber;Spell Immunity, Greater;Grundregelwerk;291;Core Rulebook;;vorschlag
+z931;Mächtige Lebenskraftübertragung;Life Conduit, Greater;Ausbauregeln II: Kampf;234;Ultimate Combat;;vorschlag
+z932;Mächtige Magie bannen;Dispel Magic, Greater;Grundregelwerk;299;Core Rulebook;;vorschlag
+z933;Mächtige Magische Fänge;Magic Fang, Greater;Grundregelwerk;302;Core Rulebook;;vorschlag
+z934;Mächtige Magische Waffe;Magic Weapon, Greater;Grundregelwerk;304;Core Rulebook;;vorschlag
+z936;Mächtige Schattenbeschwörung;Shadow Conjuration, Greater;Grundregelwerk;321;Core Rulebook;;vorschlag
+z937;Mächtige Schattenhervorrufung;Shadow Evocation, Greater;Grundregelwerk;322;Core Rulebook;;vorschlag
+z940;Mächtige Unsichtbarkeit;Invisibility, Greater;Grundregelwerk;349;Core Rulebook;;vorschlag
+z941;Mächtige Verwandlung;Polymorph, Greater;Grundregelwerk;356;Core Rulebook;;vorschlag
+z944;Mächtiger Arkaner Blick;Arcane Sight, Greater;Grundregelwerk;244;Core Rulebook;;vorschlag
+z945;Mächtiger Befehl;Command, Greater;Grundregelwerk;250;Core Rulebook;;vorschlag
+z946;Mächtiger Bindender Ruf;Planar Binding, Greater;Grundregelwerk;252;Core Rulebook;;vorschlag
+z948;Mächtiger Feindseliger Austausch;Hostile Juxtaposition, Greater;Ausbauregeln II: Kampf;228;Ultimate Combat;;vorschlag
+z949;Mächtiger Fluch;Bestow Curse, Greater;Ausbauregeln: Magie;215;Ultimate Magic;;vorschlag
+z952;Mächtiger Tieraspekt;Animal Aspect, Greater;Ausbauregeln II: Kampf;245;Ultimate Combat;;vorschlag
+z953;Mächtiger Verbündeter aus den Ebenen;Planar Ally, Greater;Grundregelwerk;353;Core Rulebook;;vorschlag
+z956;Mächtigere Untote erschaffen;Create Greater Undead;Grundregelwerk;350;Core Rulebook;;vorschlag
+z966;Magie bannen;Dispel Magic;Grundregelwerk;298;Core Rulebook;;vorschlag
+z967;Magie entdecken;Detect Magic;Grundregelwerk;299;Core Rulebook;;vorschlag
+z968;Magie lesen;Read Magic;Grundregelwerk;299;Core Rulebook;;vorschlag
+z969;Magierhand;Mage Hand;Grundregelwerk;300;Core Rulebook;;vorschlag
+z970;Magierrüstung;Mage Armor;Grundregelwerk;300;Core Rulebook;;vorschlag
+z971;Magische Auftrennung;Mage's Disjunction;Grundregelwerk;300;Core Rulebook;;vorschlag
+z972;Magische Aura;Magic Aura;Grundregelwerk;300;Core Rulebook;;vorschlag
+z973;Magische Bande;Binding;Grundregelwerk;301;Core Rulebook;;vorschlag
+z975;Magische Fänge;Magic Fang;Grundregelwerk;301;Core Rulebook;;vorschlag
+z976;Magische Waffe;Magic Weapon;Grundregelwerk;304;Core Rulebook;;vorschlag
+z977;Magischer Mund;Magic Mouth;Grundregelwerk;302;Core Rulebook;;vorschlag
+z978;Magischer Stein;Magic Stone;Grundregelwerk;302;Core Rulebook;;vorschlag
+z979;Magisches Belagerungsgerät;Magic Siege Engine;Ausbauregeln II: Kampf;236;Ultimate Combat;;vorschlag
+z980;Magisches Gefäß;Magic Jar;Grundregelwerk;302;Core Rulebook;;vorschlag
+z981;Magisches Geschoss;Magic Missile;Grundregelwerk;303;Core Rulebook;;vorschlag
+z982;Magisches Schutzgewand;Magic Vestment;Grundregelwerk;304;Core Rulebook;;vorschlag
+z983;Mal der Gerechtigkeit;Mark of Justice;Grundregelwerk;304;Core Rulebook;;vorschlag
+z984;Mal des Verbots;Marks of Forbiddance;Expertenregeln;231;Advanced Player’s Guide;;vorschlag
+z986;Mantel der See;Cloak of the Sea;Expertenregeln;232;Advanced Player’s Guide;;vorschlag
+z987;Mantel des Zorns;Cloak of Rage;Expertenregeln;232;Advanced Player’s Guide;;vorschlag
+z991;Massen- Mittelschwere Wunden verursachen;Inflict Moderate Wounds, Mass;Grundregelwerk;307;Core Rulebook;;vorschlag
+z992;Massen-Atavismus;Atavism, Mass;Ausbauregeln: Magie;207;Ultimate Magic;;vorschlag
+z993;Massen-Ausdauer des Ochsen;Bear's Endurance, Mass;Grundregelwerk;247;Core Rulebook;;vorschlag
+z994;Massen-Bärenstärke;Bull's Strength, Mass;Grundregelwerk;249;Core Rulebook;;vorschlag
+z995;Massen-Beleben;Invigorate, Mass;Expertenregeln;206;Advanced Player’s Guide;;vorschlag
+z996;Massen-Benommenheit;Daze, Mass;Ausbauregeln: Magie;208;Ultimate Magic;;vorschlag
+z998;Massen-Brennende Schmerzen;Burning Pain, Mass;Expertenregeln;210;Advanced Player’s Guide;;vorschlag
+z999;Masseneinflüsterung;Suggestion, Mass;Grundregelwerk;263;Core Rulebook;;vorschlag
+z1000;Massen-Eisgefängnis;Icy Prison, Mass;Ausbauregeln: Magie;212;Ultimate Magic;;vorschlag
+z1001;Massen-Eitern;Pox Pustules, Mass;Expertenregeln;214;Advanced Player’s Guide;;vorschlag
+z1002;Massen-Ersticken;Suffocation, Mass;Expertenregeln;216;Advanced Player’s Guide;;vorschlag
+z1003;Massen-Federleicht;Feather Step, Mass;Expertenregeln;217;Advanced Player’s Guide;;vorschlag
+z1006;Massen-Fliegen;Fly, Mass;Expertenregeln;220;Advanced Player’s Guide;;vorschlag
+z1007;Massenheilung;Heal, Mass;Grundregelwerk;288;Core Rulebook;;vorschlag
+z1008;Massen-Heldengeschick;Heroic Fortune, Mass;Expertenregeln;324;Advanced Player’s Guide;;vorschlag
+z1009;Massen-Kakophonie;Cacophonous Call, Mass;Expertenregeln;228;Advanced Player’s Guide;;vorschlag
+z1010;Massen-Katzenhafte Anmut;Cat's Grace, Mass;Grundregelwerk;292;Core Rulebook;;vorschlag
+z1011;Massen-Klagelied des Geisterbanns;Ghostbane Dirge, Mass;Expertenregeln;228;Advanced Player’s Guide;;vorschlag
+z1012;Massen-Kritische Wunden heilen;Cure Critical Wounds, Mass;Grundregelwerk;295;Core Rulebook;;vorschlag
+z1013;Massen-Kritische Wunden verursachen;Inflict Critical Wounds, Mass;Grundregelwerk;295;Core Rulebook;;vorschlag
+z1014;Massen-Leichte Wunden heilen;Cure Light Wounds, Mass;Grundregelwerk;297;Core Rulebook;;vorschlag
+z1015;Massen-Leichte Wunden verursachen;Inflict Light Wounds, Mass;Grundregelwerk;297;Core Rulebook;;vorschlag
+z1016;Massen-Mittelschwere Wunden heilen;Cure Moderate Wounds, Mass;Grundregelwerk;307;Core Rulebook;;vorschlag
+z1017;Massen-Mittelschwere Wunden verursachen;Inflict Moderate Wounds, Mass;Grundregelwerk;307;Core Rulebook;;vorschlag
+z1018;Massen-Monster bezaubern;Charm Monster, Mass;Grundregelwerk;307;Core Rulebook;;vorschlag
+z1019;Massen-Monster festhalten;Hold Monster, Mass;Grundregelwerk;308;Core Rulebook;;vorschlag
+z1024;Massen-Planare Anpassung;Planar Adaptation, Mass;Expertenregeln;235;Advanced Player’s Guide;;vorschlag
+z1026;Massen-Pracht des Adlers;Eagle's Splendor, Mass;Grundregelwerk;316;Core Rulebook;;vorschlag
+z1027;Massen-Schläue des Fuchses;Fox's Cunning, Mass;Grundregelwerk;324;Core Rulebook;;vorschlag
+z1028;Massen-Schwere Wunden heilen;Cure Serious Wounds, Mass;Grundregelwerk;329;Core Rulebook;;vorschlag
+z1029;Massen-Schwere Wunden verursachen;Inflict Serious Wounds, Mass;Grundregelwerk;329;Core Rulebook;;vorschlag
+z1031;Massen-Tadel;Rebuke, Mass;Expertenregeln;245;Advanced Player’s Guide;;vorschlag
+z1032;Massenunsichtbarkeit;Invisibility, Mass;Grundregelwerk;349;Core Rulebook;;vorschlag
+z1034;Massen-Weisheit der Eule;Owl's Wisdom, Mass;Grundregelwerk;362;Core Rulebook;;vorschlag
+z1037;Meisterarbeit;Masterwork Transformation;Ausbauregeln: Magie;227;Ultimate Magic;;vorschlag
+z1039;Meisterhafter Auftritt;Virtuoso Performance;Ausbauregeln: Magie;227;Ultimate Magic;;vorschlag
+z1041;Metall erhitzen;Heat Metal;Grundregelwerk;304;Core Rulebook;;vorschlag
+z1042;Metall in Holz verwandeln;Transmute Metal to Wood;Grundregelwerk;305;Core Rulebook;;vorschlag
+z1043;Metall kühlen;Chill Metal;Grundregelwerk;305;Core Rulebook;;vorschlag
+z1044;Metall oder Stein zurücktreiben;Repel Metal or Stone;Grundregelwerk;305;Core Rulebook;;vorschlag
+z1046;Meteoritenschwarm;Meteor Swarm;Grundregelwerk;306;Core Rulebook;;vorschlag
+z1047;Mit Pflanzen sprechen;Speak with Plants;Grundregelwerk;306;Core Rulebook;;vorschlag
+z1049;Mit Stein verschmelzen;Meld into Stone;Grundregelwerk;306;Core Rulebook;;vorschlag
+z1050;Mit Tieren sprechen;Speak with Animals;Grundregelwerk;306;Core Rulebook;;vorschlag
+z1051;Mit Toten sprechen;Speak with Dead;Grundregelwerk;306;Core Rulebook;;vorschlag
+z1054;Mitfühlender Verbündeter;Compassionate Ally;Ausbauregeln: Magie;227;Ultimate Magic;;vorschlag
+z1055;Mitleid;Pity;Ausbauregeln: Magie;228;Ultimate Magic;;vorschlag
+z1056;Mittelschwere Wunden heilen;Cure Moderate Wounds;Grundregelwerk;307;Core Rulebook;;vorschlag
+z1057;Mittelschwere Wunden verursachen;Inflict Moderate Wounds;Grundregelwerk;307;Core Rulebook;;vorschlag
+z1059;Modernder Schlurfer;Shambler;Grundregelwerk;307;Core Rulebook;;vorschlag
+z1060;Moment der Eingebung;Moment of Prescience;Grundregelwerk;307;Core Rulebook;;vorschlag
+z1061;Mondschatten;Lunar Veil;Ausbauregeln: Magie;228;Ultimate Magic;;vorschlag
+z1062;Mondsucht;Moonstruck;Expertenregeln;232;Advanced Player’s Guide;;vorschlag
+z1063;Monster beherrschen;Dominate Monster;Grundregelwerk;307;Core Rulebook;;vorschlag
+z1064;Monster bezaubern;Charm Monster;Grundregelwerk;307;Core Rulebook;;vorschlag
+z1065;Monster festhalten;Hold Monster;Grundregelwerk;308;Core Rulebook;;vorschlag
+z1066;Monster herbeizaubern I;Summon Monster I;Grundregelwerk;309;Core Rulebook;;vorschlag
+z1067;Monster herbeizaubern II;Summon Monster II;Grundregelwerk;309;Core Rulebook;;vorschlag
+z1068;Monster herbeizaubern III;Summon Monster III;Grundregelwerk;309;Core Rulebook;;vorschlag
+z1069;Monster herbeizaubern IV;Summon Monster IV;Grundregelwerk;309;Core Rulebook;;vorschlag
+z1070;Monster herbeizaubern IX;Summon Monster IX;Grundregelwerk;309;Core Rulebook;;vorschlag
+z1077;Monster herbeizaubern V;Summon Monster V;Grundregelwerk;309;Core Rulebook;;vorschlag
+z1079;Monster herbeizaubern VI;Summon Monster VI;Grundregelwerk;309;Core Rulebook;;vorschlag
+z1080;Monster herbeizaubern VII;Summon Monster VII;Grundregelwerk;309;Core Rulebook;;vorschlag
+z1081;Monster herbeizaubern VIII;Summon Monster VIII;Grundregelwerk;309;Core Rulebook;;vorschlag
+z1082;Monsterbenommenheit;Daze Monster;Grundregelwerk;309;Core Rulebook;;vorschlag
+z1083;Monstergestalt I;Monstrous Physique I;Ausbauregeln: Magie;228;Ultimate Magic;;vorschlag
+z1084;Monstergestalt II;Monstrous Physique II;Ausbauregeln: Magie;228;Ultimate Magic;;vorschlag
+z1085;Monstergestalt III;Monstrous Physique III;Ausbauregeln: Magie;228;Ultimate Magic;;vorschlag
+z1086;Monstergestalt IV;Monstrous Physique IV;Ausbauregeln: Magie;229;Ultimate Magic;;vorschlag
+z1087;Mördergrube;Spiked Pit;Expertenregeln;232;Advanced Player’s Guide;;vorschlag
+z1090;Mühelose Rüstung;Effortless Armor;Ausbauregeln II: Kampf;237;Ultimate Combat;;vorschlag
+z1093;Mutagenberührung;Mutagenic Touch;Ausbauregeln II: Kampf;237;Ultimate Combat;;vorschlag
+z1094;Nachhallender Schlag;Resounding Blow;Expertenregeln;232;Advanced Player’s Guide;;vorschlag
+z1095;Nachladende Hände;Reloading Hands;Ausbauregeln II: Kampf;237;Ultimate Combat;;vorschlag
+z1096;Nachspüren;Find Quarry;Ausbauregeln II: Kampf;238;Ultimate Combat;;vorschlag
+z1098;Nahrung und Wasser erschaffen;Create Food and Water;Grundregelwerk;310;Core Rulebook;;vorschlag
+z1099;Nahrung und Wasser reinigen;Purify Food and Drink;Grundregelwerk;310;Core Rulebook;;vorschlag
+z1100;Nahrung und Wasser verderben;Putrefy Food and Drink;Expertenregeln;233;Advanced Player’s Guide;;vorschlag
+z1101;Narrensprung;Jester's Jaunt;Expertenregeln;233;Advanced Player’s Guide;;vorschlag
+z1102;Natürlicher Rhythmus;Natural Rhythm;Expertenregeln;234;Advanced Player’s Guide;;vorschlag
+z1103;Nebelwolke;Fog Cloud;Grundregelwerk;310;Core Rulebook;;vorschlag
+z1104;Negative Reaktion;Negative Reaction;Ausbauregeln II: Kampf;238;Ultimate Combat;;vorschlag
+z1107;Nesselexplosion;Burst of Nettles;Ausbauregeln: Magie;229;Ultimate Magic;;vorschlag
+z1111;Niedere Erschaffung;Minor Creation;Grundregelwerk;310;Core Rulebook;;vorschlag
+z1115;Notfall;Contingency;Grundregelwerk;310;Core Rulebook;;vorschlag
+z1121;Obsidianscholle;Obsidian Flow;Ausbauregeln II: Kampf;238;Ultimate Combat;;vorschlag
+z1129;Öffnen/Schließen;Open/Close;Grundregelwerk;311;Core Rulebook;;vorschlag
+z1130;Ohrenbetäubender Dreiklang;Deafening Song Bolt;Expertenregeln;234;Advanced Player’s Guide;;vorschlag
+z1131;Ohrenbetäubender Schrei;Deafening Blast;Ausbauregeln: Magie;229;Ultimate Magic;;vorschlag
+z1132;Oppositionsresistenz;Opposition Resistance;Expertenregeln;234;Advanced Player’s Guide;;vorschlag
+z1134;Ort entweihen;Unhallow;Grundregelwerk;311;Core Rulebook;;vorschlag
+z1135;Ort weihen;Hallow;Grundregelwerk;311;Core Rulebook;;vorschlag
+z1140;Person beherrschen;Dominate Person;Grundregelwerk;311;Core Rulebook;;vorschlag
+z1141;Person bezaubern;Charm Person;Grundregelwerk;312;Core Rulebook;;vorschlag
+z1142;Person festhalten;Hold Person;Grundregelwerk;312;Core Rulebook;;vorschlag
+z1143;Person vergrößern;Enlarge Person;Grundregelwerk;312;Core Rulebook;;vorschlag
+z1144;Person verkleinern;Reduce Person;Grundregelwerk;312;Core Rulebook;;vorschlag
+z1147;Pfeil der Ordnung;Arrow of Law;Ausbauregeln: Magie;229;Ultimate Magic;;vorschlag
+z1148;Pfeilexplosion;Arrow Eruption;Expertenregeln;234;Advanced Player’s Guide;;vorschlag
+z1150;Pflanzen befehligen;Command Plants;Grundregelwerk;313;Core Rulebook;;vorschlag
+z1151;Pflanzen beleben;Animate Plants;Grundregelwerk;313;Core Rulebook;;vorschlag
+z1152;Pflanzen kontrollieren;Control Plants;Grundregelwerk;314;Core Rulebook;;vorschlag
+z1153;Pflanzen schrumpfen;Diminish Plants;Grundregelwerk;314;Core Rulebook;;vorschlag
+z1154;Pflanzengestalt I;Plant Shape I;Grundregelwerk;313;Core Rulebook;;vorschlag
+z1155;Pflanzengestalt II;Plant Shape II;Grundregelwerk;313;Core Rulebook;;vorschlag
+z1156;Pflanzengestalt III;Plant Shape III;Grundregelwerk;314;Core Rulebook;;vorschlag
+z1157;Pflanzentor;Transport via Plants;Grundregelwerk;315;Core Rulebook;;vorschlag
+z1158;Pflanzenwachstum;Plant Growth;Grundregelwerk;315;Core Rulebook;;vorschlag
+z1159;Pforte zuhalten;Hold Portal;Grundregelwerk;315;Core Rulebook;;vorschlag
+z1160;Pfusch;Bungle;Ausbauregeln: Magie;229;Ultimate Magic;;vorschlag
+z1162;Phantomfahrzeuglenker;Phantom Driver;Ausbauregeln II: Kampf;238;Ultimate Combat;;vorschlag
+z1163;Phantomfalle;Phantom Trap;Grundregelwerk;315;Core Rulebook;;vorschlag
+z1164;Phantomnetz;Phantasmal Web;Expertenregeln;234;Advanced Player’s Guide;;vorschlag
+z1165;Phantomstreitwagen;Phantom Chariot;Ausbauregeln II: Kampf;238;Ultimate Combat;;vorschlag
+z1166;Pilzbefall;Fungal Infestation;Ausbauregeln: Magie;230;Ultimate Magic;;vorschlag
+z1167;Planare Anpassung;Planar Adaptation;Expertenregeln;235;Advanced Player’s Guide;;vorschlag
+z1170;Plündernde Hand;Pilfering Hand;Ausbauregeln II: Kampf;238;Ultimate Combat;;vorschlag
+z1171;Polarnacht;Polar Midnight;Ausbauregeln: Magie;230;Ultimate Magic;;vorschlag
+z1172;Polarstrahl;Polar Ray;Grundregelwerk;316;Core Rulebook;;vorschlag
+z1173;Pracht des Adlers;Eagle's Splendor;Grundregelwerk;316;Core Rulebook;;vorschlag
+z1174;Projiziertes Ebenbild;Project Image;Grundregelwerk;316;Core Rulebook;;vorschlag
+z1177;Pulver schwächen;Weaken Powder;Ausbauregeln II: Kampf;239;Ultimate Combat;;vorschlag
+z1178;Puppenspieler;Marionette Possession;Ausbauregeln: Magie;230;Ultimate Magic;;vorschlag
+z1179;Quälender Ton;Distressing Tone;Ausbauregeln: Magie;230;Ultimate Magic;;vorschlag
+z1181;Querschläger;Ricochet Shot;Ausbauregeln II: Kampf;239;Ultimate Combat;;vorschlag
+z1184;Rachsucht;Vengeful Outrage;Ausbauregeln: Magie;230;Ultimate Magic;;vorschlag
+z1185;Rachsüchtiges Phantom;Phantasmal Revenge;Expertenregeln;235;Advanced Player’s Guide;;vorschlag
+z1188;Rascher Rückzug;Expeditious Retreat;Grundregelwerk;316;Core Rulebook;;vorschlag
+z1189;Rasches Graben;Expeditious Excavation;Expertenregeln;236;Advanced Player’s Guide;;vorschlag
+z1191;Rattenfängers Pfeifen;Pied Piping;Expertenregeln;236;Advanced Player’s Guide;;vorschlag
+z1193;Raum verzerren;Twisted Space;Ausbauregeln II: Kampf;240;Ultimate Combat;;vorschlag
+z1197;Rechtzeitige Inspiration;Timely Inspiration;Expertenregeln;236;Advanced Player’s Guide;;vorschlag
+z1198;Redegewandtheit;Glibness;Grundregelwerk;316;Core Rulebook;;vorschlag
+z1199;Regenbogenmuster;Rainbow Pattern;Grundregelwerk;317;Core Rulebook;;vorschlag
+z1200;Regenbogensphäre;Prismatic Sphere;Grundregelwerk;317;Core Rulebook;;vorschlag
+z1201;Regenbogenspiel;Prismatic Spray;Grundregelwerk;317;Core Rulebook;;vorschlag
+z1202;Regenbogenwand;Prismatic Wall;Grundregelwerk;317;Core Rulebook;;vorschlag
+z1203;Regeneration;Regenerate;Grundregelwerk;318;Core Rulebook;;vorschlag
+z1204;Reichlich Munition;Abundant Ammunition;Ausbauregeln II: Kampf;240;Ultimate Combat;;vorschlag
+z1205;Reinigung;Cleanse;Expertenregeln;236;Advanced Player’s Guide;;vorschlag
+z1206;Reittier;Mount;Grundregelwerk;318;Core Rulebook;;vorschlag
+z1207;Reittier heilen;Heal Mount;Grundregelwerk;318;Core Rulebook;;vorschlag
+z1209;Reparieren;Make Whole;Grundregelwerk;318;Core Rulebook;;vorschlag
+z1210;Resistenz;Resistance;Grundregelwerk;318;Core Rulebook;;vorschlag
+z1211;Resistenz gegen Alterung;Age Resistance;Ausbauregeln: Magie;230;Ultimate Magic;;vorschlag
+z1213;Rettender Ausklang;Saving Finale;Expertenregeln;237;Advanced Player’s Guide;;vorschlag
+z1214;Richtendes Licht;Judgment Light;Ausbauregeln II: Kampf;240;Ultimate Combat;;vorschlag
+z1215;Richtspruch verleihen;Lend Judgment;Ausbauregeln: Magie;231;Ultimate Magic;;vorschlag
+z1216;Richtung wissen;Know Direction;Grundregelwerk;319;Core Rulebook;;vorschlag
+z1218;Riesengestalt I;Giant Form I;Grundregelwerk;319;Core Rulebook;;vorschlag
+z1219;Riesengestalt II;Giant Form II;Grundregelwerk;319;Core Rulebook;;vorschlag
+z1220;Riesenhaftes Ungeziefer;Giant Vermin;Grundregelwerk;319;Core Rulebook;;vorschlag
+z1221;Rindenhaut;Barkskin;Grundregelwerk;319;Core Rulebook;;vorschlag
+z1225;Rochade;King's Castle;Expertenregeln;237;Advanced Player’s Guide;;vorschlag
+z1226;Rostgriff;Rusting Grasp;Grundregelwerk;319;Core Rulebook;;vorschlag
+z1228;Rückruf;Word of Recall;Grundregelwerk;320;Core Rulebook;;vorschlag
+z1230;Rückstoß;Recoil Fire;Ausbauregeln II: Kampf;240;Ultimate Combat;;vorschlag
+z1236;Rüstung beschwören;Instant Armor;Expertenregeln;237;Advanced Player’s Guide;;vorschlag
+z1238;Rüstung entweihen;Defile Armor;Expertenregeln;237;Advanced Player’s Guide;;vorschlag
+z1239;Rüstung weihen;Sanctify Armor;Expertenregeln;237;Advanced Player’s Guide;;vorschlag
+z1241;Sagenkunde;Legend Lore;Grundregelwerk;320;Core Rulebook;;vorschlag
+z1242;Sammelpunkt;Rally Point;Expertenregeln;237;Advanced Player’s Guide;;vorschlag
+z1244;Sand der Zeit;Sands of Time;Ausbauregeln: Magie;232;Ultimate Magic;;vorschlag
+z1246;Sanfte Ruhe;Gentle Repose;Grundregelwerk;320;Core Rulebook;;vorschlag
+z1247;Sattelfestigkeit;Saddle Surge;Expertenregeln;238;Advanced Player’s Guide;;vorschlag
+z1248;Säule des Lebens;Pillar of Life;Expertenregeln;238;Advanced Player’s Guide;;vorschlag
+z1249;Säureeruption;Caustic Eruption;Ausbauregeln: Magie;232;Ultimate Magic;;vorschlag
+z1250;Säuregrube;Acid Pit;Expertenregeln;238;Advanced Player’s Guide;;vorschlag
+z1252;Säurenebel;Acid Fog;Grundregelwerk;320;Core Rulebook;;vorschlag
+z1253;Säurepfeil;Acid Arrow;Grundregelwerk;321;Core Rulebook;;vorschlag
+z1254;Säureschild;Vitriolic Mist;Ausbauregeln: Magie;232;Ultimate Magic;;vorschlag
+z1255;Säurespritzer;Acid Splash;Grundregelwerk;321;Core Rulebook;;vorschlag
+z1256;Säuresprühregen;Acidic Spray;Ausbauregeln: Magie;233;Ultimate Magic;;vorschlag
+z1259;Schallstoß;Sonic Thrust;Ausbauregeln: Magie;233;Ultimate Magic;;vorschlag
+z1260;Schallwand;Wall of Sound;Ausbauregeln: Magie;233;Ultimate Magic;;vorschlag
+z1261;Schärfen;Keen Edge;Grundregelwerk;321;Core Rulebook;;vorschlag
+z1262;Schatten;Shades;Grundregelwerk;321;Core Rulebook;;vorschlag
+z1264;Schattenbeschwörung;Shadow Conjuration;Grundregelwerk;321;Core Rulebook;;vorschlag
+z1265;Schatten-Bombenzusatz;Shadow Bomb Admixture;Ausbauregeln II: Kampf;240;Ultimate Combat;;vorschlag
+z1266;Schattengang;Shadow Step;Ausbauregeln: Magie;233;Ultimate Magic;;vorschlag
+z1268;Schattenhervorrufung;Shadow Evocation;Grundregelwerk;322;Core Rulebook;;vorschlag
+z1269;Schattenprojektion;Shadow Projection;Expertenregeln;238;Advanced Player’s Guide;;vorschlag
+z1270;Schattenreise;Shadow Walk;Grundregelwerk;322;Core Rulebook;;vorschlag
+z1272;Schattenumhang;Cloak of Shade;Expertenregeln;238;Advanced Player’s Guide;;vorschlag
+z1273;Schattenwaffe;Shadow Weapon;Ausbauregeln: Magie;233;Ultimate Magic;;vorschlag
+z1275;Schatzkarte erschaffen;Create Treasure Map;Expertenregeln;238;Advanced Player’s Guide;;vorschlag
+z1276;Scheingelände;Hallucinatory Terrain;Grundregelwerk;322;Core Rulebook;;vorschlag
+z1278;Scherbenakkord;Chord of Shards;Ausbauregeln: Magie;234;Ultimate Magic;;vorschlag
+z1279;Schicksal verhindern;Unravel Destiny;Expertenregeln;324;Advanced Player’s Guide;;vorschlag
+z1280;Schicksalsfaden durchtrennen;Severed Fate;Expertenregeln;325;Advanced Player’s Guide;;vorschlag
+z1282;Schild;Shield;Grundregelwerk;322;Core Rulebook;;vorschlag
+z1284;Schild der Ordnung;Shield of Law;Grundregelwerk;322;Core Rulebook;;vorschlag
+z1286;Schild des Glaubens;Shield of Faith;Grundregelwerk;323;Core Rulebook;;vorschlag
+z1287;Schillerndes Muster;Scintillating Pattern;Grundregelwerk;323;Core Rulebook;;vorschlag
+z1289;Schlaf;Sleep;Grundregelwerk;323;Core Rulebook;;vorschlag
+z1293;Schlaflied;Lullaby;Grundregelwerk;323;Core Rulebook;;vorschlag
+z1294;Schlafwandeln;Sleepwalk;Expertenregeln;239;Advanced Player’s Guide;;vorschlag
+z1295;Schlagloch;Stumble Gap;Expertenregeln;240;Advanced Player’s Guide;;vorschlag
+z1296;Schlamm zu Fels verwandeln;Transmute Mud to Rock;Grundregelwerk;323;Core Rulebook;;vorschlag
+z1297;Schlangenstab;Snake Staff;Expertenregeln;240;Advanced Player’s Guide;;vorschlag
+z1298;Schläue des Fuchses;Fox's Cunning;Grundregelwerk;323;Core Rulebook;;vorschlag
+z1299;Schlechtes Omen;Ill Omen;Expertenregeln;241;Advanced Player’s Guide;;vorschlag
+z1300;Schleier;Veil;Grundregelwerk;324;Core Rulebook;;vorschlag
+z1301;Schleier aus positiver Energie;Veil of Positive Energy;Expertenregeln;241;Advanced Player’s Guide;;vorschlag
+z1302;Schleier des Ekels;Loathsome Veil;Ausbauregeln: Magie;234;Ultimate Magic;;vorschlag
+z1303;Schleimige Hand;Touch of Slime;Ausbauregeln: Magie;234;Ultimate Magic;;vorschlag
+z1304;Schlinge;Snare;Grundregelwerk;324;Core Rulebook;;vorschlag
+z1305;Schlingen und Fallen entdecken;Detect Snares and Pits;Grundregelwerk;324;Core Rulebook;;vorschlag
+z1307;Schmerz verzögern;Delay Pain;Ausbauregeln: Magie;234;Ultimate Magic;;vorschlag
+z1309;Schmerzhafte Verunstaltung;Excruciating Deformation;Ausbauregeln: Magie;234;Ultimate Magic;;vorschlag
+z1311;Schmieren;Grease;Grundregelwerk;324;Core Rulebook;;vorschlag
+z1315;Schneesturm;Sleet Storm;Grundregelwerk;325;Core Rulebook;;vorschlag
+z1316;Schneidender Wind;Scouring Winds;Ausbauregeln: Magie;235;Ultimate Magic;;vorschlag
+z1317;Schnelle Selbstreparatur;Rapid Repair;Ausbauregeln: Magie;235;Ultimate Magic;;vorschlag
+z1318;Schneller Tod;Slay Living;Grundregelwerk;325;Core Rulebook;;vorschlag
+z1321;Schockgriff;Shocking Grasp;Grundregelwerk;325;Core Rulebook;;vorschlag
+z1322;Schockschild;Shock Shield;Ausbauregeln II: Kampf;241;Ultimate Combat;;vorschlag
+z1325;Schrotexplosion;Pellet Blast;Ausbauregeln II: Kampf;241;Ultimate Combat;;vorschlag
+z1326;Schüttelfrost;Unshakable Chill;Ausbauregeln: Magie;235;Ultimate Magic;;vorschlag
+z1327;Schutz der Gläubigen;Ward the Faithful;Expertenregeln;241;Advanced Player’s Guide;;vorschlag
+z1329;Schutz vor Bösem;Protection from Evil;Grundregelwerk;325;Core Rulebook;;vorschlag
+z1331;Schutz vor Chaos;Protection from Chaos;Grundregelwerk;325;Core Rulebook;;vorschlag
+z1333;Schutz vor Energien;Protection from Energy;Grundregelwerk;326;Core Rulebook;;vorschlag
+z1335;Schutz vor Gutem;Protection from Good;Grundregelwerk;325;Core Rulebook;;vorschlag
+z1336;Schutz vor Hexereien;Hex Ward;Ausbauregeln: Magie;235;Ultimate Magic;;vorschlag
+z1337;Schutz vor Ordnung;Protection from Law;Grundregelwerk;326;Core Rulebook;;vorschlag
+z1338;Schutz vor Pfeilen;Protection from Arrows;Grundregelwerk;326;Core Rulebook;;vorschlag
+z1340;Schutz vor Zaubern;Protection from Spells;Grundregelwerk;326;Core Rulebook;;vorschlag
+z1341;Schützende Bänder;Cushioning Bands;Ausbauregeln: Magie;235;Ultimate Magic;;vorschlag
+z1343;Schützende Hand;Protective Spirit;Expertenregeln;242;Advanced Player’s Guide;;vorschlag
+z1344;Schützende Waffe;Warding Weapon;Ausbauregeln II: Kampf;241;Ultimate Combat;;vorschlag
+z1346;Schützender Schatten;Protective Penumbra;Ausbauregeln: Magie;235;Ultimate Magic;;vorschlag
+z1347;Schützendes Lagerfeuer;Campfire Wall;Expertenregeln;242;Advanced Player’s Guide;;vorschlag
+z1348;Schutzhülle des Lebens;Life Bubble;Expertenregeln;240;Advanced Player’s Guide;;vorschlag
+z1350;Schutzhülle gegen Lebendes;Antilife Shell;Grundregelwerk;326;Core Rulebook;;vorschlag
+z1351;Schutzhülle gegen Pflanzen;Antiplant Shell;Grundregelwerk;326;Core Rulebook;;vorschlag
+z1352;Schutzkreis der Klarheit;Circle of Clarity;Ausbauregeln: Magie;235;Ultimate Magic;;vorschlag
+z1353;Schutzkreis gegen Böses;Magic Circle against Evil;Grundregelwerk;326;Core Rulebook;;vorschlag
+z1355;Schutzkreis gegen Chaos;Magic Circle against Chaos;Grundregelwerk;328;Core Rulebook;;vorschlag
+z1357;Schutzkreis gegen Gutes;Magic Circle against Good;Grundregelwerk;328;Core Rulebook;;vorschlag
+z1358;Schutzkreis gegen Ordnung;Magic Circle against Law;Expertenregeln;328;Advanced Player’s Guide;;vorschlag
+z1360;Schutzmantel des Chaos;Cloak of Chaos;Grundregelwerk;328;Core Rulebook;;vorschlag
+z1373;Schwäche aufspüren;Locate Weakness;Ausbauregeln II: Kampf;242;Ultimate Combat;;vorschlag
+z1374;Schwächere Astralprojektion;Astral Projection, Lesser;Ausbauregeln: Magie;206;Ultimate Magic;;vorschlag
+z1375;Schwächere Eidolonregeneration;Rejuvenate Eidolon, Lesser;Expertenregeln;214;Advanced Player’s Guide;;vorschlag
+z1376;Schwächere Kugel der Unverwundbarkeit;Globe of Invulnerability, Lesser;Grundregelwerk;295;Core Rulebook;;vorschlag
+z1378;Schwächere Verwirrung;Confusion, Lesser;Grundregelwerk;357;Core Rulebook;;vorschlag
+z1382;Schwächestrahl;Ray of Enfeeblement;Grundregelwerk;328;Core Rulebook;;vorschlag
+z1383;Schwachsinn;Feeblemind;Grundregelwerk;328;Core Rulebook;;vorschlag
+z1384;Schwarm ausspeien;Vomit Swarm;Expertenregeln;241;Advanced Player’s Guide;;vorschlag
+z1385;Schwarm herbeizaubern;Summon Swarm;Grundregelwerk;328;Core Rulebook;;vorschlag
+z1386;Schwarmhaut;Swarm Skin;Expertenregeln;241;Advanced Player’s Guide;;vorschlag
+z1387;Schwarze Tentakel;Black Tentacles;Grundregelwerk;328;Core Rulebook;;vorschlag
+z1388;Schwarzen Blob herbeizaubern;Conjure Black Pudding;Ausbauregeln: Magie;236;Ultimate Magic;;vorschlag
+z1392;Schweben;Levitate;Grundregelwerk;329;Core Rulebook;;vorschlag
+z1393;Schwebende Scheibe;Floating Disk;Grundregelwerk;329;Core Rulebook;;vorschlag
+z1394;Schwere Wunden heilen;Cure Serious Wounds;Grundregelwerk;329;Core Rulebook;;vorschlag
+z1395;Schwere Wunden verursachen;Inflict Serious Wounds;Grundregelwerk;329;Core Rulebook;;vorschlag
+z1397;Schwerkraft umkehren;Reverse Gravity;Grundregelwerk;329;Core Rulebook;;vorschlag
+z1400;Scirocco;Sirocco;Expertenregeln;242;Advanced Player’s Guide;;vorschlag
+z1401;Sechster Sinn;Foresight;Grundregelwerk;330;Core Rulebook;;vorschlag
+z1402;Seele binden;Soul Bind;Grundregelwerk;330;Core Rulebook;;vorschlag
+z1403;Seelenfalle;Trap the Soul;Grundregelwerk;330;Core Rulebook;;vorschlag
+z1408;Seerosenpfad;Lily Pad Stride;Expertenregeln;243;Advanced Player’s Guide;;vorschlag
+z1410;Segen des Chamäleons;Chameleon Stride;Expertenregeln;243;Advanced Player’s Guide;;vorschlag
+z1411;Segen des Eifers;Blessing of Fervor;Expertenregeln;243;Advanced Player’s Guide;;vorschlag
+z1414;Segen des Maulwurfs;Mole's Blessing;Ausbauregeln: Magie;236;Ultimate Magic;;vorschlag
+z1415;Segen des Salamanders;Salamander's Blessing;Expertenregeln;243;Advanced Player’s Guide;;vorschlag
+z1416;Segen von Mut und Lebenskraft;Blessing of Courage and Life;Expertenregeln;243;Advanced Player’s Guide;;vorschlag
+z1417;Segnen;Bless;Grundregelwerk;330;Core Rulebook;;vorschlag
+z1418;Seide zu Stahl;Silk to Steel;Ausbauregeln: Magie;236;Ultimate Magic;;vorschlag
+z1419;Seil beleben;Animate Rope;Grundregelwerk;330;Core Rulebook;;vorschlag
+z1420;Seiltrick;Rope Trick;Grundregelwerk;331;Core Rulebook;;vorschlag
+z1422;Selbstüberschätzung;Delusional Pride;Ausbauregeln: Magie;236;Ultimate Magic;;vorschlag
+z1423;Selbstverkleidung;Disguise Self;Grundregelwerk;331;Core Rulebook;;vorschlag
+z1424;Selbstverliebtheit;Smug Narcissism;Ausbauregeln: Magie;236;Ultimate Magic;;vorschlag
+z1426;Sengende Beleidigung;Scathing Insult;Ausbauregeln II: Kampf;242;Ultimate Combat;;vorschlag
+z1427;Sengender Strahl;Scorching Ray;Grundregelwerk;331;Core Rulebook;;vorschlag
+z1428;Seuchensturm;Plague Storm;Ausbauregeln: Magie;236;Ultimate Magic;;vorschlag
+z1429;Seuchenträger;Plague Carrier;Ausbauregeln: Magie;237;Ultimate Magic;;vorschlag
+z1430;Shillelagh;Shillelagh;Grundregelwerk;331;Core Rulebook;;vorschlag
+z1431;Sicherer Halt;Certain Grip;Ausbauregeln II: Kampf;242;Ultimate Combat;;vorschlag
+z1432;Sicherer Unterschlupf;Secure Shelter;Grundregelwerk;332;Core Rulebook;;vorschlag
+z1435;Silberzunge;Honeyed Tongue;Expertenregeln;243;Advanced Player’s Guide;;vorschlag
+z1436;Simulakrum;Simulacrum;Grundregelwerk;332;Core Rulebook;;vorschlag
+z1437;Simulakrum formen;Sculpt Simulacrum;Ausbauregeln: Magie;237;Ultimate Magic;;vorschlag
+z1438;Sinne teilen;Share Senses;Expertenregeln;244;Advanced Player’s Guide;;vorschlag
+z1440;Skrupel;Compunction;Ausbauregeln II: Kampf;242;Ultimate Combat;;vorschlag
+z1441;Sofortige Herbeizauberung;Instant Summons;Grundregelwerk;332;Core Rulebook;;vorschlag
+z1442;Soldaten der Wildnis;Wilderness Soldiers;Ausbauregeln II: Kampf;242;Ultimate Combat;;vorschlag
+z1443;Sonnenfeuer;Sunburst;Grundregelwerk;332;Core Rulebook;;vorschlag
+z1444;Sonnenstrahl;Sunbeam;Grundregelwerk;333;Core Rulebook;;vorschlag
+z1445;Spätzündender Feuerball;Delayed Blast Fireball;Grundregelwerk;333;Core Rulebook;;vorschlag
+z1446;Speer der Reinheit;Spear of Purity;Ausbauregeln: Magie;237;Ultimate Magic;;vorschlag
+z1447;Sphäre der Unsichtbarkeit;Invisibility Sphere;Grundregelwerk;333;Core Rulebook;;vorschlag
+z1448;Spiegelbilder;Mirror Image;Grundregelwerk;333;Core Rulebook;;vorschlag
+z1450;Spiegelschlag;Mirror Strike;Ausbauregeln II: Kampf;242;Ultimate Combat;;vorschlag
+z1454;Spinnenklettern;Spider Climb;Grundregelwerk;333;Core Rulebook;;vorschlag
+z1455;Spinnennetz;Web;Grundregelwerk;333;Core Rulebook;;vorschlag
+z1457;Spontane Selbstentzündung;Spontaneous Immolation;Ausbauregeln II: Kampf;243;Ultimate Combat;;vorschlag
+z1458;Sprache weitergeben;Share Language;Expertenregeln;244;Advanced Player’s Guide;;vorschlag
+z1459;Sprachen verstehen;Comprehend Languages;Grundregelwerk;334;Core Rulebook;;vorschlag
+z1461;Springen;Jump;Grundregelwerk;334;Core Rulebook;;vorschlag
+z1462;Sprühende Farben;Color Spray;Grundregelwerk;334;Core Rulebook;;vorschlag
+z1463;Spukchor;Haunting Choir;Ausbauregeln: Magie;237;Ultimate Magic;;vorschlag
+z1464;Spuknebel;Haunting Mists;Ausbauregeln: Magie;237;Ultimate Magic;;vorschlag
+z1466;Stabilisieren;Stabilize;Grundregelwerk;334;Core Rulebook;;vorschlag
+z1468;Standort vortäuschen;Displacement;Grundregelwerk;334;Core Rulebook;;vorschlag
+z1471;Starker Kiefer;Strong Jaw;Expertenregeln;244;Advanced Player’s Guide;;vorschlag
+z1473;Statue;Statue;Grundregelwerk;335;Core Rulebook;;vorschlag
+z1474;Staubgestalt;Dust Form;Ausbauregeln II: Kampf;243;Ultimate Combat;;vorschlag
+z1475;Steckenwandlung;Changestaff;Grundregelwerk;335;Core Rulebook;;vorschlag
+z1477;Stein formen;Stone Shape;Grundregelwerk;335;Core Rulebook;;vorschlag
+z1478;Stein zu Fleisch;Stone to Flesh;Grundregelwerk;335;Core Rulebook;;vorschlag
+z1479;Steindornen;Spike Stones;Grundregelwerk;335;Core Rulebook;;vorschlag
+z1481;Steinfaust;Stone Fist;Expertenregeln;244;Advanced Player’s Guide;;vorschlag
+z1482;Steinhaut;Stoneskin;Grundregelwerk;336;Core Rulebook;;vorschlag
+z1485;Steinschlag;Stone Call;Expertenregeln;244;Advanced Player’s Guide;;vorschlag
+z1486;Steinwand;Wall of Stone;Grundregelwerk;336;Core Rulebook;;vorschlag
+z1487;Stille;Silence;Grundregelwerk;336;Core Rulebook;;vorschlag
+z1488;Stilles Trugbild;Silent Image;Grundregelwerk;336;Core Rulebook;;vorschlag
+z1489;Stillstehender Ton;Frozen Note;Expertenregeln;245;Advanced Player’s Guide;;vorschlag
+z1490;Stimme rauben;Steal Voice;Ausbauregeln: Magie;238;Ultimate Magic;;vorschlag
+z1491;Stimme verändern;Alter Voice;Ausbauregeln: Magie;238;Ultimate Magic;;vorschlag
+z1492;Stinkende Wolke;Stinking Cloud;Grundregelwerk;336;Core Rulebook;;vorschlag
+z1496;Stolperzunge;Fumbletongue;Ausbauregeln: Magie;238;Ultimate Magic;;vorschlag
+z1497;Störende Kakophonie;Discordant Cacophony;Ausbauregeln: Magie;239;Ultimate Magic;;vorschlag
+z1501;Streitergewand;Vestment of the Champion;Ausbauregeln: Magie;239;Ultimate Magic;;vorschlag
+z1502;Streitross;Wartrain Mount;Ausbauregeln: Magie;239;Ultimate Magic;;vorschlag
+z1503;Strudel;Whirlpool;Expertenregeln;245;Advanced Player’s Guide;;vorschlag
+z1504;Sturm der Vergeltung;Storm of Vengeance;Grundregelwerk;337;Core Rulebook;;vorschlag
+z1505;Sturzflut;Hydraulic Torrent;Expertenregeln;245;Advanced Player’s Guide;;vorschlag
+z1508;Symbol der Ausspähung;Symbol of Scrying;Ausbauregeln: Magie;239;Ultimate Magic;;vorschlag
+z1509;Symbol der Betäubung;Symbol of Stunning;Grundregelwerk;337;Core Rulebook;;vorschlag
+z1510;Symbol der Empfindlichkeit;Symbol of Vulnerability;Ausbauregeln: Magie;239;Ultimate Magic;;vorschlag
+z1511;Symbol der Enthüllung;Symbol of Revelation;Ausbauregeln: Magie;239;Ultimate Magic;;vorschlag
+z1512;Symbol der Furcht;Symbol of Fear;Grundregelwerk;337;Core Rulebook;;vorschlag
+z1513;Symbol der Heilung;Symbol of Healing;Ausbauregeln: Magie;239;Ultimate Magic;;vorschlag
+z1514;Symbol der Schwächung;Symbol of Weakness;Grundregelwerk;338;Core Rulebook;;vorschlag
+z1515;Symbol der Spiegelbilder;Symbol of Mirroring;Ausbauregeln: Magie;240;Ultimate Magic;;vorschlag
+z1516;Symbol der Überredung;Symbol of Persuasion;Grundregelwerk;338;Core Rulebook;;vorschlag
+z1519;Symbol des Schlagens;Symbol of Striking;Ausbauregeln II: Kampf;243;Ultimate Combat;;vorschlag
+z1520;Symbol des Schmerzes;Symbol of Pain;Grundregelwerk;337;Core Rulebook;;vorschlag
+z1521;Symbol des Todes;Symbol of Death;Grundregelwerk;338;Core Rulebook;;vorschlag
+z1522;Symbol des Verlangsamens;Symbol of Slowing;Ausbauregeln: Magie;240;Ultimate Magic;;vorschlag
+z1523;Symbol des Versiegelns;Symbol of Sealing;Ausbauregeln: Magie;240;Ultimate Magic;;vorschlag
+z1524;Symbol des Wahnsinns;Symbol of Insanity;Grundregelwerk;339;Core Rulebook;;vorschlag
+z1525;Symbol des Zwists;Symbol of Strife;Ausbauregeln: Magie;241;Ultimate Magic;;vorschlag
+z1526;Sympathie;Sympathy;Grundregelwerk;339;Core Rulebook;;vorschlag
+z1527;Tadel;Rebuke;Expertenregeln;245;Advanced Player’s Guide;;vorschlag
+z1528;Tageslicht;Daylight;Grundregelwerk;339;Core Rulebook;;vorschlag
+z1531;Taktisches Können;Tactical Acumen;Ausbauregeln II: Kampf;244;Ultimate Combat;;vorschlag
+z1532;Tanz der Hundert Schnitte;Dance of a Hundred Cuts;Ausbauregeln: Magie;241;Ultimate Magic;;vorschlag
+z1533;Tanz der Tausend Schnitte;Dance of a Thousand Cuts;Ausbauregeln: Magie;241;Ultimate Magic;;vorschlag
+z1534;Tanzende Laterne;Dancing Lantern;Expertenregeln;246;Advanced Player’s Guide;;vorschlag
+z1535;Tanzende Lichter;Dancing Lights;Grundregelwerk;339;Core Rulebook;;vorschlag
+z1540;Teerkugel;Tar Ball;Ausbauregeln: Magie;241;Ultimate Magic;;vorschlag
+z1541;Teerlache;Tar Pool;Ausbauregeln II: Kampf;244;Ultimate Combat;;vorschlag
+z1542;Teilweise Eidolongenesung;Restore Eidolon, Lesser;Ausbauregeln: Magie;211;Ultimate Magic;;vorschlag
+z1543;Teilweise Genesung;Restoration, Lesser;Grundregelwerk;339;Core Rulebook;;vorschlag
+z1544;Telekinese;Telekinesis;Grundregelwerk;340;Core Rulebook;;vorschlag
+z1545;Telekinesesphäre;Telekinetic Sphere;Grundregelwerk;340;Core Rulebook;;vorschlag
+z1547;Telekinetischer Sturmangriff;Telekinetic Charge;Ausbauregeln II: Kampf;244;Ultimate Combat;;vorschlag
+z1548;Telekinetisches Zusammenbauen;Telekinetic Assembly;Ausbauregeln II: Kampf;244;Ultimate Combat;;vorschlag
+z1550;Telepathisches Band;Telepathic Bond;Grundregelwerk;341;Core Rulebook;;vorschlag
+z1553;Teleportieren;Teleport;Grundregelwerk;341;Core Rulebook;;vorschlag
+z1555;Temporäre Stasis;Temporal Stasis;Grundregelwerk;341;Core Rulebook;;vorschlag
+z1559;Tiefe Verzweiflung;Crushing Despair;Grundregelwerk;342;Core Rulebook;;vorschlag
+z1560;Tiefere Dunkelheit;Deeper Darkness;Grundregelwerk;342;Core Rulebook;;vorschlag
+z1561;Tiefschlaf;Deep Slumber;Grundregelwerk;342;Core Rulebook;;vorschlag
+z1562;Tier bezaubern;Charm Animal;Grundregelwerk;342;Core Rulebook;;vorschlag
+z1563;Tier festhalten;Hold Animal;Grundregelwerk;342;Core Rulebook;;vorschlag
+z1564;Tier herbeirufen;Call Animal;Expertenregeln;246;Advanced Player’s Guide;;vorschlag
+z1565;Tier verkleinern;Reduce Animal;Grundregelwerk;342;Core Rulebook;;vorschlag
+z1566;Tieraspekt;Animal Aspect;Ausbauregeln II: Kampf;244;Ultimate Combat;;vorschlag
+z1568;Tierbote;Animal Messenger;Grundregelwerk;342;Core Rulebook;;vorschlag
+z1570;Tiere beruhigen;Calm Animals;Grundregelwerk;343;Core Rulebook;;vorschlag
+z1571;Tiere faszinieren;Animal Trance;Grundregelwerk;343;Core Rulebook;;vorschlag
+z1572;Tiere oder Pflanzen entdecken;Detect Animals or Plants;Grundregelwerk;343;Core Rulebook;;vorschlag
+z1573;Tierform;Animal Shapes;Grundregelwerk;343;Core Rulebook;;pruefen
+z1574;Tierwachstum;Animal Growth;Grundregelwerk;343;Core Rulebook;;vorschlag
+z1575;Tintenschlange;Inky Serpent;Grundregelwerk;344;Core Rulebook;;vorschlag
+z1576;Tod den Untoten;Undeath to Death;Grundregelwerk;344;Core Rulebook;;vorschlag
+z1579;Todeskreis;Circle of Death;Grundregelwerk;344;Core Rulebook;;vorschlag
+z1580;Todesschutz;Death Ward;Grundregelwerk;344;Core Rulebook;;vorschlag
+z1581;Todeswolke;Cloudkill;Grundregelwerk;344;Core Rulebook;;vorschlag
+z1582;Tödlicher Ausklang;Deadly Finale;Expertenregeln;246;Advanced Player’s Guide;;vorschlag
+z1583;Tödliches Phantom;Phantasmal Killer;Grundregelwerk;345;Core Rulebook;;vorschlag
+z1585;Tor;Gate;Grundregelwerk;345;Core Rulebook;;vorschlag
+z1586;Tote beleben;Animate Dead;Grundregelwerk;346;Core Rulebook;;vorschlag
+z1587;Tote erwecken;Raise Dead;Grundregelwerk;346;Core Rulebook;;vorschlag
+z1589;Toten Tiergefährten erwecken;Raise Animal Companion;Ausbauregeln: Magie;241;Ultimate Magic;;vorschlag
+z1590;Totenglocke;Death Knell;Grundregelwerk;346;Core Rulebook;;vorschlag
+z1592;Totenwache;Deathwatch;Grundregelwerk;346;Core Rulebook;;vorschlag
+z1594;Trank in Gift verwandeln;Transmute Potion to Poison;Expertenregeln;246;Advanced Player’s Guide;;vorschlag
+z1596;Traum;Dream;Grundregelwerk;346;Core Rulebook;;vorschlag
+z1598;Traumumhang;Cloak of Dreams;Expertenregeln;247;Advanced Player’s Guide;;vorschlag
+z1599;Treffsichere Waffe;Unerring Weapon;Ausbauregeln II: Kampf;245;Ultimate Combat;;vorschlag
+z1600;Tsunami;Tsunami;Expertenregeln;247;Advanced Player’s Guide;;vorschlag
+z1601;Tugend;Virtue;Grundregelwerk;347;Core Rulebook;;vorschlag
+z1604;Übelkeit bannen;Remove Sickness;Ausbauregeln: Magie;241;Ultimate Magic;;vorschlag
+z1607;Überirdische Freuden;Joyful Rapture;Ausbauregeln: Magie;241;Ultimate Magic;;vorschlag
+z1608;Überlandflug;Overland Flight;Grundregelwerk;347;Core Rulebook;;vorschlag
+z1609;Überwältigende Ehrfurcht;Overwhelming Presence;Ausbauregeln: Magie;242;Ultimate Magic;;vorschlag
+z1610;Überwältigende Trauer;Overwhelming Grief;Ausbauregeln: Magie;242;Ultimate Magic;;vorschlag
+z1612;Umwandlung;Transformation;Grundregelwerk;347;Core Rulebook;;vorschlag
+z1613;Unantastbarkeit des Narren;Fool's Forbiddance;Expertenregeln;248;Advanced Player’s Guide;;vorschlag
+z1615;Unauffälliger Diener;Unseen Servant;Grundregelwerk;347;Core Rulebook;;vorschlag
+z1616;Unauffindbarkeit;Nondetection;Grundregelwerk;347;Core Rulebook;;vorschlag
+z1617;Unaufhaltsame Todeswalze;Deadly Juggernaut;Ausbauregeln II: Kampf;244;Ultimate Combat;;vorschlag
+z1619;Unermüdliche Verfolger;Tireless Pursuers;Expertenregeln;248;Advanced Player’s Guide;;vorschlag
+z1620;Unermüdliche Verfolgung;Tireless Pursuit;Expertenregeln;248;Advanced Player’s Guide;;vorschlag
+z1622;Ungeziefer zurücktreiben;Repel Vermin;Grundregelwerk;348;Core Rulebook;;vorschlag
+z1623;Ungeziefergestalt I;Vermin Shape I;Ausbauregeln: Magie;242;Ultimate Magic;;vorschlag
+z1624;Ungeziefergestalt II;Vermin Shape II;Ausbauregeln: Magie;242;Ultimate Magic;;vorschlag
+z1625;Unheil;Doom;Grundregelwerk;348;Core Rulebook;;vorschlag
+z1626;Unheilige Aura;Unholy Aura;Grundregelwerk;348;Core Rulebook;;vorschlag
+z1628;Unheilige Plage;Unholy Blight;Grundregelwerk;348;Core Rulebook;;vorschlag
+z1629;Unheiliges Eis;Unholy Ice;Ausbauregeln: Magie;242;Ultimate Magic;;vorschlag
+z1630;Unheiliges Schwert;Unholy Sword;Ausbauregeln: Magie;242;Ultimate Magic;;vorschlag
+z1631;Unheimliches Schicksal;Weird;Grundregelwerk;348;Core Rulebook;;vorschlag
+z1632;Universalformel;Universal Formula;Expertenregeln;248;Advanced Player’s Guide;;vorschlag
+z1633;Unlöschbarer Durst;Unquenchable Thirst;Expertenregeln;248;Advanced Player’s Guide;;vorschlag
+z1634;Unschuld;Innocence;Expertenregeln;248;Advanced Player’s Guide;;vorschlag
+z1635;Unsichtbares sehen;See Invisibility;Grundregelwerk;348;Core Rulebook;;vorschlag
+z1636;Unsichtbarkeit;Invisibility;Grundregelwerk;349;Core Rulebook;;vorschlag
+z1637;Unsichtbarkeit aufheben;Invisibility Purge;Grundregelwerk;349;Core Rulebook;;vorschlag
+z1638;Unstillbarer Hunger;Feast of Ashes;Expertenregeln;248;Advanced Player’s Guide;;vorschlag
+z1639;Unterschlupf aus Spinnennetz;Web Shelter;Ausbauregeln: Magie;243;Ultimate Magic;;vorschlag
+z1640;Untote befehligen;Command Undead;Grundregelwerk;349;Core Rulebook;;vorschlag
+z1641;Untote entdecken;Detect Undead;Grundregelwerk;349;Core Rulebook;;vorschlag
+z1642;Untote erschaffen;Create Undead;Grundregelwerk;350;Core Rulebook;;vorschlag
+z1643;Untote festsetzen;Halt Undead;Grundregelwerk;350;Core Rulebook;;vorschlag
+z1644;Untote Kontrollieren;Control Undead;Grundregelwerk;350;Core Rulebook;;vorschlag
+z1646;Untote schwächen;Disrupt Undead;Grundregelwerk;350;Core Rulebook;;vorschlag
+z1648;Untotengestalt I;Undead Anatomy I;Ausbauregeln: Magie;243;Ultimate Magic;;vorschlag
+z1649;Untotengestalt II;Undead Anatomy II;Ausbauregeln: Magie;243;Ultimate Magic;;vorschlag
+z1650;Untotengestalt III;Undead Anatomy III;Ausbauregeln: Magie;243;Ultimate Magic;;vorschlag
+z1651;Untotengestalt IV;Undead Anatomy IV;Ausbauregeln: Magie;244;Ultimate Magic;;vorschlag
+z1652;Unverwüstliche Sphäre;Resilient Sphere;Grundregelwerk;351;Core Rulebook;;vorschlag
+z1653;Unvorbereiteter Gegner;Unprepared Combatant;Ausbauregeln: Magie;244;Ultimate Magic;;vorschlag
+z1654;Unwiderstehlicher Tanz;Irresistible Dance;Grundregelwerk;351;Core Rulebook;;vorschlag
+z1655;Unwilliger Schild;Unwilling Shield;Expertenregeln;249;Advanced Player’s Guide;;vorschlag
+z1657;Unzerbrechliches Konstrukt;Unbreakable Construct;Ausbauregeln: Magie;244;Ultimate Magic;;vorschlag
+z1660;Urschrei;Primal Scream;Ausbauregeln: Magie;244;Ultimate Magic;;vorschlag
+z1661;Vampirgriff;Vampiric Touch;Grundregelwerk;351;Core Rulebook;;vorschlag
+z1663;Verachtung;Utter Contempt;Ausbauregeln: Magie;244;Ultimate Magic;;vorschlag
+z1664;Verarbeitung;Fabricate;Grundregelwerk;351;Core Rulebook;;vorschlag
+z1677;Verbannt aus der Natur;Nature's Exile;Expertenregeln;249;Advanced Player’s Guide;;vorschlag
+z1678;Verbannung;Banishment;Grundregelwerk;351;Core Rulebook;;vorschlag
+z1679;Verbergen;Sequester;Grundregelwerk;351;Core Rulebook;;vorschlag
+z1681;Verbindung im Kampf;Battlemind Link;Ausbauregeln: Magie;244;Ultimate Magic;;vorschlag
+z1682;Verborgene Nachrichten;Hidden Speech;Expertenregeln;249;Advanced Player’s Guide;;vorschlag
+z1683;Verborgene Seite;Secret Page;Grundregelwerk;352;Core Rulebook;;vorschlag
+z1685;Verbündeter aus den Ebenen;Planar Ally;Grundregelwerk;353;Core Rulebook;;vorschlag
+z1689;Verbündeter des Glaubens;Spiritual Ally;Expertenregeln;249;Advanced Player’s Guide;;vorschlag
+z1690;Verdammte Erde;Cursed Earth;Ausbauregeln: Magie;245;Ultimate Magic;;vorschlag
+z1691;Verdorren;Horrid Wilting;Grundregelwerk;355;Core Rulebook;;vorschlag
+z1694;Verfluchen;Bane;Grundregelwerk;355;Core Rulebook;;vorschlag
+z1696;Verführerisches Geschenk;Beguiling Gift;Expertenregeln;250;Advanced Player’s Guide;;vorschlag
+z1697;Vergeltung;Retribution;Expertenregeln;250;Advanced Player’s Guide;;vorschlag
+z1698;Vergiften;Poison;Grundregelwerk;355;Core Rulebook;;vorschlag
+z1700;Vergiftung weitergeben;Toxic Gift;Ausbauregeln: Magie;245;Ultimate Magic;;vorschlag
+z1701;Verhalten durchschauen;Perceive Cues;Expertenregeln;251;Advanced Player’s Guide;;vorschlag
+z1702;Verhör;Interrogation;Ausbauregeln: Magie;245;Ultimate Magic;;vorschlag
+z1703;Verhüllender Nebel;Obscuring Mist;Grundregelwerk;355;Core Rulebook;;vorschlag
+z1705;Verlangen;Unnatural Lust;Ausbauregeln: Magie;245;Ultimate Magic;;vorschlag
+z1706;Verlangsamen;Slow;Grundregelwerk;355;Core Rulebook;;vorschlag
+z1708;Verlässliches Pulver;Stabilize Powder;Ausbauregeln II: Kampf;246;Ultimate Combat;;vorschlag
+z1710;Vernarrtheit;Infatuation;Ausbauregeln: Magie;245;Ultimate Magic;;vorschlag
+z1711;Versanden;Shifting Sand;Expertenregeln;251;Advanced Player’s Guide;;vorschlag
+z1712;Verschwimmen;Blur;Grundregelwerk;355;Core Rulebook;;vorschlag
+z1713;Verschwinden;Vanish;Expertenregeln;251;Advanced Player’s Guide;;vorschlag
+z1719;Verständigung;Sending;Grundregelwerk;356;Core Rulebook;;vorschlag
+z1721;Versteinernder Hauch;Calcific Touch;Expertenregeln;251;Advanced Player’s Guide;;vorschlag
+z1722;Verstörende Feenerscheinung;Haunted Fey Aspect;Ausbauregeln II: Kampf;246;Ultimate Combat;;vorschlag
+z1724;Verstricken;Entangle;Grundregelwerk;356;Core Rulebook;;vorschlag
+z1731;Verurteilung;Reprobation;Ausbauregeln: Magie;246;Ultimate Magic;;vorschlag
+z1732;Verwandlung;Polymorph;Grundregelwerk;356;Core Rulebook;;vorschlag
+z1735;Verwirrung;Confusion;Grundregelwerk;356;Core Rulebook;;vorschlag
+z1736;Verwünschung;Death Candle;Expertenregeln;325;Advanced Player’s Guide;;pruefen
+z1738;Waffengesinnung;Align Weapon;Grundregelwerk;359;Core Rulebook;;vorschlag
+z1745;Waffenumgang verleihen;Bestow Weapon Proficiency;Ausbauregeln II: Kampf;246;Ultimate Combat;;vorschlag
+z1747;Wahnsinn;Insanity;Grundregelwerk;359;Core Rulebook;;vorschlag
+z1748;Wahnvorstellungen;Mad Hallucination;Ausbauregeln: Magie;246;Ultimate Magic;;vorschlag
+z1749;Wahre Auferstehung;True Resurrection;Grundregelwerk;360;Core Rulebook;;vorschlag
+z1751;Wahre Gestalt;True Form;Expertenregeln;251;Advanced Player’s Guide;;vorschlag
+z1753;Wahrer Blick;True Seeing;Grundregelwerk;360;Core Rulebook;;vorschlag
+z1756;Wand des Zauberunterdrückens;Wall of Suppression;Expertenregeln;252;Advanced Player’s Guide;;vorschlag
+z1757;Wände passieren;Passwall;Grundregelwerk;360;Core Rulebook;;vorschlag
+z1758;Wanderndes Sternenfunkeln;Wandering Star Motes;Expertenregeln;252;Advanced Player’s Guide;;vorschlag
+z1760;Wasser atmen;Water Breathing;Grundregelwerk;360;Core Rulebook;;vorschlag
+z1761;Wasser entweihen;Curse Water;Grundregelwerk;360;Core Rulebook;;vorschlag
+z1762;Wasser erschaffen;Create Water;Grundregelwerk;360;Core Rulebook;;vorschlag
+z1763;Wasser kontrollieren;Control Water;Grundregelwerk;361;Core Rulebook;;vorschlag
+z1766;Wasser weihen;Bless Water;Grundregelwerk;361;Core Rulebook;;vorschlag
+z1767;Wasserkugel;Aqueous Orb;Expertenregeln;252;Advanced Player’s Guide;;vorschlag
+z1768;Wasserstrahl;Hydraulic Push;Expertenregeln;253;Advanced Player’s Guide;;vorschlag
+z1769;Weg finden;Find the Path;Grundregelwerk;361;Core Rulebook;;vorschlag
+z1770;Wehgeschrei der Todesfee;Wail of the Banshee;Grundregelwerk;361;Core Rulebook;;vorschlag
+z1771;Weihen;Consecrate;Grundregelwerk;361;Core Rulebook;;vorschlag
+z1772;Weisheit der Eule;Owl's Wisdom;Grundregelwerk;362;Core Rulebook;;vorschlag
+z1773;Weissagung;Divination;Grundregelwerk;362;Core Rulebook;;vorschlag
+z1774;Weiter Schuss;Longshot;Ausbauregeln II: Kampf;246;Ultimate Combat;;vorschlag
+z1775;Wellen der Ekstase;Waves of Ecstasy;Ausbauregeln: Magie;246;Ultimate Magic;;vorschlag
+z1776;Wellen der Entkräftung;Waves of Exhaustion;Grundregelwerk;362;Core Rulebook;;vorschlag
+z1777;Wellen der Erschöpfung;Waves of Fatigue;Grundregelwerk;362;Core Rulebook;;vorschlag
+z1778;Wellenritt;Slipstream;Expertenregeln;253;Advanced Player’s Guide;;vorschlag
+z1780;Welpengestalt;Pup Shape;Ausbauregeln II: Kampf;247;Ultimate Combat;;vorschlag
+z1781;Weltenwoge;World Wave;Expertenregeln;253;Advanced Player’s Guide;;vorschlag
+z1783;Wespenmantel;Cloak of Wasps;Ausbauregeln: Magie;247;Ultimate Magic;;vorschlag
+z1784;Wetterkontrolle;Control Weather;Grundregelwerk;362;Core Rulebook;;vorschlag
+z1785;Widerhallendes Wort;Resonating Word;Ausbauregeln: Magie;247;Ultimate Magic;;vorschlag
+z1786;Wiedergeburt;Reincarnate;Grundregelwerk;363;Core Rulebook;;vorschlag
+z1787;Wildheit des Dachses;Badger's Ferocity;Ausbauregeln: Magie;247;Ultimate Magic;;vorschlag
+z1789;Winde der Vergeltung;Winds of Vengeance;Expertenregeln;254;Advanced Player’s Guide;;vorschlag
+z1790;Windgeflüster;Whispering Wind;Grundregelwerk;363;Core Rulebook;;vorschlag
+z1794;Windkontrolle;Control Winds;Grundregelwerk;363;Core Rulebook;;vorschlag
+z1795;Windschild;Fickle Winds;Ausbauregeln: Magie;247;Ultimate Magic;;vorschlag
+z1796;Windstärke anpassen;Alter Winds;Expertenregeln;255;Advanced Player’s Guide;;vorschlag
+z1798;Windstoß;Gust of Wind;Grundregelwerk;364;Core Rulebook;;vorschlag
+z1799;Windstrom;Wind Stream;Expertenregeln;254;Advanced Player’s Guide;;vorschlag
+z1800;Windumhang;Wind Mantle;Expertenregeln;255;Advanced Player’s Guide;;vorschlag
+z1801;Windwall;Wind Wall;Grundregelwerk;364;Core Rulebook;;vorschlag
+z1802;Windwandeln;Wind Walk;Grundregelwerk;364;Core Rulebook;;vorschlag
+z1803;Wintereinbruch;Frost Fall;Ausbauregeln II: Kampf;247;Ultimate Combat;;vorschlag
+z1806;Winzige Hütte;Tiny Hut;Grundregelwerk;365;Core Rulebook;;vorschlag
+z1807;Wirbelwind;Whirlwind;Grundregelwerk;365;Core Rulebook;;vorschlag
+z1808;Wissen des Meisterschützen;Deadeye's Lore;Ausbauregeln II: Kampf;248;Ultimate Combat;;vorschlag
+z1809;Wissen über den Feind;Know the Enemy;Ausbauregeln: Magie;247;Ultimate Magic;;vorschlag
+z1810;Wohltuender Ausklang;Purging Finale;Expertenregeln;256;Advanced Player’s Guide;;vorschlag
+z1811;Wohlwollendes Gehölz;Forest Friend;Ausbauregeln II: Kampf;248;Ultimate Combat;;vorschlag
+z1814;Wort der Entschlossenheit;Word of Resolve;Ausbauregeln: Magie;247;Ultimate Magic;;vorschlag
+z1815;Wort der Macht: Betäubung;Power Word Stun;Grundregelwerk;365;Core Rulebook;;vorschlag
+z1816;Wort der Macht: Blindheit;Power Word Blind;Grundregelwerk;365;Core Rulebook;;vorschlag
+z1817;Wort der Macht: Tod;Power Word Kill;Grundregelwerk;365;Core Rulebook;;vorschlag
+z1818;Wort des Chaos;Word of Chaos;Grundregelwerk;366;Core Rulebook;;vorschlag
+z1820;Wunder;Miracle;Grundregelwerk;366;Core Rulebook;;vorschlag
+z1821;Wunsch;Wish;Grundregelwerk;366;Core Rulebook;;vorschlag
+z1822;Würde des Streiters verleihen;Bestow Grace of the Champion;Ausbauregeln: Magie;247;Ultimate Magic;;vorschlag
+z1823;Würde verleihen;Bestow Grace;Expertenregeln;256;Advanced Player’s Guide;;vorschlag
+z1825;Würgende Haare;Strangling Hair;Ausbauregeln: Magie;248;Ultimate Magic;;vorschlag
+z1827;Wut;Rage;Grundregelwerk;367;Core Rulebook;;vorschlag
+z1828;Zahllose Augen;Countless Eyes;Ausbauregeln: Magie;248;Ultimate Magic;;vorschlag
+z1831;Zauber analysieren;Analyze Dweomer;Grundregelwerk;367;Core Rulebook;;vorschlag
+z1832;Zauber verbergen;Mask Dweomer;Expertenregeln;256;Advanced Player’s Guide;;vorschlag
+z1833;Zauber zurückwerfen;Spell Turning;Grundregelwerk;367;Core Rulebook;;vorschlag
+z1836;Zaubereffekt rauben;Arcana Theft;Ausbauregeln: Magie;248;Ultimate Magic;;vorschlag
+z1837;Zauberfieber;Eldritch Fever;Ausbauregeln: Magie;248;Ultimate Magic;;vorschlag
+z1838;Zauberkräfte verleihen;Imbue with Spell Ability;Grundregelwerk;368;Core Rulebook;;vorschlag
+z1840;Zauberresistenz;Spell Resistance;Grundregelwerk;368;Core Rulebook;;vorschlag
+z1841;Zauberstecken;Spellstaff;Grundregelwerk;368;Core Rulebook;;vorschlag
+z1842;Zaubertrick;Prestidigitation;Grundregelwerk;368;Core Rulebook;;vorschlag
+z1846;Zeitstopp;Time Stop;Grundregelwerk;368;Core Rulebook;;vorschlag
+z1847;Zerbersten;Shatter;Grundregelwerk;369;Core Rulebook;;vorschlag
+z1848;Zerdrückende Hand;Crushing Hand;Grundregelwerk;369;Core Rulebook;;vorschlag
+z1850;Zerschmetternde Felsen;Clashing Rocks;Expertenregeln;256;Advanced Player’s Guide;;vorschlag
+z1851;Zersetzender Hauch;Corrosive Touch;Ausbauregeln: Magie;249;Ultimate Magic;;vorschlag
+z1852;Zerstörende Waffe;Disrupting Weapon;Grundregelwerk;369;Core Rulebook;;vorschlag
+z1853;Zerstörung;Destruction;Grundregelwerk;369;Core Rulebook;;vorschlag
+z1854;Zeuge;Witness;Ausbauregeln: Magie;249;Ultimate Magic;;vorschlag
+z1856;Zielsicherer Schlag;True Strike;Grundregelwerk;369;Core Rulebook;;vorschlag
+z1857;Zone der Stille;Zone of Silence;Grundregelwerk;369;Core Rulebook;;vorschlag
+z1858;Zone der Wahrheit;Zone of Truth;Grundregelwerk;369;Core Rulebook;;vorschlag
+z1859;Zorn;Wrath;Expertenregeln;256;Advanced Player’s Guide;;vorschlag
+z1860;Zorn der Ordnung;Order's Wrath;Grundregelwerk;370;Core Rulebook;;vorschlag
+z1863;Zuflucht;Refuge;Grundregelwerk;370;Core Rulebook;;vorschlag
+z1864;Zugreifende Hand;Grasping Hand;Grundregelwerk;370;Core Rulebook;;vorschlag
+z1865;Zum Feind erklären;Instant Enemy;Expertenregeln;256;Advanced Player’s Guide;;vorschlag
+z1866;Zungen;Tongues;Grundregelwerk;370;Core Rulebook;;vorschlag
+z1867;Zurückkehrende Waffe;Returning Weapon;Ausbauregeln II: Kampf;249;Ultimate Combat;;vorschlag
+z1869;Zusammenflicken;Jury-Rig;Ausbauregeln II: Kampf;249;Ultimate Combat;;vorschlag
+z1870;Zustand;Status;Grundregelwerk;370;Core Rulebook;;vorschlag
+z1872;Zutritt verwehren;Forbiddance;Grundregelwerk;371;Core Rulebook;;vorschlag
+z1873;Zwanghafter Neid;Envious Urge;Ausbauregeln: Magie;249;Ultimate Magic;;vorschlag
+z1876;Zwielichtsklinge;Twilight Knife;Expertenregeln;256;Advanced Player’s Guide;;vorschlag
+z1879;Zwillingsgestalt;Twin Form;Expertenregeln;257;Advanced Player’s Guide;;vorschlag
+pdf0001;Zielbombenzusatz;Targeted Bomb Admixture;Ausbauregeln II: Kampf;248;Ultimate Combat;;vorschlag
+pdf0002;Geisterhaft Verkleidung;Ghostly Disguise;Ausbauregeln: Magie;218;Ultimate Magic;;vorschlag
+pdf0003;Geisterhafte Aufmerksamkeit;Ghostly Vigilance;Ausbauregeln: Magie;218;Ultimate Magic;;vorschlag
+pdf0004;Gemeinschaftliche Ameisenstärke;Ant Haul, Communal;Ausbauregeln II: Kampf;222;Ultimate Combat;;vorschlag
+pdf0005;Injiziernde Berührung;Touch Injection;Ausbauregeln II: Kampf;232;Ultimate Combat;;vorschlag
+pdf0006;Kinetische Resonanz;Kinetic Reverberation;Ausbauregeln II: Kampf;233;Ultimate Combat;;vorschlag
+pdf0007;Bestiengestallt I;Beast Shape I;Grundregelwerk;251;Core Rulebook;;vorschlag
+pdf0008;Gemeinschaftliche Dunkelsicht;Darkvision, Communal;Ausbauregeln II: Kampf;226;Ultimate Combat;;vorschlag
+pdf0009;Gemeinschaftlicher Schutz vor Pfeilen;Protection from Arrows, Communal;Ausbauregeln II: Kampf;241;Ultimate Combat;;vorschlag
+pdf0010;Gemeinschaftliches Elementen trotzen;Endure Elements, Communal;Ausbauregeln II: Kampf;226;Ultimate Combat;;vorschlag
+pdf0011;Gemeinschaftliches Energien widerstehen;Resist Energy, Communal;Ausbauregeln II: Kampf;227;Ultimate Combat;;vorschlag
+pdf0012;Gemeinschaftliches Gift verzögern;Delay Poison, Communal;Ausbauregeln II: Kampf;231;Ultimate Combat;;vorschlag
+pdf0013;Gemeinschaftliches Spinnenklettern;Spider Climb, Communal;Ausbauregeln II: Kampf;243;Ultimate Combat;;vorschlag
+pdf0014;Krankheit kurieren;Remove Disease;Grundregelwerk;294;Core Rulebook;;vorschlag
+pdf0015;Schwächere Resistenz gegen Alterung;Age Resistance, Lesser;Ausbauregeln: Magie;231;Ultimate Magic;;vorschlag
+pdf0016;Gemeinschaftliche Zungen;Tongues, Communal;Ausbauregeln II: Kampf;248;Ultimate Combat;;vorschlag
+pdf0017;Gemeinschaftlicher Luftweg;Air Walk, Communal;Ausbauregeln II: Kampf;236;Ultimate Combat;;vorschlag
+pdf0018;Mächtige Falsches Leben;False Life, Greater;Ausbauregeln: Magie;215;Ultimate Magic;;vorschlag
+pdf0019;Vipern-Bombenzusatz;Viper Bomb Admixture;Ausbauregeln II: Kampf;246;Ultimate Combat;;vorschlag
+pdf0020;Gemeinschaftliche Steinhaut;Stoneskin, Communal;Ausbauregeln II: Kampf;243;Ultimate Combat;;vorschlag
+pdf0021;Mächtige Resistenz gegen Alterung;Age Resistance, Greater;Ausbauregeln: Magie;231;Ultimate Magic;;vorschlag
+pdf0022;Verzögerte Wirkung;Delayed Consumption;Expertenregeln;251;Advanced Player’s Guide;;vorschlag
+pdf0023;Möderischer Befehl;Murderous Command;Ausbauregeln: Magie;229;Ultimate Magic;;vorschlag
+pdf0024;Gemeinschaftlicher Schutz vor Gutem;Protection from Good, Communal;Ausbauregeln II: Kampf;241;Ultimate Combat;;vorschlag
+pdf0025;Gemeinschaftlicher Schutz vor Ordnung;Protection from Law, Communal;Ausbauregeln II: Kampf;241;Ultimate Combat;;vorschlag
+pdf0026;Klinge des finsteren Triumphs;Blade of Dark Triumph;Ausbauregeln: Magie;225;Ultimate Magic;;vorschlag
+pdf0027;Gemeinschaftliche Unauffindbarkeit;Nondetection, Communal;Ausbauregeln II: Kampf;245;Ultimate Combat;;vorschlag
+pdf0028;Mächtiges Magisches Belagerungsgerät;Magic Siege Engine, Greater;Ausbauregeln II: Kampf;236;Ultimate Combat;;vorschlag
+pdf0029;Rechtschaffenes bannen;Dispel Law;Grundregelwerk;316;Core Rulebook;;vorschlag
+pdf0030;Gemeinschaftliches Sprache weitergeben;Share Language, Communal;Ausbauregeln II: Kampf;243;Ultimate Combat;;vorschlag
+pdf0031;Vielseitige Waffe;Versatile Weapon;Expertenregeln;251;Advanced Player’s Guide;;vorschlag
+pdf0032;Gemeinschaftliche Zurückkehrende Waffe;Returning Weapon, Communal;Ausbauregeln II: Kampf;249;Ultimate Combat;;vorschlag
+pdf0033;Herbeigezauberte Kreatur konrollieren;Control Summoned Creature;Ausbauregeln: Magie;222;Ultimate Magic;;vorschlag
+pdf0034;Mächtiges Trugbild;Major Image;Grundregelwerk;298;Core Rulebook;;vorschlag
+pdf0035;Schwächerer Geas;Geas, Lesser;Grundregelwerk;278;Core Rulebook;;vorschlag
+pdf0036;Gemeinschaftliches Geisterross;Phantom Steed, Communal;Ausbauregeln II: Kampf;230;Ultimate Combat;;vorschlag
+pdf0037;Verzauberung brechen;Break Enchantment;Grundregelwerk;357;Core Rulebook;;vorschlag
+pdf0038;Großer Heldenmut;Heroism, Greater;Grundregelwerk;285;Core Rulebook;;vorschlag
+pdf0039;Mächtiges Brüllen;Shout, Greater;Grundregelwerk;256;Core Rulebook;;vorschlag
+pdf0040;Vorbestimmtes Trugbild;Programmed Image;Grundregelwerk;358;Core Rulebook;;vorschlag
+pdf0041;Flammen erzeugen;Produce Flame;Grundregelwerk;274;Core Rulebook;;vorschlag
+pdf0042;Spurloses Gehen;Pass without Trace;Grundregelwerk;334;Core Rulebook;;vorschlag
+pdf0043;Verbündeten der Natur herbeizaubern I;Summon Nature's Ally I;Grundregelwerk;352;Core Rulebook;;vorschlag
+pdf0044;Vor Tieren verstecken;Hide from Animals;Grundregelwerk;357;Core Rulebook;;vorschlag
+pdf0045;Festbeissen;Lockjaw;Expertenregeln;218;Advanced Player’s Guide;;vorschlag
+pdf0046;Verbündeten der Natur herbeizaubern II;Summon Nature's Ally II;Grundregelwerk;352;Core Rulebook;;vorschlag
+pdf0047;Tier beherrschen;Dominate Animal;Grundregelwerk;342;Core Rulebook;;vorschlag
+pdf0048;Verbündeten der Natur herbeizaubern III;Summon Nature's Ally III;Grundregelwerk;352;Core Rulebook;;vorschlag
+pdf0049;Gemeinschaftlicher Schutz vor Energien;Protection from Energy, Communal;Ausbauregeln II: Kampf;241;Ultimate Combat;;vorschlag
+pdf0050;Verbündeten der Natur herbeizaubern IV;Summon Nature's Ally IV;Grundregelwerk;352;Core Rulebook;;vorschlag
+pdf0051;Fels in Schlamm verwandeln;Transmute Rock to Mud;Grundregelwerk;271;Core Rulebook;;vorschlag
+pdf0052;Verbündeten der Natur herbeizaubern V;Summon Nature's Ally V;Grundregelwerk;353;Core Rulebook;;vorschlag
+pdf0053;Verbündeten der Natur herbeizaubern VI;Summon Nature's Ally VI;Grundregelwerk;353;Core Rulebook;;vorschlag
+pdf0054;Wächtereiche;Liveoak;Grundregelwerk;360;Core Rulebook;;vorschlag
+pdf0055;Verbündeten der Natur herbeizaubern VII;Summon Nature's Ally VII;Grundregelwerk;353;Core Rulebook;;vorschlag
+pdf0056;Verbündeten der Natur herbeizaubern VIII;Summon Nature's Ally VIII;Grundregelwerk;353;Core Rulebook;;vorschlag
+pdf0057;Mächtiges Baumkatapult;Siege of Trees, Greater;Ausbauregeln II: Kampf;223;Ultimate Combat;;vorschlag
+pdf0058;Verbündeten der Natur herbeizaubern IX;Summon Nature's Ally IX;Grundregelwerk;353;Core Rulebook;;vorschlag
+pdf0059;Waffe oder Rüstung verstärken;Reinforce Armaments;Ausbauregeln II: Kampf;246;Ultimate Combat;;vorschlag
+pdf0060;Gemeinschaftliches Reittier;Mount, Communal;Ausbauregeln II: Kampf;240;Ultimate Combat;;vorschlag
+pdf0061;Gemeinschaftliches Waffe oder Rüstung verstärken;Reinforce Armaments, Communal;Ausbauregeln II: Kampf;246;Ultimate Combat;;vorschlag
+pdf0062;Gemeinschaftliches Zauber verbergen;Mask Dweomer, Communal;Ausbauregeln II: Kampf;248;Ultimate Combat;;vorschlag
+pdf0063;Vorahnung;Augury;Grundregelwerk;357;Core Rulebook;;vorschlag
+pdf0064;Symbol des Schlafes;Symbol of Sleep;Grundregelwerk;337;Core Rulebook;;vorschlag
+pdf0065;Wächter und Hüter;Guards and Wards;Grundregelwerk;360;Core Rulebook;;vorschlag
+pdf0066;Mächtiges Teleportieren;Teleport, Greater;Grundregelwerk;341;Core Rulebook;;vorschlag
+pdf0067;Massen-Person festhalten;Hold Person, Mass;Grundregelwerk;312;Core Rulebook;;vorschlag
+pdf0068;Vision;Vision;Grundregelwerk;357;Core Rulebook;;vorschlag
+pdf0069;Visionen des Versagens;Prediction of Failure;Ausbauregeln: Magie;246;Ultimate Magic;;vorschlag
+pdf0070;Gemeinschaftliche Gedankenleere;Mind Blank, Communal;Ausbauregeln II: Kampf;229;Ultimate Combat;;vorschlag
+pdf0071;Kugel gießen;Fabricate Bullets;Ausbauregeln II: Kampf;234;Ultimate Combat;;vorschlag
+pdf0072;Gemeinschaftlicher Schutz vor Bösem;Protection from Evil, Communal;Ausbauregeln II: Kampf;241;Ultimate Combat;;vorschlag
+pdf0073;Gemeinschaftlicher Schutz vor Chaos;Protection from Chaos, Communal;Ausbauregeln II: Kampf;241;Ultimate Combat;;vorschlag
+pdf0074;Schwächeres Tote beleben;Animate Dead, Lesser;Ausbauregeln: Magie;241;Ultimate Magic;;vorschlag
+pdf0075;Schwarzlicht;Blacklight;Kampagnenwelt;209;;;vorschlag
+pdf0076;Massen-Person vergrößern;Enlarge Person, Mass;Grundregelwerk;312;Core Rulebook;;vorschlag
+pdf0077;Massen-Person verkleinern;Reduce Person, Mass;Grundregelwerk;313;Core Rulebook;;vorschlag
+pdf0078;Schwächeres Simulakrum;Simulacrum, Lesser;Ausbauregeln: Magie;237;Ultimate Magic;;vorschlag
+pdf0079;Schwächerer Bindender Ruf;Planar Binding, Lesser;Grundregelwerk;252;Core Rulebook;;vorschlag
+pdf0080;Härten;Hardening;Kampagnenwelt;208;;;vorschlag
+pdf0081;Mächtiges Belagerungsenergiegeschoss;Energy Siege Shot, Greater;Ausbauregeln II: Kampf;224;Ultimate Combat;;vorschlag
+pdf0082;Rechtschaffenes entdecken;Detect Law;Grundregelwerk;316;Core Rulebook;;vorschlag
+pdf0083;Vor Untoten verstecken;Hide from Undead;Grundregelwerk;357;Core Rulebook;;vorschlag
+pdf0084;Waffe des Glaubens;Spiritual Weapon;Grundregelwerk;358;Core Rulebook;;vorschlag
+pdf0085;Mächtiges Brandzeichen;Brand, Greater;Expertenregeln;210;Advanced Player’s Guide;;vorschlag
+pdf0086;Mächtiges Verhör;Interrogation, Greater;Ausbauregeln: Magie;245;Ultimate Magic;;vorschlag
+pdf0087;Gemeinschaftliche Immunität gegen Zauber;Spell Immunity, Communal;Ausbauregeln II: Kampf;232;Ultimate Combat;;vorschlag
+pdf0088;Mächtiges Handlung untersagen;Forbid Action, Greater;Ausbauregeln: Magie;221;Ultimate Magic;;vorschlag
+pdf0089;Mächtiges Richtspruch verleihen;Bestow Judgment, Greater;Ausbauregeln: Magie;232;Ultimate Magic;;vorschlag
+pdf0090;Mächtigere Glyphe der Abwehr;Glyph of Warding, Greater;Grundregelwerk;285;Core Rulebook;;vorschlag
+pdf0091;Hauch des Wahnsinns;Touch of Madness;Kampagnenwelt;208;;;vorschlag
+pdf0092;Gemeinschaftliches Auf Wasser gehen;Water Walk, Communal;Ausbauregeln II: Kampf;223;Ultimate Combat;;vorschlag
+pdf0093;Rüstung der Finsternis;Armor of Darkness;Kampagnenwelt;209;;;vorschlag
+pdf0094;Schwächerer Verbündeter aus den Ebenen;Planar Ally, Lesser;Grundregelwerk;353;Core Rulebook;;vorschlag
+pdf0095;Umfassender Zustand;Status, Greater;Kampagnenwelt;209;;;vorschlag
+pdf0096;Blitz der Besessenheit;;Kampagnenwelt;208;;;offen
+pdf0097;Blitz der Herrlichkeit;Bolt of Glory;Kampagnenwelt;208;;;vorschlag
+pdf0098;Vollständige Genesung;Restoration, Greater;Grundregelwerk;357;Core Rulebook;;vorschlag
+pdf0099;Krone der Herrlichkeit;Crown of Glory;Kampagnenwelt;208;;;vorschlag
+pdf0100;Lebensschutz;;Kampagnenwelt;209;;;offen
+pdf0101;Wahre Erschaffung;True Creation;Kampagnenwelt;209;;;vorschlag
+pdf0102;Gemeinschaftliche mächtige Immunität gegen Zauber;Greater Spell Immunity, Communal;Ausbauregeln II: Kampf;232;Ultimate Combat;;vorschlag
+pdf0103;Genesis;Genesis;Kampagnenwelt;208;;;vorschlag
+pdf0104;Göttliches Gefäss;Divine Vessel;Expertenregeln;225;Advanced Player’s Guide;;vorschlag
+pdf0105;Ritterliche Herausforderung;Knight's Calling;Expertenregeln;237;Advanced Player’s Guide;;vorschlag
+pdf0106;Waffe weihen;Bless Weapon;Grundregelwerk;358;Core Rulebook;;vorschlag
+pdf0107;Aura der mächtigen Tapferkeit;Aura of Greater Courage;Expertenregeln;205;Advanced Player’s Guide;;vorschlag
+pdf0108;Schwächerer Evolutionssprung;Evolution Surge, Lesser;Expertenregeln;216;Advanced Player’s Guide;;vorschlag
+pdf0109;Evolutionssprung;Evolution Surge;Expertenregeln;216;Advanced Player’s Guide;;vorschlag
+pdf0110;Verbesserte Lebenskraftübertragung;Improved Life Conduit;Ausbauregeln II: Kampf;234;Ultimate Combat;;vorschlag
+pdf0111;Mächtiger Evolutionssprung;Evolution Surge, Greater;Expertenregeln;216;Advanced Player’s Guide;;vorschlag
+pdf0112;Geniessbar machen;Allfood;Expertenregeln;223;Advanced Player’s Guide;;vorschlag

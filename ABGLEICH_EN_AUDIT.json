@@ -1,0 +1,22 @@
+{
+  "version": "v0.59.8",
+  "pruefdatum": "2026-10-24",
+  "anzahl": 1280,
+  "englische_namen_eingetragen": 1278,
+  "offen_namen": 2,
+  "englische_seiten_belegt": 0,
+  "vorlaeufige_namenszuordnungen": 1275,
+  "zu_pruefende_namenszuordnungen": 3,
+  "german_daten_erhalten": true,
+  "ids_eindeutig": true,
+  "namen_eindeutig": true,
+  "english_namen_eindeutig": false,
+  "dublette_quellbestand_zauber_ids": [
+    "z991",
+    "z1017"
+  ],
+  "regelwerke_nicht_im_vier-buecher-umfang": {
+    "Kampagnenwelt": 11
+  },
+  "vorbehalt": "Zuordnungen sind ein vorläufiger textgestützter Indexabgleich. Eine vollständige Einzelverifikation und die englischen Originalseitenzahlen liegen nicht vor."
+}
