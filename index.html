@@ -54,13 +54,14 @@
     <link rel="stylesheet" href="css/patch-0611.css?v=61.1">
     <link rel="stylesheet" href="css/patch-0612.css?v=61.5">
     <link rel="stylesheet" href="css/patch-0615.css?v=61.5">
+<link rel="stylesheet" href="css/patch-0616.css?v=61.6">
 </head>
 
 <body>
 
 <header>
 
-    <h1>Das azlantische Helferlein <small class="app-version">v0.61.5</small></h1>
+    <h1>Das azlantische Helferlein <small class="app-version">v0.61.6</small></h1>
 
 </header>
 
@@ -425,6 +426,7 @@
         </div>
 
         <div id="adminWerkzeuge" class="admin-karte" hidden>
+            <button type="button" id="btnZauberExport616">Zauberdatenbank als zauber.json exportieren</button>
             <h3>Standard-Effektliste</h3>
             <p>Öffne die Seite „Effekte“ und tippe bei einem Standardeffekt auf ✏️. Änderungen werden als lokaler Admin-Arbeitsstand gespeichert.</p>
             <dl class="admin-statistik">
@@ -435,8 +437,9 @@
     </section>
 
 </main>
+<script>document.addEventListener("DOMContentLoaded",()=>{const b=document.getElementById("btnZauberExport616");if(b)b.addEventListener("click",()=>{if(typeof window.pfZauberDatenExport616==="function")window.pfZauberDatenExport616();else alert("Zauberdatenbank wird noch geladen.")})});</script>
 
-<script src="js/app.js?v=54.2"></script>
+<script src="js/app.js?v=61.6"></script>
 <script src="js/charakterwerte.js?v=53"></script>
 <script src="js/leben.js?v=53"></script>
 <script src="js/vermoegen.js?v=42.1"></script>
@@ -536,7 +539,7 @@ Stufenabhängigen Wert verwenden
 
 <script src="js/commit50.js?v=50.4"></script>
 <script src="js/zeit.js?v=54.6"></script>
-<script src="js/zauber.js?v=61.5"></script>
+<script src="js/zauber.js?v=61.6"></script>
 <script src="js/rune-actions.js?v=57.1"></script>
 </body>
 
