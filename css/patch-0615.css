@@ -1,0 +1,22 @@
+/* v0.61.5: Effektfilter deckend dunkelbraun 20%, dunkle Schrift */
+#effekte .effekt-suche-filter-503{background:#b5a28e!important;background-image:linear-gradient(rgba(62,35,20,.20),rgba(62,35,20,.20)),url('../assets/runes/background-2-tile.png')!important;background-blend-mode:normal!important;color:#302016!important}
+#effekte .effekt-suche-filter-503 > summary,#effekte .effekt-suche-filter-503 label,#effekte .effekt-suche-filter-503 legend,#effekte .effekt-suche-filter-503 .filter-ergebnis,#effekte .effekt-suche-filter-503 .filter-kategorien-feld{color:#302016!important}
+#effekte .effekt-suche-filter-503 > summary{background:rgba(65,35,19,.20)!important}
+#effekte #boniListe .effekt .effekt-stufenbox input[type=number]{background:rgba(65,35,19,.20)!important;border:1px solid rgba(65,35,19,.35)!important;border-radius:10px!important;color:#302016!important;padding:5px 8px!important}
+#effekte #boniListe .effekt .effekt-favorit img{width:100%!important;height:100%!important;object-fit:contain!important}
+#effekte #boniListe .effekt .effekt-favorit.aktiv img{filter:drop-shadow(0 0 5px #ffdb72) drop-shadow(0 0 9px #e8ab2d)!important}
+/* Zaubergrade wie Effektfilter: dunkle Schrift und leicht brauner Hintergrund */
+#zauber .zauber-gradgruppe-55>summary,#zauber .zauber-gradgruppe-55[open]>summary{background:#b5a28e!important;background-image:linear-gradient(rgba(65,35,19,.20),rgba(65,35,19,.20)),url('../assets/runes/background-2-tile.png')!important;color:#302016!important}
+#zauber .zauber-gradgruppe-55>summary span,#zauber .zauber-gradgruppe-55>summary strong,#zauber .zauber-gradgruppe-55>summary label{color:#302016!important}
+#zauber .zauber-gradgruppe-55>summary input:not([type=checkbox]){background:rgba(65,35,19,.20)!important;color:#302016!important}
+/* Domänen: aktive Zauber hinterlegt, ohne Leuchten und unnötige Hilfsfelder */
+#zauber .zauber-bonus-zeile-592.zauber-bonus-verfuegbar-612{background:rgba(65,35,19,.20)!important;box-shadow:none!important;border-radius:10px!important}
+#zauber .zauber-bonus-zeile-592 small:empty{display:none!important}
+#zauber .zauber-bonus-zeile-592{grid-template-columns:auto minmax(0,1fr)!important}
+#zauber .zauber-bonus-zeile-592 .zauber-bonus-name-612 .sr-only{position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;clip-path:inset(50%)!important}
+/* Zauberklappkarten: lernen/vorbereiten immer sichtbar, Rest erst beim Aufklappen */
+#zauber .zauber-eintrag-details-615{margin-top:8px}
+#zauber .zauber-eintrag-details-615>summary{cursor:pointer;color:#352315!important;font-style:italic;padding:5px 0;list-style:disclosure-closed}
+#zauber .zauber-eintrag-details-615[open]>summary{list-style:disclosure-open}
+#zauber .zauber-eintrag-details-615 .zauber-meta-55{margin-top:8px}
+#zauber .zauber-lexikon-export-600{display:block;margin:8px 0 12px;padding:10px 12px;border-radius:10px;background:rgba(65,35,19,.20);color:#302016;border:1px solid rgba(65,35,19,.35)}
