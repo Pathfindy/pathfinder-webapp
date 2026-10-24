@@ -138,7 +138,7 @@
     button.type = "button";
     button.className = "effekt-schnellzuweisung-50";
     button.classList.toggle("aktiv", aktiv);
-    button.innerHTML = ICONS[icon];
+    button.innerHTML = icon === "sword" ? '<img src="assets/runes/Waffen.png" alt="" aria-hidden="true">' : icon === "bow" ? '<img src="assets/runes/Bogen-neu.png" alt="" aria-hidden="true">' : ICONS[icon];
     button.title = titel;
     button.setAttribute("aria-label", titel);
     button.setAttribute("aria-pressed", String(aktiv));
