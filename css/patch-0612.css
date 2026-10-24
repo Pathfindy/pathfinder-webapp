@@ -36,3 +36,14 @@
 #effekte #boniListe .effekt :is(.effekt-schnellzuweisung-50,.effekt-favorit){background:rgba(65,35,19,.05)!important;}
 #effekte #boniListe .effekt :is(.effekt-schnellzuweisung-50,.effekt-favorit).aktiv{box-shadow:0 0 12px 2px rgba(255,192,52,.65)!important}
 #effekte #boniListe .effekt :is(.effekt-schnellzuweisung-50,.effekt-favorit).aktiv img{filter:drop-shadow(0 0 5px #ffda65) drop-shadow(0 0 7px #e9aa24)!important}
+
+/* v0.61.4 – Korrektur nach Mobiltest */
+#effekte .effekt-suche-filter-503{background-image:linear-gradient(rgba(255,255,255,.10),rgba(255,255,255,.10)),url('../assets/runes/background-2-tile.png')!important;background-color:#68503c!important;}
+#effekte .effekt-neu-zeile-614{padding:10px 14px 4px;background:rgba(255,255,255,.10);}
+#effekte #btnNeuerEffekt{display:inline-block!important;visibility:visible!important;opacity:1!important;position:static!important;z-index:1!important;background:rgba(65,35,19,.20)!important;color:#302016!important;border-radius:12px!important;min-height:42px;}
+#effekte #boniListe .effekt .effekt-angriffsziel-option-41{display:inline-flex;align-items:center;gap:3px;padding:3px 5px;background:rgba(65,35,19,.05)!important;border:1px solid rgba(83,54,34,.20)!important;cursor:pointer;}
+#effekte #boniListe .effekt .effekt-angriffsziel-option-41 input[type=checkbox]{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none;}
+#effekte #boniListe .effekt .effekt-angriffsziel-option-41::before{content:"";display:inline-block;flex:none;width:25px;height:25px;background:url('../assets/runes/activate.png') center / contain no-repeat;}
+#effekte #boniListe .effekt .effekt-angriffsziel-option-41:has(input:checked)::before{background-image:url('../assets/runes/Bestaetigung.png');filter:drop-shadow(0 0 4px #ffdb72) drop-shadow(0 0 6px #e8ab2d);}
+#effekte #boniListe .effekt .effekt-angriffsziel-option-41:has(input:focus-visible){outline:2px solid #c79731;outline-offset:2px;}
+#effekte #boniListe .effekt .effekt-favorit:not(.aktiv) img{filter:none!important;}
