@@ -1,0 +1,10 @@
+/* v0.61.6 */
+#effekte #boniListe .effekt .effekt-favorit img{content:url('../assets/runes/Favorit.png')!important;width:100%!important;height:100%!important;object-fit:contain!important}
+#effekte #boniListe .effekt .effekt-favorit:not(.aktiv) img{filter:none!important}
+#effekte #boniListe .effekt .effekt-favorit.aktiv img{filter:drop-shadow(0 0 5px #ffdb72) drop-shadow(0 0 10px #e8ab2d)!important}
+#zauber .zauber-wert-55[data-wert616]{cursor:pointer}
+#zauber .zauber-wert-55[data-wert616]:focus-visible{outline:2px solid #b28a42}
+.zauber-wert-dialog-616{max-width:min(92vw,480px);border-radius:14px;background:#eee0c8;color:#302016;padding:22px;border:2px solid #785839}
+.zauber-wert-dialog-616::backdrop{background:rgba(0,0,0,.5)}
+.zauber-wert-dialog-616 li{padding:5px 0}
+#btnZauberExport616{margin:12px 0;padding:12px;border-radius:10px;background:rgba(65,35,19,.2)}
