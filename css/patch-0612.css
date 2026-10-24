@@ -1,0 +1,28 @@
+/* v0.61.2 – Effektseite: helle Schichten, dunkle Schrift, Runenaktionen */
+#effekte .effekt-suche-filter-503{
+  background-color:#68503c!important;
+  background-image:linear-gradient(rgba(53,33,20,.30),rgba(53,33,20,.30)),url('../assets/runes/background-2-tile.png')!important;
+  background-size:auto,100% auto!important;
+}
+#effekte .effekt-suche-filter-503 > summary{background:rgba(255,255,255,.10)!important;color:#fff!important}
+#effekte .effekt-suche-filter-503 .effekt-suche-zeile-503,
+#effekte .effekt-suche-filter-503 .effekt-filter,
+#effekte .effekt-suche-filter-503 .filter-ergebnis,
+#effekte .effekt-suche-filter-503 .filter-kategorien-feld,
+#effekte .effekt-suche-filter-503 .filter-schalter{background:rgba(255,255,255,.10)!important;border-radius:10px}
+#effekte .effekt-suche-filter-503 input[type=text]{background:rgba(255,255,255,.10)!important;color:#2b1b11!important}
+#effekte .effekt-suche-filter-503 input::placeholder{font-style:italic!important;color:rgba(45,29,18,.76)!important}
+#effekte .effekt-suche-filter-503 label,#effekte .effekt-suche-filter-503 legend,#effekte .effekt-suche-filter-503 .filter-ergebnis{color:#fff!important}
+#effekte #btnNeuerEffekt{background:rgba(65,35,19,.20)!important;color:#302016!important;border:1px solid rgba(72,40,22,.36)!important;border-radius:11px!important;padding:8px 13px!important}
+#effekte #boniListe .effekt{color:#302016!important}
+#effekte #boniListe .effekt :is(.effekt-name,.effekt-kategorie,.effekt-boni,.effekt-bonus,.effekt-nutzerbonus,.effekt-stufenbox,.effekt-angriffsziele-41,.effekt-beschreibung-25,.effekt-beschreibung-25 small){color:#302016!important}
+#effekte #boniListe .effekt :is(.effekt-kategorie,.effekt-beschreibung-25 small,.effekt-hinweis,.hinweis){font-style:italic!important}
+#effekte #boniListe .effekt select{background:rgba(65,35,19,.20)!important;border:1px solid rgba(73,43,27,.3)!important;border-radius:10px!important;color:#302016!important}
+#effekte #boniListe .effekt .effekt-angriffsziel-option-41,
+#effekte #boniListe .effekt .effekt-aktionen button{background:rgba(65,35,19,.05)!important;border-radius:10px!important;color:#302016!important}
+#effekte #boniListe .effekt .effekt-angriffsziel-option-41:has(input:checked),
+#effekte #boniListe .effekt .effekt-aktionen button[aria-pressed=true]{box-shadow:0 0 11px 2px rgba(246,192,58,.65)!important;border-color:rgba(206,148,35,.75)!important}
+#effekte #boniListe .effekt :is(.effekt-schnellzuweisung-50,.effekt-favorit){background:rgba(65,35,19,.05)!important;border:1px solid rgba(83,54,34,.18)!important;border-radius:10px!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;overflow:visible!important;padding:2px!important;color:#302016!important}
+#effekte #boniListe .effekt :is(.effekt-schnellzuweisung-50,.effekt-favorit) img{display:block!important;width:100%!important;height:100%!important;object-fit:contain!important;max-width:none!important;max-height:none!important}
+#effekte #boniListe .effekt :is(.effekt-schnellzuweisung-50,.effekt-favorit).aktiv img{filter:drop-shadow(0 0 4px #ffda65) drop-shadow(0 0 8px #e9aa24)!important}
+#effekte #boniListe .effekt :is(.effekt-schnellzuweisung-50,.effekt-favorit).aktiv{box-shadow:0 0 10px 2px rgba(248,189,42,.38)!important}
