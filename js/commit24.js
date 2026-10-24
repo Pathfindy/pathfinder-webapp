@@ -67,7 +67,7 @@
       stern.className = "effekt-favorit";
       const favorit = istFavorit(effekt.id);
       stern.classList.toggle("aktiv", favorit);
-      stern.innerHTML = '<img src="assets/runes/Bestaetigung.png" alt="" aria-hidden="true">';
+      stern.innerHTML = `<img src="assets/runes/${favorit ? 'Bestaetigung.png' : 'delete.png'}" alt="" aria-hidden="true">`;
       stern.setAttribute("aria-pressed", String(favorit));
       stern.title = favorit ? "Aus Favoriten entfernen" : "Als Favorit markieren";
       stern.setAttribute("aria-label", stern.title);
