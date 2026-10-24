@@ -1,0 +1,919 @@
+﻿id;deutsch;regelwerk;seite
+z1;Abdrücke lesen;Expertenregeln;202
+z2;Aberrationen entdecken;Expertenregeln;202
+z5;Abscheu;Ausbauregeln: Magie;205
+z14;Adlerauge;Expertenregeln;202
+z19;Affenschwarm herbeizaubern;Ausbauregeln: Magie;205
+z25;Ahnungsloser Verbündeter;Expertenregeln;202
+z33;Allzweckmittel;Ausbauregeln: Magie;205
+z39;Angriff zurückwerfen;Expertenregeln;203
+z41;Anmut;Expertenregeln;203
+z43;Anprangern;Expertenregeln;203
+z45;Anstacheln;Ausbauregeln: Magie;206
+z46;Ansteckende Flamme;Expertenregeln;203
+z77;Ätzbrand;Ausbauregeln: Magie;207
+z80;Aufbrausen;Expertenregeln;204
+z91;Auge des Jägers;Expertenregeln;205
+z101;Aura verfolgen;Expertenregeln;205
+z102;Aura verleihen;Ausbauregeln: Magie;207
+z111;Aussieben;Expertenregeln;205
+z116;Austreiben;Expertenregeln;205
+z118;Bardenphantom;Ausbauregeln: Magie;207
+z122;Baumkatapult;Ausbauregeln II: Kampf;223
+z129;Beherzte Inspiration;Expertenregeln;206
+z131;Beichte;Expertenregeln;206
+z135;Beleben;Expertenregeln;206
+z137;Belebende Transformation;Expertenregeln;206
+z138;Belebender Ausklang;Expertenregeln;206
+z144;Beschädigen;Expertenregeln;207
+z147;Besessene Haut;Ausbauregeln: Magie;208
+z154;Bestrafung;Expertenregeln;207
+z156;Betäubender Ausklang;Expertenregeln;207
+z162;Bindender Ruf;Grundregelwerk;252
+z173;Blendende Verpuffung;Ausbauregeln II: Kampf;225
+z176;Blick durch eigene Augen;Expertenregeln;208
+z185;Blitzbogen;Ausbauregeln: Magie;208
+z191;Blitzpeitschen-Bombenzusatz;Ausbauregeln II: Kampf;225
+z193;Blitzsprung;Ausbauregeln: Magie;208
+z195;Blut zu Säure;Ausbauregeln: Magie;209
+z198;Blutendes Auge;Ausbauregeln II: Kampf;226
+z203;Blutnebel;Ausbauregeln: Magie;209
+z210;Bogenstock;Ausbauregeln II: Kampf;226
+z211;Bösartigkeit;Ausbauregeln: Magie;210
+z212;Böser Blick;Grundregelwerk;254
+z215;Böses herausfordern;Expertenregeln;210
+z216;Bosheit;Expertenregeln;209
+z220;Brandzeichen;Expertenregeln;210
+z222;Brennende Schmerzen;Expertenregeln;210
+z226;Brüllen;Grundregelwerk;256
+z228;Bund mit dem Gelände;Ausbauregeln II: Kampf;226
+z229;Bürde des Mystikers;Expertenregeln;210
+z235;Chaossplitter;Ausbauregeln: Magie;210
+z242;Dämmerstaub;Expertenregeln;211
+z251;Defensive Entladung;Ausbauregeln: Magie;210
+z252;Der Zeit entrinnen;Expertenregeln;211
+z254;Des Magiers Erinnerung;Grundregelwerk;258
+z260;Detonation;Expertenregeln;211
+z261;Devolution;Expertenregeln;211
+z269;Donnernde Trommeln;Expertenregeln;211
+z271;Donnerschuss;Ausbauregeln II: Kampf;226
+z273;Dornenhaut;Expertenregeln;211
+z277;Drachenfeuerwerk;Ausbauregeln: Magie;210
+z285;Drakonisches Reservoir;Expertenregeln;212
+z286;Dreigestalt;Expertenregeln;212
+z287;Dringlicher Schritt;Ausbauregeln II: Kampf;226
+z289;Duftspur;Expertenregeln;212
+z293;Durchdringendes Kreischen;Ausbauregeln: Magie;211
+z294;Durchschlagende Geschosse;Expertenregeln;213
+z295;Dürre;Grundregelwerk;261
+z298;Echolot;Ausbauregeln: Magie;211
+z299;Ehrfurchtgebietende Waffe;Expertenregeln;213
+z300;Eid der Aufopferung;Expertenregeln;213
+z301;Eidolon herbeizaubern;Expertenregeln;213
+z302;Eidolon loslösen;Expertenregeln;213
+z303;Eidolon umwandeln;Expertenregeln;213
+z304;Eidolongenesung;Ausbauregeln: Magie;211
+z305;Eidolonregeneration;Expertenregeln;214
+z306;Eigenständiges Trugbild;Grundregelwerk;262
+z309;Einhalt gebieten;Expertenregeln;214
+z313;Eisdolch;Ausbauregeln: Magie;212
+z319;Eiskristallteleport;Ausbauregeln: Magie;212
+z320;Eisleib;Ausbauregeln: Magie;212
+z321;Eisschlag;Ausbauregeln: Magie;213
+z325;Eitern;Expertenregeln;214
+z326;Eiterpusteln;Ausbauregeln: Magie;213
+z329;Elementare Zungen;Expertenregeln;214
+z348;Elixier verstärken;Expertenregeln;215
+z351;Energiefaust;Ausbauregeln: Magie;213
+z352;Energiefesseln;Ausbauregeln: Magie;213
+z356;Energiewand;Grundregelwerk;266
+z357;Energiewurfhaken;Ausbauregeln: Magie;214
+z365;Entstellende Berührung;Ausbauregeln: Magie;214
+z367;Entzug von Lebenskraft;Grundregelwerk;267
+z373;Erdwall;Expertenregeln;215
+z378;Erholsamer Schlaf;Expertenregeln;215
+z380;Erleuchtende Fackel;Ausbauregeln II: Kampf;227
+z382;Erscheinung bannen;Expertenregeln;215
+z384;Erschöpfungs-Bombenzusatz;Ausbauregeln II: Kampf;227
+z391;Erzwungene Reue;Expertenregeln;216
+z392;Erzwungene Stille;Ausbauregeln: Magie;215
+z393;Erzwungene Verschwendung;Expertenregeln;216
+z399;Explosiver Missklang;Expertenregeln;217
+z400;Externare quälen;Ausbauregeln: Magie;215
+z405;Falsche Erkenntnis;Grundregelwerk;270
+z408;Federleicht;Expertenregeln;217
+z412;Fehlfunktion;Ausbauregeln: Magie;215
+z413;Fehlzündung provozieren;Ausbauregeln II: Kampf;228
+z414;Feiglings Leid;Expertenregeln;217
+z416;Feindseliger Austausch;Ausbauregeln II: Kampf;228
+z417;Feindseligkeit hervorrufen;Ausbauregeln II: Kampf;228
+z418;Fels- und Ascheregen;Ausbauregeln: Magie;215
+z420;Fertigkeit ausborgen;Expertenregeln;217
+z421;Fesseln;Grundregelwerk;271
+z422;Fesseln sprengen;Expertenregeln;217
+z425;Feste Hoffnung;Grundregelwerk;271
+z427;Feststehender Ton;Expertenregeln;218
+z428;Feuchtes Pulver;Ausbauregeln II: Kampf;228
+z437;Feuersegen;Expertenregeln;218
+z438;Feuerspeien;Expertenregeln;218
+z444;Feurige Gestalt;Expertenregeln;219
+z448;Flamme der Herrlichkeit;Expertenregeln;219
+z450;Flammen der Gläubigen;Expertenregeln;219
+z451;Flammende Vergeltung;Expertenregeln;219
+z452;Flammende Verstrickung;Expertenregeln;219
+z453;Flammende Wolke;Grundregelwerk;274
+z454;Flammendes Urteil;Expertenregeln;219
+z455;Flammenfontäne;Expertenregeln;220
+z461;Fleischkeule;Expertenregeln;220
+z470;Fluch der Zauberplage;Ausbauregeln: Magie;216
+z471;Fluch des Ekels;Ausbauregeln: Magie;216
+z474;Flucht;Expertenregeln;220
+z475;Flug der Riesenadler;Ausbauregeln: Magie;216
+z478;Flüssige Gestalt;Expertenregeln;221
+z482;Friedensschwur;Expertenregeln;221
+z483;Friedenssiegel;Ausbauregeln II: Kampf;229
+z485;Fröhliche Gelassenheit;Expertenregeln;221
+z487;Froschschwarm herbeizaubern;Ausbauregeln: Magie;216
+z495;Furchtbarer Schmerz;Ausbauregeln: Magie;216
+z496;Furchteinflößende Erscheinung;Ausbauregeln II: Kampf;229
+z505;Gebrechen unterdrücken;Ausbauregeln: Magie;217
+z506;Gedächtniserweiterung;Grundregelwerk;279
+z507;Gedächtnislücke;Expertenregeln;222
+z510;Gedanken suchen;Expertenregeln;222
+z513;Gedankennebel;Grundregelwerk;279
+z514;Gefahrensinn;Ausbauregeln: Magie;217
+z516;Gefährtenverbindung;Ausbauregeln II: Kampf;229
+z517;Gefäß des Mystikers;Ausbauregeln: Magie;218
+z520;Gegenstand kontrollieren;Ausbauregeln: Magie;218
+z526;Gegner schweben lassen;Ausbauregeln II: Kampf;229
+z532;Geist des Schützen;Expertenregeln;222
+z543;Geladene Spiegelbilder;Ausbauregeln II: Kampf;230
+z573;Geniale Eingebung;Expertenregeln;222
+z581;Gerechte Kraft;Expertenregeln;223
+z583;Geruchlosigkeit;Expertenregeln;223
+z584;Geschärfte Sinne;Expertenregeln;223
+z585;Geschichte des Blutes;Expertenregeln;223
+z587;Geschoss des Bösen;Ausbauregeln: Magie;218
+z589;Geschwindigkeitsausbruch;Ausbauregeln II: Kampf;230
+z591;Gesinnung sehen;Ausbauregeln II: Kampf;231
+z599;Gestickter Schatz;Expertenregeln;224
+z600;Geteilte Erinnerung;Ausbauregeln: Magie;218
+z602;Geteilter Zorn;Expertenregeln;224
+z607;Gewittersturm herbeirufen;Grundregelwerk;283
+z609;Geysir;Expertenregeln;224
+z612;Gift beschleunigen;Expertenregeln;224
+z615;Gift spucken;Ausbauregeln: Magie;219
+z617;Giftanfälligkeit;Ausbauregeln: Magie;219
+z618;Giftbolzen;Expertenregeln;224
+z620;Giftigkeit absorbieren;Ausbauregeln II: Kampf;231
+z624;Gleißendes Metall;Ausbauregeln II: Kampf;231
+z625;Gleiten;Expertenregeln;224
+z627;Glück ausborgen;Expertenregeln;225
+z634;Göttliche Jagd;Ausbauregeln: Magie;219
+z636;Göttliche Stärkung;Expertenregeln;225
+z637;Göttlicher Pfeil;Ausbauregeln II: Kampf;231
+z639;Graben;Ausbauregeln: Magie;219
+z642;Große Halbebene erschaffen;Ausbauregeln: Magie;220
+z644;Grube erschaffen;Expertenregeln;226
+z649;Gutes bannen;Expertenregeln;285
+z652;Hain der Erholung;Expertenregeln;226
+z654;Halbebene erschaffen;Ausbauregeln: Magie;219
+z657;Handlung untersagen;Ausbauregeln: Magie;221
+z658;Handwerkers Fluch;Expertenregeln;226
+z659;Handwerkers Glück;Expertenregeln;226
+z660;Harmonische Vibrationen;Grundregelwerk;286
+z662;Harzige Haut;Ausbauregeln II: Kampf;231
+z664;Hauch der Elemente;Expertenregeln;226
+z665;Hauch der See;Expertenregeln;227
+z666;Hauch der Tollpatschigkeit;Expertenregeln;227
+z667;Hauch des Stumpfsinns;Grundregelwerk;286
+z671;Heilige Bande;Expertenregeln;227
+z673;Heiliger Schild;Ausbauregeln: Magie;221
+z674;Heiliger Schlag;Grundregelwerk;286
+z675;Heiliges Eis;Ausbauregeln: Magie;222
+z676;Heiliges Flüstern;Expertenregeln;227
+z677;Heiliges Gespräch;Grundregelwerk;287
+z682;Heilsamer Ruf;Expertenregeln;227
+z684;Heilung stehlen;Ausbauregeln II: Kampf;232
+z686;Heldengeschick;Expertenregeln;324
+z687;Heldenhafte Anrufung;Ausbauregeln II: Kampf;232
+z688;Heldenhafter Widerstand;Expertenregeln;227
+z694;Heroischer Ausklang;Expertenregeln;228
+z700;Hilfreiche Hand;Grundregelwerk;288
+z713;Höllische Vision;Ausbauregeln: Magie;222
+z717;Hölzerne Phalanx;Ausbauregeln: Magie;222
+z719;Holzhammer;Ausbauregeln: Magie;222
+z721;Hungrige Grube;Expertenregeln;228
+z730;Illusion der Ruhe;Ausbauregeln II: Kampf;232
+z733;Illusionswand;Grundregelwerk;291
+z741;Innere Ruhe;Ausbauregeln: Magie;223
+z746;Instrument der Pein;Ausbauregeln II: Kampf;232
+z748;Instrument spielen;Ausbauregeln: Magie;223
+z749;Interplanetares Teleportieren;Ausbauregeln: Magie;223
+z750;Irreführung;Grundregelwerk;291
+z752;Jagdgeheul;Expertenregeln;228
+z754;Jagdhorn;Ausbauregeln: Magie;223
+z758;Jugendliche Erscheinung;Ausbauregeln: Magie;223
+z761;Käfig-Bombenzusatz;Ausbauregeln II: Kampf;233
+z762;Kakophonie;Expertenregeln;228
+z764;Kalte Hand;Grundregelwerk;292
+z766;Kalter Hauch;Ausbauregeln: Magie;223
+z772;Kette des Verhängnisses;Ausbauregeln II: Kampf;233
+z773;Kichernder Totenschädel;Ausbauregeln: Magie;224
+z774;Kind der Wellen;Ausbauregeln: Magie;224
+z776;Ki-Pfeil;Ausbauregeln: Magie;224
+z777;Ki-Raub;Ausbauregeln: Magie;224
+z778;Ki-Schrei;Ausbauregeln: Magie;224
+z780;Klagelied des Geisterbanns;Expertenregeln;228
+z786;Kleine Halbebene erschaffen;Ausbauregeln: Magie;220
+z787;Kleinen Verbündeten herbeizaubern;Ausbauregeln: Magie;224
+z788;Kleines Monster herbeizaubern;Ausbauregeln: Magie;224
+z791;Klinge des strahlenden Sieges;Ausbauregeln: Magie;225
+z793;Klingenkranz;Ausbauregeln II: Kampf;233
+z799;Kochendes Blut;Ausbauregeln: Magie;225
+z801;Konstrukt beruhigen;Ausbauregeln: Magie;225
+z802;Konstrukt herbeizaubern;Ausbauregeln: Magie;225
+z803;Konstrukt kontrollieren;Ausbauregeln: Magie;225
+z805;Konzentrierte Aktion;Expertenregeln;228
+z806;Kräftige Hand;Grundregelwerk;294
+z811;Kränkelnder Strahl;Ausbauregeln: Magie;225
+z813;Krankheit erkennen;Ausbauregeln: Magie;225
+z816;Krätze;Expertenregeln;229
+z819;Kreischen;Expertenregeln;228
+z823;Kritische Wunden heilen;Grundregelwerk;295
+z824;Kritische Wunden verursachen;Grundregelwerk;295
+z826;Kugel der Leere;Ausbauregeln: Magie;226
+z829;Kugelblitz;Grundregelwerk;295
+z831;Kugelschild;Ausbauregeln II: Kampf;234
+z832;Kurze Rast;Expertenregeln;229
+z833;Kurzstreckenteleportation;Ausbauregeln II: Kampf;234
+z835;Lagerplatz verstecken;Expertenregeln;230
+z837;Lähmendes Vorzeichen;Ausbauregeln II: Kampf;234
+z841;Lavawand;Expertenregeln;230
+z847;Lebenskraftübertragung;Ausbauregeln II: Kampf;234
+z856;Lehren des Blutes;Ausbauregeln: Magie;227
+z857;Leiche kompostieren;Ausbauregeln: Magie;227
+z858;Leiche segnen;Ausbauregeln: Magie;227
+z859;Leiche verwandeln;Expertenregeln;230
+z860;Leiche wiederherstellen;Ausbauregeln: Magie;227
+z862;Leichte Wunden heilen;Grundregelwerk;296
+z863;Leichte Wunden verursachen;Grundregelwerk;297
+z864;Leid;Grundregelwerk;297
+z866;Leitstern;Expertenregeln;230
+z867;Leuchtender Pfeil;Ausbauregeln II: Kampf;234
+z868;Leuchtender Weg;Expertenregeln;230
+z870;Lichtblitze;Expertenregeln;231
+z874;Lichtlanze;Expertenregeln;231
+z876;Lied der Zwietracht;Grundregelwerk;297
+z880;Litanei der Faulheit;Ausbauregeln II: Kampf;235
+z881;Litanei der Rache;Ausbauregeln II: Kampf;235
+z882;Litanei der Reaktion;Ausbauregeln II: Kampf;235
+z883;Litanei der Rechtschaffenheit;Ausbauregeln II: Kampf;235
+z884;Litanei der Redegewandtheit;Ausbauregeln II: Kampf;235
+z885;Litanei der Schwäche;Ausbauregeln II: Kampf;235
+z886;Litanei der Verstrickung;Ausbauregeln II: Kampf;236
+z887;Litanei der Verteidigung;Ausbauregeln II: Kampf;236
+z888;Litanei des Donners;Ausbauregeln II: Kampf;235
+z889;Litanei des Entkommens;Ausbauregeln II: Kampf;235
+z890;Litanei des Sehvermögens;Ausbauregeln II: Kampf;236
+z891;Litanei des Wahnsinns;Ausbauregeln II: Kampf;236
+z892;Luftblase;Ausbauregeln II: Kampf;236
+z919;Mächtige Ansteckung;Ausbauregeln: Magie;206
+z921;Mächtige Ausspähende Augen;Grundregelwerk;248
+z922;Mächtige Ausspähung;Grundregelwerk;248
+z923;Mächtige Benannte Kugel;Ausbauregeln II: Kampf;224
+z924;Mächtige Dunkelsicht;Ausbauregeln: Magie;211
+z925;Mächtige Eidolonregeneration;Expertenregeln;214
+z929;Mächtige Immunität gegen Zauber;Grundregelwerk;291
+z931;Mächtige Lebenskraftübertragung;Ausbauregeln II: Kampf;234
+z932;Mächtige Magie bannen;Grundregelwerk;299
+z933;Mächtige Magische Fänge;Grundregelwerk;302
+z934;Mächtige Magische Waffe;Grundregelwerk;304
+z936;Mächtige Schattenbeschwörung;Grundregelwerk;321
+z937;Mächtige Schattenhervorrufung;Grundregelwerk;322
+z940;Mächtige Unsichtbarkeit;Grundregelwerk;349
+z941;Mächtige Verwandlung;Grundregelwerk;356
+z944;Mächtiger Arkaner Blick;Grundregelwerk;244
+z945;Mächtiger Befehl;Grundregelwerk;250
+z946;Mächtiger Bindender Ruf;Grundregelwerk;252
+z948;Mächtiger Feindseliger Austausch;Ausbauregeln II: Kampf;228
+z949;Mächtiger Fluch;Ausbauregeln: Magie;215
+z952;Mächtiger Tieraspekt;Ausbauregeln II: Kampf;245
+z953;Mächtiger Verbündeter aus den Ebenen;Grundregelwerk;353
+z956;Mächtigere Untote erschaffen;Grundregelwerk;350
+z971;Magische Auftrennung;Grundregelwerk;300
+z973;Magische Bande;Grundregelwerk;301
+z979;Magisches Belagerungsgerät;Ausbauregeln II: Kampf;236
+z982;Magisches Schutzgewand;Grundregelwerk;304
+z983;Mal der Gerechtigkeit;Grundregelwerk;304
+z984;Mal des Verbots;Expertenregeln;231
+z986;Mantel der See;Expertenregeln;232
+z987;Mantel des Zorns;Expertenregeln;232
+z991;Massen- Mittelschwere Wunden verursachen;Grundregelwerk;307
+z992;Massen-Atavismus;Ausbauregeln: Magie;207
+z993;Massen-Ausdauer des Ochsen;Grundregelwerk;247
+z994;Massen-Bärenstärke;Grundregelwerk;249
+z995;Massen-Beleben;Expertenregeln;206
+z996;Massen-Benommenheit;Ausbauregeln: Magie;208
+z998;Massen-Brennende Schmerzen;Expertenregeln;210
+z999;Masseneinflüsterung;Grundregelwerk;263
+z1000;Massen-Eisgefängnis;Ausbauregeln: Magie;212
+z1001;Massen-Eitern;Expertenregeln;214
+z1002;Massen-Ersticken;Expertenregeln;216
+z1003;Massen-Federleicht;Expertenregeln;217
+z1006;Massen-Fliegen;Expertenregeln;220
+z1007;Massenheilung;Grundregelwerk;288
+z1008;Massen-Heldengeschick;Expertenregeln;324
+z1009;Massen-Kakophonie;Expertenregeln;228
+z1010;Massen-Katzenhafte Anmut;Grundregelwerk;292
+z1011;Massen-Klagelied des Geisterbanns;Expertenregeln;228
+z1012;Massen-Kritische Wunden heilen;Grundregelwerk;295
+z1013;Massen-Kritische Wunden verursachen;Grundregelwerk;295
+z1014;Massen-Leichte Wunden heilen;Grundregelwerk;297
+z1015;Massen-Leichte Wunden verursachen;Grundregelwerk;297
+z1016;Massen-Mittelschwere Wunden heilen;Grundregelwerk;307
+z1017;Massen-Mittelschwere Wunden verursachen;Grundregelwerk;307
+z1018;Massen-Monster bezaubern;Grundregelwerk;307
+z1019;Massen-Monster festhalten;Grundregelwerk;308
+z1024;Massen-Planare Anpassung;Expertenregeln;235
+z1026;Massen-Pracht des Adlers;Grundregelwerk;316
+z1027;Massen-Schläue des Fuchses;Grundregelwerk;324
+z1028;Massen-Schwere Wunden heilen;Grundregelwerk;329
+z1029;Massen-Schwere Wunden verursachen;Grundregelwerk;329
+z1031;Massen-Tadel;Expertenregeln;245
+z1032;Massenunsichtbarkeit;Grundregelwerk;349
+z1034;Massen-Weisheit der Eule;Grundregelwerk;362
+z1037;Meisterarbeit;Ausbauregeln: Magie;227
+z1039;Meisterhafter Auftritt;Ausbauregeln: Magie;227
+z1044;Metall oder Stein zurücktreiben;Grundregelwerk;305
+z1054;Mitfühlender Verbündeter;Ausbauregeln: Magie;227
+z1055;Mitleid;Ausbauregeln: Magie;228
+z1056;Mittelschwere Wunden heilen;Grundregelwerk;307
+z1057;Mittelschwere Wunden verursachen;Grundregelwerk;307
+z1059;Modernder Schlurfer;Grundregelwerk;307
+z1060;Moment der Eingebung;Grundregelwerk;307
+z1061;Mondschatten;Ausbauregeln: Magie;228
+z1062;Mondsucht;Expertenregeln;232
+z1066;Monster herbeizaubern I;Grundregelwerk;309
+z1067;Monster herbeizaubern II;Grundregelwerk;309
+z1068;Monster herbeizaubern III;Grundregelwerk;309
+z1069;Monster herbeizaubern IV;Grundregelwerk;309
+z1070;Monster herbeizaubern IX;Grundregelwerk;309
+z1077;Monster herbeizaubern V;Grundregelwerk;309
+z1079;Monster herbeizaubern VI;Grundregelwerk;309
+z1080;Monster herbeizaubern VII;Grundregelwerk;309
+z1081;Monster herbeizaubern VIII;Grundregelwerk;309
+z1082;Monsterbenommenheit;Grundregelwerk;309
+z1083;Monstergestalt I;Ausbauregeln: Magie;228
+z1084;Monstergestalt II;Ausbauregeln: Magie;228
+z1085;Monstergestalt III;Ausbauregeln: Magie;228
+z1086;Monstergestalt IV;Ausbauregeln: Magie;229
+z1087;Mördergrube;Expertenregeln;232
+z1090;Mühelose Rüstung;Ausbauregeln II: Kampf;237
+z1093;Mutagenberührung;Ausbauregeln II: Kampf;237
+z1094;Nachhallender Schlag;Expertenregeln;232
+z1095;Nachladende Hände;Ausbauregeln II: Kampf;237
+z1096;Nachspüren;Ausbauregeln II: Kampf;238
+z1100;Nahrung und Wasser verderben;Expertenregeln;233
+z1101;Narrensprung;Expertenregeln;233
+z1102;Natürlicher Rhythmus;Expertenregeln;234
+z1104;Negative Reaktion;Ausbauregeln II: Kampf;238
+z1107;Nesselexplosion;Ausbauregeln: Magie;229
+z1121;Obsidianscholle;Ausbauregeln II: Kampf;238
+z1130;Ohrenbetäubender Dreiklang;Expertenregeln;234
+z1131;Ohrenbetäubender Schrei;Ausbauregeln: Magie;229
+z1132;Oppositionsresistenz;Expertenregeln;234
+z1134;Ort entweihen;Grundregelwerk;311
+z1135;Ort weihen;Grundregelwerk;311
+z1147;Pfeil der Ordnung;Ausbauregeln: Magie;229
+z1148;Pfeilexplosion;Expertenregeln;234
+z1150;Pflanzen befehligen;Grundregelwerk;313
+z1153;Pflanzen schrumpfen;Grundregelwerk;314
+z1157;Pflanzentor;Grundregelwerk;315
+z1160;Pfusch;Ausbauregeln: Magie;229
+z1162;Phantomfahrzeuglenker;Ausbauregeln II: Kampf;238
+z1164;Phantomnetz;Expertenregeln;234
+z1165;Phantomstreitwagen;Ausbauregeln II: Kampf;238
+z1166;Pilzbefall;Ausbauregeln: Magie;230
+z1167;Planare Anpassung;Expertenregeln;235
+z1170;Plündernde Hand;Ausbauregeln II: Kampf;238
+z1171;Polarnacht;Ausbauregeln: Magie;230
+z1177;Pulver schwächen;Ausbauregeln II: Kampf;239
+z1178;Puppenspieler;Ausbauregeln: Magie;230
+z1179;Quälender Ton;Ausbauregeln: Magie;230
+z1181;Querschläger;Ausbauregeln II: Kampf;239
+z1184;Rachsucht;Ausbauregeln: Magie;230
+z1185;Rachsüchtiges Phantom;Expertenregeln;235
+z1189;Rasches Graben;Expertenregeln;236
+z1191;Rattenfängers Pfeifen;Expertenregeln;236
+z1193;Raum verzerren;Ausbauregeln II: Kampf;240
+z1197;Rechtzeitige Inspiration;Expertenregeln;236
+z1198;Redegewandtheit;Grundregelwerk;316
+z1201;Regenbogenspiel;Grundregelwerk;317
+z1204;Reichlich Munition;Ausbauregeln II: Kampf;240
+z1205;Reinigung;Expertenregeln;236
+z1207;Reittier heilen;Grundregelwerk;318
+z1211;Resistenz gegen Alterung;Ausbauregeln: Magie;230
+z1213;Rettender Ausklang;Expertenregeln;237
+z1214;Richtendes Licht;Ausbauregeln II: Kampf;240
+z1215;Richtspruch verleihen;Ausbauregeln: Magie;231
+z1218;Riesengestalt I;Grundregelwerk;319
+z1219;Riesengestalt II;Grundregelwerk;319
+z1220;Riesenhaftes Ungeziefer;Grundregelwerk;319
+z1225;Rochade;Expertenregeln;237
+z1230;Rückstoß;Ausbauregeln II: Kampf;240
+z1236;Rüstung beschwören;Expertenregeln;237
+z1238;Rüstung entweihen;Expertenregeln;237
+z1239;Rüstung weihen;Expertenregeln;237
+z1241;Sagenkunde;Grundregelwerk;320
+z1242;Sammelpunkt;Expertenregeln;237
+z1244;Sand der Zeit;Ausbauregeln: Magie;232
+z1247;Sattelfestigkeit;Expertenregeln;238
+z1248;Säule des Lebens;Expertenregeln;238
+z1249;Säureeruption;Ausbauregeln: Magie;232
+z1250;Säuregrube;Expertenregeln;238
+z1254;Säureschild;Ausbauregeln: Magie;232
+z1256;Säuresprühregen;Ausbauregeln: Magie;233
+z1259;Schallstoß;Ausbauregeln: Magie;233
+z1260;Schallwand;Ausbauregeln: Magie;233
+z1261;Schärfen;Grundregelwerk;321
+z1262;Schatten;Grundregelwerk;321
+z1265;Schatten-Bombenzusatz;Ausbauregeln II: Kampf;240
+z1266;Schattengang;Ausbauregeln: Magie;233
+z1269;Schattenprojektion;Expertenregeln;238
+z1272;Schattenumhang;Expertenregeln;238
+z1273;Schattenwaffe;Ausbauregeln: Magie;233
+z1275;Schatzkarte erschaffen;Expertenregeln;238
+z1276;Scheingelände;Grundregelwerk;322
+z1278;Scherbenakkord;Ausbauregeln: Magie;234
+z1279;Schicksal verhindern;Expertenregeln;324
+z1280;Schicksalsfaden durchtrennen;Expertenregeln;325
+z1287;Schillerndes Muster;Grundregelwerk;323
+z1294;Schlafwandeln;Expertenregeln;239
+z1295;Schlagloch;Expertenregeln;240
+z1297;Schlangenstab;Expertenregeln;240
+z1299;Schlechtes Omen;Expertenregeln;241
+z1301;Schleier aus positiver Energie;Expertenregeln;241
+z1302;Schleier des Ekels;Ausbauregeln: Magie;234
+z1303;Schleimige Hand;Ausbauregeln: Magie;234
+z1305;Schlingen und Fallen entdecken;Grundregelwerk;324
+z1307;Schmerz verzögern;Ausbauregeln: Magie;234
+z1309;Schmerzhafte Verunstaltung;Ausbauregeln: Magie;234
+z1316;Schneidender Wind;Ausbauregeln: Magie;235
+z1317;Schnelle Selbstreparatur;Ausbauregeln: Magie;235
+z1318;Schneller Tod;Grundregelwerk;325
+z1322;Schockschild;Ausbauregeln II: Kampf;241
+z1325;Schrotexplosion;Ausbauregeln II: Kampf;241
+z1326;Schüttelfrost;Ausbauregeln: Magie;235
+z1327;Schutz der Gläubigen;Expertenregeln;241
+z1336;Schutz vor Hexereien;Ausbauregeln: Magie;235
+z1341;Schützende Bänder;Ausbauregeln: Magie;235
+z1343;Schützende Hand;Expertenregeln;242
+z1344;Schützende Waffe;Ausbauregeln II: Kampf;241
+z1346;Schützender Schatten;Ausbauregeln: Magie;235
+z1347;Schützendes Lagerfeuer;Expertenregeln;242
+z1348;Schutzhülle des Lebens;Expertenregeln;240
+z1350;Schutzhülle gegen Lebendes;Grundregelwerk;326
+z1351;Schutzhülle gegen Pflanzen;Grundregelwerk;326
+z1352;Schutzkreis der Klarheit;Ausbauregeln: Magie;235
+z1353;Schutzkreis gegen Böses;Grundregelwerk;326
+z1355;Schutzkreis gegen Chaos;Grundregelwerk;328
+z1357;Schutzkreis gegen Gutes;Grundregelwerk;328
+z1358;Schutzkreis gegen Ordnung;Expertenregeln;328
+z1360;Schutzmantel des Chaos;Grundregelwerk;328
+z1373;Schwäche aufspüren;Ausbauregeln II: Kampf;242
+z1374;Schwächere Astralprojektion;Ausbauregeln: Magie;206
+z1375;Schwächere Eidolonregeneration;Expertenregeln;214
+z1376;Schwächere Kugel der Unverwundbarkeit;Grundregelwerk;295
+z1378;Schwächere Verwirrung;Grundregelwerk;357
+z1382;Schwächestrahl;Grundregelwerk;328
+z1383;Schwachsinn;Grundregelwerk;328
+z1384;Schwarm ausspeien;Expertenregeln;241
+z1385;Schwarm herbeizaubern;Grundregelwerk;328
+z1386;Schwarmhaut;Expertenregeln;241
+z1387;Schwarze Tentakel;Grundregelwerk;328
+z1388;Schwarzen Blob herbeizaubern;Ausbauregeln: Magie;236
+z1392;Schweben;Grundregelwerk;329
+z1393;Schwebende Scheibe;Grundregelwerk;329
+z1394;Schwere Wunden heilen;Grundregelwerk;329
+z1395;Schwere Wunden verursachen;Grundregelwerk;329
+z1397;Schwerkraft umkehren;Grundregelwerk;329
+z1400;Scirocco;Expertenregeln;242
+z1401;Sechster Sinn;Grundregelwerk;330
+z1402;Seele binden;Grundregelwerk;330
+z1403;Seelenfalle;Grundregelwerk;330
+z1408;Seerosenpfad;Expertenregeln;243
+z1410;Segen des Chamäleons;Expertenregeln;243
+z1411;Segen des Eifers;Expertenregeln;243
+z1414;Segen des Maulwurfs;Ausbauregeln: Magie;236
+z1415;Segen des Salamanders;Expertenregeln;243
+z1416;Segen von Mut und Lebenskraft;Expertenregeln;243
+z1417;Segnen;Grundregelwerk;330
+z1418;Seide zu Stahl;Ausbauregeln: Magie;236
+z1420;Seiltrick;Grundregelwerk;331
+z1422;Selbstüberschätzung;Ausbauregeln: Magie;236
+z1423;Selbstverkleidung;Grundregelwerk;331
+z1424;Selbstverliebtheit;Ausbauregeln: Magie;236
+z1426;Sengende Beleidigung;Ausbauregeln II: Kampf;242
+z1427;Sengender Strahl;Grundregelwerk;331
+z1428;Seuchensturm;Ausbauregeln: Magie;236
+z1429;Seuchenträger;Ausbauregeln: Magie;237
+z1430;Shillelagh;Grundregelwerk;331
+z1431;Sicherer Halt;Ausbauregeln II: Kampf;242
+z1432;Sicherer Unterschlupf;Grundregelwerk;332
+z1435;Silberzunge;Expertenregeln;243
+z1436;Simulakrum;Grundregelwerk;332
+z1437;Simulakrum formen;Ausbauregeln: Magie;237
+z1438;Sinne teilen;Expertenregeln;244
+z1440;Skrupel;Ausbauregeln II: Kampf;242
+z1441;Sofortige Herbeizauberung;Grundregelwerk;332
+z1442;Soldaten der Wildnis;Ausbauregeln II: Kampf;242
+z1443;Sonnenfeuer;Grundregelwerk;332
+z1444;Sonnenstrahl;Grundregelwerk;333
+z1445;Spätzündender Feuerball;Grundregelwerk;333
+z1446;Speer der Reinheit;Ausbauregeln: Magie;237
+z1447;Sphäre der Unsichtbarkeit;Grundregelwerk;333
+z1448;Spiegelbilder;Grundregelwerk;333
+z1450;Spiegelschlag;Ausbauregeln II: Kampf;242
+z1454;Spinnenklettern;Grundregelwerk;333
+z1455;Spinnennetz;Grundregelwerk;333
+z1457;Spontane Selbstentzündung;Ausbauregeln II: Kampf;243
+z1458;Sprache weitergeben;Expertenregeln;244
+z1459;Sprachen verstehen;Grundregelwerk;334
+z1461;Springen;Grundregelwerk;334
+z1462;Sprühende Farben;Grundregelwerk;334
+z1463;Spukchor;Ausbauregeln: Magie;237
+z1464;Spuknebel;Ausbauregeln: Magie;237
+z1466;Stabilisieren;Grundregelwerk;334
+z1468;Standort vortäuschen;Grundregelwerk;334
+z1471;Starker Kiefer;Expertenregeln;244
+z1474;Staubgestalt;Ausbauregeln II: Kampf;243
+z1475;Steckenwandlung;Grundregelwerk;335
+z1478;Stein zu Fleisch;Grundregelwerk;335
+z1481;Steinfaust;Expertenregeln;244
+z1485;Steinschlag;Expertenregeln;244
+z1487;Stille;Grundregelwerk;336
+z1488;Stilles Trugbild;Grundregelwerk;336
+z1489;Stillstehender Ton;Expertenregeln;245
+z1490;Stimme rauben;Ausbauregeln: Magie;238
+z1491;Stimme verändern;Ausbauregeln: Magie;238
+z1492;Stinkende Wolke;Grundregelwerk;336
+z1496;Stolperzunge;Ausbauregeln: Magie;238
+z1497;Störende Kakophonie;Ausbauregeln: Magie;239
+z1501;Streitergewand;Ausbauregeln: Magie;239
+z1502;Streitross;Ausbauregeln: Magie;239
+z1503;Strudel;Expertenregeln;245
+z1504;Sturm der Vergeltung;Grundregelwerk;337
+z1505;Sturzflut;Expertenregeln;245
+z1508;Symbol der Ausspähung;Ausbauregeln: Magie;239
+z1509;Symbol der Betäubung;Grundregelwerk;337
+z1510;Symbol der Empfindlichkeit;Ausbauregeln: Magie;239
+z1511;Symbol der Enthüllung;Ausbauregeln: Magie;239
+z1512;Symbol der Furcht;Grundregelwerk;337
+z1513;Symbol der Heilung;Ausbauregeln: Magie;239
+z1514;Symbol der Schwächung;Grundregelwerk;338
+z1515;Symbol der Spiegelbilder;Ausbauregeln: Magie;240
+z1516;Symbol der Überredung;Grundregelwerk;338
+z1519;Symbol des Schlagens;Ausbauregeln II: Kampf;243
+z1520;Symbol des Schmerzes;Grundregelwerk;337
+z1521;Symbol des Todes;Grundregelwerk;338
+z1522;Symbol des Verlangsamens;Ausbauregeln: Magie;240
+z1523;Symbol des Versiegelns;Ausbauregeln: Magie;240
+z1524;Symbol des Wahnsinns;Grundregelwerk;339
+z1525;Symbol des Zwists;Ausbauregeln: Magie;241
+z1526;Sympathie;Grundregelwerk;339
+z1527;Tadel;Expertenregeln;245
+z1528;Tageslicht;Grundregelwerk;339
+z1531;Taktisches Können;Ausbauregeln II: Kampf;244
+z1532;Tanz der Hundert Schnitte;Ausbauregeln: Magie;241
+z1533;Tanz der Tausend Schnitte;Ausbauregeln: Magie;241
+z1534;Tanzende Laterne;Expertenregeln;246
+z1535;Tanzende Lichter;Grundregelwerk;339
+z1540;Teerkugel;Ausbauregeln: Magie;241
+z1541;Teerlache;Ausbauregeln II: Kampf;244
+z1542;Teilweise Eidolongenesung;Ausbauregeln: Magie;211
+z1543;Teilweise Genesung;Grundregelwerk;339
+z1544;Telekinese;Grundregelwerk;340
+z1545;Telekinesesphäre;Grundregelwerk;340
+z1547;Telekinetischer Sturmangriff;Ausbauregeln II: Kampf;244
+z1548;Telekinetisches Zusammenbauen;Ausbauregeln II: Kampf;244
+z1550;Telepathisches Band;Grundregelwerk;341
+z1553;Teleportieren;Grundregelwerk;341
+z1555;Temporäre Stasis;Grundregelwerk;341
+z1559;Tiefe Verzweiflung;Grundregelwerk;342
+z1560;Tiefere Dunkelheit;Grundregelwerk;342
+z1562;Tier bezaubern;Grundregelwerk;342
+z1563;Tier festhalten;Grundregelwerk;342
+z1564;Tier herbeirufen;Expertenregeln;246
+z1565;Tier verkleinern;Grundregelwerk;342
+z1566;Tieraspekt;Ausbauregeln II: Kampf;244
+z1568;Tierbote;Grundregelwerk;342
+z1570;Tiere beruhigen;Grundregelwerk;343
+z1571;Tiere faszinieren;Grundregelwerk;343
+z1572;Tiere oder Pflanzen entdecken;Grundregelwerk;343
+z1573;Tierform;Grundregelwerk;343
+z1574;Tierwachstum;Grundregelwerk;343
+z1575;Tintenschlange;Grundregelwerk;344
+z1576;Tod den Untoten;Grundregelwerk;344
+z1579;Todeskreis;Grundregelwerk;344
+z1580;Todesschutz;Grundregelwerk;344
+z1581;Todeswolke;Grundregelwerk;344
+z1582;Tödlicher Ausklang;Expertenregeln;246
+z1583;Tödliches Phantom;Grundregelwerk;345
+z1585;Tor;Grundregelwerk;345
+z1586;Tote beleben;Grundregelwerk;346
+z1587;Tote erwecken;Grundregelwerk;346
+z1589;Toten Tiergefährten erwecken;Ausbauregeln: Magie;241
+z1590;Totenglocke;Grundregelwerk;346
+z1592;Totenwache;Grundregelwerk;346
+z1594;Trank in Gift verwandeln;Expertenregeln;246
+z1596;Traum;Grundregelwerk;346
+z1598;Traumumhang;Expertenregeln;247
+z1599;Treffsichere Waffe;Ausbauregeln II: Kampf;245
+z1600;Tsunami;Expertenregeln;247
+z1601;Tugend;Grundregelwerk;347
+z1604;Übelkeit bannen;Ausbauregeln: Magie;241
+z1607;Überirdische Freuden;Ausbauregeln: Magie;241
+z1608;Überlandflug;Grundregelwerk;347
+z1609;Überwältigende Ehrfurcht;Ausbauregeln: Magie;242
+z1610;Überwältigende Trauer;Ausbauregeln: Magie;242
+z1612;Umwandlung;Grundregelwerk;347
+z1613;Unantastbarkeit des Narren;Expertenregeln;248
+z1615;Unauffälliger Diener;Grundregelwerk;347
+z1616;Unauffindbarkeit;Grundregelwerk;347
+z1617;Unaufhaltsame Todeswalze;Ausbauregeln II: Kampf;244
+z1619;Unermüdliche Verfolger;Expertenregeln;248
+z1620;Unermüdliche Verfolgung;Expertenregeln;248
+z1622;Ungeziefer zurücktreiben;Grundregelwerk;348
+z1623;Ungeziefergestalt I;Ausbauregeln: Magie;242
+z1624;Ungeziefergestalt II;Ausbauregeln: Magie;242
+z1625;Unheil;Grundregelwerk;348
+z1626;Unheilige Aura;Grundregelwerk;348
+z1628;Unheilige Plage;Grundregelwerk;348
+z1629;Unheiliges Eis;Ausbauregeln: Magie;242
+z1630;Unheiliges Schwert;Ausbauregeln: Magie;242
+z1631;Unheimliches Schicksal;Grundregelwerk;348
+z1632;Universalformel;Expertenregeln;248
+z1633;Unlöschbarer Durst;Expertenregeln;248
+z1634;Unschuld;Expertenregeln;248
+z1635;Unsichtbares sehen;Grundregelwerk;348
+z1636;Unsichtbarkeit;Grundregelwerk;349
+z1637;Unsichtbarkeit aufheben;Grundregelwerk;349
+z1638;Unstillbarer Hunger;Expertenregeln;248
+z1639;Unterschlupf aus Spinnennetz;Ausbauregeln: Magie;243
+z1640;Untote befehligen;Grundregelwerk;349
+z1641;Untote entdecken;Grundregelwerk;349
+z1642;Untote erschaffen;Grundregelwerk;350
+z1643;Untote festsetzen;Grundregelwerk;350
+z1644;Untote Kontrollieren;Grundregelwerk;350
+z1646;Untote schwächen;Grundregelwerk;350
+z1648;Untotengestalt I;Ausbauregeln: Magie;243
+z1649;Untotengestalt II;Ausbauregeln: Magie;243
+z1650;Untotengestalt III;Ausbauregeln: Magie;243
+z1651;Untotengestalt IV;Ausbauregeln: Magie;244
+z1652;Unverwüstliche Sphäre;Grundregelwerk;351
+z1653;Unvorbereiteter Gegner;Ausbauregeln: Magie;244
+z1655;Unwilliger Schild;Expertenregeln;249
+z1657;Unzerbrechliches Konstrukt;Ausbauregeln: Magie;244
+z1660;Urschrei;Ausbauregeln: Magie;244
+z1661;Vampirgriff;Grundregelwerk;351
+z1663;Verachtung;Ausbauregeln: Magie;244
+z1677;Verbannt aus der Natur;Expertenregeln;249
+z1678;Verbannung;Grundregelwerk;351
+z1679;Verbergen;Grundregelwerk;351
+z1681;Verbindung im Kampf;Ausbauregeln: Magie;244
+z1682;Verborgene Nachrichten;Expertenregeln;249
+z1683;Verborgene Seite;Grundregelwerk;352
+z1685;Verbündeter aus den Ebenen;Grundregelwerk;353
+z1689;Verbündeter des Glaubens;Expertenregeln;249
+z1690;Verdammte Erde;Ausbauregeln: Magie;245
+z1691;Verdorren;Grundregelwerk;355
+z1694;Verfluchen;Grundregelwerk;355
+z1696;Verführerisches Geschenk;Expertenregeln;250
+z1697;Vergeltung;Expertenregeln;250
+z1700;Vergiftung weitergeben;Ausbauregeln: Magie;245
+z1701;Verhalten durchschauen;Expertenregeln;251
+z1702;Verhör;Ausbauregeln: Magie;245
+z1703;Verhüllender Nebel;Grundregelwerk;355
+z1705;Verlangen;Ausbauregeln: Magie;245
+z1706;Verlangsamen;Grundregelwerk;355
+z1708;Verlässliches Pulver;Ausbauregeln II: Kampf;246
+z1710;Vernarrtheit;Ausbauregeln: Magie;245
+z1711;Versanden;Expertenregeln;251
+z1712;Verschwimmen;Grundregelwerk;355
+z1713;Verschwinden;Expertenregeln;251
+z1719;Verständigung;Grundregelwerk;356
+z1721;Versteinernder Hauch;Expertenregeln;251
+z1722;Verstörende Feenerscheinung;Ausbauregeln II: Kampf;246
+z1731;Verurteilung;Ausbauregeln: Magie;246
+z1732;Verwandlung;Grundregelwerk;356
+z1735;Verwirrung;Grundregelwerk;356
+z1736;Verwünschung;Expertenregeln;325
+z1738;Waffengesinnung;Grundregelwerk;359
+z1745;Waffenumgang verleihen;Ausbauregeln II: Kampf;246
+z1747;Wahnsinn;Grundregelwerk;359
+z1748;Wahnvorstellungen;Ausbauregeln: Magie;246
+z1749;Wahre Auferstehung;Grundregelwerk;360
+z1751;Wahre Gestalt;Expertenregeln;251
+z1753;Wahrer Blick;Grundregelwerk;360
+z1756;Wand des Zauberunterdrückens;Expertenregeln;252
+z1757;Wände passieren;Grundregelwerk;360
+z1758;Wanderndes Sternenfunkeln;Expertenregeln;252
+z1760;Wasser atmen;Grundregelwerk;360
+z1761;Wasser entweihen;Grundregelwerk;360
+z1762;Wasser erschaffen;Grundregelwerk;360
+z1763;Wasser kontrollieren;Grundregelwerk;361
+z1766;Wasser weihen;Grundregelwerk;361
+z1767;Wasserkugel;Expertenregeln;252
+z1768;Wasserstrahl;Expertenregeln;253
+z1769;Weg finden;Grundregelwerk;361
+z1770;Wehgeschrei der Todesfee;Grundregelwerk;361
+z1771;Weihen;Grundregelwerk;361
+z1772;Weisheit der Eule;Grundregelwerk;362
+z1773;Weissagung;Grundregelwerk;362
+z1774;Weiter Schuss;Ausbauregeln II: Kampf;246
+z1775;Wellen der Ekstase;Ausbauregeln: Magie;246
+z1776;Wellen der Entkräftung;Grundregelwerk;362
+z1777;Wellen der Erschöpfung;Grundregelwerk;362
+z1778;Wellenritt;Expertenregeln;253
+z1780;Welpengestalt;Ausbauregeln II: Kampf;247
+z1781;Weltenwoge;Expertenregeln;253
+z1783;Wespenmantel;Ausbauregeln: Magie;247
+z1784;Wetterkontrolle;Grundregelwerk;362
+z1785;Widerhallendes Wort;Ausbauregeln: Magie;247
+z1786;Wiedergeburt;Grundregelwerk;363
+z1787;Wildheit des Dachses;Ausbauregeln: Magie;247
+z1789;Winde der Vergeltung;Expertenregeln;254
+z1790;Windgeflüster;Grundregelwerk;363
+z1794;Windkontrolle;Grundregelwerk;363
+z1795;Windschild;Ausbauregeln: Magie;247
+z1796;Windstärke anpassen;Expertenregeln;255
+z1798;Windstoß;Grundregelwerk;364
+z1799;Windstrom;Expertenregeln;254
+z1800;Windumhang;Expertenregeln;255
+z1801;Windwall;Grundregelwerk;364
+z1802;Windwandeln;Grundregelwerk;364
+z1803;Wintereinbruch;Ausbauregeln II: Kampf;247
+z1806;Winzige Hütte;Grundregelwerk;365
+z1807;Wirbelwind;Grundregelwerk;365
+z1808;Wissen des Meisterschützen;Ausbauregeln II: Kampf;248
+z1809;Wissen über den Feind;Ausbauregeln: Magie;247
+z1810;Wohltuender Ausklang;Expertenregeln;256
+z1811;Wohlwollendes Gehölz;Ausbauregeln II: Kampf;248
+z1814;Wort der Entschlossenheit;Ausbauregeln: Magie;247
+z1815;Wort der Macht: Betäubung;Grundregelwerk;365
+z1816;Wort der Macht: Blindheit;Grundregelwerk;365
+z1817;Wort der Macht: Tod;Grundregelwerk;365
+z1818;Wort des Chaos;Grundregelwerk;366
+z1820;Wunder;Grundregelwerk;366
+z1821;Wunsch;Grundregelwerk;366
+z1822;Würde des Streiters verleihen;Ausbauregeln: Magie;247
+z1823;Würde verleihen;Expertenregeln;256
+z1825;Würgende Haare;Ausbauregeln: Magie;248
+z1827;Wut;Grundregelwerk;367
+z1828;Zahllose Augen;Ausbauregeln: Magie;248
+z1831;Zauber analysieren;Grundregelwerk;367
+z1832;Zauber verbergen;Expertenregeln;256
+z1833;Zauber zurückwerfen;Grundregelwerk;367
+z1836;Zaubereffekt rauben;Ausbauregeln: Magie;248
+z1837;Zauberfieber;Ausbauregeln: Magie;248
+z1838;Zauberkräfte verleihen;Grundregelwerk;368
+z1840;Zauberresistenz;Grundregelwerk;368
+z1841;Zauberstecken;Grundregelwerk;368
+z1842;Zaubertrick;Grundregelwerk;368
+z1846;Zeitstopp;Grundregelwerk;368
+z1847;Zerbersten;Grundregelwerk;369
+z1848;Zerdrückende Hand;Grundregelwerk;369
+z1850;Zerschmetternde Felsen;Expertenregeln;256
+z1851;Zersetzender Hauch;Ausbauregeln: Magie;249
+z1852;Zerstörende Waffe;Grundregelwerk;369
+z1853;Zerstörung;Grundregelwerk;369
+z1854;Zeuge;Ausbauregeln: Magie;249
+z1856;Zielsicherer Schlag;Grundregelwerk;369
+z1857;Zone der Stille;Grundregelwerk;369
+z1858;Zone der Wahrheit;Grundregelwerk;369
+z1859;Zorn;Expertenregeln;256
+z1860;Zorn der Ordnung;Grundregelwerk;370
+z1863;Zuflucht;Grundregelwerk;370
+z1864;Zugreifende Hand;Grundregelwerk;370
+z1865;Zum Feind erklären;Expertenregeln;256
+z1866;Zungen;Grundregelwerk;370
+z1867;Zurückkehrende Waffe;Ausbauregeln II: Kampf;249
+z1869;Zusammenflicken;Ausbauregeln II: Kampf;249
+z1870;Zustand;Grundregelwerk;370
+z1872;Zutritt verwehren;Grundregelwerk;371
+z1873;Zwanghafter Neid;Ausbauregeln: Magie;249
+z1876;Zwielichtsklinge;Expertenregeln;256
+z1879;Zwillingsgestalt;Expertenregeln;257
+pdf0001;Zielbombenzusatz;Ausbauregeln II: Kampf;248
+pdf0002;Geisterhaft Verkleidung;Ausbauregeln: Magie;218
+pdf0003;Geisterhafte Aufmerksamkeit;Ausbauregeln: Magie;218
+pdf0004;Gemeinschaftliche Ameisenstärke;Ausbauregeln II: Kampf;222
+pdf0005;Injiziernde Berührung;Ausbauregeln II: Kampf;232
+pdf0006;Kinetische Resonanz;Ausbauregeln II: Kampf;233
+pdf0007;Bestiengestallt I;Grundregelwerk;251
+pdf0008;Gemeinschaftliche Dunkelsicht;Ausbauregeln II: Kampf;226
+pdf0009;Gemeinschaftlicher Schutz vor Pfeilen;Ausbauregeln II: Kampf;241
+pdf0010;Gemeinschaftliches Elementen trotzen;Ausbauregeln II: Kampf;226
+pdf0011;Gemeinschaftliches Energien widerstehen;Ausbauregeln II: Kampf;227
+pdf0012;Gemeinschaftliches Gift verzögern;Ausbauregeln II: Kampf;231
+pdf0013;Gemeinschaftliches Spinnenklettern;Ausbauregeln II: Kampf;243
+pdf0014;Krankheit kurieren;Grundregelwerk;294
+pdf0015;Schwächere Resistenz gegen Alterung;Ausbauregeln: Magie;231
+pdf0016;Gemeinschaftliche Zungen;Ausbauregeln II: Kampf;248
+pdf0017;Gemeinschaftlicher Luftweg;Ausbauregeln II: Kampf;236
+pdf0018;Mächtige Falsches Leben;Ausbauregeln: Magie;215
+pdf0019;Vipern-Bombenzusatz;Ausbauregeln II: Kampf;246
+pdf0020;Gemeinschaftliche Steinhaut;Ausbauregeln II: Kampf;243
+pdf0021;Mächtige Resistenz gegen Alterung;Ausbauregeln: Magie;231
+pdf0022;Verzögerte Wirkung;Expertenregeln;251
+pdf0023;Möderischer Befehl;Ausbauregeln: Magie;229
+pdf0024;Gemeinschaftlicher Schutz vor Gutem;Ausbauregeln II: Kampf;241
+pdf0025;Gemeinschaftlicher Schutz vor Ordnung;Ausbauregeln II: Kampf;241
+pdf0026;Klinge des finsteren Triumphs;Ausbauregeln: Magie;225
+pdf0027;Gemeinschaftliche Unauffindbarkeit;Ausbauregeln II: Kampf;245
+pdf0028;Mächtiges Magisches Belagerungsgerät;Ausbauregeln II: Kampf;236
+pdf0029;Rechtschaffenes bannen;Grundregelwerk;316
+pdf0030;Gemeinschaftliches Sprache weitergeben;Ausbauregeln II: Kampf;243
+pdf0031;Vielseitige Waffe;Expertenregeln;251
+pdf0032;Gemeinschaftliche Zurückkehrende Waffe;Ausbauregeln II: Kampf;249
+pdf0033;Herbeigezauberte Kreatur konrollieren;Ausbauregeln: Magie;222
+pdf0034;Mächtiges Trugbild;Grundregelwerk;298
+pdf0035;Schwächerer Geas;Grundregelwerk;278
+pdf0036;Gemeinschaftliches Geisterross;Ausbauregeln II: Kampf;230
+pdf0037;Verzauberung brechen;Grundregelwerk;357
+pdf0038;Großer Heldenmut;Grundregelwerk;285
+pdf0039;Mächtiges Brüllen;Grundregelwerk;256
+pdf0040;Vorbestimmtes Trugbild;Grundregelwerk;358
+pdf0041;Flammen erzeugen;Grundregelwerk;274
+pdf0042;Spurloses Gehen;Grundregelwerk;334
+pdf0043;Verbündeten der Natur herbeizaubern I;Grundregelwerk;352
+pdf0044;Vor Tieren verstecken;Grundregelwerk;357
+pdf0045;Festbeissen;Expertenregeln;218
+pdf0046;Verbündeten der Natur herbeizaubern II;Grundregelwerk;352
+pdf0047;Tier beherrschen;Grundregelwerk;342
+pdf0048;Verbündeten der Natur herbeizaubern III;Grundregelwerk;352
+pdf0049;Gemeinschaftlicher Schutz vor Energien;Ausbauregeln II: Kampf;241
+pdf0050;Verbündeten der Natur herbeizaubern IV;Grundregelwerk;352
+pdf0051;Fels in Schlamm verwandeln;Grundregelwerk;271
+pdf0052;Verbündeten der Natur herbeizaubern V;Grundregelwerk;353
+pdf0053;Verbündeten der Natur herbeizaubern VI;Grundregelwerk;353
+pdf0054;Wächtereiche;Grundregelwerk;360
+pdf0055;Verbündeten der Natur herbeizaubern VII;Grundregelwerk;353
+pdf0056;Verbündeten der Natur herbeizaubern VIII;Grundregelwerk;353
+pdf0057;Mächtiges Baumkatapult;Ausbauregeln II: Kampf;223
+pdf0058;Verbündeten der Natur herbeizaubern IX;Grundregelwerk;353
+pdf0059;Waffe oder Rüstung verstärken;Ausbauregeln II: Kampf;246
+pdf0060;Gemeinschaftliches Reittier;Ausbauregeln II: Kampf;240
+pdf0061;Gemeinschaftliches Waffe oder Rüstung verstärken;Ausbauregeln II: Kampf;246
+pdf0062;Gemeinschaftliches Zauber verbergen;Ausbauregeln II: Kampf;248
+pdf0063;Vorahnung;Grundregelwerk;357
+pdf0064;Symbol des Schlafes;Grundregelwerk;337
+pdf0065;Wächter und Hüter;Grundregelwerk;360
+pdf0066;Mächtiges Teleportieren;Grundregelwerk;341
+pdf0067;Massen-Person festhalten;Grundregelwerk;312
+pdf0068;Vision;Grundregelwerk;357
+pdf0069;Visionen des Versagens;Ausbauregeln: Magie;246
+pdf0070;Gemeinschaftliche Gedankenleere;Ausbauregeln II: Kampf;229
+pdf0071;Kugel gießen;Ausbauregeln II: Kampf;234
+pdf0072;Gemeinschaftlicher Schutz vor Bösem;Ausbauregeln II: Kampf;241
+pdf0073;Gemeinschaftlicher Schutz vor Chaos;Ausbauregeln II: Kampf;241
+pdf0074;Schwächeres Tote beleben;Ausbauregeln: Magie;241
+pdf0075;Schwarzlicht;Kampagnenwelt;209
+pdf0076;Massen-Person vergrößern;Grundregelwerk;312
+pdf0077;Massen-Person verkleinern;Grundregelwerk;313
+pdf0078;Schwächeres Simulakrum;Ausbauregeln: Magie;237
+pdf0079;Schwächerer Bindender Ruf;Grundregelwerk;252
+pdf0080;Härten;Kampagnenwelt;208
+pdf0081;Mächtiges Belagerungsenergiegeschoss;Ausbauregeln II: Kampf;224
+pdf0082;Rechtschaffenes entdecken;Grundregelwerk;316
+pdf0083;Vor Untoten verstecken;Grundregelwerk;357
+pdf0084;Waffe des Glaubens;Grundregelwerk;358
+pdf0085;Mächtiges Brandzeichen;Expertenregeln;210
+pdf0086;Mächtiges Verhör;Ausbauregeln: Magie;245
+pdf0087;Gemeinschaftliche Immunität gegen Zauber;Ausbauregeln II: Kampf;232
+pdf0088;Mächtiges Handlung untersagen;Ausbauregeln: Magie;221
+pdf0089;Mächtiges Richtspruch verleihen;Ausbauregeln: Magie;232
+pdf0090;Mächtigere Glyphe der Abwehr;Grundregelwerk;285
+pdf0091;Hauch des Wahnsinns;Kampagnenwelt;208
+pdf0092;Gemeinschaftliches Auf Wasser gehen;Ausbauregeln II: Kampf;223
+pdf0093;Rüstung der Finsternis;Kampagnenwelt;209
+pdf0094;Schwächerer Verbündeter aus den Ebenen;Grundregelwerk;353
+pdf0095;Umfassender Zustand;Kampagnenwelt;209
+pdf0096;Blitz der Besessenheit;Kampagnenwelt;208
+pdf0097;Blitz der Herrlichkeit;Kampagnenwelt;208
+pdf0098;Vollständige Genesung;Grundregelwerk;357
+pdf0099;Krone der Herrlichkeit;Kampagnenwelt;208
+pdf0100;Lebensschutz;Kampagnenwelt;209
+pdf0101;Wahre Erschaffung;Kampagnenwelt;209
+pdf0102;Gemeinschaftliche mächtige Immunität gegen Zauber;Ausbauregeln II: Kampf;232
+pdf0103;Genesis;Kampagnenwelt;208
+pdf0104;Göttliches Gefäss;Expertenregeln;225
+pdf0105;Ritterliche Herausforderung;Expertenregeln;237
+pdf0106;Waffe weihen;Grundregelwerk;358
+pdf0107;Aura der mächtigen Tapferkeit;Expertenregeln;205
+pdf0108;Schwächerer Evolutionssprung;Expertenregeln;216
+pdf0109;Evolutionssprung;Expertenregeln;216
+pdf0110;Verbesserte Lebenskraftübertragung;Ausbauregeln II: Kampf;234
+pdf0111;Mächtiger Evolutionssprung;Expertenregeln;216
+pdf0112;Geniessbar machen;Expertenregeln;223
