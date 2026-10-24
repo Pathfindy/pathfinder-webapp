@@ -141,9 +141,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Screen",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z7",
@@ -173,9 +174,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Ablative Barrier",
       "regelwerk_en": "Ultimate Combat",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z8",
@@ -199,9 +201,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Absorbing Touch",
       "regelwerk_en": "Advanced Player’s Guide",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z10",
@@ -230,9 +233,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Repulsion",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z14",
@@ -349,9 +353,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Alarm",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z28",
@@ -380,9 +385,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Nightmare",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z29",
@@ -406,9 +412,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Alchemical Allocation",
       "regelwerk_en": "Advanced Player’s Guide",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z32",
@@ -432,9 +439,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Allegro",
       "regelwerk_en": "Ultimate Magic",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z33",
@@ -486,9 +494,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Summon Elder Worm",
       "regelwerk_en": "Ultimate Magic",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "vorlaeufig_zu_pruefen"
     },
     {
       "id": "z36",
@@ -522,9 +531,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Ant Haul",
       "regelwerk_en": "Advanced Player’s Guide",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z37",
@@ -552,9 +562,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Disguise Other",
       "regelwerk_en": "Ultimate Magic",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z38",
@@ -581,9 +592,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Shield Other",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z39",
@@ -750,9 +762,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Contagion",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z48",
@@ -780,9 +793,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Anthropomorphic Animal",
       "regelwerk_en": "Ultimate Magic",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z50",
@@ -809,9 +823,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Antimagic Field",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z51",
@@ -839,9 +854,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Antipathy",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z54",
@@ -866,9 +882,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Arcane Cannon",
       "regelwerk_en": "Ultimate Combat",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z55",
@@ -895,9 +912,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Mirage Arcana",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z58",
@@ -927,9 +945,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Arcane Sight",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z59",
@@ -953,9 +972,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Arcane Concordance",
       "regelwerk_en": "Advanced Player’s Guide",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z60",
@@ -983,9 +1003,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Arcane Eye",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z61",
@@ -1010,9 +1031,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Arcane Lock",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z62",
@@ -1041,9 +1063,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Arcane Mark",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z66",
@@ -1071,9 +1094,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Ash Storm",
       "regelwerk_en": "Ultimate Magic",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z67",
@@ -1098,9 +1122,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Aspect of the Falcon",
       "regelwerk_en": "Advanced Player’s Guide",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z68",
@@ -1125,9 +1150,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Aspect of the Bear",
       "regelwerk_en": "Advanced Player’s Guide",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z69",
@@ -1152,9 +1178,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Aspect of the Stag",
       "regelwerk_en": "Advanced Player’s Guide",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z70",
@@ -1179,9 +1206,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Aspect of the Wolf",
       "regelwerk_en": "Advanced Player’s Guide",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z71",
@@ -1209,9 +1237,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Astral Projection",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z72",
@@ -1235,9 +1264,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Atavism",
       "regelwerk_en": "Ultimate Magic",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z74",
@@ -1265,9 +1295,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Etherealness",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z75",
@@ -1295,9 +1326,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Ethereal Jaunt",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z76",
@@ -1382,9 +1414,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Water Walk",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z79",
@@ -1414,9 +1447,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Flare",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z80",
@@ -1468,9 +1502,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Resurrection",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z82",
@@ -1496,9 +1531,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Demand",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z84",
@@ -1524,9 +1560,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Disintegrate",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z86",
@@ -1549,9 +1586,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Paladin's Sacrifice",
       "regelwerk_en": "Advanced Player’s Guide",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z87",
@@ -1581,9 +1619,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Discern Location",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z90",
@@ -1607,9 +1646,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Bomber's Eye",
       "regelwerk_en": "Advanced Player’s Guide",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z91",
@@ -1666,9 +1706,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Moment of Greatness",
       "regelwerk_en": "Ultimate Combat",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z98",
@@ -1694,9 +1735,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Archon's Aura",
       "regelwerk_en": "Ultimate Magic",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z100",
@@ -1721,9 +1763,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Aura of Doom",
       "regelwerk_en": "Ultimate Magic",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z101",
@@ -1808,9 +1851,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Mending",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z106",
@@ -1841,9 +1885,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Bleed",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z108",
@@ -1880,9 +1925,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "online-verifiziert",
-      "name_en": null,
+      "name_en": "Bear's Endurance",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z110",
@@ -1909,9 +1955,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Seeming",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z111",
@@ -1964,9 +2011,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Prying Eyes",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z113",
@@ -2000,9 +2048,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Scrying",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z114",
@@ -2032,9 +2081,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Detect Scrying",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z115",
@@ -2061,9 +2111,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Erase",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z116",
@@ -2112,9 +2163,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Bard's Escape",
       "regelwerk_en": "Advanced Player’s Guide",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z118",
@@ -2178,9 +2230,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Bull's Strength",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z120",
@@ -2208,9 +2261,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Ventriloquism",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z121",
@@ -2236,9 +2290,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Tree Shape",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z122",
@@ -2291,9 +2346,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Command",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z124",
@@ -2327,9 +2383,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Liberating Command",
       "regelwerk_en": "Ultimate Combat",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z125",
@@ -2354,9 +2411,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Freedom",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z126",
@@ -2382,9 +2440,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Temporary Resurrection",
       "regelwerk_en": "Ultimate Magic",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "vorlaeufig_zu_pruefen"
     },
     {
       "id": "z128",
@@ -2409,9 +2468,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Limited Wish",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z129",
@@ -2463,9 +2523,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Interposing Hand",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z131",
@@ -2519,9 +2580,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Aid",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z133",
@@ -2547,9 +2609,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Energy Siege Shot",
       "regelwerk_en": "Ultimate Combat",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z135",
@@ -2652,9 +2715,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Polymorph Any Object",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z140",
@@ -2683,9 +2747,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Named Bullet",
       "regelwerk_en": "Ultimate Combat",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z141",
@@ -2717,9 +2782,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Daze",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z144",
@@ -2777,9 +2843,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Summoner Conduit",
       "regelwerk_en": "Ultimate Combat",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z147",
@@ -2838,9 +2905,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Beast Shape II",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z152",
@@ -2868,9 +2936,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Beast Shape III",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z153",
@@ -2897,9 +2966,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Beast Shape IV",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z154",
@@ -2983,9 +3053,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Freedom of Movement",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z159",
@@ -3013,9 +3084,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Adoration",
       "regelwerk_en": "Ultimate Combat",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z162",
@@ -3068,9 +3140,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Blasphemy",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z170",
@@ -3094,9 +3167,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Lead Blades",
       "regelwerk_en": "Advanced Player’s Guide",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z173",
@@ -3154,9 +3228,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Lock Gaze",
       "regelwerk_en": "Ultimate Combat",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z176",
@@ -3220,9 +3295,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Remove Blindness/Deafness",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z180",
@@ -3255,9 +3331,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Blindness/Deafness",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z182",
@@ -3285,9 +3362,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Lightning Bolt",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z185",
@@ -3339,9 +3417,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Call Lightning",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z187",
@@ -3365,9 +3444,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Jolting Portent",
       "regelwerk_en": "Ultimate Combat",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z188",
@@ -3397,9 +3477,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Call Lightning Storm",
       "regelwerk_en": "Advanced Player’s Guide",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z189",
@@ -3429,9 +3510,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Ball Lightning",
       "regelwerk_en": "Advanced Player’s Guide",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z191",
@@ -3570,9 +3652,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Bloodhound",
       "regelwerk_en": "Advanced Player’s Guide",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z200",
@@ -3597,9 +3680,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Bloody Claws",
       "regelwerk_en": "Advanced Player’s Guide",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z201",
@@ -3624,9 +3708,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Blood Crow Strike",
       "regelwerk_en": "Ultimate Magic",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "indexabgleich_pruefen"
     },
     {
       "id": "z203",
@@ -3769,9 +3854,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Dispel Evil",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z214",
@@ -3798,9 +3884,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Detect Evil",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z215",
@@ -3881,9 +3968,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Baleful Polymorph",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z218",
@@ -3912,9 +4000,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Sending",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "vorlaeufig_zu_pruefen"
     },
     {
       "id": "z220",
@@ -3968,9 +4057,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Burning Hands",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z222",
@@ -4030,9 +4120,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Burning Gaze",
       "regelwerk_en": "Advanced Player’s Guide",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "vorlaeufig_zu_pruefen"
     },
     {
       "id": "z226",
@@ -4142,9 +4233,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Atonement",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z234",
@@ -4170,9 +4262,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Chaos Hammer",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z235",
@@ -4227,9 +4320,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Dispel Chaos",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z239",
@@ -4256,9 +4350,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Detect Chaos",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z242",
@@ -4317,9 +4412,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Continual Flame",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z248",
@@ -4346,9 +4442,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Permanent Image",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z249",
@@ -4373,9 +4470,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Permanency",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z251",
@@ -4483,9 +4581,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Mage’s Magnificent Mansion",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "vorlaeufig_zu_pruefen"
     },
     {
       "id": "z256",
@@ -4509,9 +4608,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Mage’s Private Sanctum",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "vorlaeufig_zu_pruefen"
     },
     {
       "id": "z257",
@@ -4536,9 +4636,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Mage’s Sword",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "vorlaeufig_zu_pruefen"
     },
     {
       "id": "z258",
@@ -4564,9 +4665,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Mage’s Faithful Hound",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "vorlaeufig_zu_pruefen"
     },
     {
       "id": "z260",
@@ -4650,9 +4752,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Dictum",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z266",
@@ -4682,9 +4785,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Dimensional Anchor",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z267",
@@ -4712,9 +4816,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Dimensional Lock",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z268",
@@ -4744,9 +4849,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Dimension Door",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z269",
@@ -4856,9 +4962,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Wall of Thorns",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z275",
@@ -4883,9 +4990,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Spike Growth",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z277",
@@ -4942,9 +5050,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Form of the Dragon I",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z279",
@@ -4969,9 +5078,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Form of the Dragon II",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z280",
@@ -4996,9 +5106,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Form of the Dragon III",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z281",
@@ -5027,9 +5138,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Dragon’s Breath",
       "regelwerk_en": "Advanced Player’s Guide",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "vorlaeufig_zu_pruefen"
     },
     {
       "id": "z285",
@@ -5145,9 +5257,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Oppressive Boredom",
       "regelwerk_en": "Ultimate Magic",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "vorlaeufig_zu_pruefen"
     },
     {
       "id": "z289",
@@ -5207,9 +5320,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Darkness",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z291",
@@ -5239,9 +5353,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Darkvision",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z293",
@@ -5358,9 +5473,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Plane Shift",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z298",
@@ -5629,9 +5745,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Silent Image",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z308",
@@ -5659,9 +5776,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Suggestion",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z309",
@@ -5711,9 +5829,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Imprisonment",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "vorlaeufig_zu_pruefen"
     },
     {
       "id": "z311",
@@ -5740,9 +5859,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Merge with Familiar",
       "regelwerk_en": "Ultimate Magic",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "vorlaeufig_zu_pruefen"
     },
     {
       "id": "z312",
@@ -5768,9 +5888,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Commune with Nature",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "vorlaeufig_zu_pruefen"
     },
     {
       "id": "z313",
@@ -5824,9 +5945,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Ironwood",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z316",
@@ -5880,9 +6002,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Iron Body",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z318",
@@ -5907,9 +6030,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Icy Prison",
       "regelwerk_en": "Ultimate Magic",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "vorlaeufig_zu_pruefen"
     },
     {
       "id": "z319",
@@ -6028,9 +6152,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Ice Storm",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z324",
@@ -6058,9 +6183,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Wall of Ice",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z325",
@@ -6146,9 +6272,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Elemental Aura",
       "regelwerk_en": "Advanced Player’s Guide",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "vorlaeufig_zu_pruefen"
     },
     {
       "id": "z329",
@@ -6211,9 +6338,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Elemental Body I",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z333",
@@ -6241,9 +6369,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Elemental Body II",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z334",
@@ -6271,9 +6400,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Elemental Body III",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z335",
@@ -6364,9 +6494,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Endure Elements",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z348",
@@ -6474,9 +6605,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Forcecage",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z354",
@@ -6514,9 +6646,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Resist Energy",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z356",
@@ -6598,9 +6731,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Ray of Enfeeblement",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z360",
@@ -6627,9 +6761,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Enervation",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z363",
@@ -6654,9 +6789,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Entropic Shield",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z364",
@@ -6687,9 +6823,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Terrible Remorse",
       "regelwerk_en": "Ultimate Magic",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "vorlaeufig_zu_pruefen"
     },
     {
       "id": "z365",
@@ -6750,9 +6887,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Desecrate",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z367",
@@ -6813,9 +6951,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Epidemic",
       "regelwerk_en": "Ultimate Magic",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "vorlaeufig_zu_pruefen"
     },
     {
       "id": "z370",
@@ -6870,9 +7009,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Move Earth",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z372",
@@ -6954,9 +7094,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Frostbite",
       "regelwerk_en": "Ultimate Magic",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "vorlaeufig_zu_pruefen"
     },
     {
       "id": "z378",
@@ -7006,9 +7147,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Modify Memory",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z380",
@@ -7091,9 +7233,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Touch of Fatigue",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z384",
@@ -7149,9 +7292,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Scare",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z386",
@@ -7177,9 +7321,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Suffocation",
       "regelwerk_en": "Advanced Player’s Guide",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "vorlaeufig_zu_pruefen"
     },
     {
       "id": "z387",
@@ -7204,9 +7349,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Awaken",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z389",
@@ -7231,9 +7377,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Stone Tell",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "vorlaeufig_zu_pruefen"
     },
     {
       "id": "z391",
@@ -7346,9 +7493,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Gentle Repose",
       "regelwerk_en": "Advanced Player’s Guide",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "vorlaeufig_zu_pruefen"
     },
     {
       "id": "z398",
@@ -7373,9 +7521,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Explosive Runes",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z399",
@@ -7459,9 +7608,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Find Traps",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z405",
@@ -7520,9 +7670,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "False Life",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z407",
@@ -7552,9 +7703,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Feather Fall",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z408",
@@ -7607,9 +7759,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Faerie Fire",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z412",
@@ -7713,9 +7866,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Foe to Friend",
       "regelwerk_en": "Advanced Player’s Guide",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "vorlaeufig_zu_pruefen"
     },
     {
       "id": "z416",
@@ -7947,9 +8101,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Solid Fog",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z427",
@@ -8029,9 +8184,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Quench",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z430",
@@ -8087,9 +8243,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Fire Trap",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z434",
@@ -8114,9 +8271,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Fire Seeds",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z435",
@@ -8146,9 +8304,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Fire Shield",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z436",
@@ -8176,9 +8335,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Fire Snake",
       "regelwerk_en": "Advanced Player’s Guide",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "vorlaeufig_zu_pruefen"
     },
     {
       "id": "z437",
@@ -8262,9 +8422,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Fire Storm",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z442",
@@ -8295,9 +8456,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Wall of Fire",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z443",
@@ -8326,9 +8488,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Pyrotechnics",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z444",
@@ -8380,9 +8543,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Fiery Shuriken",
       "regelwerk_en": "Ultimate Combat",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "vorlaeufig_zu_pruefen"
     },
     {
       "id": "z447",
@@ -8408,9 +8572,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Finger of Death",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z448",
@@ -8617,9 +8782,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Flame Blade",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z457",
@@ -8648,9 +8814,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Flaming Sphere",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z458",
@@ -8677,9 +8844,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Flame Arrow",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z459",
@@ -8708,9 +8876,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Flame Strike",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z460",
@@ -8738,9 +8907,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Flesh to Stone",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z461",
@@ -8797,9 +8967,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Fleshworm Infestation",
       "regelwerk_en": "Ultimate Magic",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "vorlaeufig_zu_pruefen"
     },
     {
       "id": "z465",
@@ -8831,9 +9002,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Fly",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z466",
@@ -8861,9 +9033,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Blink",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z468",
@@ -8895,9 +9068,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Bestow Curse",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "vorlaeufig_zu_pruefen"
     },
     {
       "id": "z469",
@@ -8933,9 +9107,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Remove Curse",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z470",
@@ -9113,9 +9288,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Dismissal",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z482",
@@ -9224,9 +9400,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Summon Froghemoth",
       "regelwerk_en": "Ultimate Magic",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "vorlaeufig_zu_pruefen"
     },
     {
       "id": "z487",
@@ -9286,9 +9463,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Freezing Sphere",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "vorlaeufig_zu_pruefen"
     },
     {
       "id": "z490",
@@ -9322,9 +9500,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Spark",
       "regelwerk_en": "Advanced Player’s Guide",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "vorlaeufig_zu_pruefen"
     },
     {
       "id": "z492",
@@ -9356,9 +9535,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Fear",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z493",
@@ -9393,9 +9573,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Cause Fear",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z494",
@@ -9424,9 +9605,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Remove Fear",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z495",
@@ -9546,9 +9728,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Gaseous Form",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z500",
@@ -9580,9 +9763,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Geas/Quest",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "vorlaeufig_zu_pruefen"
     },
     {
       "id": "z501",
@@ -9607,9 +9791,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Clenched Fist",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z503",
@@ -9636,9 +9821,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Prayer",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z505",
@@ -9788,9 +9974,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Detect Thoughts",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z512",
@@ -9816,9 +10003,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Mind Blank",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z513",
@@ -9962,9 +10150,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Calm Emotions",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z519",
@@ -9996,9 +10185,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Locate Object",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z520",
@@ -10051,9 +10241,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Shrink Item",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z522",
@@ -10079,9 +10270,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Teleport Object",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z523",
@@ -10112,9 +10304,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Obscure Object",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "vorlaeufig_zu_pruefen"
     },
     {
       "id": "z524",
@@ -10142,9 +10335,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Animate Objects",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z526",
@@ -10199,9 +10393,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Secret Chest",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z528",
@@ -10231,9 +10426,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Detect Secret Doors",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z532",
@@ -10287,9 +10483,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Ghost Sound",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z536",
@@ -10313,9 +10510,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Ghost Sound",
       "regelwerk_en": "Ultimate Magic",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "vorlaeufig_zu_pruefen"
     },
     {
       "id": "z537",
@@ -10341,9 +10539,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Spectral Hand",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z538",
@@ -10373,9 +10572,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Phantom Steed",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z543",
@@ -10435,9 +10635,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Restoration",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z573",
@@ -10487,9 +10688,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Sculpt Sound",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z580",
@@ -10516,9 +10718,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Sound Burst",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z581",
@@ -10570,9 +10773,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Righteous Might",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z583",
@@ -10787,9 +10991,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Undetectable Alignment",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z595",
@@ -10823,9 +11028,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Alter Self",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z596",
@@ -11024,9 +11230,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Ghoul Touch",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z612",
@@ -11092,9 +11299,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Detect Poison",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z614",
@@ -11130,9 +11338,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Neutralize Poison",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z615",
@@ -11199,9 +11408,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Delay Poison",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z617",
@@ -11316,9 +11526,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Searing Light",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z624",
@@ -11412,9 +11623,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Glitterdust",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z627",
@@ -11468,9 +11680,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Glyph of Warding",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z632",
@@ -11501,9 +11714,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Guidance",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z633",
@@ -11530,9 +11744,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Divine Favor",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z634",
@@ -11584,9 +11799,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Divine Power",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z636",
@@ -11752,9 +11968,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Goodberry",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z649",
@@ -11811,9 +12028,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Detect Good",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z652",
@@ -12046,9 +12264,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Haste",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z664",
@@ -12194,9 +12413,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Holy Aura",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z671",
@@ -12382,9 +12602,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Holy Sword",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z680",
@@ -12409,9 +12630,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Holy Word",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z681",
@@ -12437,9 +12659,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Sanctuary",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z682",
@@ -12495,9 +12718,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Heal",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z684",
@@ -12638,9 +12862,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Heroes' Feast",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z690",
@@ -12673,9 +12898,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Heroism",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z691",
@@ -12704,9 +12930,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Clairaudience/Clairvoyance",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z694",
@@ -12874,9 +13101,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Warp Wood",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z716",
@@ -12900,9 +13128,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Repel Wood",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z717",
@@ -13040,9 +13269,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Hypnotism",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z728",
@@ -13069,9 +13299,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Hypnotic Pattern",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z729",
@@ -13102,9 +13333,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Identify",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z730",
@@ -13161,9 +13393,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Illusory Script",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z733",
@@ -13218,9 +13451,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Spell Immunity",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z735",
@@ -13244,9 +13478,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Implosion",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z741",
@@ -13307,9 +13542,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Insect Plague",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z746",
@@ -13361,9 +13597,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Summon Instrument",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z748",
@@ -13476,9 +13713,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Maze",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z752",
@@ -13677,9 +13915,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Cone of Cold",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z766",
@@ -13736,9 +13975,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Ray of Frost",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z770",
@@ -13773,9 +14013,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Cat's Grace",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z772",
@@ -14131,9 +14372,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Blade Barrier",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z793",
@@ -14190,9 +14432,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Clone",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z797",
@@ -14218,9 +14461,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Knock",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z799",
@@ -14369,9 +14613,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Contact Other Plane",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z805",
@@ -14549,9 +14794,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Locate Creature",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z818",
@@ -14578,9 +14824,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Teleportation Circle",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z819",
@@ -14630,9 +14877,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Creeping Doom",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z823",
@@ -14752,9 +15000,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Globe of Invulnerability",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z829",
@@ -14955,9 +15204,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Remove Paralysis",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z839",
@@ -14982,9 +15232,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Longstrider",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z841",
@@ -15038,9 +15289,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Breath of Life",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z847",
@@ -15440,9 +15692,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Light",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z870",
@@ -15910,9 +16163,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Air Walk",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z895",
@@ -15942,9 +16196,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Discern Lies",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z919",
@@ -16672,9 +16927,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Dispel Magic",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z967",
@@ -16711,9 +16967,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Detect Magic",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z968",
@@ -16753,9 +17010,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Read Magic",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z969",
@@ -16784,9 +17042,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Mage Hand",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z970",
@@ -16814,9 +17073,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Mage Armor",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z971",
@@ -16870,9 +17130,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Magic Aura",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z973",
@@ -16926,9 +17187,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Magic Fang",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z976",
@@ -16962,9 +17224,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Magic Weapon",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z977",
@@ -16992,9 +17255,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Magic Mouth",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z978",
@@ -17086,9 +17350,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Magic Jar",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z981",
@@ -18342,9 +18607,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Heat Metal",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z1042",
@@ -18367,9 +18633,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Transmute Metal to Wood",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z1043",
@@ -18393,9 +18660,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Chill Metal",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z1044",
@@ -18445,9 +18713,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Meteor Swarm",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z1047",
@@ -18474,9 +18743,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Speak with Plants",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z1049",
@@ -18503,9 +18773,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Meld into Stone",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z1050",
@@ -18532,9 +18803,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Speak with Animals",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z1051",
@@ -18562,9 +18834,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Speak with Dead",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z1054",
@@ -18837,9 +19110,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Dominate Monster",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z1064",
@@ -18868,9 +19142,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Charm Monster",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z1065",
@@ -18900,9 +19175,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Hold Monster",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z1066",
@@ -19551,9 +19827,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Create Food and Water",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z1099",
@@ -19581,9 +19858,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Purify Food and Drink",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z1100",
@@ -19690,9 +19968,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Fog Cloud",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z1104",
@@ -19803,9 +20082,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Contingency",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z1121",
@@ -19864,9 +20144,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Open/Close",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z1130",
@@ -20037,9 +20318,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Dominate Person",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z1141",
@@ -20068,9 +20350,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Charm Person",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z1142",
@@ -20105,9 +20388,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Hold Person",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z1143",
@@ -20138,9 +20422,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Enlarge Person",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z1144",
@@ -20171,9 +20456,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Reduce Person",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z1147",
@@ -20282,9 +20568,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Animate Plants",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z1152",
@@ -20307,9 +20594,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Control Plants",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z1153",
@@ -20363,9 +20651,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Plant Shape I",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z1155",
@@ -20392,9 +20681,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Plant Shape II",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z1156",
@@ -20419,9 +20709,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Plant Shape III",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z1157",
@@ -20473,9 +20764,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Plant Growth",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z1159",
@@ -20500,9 +20792,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Hold Portal",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z1160",
@@ -20584,9 +20877,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Phantom Trap",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z1164",
@@ -20789,9 +21083,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Polar Ray",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z1173",
@@ -20828,9 +21123,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Eagle's Splendor",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z1174",
@@ -20857,9 +21153,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Project Image",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z1177",
@@ -21066,9 +21363,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Expeditious Retreat",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z1189",
@@ -21231,9 +21529,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Rainbow Pattern",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z1200",
@@ -21312,9 +21611,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Prismatic Wall",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z1203",
@@ -21341,9 +21641,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Regenerate",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z1204",
@@ -21434,9 +21735,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Mount",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z1207",
@@ -21491,9 +21793,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Mending",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z1210",
@@ -21530,9 +21833,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Resistance",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z1211",
@@ -21667,9 +21971,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Know Direction",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z1218",
@@ -21784,9 +22089,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Barkskin",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z1225",
@@ -21835,9 +22141,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Rusting Grasp",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z1228",
@@ -21863,9 +22170,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Word of Recall",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z1230",
@@ -22091,9 +22399,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Gentle Repose",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z1247",
@@ -22226,9 +22535,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Acid Fog",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z1253",
@@ -22255,9 +22565,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Acid Arrow",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z1254",
@@ -22316,9 +22627,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Acid Splash",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z1256",
@@ -22490,9 +22802,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Shadow Conjuration",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z1265",
@@ -22575,9 +22888,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Shadow Evocation",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z1269",
@@ -22633,9 +22947,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Shadow Walk",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z1272",
@@ -22867,9 +23182,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Shield",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z1284",
@@ -22893,9 +23209,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Shield of Law",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z1286",
@@ -22921,9 +23238,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Shield of Faith",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z1287",
@@ -22979,9 +23297,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Sleep",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z1293",
@@ -23005,9 +23324,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Lullaby",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z1294",
@@ -23087,9 +23407,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Transmute Mud to Rock",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z1297",
@@ -23149,9 +23470,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Fox's Cunning",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z1299",
@@ -23203,9 +23525,10 @@
       "quelle_pdf": true,
       "zauberresistenz": false,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Veil",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z1301",
@@ -23316,9 +23639,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Snare",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z1305",
@@ -23438,9 +23762,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Grease",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z1315",
@@ -23471,9 +23796,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Sleet Storm",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z1316",
@@ -23589,9 +23915,10 @@
       "quelle_pdf": true,
       "zauberresistenz": "siehe Text",
       "zauberresistenz_status": "pruefen",
-      "name_en": null,
+      "name_en": "Shocking Grasp",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z1322",
@@ -23741,9 +24068,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Protection from Evil",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z1331",
@@ -23776,9 +24104,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Protection from Chaos",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z1333",
@@ -23815,9 +24144,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Protection from Energy",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z1335",
@@ -23851,9 +24181,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Protection from Good",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z1336",
@@ -23914,9 +24245,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Protection from Law",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z1338",
@@ -23945,9 +24277,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Protection from Arrows",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z1340",
@@ -23973,9 +24306,10 @@
       "quelle_pdf": true,
       "zauberresistenz": true,
       "zauberresistenz_status": "regelbasiert",
-      "name_en": null,
+      "name_en": "Protection from Spells",
       "regelwerk_en": "Core Rulebook",
-      "seite_en": null
+      "seite_en": null,
+      "name_en_status": "manuell_zugeordnet_indexabgleich_offen"
     },
     {
       "id": "z1341",
@@ -37409,6 +37743,7 @@
     "status": "teilweise verifiziert",
     "hinweis": "name_en ist nur für manuell mit englischen Pathfinder-1-Regelbezeichnungen abgeglichene Zauber gesetzt; englische Seitenzahlen werden bis zur Einzelprüfung nicht behauptet.",
     "abgeglichen": 28,
-    "gesamt": 1280
+    "gesamt": 1280,
+    "hinweis_fortsetzung": "Neue Zuordnungen sind vorläufig; Einzelprüfung an Originaltexten steht aus."
   }
 }
