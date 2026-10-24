@@ -1,0 +1,34 @@
+
+/* v0.61.1 – mobile Optimierung, Runen-Lexikon und Banner im Navigationsstil */
+#zauber .zauber-lexikon-600{background:rgba(52,30,17,.30)!important;border-color:rgba(70,40,20,.4)!important}
+#zauber .zauber-lexikon-600>summary{display:flex;align-items:center;gap:12px;min-height:78px;padding:9px 14px;list-style:none}
+#zauber .zauber-lexikon-600>summary::-webkit-details-marker{display:none}
+#zauber .zauber-lexikon-rune-612{height:63px;width:63px;max-height:80%;object-fit:contain;flex-shrink:0}
+#zauber .zauber-lexikon-600>summary:hover{background:rgba(52,30,17,.12)}
+#zauber .zauber-bonus-593 .zauber-bonus-inhalt-592{min-width:0;overflow:hidden}
+#zauber .zauber-bonus-selects-594,#zauber .zauber-bonus-selects-594 label{box-sizing:border-box;max-width:100%;min-width:0}
+#zauber .zauber-bonus-selects-594{display:grid;grid-template-columns:minmax(0,1fr);gap:10px}
+#zauber .zauber-bonus-selects-594 label{display:grid;grid-template-columns:minmax(0,1fr);gap:5px;width:100%}
+#zauber .zauber-bonus-selects-594 select{box-sizing:border-box;min-width:0;width:100%;max-width:100%;padding:9px 12px}
+#zauber .zauber-bonus-593 .zauber-bonus-zeile-592{display:grid;grid-template-columns:auto minmax(0,1fr) auto auto;align-items:center;gap:8px;min-width:0;padding:8px 4px}
+#zauber .zauber-bonus-zeile-592 .zauber-bonus-grad-612{white-space:nowrap}
+#zauber .zauber-bonus-zeile-592 .zauber-bonus-name-612{min-width:0!important;width:100%;flex:none!important}
+#zauber .zauber-bonus-zeile-592 .zauber-bonus-name-612 input{box-sizing:border-box;width:100%;min-width:0;max-width:100%;padding:9px 8px}
+#zauber .zauber-bonus-zeile-592 small{white-space:nowrap}
+#zauber .zauber-bonus-593 .zauber-bonus-verfuegbar-612{background:rgba(255,213,90,.08);border-radius:8px;box-shadow:inset 0 0 9px rgba(255,210,76,.18),0 0 9px rgba(255,196,38,.23)}
+#zauber .zauber-mehrklassen-612 .zauber-klassendetails-5510.aktiv .zauber-klassenwahl-55{border-color:#e9b448;box-shadow:0 0 12px 3px rgba(255,197,24,.48),inset 0 0 9px rgba(255,210,65,.25)}
+#zauber .zauber-gradgruppe-55>summary,#zauber .zauber-gradgruppe-55[open]>summary{background-color:#48311e!important;background-image:linear-gradient(rgba(40,22,11,.7),rgba(40,22,11,.7)),url('../assets/runes/background-2-tile.png')!important;background-size:auto,100% auto!important;color:#fff!important;border-color:rgba(255,207,117,.32)!important}
+#zauber .zauber-gradgruppe-55>summary span,#zauber .zauber-gradgruppe-55>summary strong,#zauber .zauber-gradgruppe-55>summary label{color:#fff!important}
+#zauber .zauber-gradgruppe-55>summary input:not([type=checkbox]){background:rgba(255,255,255,.88);color:#352315}
+#zauber .zauber-gradgruppe-55>summary input[type=checkbox]{accent-color:#f3cf80}
+#effekte .effekt-suche-filter-503{background-color:#48311e!important;background-image:linear-gradient(rgba(40,22,11,.68),rgba(40,22,11,.68)),url('../assets/runes/background-2-tile.png')!important;background-size:auto,100% auto!important;color:#fff!important;border-color:rgba(255,207,117,.32)!important}
+#effekte .effekt-suche-filter-503>summary,#effekte .effekt-suche-filter-503 label,#effekte .effekt-suche-filter-503 legend,#effekte .effekt-suche-filter-503 .filter-ergebnis{color:#fff!important}
+@media(max-width:650px){
+ #zauber .zauber-bonus-593 .zauber-bonus-zeile-592{grid-template-columns:minmax(0,1fr) auto;gap:6px 9px}
+ #zauber .zauber-bonus-zeile-592 .zauber-bonus-grad-612{grid-column:1/-1;white-space:normal}
+ #zauber .zauber-bonus-zeile-592 .zauber-bonus-name-612{grid-column:1/2;grid-row:2}
+ #zauber .zauber-bonus-zeile-592 small{grid-column:1;grid-row:3}
+ #zauber .zauber-bonus-zeile-592>button{grid-column:2;grid-row:2/4;align-self:center}
+ #zauber .zauber-gradgruppe-55>summary{gap:6px}
+ #zauber .zauber-gradstatus-55{gap:9px}
+}
