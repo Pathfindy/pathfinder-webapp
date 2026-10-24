@@ -280,6 +280,7 @@
   function renderGradListen(k,x){
     const box=document.createElement("section");box.className="zauber-karte-55";const aktive=effektiveGrade(k,x,ch()).filter(g=>gradVorhanden(k,g)||bonusEintraege(k,x).some(e=>e.g===g));
     const filter=document.createElement("div");filter.className="zauber-filter-55 zauber-filter-mit-loeschen-554";filter.innerHTML=`<input id="zauberSuche55" placeholder="Zauber suchen…" value="${esc(suche)}"><button type="button" id="btnZauberSucheLeeren554" aria-label="Zaubersuche leeren" title="Suche leeren"><img src="assets/runes/delete.png" alt="" aria-hidden="true"></button><button type="button" id="btnNeuerZauber554">+ Zauber</button>`;box.append(filter);
+    const lexikon=zauberLexikon(box);
     const listen=document.createElement("div");listen.className="zauber-gradlisten-55";box.append(listen);root.append(box);
     const sucheEl=filter.querySelector('#zauberSuche55'),clear=filter.querySelector('#btnZauberSucheLeeren554');
     const updateClear=()=>clear.classList.toggle('sichtbar',!!sucheEl.value);
@@ -369,18 +370,19 @@
   function speichereZauberEditor(){let z=editorDaten();if(editorId){const old=(daten.zauber||[]).find(v=>String(v.id)===String(editorId));if(old)z={...old,...z,id:old.id};}if(!z.name){document.getElementById('zauberName554').focus();return}if(editorId){const basis=(basisDaten?.zauber||[]).some(v=>String(v.id)===String(editorId));if(basis){if(!adminAktiv()){alert('Standardzauber können nur im entsperrten Admin-Modus geändert werden.');return}const o=readJson(ADMIN_AENDERUNGEN_KEY,{});o[editorId]=z;writeJson(ADMIN_AENDERUNGEN_KEY,o)}else{for(const key of [BENUTZER_KEY,ADMIN_NEU_KEY]){const a=readJson(key,[]),idx=a.findIndex(v=>String(v.id)===String(editorId));if(idx>=0){a[idx]=z;writeJson(key,a);break}}}}else{const key=adminAktiv()?ADMIN_NEU_KEY:BENUTZER_KEY,a=readJson(key,[]);a.push(z);writeJson(key,a)}kombiniereDaten();document.getElementById('zauberDialog554').close();render();}
 
   // Unabhängiges Zauberlexikon: alle Datenbankzauber, auch ohne Zauberklasse.
-  function zauberLexikon(){
-    const box=document.createElement('section');box.className='zauber-karte-55 zauber-lexikon-600';
-    box.innerHTML=`<h3>Zauberlexikon</h3><p>Alle Zauber nach deutschem oder englischem Namen durchsuchen – unabhängig von Klasse und Zaubergrad.</p><div class="zauber-lexikon-suche-600"><input id="zauberLexikonSuche600" type="search" autocomplete="off" placeholder="Deutscher oder englischer Zaubername …" aria-label="Zauberlexikon durchsuchen"><span id="zauberLexikonAnzahl600"></span></div><div id="zauberLexikonTreffer600" class="zauber-lexikon-treffer-600"></div>`;
-    root.append(box);
+  function zauberLexikon(ziel=root){
+    const box=document.createElement('details');box.className='zauber-lexikon-600';
+    box.innerHTML=`<summary>📜 Zauberlexikon <span class="zauber-lexikon-aufklapphinweis-602">(zum Öffnen anklicken)</span></summary><div class="zauber-lexikon-inhalt-602"><p class="zauber-lexikon-hinweis-602">Alle Zauber nach deutschem oder englischem Namen durchsuchen – unabhängig von Klasse und Zaubergrad.</p><div class="zauber-lexikon-suche-600"><input id="zauberLexikonSuche600" type="search" autocomplete="off" placeholder="Deutscher oder englischer Zaubername …" aria-label="Zauberlexikon durchsuchen"><span id="zauberLexikonAnzahl600"></span></div><div id="zauberLexikonTreffer600" class="zauber-lexikon-treffer-600"></div></div>`;
+    ziel.append(box);
     const input=box.querySelector('#zauberLexikonSuche600'),treffer=box.querySelector('#zauberLexikonTreffer600'),zahl=box.querySelector('#zauberLexikonAnzahl600');
-    function update(){const q=input.value.trim().toLocaleLowerCase('de');treffer.replaceChildren();if(!q){zahl.textContent=`${daten.zauber.length} Zauber verfügbar`;treffer.textContent='Zum Nachschlagen einen Namen eingeben.';return}
+    function update(){const q=input.value.trim().toLocaleLowerCase('de');treffer.replaceChildren();if(!q){zahl.textContent=`${daten.zauber.length} Zauber verfügbar`;treffer.textContent='Zum Nachschlagen einen Namen eingeben (deutsch oder englisch).';return}
       const list=daten.zauber.filter(z=>(z.name+' '+(z.name_en||'')).toLocaleLowerCase('de').includes(q)).sort((a,b)=>a.name.localeCompare(b.name,'de'));zahl.textContent=`${list.length} Treffer`;
       if(!list.length){treffer.textContent='Keine Zauber gefunden.';return}
       for(const z of list.slice(0,100)){const b=document.createElement('button');b.type='button';b.className='zauber-lexikon-trefferknopf-600';const name=document.createElement('strong');name.textContent=z.name;b.append(name);if(z.name_en){const en=document.createElement('small');en.textContent=z.name_en;b.append(en)}b.onclick=()=>oeffneZauberPergament(z);treffer.append(b)}
       if(list.length>100){const info=document.createElement('p');info.textContent='Die ersten 100 Treffer werden angezeigt. Bitte Suche verfeinern.';treffer.append(info)}
     }input.oninput=update;update();
-    if(adminAktiv()){const exportBtn=document.createElement('button');exportBtn.type='button';exportBtn.className='zauber-lexikon-export-600';exportBtn.textContent='Zauberdatenbank als zauber.json exportieren (Admin)';exportBtn.onclick=exportiereZauberJson;box.append(exportBtn)}
+    if(adminAktiv()){const exportBtn=document.createElement('button');exportBtn.type='button';exportBtn.className='zauber-lexikon-export-600';exportBtn.textContent='Zauberdatenbank als zauber.json exportieren (Admin)';exportBtn.onclick=exportiereZauberJson;box.querySelector('.zauber-lexikon-inhalt-602').append(exportBtn)}
+    return box;
   }
   function oeffneZauberPergament(z){
     let dialog=document.getElementById('zauberPergament600');if(!dialog){dialog=document.createElement('dialog');dialog.id='zauberPergament600';dialog.className='zauber-pergament-600';dialog.innerHTML='<div class="zauber-pergament-inhalt-600"><button type="button" class="zauber-pergament-schliessen-600" aria-label="Schließen">✕</button><div id="zauberPergamentText600"></div></div>';document.body.append(dialog);dialog.querySelector('button').onclick=()=>dialog.close();dialog.onclick=e=>{if(e.target===dialog)dialog.close()}}
@@ -402,7 +404,7 @@
     const blob=new Blob([JSON.stringify(payload,null,2)+'\n'],{type:'application/json;charset=utf-8'}),url=URL.createObjectURL(blob),link=document.createElement('a');link.href=url;link.download='zauber.json';document.body.append(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
   }
 
-  async function render(){await load();root.innerHTML='';const c=ch();if(!c){zauberLexikon();return}const klassen=zauberKlassen(c);if(!klassen.length){zauberLexikon();return}if(!klassen.some(k=>k.name===klasseAktiv))klasseAktiv=klassen[0].name;zauberLexikon();renderKlassen(c,klassen);const k=klassen.find(k=>k.name===klasseAktiv),x=config(c,k.name);renderFokus(k,x);renderMetamagie(c);renderWerte(c,k,x);renderBonus(k,x);renderGradListen(k,x);save();}
+  async function render(){await load();root.innerHTML='';const c=ch();if(!c){zauberLexikon();return}const klassen=zauberKlassen(c);if(!klassen.length){zauberLexikon();return}if(!klassen.some(k=>k.name===klasseAktiv))klasseAktiv=klassen[0].name;renderKlassen(c,klassen);const k=klassen.find(k=>k.name===klasseAktiv),x=config(c,k.name);renderFokus(k,x);renderMetamagie(c);renderWerte(c,k,x);renderBonus(k,x);renderGradListen(k,x);save();}
 
   // Zauberdaten sind Teil des Charakterobjekts und müssen Import/Export-Normalisierung überleben.
   if(typeof normalisiereCharakter==="function"&&!normalisiereCharakter.__zauber5510){const altNormalisiere=normalisiereCharakter;const neu=function(charakter={}){const basis=altNormalisiere(charakter);return {...basis,zauberklassen:charakter.zauberklassen&&typeof charakter.zauberklassen==="object"?charakter.zauberklassen:(basis.zauberklassen||{}),metamagieErlernt:Array.isArray(charakter.metamagieErlernt)?charakter.metamagieErlernt:(basis.metamagieErlernt||[]),zauberMetamagie:charakter.zauberMetamagie&&typeof charakter.zauberMetamagie==="object"?charakter.zauberMetamagie:(basis.zauberMetamagie||{})}};neu.__zauber5510=true;normalisiereCharakter=neu;}
