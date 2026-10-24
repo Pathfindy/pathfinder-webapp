@@ -1,0 +1,690 @@
+{
+  "Abnormale Blutlinie": {
+    "art": "bekannt",
+    "zauber": {
+      "1": "Person vergrößern",
+      "2": "Unsichtbares sehen",
+      "3": "Zungen",
+      "4": "Schwarze Tentakel",
+      "5": "Schwachsinn",
+      "6": "Schleier",
+      "7": "Ebenenwechsel",
+      "8": "Gedankenleere",
+      "9": "Gestaltwandel"
+    },
+    "quelle": "GRW"
+  },
+  "Mutierte Blutlinie": {
+    "art": "bekannt",
+    "zauber": {
+      "1": "Person vergrößern",
+      "2": "Unsichtbares sehen",
+      "3": "Zungen",
+      "4": "Schwarze Tentakel",
+      "5": "Schwachsinn",
+      "6": "Schleier",
+      "7": "Ebenenwechsel",
+      "8": "Gedankenleere",
+      "9": "Gestaltwandel"
+    },
+    "quelle": "ABR"
+  },
+  "Aquatische Blutlinie": {
+    "art": "bekannt",
+    "zauber": {
+      "1": "Wasserstrahl",
+      "2": "Wellenritt",
+      "3": "Wasserkugel",
+      "4": "Geysir",
+      "5": "Wasser kontrollieren",
+      "7": "Bestiengestalt IV",
+      "8": "Mantel der See",
+      "9": "Weltenwoge"
+    },
+    "quelle": "EXP"
+  },
+  "Meeresblutlinie": {
+    "art": "bekannt",
+    "zauber": {
+      "1": "Wasserstrahl",
+      "2": "Wellenritt",
+      "3": "Wasserkugel",
+      "4": "Geysir",
+      "5": "Wasser kontrollieren",
+      "7": "Bestiengestalt IV",
+      "8": "Mantel der See",
+      "9": "Weltenwoge"
+    },
+    "quelle": "ABR"
+  },
+  "Arkane Blutlinie": {
+    "art": "bekannt",
+    "zauber": {
+      "1": "Identifizieren",
+      "2": "Unsichtbarkeit",
+      "3": "Magie bannen",
+      "4": "Dimensionstür",
+      "5": "Überlandflug",
+      "6": "Wahrer Blick",
+      "7": "Mächtiges Teleportieren",
+      "8": "Wort der Macht: Betäubung",
+      "9": "Wunsch"
+    },
+    "quelle": "GRW"
+  },
+  "Blutlinie der Gelehrten": {
+    "art": "bekannt",
+    "zauber": {
+      "1": "Identifizieren",
+      "2": "Unsichtbarkeit",
+      "3": "Magie bannen",
+      "4": "Dimensionstür",
+      "5": "Überlandflug",
+      "6": "Wahrer Blick",
+      "7": "Mächtiges Teleportieren",
+      "8": "Wort der Macht: Betäubung",
+      "9": "Wunsch"
+    },
+    "quelle": "ABR"
+  },
+  "Arktische Blutlinie": {
+    "art": "bekannt",
+    "zauber": {
+      "1": "Person vergrößern",
+      "2": "Wut",
+      "3": "Elementaraura",
+      "4": "Eiswand",
+      "5": "Kältekegel",
+      "6": "Umwandlung",
+      "7": "Riesengestalt I",
+      "8": "Polarstrahl",
+      "9": "Meteoritenschwarm"
+    },
+    "quelle": "EXP"
+  },
+  "Eisige Blutlinie": {
+    "art": "bekannt",
+    "zauber": {
+      "1": "Person vergrößern",
+      "2": "Wut",
+      "3": "Elementaraura",
+      "4": "Eiswand",
+      "5": "Kältekegel",
+      "6": "Umwandlung",
+      "7": "Riesengestalt I",
+      "8": "Polarstrahl",
+      "9": "Meteoritenschwarm"
+    },
+    "quelle": "ABR"
+  },
+  "Dämonische Blutlinie": {
+    "art": "bekannt",
+    "zauber": {
+      "1": "Furcht auslösen",
+      "2": "Bärenstärke",
+      "3": "Wut",
+      "4": "Steinhaut",
+      "5": "Fortschicken",
+      "6": "Umwandlung",
+      "7": "Mächtiges Teleportieren",
+      "8": "Unheilige Aura",
+      "9": "Monster herbeizaubern IX"
+    },
+    "quelle": "GRW"
+  },
+  "Blutlinie der Brutalität": {
+    "art": "bekannt",
+    "zauber": {
+      "1": "Furcht auslösen",
+      "2": "Bärenstärke",
+      "3": "Wut",
+      "4": "Steinhaut",
+      "5": "Fortschicken",
+      "6": "Umwandlung",
+      "7": "Mächtiges Teleportieren",
+      "8": "Unheilige Aura",
+      "9": "Monster herbeizaubern IX"
+    },
+    "quelle": "ABR"
+  },
+  "Drachenblutlinie": {
+    "art": "bekannt",
+    "zauber": {
+      "1": "Magierrüstung",
+      "2": "Energien widerstehen",
+      "3": "Fliegen",
+      "4": "Furcht",
+      "5": "Zauberresistenz",
+      "6": "Drachengestalt I",
+      "7": "Drachengestalt II",
+      "8": "Drachengestalt III",
+      "9": "Wunsch"
+    },
+    "quelle": "GRW"
+  },
+  "Lindwurmblutlinie": {
+    "art": "bekannt",
+    "zauber": {
+      "1": "Magierrüstung",
+      "2": "Energien widerstehen",
+      "3": "Fliegen",
+      "4": "Furcht",
+      "5": "Zauberresistenz",
+      "6": "Drachengestalt I",
+      "7": "Drachengestalt II",
+      "8": "Drachengestalt III",
+      "9": "Wunsch"
+    },
+    "quelle": "ABR"
+  },
+  "Dschinn-Blutlinie": {
+    "art": "bekannt",
+    "zauber": {
+      "1": "Schockgriff",
+      "2": "Unsichtbarkeit",
+      "3": "Fliegen",
+      "4": "Niedere Erschaffung",
+      "5": "Überlandflug",
+      "6": "Kugelblitz",
+      "7": "Ebenenwechsel",
+      "8": "Mächtiger Bindender Ruf",
+      "9": "Wunsch"
+    },
+    "quelle": "ABR"
+  },
+  "Elementare Blutlinie": {
+    "art": "bekannt",
+    "zauber": {
+      "1": "Brennende Hände",
+      "2": "Sengender Strahl",
+      "3": "Schutz vor Energien",
+      "4": "Elementargestalt I",
+      "5": "Elementargestalt II",
+      "6": "Elementargestalt III",
+      "7": "Elementargestalt IV",
+      "8": "Monster herbeizaubern VII",
+      "9": "Elementarhorde"
+    },
+    "quelle": "GRW"
+  },
+  "Urzeitliche Blutlinie": {
+    "art": "bekannt",
+    "zauber": {
+      "1": "Brennende Hände",
+      "2": "Sengender Strahl",
+      "3": "Schutz vor Energien",
+      "4": "Elementargestalt I",
+      "5": "Elementargestalt II",
+      "6": "Elementargestalt III",
+      "7": "Elementargestalt IV",
+      "8": "Monster herbeizaubern VII",
+      "9": "Elementarhorde"
+    },
+    "quelle": "ABR"
+  },
+  "Feenblutlinie": {
+    "art": "bekannt",
+    "zauber": {
+      "1": "Verstricken",
+      "2": "Fürchterlicher Lachanfall",
+      "3": "Tiefschlaf",
+      "4": "Vergiften",
+      "5": "Hölzerner Weg",
+      "6": "Ablenkung",
+      "7": "Äthertor",
+      "8": "Unwiderstehlicher Tanz",
+      "9": "Gestaltwandel"
+    },
+    "quelle": "GRW"
+  },
+  "Blutlinie des Grabes": {
+    "art": "bekannt",
+    "zauber": {
+      "1": "Kalte Hand",
+      "2": "Falsches Leben",
+      "3": "Vampirgriff",
+      "4": "Tote beleben",
+      "5": "Wellen der Erschöpfung",
+      "6": "Tod den Untoten",
+      "7": "Finger des Todes",
+      "8": "Verdorren",
+      "9": "Entzug von Lebenskraft"
+    },
+    "quelle": "GRW"
+  },
+  "Vampirblutlinie": {
+    "art": "bekannt",
+    "zauber": {
+      "1": "Kalte Hand",
+      "2": "Falsches Leben",
+      "3": "Vampirgriff",
+      "4": "Tote beleben",
+      "5": "Wellen der Erschöpfung",
+      "6": "Tod den Untoten",
+      "7": "Finger des Todes",
+      "8": "Verdorren",
+      "9": "Entzug von Lebenskraft"
+    },
+    "quelle": "ABR"
+  },
+  "Himmlische Blutlinie": {
+    "art": "bekannt",
+    "zauber": {
+      "1": "Segnen",
+      "2": "Energien widerstehen",
+      "3": "Schutzkreis gegen Böses",
+      "4": "Fluch brechen",
+      "5": "Flammenschlag",
+      "6": "Mächtige Magie bannen",
+      "7": "Verbannung",
+      "8": "Sonnenfeuer",
+      "9": "Tor"
+    },
+    "quelle": "GRW"
+  },
+  "Blutlinie des Himmels": {
+    "art": "bekannt",
+    "zauber": {
+      "1": "Segnen",
+      "2": "Energien widerstehen",
+      "3": "Schutzkreis gegen Böses",
+      "4": "Fluch brechen",
+      "5": "Flammenschlag",
+      "6": "Mächtige Magie bannen",
+      "7": "Verbannung",
+      "8": "Sonnenfeuer",
+      "9": "Tor"
+    },
+    "quelle": "ABR"
+  },
+  "Ifrit-Blutlinie": {
+    "art": "bekannt",
+    "zauber": {
+      "1": "Person vergrößern",
+      "2": "Sengender Strahl",
+      "3": "Feuerball",
+      "4": "Feuerwand",
+      "5": "Eigenständiges Trugbild",
+      "6": "Bindender Ruf",
+      "7": "Ebenenwechsel",
+      "8": "Riesengestalt II",
+      "9": "Wunsch"
+    },
+    "quelle": "ABR"
+  },
+  "Immergrüne Blutlinie": {
+    "art": "bekannt",
+    "zauber": {
+      "1": "Verstricken",
+      "2": "Rindenhaut",
+      "3": "Mit Pflanzen sprechen",
+      "4": "Pflanzen befehligen",
+      "5": "Dornenwand",
+      "6": "Pflanzentor",
+      "7": "Pflanzengestalt III",
+      "8": "Pflanzen beleben",
+      "9": "Modernder Schlurfer"
+    },
+    "quelle": "EXP"
+  },
+  "Haingeborene Blutlinie": {
+    "art": "bekannt",
+    "zauber": {
+      "1": "Verstricken",
+      "2": "Rindenhaut",
+      "3": "Mit Pflanzen sprechen",
+      "4": "Pflanzen befehligen",
+      "5": "Dornenwand",
+      "6": "Pflanzentor",
+      "7": "Pflanzengestalt III",
+      "8": "Pflanzen beleben",
+      "9": "Modernder Schlurfer"
+    },
+    "quelle": "ABR"
+  },
+  "Blutlinie des Maestros": {
+    "art": "bekannt",
+    "zauber": {
+      "1": "Bauchreden",
+      "2": "Fürchterlicher Lachanfall",
+      "3": "Einflüsterung",
+      "4": "Brüllen",
+      "5": "Person beherrschen",
+      "6": "Masseneinflüsterung",
+      "7": "Wort der Macht: Blindheit",
+      "8": "Mächtiges Brüllen",
+      "9": "Wehgeschrei der Todesfee"
+    },
+    "quelle": "ABR"
+  },
+  "Mariden-Blutlinie": {
+    "art": "bekannt",
+    "zauber": {
+      "1": "Verhüllender Nebel",
+      "2": "Unsichtbares sehen",
+      "3": "Gasförmige Gestalt",
+      "4": "Eiswand",
+      "5": "Eigenständiges Trugbild",
+      "6": "Elementargestalt III",
+      "7": "Ebenenwechsel",
+      "8": "Polarstrahl",
+      "9": "Wunsch"
+    },
+    "quelle": "ABR"
+  },
+  "Proteanische Blutlinie": {
+    "art": "bekannt",
+    "zauber": {
+      "1": "Entropieschild",
+      "2": "Verschwimmen",
+      "3": "Gasförmige Gestalt",
+      "4": "Verwirrung",
+      "5": "Höhere Erschaffung",
+      "6": "Auflösung",
+      "7": "Mächtige Verwandlung",
+      "8": "Beliebiges verwandeln",
+      "9": "Gestaltwandel"
+    },
+    "quelle": "EXP"
+  },
+  "Blutlinie der Anarchie": {
+    "art": "bekannt",
+    "zauber": {
+      "1": "Entropieschild",
+      "2": "Verschwimmen",
+      "3": "Gasförmige Gestalt",
+      "4": "Verwirrung",
+      "5": "Höhere Erschaffung",
+      "6": "Auflösung",
+      "7": "Mächtige Verwandlung",
+      "8": "Beliebiges verwandeln",
+      "9": "Gestaltwandel"
+    },
+    "quelle": "ABR"
+  },
+  "Rakschasa-Blutlinie": {
+    "art": "bekannt",
+    "zauber": {
+      "1": "Person bezaubern",
+      "2": "Unsichtbarkeit",
+      "3": "Einflüsterung",
+      "4": "Ausspähung entdecken",
+      "5": "Ausspähende Augen",
+      "6": "Masseneinflüsterung",
+      "7": "Mächtige Verwandlung",
+      "8": "Gedankenleere",
+      "9": "Monster beherrschen"
+    },
+    "quelle": "ABR"
+  },
+  "Schaitan-Blutlinie": {
+    "art": "bekannt",
+    "zauber": {
+      "1": "Zielsicherer Schlag",
+      "2": "Glitzerstaub",
+      "3": "Mächtige Magische Waffe",
+      "4": "Steinhaut",
+      "5": "Steinwand",
+      "6": "Eisenwand",
+      "7": "Ebenenwechsel",
+      "8": "Eiserner Körper",
+      "9": "Wunsch"
+    },
+    "quelle": "ABR"
+  },
+  "Schattenblutlinie": {
+    "art": "bekannt",
+    "zauber": {
+      "1": "Schwächestrahl",
+      "2": "Dunkelsicht",
+      "3": "Tiefere Dunkelheit",
+      "4": "Schattenbeschwörung",
+      "5": "Schattenhervorrufung",
+      "6": "Schattenreise",
+      "7": "Wort der Macht: Blindheit",
+      "8": "Mächtige Schattenbeschwörung",
+      "9": "Schatten"
+    },
+    "quelle": "EXP"
+  },
+  "Blutlinie des Zwielichts": {
+    "art": "bekannt",
+    "zauber": {
+      "1": "Schwächestrahl",
+      "2": "Dunkelsicht",
+      "3": "Tiefere Dunkelheit",
+      "4": "Schattenbeschwörung",
+      "5": "Schattenhervorrufung",
+      "6": "Schattenreise",
+      "7": "Wort der Macht: Blindheit",
+      "8": "Mächtige Schattenbeschwörung",
+      "9": "Schatten"
+    },
+    "quelle": "ABR"
+  },
+  "Schicksalhafte Blutlinie": {
+    "art": "bekannt",
+    "zauber": {
+      "1": "Alarm",
+      "2": "Verschwimmen",
+      "3": "Schutz vor Energien",
+      "4": "Bewegungsfreiheit",
+      "5": "Verzauberung brechen",
+      "6": "Ablenkung",
+      "7": "Zauber zurückwerfen",
+      "8": "Moment der Eingebung",
+      "9": "Sechster Sinn"
+    },
+    "quelle": "GRW"
+  },
+  "Karmische Blutlinie": {
+    "art": "bekannt",
+    "zauber": {
+      "1": "Alarm",
+      "2": "Verschwimmen",
+      "3": "Schutz vor Energien",
+      "4": "Bewegungsfreiheit",
+      "5": "Verzauberung brechen",
+      "6": "Ablenkung",
+      "7": "Zauber zurückwerfen",
+      "8": "Moment der Eingebung",
+      "9": "Sechster Sinn"
+    },
+    "quelle": "ABR"
+  },
+  "Schlangenblutlinie": {
+    "art": "bekannt",
+    "zauber": {
+      "1": "Hypnose",
+      "2": "Gift verzögern",
+      "3": "Monster herbeizaubern III",
+      "4": "Vergiften",
+      "5": "Monster festhalten",
+      "6": "Masseneinflüsterung",
+      "7": "Monster herbeizaubern VII",
+      "8": "Unwiderstehlicher Tanz",
+      "9": "Monster beherrschen"
+    },
+    "quelle": "EXP"
+  },
+  "Giftige Blutlinie": {
+    "art": "bekannt",
+    "zauber": {
+      "1": "Hypnose",
+      "2": "Gift verzögern",
+      "3": "Monster herbeizaubern III",
+      "4": "Vergiften",
+      "5": "Monster festhalten",
+      "6": "Masseneinflüsterung",
+      "7": "Monster herbeizaubern VII",
+      "8": "Unwiderstehlicher Tanz",
+      "9": "Monster beherrschen"
+    },
+    "quelle": "ABR"
+  },
+  "Sternenblutlinie": {
+    "art": "bekannt",
+    "zauber": {
+      "1": "Unauffälliger Diener",
+      "2": "Glitzerstaub",
+      "3": "Flimmern",
+      "4": "Gewittersturm herbeirufen",
+      "5": "Überlandflug",
+      "6": "Abstoßung",
+      "7": "Schwerkraft umkehren",
+      "8": "Mächtige Ausspähende Augen",
+      "9": "Meteoritenschwarm"
+    },
+    "quelle": "EXP"
+  },
+  "Leereberührte Blutlinie": {
+    "art": "bekannt",
+    "zauber": {
+      "1": "Unauffälliger Diener",
+      "2": "Glitzerstaub",
+      "3": "Flimmern",
+      "4": "Gewittersturm herbeirufen",
+      "5": "Überlandflug",
+      "6": "Abstoßung",
+      "7": "Schwerkraft umkehren",
+      "8": "Mächtige Ausspähende Augen",
+      "9": "Meteoritenschwarm"
+    },
+    "quelle": "ABR"
+  },
+  "Sturmblutlinie": {
+    "art": "bekannt",
+    "zauber": {
+      "1": "Schockgriff",
+      "2": "Windstoß",
+      "3": "Blitz",
+      "4": "Brüllen",
+      "5": "Überlandflug",
+      "6": "Kugelblitz",
+      "7": "Wetterkontrolle",
+      "8": "Wirbelwind",
+      "9": "Sturm der Vergeltung"
+    },
+    "quelle": "EXP"
+  },
+  "Blutlinie des Windes": {
+    "art": "bekannt",
+    "zauber": {
+      "1": "Schockgriff",
+      "2": "Windstoß",
+      "3": "Blitz",
+      "4": "Brüllen",
+      "5": "Überlandflug",
+      "6": "Kugelblitz",
+      "7": "Wetterkontrolle",
+      "8": "Wirbelwind",
+      "9": "Sturm der Vergeltung"
+    },
+    "quelle": "ABR"
+  },
+  "Teuflische Blutlinie": {
+    "art": "bekannt",
+    "zauber": {
+      "1": "Schutz vor Gutem",
+      "2": "Sengender Strahl",
+      "3": "Einflüsterung",
+      "4": "Monster bezaubern",
+      "5": "Person beherrschen",
+      "6": "Bindender Ruf",
+      "7": "Mächtiges Teleportieren",
+      "8": "Wort der Macht: Betäubung",
+      "9": "Meteoritenschwarm"
+    },
+    "quelle": "GRW"
+  },
+  "Höllische Blutlinie": {
+    "art": "bekannt",
+    "zauber": {
+      "1": "Schutz vor Gutem",
+      "2": "Sengender Strahl",
+      "3": "Einflüsterung",
+      "4": "Monster bezaubern",
+      "5": "Person beherrschen",
+      "6": "Bindender Ruf",
+      "7": "Mächtiges Teleportieren",
+      "8": "Wort der Macht: Betäubung",
+      "9": "Meteoritenschwarm"
+    },
+    "quelle": "ABR"
+  },
+  "Tiefenblutlinie": {
+    "art": "bekannt",
+    "zauber": {
+      "1": "Rasches Graben",
+      "2": "Dunkelsicht",
+      "3": "Versanden",
+      "4": "Steinhaut",
+      "5": "Steindornen",
+      "6": "Erzählende Steine",
+      "7": "Metall oder Stein zurücktreiben",
+      "8": "Erdbeben",
+      "9": "Zerschmetternde Felsen"
+    },
+    "quelle": "EXP"
+  },
+  "Blutlinie des Gesteins": {
+    "art": "bekannt",
+    "zauber": {
+      "1": "Rasches Graben",
+      "2": "Dunkelsicht",
+      "3": "Versanden",
+      "4": "Steinhaut",
+      "5": "Steindornen",
+      "6": "Erzählende Steine",
+      "7": "Metall oder Stein zurücktreiben",
+      "8": "Erdbeben",
+      "9": "Zerschmetternde Felsen"
+    },
+    "quelle": "ABR"
+  },
+  "Traumblutlinie": {
+    "art": "bekannt",
+    "zauber": {
+      "1": "Schlaf",
+      "2": "Vorahnung",
+      "3": "Tiefschlaf",
+      "4": "Weissagung",
+      "5": "Traum",
+      "6": "Schattenreise",
+      "7": "Vision",
+      "8": "Moment der Eingebung",
+      "9": "Astrale Projektion"
+    },
+    "quelle": "EXP"
+  },
+  "Visionäre Blutlinie": {
+    "art": "bekannt",
+    "zauber": {
+      "1": "Schlaf",
+      "2": "Vorahnung",
+      "3": "Tiefschlaf",
+      "4": "Weissagung",
+      "5": "Traum",
+      "6": "Schattenreise",
+      "7": "Vision",
+      "8": "Moment der Eingebung",
+      "9": "Astrale Projektion"
+    },
+    "quelle": "ABR"
+  },
+  "Verfluchte Blutlinie": {
+    "art": "bekannt",
+    "zauber": {
+      "1": "Schwächestrahl",
+      "2": "Hauch des Stumpfsinns",
+      "3": "Entkräftender Strahl",
+      "4": "Verfluchen",
+      "5": "Schwachsinn",
+      "6": "Böser Blick",
+      "7": "Wahnsinn",
+      "8": "Dimensionsschloss",
+      "9": "Entzug von Lebenskraft"
+    },
+    "quelle": "ABR"
+  }
+}

@@ -1,0 +1,122 @@
+{
+  "Kampf": {
+    "art": "bekannt",
+    "quelle": "EXP",
+    "zauber": {
+      "1": "Person vergrößern",
+      "2": "Nebelwolke",
+      "3": "Magisches Schutzgewand",
+      "4": "Feuerwand",
+      "5": "Gerechte Macht",
+      "6": "Massen-Bärenstärke",
+      "7": "Wetterkontrolle",
+      "8": "Erdbeben",
+      "9": "Sturm der Vergeltung"
+    }
+  },
+  "Knochen": {
+    "art": "bekannt",
+    "quelle": "EXP",
+    "zauber": {
+      "1": "Furcht auslösen",
+      "2": "Falsches Leben",
+      "3": "Tote beleben",
+      "4": "Furcht",
+      "5": "Schneller Tod",
+      "6": "Todeskreis",
+      "7": "Untote Kontrollieren",
+      "8": "Verdorren",
+      "9": "Wehgeschrei der Todesfee"
+    }
+  },
+  "Flammen": {
+    "art": "bekannt",
+    "quelle": "EXP",
+    "zauber": {
+      "1": "Brennende Hände",
+      "2": "Energien widerstehen",
+      "3": "Feuerball",
+      "4": "Feuerwand",
+      "5": "Monster herbeizaubern V",
+      "6": "Feuersaat",
+      "7": "Feuersturm",
+      "8": "Flammende Wolke",
+      "9": "Feurige Gestalt"
+    }
+  },
+  "Himmel": {
+    "art": "bekannt",
+    "quelle": "EXP",
+    "zauber": {
+      "1": "Sprühende Farben",
+      "2": "Hypnotisches Muster",
+      "3": "Tageslicht",
+      "4": "Regenbogenmuster",
+      "5": "Überlandflug",
+      "6": "Kugelblitz",
+      "7": "Regenbogenspiel",
+      "8": "Sonnenfeuer",
+      "9": "Meteoritenschwarm"
+    }
+  },
+  "Wissen": {
+    "art": "bekannt",
+    "quelle": "EXP",
+    "zauber": {
+      "1": "Sprachen verstehen",
+      "2": "Gedanken wahrnehmen",
+      "3": "Gegenstand aufspüren",
+      "4": "Sagenkunde",
+      "5": "Kontakt zu anderen Ebenen",
+      "6": "Wahrer Blick",
+      "7": "Vision",
+      "8": "Moment der Eingebung",
+      "9": "Zeitstopp"
+    }
+  },
+  "Natur": {
+    "art": "bekannt",
+    "quelle": "EXP",
+    "zauber": {
+      "1": "Tier bezaubern",
+      "2": "Rindenhaut",
+      "3": "Mit Pflanzen sprechen",
+      "4": "Hain der Erholung",
+      "5": "Erwecken",
+      "6": "Erzählende Steine",
+      "7": "Kriechender Tod",
+      "8": "Tierform",
+      "9": "Weltenwoge"
+    }
+  },
+  "Stein": {
+    "art": "bekannt",
+    "quelle": "EXP",
+    "zauber": {
+      "1": "Magischer Stein",
+      "2": "Steinschlag",
+      "3": "Mit Stein verschmelzen",
+      "4": "Stein formen",
+      "5": "Steinhaut",
+      "6": "Steinwand",
+      "7": "Statue",
+      "8": "Erdbeben",
+      "9": "Zerschmetternde Felsen"
+    }
+  },
+  "Wellen": {
+    "art": "bekannt",
+    "quelle": "EXP",
+    "zauber": {
+      "1": "Hauch der See",
+      "2": "Windstrom",
+      "3": "Wasser atmen",
+      "4": "Wasser kontrollieren",
+      "5": "Geysir",
+      "6": "Flüssige Gestalt",
+      "7": "Strudel",
+      "8": "Mantel der See",
+      "9": "Tsunami"
+    }
+  }
+}

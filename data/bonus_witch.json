@@ -1,0 +1,377 @@
+{
+  "Beweglichkeit": {
+    "art": "bekannt",
+    "quelle": "EXP/ABR",
+    "zauber": {
+      "1": "Springen",
+      "2": "Katzenhafte Anmut",
+      "3": "Hast",
+      "4": "Bewegungsfreiheit",
+      "5": "Verwandlung",
+      "6": "Massen-Katzenhafte Anmut",
+      "7": "Ätherischer Ausflug",
+      "8": "Tierform",
+      "9": "Gestaltwandel"
+    }
+  },
+  "Seuche": {
+    "art": "bekannt",
+    "quelle": "EXP/ABR",
+    "zauber": {
+      "1": "Untote entdecken",
+      "2": "Untote befehligen",
+      "3": "Ansteckung",
+      "4": "Tote beleben",
+      "5": "Riesenhaftes Ungeziefer",
+      "6": "Untote erschaffen",
+      "7": "Untote Kontrollieren",
+      "8": "Mächtigere Untote erschaffen",
+      "9": "Entzug von Lebenskraft"
+    }
+  },
+  "Schatten": {
+    "art": "bekannt",
+    "quelle": "EXP/ABR",
+    "zauber": {
+      "1": "Stilles Trugbild",
+      "2": "Dunkelheit",
+      "3": "Tiefere Dunkelheit",
+      "4": "Schattenbeschwörung",
+      "5": "Schattenhervorrufung",
+      "6": "Schattenreise",
+      "7": "Mächtige Schattenbeschwörung",
+      "8": "Mächtige Schattenhervorrufung",
+      "9": "Schatten"
+    }
+  },
+  "Stärke": {
+    "art": "bekannt",
+    "quelle": "EXP/ABR",
+    "zauber": {
+      "1": "Göttliche Gunst",
+      "2": "Bärenstärke",
+      "3": "Mächtige Magische Waffe",
+      "4": "Göttliche Macht",
+      "5": "Gerechte Macht",
+      "6": "Massen-Bärenstärke",
+      "7": "Riesengestalt I",
+      "8": "Riesengestalt II",
+      "9": "Gestaltwandel"
+    }
+  },
+  "Verwandlung": {
+    "art": "bekannt",
+    "quelle": "EXP/ABR",
+    "zauber": {
+      "1": "Springen",
+      "2": "Ausdauer des Ochsen",
+      "3": "Bestiengestallt I",
+      "4": "Bestiengestalt II",
+      "5": "Bestiengestalt III",
+      "6": "Drachengestalt I",
+      "7": "Drachengestalt II",
+      "8": "Drachengestalt III",
+      "9": "Gestaltwandel"
+    }
+  },
+  "List": {
+    "art": "bekannt",
+    "quelle": "EXP/ABR",
+    "zauber": {
+      "1": "Seil beleben",
+      "2": "Spiegelbilder",
+      "3": "Mächtiges Trugbild",
+      "4": "Scheingelände",
+      "5": "Arkane Spiegelung",
+      "6": "Ablenkung",
+      "7": "Schwerkraft umkehren",
+      "8": "Abschirmung",
+      "9": "Zeitstopp"
+    }
+  },
+  "Wasser": {
+    "art": "bekannt",
+    "quelle": "EXP/ABR",
+    "zauber": {
+      "1": "Wasser weihen",
+      "2": "Windstrom",
+      "3": "Wasser atmen",
+      "4": "Wasser kontrollieren",
+      "5": "Geysir",
+      "6": "Elementargestalt III",
+      "7": "Elementargestalt IV",
+      "8": "Mantel der See",
+      "9": "Tsunami"
+    }
+  },
+  "Weisheit": {
+    "art": "bekannt",
+    "quelle": "EXP/ABR",
+    "zauber": {
+      "1": "Schild des Glaubens",
+      "2": "Weisheit der Eule",
+      "3": "Magisches Schutzgewand",
+      "4": "Schwächere Kugel der Unverwundbarkeit",
+      "5": "Traum",
+      "6": "Kugel der Unverwundbarkeit",
+      "7": "Zauber zurückwerfen",
+      "8": "Schutz vor Zaubern",
+      "9": "Magische Auftrennung"
+    }
+  },
+  "Ahnen": {
+    "art": "bekannt",
+    "quelle": "EXP/ABR",
+    "zauber": {
+      "1": "Segnen",
+      "2": "Beistand",
+      "3": "Gebet",
+      "4": "Segen des Eifers",
+      "5": "Heiliges Gespräch",
+      "6": "Großer Heldenmut",
+      "7": "Zuflucht",
+      "8": "Fröhliche Gelassenheit",
+      "9": "Unheimliches Schicksal"
+    }
+  },
+  "Tod": {
+    "art": "bekannt",
+    "quelle": "EXP/ABR",
+    "zauber": {
+      "1": "Totenwache",
+      "2": "Segen von Mut und Lebenskraft",
+      "3": "Mit Toten sprechen",
+      "4": "Ewige Ruhe",
+      "5": "Ersticken",
+      "6": "Todeskreis",
+      "7": "Finger des Todes",
+      "8": "Symbol des Todes",
+      "9": "Wort der Macht: Tod"
+    }
+  },
+  "Verzauberung": {
+    "art": "bekannt",
+    "quelle": "EXP/ABR",
+    "zauber": {
+      "1": "Verlangen",
+      "2": "Gefühle besänftigen",
+      "3": "Abscheu",
+      "4": "Überwältigende Trauer",
+      "5": "Person beherrschen",
+      "6": "Geas/Auftrag",
+      "7": "Fröhliche Gelassenheit",
+      "8": "Aufforderung",
+      "9": "Monster beherrschen"
+    }
+  },
+  "Heilung": {
+    "art": "bekannt",
+    "quelle": "EXP/ABR",
+    "zauber": {
+      "1": "Furcht bannen",
+      "2": "Teilweise Genesung",
+      "3": "Krankheit kurieren",
+      "4": "Genesung",
+      "5": "Reinigung",
+      "6": "Säule des Lebens",
+      "7": "Vollständige Genesung",
+      "8": "Massen-Kritische Wunden heilen",
+      "9": "Wahre Auferstehung"
+    }
+  },
+  "Wahnsinn": {
+    "art": "bekannt",
+    "quelle": "EXP/ABR",
+    "zauber": {
+      "1": "Gedächtnislücke",
+      "2": "Fürchterlicher Lachanfall",
+      "3": "Störende Kakophonie",
+      "4": "Verwirrung",
+      "5": "Gedankennebel",
+      "6": "Zwanghafter Neid",
+      "7": "Wahnsinn",
+      "8": "Symbol des Wahnsinns",
+      "9": "Überwältigende Ehrfurcht"
+    }
+  },
+  "Licht": {
+    "art": "bekannt",
+    "quelle": "EXP/ABR",
+    "zauber": {
+      "1": "Tanzende Laterne",
+      "2": "Dauerhafte Flamme",
+      "3": "Tageslicht",
+      "4": "Regenbogenmuster",
+      "5": "Feuerschlange",
+      "6": "Scirocco",
+      "7": "Sonnenstrahl",
+      "8": "Sonnenfeuer",
+      "9": "Feurige Gestalt"
+    }
+  },
+  "Mond": {
+    "art": "bekannt",
+    "quelle": "EXP/ABR",
+    "zauber": {
+      "1": "Dunkelheit",
+      "2": "Dunkelsicht",
+      "3": "Weisheit der Eule",
+      "4": "Mondsucht",
+      "5": "Aspekt des Wolfes",
+      "6": "Wasser kontrollieren",
+      "7": "Mondschatten",
+      "8": "Verdorren",
+      "9": "Meteoritenschwarm"
+    }
+  },
+  "Okkultes": {
+    "art": "bekannt",
+    "quelle": "EXP/ABR",
+    "zauber": {
+      "1": "Untote entdecken",
+      "2": "Untote befehligen",
+      "3": "Zwielichtsklinge",
+      "4": "Schwarze Tentakel",
+      "5": "Schlangenstab",
+      "6": "Untote erschaffen",
+      "7": "Wellen der Entkräftung",
+      "8": "Seelenfalle",
+      "9": "Tor"
+    }
+  },
+  "Vorzeichen": {
+    "art": "bekannt",
+    "quelle": "EXP/ABR",
+    "zauber": {
+      "1": "Schlechtes Omen",
+      "2": "Gegenstand aufspüren",
+      "3": "Geschichte des Blutes",
+      "4": "Weissagung",
+      "5": "Kontakt zu anderen Ebenen",
+      "6": "Sagenkunde",
+      "7": "Vision",
+      "8": "Moment der Eingebung",
+      "9": "Sechster Sinn"
+    }
+  },
+  "Geister": {
+    "art": "bekannt",
+    "quelle": "EXP/ABR",
+    "zauber": {
+      "1": "Klagelied des Geisterbanns",
+      "2": "Unsichtbarkeit",
+      "3": "Mit Toten sprechen",
+      "4": "Verbündeter des Glaubens",
+      "5": "Massen-Klagelied des Geisterbanns",
+      "6": "Schattenreise",
+      "7": "Ätherischer Ausflug",
+      "8": "Verbündeter aus den Ebenen",
+      "9": "Ätherische Gestalten"
+    }
+  },
+  "Sterne": {
+    "art": "bekannt",
+    "quelle": "EXP/ABR",
+    "zauber": {
+      "1": "Feenfeuer",
+      "2": "Dämmerstaub",
+      "3": "Leitstern",
+      "4": "Wanderndes Sternenfunkeln",
+      "5": "Traum",
+      "6": "Traumumhang",
+      "7": "Schutzkreis der Klarheit",
+      "8": "Fröhliche Gelassenheit",
+      "9": "Astrale Projektion"
+    }
+  },
+  "Zeit": {
+    "art": "bekannt",
+    "quelle": "EXP/ABR",
+    "zauber": {
+      "1": "Bauchreden",
+      "2": "Stille",
+      "3": "Hast",
+      "4": "Dreigestalt",
+      "5": "Teleportieren",
+      "6": "Auflösung",
+      "7": "Erzwungene Verschwendung",
+      "8": "Temporäre Stasis",
+      "9": "Zeitstopp"
+    }
+  },
+  "Rache": {
+    "art": "bekannt",
+    "quelle": "EXP/ABR",
+    "zauber": {
+      "1": "Brennende Hände",
+      "2": "Brennender Blick",
+      "3": "Brennende Schmerzen",
+      "4": "Brüllen",
+      "5": "Symbol des Schmerzes",
+      "6": "Massen-Brennende Schmerzen",
+      "7": "Rachsüchtiges Phantom",
+      "8": "Flammende Wolke",
+      "9": "Winde der Vergeltung"
+    }
+  },
+  "Winter": {
+    "art": "bekannt",
+    "quelle": "EXP/ABR",
+    "zauber": {
+      "1": "Schüttelfrost",
+      "2": "Energien widerstehen",
+      "3": "Eissturm",
+      "4": "Eiswand",
+      "5": "Kältekegel",
+      "6": "Frostsphäre",
+      "7": "Wetterkontrolle",
+      "8": "Polarstrahl",
+      "9": "Polarnacht"
+    }
+  },
+  "Tiere": {
+    "art": "bekannt",
+    "quelle": "EXP/ABR",
+    "zauber": {
+      "1": "Tier bezaubern",
+      "2": "Mit Tieren sprechen",
+      "3": "Tier beherrschen",
+      "4": "Verbündeten der Natur herbeizaubern IV",
+      "5": "Tierwachstum",
+      "6": "Schutzhülle gegen Lebendes",
+      "7": "Bestiengestalt IV",
+      "8": "Tierform",
+      "9": "Verbündeten der Natur herbeizaubern IX"
+    }
+  },
+  "Täuschung": {
+    "art": "bekannt",
+    "quelle": "EXP/ABR",
+    "zauber": {
+      "1": "Bauchreden",
+      "2": "Unsichtbarkeit",
+      "3": "Flimmern",
+      "4": "Verwirrung",
+      "5": "Wände passieren",
+      "6": "Vorbestimmtes Trugbild",
+      "7": "Massenunsichtbarkeit",
+      "8": "Schillerndes Muster",
+      "9": "Zeitstopp"
+    }
+  },
+  "Elemente": {
+    "art": "bekannt",
+    "quelle": "EXP/ABR",
+    "zauber": {
+      "1": "Schockgriff",
+      "2": "Flammenkugel",
+      "3": "Feuerball",
+      "4": "Eiswand",
+      "5": "Flammenschlag",
+      "6": "Frostsphäre",
+      "7": "Strudel",
+      "8": "Feuersturm",
+      "9": "Meteoritenschwarm"
+    }
+  }
+}
