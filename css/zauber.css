@@ -63,3 +63,16 @@
 
 /* v0.60.1: klassenunabhängiges Zauberlexikon und Pergamentansicht */
 .zauber-lexikon-600{margin-bottom:1rem}.zauber-lexikon-suche-600{display:flex;gap:.7rem;align-items:center;flex-wrap:wrap}.zauber-lexikon-suche-600 input{flex:1;min-width:180px;padding:.7rem;border-radius:8px}.zauber-lexikon-treffer-600{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:.5rem;max-height:320px;overflow:auto;margin-top:.7rem}.zauber-lexikon-trefferknopf-600{display:flex;flex-direction:column;align-items:flex-start;gap:.2rem;text-align:left;padding:.65rem .8rem;border:1px solid #987d50;border-radius:7px;background:#f3e6c9;color:#302216;cursor:pointer}.zauber-lexikon-trefferknopf-600 small{font-style:italic;opacity:.8}.zauber-lexikon-export-600{margin-top:1rem;padding:.7rem}.zauber-pergament-600{width:min(720px,94vw);max-height:88vh;overflow:auto;border:3px double #79532a;border-radius:12px;background:linear-gradient(125deg,#e3c993,#f9ebc9 45%,#e8d2a2);color:#352512;box-shadow:0 15px 60px #0009;padding:0}.zauber-pergament-600::backdrop{background:#000a}.zauber-pergament-inhalt-600{padding:clamp(1rem,4vw,2rem);position:relative}.zauber-pergament-schliessen-600{float:right;cursor:pointer;font-size:1.3rem;background:transparent;border:1px solid #987d50;border-radius:6px;color:#352512}.zauber-pergament-600 h2{font-family:Georgia,serif;margin:.2rem 2rem .2rem 0}.zauber-pergament-englisch-600{font-style:italic}.zauber-pergament-600 dl{display:grid;grid-template-columns:minmax(100px,1fr) 2fr;gap:.45rem .8rem}.zauber-pergament-600 dt{font-weight:bold}.zauber-pergament-600 dd{margin:0;overflow-wrap:anywhere}.zauber-pergament-beschreibung-600{white-space:pre-wrap;line-height:1.55}
+
+/* v0.60.2: Zauberlexikon direkt unter der Grad-Suche, platzsparend ausklappbar */
+.zauber-lexikon-600{margin:.75rem 0 1rem;border:1px solid #bba37d;border-radius:9px;background:#f6eedf;overflow:hidden}
+.zauber-lexikon-600>summary{cursor:pointer;padding:.85rem 1rem;font-weight:700;color:#49351e;list-style-position:inside}
+.zauber-lexikon-600>summary:hover{background:#efe0c6}
+.zauber-lexikon-600[open]>summary{border-bottom:1px solid #cbb692}
+.zauber-lexikon-inhalt-602{padding:.8rem 1rem 1rem}
+.zauber-lexikon-aufklapphinweis-602{font-weight:400;font-size:.85em;font-style:italic;color:#66553f}
+.zauber-lexikon-hinweis-602,.zauber-lexikon-treffer-600:not(:has(.zauber-lexikon-trefferknopf-600)){font-style:italic;color:#554634}
+.zauber-lexikon-treffer-600>p{font-style:italic}
+
+/* Kampagnenhinweis auf der Charakterseite */
+.kampagnen-hinweis-602{color:#443527!important;font-style:italic}
