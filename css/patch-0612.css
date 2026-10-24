@@ -26,3 +26,13 @@
 #effekte #boniListe .effekt :is(.effekt-schnellzuweisung-50,.effekt-favorit) img{display:block!important;width:100%!important;height:100%!important;object-fit:contain!important;max-width:none!important;max-height:none!important}
 #effekte #boniListe .effekt :is(.effekt-schnellzuweisung-50,.effekt-favorit).aktiv img{filter:drop-shadow(0 0 4px #ffda65) drop-shadow(0 0 8px #e9aa24)!important}
 #effekte #boniListe .effekt :is(.effekt-schnellzuweisung-50,.effekt-favorit).aktiv{box-shadow:0 0 10px 2px rgba(248,189,42,.38)!important}
+
+/* v0.61.3: Zielgenaue Selektoren statt nicht vorhandener Klassen */
+#effekte .effekt-suche-filter-503{background-image:linear-gradient(rgba(255,255,255,.24),rgba(255,255,255,.24)),url('../assets/runes/background-2-tile.png')!important; background-color:#76604d!important;}
+#effekte .effekt-suche-filter-503 > summary{background:rgba(255,255,255,.1)!important}
+#effekte .effekt-suche-filter-503 :is(.effekt-suche-zeile-503,.effekt-filter,.filter-kategorien-feld,.filter-schalter,.filter-ergebnis){background:rgba(255,255,255,.1)!important}
+#effekte #boniListe .effekt, #effekte #boniListe .effekt *:not(button):not(img){color:#302016!important}
+#effekte #boniListe .effekt :is(.effekt-kategorie,.effekt-hinweis,.hinweis,small){font-style:italic!important}
+#effekte #boniListe .effekt :is(.effekt-schnellzuweisung-50,.effekt-favorit){background:rgba(65,35,19,.05)!important;}
+#effekte #boniListe .effekt :is(.effekt-schnellzuweisung-50,.effekt-favorit).aktiv{box-shadow:0 0 12px 2px rgba(255,192,52,.65)!important}
+#effekte #boniListe .effekt :is(.effekt-schnellzuweisung-50,.effekt-favorit).aktiv img{filter:drop-shadow(0 0 5px #ffda65) drop-shadow(0 0 7px #e9aa24)!important}
