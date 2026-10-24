@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Das azlantische Helferlein</title>
+
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="css/style.css?v=50.4">
+    <link rel="stylesheet" href="css/charakterwerte.css?v=51.1">
+    <link rel="stylesheet" href="css/commit21.css?v=21">
+    <link rel="stylesheet" href="css/commit22.css?v=22">
+    <link rel="stylesheet" href="css/commit24.css?v=24">
+    <link rel="stylesheet" href="css/commit25.css?v=50.4">
+    <link rel="stylesheet" href="css/commit26.css?v=48">
+    <link rel="stylesheet" href="css/commit27.css?v=27">
+    <link rel="stylesheet" href="css/commit28.css?v=28">
+    <link rel="stylesheet" href="css/commit29.css?v=45.1">
+    <link rel="stylesheet" href="css/commit30.css?v=30">
+    <link rel="stylesheet" href="css/leben.css?v=53">
+    <link rel="stylesheet" href="css/vermoegen.css?v=42">
+    <link rel="stylesheet" href="css/zeit.css?v=54.6">
+    <link rel="stylesheet" href="css/zauber.css?v=61.1">
+    
+    <meta name="theme-color" content="#1e3a5f">
+    <link rel="stylesheet" href="css/commit50.css?v=50.4">
+    <link rel="stylesheet" href="css/rune-theme.css?v=57.1">
+    <link rel="stylesheet" href="css/theme-0572.css?v=57.2">
+    <link rel="stylesheet" href="css/theme-0573.css?v=57.3">
+    <link rel="stylesheet" href="css/theme-0574.css?v=57.4">
+    <link rel="stylesheet" href="css/theme-0575.css?v=57.5">
+    <link rel="stylesheet" href="css/theme-0576.css?v=57.6">
+    <link rel="stylesheet" href="css/theme-0577.css?v=57.7">
+    <link rel="stylesheet" href="css/theme-0578.css?v=57.8">
+    <link rel="stylesheet" href="css/theme-0579.css?v=57.9">
+    <link rel="stylesheet" href="css/theme-0580.css?v=58.0">
+    <link rel="stylesheet" href="css/theme-0581.css?v=58.1">
+    <link rel="stylesheet" href="css/theme-0583.css?v=58.3">
+    <link rel="stylesheet" href="css/theme-0584.css?v=58.4">
+    <link rel="stylesheet" href="css/theme-0585.css?v=58.5">
+    <link rel="stylesheet" href="css/theme-0586.css?v=58.6">
+    <link rel="stylesheet" href="css/theme-0587.css?v=58.7">
+    <link rel="stylesheet" href="css/theme-0588.css?v=58.8">
+    <link rel="stylesheet" href="css/theme-0589.css?v=58.9">
+    <link rel="stylesheet" href="css/theme-0590.css?v=59.0">
+    <link rel="stylesheet" href="css/theme-0591.css?v=59.1">
+    <link rel="stylesheet" href="css/theme-0592.css?v=59.2">
+    <link rel="stylesheet" href="css/theme-0593.css?v=59.3">
+    <link rel="stylesheet" href="css/theme-0594.css?v=59.4">
+    <link rel="stylesheet" href="css/theme-0595.css?v=59.5">
+    <link rel="stylesheet" href="css/theme-0596.css?v=59.6">
+    <link rel="stylesheet" href="css/patch-0611.css?v=61.1">
+    <link rel="stylesheet" href="css/patch-0612.css?v=61.2">
+</head>
+
+<body>
+
+<header>
+
+    <h1>Das azlantische Helferlein <small class="app-version">v0.61.2</small></h1>
+
+</header>
+
+<nav>
+
+    <button id="btnDashboard" type="button" hidden aria-hidden="true" tabindex="-1">Dashboard</button>
+
+    <button id="btnEffekte" type="button" class="rune-nav" aria-label="Effekte" title="Effekte"><img src="assets/runes/Effekte.png" alt="" aria-hidden="true"></button>
+    <button id="btnCharakterwerte" type="button" class="rune-nav" aria-label="Kampf (Werte)" title="Kampf (Werte)"><img src="assets/runes/Kampf.png" alt="" aria-hidden="true"></button>
+    <button id="btnLeben" type="button" class="rune-nav" aria-label="Leben" title="Leben"><img src="assets/runes/Leben.png" alt="" aria-hidden="true"></button>
+    <button id="btnZeit" type="button" class="rune-nav" aria-label="Zeit" title="Zeit"><img src="assets/runes/Zait.png" alt="" aria-hidden="true"></button>
+    <button id="btnZauber" type="button" class="rune-nav" aria-label="Zauber" title="Zauber"><img src="assets/runes/Zauber-B.png" alt="" aria-hidden="true"></button>
+    <button id="btnVermoegen" type="button" class="rune-nav" aria-label="Vermögen" title="Vermögen"><img src="assets/runes/Vermögen.png" alt="" aria-hidden="true"></button>
+    <button id="btnCharaktere" type="button" class="rune-nav" aria-label="Charaktere" title="Charaktere"><img src="assets/runes/Charakter.png" alt="" aria-hidden="true"></button>
+    <button id="btnAdmin" type="button" class="rune-nav" aria-label="Admin" title="Admin"><img src="assets/runes/Admin.png" alt="" aria-hidden="true"></button>
+
+</nav>
+
+<main>
+
+    <!-- ========================= -->
+    <!-- Dashboard                 -->
+    <!-- ========================= -->
+
+    <section id="dashboard" class="page">
+
+        <h2>Aktuelle Werte</h2>
+        
+
+        <div class="werte">
+
+            <div class="karte">
+                <h3>Angriff Nah</h3>
+                <span id="angriffNah">0</span>
+            </div>
+
+            <div class="karte">
+                <h3>Angriff Fern</h3>
+                <span id="angriffFern">0</span>
+            </div>
+
+            <div class="karte">
+                <h3>Schaden Nah</h3>
+                <span id="schadenNah">0</span>
+            </div>
+
+            <div class="karte">
+                <h3>Schaden Fern</h3>
+                <span id="schadenFern">0</span>
+            </div>
+
+            <div class="karte">
+                <h3>Rüstungsklasse</h3>
+                <span id="rk">0</span>
+            </div>
+
+            <div class="karte">
+                <h3>RW-Reflex</h3>
+                <span id="reflex">0</span>
+            </div>
+
+            <div class="karte">
+                <h3>RW-Wille</h3>
+                <span id="wille">0</span>
+            </div>
+
+            <div class="karte">
+                <h3>RW-Zähigkeit</h3>
+                <span id="zaehigkeit">0</span>
+            </div>
+
+            <div class="karte">
+                <h3>RW-Furcht</h3>
+                <span id="furcht">0</span>
+            </div>
+
+            <div class="karte">
+                <h3>RW-Gift</h3>
+                <span id="gift">0</span>
+            </div>
+
+            <div class="karte">
+                <h3>RW-Bezauberung</h3>
+                <span id="bezauberung">0</span>
+            </div>
+
+            <div class="karte">
+                <h3>RW-Verzauberung</h3>
+                <span id="verzauberung">0</span>
+            </div>
+
+            <div class="karte">
+                <h3>KMB</h3>
+                <span id="kmb">0</span>
+            </div>
+
+            <div class="karte">
+                <h3>KMV</h3>
+                <span id="kmv">0</span>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ========================= -->
+    <!-- Effekte                   -->
+    <!-- ========================= -->
+
+    <section id="effekte" class="page">
+
+        <h2>Effekte</h2>
+
+        <button id="btnNeuerEffekt">+ Neuer Effekt</button>
+
+        <details class="effekt-suche-filter-503" open>
+            <summary>Suche & Filter</summary>
+            <div class="effekt-suche-zeile-503">
+                <input type="text" id="suche" placeholder="Effekt suchen...">
+                <button type="button" id="btnSucheLeeren502" class="effekt-suche-loeschen-502"
+                    aria-label="Effektsuche leeren" title="Suche leeren">×</button>
+            </div>
+            <div class="effekt-filter" aria-label="Effektfilter">
+                <fieldset class="filter-kategorien-feld">
+                    <legend>Kategorien</legend>
+                    <div id="filterKategorie" class="filter-kategorien-mehrfach" aria-label="Kategorien filtern"></div>
+                </fieldset>
+                <label class="filter-schalter">
+                    <input type="checkbox" id="filterNurAktiv"> Nur aktive
+                </label>
+                <label class="filter-schalter">
+                    <input type="checkbox" id="filterNurFavoriten"> Nur Favoriten
+                </label>
+            </div>
+            <p id="filterErgebnis" class="filter-ergebnis" aria-live="polite"></p>
+        </details>
+        <div id="boniListe">
+
+            <p>Noch keine Effekte geladen.</p>
+
+        </div>
+
+    </section>
+
+    <!-- ========================= -->
+    <!-- Charakterwerte            -->
+    <!-- ========================= -->
+
+    <section id="charakterwerte" class="page">
+        <div class="seitenkopf">
+            <div>
+                <h2>Charakterwerte</h2>
+                
+            </div>
+        </div>
+
+
+        <div class="angriffe-bereich" aria-labelledby="angriffe-ueberschrift">
+            <div class="angriffe-kopf">
+                <div>
+                    <h3 id="angriffe-ueberschrift">Angriffe</h3>
+                </div>
+                <button type="button" id="btnAngriffHinzufuegen">+ Angriff</button>
+            </div>
+
+            <div id="angriffeListe" class="angriffe-liste" aria-live="polite"></div>
+            <p id="angriffeMeldung" class="angriffe-meldung" aria-live="polite"></p>
+        </div>
+    </section>
+
+    <!-- ========================= -->
+    <!-- Leben                     -->
+    <!-- ========================= -->
+
+    <section id="leben" class="page">
+        <div class="seitenkopf">
+            <div><h2>Leben</h2></div>
+        </div>
+
+        <div class="tp-bereich" aria-labelledby="tp-ueberschrift">
+            <h3 id="tp-ueberschrift">Trefferpunkte</h3>
+
+            <div class="tp-werte">
+                <label class="tp-feld" for="maxTp">
+                    <span>Max TP</span>
+                    <input id="maxTp" type="number" min="0" max="9999" step="1" inputmode="numeric">
+                </label>
+
+                <div class="tp-feld tp-aktuell">
+                    <span>Aktuelle TP</span>
+                    <output id="aktuelleTp" aria-live="polite">0</output>
+                </div>
+
+                <div class="tp-feld tp-schaden">
+                    <span>Schaden</span>
+                    <output id="erlittenerSchaden" aria-live="polite">0</output>
+                </div>
+
+                <label class="tp-feld" for="temporaereTp">
+                    <span>Temp TP</span>
+                    <input id="temporaereTp" type="number" min="0" max="9999" step="1" inputmode="numeric">
+                </label>
+            </div>
+
+            <div class="tp-aktionen tp-aktionen-kompakt">
+                <div class="tp-aktion">
+                    <label for="schadenEingabe">Schaden</label>
+                    <div class="tp-aktionszeile">
+                        <input id="schadenEingabe" type="number" min="1" max="9999" step="1" inputmode="numeric" placeholder="0">
+                        <button type="button" id="btnSchadenAnwenden" aria-label="Schaden anwenden"><img src="assets/runes/Bestaetigung.png" alt="" aria-hidden="true" class="bestaetigung-rune-0585"></button>
+                    </div>
+                </div>
+
+                <div class="tp-aktion">
+                    <label for="heilungEingabe">Heilung</label>
+                    <div class="tp-aktionszeile">
+                        <input id="heilungEingabe" type="number" min="1" max="9999" step="1" inputmode="numeric" placeholder="0">
+                        <button type="button" id="btnHeilungAnwenden" aria-label="Heilung anwenden"><img src="assets/runes/Bestaetigung.png" alt="" aria-hidden="true" class="bestaetigung-rune-0585"></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="energie-schaden-kompakt" aria-labelledby="energie-schaden-titel">
+                <h4 id="energie-schaden-titel">Energieschaden</h4>
+                <div id="energieSchadenEingaben" class="energie-schaden-grid"></div>
+                <textarea id="energieSchadenNotiz" class="energie-schaden-notiz-53" rows="1"
+                    placeholder="Notiz" aria-label="Energieschaden: Notiz"></textarea>
+                <p id="energieSchadenMeldung" class="tp-meldung" aria-live="polite"></p>
+            </div>
+
+            <p id="tpMeldung" class="tp-meldung" aria-live="polite"></p>
+        </div>
+
+        <section class="energie-bereich" aria-labelledby="steinhaut-titel">
+            <h3 id="steinhaut-titel">Steinhaut</h3>
+            <p class="energie-hinweis">10 Punkte / ZS, maximal 150 Punkte · Schadensreduzierung maximal 10 Punkte je Treffer</p>
+            <div class="energie-tabelle steinhaut-tabelle" id="steinhautListe"></div>
+            <p id="steinhautMeldung" class="tp-meldung" aria-live="polite"></p>
+        </section>
+
+        <section class="energie-bereich" aria-labelledby="energie-widerstehen-titel">
+            <h3 id="energie-widerstehen-titel">Energien widerstehen</h3>
+            <p class="energie-hinweis">1.–6. ZS = 10 Punkte · 7.–10. ZS = 20 Punkte · ab 11. ZS = 30 Punkte</p>
+            <div class="energie-tabelle energie-widerstehen-tabelle" id="energieWiderstehenListe"></div>
+            <p id="energieWiderstehenMeldung" class="tp-meldung" aria-live="polite"></p>
+        </section>
+
+        <section class="energie-bereich" aria-labelledby="energie-schutz-titel">
+            <h3 id="energie-schutz-titel">Schutz vor Energien</h3>
+            <p class="energie-hinweis">12 Punkte / ZS, maximal 120 Punkte</p>
+            <div class="energie-tabelle energie-schutz-tabelle" id="energieSchutzListe"></div>
+            <p id="energieSchutzMeldung" class="tp-meldung" aria-live="polite"></p>
+        </section>
+    </section>
+
+
+    <!-- ========================= -->
+    <!-- Zeit                      -->
+    <!-- ========================= -->
+    <section id="zeit" class="page">
+      <div class="seitenkopf"><div><h2>Zeit</h2></div></div>
+      <section class="zeit-runde-54">
+        <div class="zeit-runde-label-54">Aktuelle Runde</div>
+        <output id="zeitRunde" class="zeit-runde-wert-54">0</output>
+        <div class="zeit-runde-aktionen-54"><button type="button" id="btnZeitVorherigeRunde">− nochmal zurück</button><button type="button" id="btnZeitNaechsteRunde" class="zeit-naechste-runde-54">+ Nächste Runde</button><button type="button" id="btnZeitReset">Kampf beendet</button></div>
+      </section>
+      <section class="zeit-karte-54"><h3>Initiative</h3><div id="zeitInitiativeListe"></div><div class="zeit-neu-54"><select id="zeitTeilnehmerCharakter"><option value="">Freier Eintrag</option></select><input id="zeitTeilnehmerName" maxlength="80" placeholder="Gegner / NSC / Name"><input id="zeitTeilnehmerRang" type="number" min="0" max="40" placeholder="Initiative"><button type="button" id="btnZeitTeilnehmer">+ Teilnehmer</button></div></section>
+      <section class="zeit-karte-54"><h3>Effekte</h3><div id="zeitEffektListe"></div></section>
+      <section class="zeit-karte-54"><h3>Freie Effekte</h3><div id="zeitFreieEffekte"></div><div class="zeit-frei-neu-54"><input id="zeitFreierName" maxlength="100" placeholder="Effektname"><select id="zeitFreierZiel"><option value="">Freies Ziel</option></select><input id="zeitFreierZielText" maxlength="80" placeholder="Ziel / Notiz"><input id="zeitFreierDauer" type="number" min="1" max="9999" placeholder="Dauer (Runden)"><input id="zeitFreierStart" type="number" min="0" max="9999" placeholder="Startrunde"><button type="button" id="btnZeitFreierEffekt">+ Freier Effekt</button></div></section>
+    </section>
+
+    <!-- ========================= -->
+    <!-- Zauber                    -->
+    <!-- ========================= -->
+    <section id="zauber" class="page">
+      <div class="seitenkopf"><div><h2>Zauber</h2></div></div>
+      <div id="zauberInhalt55"></div>
+    </section>
+
+    <!-- ========================= -->
+    <!-- Vermögen                  -->
+    <!-- ========================= -->
+
+    <section id="vermoegen" class="page">
+        <div class="seitenkopf"><div><h2>Vermögen</h2></div></div>
+        <div class="vermoegen-bereich">
+            <section class="vermoegen-karte vermoegen-gesamt">
+                <label for="vermoegenGesamt">Gesamtvermögen (Goldmünzen)</label>
+                <output id="vermoegenGesamt" aria-live="polite">0</output>
+                <div id="vermoegenGesamtDetail" class="vermoegen-gesamt-detail">0 GM</div>
+            </section>
+
+            <section class="vermoegen-karte">
+                <div class="vermoegen-muenzen">
+                    <div class="vermoegen-muenze"><label for="vermoegenPlatin">Platinmünzen</label><div class="vermoegen-buchung"><button type="button" data-vermoegen-minus="platin" aria-label="Platinmünzen abziehen">−</button><input id="vermoegenPlatin" data-vermoegen-eingabe="platin" type="number" min="0" step="1" inputmode="numeric"><button type="button" data-vermoegen-plus="platin" aria-label="Platinmünzen hinzufügen">+</button></div></div>
+                    <div class="vermoegen-muenze"><label for="vermoegenGold">Goldmünzen</label><div class="vermoegen-buchung"><button type="button" data-vermoegen-minus="gold" aria-label="Goldmünzen abziehen">−</button><input id="vermoegenGold" data-vermoegen-eingabe="gold" type="number" min="0" step="1" inputmode="numeric"><button type="button" data-vermoegen-plus="gold" aria-label="Goldmünzen hinzufügen">+</button></div></div>
+                    <div class="vermoegen-muenze"><label for="vermoegenSilber">Silbermünzen</label><div class="vermoegen-buchung"><button type="button" data-vermoegen-minus="silber" aria-label="Silbermünzen abziehen">−</button><input id="vermoegenSilber" data-vermoegen-eingabe="silber" type="number" min="0" step="1" inputmode="numeric"><button type="button" data-vermoegen-plus="silber" aria-label="Silbermünzen hinzufügen">+</button></div></div>
+                    <div class="vermoegen-muenze"><label for="vermoegenKupfer">Kupfermünzen</label><div class="vermoegen-buchung"><button type="button" data-vermoegen-minus="kupfer" aria-label="Kupfermünzen abziehen">−</button><input id="vermoegenKupfer" data-vermoegen-eingabe="kupfer" type="number" min="0" step="1" inputmode="numeric"><button type="button" data-vermoegen-plus="kupfer" aria-label="Kupfermünzen hinzufügen">+</button></div></div>
+                </div>
+                <p class="vermoegen-hinweis">10 Kupfermünzen = 1 Silbermünze · 10 Silbermünzen = 1 Goldmünze · 10 Goldmünzen = 1 Platinmünze</p>
+            </section>
+
+            <section class="vermoegen-karte">
+                <div class="vermoegen-rechner-kopf"><h3>Vermögensrechner</h3><button type="button" id="btnVermoegenRechnerZeile">+ Betrag</button></div>
+                <div id="vermoegenRechnerZeilen" class="vermoegen-rechner-zeilen"></div>
+                <div class="vermoegen-rechner-fuss"><label for="vermoegenRechnerTeiler">Teilen durch</label><input id="vermoegenRechnerTeiler" type="number" min="1" max="999" step="1" value="1" inputmode="numeric"><output id="vermoegenRechnerErgebnis" class="vermoegen-rechner-ergebnis">0 GM</output></div>
+                <div class="vermoegen-rechner-aktionen"><button type="button" id="btnVermoegenRechnerPlus">Ergebnis zum Vermögen hinzufügen</button><button type="button" id="btnVermoegenRechnerMinus">Ergebnis vom Vermögen abziehen</button></div>
+            </section>
+
+            <section class="vermoegen-karte">
+                <label for="vermoegenNotiz"><strong>Notizen / andere Wertgegenstände</strong></label>
+                <textarea id="vermoegenNotiz" rows="5" placeholder="Edelsteine, Schmuck, Kunstgegenstände, Schuldscheine …"></textarea>
+            </section>
+        </div>
+    </section>
+
+    <!-- ========================= -->
+    <!-- Charaktere                -->
+    <!-- ========================= -->
+
+    <section id="charaktere" class="page active">
+
+        <div class="seitenkopf">
+            <div>
+                <h2>Charaktere</h2>
+                
+            </div>
+            <button type="button" id="btnNeuerCharakter">+ Neuer Charakter</button>
+        </div>
+
+        <section class="kampagnen-verwaltung" aria-labelledby="kampagnenTitel">
+            <div class="kampagnen-verwaltung-kopf">
+                <div>
+                    <h3 id="kampagnenTitel">Kampagnen</h3>
+                    <p class="kampagnen-hinweis-602">Charaktere werden ihrer Kampagne untergeordnet angezeigt. Es werden auf den folge Seiten nur Charakter der aktiven Kampagne zur Auswahl gestellt.</p>
+                </div>
+                <div class="kampagne-neu-zeile">
+                    <input id="neueKampagneName" type="text" maxlength="60" placeholder="Neue Kampagne">
+                    <button type="button" id="btnKampagneHinzufuegen">+ Kampagne</button>
+                </div>
+            </div>
+            <div id="kampagnenBaum" class="kampagnen-baum" aria-live="polite"></div>
+        </section>
+</section>
+
+    <!-- ========================= -->
+    <!-- Admin                     -->
+    <!-- ========================= -->
+
+    <section id="admin" class="page">
+        <div class="seitenkopf">
+            <div>
+                <h2>Admin-Modus</h2>
+                <p id="adminStatus" class="admin-status">Gesperrt</p>
+            </div>
+            <button type="button" id="btnAdminSperren" hidden>Admin-Modus sperren</button>
+        </div>
+
+        <div id="adminGesperrt" class="admin-karte">
+            <h3>Standard-Effektliste verwalten</h3>
+            <p>Der Admin-Bereich ist durch ein festes vierstelliges Passwort geschützt.</p>
+            <button type="button" id="btnAdminEntsperren">Admin-Modus öffnen</button>
+        </div>
+
+        <div id="adminWerkzeuge" class="admin-karte" hidden>
+            <h3>Standard-Effektliste</h3>
+            <p>Öffne die Seite „Effekte“ und tippe bei einem Standardeffekt auf ✏️. Änderungen werden als lokaler Admin-Arbeitsstand gespeichert.</p>
+            <dl class="admin-statistik">
+                <div><dt>Standardeffekte</dt><dd id="adminStandardAnzahl">0</dd></div>
+                <div><dt>Geänderte Effekte</dt><dd id="adminGeaendertAnzahl">0</dd></div>
+            </dl>
+        </div>
+    </section>
+
+</main>
+
+<script src="js/app.js?v=54.2"></script>
+<script src="js/charakterwerte.js?v=53"></script>
+<script src="js/leben.js?v=53"></script>
+<script src="js/vermoegen.js?v=42.1"></script>
+<script src="js/filter.js"></script>
+<script src="js/berechnung.js?v=52.2"></script>
+<script src="js/makros.js"></script>
+<script src="js/speicher.js"></script>
+<script src="js/commit21.js?v=54.2"></script>
+<script src="js/commit22.js?v=42"></script>
+<script src="js/commit23.js?v=23"></script>
+<script src="js/commit24.js?v=42.8"></script>
+<script src="js/commit25.js?v=50.4"></script>
+<script src="js/commit26.js?v=52"></script>
+<script src="js/commit29.js?v=53"></script>
+<script src="js/commit41.js?v=54.2"></script>    
+
+<dialog id="effektDialog">
+<h3>Neuen Effekt anlegen</h3>
+<label>Name<br><input id="effektName"></label><br><br>
+<label>Kategorie<br>
+<select id="effektKategorie">
+<option>Ausrüstung</option>
+<option>Charakterwerte</option>
+<option>Kampf</option>
+<option>Klassenmerkmale</option>
+<option>Sonstige</option>
+<option>Talente</option>
+<option>Volksmerkmale</option>
+<option>Zauber</option>
+<option>Zustände</option>
+</select></label><br><br>
+<div class="effekt-editor-optionen">
+<label class="effekt-zuweisbar-editor-30">
+<input type="checkbox" id="effektAngriffZuweisbar">
+Angriff zuweisbar
+</label>
+<label class="nutzerbonus-aktiv">
+<input type="checkbox" id="effektNutzerBonusAktiv">
+Boni nach Nutzereingabe
+</label>
+</div><br>
+
+<section id="stufenEditor" class="stufen-editor">
+<h4>Stufenabhängigkeit / GAB</h4>
+<label class="stufen-aktiv">
+<input type="checkbox" id="effektStufenabhaengig">
+Stufenabhängigen Wert verwenden
+</label>
+<div class="stufen-editor-felder">
+<label>Bezug
+<select id="effektStufenbezug">
+<option value="charakter">Charakterstufe</option>
+<option value="klasse">Klassenstufe</option>
+<option value="zauberstufe">Zauberstufe im Effekt</option>
+<option value="manuell">Manuelle Stufe im Effekt</option>
+<option value="gab">GAB</option>
+</select>
+</label>
+<label>Klasse
+<select id="effektStufenklasse"></select>
+<input id="effektStufenklasseAndere" type="text" placeholder="Andere Klasse" hidden>
+</label>
+</div>
+<div class="stufenbereiche-kopf"><span>Von</span><span>Bis</span><span>Wert</span><span></span></div>
+<div id="stufenBereiche"></div>
+<button type="button" id="btnStufenbereichHinzufuegen">+ Stufenbereich</button>
+<p class="stufen-admin-hinweis">Für GAB-abhängige Talente: Bezug „GAB“ wählen, GAB-Bereiche definieren und bei jeder Bonuszeile „Stufenwert“ plus Faktor setzen (z. B. −1 Angriff, +1 RK, +2 Schaden).</p>
+</section>
+
+<div id="bonusEditor">
+<h4>Boni</h4>
+<p class="bonus-editor-hinweis-425"><strong>Wertquelle:</strong> „Fest“ verwendet den eingetragenen Wert. „Stufenwert“ verwendet den Wert aus der Stufen-/GAB-Logik; der Faktor kann ihn vervielfachen oder umkehren.</p>
+<div id="bonusContainer"></div>
+<button type="button" id="btnBonusHinzufuegen">+ Bonus hinzufügen</button>
+</div><br>
+<label>Beschreibung<br><textarea id="effektBeschreibung"></textarea></label><br><br>
+<label>Quelle<br><input id="effektQuelle"></label><br><br>
+<button id="btnSpeichernEffekt">Speichern</button>
+<button id="btnSchliessenDialog">Abbrechen</button>
+</dialog>
+
+<dialog id="adminPinDialog" class="admin-pin-dialog">
+    <form id="adminPinForm">
+        <h3 id="adminPinTitel">Admin-Modus öffnen</h3>
+        <p id="adminPinHinweis">Bitte vierstellige PIN eingeben.</p>
+        <label for="adminPin">PIN</label>
+        <input id="adminPin" type="password" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" autocomplete="one-time-code" required>
+        <label id="adminPinBestaetigenLabel" for="adminPinBestaetigen" hidden>PIN wiederholen</label>
+        <input id="adminPinBestaetigen" type="password" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" autocomplete="new-password" hidden>
+        <p id="adminPinFehler" class="admin-fehler" aria-live="polite"></p>
+        <div class="dialog-aktionen">
+            <button type="submit" id="btnAdminPinSpeichern">Bestätigen</button>
+            <button type="button" id="btnAdminPinAbbrechen">Abbrechen</button>
+        </div>
+    </form>
+</dialog>
+
+<script src="js/commit50.js?v=50.4"></script>
+<script src="js/zeit.js?v=54.6"></script>
+<script src="js/zauber.js?v=61.1"></script>
+<script src="js/rune-actions.js?v=57.1"></script>
+</body>
+
+</html>
