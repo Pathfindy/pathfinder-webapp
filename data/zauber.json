@@ -27,8 +27,10 @@
       "zauberresistenz_status": "pruefen",
       "name_en": "Residual Tracking",
       "regelwerk_en": "Advanced Player’s Guide",
-      "seite_en": null,
-      "abgleich_en_status": "vorschlag"
+      "seite_en": 238,
+      "abgleich_en_status": "verifiziert_quelle",
+      "name_en_status": "verifiziert_quelle",
+      "quelle_en_url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Residual+Tracking"
     },
     {
       "id": "z2",
@@ -55,8 +57,10 @@
       "zauberresistenz_status": "regelbasiert",
       "name_en": "Detect Aberration",
       "regelwerk_en": "Advanced Player’s Guide",
-      "seite_en": null,
-      "abgleich_en_status": "vorschlag"
+      "seite_en": 215,
+      "abgleich_en_status": "verifiziert_quelle",
+      "name_en_status": "verifiziert_quelle",
+      "quelle_en_url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Detect+Aberration"
     },
     {
       "id": "z3",
@@ -181,9 +185,10 @@
       "zauberresistenz_status": "regelbasiert",
       "name_en": "Ablative Barrier",
       "regelwerk_en": "Ultimate Combat",
-      "seite_en": null,
-      "name_en_status": "indexabgleich_pruefen",
-      "abgleich_en_status": "vorschlag"
+      "seite_en": 221,
+      "name_en_status": "verifiziert_quelle",
+      "abgleich_en_status": "verifiziert_quelle",
+      "quelle_en_url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Ablative+Barrier"
     },
     {
       "id": "z8",
@@ -209,9 +214,10 @@
       "zauberresistenz_status": "pruefen",
       "name_en": "Absorbing Touch",
       "regelwerk_en": "Advanced Player’s Guide",
-      "seite_en": null,
-      "name_en_status": "indexabgleich_pruefen",
-      "abgleich_en_status": "vorschlag"
+      "seite_en": 200,
+      "name_en_status": "verifiziert_quelle",
+      "abgleich_en_status": "verifiziert_quelle",
+      "quelle_en_url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Absorbing+Touch"
     },
     {
       "id": "z10",
@@ -305,8 +311,10 @@
       "zauberresistenz_status": "regelbasiert",
       "name_en": "Mad Monkeys",
       "regelwerk_en": "Ultimate Magic",
-      "seite_en": null,
-      "abgleich_en_status": "vorschlag"
+      "seite_en": 227,
+      "abgleich_en_status": "verifiziert_quelle",
+      "name_en_status": "verifiziert_quelle",
+      "quelle_en_url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Mad+Monkeys"
     },
     {
       "id": "z25",
@@ -332,9 +340,10 @@
       "zauberresistenz_status": "regelbasiert",
       "name_en": "Unwitting Ally",
       "regelwerk_en": "Advanced Player’s Guide",
-      "seite_en": null,
-      "name_en_status": "vorlaeufig_indexabgleich_pruefen",
-      "abgleich_en_status": "vorschlag"
+      "seite_en": 253,
+      "name_en_status": "verifiziert_quelle",
+      "abgleich_en_status": "verifiziert_quelle",
+      "quelle_en_url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Unwitting+Ally"
     },
     {
       "id": "z26",
@@ -428,9 +437,10 @@
       "zauberresistenz_status": "regelbasiert",
       "name_en": "Alchemical Allocation",
       "regelwerk_en": "Advanced Player’s Guide",
-      "seite_en": null,
-      "name_en_status": "indexabgleich_pruefen",
-      "abgleich_en_status": "vorschlag"
+      "seite_en": 201,
+      "name_en_status": "verifiziert_quelle",
+      "abgleich_en_status": "verifiziert_quelle",
+      "quelle_en_url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Alchemical+Allocation"
     },
     {
       "id": "z32",
@@ -552,9 +562,10 @@
       "zauberresistenz_status": "pruefen",
       "name_en": "Ant Haul",
       "regelwerk_en": "Advanced Player’s Guide",
-      "seite_en": null,
-      "name_en_status": "indexabgleich_pruefen",
-      "abgleich_en_status": "vorschlag"
+      "seite_en": 201,
+      "name_en_status": "verifiziert_quelle",
+      "abgleich_en_status": "verifiziert_quelle",
+      "quelle_en_url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Ant+Haul"
     },
     {
       "id": "z37",
@@ -919,9 +930,10 @@
       "zauberresistenz_status": "pruefen",
       "name_en": "Arcane Cannon",
       "regelwerk_en": "Ultimate Combat",
-      "seite_en": null,
-      "name_en_status": "indexabgleich_pruefen",
-      "abgleich_en_status": "vorschlag"
+      "seite_en": 223,
+      "name_en_status": "verifiziert_quelle",
+      "abgleich_en_status": "verifiziert_quelle",
+      "quelle_en_url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Arcane+Cannon"
     },
     {
       "id": "z55",
@@ -1167,9 +1179,10 @@
       "zauberresistenz_status": "regelbasiert",
       "name_en": "Aspect of the Falcon",
       "regelwerk_en": "Advanced Player’s Guide",
-      "seite_en": null,
-      "name_en_status": "indexabgleich_pruefen",
-      "abgleich_en_status": "vorschlag"
+      "seite_en": 203,
+      "name_en_status": "verifiziert_quelle",
+      "abgleich_en_status": "verifiziert_quelle",
+      "quelle_en_url": "https://www.aonprd.com/SpellDisplay.aspx?ItemName=Aspect+of+the+Falcon"
     },
     {
       "id": "z68",
@@ -39223,11 +39236,12 @@
   "folianten_quellen_zugeordnet": 1168,
   "zr_hinweis": "Zauberresistenz ergänzt; Sonderfälle mit siehe Text sind gezielt zu prüfen.",
   "englisch_abgleich": {
-    "status": "nahezu vollstaendiger vorlaeufiger Namensabgleich",
+    "status": "in_pruefung",
     "gesamt": 1280,
     "mit_name_en": 1278,
     "ohne_name_en": 2,
     "seiten_en_verifiziert": 0,
-    "hinweis": "Deutsche Daten unverändert. Englische Originalnamen vorläufig, bitte vor Regelverwendung gegen Primärquelle prüfen; englische Seitenzahlen nicht geraten. Zwei Kampagnenwelt-Zauber offen."
+    "hinweis": "Nur Eintraege mit abgleich_en_status=verifiziert_quelle sind anhand einzelner englischer Quellenseiten geprueft. Andere Namenszuordnungen bleiben Vorschlaege.",
+    "verifiziert_mit_seite": 10
   }
 }
