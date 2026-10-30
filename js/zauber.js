@@ -176,21 +176,20 @@
     box.querySelectorAll('[data-fokus-slot]').forEach(b=>b.onclick=()=>{const i=Number(b.dataset.fokusSlot);x.fokus.verbraucht=i<used?i:i+1;save();render()});
   }
 
-  // Kampfmagus: Arkaner Vorrat = halbe Klassenstufe (mind. 1) + IN-Modifikator.
-  // Waffenverstärkung: +1 (Stufe 1), +2 (5), +3 (9), +4 (13), +5 (17).
+  // Kampfmagus: Der arkane Vorrat ist ausschließlich eine Slot-Anzeige.
+  // Die Waffenverstärkung wird als Sondereffekt auf der Effektseite aktiviert.
   function renderArkanerVorrat(k,x){
     if(k.name!=="Kampfmagus")return;
-    const st=Math.max(0,Number(k.stufe||0)), pool=Math.max(0,Math.floor(st/2)+mod(ch(),"IN"));
-    const a=x.arkanerVorrat||(x.arkanerVorrat={verbraucht:0,aktiv:false,angriff:0});
-    a.verbraucht=Math.min(pool,Math.max(0,Number(a.verbraucht)||0));
-    const staerke=Math.min(5,1+Math.floor(Math.max(0,st-1)/4));
-    const angriffe=ch()?.kampfwerte?.angriffe||[];
+    const st=Math.max(0,Number(k.stufe||0));
+    const regelwert=Math.max(0,Math.floor(st/2)+mod(ch(),"IN"));
+    const a=x.arkanerVorrat||(x.arkanerVorrat={verbraucht:0});
+    const max=Number.isFinite(Number(a.max))?Math.max(0,Math.min(99,Math.trunc(Number(a.max)))):regelwert;
+    a.verbraucht=Math.min(max,Math.max(0,Number(a.verbraucht)||0));
     const box=document.createElement("section");box.className="zauber-karte-55 zauber-fokus-591";
-    box.innerHTML=`<h3>Arkaner Vorrat · Kampfmagus</h3><p><em>${pool} Punkte pro Tag (⌊Stufe ${st}/2⌋ + IN-Mod ${fmt(mod(ch(),"IN"))}); ${pool-a.verbraucht} frei.</em></p><div class="zauber-fokus-slots-591">${Array.from({length:pool},(_,i)=>`<button type="button" class="zauber-slot-554${i<a.verbraucht?" verbraucht":""}" data-arkan-slot="${i}" title="${i<a.verbraucht?"Punkt wiederherstellen":"Punkt verbrauchen"}">${i<a.verbraucht?'✕':''}</button>`).join("")}</div><div class="zauber-arkan-waffe-618"><h4>Arkane Waffenverstärkung · +${staerke}</h4><p><em>Kostet 1 Punkt; Dauer 1 Minute. Verstärkung und vorhandene magische Waffenboni zusammen höchstens +5. Ende manuell bestätigen.</em></p><label>Waffe <select data-arkan-angriff>${angriffe.map((v,i)=>`<option value="${i}" ${Number(a.angriff)===i?"selected":""}>${esc(v.name||`Angriff ${i+1}`)} (A${i+1})</option>`).join("")}</select></label><button type="button" data-arkan-toggle ${!angriffe.length||(!a.aktiv&&a.verbraucht>=pool)?"disabled":""}>${a.aktiv?"Verstärkung beenden":"1 Punkt einsetzen · Verstärkung aktivieren"}</button>${a.aktiv?'<strong>Aktiv · +'+staerke+' (max. +5 zusammen)</strong>':''}</div>`;
+    box.innerHTML=`<div class="zauber-fokus-kopf-591"><h3>Arkaner Vorrat · Kampfmagus</h3><label>Maximum <input type="number" min="0" max="99" inputmode="numeric" data-arkan-max value="${max}" aria-label="Maximale Punkte Arkaner Vorrat"></label></div><p class="zauber-fokus-hinweis-591"><em>Regelwert: ⌊Kampfmagus-Stufe ${st}/2⌋ + IN-Modifikator (${fmt(mod(ch(),"IN"))}) = ${regelwert} Punkte/Tag. Maximum manuell anpassbar. Waffenverstärkung auf der Effektseite aktivieren (kostet 1 Punkt, Dauer 1 Minute).</em><br>${max-a.verbraucht} frei / ${max} gesamt</p><div class="zauber-fokus-slots-591" aria-label="Punkte Arkaner Vorrat">${Array.from({length:max},(_,i)=>`<button type="button" class="zauber-slot-554${i<a.verbraucht?" verbraucht":""}" data-arkan-slot="${i}" aria-label="${i<a.verbraucht?"Verbrauchten Punkt wiederherstellen":"Punkt verbrauchen"}" title="${i<a.verbraucht?"Wiederherstellen":"Verbrauchen"}">${i<a.verbraucht?'<img src="assets/runes/delete.png" alt="" aria-hidden="true">':''}</button>`).join("")}</div>`;
     root.append(box);
+    box.querySelector('[data-arkan-max]').onchange=e=>{a.max=Math.max(0,Math.min(99,Math.trunc(Number(e.target.value)||0)));a.verbraucht=Math.min(a.verbraucht,a.max);save();render()};
     box.querySelectorAll('[data-arkan-slot]').forEach(el=>el.onclick=()=>{const i=Number(el.dataset.arkanSlot);a.verbraucht=i<a.verbraucht?i:i+1;save();render()});
-    box.querySelector('[data-arkan-angriff]').onchange=e=>{a.angriff=Number(e.target.value);save();render()};
-    box.querySelector('[data-arkan-toggle]').onclick=()=>{if(a.aktiv){a.aktiv=false}else if(a.verbraucht<pool){a.aktiv=true;a.verbraucht++}save();if(typeof berechneWerte==="function")berechneWerte();render()};
   }
   function bonusState(x){
     const b=x.bonus;
