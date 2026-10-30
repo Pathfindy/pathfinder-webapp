@@ -1,0 +1,23 @@
+/* v0.61.7: einheitliche Berechnungsdialoge und besserer Kontrast */
+.zauber-wert-dialog-616{width:min(620px,calc(100vw - 20px));max-width:620px;max-height:85dvh;padding:0!important;border:0!important;border-radius:16px!important;background:#fff!important;color:#26190f!important;overflow:auto}
+.zauber-wert-dialog-616 .bonus-detail-kopf{position:sticky;top:0;z-index:2;background:#203c60;color:white;padding:15px 20px}
+.zauber-wert-dialog-616 .bonus-detail-kopf button{font-size:1.6rem;min-width:44px;min-height:44px}
+.zauber-dialog-inhalt-617{padding:18px;background:#fff;color:#241c19}
+.zauber-dialog-inhalt-617 .bonus-detail-summe{background:#e8edf4;color:#203c60;font-weight:bold;border-radius:12px;padding:14px;line-height:1.45;overflow-wrap:anywhere}
+.zauber-dialog-inhalt-617 .bonus-detail-zeile{grid-template-columns:minmax(38px,.23fr) minmax(80px,.8fr) minmax(100px,1.3fr);color:#241c19;background:white;border:1px solid #d1d6dc;overflow-wrap:anywhere}
+.zauber-dialog-inhalt-617 .bonus-detail-zeile small{color:#47704f}
+/* Durchscheinende Seiten bleiben stimmungsvoll, Eingabefelder und längere Texte lesbar. */
+#zauber .zauber-sg-55,#zauber .zauber-wert-55{color:#2c2017}
+#zauber .zauber-wert-55 small{color:#49372b;font-size:max(.82rem,12px)}
+#effekte input,#effekte select,#zauber input,#zauber select{min-height:40px}
+@media(max-width:520px){.zauber-wert-dialog-616 .bonus-detail-zeile{grid-template-columns:44px minmax(70px,1fr);gap:7px}.zauber-wert-dialog-616 .bonus-detail-zeile span:nth-of-type(2){grid-column:2}.zauber-wert-dialog-616 .bonus-detail-zeile small{grid-column:2}.zauber-dialog-inhalt-617{padding:12px}}
+
+#tpEffektHinweis617:not([hidden]){display:block;font-style:italic;color:#39291d;background:#eee0ca;padding:6px 9px;border-radius:8px;margin:5px 0;max-width:100%;overflow-wrap:anywhere}
+
+/* Mobile-Lesbarkeit: optionale dichte Ansichten mit mehr Kontrast */
+@media (max-width: 600px){
+  #zauber .zauber-karte-55,#effekte .effekt{overflow-wrap:anywhere}
+  #zauber .zauber-karte-55 input,#zauber .zauber-karte-55 select{max-width:100%}
+  .bonus-detail-dialog{width:min(620px,calc(100vw - 20px));max-height:85dvh}
+  .bonus-detail-dialog .bonus-detail-zeile{overflow-wrap:anywhere}
+}
