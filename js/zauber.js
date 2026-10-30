@@ -122,7 +122,10 @@
     daten={zauber:[...merged,...benutzer.map(normZauber),...adminNeu.map(z=>normZauber({...z,standard:true}))]};
   }
   async function load(){if(basisDaten)return;try{const r=await fetch("data/zauber.json?v=61.0");if(!r.ok)throw new Error();basisDaten=await r.json()}catch{basisDaten={zauber:[]}}kombiniereDaten();}
-  function gradVorhanden(k,g){return (daten.zauber||[]).some(z=>Object.prototype.hasOwnProperty.call(z.klassen||{},k.name)&&Number(z.klassen[k.name])===Number(g));}
+  // Datenbank benutzt den historischen Klassenschlüssel „Kampfmagier“.
+  // Anzeige und Charakterdaten verwenden „Kampfmagus“; keine Datenbankmutation.
+  function zauberKlassenKey(name){return name==="Kampfmagus"?"Kampfmagier":name;}
+  function gradVorhanden(k,g){const key=zauberKlassenKey(k.name);return (daten.zauber||[]).some(z=>Object.prototype.hasOwnProperty.call(z.klassen||{},key)&&Number(z.klassen[key])===Number(g));}
   function touchWert(fern=false){const c=ch(),gab=typeof charakterGAB==="function"?Number(charakterGAB(c)||0):Number(c?.gab||0),a=mod(c,fern?"GE":"ST"),groesse=typeof groessenModifikatorAngriffRk==="function"?Number(groessenModifikatorAngriffRk(c)||0):0;return gab+a+groesse;}
 
   function metaErlernt(c){const raw=c?.metamagieErlernt;return Array.isArray(raw)?raw:[]}
@@ -173,6 +176,22 @@
     box.querySelectorAll('[data-fokus-slot]').forEach(b=>b.onclick=()=>{const i=Number(b.dataset.fokusSlot);x.fokus.verbraucht=i<used?i:i+1;save();render()});
   }
 
+  // Kampfmagus: Arkaner Vorrat = halbe Klassenstufe (mind. 1) + IN-Modifikator.
+  // Waffenverstärkung: +1 (Stufe 1), +2 (5), +3 (9), +4 (13), +5 (17).
+  function renderArkanerVorrat(k,x){
+    if(k.name!=="Kampfmagus")return;
+    const st=Math.max(0,Number(k.stufe||0)), pool=Math.max(0,Math.floor(st/2)+mod(ch(),"IN"));
+    const a=x.arkanerVorrat||(x.arkanerVorrat={verbraucht:0,aktiv:false,angriff:0});
+    a.verbraucht=Math.min(pool,Math.max(0,Number(a.verbraucht)||0));
+    const staerke=Math.min(5,1+Math.floor(Math.max(0,st-1)/4));
+    const angriffe=ch()?.kampfwerte?.angriffe||[];
+    const box=document.createElement("section");box.className="zauber-karte-55 zauber-fokus-591";
+    box.innerHTML=`<h3>Arkaner Vorrat · Kampfmagus</h3><p><em>${pool} Punkte pro Tag (⌊Stufe ${st}/2⌋ + IN-Mod ${fmt(mod(ch(),"IN"))}); ${pool-a.verbraucht} frei.</em></p><div class="zauber-fokus-slots-591">${Array.from({length:pool},(_,i)=>`<button type="button" class="zauber-slot-554${i<a.verbraucht?" verbraucht":""}" data-arkan-slot="${i}" title="${i<a.verbraucht?"Punkt wiederherstellen":"Punkt verbrauchen"}">${i<a.verbraucht?'✕':''}</button>`).join("")}</div><div class="zauber-arkan-waffe-618"><h4>Arkane Waffenverstärkung · +${staerke}</h4><p><em>Kostet 1 Punkt; Dauer 1 Minute. Verstärkung und vorhandene magische Waffenboni zusammen höchstens +5. Ende manuell bestätigen.</em></p><label>Waffe <select data-arkan-angriff>${angriffe.map((v,i)=>`<option value="${i}" ${Number(a.angriff)===i?"selected":""}>${esc(v.name||`Angriff ${i+1}`)} (A${i+1})</option>`).join("")}</select></label><button type="button" data-arkan-toggle ${!angriffe.length||(!a.aktiv&&a.verbraucht>=pool)?"disabled":""}>${a.aktiv?"Verstärkung beenden":"1 Punkt einsetzen · Verstärkung aktivieren"}</button>${a.aktiv?'<strong>Aktiv · +'+staerke+' (max. +5 zusammen)</strong>':''}</div>`;
+    root.append(box);
+    box.querySelectorAll('[data-arkan-slot]').forEach(el=>el.onclick=()=>{const i=Number(el.dataset.arkanSlot);a.verbraucht=i<a.verbraucht?i:i+1;save();render()});
+    box.querySelector('[data-arkan-angriff]').onchange=e=>{a.angriff=Number(e.target.value);save();render()};
+    box.querySelector('[data-arkan-toggle]').onclick=()=>{if(a.aktiv){a.aktiv=false}else if(a.verbraucht<pool){a.aktiv=true;a.verbraucht++}save();if(typeof berechneWerte==="function")berechneWerte();render()};
+  }
   function bonusState(x){
     const b=x.bonus;
     if(!Array.isArray(b.quellen)){
@@ -228,11 +247,12 @@
   function detailsWert616(label,teile,effektZiel){
     const alle=typeof sammleAktiveBoni==="function"?sammleAktiveBoni(typeof effekte!=="undefined"?effekte:[]).filter(b=>b.ziel===effektZiel):[];
     const boni=typeof berechneBonusErgebnis==="function"?berechneBonusErgebnis(typeof effekte!=="undefined"?effekte:[]):{};
-    const effektWert=Number(boni[effektZiel]||0), basis=teile.reduce((sum,p)=>sum+Number(p[1]||0),0),sum=basis+effektWert;
+    const gabDynamik=(effektZiel==="Angriff Nah"||effektZiel==="Angriff Fern")&&alle.some(b=>/GAB\s*\(Dynamik\)/i.test(b.effektName||""));
+    const effektWert=Number(boni[effektZiel]||0)-(gabDynamik?Number(teile.find(t=>t[0]==="Grundangriffsbonus")?.[1]||0):0), basis=teile.reduce((sum,p)=>sum+Number(p[1]||0),0),sum=basis+effektWert;
     const fmtNum=v=>fmt(Number(v||0));
     const summary=teile.map(([name,w])=>`${esc(name)} ${fmtNum(w)}`).join(" · ")+` · Effekte ${fmtNum(effektWert)} = ${fmtNum(sum)}`;
     const komponenten=teile.map(([name,w])=>`<div class="bonus-detail-zeile"><strong>${fmtNum(w)}</strong><span>Grundwert</span><span>${esc(name)}</span><small>berücksichtigt</small></div>`).join("");
-    const effe=alle.map(b=>`<div class="bonus-detail-zeile"><strong>${fmtNum(b.wert)}</strong><span>${esc(b.bonusart)}</span><span>${esc(b.effektName||"Effekt")}</span><small>Aktiver Effekt – Stapelregeln gelten</small></div>`).join("");
+    const effe=alle.filter(b=>!(gabDynamik&&/GAB\s*\(Dynamik\)/i.test(b.effektName||""))).map(b=>`<div class="bonus-detail-zeile"><strong>${fmtNum(b.wert)}</strong><span>${esc(b.bonusart)}</span><span>${esc(b.effektName||"Effekt")}</span><small>Aktiver Effekt – Stapelregeln gelten</small></div>`).join("");
     return {sum,html:`<p class="bonus-detail-summe">${summary}</p><div class="bonus-detail-liste">${komponenten}${effe||'<p>Keine weiteren aktiven Effekte.</p>'}</div>`};
   }
   function renderWerte(c,k,x){
@@ -343,7 +363,7 @@
   function renderGradInhalte(container,k,x){
     const q=suche.trim().toLocaleLowerCase('de');container.innerHTML='';
     for(const g of effektiveGrade(k,x,ch()).filter(g=>gradVorhanden(k,g)||bonusEintraege(k,x).some(e=>e.g===g))){
-      const all=(daten.zauber||[]).filter(z=>Object.prototype.hasOwnProperty.call(z.klassen||{},k.name)&&Number(z.klassen[k.name])===g).sort((a,b)=>a.name.localeCompare(b.name,'de')),known=ids(x,g),prepared=prep(x,g),only=!!x.nurGelernt[g];
+      const all=(daten.zauber||[]).filter(z=>Object.prototype.hasOwnProperty.call(z.klassen||{},zauberKlassenKey(k.name))&&Number(z.klassen[zauberKlassenKey(k.name)])===g).sort((a,b)=>a.name.localeCompare(b.name,'de')),known=ids(x,g),prepared=prep(x,g),only=!!x.nurGelernt[g];
       const extras=bonusEintraege(k,x).filter(e=>e.g===g&&Number(k.stufe||0)>=e.abStufe&&(!q||(e.name+' '+(bonusDatenZauber(e.name)?.name_en||'')).toLocaleLowerCase('de').includes(q))&&(!only||e.art!=="slots"||x.bonus.vorbereitet?.[g]===e.quelle));
       const bonusIds=new Set(extras.map(e=>bonusDatenZauber(e.name)?.id).filter(Boolean));
       let list=all.filter(z=>!bonusIds.has(z.id)).filter(z=>!q||(z.name+' '+(z.name_en||'')).toLocaleLowerCase('de').includes(q)).filter(z=>!only||(x.art==="spontan"?known.includes(z.id):prepZauberAnzahl(x,z.id)>0));
@@ -384,9 +404,9 @@
   function oeffneZauberEditor(z,k,x,standard){
     stelleEditorBereit();const d=document.getElementById('zauberDialog554');editorId=z?.id||null;editorStandard=!!standard;document.getElementById('zauberDialogTitel554').textContent=z?'Zauber bearbeiten':'Neuen Zauber anlegen';
     const set=(id,v)=>document.getElementById(id).value=v??'';set('zauberName554',z?.name);set('zauberSchule554',z?.schule);set('zauberRegelwerk554',z?.regelwerk);set('zauberSeite554',z?.seite);set('zauberZeit554',z?.zeitaufwand);set('zauberKomponenten554',z?.komponenten);set('zauberReichweite554',z?.reichweite);set('zauberZiel554',z?.ziel);set('zauberDauer554',z?.dauer);set('zauberRw554',z?.rettungswurf);set('zauberZr559',z?.zauberresistenz===true?'Ja':z?.zauberresistenz===false?'Nein':z?.zauberresistenz);set('zauberBeschreibung554',z?.beschreibung);
-    const ce=document.getElementById('zauberKlassenEditor554');ce.innerHTML='';[...ZAUBERKLASSEN].sort((a,b)=>a.localeCompare(b,'de')).forEach(name=>{const val=z?.klassen?.[name],row=document.createElement('label');row.innerHTML=`<span>${esc(name)}</span><input type="number" min="0" max="9" data-editor-klasse="${esc(name)}" placeholder="–" value="${val===undefined?'':Number(val)}">`;ce.append(row)});d.showModal();
+    const ce=document.getElementById('zauberKlassenEditor554');ce.innerHTML='';[...ZAUBERKLASSEN].sort((a,b)=>a.localeCompare(b,'de')).forEach(name=>{const val=z?.klassen?.[zauberKlassenKey(name)],row=document.createElement('label');row.innerHTML=`<span>${esc(name)}</span><input type="number" min="0" max="9" data-editor-klasse="${esc(name)}" placeholder="–" value="${val===undefined?'':Number(val)}">`;ce.append(row)});d.showModal();
   }
-  function editorDaten(){const klassen={};document.querySelectorAll('[data-editor-klasse]').forEach(i=>{if(i.value!=="")klassen[i.dataset.editorKlasse]=Math.max(0,Math.min(9,Number(i.value)||0))});return normZauber({id:editorId||undefined,name:document.getElementById('zauberName554').value,schule:document.getElementById('zauberSchule554').value,regelwerk:document.getElementById('zauberRegelwerk554').value,seite:document.getElementById('zauberSeite554').value,zeitaufwand:document.getElementById('zauberZeit554').value,komponenten:document.getElementById('zauberKomponenten554').value,reichweite:document.getElementById('zauberReichweite554').value,ziel:document.getElementById('zauberZiel554').value,dauer:document.getElementById('zauberDauer554').value,rettungswurf:document.getElementById('zauberRw554').value,zauberresistenz:(()=>{const v=document.getElementById('zauberZr559').value.trim();return /^ja$/i.test(v)?true:/^nein$/i.test(v)?false:v})(),beschreibung:document.getElementById('zauberBeschreibung554').value,klassen});}
+  function editorDaten(){const klassen={};document.querySelectorAll('[data-editor-klasse]').forEach(i=>{if(i.value!=="")klassen[zauberKlassenKey(i.dataset.editorKlasse)]=Math.max(0,Math.min(9,Number(i.value)||0))});return normZauber({id:editorId||undefined,name:document.getElementById('zauberName554').value,schule:document.getElementById('zauberSchule554').value,regelwerk:document.getElementById('zauberRegelwerk554').value,seite:document.getElementById('zauberSeite554').value,zeitaufwand:document.getElementById('zauberZeit554').value,komponenten:document.getElementById('zauberKomponenten554').value,reichweite:document.getElementById('zauberReichweite554').value,ziel:document.getElementById('zauberZiel554').value,dauer:document.getElementById('zauberDauer554').value,rettungswurf:document.getElementById('zauberRw554').value,zauberresistenz:(()=>{const v=document.getElementById('zauberZr559').value.trim();return /^ja$/i.test(v)?true:/^nein$/i.test(v)?false:v})(),beschreibung:document.getElementById('zauberBeschreibung554').value,klassen});}
   function speichereZauberEditor(){let z=editorDaten();if(editorId){const old=(daten.zauber||[]).find(v=>String(v.id)===String(editorId));if(old)z={...old,...z,id:old.id};}if(!z.name){document.getElementById('zauberName554').focus();return}if(editorId){const basis=(basisDaten?.zauber||[]).some(v=>String(v.id)===String(editorId));if(basis){if(!adminAktiv()){alert('Standardzauber können nur im entsperrten Admin-Modus geändert werden.');return}const o=readJson(ADMIN_AENDERUNGEN_KEY,{});o[editorId]=z;writeJson(ADMIN_AENDERUNGEN_KEY,o)}else{for(const key of [BENUTZER_KEY,ADMIN_NEU_KEY]){const a=readJson(key,[]),idx=a.findIndex(v=>String(v.id)===String(editorId));if(idx>=0){a[idx]=z;writeJson(key,a);break}}}}else{const key=adminAktiv()?ADMIN_NEU_KEY:BENUTZER_KEY,a=readJson(key,[]);a.push(z);writeJson(key,a)}kombiniereDaten();document.getElementById('zauberDialog554').close();render();}
 
   // Unabhängiges Zauberlexikon: alle Datenbankzauber, auch ohne Zauberklasse.
@@ -425,7 +445,7 @@
   }
 
   window.pfZauberDatenExport616=async function(){await load();exportiereZauberJson()};
-  async function render(){await load();root.innerHTML='';const c=ch();if(!c){zauberLexikon();return}const klassen=zauberKlassen(c);if(!klassen.length){zauberLexikon();return}if(!klassen.some(k=>k.name===klasseAktiv))klasseAktiv=klassen[0].name;renderKlassen(c,klassen);const k=klassen.find(k=>k.name===klasseAktiv),x=config(c,k.name);renderFokus(k,x);renderMetamagie(c);renderWerte(c,k,x);renderBonus(k,x);renderGradListen(k,x);save();}
+  async function render(){await load();root.innerHTML='';const c=ch();if(!c){zauberLexikon();return}const klassen=zauberKlassen(c);if(!klassen.length){zauberLexikon();return}if(!klassen.some(k=>k.name===klasseAktiv))klasseAktiv=klassen[0].name;renderKlassen(c,klassen);const k=klassen.find(k=>k.name===klasseAktiv),x=config(c,k.name);renderFokus(k,x);renderArkanerVorrat(k,x);renderMetamagie(c);renderWerte(c,k,x);renderBonus(k,x);renderGradListen(k,x);save();}
 
   // Zauberdaten sind Teil des Charakterobjekts und müssen Import/Export-Normalisierung überleben.
   if(typeof normalisiereCharakter==="function"&&!normalisiereCharakter.__zauber5510){const altNormalisiere=normalisiereCharakter;const neu=function(charakter={}){const basis=altNormalisiere(charakter);return {...basis,zauberklassen:charakter.zauberklassen&&typeof charakter.zauberklassen==="object"?charakter.zauberklassen:(basis.zauberklassen||{}),metamagieErlernt:Array.isArray(charakter.metamagieErlernt)?charakter.metamagieErlernt:(basis.metamagieErlernt||[]),zauberMetamagie:charakter.zauberMetamagie&&typeof charakter.zauberMetamagie==="object"?charakter.zauberMetamagie:(basis.zauberMetamagie||{})}};neu.__zauber5510=true;normalisiereCharakter=neu;}

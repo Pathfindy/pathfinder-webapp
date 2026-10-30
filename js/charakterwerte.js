@@ -503,6 +503,18 @@
             index
           )
         : globaleBoni;
+      // v0.61.8: Arkaner Vorrat wirkt nur auf die ausgewählte Waffe.
+      // Bereits vorhandene Waffenverbesserungen werden auf die gemeinsame +5-Grenze angerechnet.
+      const arkan=charakter?.zauberklassen?.Kampfmagus?.arkanerVorrat;
+      const magusStufe=Number((charakter.klassen||[]).find(k=>k.name==="Kampfmagus")?.stufe||0);
+      if(arkan?.aktiv&&Number(arkan.angriff)===index&&magusStufe>0){
+        const arkanBonus=Math.min(5,1+Math.floor((magusStufe-1)/4));
+        const vorhandeneMagie=(typeof effekte!=="undefined"?effekte:[]).filter(e=>e.aktiv&&new RegExp(`^Waffe\\s*${index+1}\\s*\\(Magisch\\)$`,"i").test(e.name||""));
+        const alt=Math.max(0,...(typeof sammleAktiveBoni==="function"?sammleAktiveBoni(vorhandeneMagie).map(b=>Number(b.wert)||0):vorhandeneMagie.flatMap(e=>(e.boni||[]).map(b=>Number(b.wert)||0))));
+        const extra=Math.max(0,Math.min(arkanBonus,5-alt));
+        if(extra){boni[angriff.art==="Fern"?"Angriff Fern":"Angriff Nah"]=(Number(boni[angriff.art==="Fern"?"Angriff Fern":"Angriff Nah"])||0)+extra;
+          boni[angriff.art==="Fern"?"Schaden Fern":"Schaden Nah"]=(Number(boni[angriff.art==="Fern"?"Schaden Fern":"Schaden Nah"])||0)+extra;}
+      }
       const karte = document.createElement("article");
       karte.className = "angriff-karte";
 
