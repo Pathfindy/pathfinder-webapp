@@ -317,6 +317,16 @@
     return `${anzahl}W${seiten}${bonus===0 ? "" : vorzeichen(bonus)}`;
   }
 
+  // Effektmodifikatoren sind reine Anzeige-/Rechenwerte; die gespeicherten TP
+  // bleiben unverändert, sodass Deaktivieren keine echte Heilung auslöst.
+  function effektiveTp617(charakter){
+    const b=aktuelleBonuswerte();
+    const maxBonus=Number(b["Max TP"]||0),aktBonus=Number(b["Aktuelle TP"]||0);
+    const maximum=Math.max(0,Number(charakter.maxTp||0)+maxBonus);
+    const aktuell=Math.min(maximum,Number(charakter.aktuelleTp||0)+aktBonus);
+    return {maximum,aktuell,maxBonus,aktBonus};
+  }
+
   function aktualisiereTrefferpunkteAnsicht() {
     const charakter = aktiverCharakter();
     const deaktiviert = !charakter;
@@ -340,13 +350,20 @@
       return;
     }
 
+    const effTp=effektiveTp617(charakter);
     maxTpFeld.value = charakter.maxTp;
+    maxTpFeld.title=`Basismaximum ${charakter.maxTp}; aktiver Effekt ${effTp.maxBonus}; effektiv ${effTp.maximum}`;
     temporaereTpFeld.value = charakter.temporaereTp;
-    aktuelleTpAusgabe.value = charakter.aktuelleTp;
-    aktuelleTpAusgabe.textContent = String(charakter.aktuelleTp);
-    aktuelleTpAusgabe.className = tpFarbklasse(charakter);
+    aktuelleTpAusgabe.value = effTp.aktuell;
+    aktuelleTpAusgabe.textContent = String(effTp.aktuell);
+    aktuelleTpAusgabe.title=`Basis-TP ${charakter.aktuelleTp}; aktiver Effekt ${effTp.aktBonus}; effektiver Wert ${effTp.aktuell}`;
+    aktuelleTpAusgabe.className = effTp.aktuell<=0?"tp-rot":effTp.maximum>0 && effTp.aktuell/effTp.maximum>.5?"tp-gruen":effTp.maximum>0&&effTp.aktuell/effTp.maximum>=.25?"tp-gelb":"tp-orange";
+    let hint=document.getElementById("tpEffektHinweis617");
+    if(!hint){hint=document.createElement("small");hint.id="tpEffektHinweis617";aktuelleTpAusgabe.insertAdjacentElement("afterend",hint)}
+    hint.textContent=effTp.maxBonus||effTp.aktBonus?`Effektive TP: ${effTp.aktuell} / ${effTp.maximum} (temporäre Effekte: Max ${vorzeichen(effTp.maxBonus)}, Aktuell ${vorzeichen(effTp.aktBonus)})`:"";
+    hint.hidden=!(effTp.maxBonus||effTp.aktBonus);
     if (erlittenerSchadenAusgabe) {
-      const schaden = Math.max(0, charakter.maxTp - charakter.aktuelleTp);
+      const schaden = Math.max(0, effTp.maximum - effTp.aktuell);
       erlittenerSchadenAusgabe.value = schaden;
       erlittenerSchadenAusgabe.textContent = String(schaden);
     }
@@ -398,7 +415,8 @@
     const heilung = liesAktionswert(heilungFeld);
     if (!charakter || heilung === null) return;
 
-    charakter.aktuelleTp = Math.min(charakter.maxTp, charakter.aktuelleTp + heilung);
+    const effTp=effektiveTp617(charakter);
+    charakter.aktuelleTp = Math.min(effTp.maximum-effTp.aktBonus, charakter.aktuelleTp + heilung);
     heilungFeld.value = "";
     zeigeMeldung(`${heilung} Heilung angewendet.`);
     speichereTpAenderung();
@@ -1021,6 +1039,7 @@
     berechneWerte = function (...argumente) {
       const ergebnis = bisherigeBerechnung(...argumente);
       aktualisiereAngriffeAnsicht();
+      aktualisiereTrefferpunkteAnsicht();
       return ergebnis;
     };
     window.berechneWerte = berechneWerte;
