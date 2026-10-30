@@ -1007,7 +1007,9 @@ function normalisiereEffekt(effekt={}){
    kategorie:effektKategorie,
    beschreibung:effekt.beschreibung||"",
    quelle:effekt.quelle||"",
-   angriffZuweisbar:!!effekt.angriffZuweisbar,
+   angriffZuweisbar:effekt.sonderlogik==="kampfmagus-waffenverstaerkung"?true:!!effekt.angriffZuweisbar,
+   dauer:effekt.dauer||"",
+   gebiet:effekt.gebiet||"",
    sonderlogik:erzwungeneSonderlogik ||
      (["heftiger-angriff","maechtige-magische-faenge","kampfmagus-waffenverstaerkung"].includes(effekt.sonderlogik)?effekt.sonderlogik:""),
    nutzerBonus:{
@@ -1354,6 +1356,7 @@ async function ladeEffekte(){
      .filter(effekt=>!istEntfallenerAttributEffekt44(effekt));
    effekte.forEach(effekt=>{
      if(effekt.sonderlogik==="kampfmagus-waffenverstaerkung"){
+       effekt.angriffZuweisbar=true; effekt.kategorie="Klassenmerkmale"; effekt.dauer="1 Min."; effekt.gebiet="selbst";
        const v=kampfmagusVorratFuerEffekt();
        status[effekt.name]=!!v?.a?.aktiv;
      }
@@ -1568,20 +1571,10 @@ function rendereSonderoptionenFuerEffekt(effekt,info){
  box.hidden=false;
 
  if(effekt.sonderlogik==="kampfmagus-waffenverstaerkung"){
-   const c=typeof aktiverCharakter==="function"?aktiverCharakter():null;
-   const angriffe=c?.kampfwerte?.angriffe||[];
    const v=kampfmagusVorratFuerEffekt();
    const infoText=document.createElement("p");
-   infoText.innerHTML=`<em>1 Punkt · 1 Minute · Verbesserungsbonus +${v?Math.min(5,1+Math.floor((v.st-1)/4)):1} (mit magischem Waffenbonus maximal +5). ${v?Math.max(0,v.max-Number(v.a.verbraucht||0)):0} Punkte frei. Ende manuell deaktivieren.</em>`;
+   infoText.innerHTML=`<em>1 Punkt · 1 Minute · Verbesserungsbonus +${v?Math.min(5,1+Math.floor((v.st-1)/4)):1} (mit magischem Waffenbonus maximal +5). ${v?Math.max(0,v.max-Number(v.a.verbraucht||0)):0} Punkte frei. Angriff unten über A1–A6 zuweisen.</em>`;
    box.append(infoText);
-   const label=document.createElement("label");label.append("Waffe ");
-   const select=document.createElement("select");select.setAttribute("aria-label","Waffe für arkane Verstärkung");
-   angriffe.forEach((angriff,i)=>{const opt=document.createElement("option");opt.value=String(i);opt.textContent=`${angriff.name||`Angriff ${i+1}`} (A${i+1})`;select.append(opt)});
-   select.value=String(v?.a?.angriff??0);
-   select.disabled=!!effekt.aktiv||!angriffe.length;
-   select.addEventListener("click",e=>e.stopPropagation());
-   select.addEventListener("change",e=>{e.stopPropagation();if(v){v.a.angriff=Number(select.value);if(typeof speichereCharaktere==="function")speichereCharaktere();if(typeof berechneWerte==="function")berechneWerte();}});
-   label.append(select);box.append(label);
  }
  if(effekt.sonderlogik==="maechtige-magische-faenge"){
    const optionen=effektOptionenFuerCharakter(effekt.id);
@@ -1671,6 +1664,9 @@ function setzeKampfmagusWaffenEffekt(effekt,aktiv){
  const v=kampfmagusVorratFuerEffekt();
  if(!v){alert("Für diese Fähigkeit wird ein Kampfmagus mit Arkanem Vorrat benötigt.");return false;}
  if(aktiv){
+   const ziele=angriffszieleFuerEffekt(effekt);
+   if(ziele.length!==1){alert("Bitte zuerst genau einen Angriff (A1–A6) zuweisen.");return false;}
+   v.a.angriff=Number(ziele[0].replace(/\D/g,""))-1;
    if(Number(v.a.verbraucht||0)>=v.max){alert("Keine Punkte im Arkanen Vorrat verfügbar.");return false;}
    v.a.verbraucht=Math.max(0,Number(v.a.verbraucht)||0)+1;
  }
@@ -1764,6 +1760,7 @@ function baueEffektliste(){
         cb.checked=!cb.checked;return;
       }
       status[effekt.name]=cb.checked;
+      if(typeof window.pfZeitEffektAktiviert==="function")window.pfZeitEffektAktiviert(aktiverCharakterId,effekt,cb.checked);
       speichereStatus(status);
       effekt.aktiv=cb.checked;
       if(typeof berechneWerte==="function") berechneWerte();
@@ -1903,7 +1900,15 @@ function baueEffektliste(){
            }else{
              neu.delete(wert);
            }
+           if(effekt.sonderlogik==="kampfmagus-waffenverstaerkung" && neu.size>1){
+             neu.clear(); if(checkbox.checked) neu.add(wert);
+           }
            setzeAngriffszieleFuerEffekt(effekt,[...neu]);
+           if(effekt.sonderlogik==="kampfmagus-waffenverstaerkung"){
+             const v=kampfmagusVorratFuerEffekt();
+             if(v){v.a.angriff=neu.size?Math.max(0,Number([...neu][0].replace(/\D/g,""))-1):-1;
+               if(typeof speichereCharaktere==="function")speichereCharaktere();}
+           }
            baueEffektliste();
            if(typeof berechneWerte==="function") berechneWerte();
          });
@@ -2091,6 +2096,8 @@ function leseEditorFormular(){
    beschreibung:document.getElementById("effektBeschreibung")?.value.trim()||"",
    quelle:document.getElementById("effektQuelle")?.value.trim()||"",
    angriffZuweisbar:!!document.getElementById("effektAngriffZuweisbar")?.checked,
+   dauer:document.getElementById("effektDauer")?.value||"",
+   gebiet:document.getElementById("effektGebiet")?.value||"",
    nutzerBonus:{
      aktiv:!!document.getElementById("effektNutzerBonusAktiv")?.checked,
      min:-20,
@@ -2120,6 +2127,9 @@ function schreibeEditorFormular(){
  if(beschreibung) beschreibung.value=editorState.entwurf.beschreibung;
  if(quelle) quelle.value=editorState.entwurf.quelle;
  if(angriffZuweisbar) angriffZuweisbar.checked=!!editorState.entwurf.angriffZuweisbar;
+ const dauer=document.getElementById("effektDauer"),gebiet=document.getElementById("effektGebiet");
+ if(dauer) dauer.value=editorState.entwurf.dauer||"";
+ if(gebiet) gebiet.value=editorState.entwurf.gebiet||"";
  if(nutzerBonusAktiv) nutzerBonusAktiv.checked=!!editorState.entwurf.nutzerBonus?.aktiv;
  if(titel){
    titel.textContent=editorState.effektId
