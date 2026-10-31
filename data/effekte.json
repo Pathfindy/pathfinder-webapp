@@ -6438,7 +6438,7 @@
     "name": "Arkane Waffenverstärkung (Kampfmagus)",
     "kategorie": "Klassenmerkmale",
     "aktiv": false,
-    "beschreibung": "Kampfmagus: Verstärkt eine zugewiesene Waffe für 1 Minute. Aktivierung kostet 1 Punkt aus dem Arkanen Vorrat. Verbesserungsbonus +1 (Stufe 1), +2 (Stufe 5), +3 (Stufe 9), +4 (Stufe 13), +5 (Stufe 17). Zusammen mit dem vorhandenen magischen Waffenbonus maximal +5. Das Ende der Wirkungsdauer wird manuell bestätigt.",
+    "beschreibung": "Kampfmagus: Verstärkt eine zugewiesene Waffe für 1 Minute. Der Verbrauch eines Punktes aus dem Arkanen Vorrat wird vom Nutzer manuell auf der Zauberseite verwaltet. Verbesserungsbonus +1 (Stufe 1), +2 (Stufe 5), +3 (Stufe 9), +4 (Stufe 13), +5 (Stufe 17). Zusammen mit dem vorhandenen magischen Waffenbonus maximal +5. Das Ende der Wirkungsdauer wird manuell bestätigt.",
     "quelle": "ABR Magie · Kampfmagus",
     "angriffZuweisbar": true,
     "sonderlogik": "kampfmagus-waffenverstaerkung",
