@@ -1667,8 +1667,6 @@ function setzeKampfmagusWaffenEffekt(effekt,aktiv){
    const ziele=angriffszieleFuerEffekt(effekt);
    if(ziele.length!==1){alert("Bitte zuerst genau einen Angriff (A1–A6) zuweisen.");return false;}
    v.a.angriff=Number(ziele[0].replace(/\D/g,""))-1;
-   if(Number(v.a.verbraucht||0)>=v.max){alert("Keine Punkte im Arkanen Vorrat verfügbar.");return false;}
-   v.a.verbraucht=Math.max(0,Number(v.a.verbraucht)||0)+1;
  }
  v.a.aktiv=!!aktiv;
  if(typeof speichereCharaktere==="function")speichereCharaktere();
