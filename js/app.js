@@ -1576,6 +1576,33 @@ function rendereSonderoptionenFuerEffekt(effekt,info){
    infoText.innerHTML=`<em>1 Punkt · 1 Minute · Verbesserungsbonus +${v?Math.min(5,1+Math.floor((v.st-1)/4)):1} (mit magischem Waffenbonus maximal +5). ${v?Math.max(0,v.max-Number(v.a.verbraucht||0)):0} Punkte frei. Angriff unten über A1–A6 zuweisen.</em>`;
    box.append(infoText);
  }
+ if(effekt.sonderlogik==="kampfmagus-waffenverstaerkung"){
+   const v=kampfmagusVorratFuerEffekt();
+   const st=v?.st||0;
+   const opt=effektOptionenFuerCharakter(effekt.id);
+   const aktiv=!!opt.waffeneigenschaft;
+   const zeile=document.createElement("label");
+   zeile.className="kampfmagus-eigenschaft-613";
+   const schalter=document.createElement("input");
+   schalter.type="checkbox"; schalter.checked=aktiv; schalter.disabled=st<5;
+   schalter.addEventListener("click",e=>e.stopPropagation());
+   schalter.addEventListener("change",e=>{
+     e.stopPropagation();
+     setzeEffektOptionenFuerCharakter(effekt.id,{waffeneigenschaft:schalter.checked});
+     if(v){v.a.waffeneigenschaft=schalter.checked; if(typeof speichereCharaktere==="function")speichereCharaktere();}
+     if(typeof berechneWerte==="function")berechneWerte();
+     baueEffektliste();
+   });
+   const rune=document.createElement("span");
+   rune.className="kampfmagus-eigenschaft-rune-613"+(aktiv?" leuchtet":"");
+   rune.textContent="ᚱ";
+   zeile.append(schalter,rune,document.createTextNode(" Zusätzliche Waffeneigenschaft (−1 Verbesserungsbonus)"));
+   box.append(zeile);
+   const hinweis=document.createElement("p");
+   hinweis.className="kampfmagus-eigenschaft-hinweis-613";
+   hinweis.textContent=st<5?"Ab Kampfmagus-Stufe 5 verfügbar.":"Beispiele: Aufflammen oder Schärfe. Die Eigenschaft kostet +1 des verfügbaren Verbesserungsbonus; die Wahl und Wirkung der Eigenschaft werden manuell verwaltet.";
+   box.append(hinweis);
+ }
  if(effekt.sonderlogik==="maechtige-magische-faenge"){
    const optionen=effektOptionenFuerCharakter(effekt.id);
    const modusAktuell=maechtigeMagischeFaengeModus(effekt);
@@ -1669,6 +1696,7 @@ function setzeKampfmagusWaffenEffekt(effekt,aktiv){
    v.a.angriff=Number(ziele[0].replace(/\D/g,""))-1;
  }
  v.a.aktiv=!!aktiv;
+ v.a.waffeneigenschaft=!!effektOptionenFuerCharakter(effekt.id).waffeneigenschaft;
  if(typeof speichereCharaktere==="function")speichereCharaktere();
  return true;
 }

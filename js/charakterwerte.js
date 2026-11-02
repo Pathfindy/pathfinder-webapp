@@ -353,6 +353,10 @@
     const effTp=effektiveTp617(charakter);
     maxTpFeld.value = charakter.maxTp;
     maxTpFeld.title=`Basismaximum ${charakter.maxTp}; aktiver Effekt ${effTp.maxBonus}; effektiv ${effTp.maximum}`;
+    let maxHint=document.getElementById("tpMaxEffektHinweis612");
+    if(!maxHint){maxHint=document.createElement("small");maxHint.id="tpMaxEffektHinweis612";maxTpFeld.insertAdjacentElement("afterend",maxHint)}
+    maxHint.textContent=effTp.maxBonus ? `Effektives Maximum: ${effTp.maximum} (${vorzeichen(effTp.maxBonus)} durch Effekte)` : "";
+    maxHint.hidden=!effTp.maxBonus;
     temporaereTpFeld.value = charakter.temporaereTp;
     aktuelleTpAusgabe.value = effTp.aktuell;
     aktuelleTpAusgabe.textContent = String(effTp.aktuell);
@@ -508,7 +512,7 @@
       const arkan=charakter?.zauberklassen?.Kampfmagus?.arkanerVorrat;
       const magusStufe=Number((charakter.klassen||[]).find(k=>k.name==="Kampfmagus")?.stufe||0);
       if(arkan?.aktiv&&Number(arkan.angriff)===index&&magusStufe>0){
-        const arkanBonus=Math.min(5,1+Math.floor((magusStufe-1)/4));
+        const arkanBonus=Math.max(0,Math.min(5,1+Math.floor((magusStufe-1)/4))-(arkan.waffeneigenschaft&&magusStufe>=5?1:0));
         const vorhandeneMagie=(typeof effekte!=="undefined"?effekte:[]).filter(e=>e.aktiv&&new RegExp(`^Waffe\\s*${index+1}\\s*\\(Magisch\\)$`,"i").test(e.name||""));
         const alt=Math.max(0,...(typeof sammleAktiveBoni==="function"?sammleAktiveBoni(vorhandeneMagie).map(b=>Number(b.wert)||0):vorhandeneMagie.flatMap(e=>(e.boni||[]).map(b=>Number(b.wert)||0))));
         const extra=Math.max(0,Math.min(arkanBonus,5-alt));

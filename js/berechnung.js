@@ -63,6 +63,14 @@ function dynamischerBonuswert(effekt, bonus, normalisiert) {
     // Ist sie aktiv, ersetzt der im Effektbanner gewählte Wert den
     // Grundwert ALLER Bonuszeilen des Effekts. Dadurch genügt es,
     // die Bonuszeilen normal mit +1 anzulegen.
+    if (effekt?.nutzerBonus?.aktiv && /negative stufe\s*\/\s*leben(?:s)?kraftentzug/i.test(String(effekt.name||""))) {
+        const auswahl = Number.isFinite(Number(effekt.nutzerBonusWertAktuell))
+            ? Number(effekt.nutzerBonusWertAktuell)
+            : (typeof nutzerBonusWertFuerEffekt === "function" ? Number(nutzerBonusWertFuerEffekt(effekt)) : 1);
+        const stufen = Math.max(0, Number.isFinite(auswahl) ? auswahl : 1);
+        return (normalisiert.ziel === "Max TP" || normalisiert.ziel === "Aktuelle TP" ? -5 : -1) * stufen;
+    }
+
     if (effekt?.nutzerBonus?.aktiv) {
         if (Number.isFinite(Number(effekt.nutzerBonusWertAktuell))) {
             return Number(effekt.nutzerBonusWertAktuell);

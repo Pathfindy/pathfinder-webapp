@@ -8,7 +8,7 @@
   ];
 
   const GEBIETE = [
-    "", "Hören", "Reichweite Eidolon", "selbst", "Sicht",
+    "", "Hören", "Reichweite Eidolon", "selbst", "Sicht", "Berührung", "Umkreis", "Ziel",
     "Umkreis 1,5m/ 5 Foot/ 1 Felder",
     "Umkreis 3m/ 10 Foot/ 2 Felder",
     "Umkreis 4,5m/ 15 Foot/ 3 Felder",
@@ -26,7 +26,7 @@
 
   const DAUERN = [
     "", "1 Min./Stufe", "1 Runde", "1 Runde/Stufe", "1 Std./Stufe",
-    "10 Min./Stufe", "10 Runden/Stufe", "12 Stunden", "bis gebannt",
+    "10 Min./Stufe", "10 Runden/Stufe", "1 Min.", "10 Min.", "1 Stunde", "1 Tag", "12 Stunden", "bis gebannt",
     "getragen", "in Reichweite", "Nach Angabe SL", "so lange Kampfrausch",
     "so lange vorgetragen", "unbegrenzt"
   ];
