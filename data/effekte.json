@@ -3857,6 +3857,26 @@
         "klassenQuelle": "",
         "stufenFaktor": 1,
         "wirktGegenKoerperloseBeruehrung": false
+      },
+      {
+        "ziel": "Max TP",
+        "bonusart": "Malus",
+        "wert": -5,
+        "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
+      },
+      {
+        "ziel": "Aktuelle TP",
+        "bonusart": "Malus",
+        "wert": -5,
+        "wertQuelle": "fest",
+        "attributQuelle": "CH",
+        "klassenQuelle": "",
+        "stufenFaktor": 1,
+        "wirktGegenKoerperloseBeruehrung": false
       }
     ],
     "gebiet": "selbst",
