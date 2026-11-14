@@ -1,0 +1,19 @@
+/* v0.61.14 – Lesbarkeit und Felder für Rettungswürfe/Kampfmanöver */
+/* Attributshinweise (GE, WE, KO, ST) und Spaltenüberschriften dunkel. */
+#charakterwerte #grundwerte26 .grundwert-label-attribut-48,
+#charakterwerte #grundwerte26 .grundwerte-kopf-26,
+#charakterwerte #grundwerte26 .spezial-rw-27 label,
+#charakterwerte #grundwerte26 .spezial-rw-basis-27,
+#charakterwerte #grundwerte26 .spezial-rw-27::before,
+#charakterwerte #grundwerte26 .grundwert-zeile-26 label {
+  color: #342015 !important;
+}
+/* Einheitlich nur 5 % Weiß bei den Eingabefeldern aller Haupt-RW und KMB. */
+#charakterwerte #grundwerte26 .grundwerte-gruppe-26 .grundwert-zeile-26 input[type="number"],
+#charakterwerte #grundwerte26 .grundwerte-gruppe-26 .grundwert-zeile-26 .fester-grundwert-442 {
+  background: rgba(255,255,255,.05) !important;
+  background-image: none !important;
+  color: #342015 !important;
+  border: 1px solid rgba(76,45,27,.42) !important;
+  border-radius: 11px !important;
+}
