@@ -107,23 +107,33 @@
     return maximum===null?ge:Math.min(ge,maximum);
   }
 
+  // Natürliche Rüstung wird gelegentlich als Verbesserungsbonus auf die RK
+  // modelliert (z. B. Amulett der natürlichen Rüstung). Bei Berührung zählt
+  // die Art der Rüstung, nicht allein der Name der Bonusart.
+  function istNatuerlicheRuestung47(bonus){
+    const name=String(bonus?.effektName||"")
+      .normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
+    return bonus?.bonusart==="Natürliche Rüstung" ||
+      /naturlichen?\s+rustung/.test(name) ||
+      /\brindenhaut\b/.test(name);
+  }
+
+  function rkBonusIgnoriert47(bonus,modus){
+    const art=bonus.bonusart;
+    if(modus==="falscherFuss" && art==="Ausweichen") return "entfällt auf dem falschen Fuß";
+    if(modus==="beruehrung" || modus==="koerperlos"){
+      if(istNatuerlicheRuestung47(bonus)) return "natürliche Rüstung – bei Berührung ignoriert";
+      if(["Rüstung","Schild"].includes(art)){
+        if(modus==="beruehrung") return "bei Berührung ignoriert";
+        if(!bonus.wirktGegenKoerperloseBeruehrung) return "nicht gegen körperlose Berührung wirksam";
+      }
+    }
+    return "";
+  }
+
   function rkBoniBewertet47(modus="normal"){
     const alle=aktiveBoniFuerZiel("Rüstungsklasse");
-    const erlaubt=alle.filter(bonus=>{
-      const art=bonus.bonusart;
-      if(modus==="falscherFuss" && art==="Ausweichen") return false;
-      if(modus==="beruehrung"){
-        return !["Rüstung","Schild","Natürliche Rüstung"].includes(art);
-      }
-      if(modus==="koerperlos"){
-        if(art==="Natürliche Rüstung") return false;
-        if(["Rüstung","Schild"].includes(art)){
-          return !!bonus.wirktGegenKoerperloseBeruehrung;
-        }
-      }
-      return true;
-    });
-    return bewerteBonusListe47(erlaubt);
+    return bewerteBonusListe47(alle.filter(bonus=>!rkBonusIgnoriert47(bonus,modus)));
   }
 
   function bewerteBonusListe47(boni=[]){
@@ -751,16 +761,8 @@
     // Separate Schleife ohne Identitätsannahmen: gleiche Stapellogik anhand Reihenfolge/Art/Wert.
     const bewertetKopie=[...bewertet];
     alle.forEach(bonus=>{
-      let ignoriert=false, status="";
-      if(modus==="falscherFuss" && bonus.bonusart==="Ausweichen"){
-        ignoriert=true; status="entfällt auf dem falschen Fuß";
-      }else if(modus==="beruehrung" && ["Rüstung","Schild","Natürliche Rüstung"].includes(bonus.bonusart)){
-        ignoriert=true; status="bei Berührung ignoriert";
-      }else if(modus==="koerperlos" && bonus.bonusart==="Natürliche Rüstung"){
-        ignoriert=true; status="bei körperloser Berührung ignoriert";
-      }else if(modus==="koerperlos" && ["Rüstung","Schild"].includes(bonus.bonusart) && !bonus.wirktGegenKoerperloseBeruehrung){
-        ignoriert=true; status="nicht gegen körperlose Berührung wirksam";
-      }
+      let status=rkBonusIgnoriert47(bonus,modus);
+      const ignoriert=!!status;
 
       let beruecksichtigt=false;
       if(!ignoriert){
