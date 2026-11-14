@@ -191,6 +191,50 @@
     box.querySelector('[data-arkan-max]').onchange=e=>{a.max=Math.max(0,Math.min(99,Math.trunc(Number(e.target.value)||0)));a.verbraucht=Math.min(a.verbraucht,a.max);save();render()};
     box.querySelectorAll('[data-arkan-slot]').forEach(el=>el.onclick=()=>{const i=Number(el.dataset.arkanSlot);a.verbraucht=i<a.verbraucht?i:i+1;save();render()});
   }
+  // Klassenfähigkeiten: getrennte, manuell geführte Tageskontingente pro Charakter/Klasse.
+  // Vorlagen sind Vorschläge, keine automatisch zugesicherten Klassenmerkmale.
+  const FAeHIGKEIT_VORLAGEN={
+    Alchemist:["Bomben","Mutagene"],Antipaladin:["Verderbnis","Grausamkeiten"],Arkanist:["Arkaner Vorrat"],
+    Barbar:["Kampfrausch (Runden)"],Barde:["Bardenauftritt (Runden)"],Blutwüter:["Blutrausch (Runden)"],
+    Druide:["Tiergestalt"],Ermittler:["Inspiration"],Hexe:["Hexereien (Anwendungen)"],
+    Hexenmeister:["Macht des Blutes"],Inquisitor:["Richtspruch","Verderben (Runden)"],
+    Jäger:["Tieraspekt (Minuten)"],Kampfmagus:[],Kämpfer:["Waffentraining / Sonderfähigkeiten"],
+    Kleriker:["Domänenfähigkeiten"],Kriegspriester:["Inbrunst","Segnungen"],
+    Magier:["Arkane Schule / Schulkräfte"],Mönch:["Ki-Vorrat"],Mystiker:["Offenbarungen"],
+    Paladin:["Handauflegen","Böses niederstrecken"],Paktmagier:["Monster herbeizaubern"],
+    Ritter:["Herausforderung"],Samurai:["Herausforderung"],Schamane:["Geisterfähigkeiten"],
+    Schurke:["Schurkentricks (begrenzte Anwendungen)"],Skalde:["Wütender Gesang (Runden)"],
+    Waldläufer:["Bevorzugter Feind / Sonderfähigkeiten"],Schütze:["Schneid (Punkte)"],
+    Ninja:["Ki-Vorrat"],Raufbold:["Kampfflexibilität"],Mentalist:["Mentalmagie / Disziplinfähigkeiten"],
+    Medium:["Geisterfähigkeiten"],Okkultist:["Mentalfokus"],Kinetiker:["Elementare Fähigkeiten"]
+  };
+  function renderKlassenFaehigkeiten(c){
+    const klassen=Array.isArray(c.klassen)?c.klassen.filter(k=>k&&k.name&&Number(k.stufe||0)>0):[];
+    if(!klassen.length)return;
+    c.klassenFaehigkeiten=c.klassenFaehigkeiten&&typeof c.klassenFaehigkeiten==='object'?c.klassenFaehigkeiten:{};
+    const sek=document.createElement('section');sek.className='zauber-karte-55 pf-faehigkeiten-615';
+    sek.innerHTML='<h3>Klassenfähigkeiten · Tageskontingente</h3><p class="zauber-fokus-hinweis-591"><em>Runden, Punkte und Anwendungen manuell verwalten. Die Vorschläge sind keine automatische Regelberechnung: Klassenstufe, Archetyp und gewählte Fähigkeiten beachten. Unbegrenzte Fähigkeiten benötigen keine Slots. Bestehende Zauber-, Fokus- und Arkane-Vorrat-Slots bleiben getrennt.</em></p>';
+    for(const k of klassen){
+      const key=k.name,st=c.klassenFaehigkeiten[key]||(c.klassenFaehigkeiten[key]={eintraege:[],initialisiert:false});
+      if(!Array.isArray(st.eintraege))st.eintraege=[];
+      if(!st.initialisiert){st.eintraege=(FAeHIGKEIT_VORLAGEN[key]||[]).map(n=>({name:n,max:0,verbraucht:0}));st.initialisiert=true;}
+      const wrap=document.createElement('div');wrap.className='pf-faehigkeiten-klasse';
+      wrap.innerHTML='<h4>'+esc(key)+' · Stufe '+Number(k.stufe||0)+'</h4>';
+      st.eintraege.forEach((e,j)=>{
+        e.max=Math.max(0,Math.min(120,Math.trunc(Number(e.max)||0)));
+        e.verbraucht=Math.max(0,Math.min(e.max,Math.trunc(Number(e.verbraucht)||0)));
+        const row=document.createElement('div');row.className='pf-faehigkeit-zeile';
+        row.innerHTML=`<div class="pf-faehigkeit-kopf"><label>Fähigkeit <input data-f-name value="${esc(e.name)}" aria-label="Name der Fähigkeit"></label><label>Maximum <input data-f-max type="number" inputmode="numeric" min="0" max="120" value="${e.max}"></label><button type="button" data-f-remove title="Fähigkeit entfernen">✕</button></div><small>${e.max-e.verbraucht} verfügbar / ${e.verbraucht} verbraucht · ${e.max} gesamt</small><div class="zauber-fokus-slots-591 pf-faehigkeit-slots">${Array.from({length:e.max},(_,i)=>`<button type="button" class="zauber-slot-554${i<e.verbraucht?' verbraucht':''}" data-f-slot="${i}" title="${i<e.verbraucht?'Wiederherstellen':'Verbrauchen'}" aria-label="${i<e.verbraucht?'Wiederherstellen':'Verbrauchen'}">${i<e.verbraucht?'<img src="assets/runes/delete.png" alt="" aria-hidden="true">':''}</button>`).join('')}</div>`;
+        row.querySelector('[data-f-name]').onchange=ev=>{e.name=ev.target.value.trim();save();render()};
+        row.querySelector('[data-f-max]').onchange=ev=>{e.max=Math.max(0,Math.min(120,Math.trunc(Number(ev.target.value)||0)));e.verbraucht=Math.min(e.max,e.verbraucht);save();render()};
+        row.querySelector('[data-f-remove]').onclick=()=>{st.eintraege.splice(j,1);save();render()};
+        row.querySelectorAll('[data-f-slot]').forEach(b=>b.onclick=()=>{const i=Number(b.dataset.fSlot);e.verbraucht=i<e.verbraucht?i:i+1;save();render()});
+        wrap.append(row);
+      });
+      const add=document.createElement('button');add.type='button';add.className='pf-faehigkeit-add';add.textContent='+ Fähigkeit hinzufügen';add.onclick=()=>{st.eintraege.push({name:'Neue Fähigkeit',max:0,verbraucht:0});save();render()};wrap.append(add);sek.append(wrap);
+    }
+    root.append(sek);
+  }
   function bonusState(x){
     const b=x.bonus;
     if(!Array.isArray(b.quellen)){
@@ -444,7 +488,7 @@
   }
 
   window.pfZauberDatenExport616=async function(){await load();exportiereZauberJson()};
-  async function render(){await load();root.innerHTML='';const c=ch();if(!c){zauberLexikon();return}const klassen=zauberKlassen(c);if(!klassen.length){zauberLexikon();return}if(!klassen.some(k=>k.name===klasseAktiv))klasseAktiv=klassen[0].name;renderKlassen(c,klassen);const k=klassen.find(k=>k.name===klasseAktiv),x=config(c,k.name);renderFokus(k,x);renderArkanerVorrat(k,x);renderMetamagie(c);renderWerte(c,k,x);renderBonus(k,x);renderGradListen(k,x);save();}
+  async function render(){await load();root.innerHTML='';const c=ch();if(!c){zauberLexikon();return}const klassen=zauberKlassen(c);if(!klassen.length){renderKlassenFaehigkeiten(c);zauberLexikon();save();return}if(!klassen.some(k=>k.name===klasseAktiv))klasseAktiv=klassen[0].name;renderKlassen(c,klassen);const k=klassen.find(k=>k.name===klasseAktiv),x=config(c,k.name);renderFokus(k,x);renderArkanerVorrat(k,x);renderKlassenFaehigkeiten(c);renderMetamagie(c);renderWerte(c,k,x);renderBonus(k,x);renderGradListen(k,x);save();}
 
   // Zauberdaten sind Teil des Charakterobjekts und müssen Import/Export-Normalisierung überleben.
   if(typeof normalisiereCharakter==="function"&&!normalisiereCharakter.__zauber5510){const altNormalisiere=normalisiereCharakter;const neu=function(charakter={}){const basis=altNormalisiere(charakter);return {...basis,zauberklassen:charakter.zauberklassen&&typeof charakter.zauberklassen==="object"?charakter.zauberklassen:(basis.zauberklassen||{}),metamagieErlernt:Array.isArray(charakter.metamagieErlernt)?charakter.metamagieErlernt:(basis.metamagieErlernt||[]),zauberMetamagie:charakter.zauberMetamagie&&typeof charakter.zauberMetamagie==="object"?charakter.zauberMetamagie:(basis.zauberMetamagie||{})}};neu.__zauber5510=true;normalisiereCharakter=neu;}
