@@ -1,0 +1,17 @@
+/* v0.61.19: Zauber werden ausschließlich über die Aktivierungsrune umgeschaltet.
+   Die Statuszeile ist kein Label und löst deshalb beim Antippen nichts aus. */
+#zauber .zauber-lerncheck-55{display:flex;align-items:center;gap:10px;cursor:default;min-height:42px;}
+#zauber .zauber-lerncheck-55>span{cursor:default;user-select:text;}
+#zauber .zauber-lerncheck-55>input[data-lern]{
+  -webkit-appearance:none;appearance:none;flex:0 0 42px;width:42px;height:44px;
+  margin:0;border:0;border-radius:50%;padding:0;cursor:pointer;
+  background:url(../assets/runes/activate.png) center / contain no-repeat;
+  opacity:.56;filter:saturate(.65);
+  -webkit-tap-highlight-color:transparent;
+}
+#zauber .zauber-lerncheck-55>input[data-lern]:checked{
+  opacity:1;filter:none;
+  background-image:url(../assets/runes/activate.png),radial-gradient(circle at center,rgba(35,115,97,.85) 0 31%,transparent 33%);
+  background-position:center,center;background-size:contain,contain;background-repeat:no-repeat;
+}
+#zauber .zauber-lerncheck-55>input[data-lern]:focus-visible{outline:2px solid #bf8b30;outline-offset:3px;}
