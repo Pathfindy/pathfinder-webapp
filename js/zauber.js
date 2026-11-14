@@ -118,10 +118,16 @@
   function normZauber(z){const klassen=z?.klassen&&typeof z.klassen==="object"?z.klassen:{};return {...z,id:String(z.id||("u"+Date.now().toString(36)+Math.random().toString(36).slice(2,7))),name:String(z.name||"").trim(),name_en:String(z.name_en||"").trim(),regelwerk_en:String(z.regelwerk_en||""),seite_en:z.seite_en??null,schule:String(z.schule||""),beschreibung:String(z.beschreibung||""),zeitaufwand:String(z.zeitaufwand||""),komponenten:String(z.komponenten||""),reichweite:String(z.reichweite||""),wirkungsbereich:String(z.wirkungsbereich||""),ziel:String(z.ziel||""),dauer:String(z.dauer||""),rettungswurf:String(z.rettungswurf||""),zauberresistenz:z.zauberresistenz??"",regelwerk:String(z.regelwerk||""),seite:z.seite===""||z.seite==null?"":Number(z.seite),klassen};}
   function kombiniereDaten(){
     const basis=(basisDaten?.zauber||[]).map(normZauber), aender=readJson(ADMIN_AENDERUNGEN_KEY,{}), benutzer=readJson(BENUTZER_KEY,[]), adminNeu=readJson(ADMIN_NEU_KEY,[]);
-    const merged=basis.map(z=>aender[z.id]?normZauber({...z,...aender[z.id],id:z.id}):z);
+    const merged=basis.map(z=>{
+      if(!aender[z.id])return z;
+      const override={...aender[z.id]};
+      // Alte lokale Admin-Kurztexte dürfen aktualisierte PDF-Beschreibungen nicht verdecken.
+      if(String(z.beschreibung||"").length>300 && String(override.beschreibung||"").length<300)delete override.beschreibung;
+      return normZauber({...z,...override,id:z.id});
+    });
     daten={zauber:[...merged,...benutzer.map(normZauber),...adminNeu.map(z=>normZauber({...z,standard:true}))]};
   }
-  async function load(){if(basisDaten)return;try{const r=await fetch("data/zauber.json?v=61.0");if(!r.ok)throw new Error();basisDaten=await r.json()}catch{basisDaten={zauber:[]}}kombiniereDaten();}
+  async function load(){if(basisDaten)return;try{const r=await fetch("data/zauber.json?v=61.18");if(!r.ok)throw new Error();basisDaten=await r.json()}catch{basisDaten={zauber:[]}}kombiniereDaten();}
   // Datenbank benutzt den historischen Klassenschlüssel „Kampfmagier“.
   // Anzeige und Charakterdaten verwenden „Kampfmagus“; keine Datenbankmutation.
   function zauberKlassenKey(name){return name==="Kampfmagus"?"Kampfmagier":name;}
@@ -170,7 +176,7 @@
     const max=x.fokus.max,used=x.fokus.verbraucht;
     const st=Number(k.stufe||0),chMod=mod(ch(),"CH");
     const berechnung=k.name==="Kleriker"?`Regelwert: 3 + CH-Modifikator (${fmt(chMod)}) = ${Math.max(0,3+chMod)} Anwendungen/Tag; Maximum manuell anpassbar.`:k.name==="Paladin"||k.name==="Antipaladin"?"Ab Stufe 4; verbraucht normalerweise zwei Anwendungen von Handauflegen bzw. Verderbnis je Fokussierung. Maximum manuell festlegen.":k.name==="Kriegspriester"?"Energie fokussieren kostet Inbrunst-Anwendungen; keine eigenen täglichen Fokus-Anwendungen. Maximum manuell festlegen.":"Nur mit passender Klassenfähigkeit. Anzahl richtet sich nach dieser Fähigkeit; Maximum manuell festlegen.";
-    box.innerHTML=`<div class="zauber-fokus-kopf-591"><h3>Energie fokussieren</h3><button type="button" class="zauber-toggle-5512" data-fokus-toggle aria-expanded="${fokusOffen}" aria-label="Energie fokussieren ${fokusOffen?"zuklappen":"aufklappen"}">${fokusOffen?"▴":"▾"}</button></div><div class="pf-aufklapp-inhalt-616" ${fokusOffen?"":"hidden"}><div class="pf-fokus-eingabe-616"><label>Maximum <input type="number" min="0" max="99" inputmode="numeric" data-fokus-max value="${max}" aria-label="Maximale Anwendungen Energie fokussieren"></label></div></div><p class="zauber-fokus-hinweis-591"><em>${esc(berechnung)}</em><br>${max-used} frei / ${max} gesamt</p><div class="zauber-fokus-slots-591" aria-label="Anwendungen Energie fokussieren">${Array.from({length:max},(_,i)=>`<button type="button" class="zauber-slot-554${i<used?" verbraucht":""}" data-fokus-slot="${i}" aria-label="${i<used?"Verbrauchte Anwendung wiederherstellen":"Anwendung verbrauchen"}" title="${i<used?"Wiederherstellen":"Verbrauchen"}">${i<used?'<img src="assets/runes/delete.png" alt="" aria-hidden="true">':''}</button>`).join("")}</div></div>`;
+    box.innerHTML=`<div class="zauber-metamagie-kopf-5512 pf-ressourcen-kopf-618"><strong>Energie fokussieren</strong><span>${max-used} frei / ${max} gesamt</span><button type="button" class="zauber-toggle-5512" data-fokus-toggle aria-expanded="${fokusOffen}" aria-label="Energie fokussieren ${fokusOffen?"zuklappen":"aufklappen"}">${fokusOffen?"▴":"▾"}</button></div><div class="pf-aufklapp-inhalt-616" ${fokusOffen?"":"hidden"}><div class="pf-fokus-eingabe-616"><label>Maximum <input type="number" min="0" max="99" inputmode="numeric" data-fokus-max value="${max}" aria-label="Maximale Anwendungen Energie fokussieren"></label></div><p class="zauber-fokus-hinweis-591"><em>${esc(berechnung)}</em></p><div class="zauber-fokus-slots-591" aria-label="Anwendungen Energie fokussieren">${Array.from({length:max},(_,i)=>`<button type="button" class="zauber-slot-554${i<used?" verbraucht":""}" data-fokus-slot="${i}" aria-label="${i<used?"Verbrauchte Anwendung wiederherstellen":"Anwendung verbrauchen"}" title="${i<used?"Wiederherstellen":"Verbrauchen"}">${i<used?'<img src="assets/runes/delete.png" alt="" aria-hidden="true">':''}</button>`).join("")}</div></div>`;
     root.append(box);
     box.querySelector('[data-fokus-toggle]').onclick=()=>{fokusOffen=!fokusOffen;render()};
     box.querySelector('[data-fokus-max]').onchange=e=>{x.fokus.max=Math.max(0,Math.min(99,Math.trunc(Number(e.target.value)||0)));x.fokus.verbraucht=Math.min(x.fokus.verbraucht,x.fokus.max);save();render()};
@@ -214,7 +220,7 @@
     if(!klassen.length)return;
     c.klassenFaehigkeiten=c.klassenFaehigkeiten&&typeof c.klassenFaehigkeiten==='object'?c.klassenFaehigkeiten:{};
     const sek=document.createElement('section');sek.className='zauber-karte-55 pf-faehigkeiten-615';
-    sek.innerHTML=`<div class="zauber-fokus-kopf-591"><h3>Klassenfähigkeiten</h3><button type="button" class="zauber-toggle-5512" data-faehigkeiten-toggle aria-expanded="${faehigkeitenOffen}" aria-label="Klassenfähigkeiten ${faehigkeitenOffen?'zuklappen':'aufklappen'}">${faehigkeitenOffen?'▴':'▾'}</button></div>`;
+    sek.innerHTML=`<div class="zauber-metamagie-kopf-5512 pf-ressourcen-kopf-618"><strong>Klassenfähigkeiten</strong><span></span><button type="button" class="zauber-toggle-5512" data-faehigkeiten-toggle aria-expanded="${faehigkeitenOffen}" aria-label="Klassenfähigkeiten ${faehigkeitenOffen?'zuklappen':'aufklappen'}">${faehigkeitenOffen?'▴':'▾'}</button></div>`;
     const inhalt=document.createElement('div');inhalt.className='pf-aufklapp-inhalt-616';inhalt.hidden=!faehigkeitenOffen;sek.append(inhalt);
     for(const k of klassen){
       const key=k.name,st=c.klassenFaehigkeiten[key]||(c.klassenFaehigkeiten[key]={eintraege:[],initialisiert:false});
