@@ -1,0 +1,8 @@
+/* v0.61.18: Ressourcenüberschriften identisch mit Metamagie; vollständige Aufklappbereiche */
+#zauber .pf-ressourcen-kopf-618{display:grid!important;grid-template-columns:1fr auto 34px!important;gap:10px!important;align-items:center!important;background:var(--z590-brown,#463124)!important;border:1px solid rgba(73,45,28,.4)!important;border-radius:11px!important;padding:9px!important;color:var(--z590-text,#35281e)!important;}
+#zauber .pf-ressourcen-kopf-618>strong,#zauber .pf-ressourcen-kopf-618>span{color:var(--z590-text,#35281e)!important;}
+#zauber .pf-ressourcen-kopf-618 .zauber-toggle-5512{margin:0!important;justify-self:end!important;}
+#zauber .pf-aufklapp-inhalt-616[hidden]{display:none!important;}
+#zauber .pf-aufklapp-inhalt-616{padding:12px 3px 3px;}
+#zauber .zauber-beschreibung-55{white-space:pre-line;overflow-wrap:anywhere;}
+@media(max-width:650px){#zauber .pf-ressourcen-kopf-618{grid-template-columns:1fr auto 34px!important;}}
