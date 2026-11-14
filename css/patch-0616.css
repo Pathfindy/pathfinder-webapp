@@ -1,10 +1,10 @@
-/* v0.61.6 */
-#effekte #boniListe .effekt .effekt-favorit img{content:url('../assets/runes/Favorit.png')!important;width:100%!important;height:100%!important;object-fit:contain!important}
-#effekte #boniListe .effekt .effekt-favorit:not(.aktiv) img{filter:none!important}
-#effekte #boniListe .effekt .effekt-favorit.aktiv img{filter:drop-shadow(0 0 5px #ffdb72) drop-shadow(0 0 10px #e8ab2d)!important}
-#zauber .zauber-wert-55[data-wert616]{cursor:pointer}
-#zauber .zauber-wert-55[data-wert616]:focus-visible{outline:2px solid #b28a42}
-.zauber-wert-dialog-616{max-width:min(92vw,480px);border-radius:14px;background:#eee0c8;color:#302016;padding:22px;border:2px solid #785839}
-.zauber-wert-dialog-616::backdrop{background:rgba(0,0,0,.5)}
-.zauber-wert-dialog-616 li{padding:5px 0}
-#btnZauberExport616{margin:12px 0;padding:12px;border-radius:10px;background:rgba(65,35,19,.2)}
+/* v0.61.16: aufklappbare Ressourcen und einheitliche Bedienelemente */
+#zauber .pf-aufklapp-inhalt-616[hidden]{display:none!important}
+#zauber .pf-aufklapp-inhalt-616{padding:12px 3px 3px}
+#zauber .pf-faehigkeiten-615>.zauber-fokus-kopf-591,#zauber .zauber-fokus-591>.zauber-fokus-kopf-591{background:#463124!important;color:#fff!important}
+#zauber .pf-faehigkeiten-615>.zauber-fokus-kopf-591 h3,#zauber .zauber-fokus-591>.zauber-fokus-kopf-591 h3{color:#fff!important;margin:0!important}
+#zauber .pf-faehigkeiten-615 .zauber-toggle-5512,#zauber .zauber-fokus-591 .zauber-toggle-5512{margin-left:auto;background:rgba(255,255,255,.13)!important;color:#fff!important}
+#zauber .pf-fokus-eingabe-616{display:flex;justify-content:flex-end;margin-bottom:8px}
+#zauber .pf-fokus-eingabe-616 label{display:flex;align-items:center;gap:8px}
+#zauber .pf-faehigkeit-add{display:inline-flex;align-items:center;justify-content:center;gap:6px;background:#463124!important;color:#fff!important;border:1px solid #8c7154!important;border-radius:9px!important;padding:9px 14px!important;font-weight:700;min-height:42px}
+#zauber .pf-faehigkeit-add:hover{filter:brightness(1.2)}
