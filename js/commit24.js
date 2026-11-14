@@ -131,34 +131,51 @@
   // damit Wertquelle (Fest/Stufenwert) und Faktor nicht wieder überschrieben werden.
 
 
-  function exportiereCharakter24() {
+  async function exportiereCharakter24() {
     const charakter = aktiverCharakter();
     if (!charakter) return alert("Es ist kein aktiver Charakter vorhanden.");
 
     const daten = {
       format: "pathfinder-charakter",
-      version: 2,
+      version: 7,
+      appVersion: typeof APP_VERSION === "string" ? APP_VERSION : null,
+      kampagne: String(charakter.kampagne || ""),
+      zauberBenutzerdefiniert: (() => { try { return JSON.parse(localStorage.getItem("pf-benutzer-zauber") || "[]"); } catch { return []; } })(),
       exportiertAm: new Date().toISOString(),
       charakter: JSON.parse(JSON.stringify(charakter)),
       effektStatus: JSON.parse(JSON.stringify(ladeStatusFuerCharakter(charakter.id))),
       effektAngriffsziele: typeof ladeEffektAngriffszieleFuerCharakter === "function"
         ? JSON.parse(JSON.stringify(ladeEffektAngriffszieleFuerCharakter(charakter.id)))
         : {},
+      effektStufen: typeof ladeAlleEffektStufen === "function" ? JSON.parse(JSON.stringify(ladeAlleEffektStufen()[charakter.id] || {})) : {},
+      effektOptionen: typeof ladeAlleEffektOptionen === "function" ? JSON.parse(JSON.stringify(ladeAlleEffektOptionen()[charakter.id] || {})) : {},
+      effektFilter: typeof effektFilterFuerCharakter === "function" ? JSON.parse(JSON.stringify(effektFilterFuerCharakter(charakter.id))) : {},
+      effektSchnellleisten: window.pfSchnellleisten50?.laden ? JSON.parse(JSON.stringify(window.pfSchnellleisten50.laden(charakter.id))) : {},
       favoriten: favoritenFuerCharakter(charakter.id),
       benutzerEffekte: listeBenutzerEffekte().map(effekt => JSON.parse(JSON.stringify(effekt)))
     };
 
-    const blob = new Blob([JSON.stringify(daten, null, 2)], {
-      type: "application/json;charset=utf-8"
-    });
+    const blob = new Blob([JSON.stringify(daten, null, 2)], {type: "application/json;charset=utf-8"});
+    const dateiname = `${charakter.name.replace(/[^\wäöüÄÖÜß-]+/g, "-")}.json`;
+    // File System Access API: Nutzer kann dieselbe Datei erneut auswählen und ersetzen.
+    // In anderen Browsern bleibt der reguläre Download erhalten.
+    if (typeof window.showSaveFilePicker === "function") {
+      try {
+        const handle = await window.showSaveFilePicker({suggestedName:dateiname,
+          types:[{description:"Pathfinder-Charakter (JSON)",accept:{"application/json":[".json"]}}]});
+        const stream = await handle.createWritable();
+        await stream.write(blob); await stream.close();
+        return;
+      } catch (fehler) {
+        if (fehler && fehler.name === "AbortError") return;
+        console.warn("Direktes Speichern nicht möglich, verwende Download:",fehler);
+      }
+    }
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
-    link.href = url;
-    link.download = `${charakter.name.replace(/[^\wäöüÄÖÜß-]+/g, "-")}.json`;
-    document.body.appendChild(link);
-    link.click();
-    link.remove();
-    URL.revokeObjectURL(url);
+    link.href = url; link.download = dateiname;
+    document.body.appendChild(link); link.click(); link.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1500);
   }
 
   function installiereExport24() {

@@ -33,7 +33,7 @@
   };
   const KLASSEN_PROGRESSION={Alchemist:"sechs",Antipaladin:"vier",Arkanist:"voll",Barde:"sechs",Blutwüter:"vier",Druide:"voll",Ermittler:"sechs",Hexe:"voll",Hexenmeister:"spontan9",Inquisitor:"sechs",Jäger:"sechs",Kampfmagus:"sechs",Kleriker:"voll",Kriegspriester:"sechs",Magier:"voll",Mystiker:"spontan9",Paladin:"vier",Paktmagier:"sechs",Schamane:"voll",Skalde:"sechs",Waldläufer:"vier"};
 
-  let basisDaten=null,daten={zauber:[]},klasseAktiv="",suche="",offeneGrade=new Set(),editorId=null,editorStandard=false,metamagieOffen=false,offeneKlassen=new Set();
+  let basisDaten=null,daten={zauber:[]},klasseAktiv="",suche="",offeneGrade=new Set(),editorId=null,editorStandard=false,metamagieOffen=false,fokusOffen=false,faehigkeitenOffen=false,offeneKlassen=new Set();
 
   const METAMAGIE=[
     {id:"ausdehnen",name:"Zauber ausdehnen",quelle:"GRW",slot:1,typ:"dauer",faktor:2,hinweis:"Verdoppelt die Wirkungsdauer."},
@@ -170,8 +170,9 @@
     const max=x.fokus.max,used=x.fokus.verbraucht;
     const st=Number(k.stufe||0),chMod=mod(ch(),"CH");
     const berechnung=k.name==="Kleriker"?`Regelwert: 3 + CH-Modifikator (${fmt(chMod)}) = ${Math.max(0,3+chMod)} Anwendungen/Tag; Maximum manuell anpassbar.`:k.name==="Paladin"||k.name==="Antipaladin"?"Ab Stufe 4; verbraucht normalerweise zwei Anwendungen von Handauflegen bzw. Verderbnis je Fokussierung. Maximum manuell festlegen.":k.name==="Kriegspriester"?"Energie fokussieren kostet Inbrunst-Anwendungen; keine eigenen täglichen Fokus-Anwendungen. Maximum manuell festlegen.":"Nur mit passender Klassenfähigkeit. Anzahl richtet sich nach dieser Fähigkeit; Maximum manuell festlegen.";
-    box.innerHTML=`<div class="zauber-fokus-kopf-591"><h3>Energie fokussieren</h3><label>Maximum <input type="number" min="0" max="99" inputmode="numeric" data-fokus-max value="${max}" aria-label="Maximale Anwendungen Energie fokussieren"></label></div><p class="zauber-fokus-hinweis-591"><em>${esc(berechnung)}</em><br>${max-used} frei / ${max} gesamt</p><div class="zauber-fokus-slots-591" aria-label="Anwendungen Energie fokussieren">${Array.from({length:max},(_,i)=>`<button type="button" class="zauber-slot-554${i<used?" verbraucht":""}" data-fokus-slot="${i}" aria-label="${i<used?"Verbrauchte Anwendung wiederherstellen":"Anwendung verbrauchen"}" title="${i<used?"Wiederherstellen":"Verbrauchen"}">${i<used?'<img src="assets/runes/delete.png" alt="" aria-hidden="true">':''}</button>`).join("")}</div>`;
+    box.innerHTML=`<div class="zauber-fokus-kopf-591"><h3>Energie fokussieren</h3><button type="button" class="zauber-toggle-5512" data-fokus-toggle aria-expanded="${fokusOffen}" aria-label="Energie fokussieren ${fokusOffen?"zuklappen":"aufklappen"}">${fokusOffen?"▴":"▾"}</button></div><div class="pf-aufklapp-inhalt-616" ${fokusOffen?"":"hidden"}><div class="pf-fokus-eingabe-616"><label>Maximum <input type="number" min="0" max="99" inputmode="numeric" data-fokus-max value="${max}" aria-label="Maximale Anwendungen Energie fokussieren"></label></div></div><p class="zauber-fokus-hinweis-591"><em>${esc(berechnung)}</em><br>${max-used} frei / ${max} gesamt</p><div class="zauber-fokus-slots-591" aria-label="Anwendungen Energie fokussieren">${Array.from({length:max},(_,i)=>`<button type="button" class="zauber-slot-554${i<used?" verbraucht":""}" data-fokus-slot="${i}" aria-label="${i<used?"Verbrauchte Anwendung wiederherstellen":"Anwendung verbrauchen"}" title="${i<used?"Wiederherstellen":"Verbrauchen"}">${i<used?'<img src="assets/runes/delete.png" alt="" aria-hidden="true">':''}</button>`).join("")}</div></div>`;
     root.append(box);
+    box.querySelector('[data-fokus-toggle]').onclick=()=>{fokusOffen=!fokusOffen;render()};
     box.querySelector('[data-fokus-max]').onchange=e=>{x.fokus.max=Math.max(0,Math.min(99,Math.trunc(Number(e.target.value)||0)));x.fokus.verbraucht=Math.min(x.fokus.verbraucht,x.fokus.max);save();render()};
     box.querySelectorAll('[data-fokus-slot]').forEach(b=>b.onclick=()=>{const i=Number(b.dataset.fokusSlot);x.fokus.verbraucht=i<used?i:i+1;save();render()});
   }
@@ -213,7 +214,8 @@
     if(!klassen.length)return;
     c.klassenFaehigkeiten=c.klassenFaehigkeiten&&typeof c.klassenFaehigkeiten==='object'?c.klassenFaehigkeiten:{};
     const sek=document.createElement('section');sek.className='zauber-karte-55 pf-faehigkeiten-615';
-    sek.innerHTML='<h3>Klassenfähigkeiten · Tageskontingente</h3><p class="zauber-fokus-hinweis-591"><em>Runden, Punkte und Anwendungen manuell verwalten. Die Vorschläge sind keine automatische Regelberechnung: Klassenstufe, Archetyp und gewählte Fähigkeiten beachten. Unbegrenzte Fähigkeiten benötigen keine Slots. Bestehende Zauber-, Fokus- und Arkane-Vorrat-Slots bleiben getrennt.</em></p>';
+    sek.innerHTML=`<div class="zauber-fokus-kopf-591"><h3>Klassenfähigkeiten</h3><button type="button" class="zauber-toggle-5512" data-faehigkeiten-toggle aria-expanded="${faehigkeitenOffen}" aria-label="Klassenfähigkeiten ${faehigkeitenOffen?'zuklappen':'aufklappen'}">${faehigkeitenOffen?'▴':'▾'}</button></div>`;
+    const inhalt=document.createElement('div');inhalt.className='pf-aufklapp-inhalt-616';inhalt.hidden=!faehigkeitenOffen;sek.append(inhalt);
     for(const k of klassen){
       const key=k.name,st=c.klassenFaehigkeiten[key]||(c.klassenFaehigkeiten[key]={eintraege:[],initialisiert:false});
       if(!Array.isArray(st.eintraege))st.eintraege=[];
@@ -231,9 +233,10 @@
         row.querySelectorAll('[data-f-slot]').forEach(b=>b.onclick=()=>{const i=Number(b.dataset.fSlot);e.verbraucht=i<e.verbraucht?i:i+1;save();render()});
         wrap.append(row);
       });
-      const add=document.createElement('button');add.type='button';add.className='pf-faehigkeit-add';add.textContent='+ Fähigkeit hinzufügen';add.onclick=()=>{st.eintraege.push({name:'Neue Fähigkeit',max:0,verbraucht:0});save();render()};wrap.append(add);sek.append(wrap);
+      const add=document.createElement('button');add.type='button';add.className='pf-faehigkeit-add';add.textContent='+ Fähigkeit hinzufügen';add.onclick=()=>{st.eintraege.push({name:'Neue Fähigkeit',max:0,verbraucht:0});save();render()};wrap.append(add);inhalt.append(wrap);
     }
     root.append(sek);
+    sek.querySelector('[data-faehigkeiten-toggle]').onclick=()=>{faehigkeitenOffen=!faehigkeitenOffen;render()};
   }
   function bonusState(x){
     const b=x.bonus;
