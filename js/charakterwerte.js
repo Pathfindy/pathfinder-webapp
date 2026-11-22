@@ -173,9 +173,8 @@
     // Stärke-Mali werden nie reduziert.
     if(st<0) return st;
     const halb=st*0.5;
-    // Pathfinder: mindestens +1, sobald ein positiver halber Bonus entsteht;
-    // danach abrunden: 0→0, 0,5→1, 1→1, 1,5→1, 2→2 ...
-    if(halb>0 && halb<1) return 1;
+    // Pathfinder: Bruchteile bei halbem Stärke-Bonus immer abrunden.
+    // Beispiel: ST +1 -> 0,5 -> +0 (ohne Doppelschnitt).
     return Math.floor(halb);
   }
 
