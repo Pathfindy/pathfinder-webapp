@@ -1,0 +1,19 @@
+/* Ausrüstungslexikon: bestehende Seiten-, Karten- und Runengestaltung wird geerbt. */
+#ausruestung .ausr-karte{background:var(--card-bg,rgba(12,37,49,.78));border:1px solid rgba(209,169,76,.55);border-radius:12px;padding:16px;color:inherit}
+#ausruestung .ausr-filter{display:grid;grid-template-columns:2fr 1fr 1fr;gap:12px;margin-bottom:12px}
+#ausruestung .ausr-filter label{display:flex;flex-direction:column;gap:5px;font-weight:600}
+#ausruestung .ausr-filter input,#ausruestung .ausr-filter select{width:100%;min-width:0;box-sizing:border-box;padding:10px;border-radius:7px}
+#ausruestung .ausr-status,#ausruestung .ausr-pruefung,#ausruestung .ausr-hinweis{font-size:.87em;opacity:.8;margin:10px 0}
+#ausruestung .ausr-layout{display:grid;grid-template-columns:minmax(200px,1fr) minmax(0,1.6fr);gap:15px}
+#ausruestung .ausr-liste{max-height:620px;overflow:auto;border:1px solid rgba(209,169,76,.35);border-radius:8px}
+#ausruestung .ausr-treffer{display:block;width:100%;text-align:left;padding:10px 12px;border:0;border-bottom:1px solid rgba(209,169,76,.22);border-radius:0;background:transparent;color:inherit;cursor:pointer}
+#ausruestung .ausr-treffer small{display:block;opacity:.8;margin-top:3px}
+#ausruestung .ausr-treffer.ausr-aktiv,#ausruestung .ausr-treffer:hover{background:rgba(20,153,159,.23)}
+#ausruestung .ausr-details{border:1px solid rgba(209,169,76,.35);border-radius:8px;padding:14px;min-width:0}
+#ausruestung .ausr-details h3{margin-top:0;overflow-wrap:anywhere}
+#ausruestung .ausr-details h3 small{display:block;font-size:.7em;opacity:.85;margin-top:5px}
+#ausruestung .ausr-daten{display:grid;gap:5px}
+#ausruestung .ausr-zeile{display:grid;grid-template-columns:42% 1fr;gap:9px;padding:5px 0;border-bottom:1px solid rgba(209,169,76,.17);overflow-wrap:anywhere}
+#ausruestung .ausr-zeile span{opacity:.85}
+#ausruestung .ausr-text{white-space:pre-line;overflow-wrap:anywhere}
+@media(max-width:700px){#ausruestung .ausr-filter{grid-template-columns:1fr}#ausruestung .ausr-layout{grid-template-columns:1fr}#ausruestung .ausr-liste{max-height:290px}}
