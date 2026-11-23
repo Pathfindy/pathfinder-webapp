@@ -9,6 +9,7 @@ const seiten={
  charakterwerte:document.getElementById("charakterwerte"),
  leben:document.getElementById("leben"),
  zeit:document.getElementById("zeit"),
+ ausruestung:document.getElementById("ausruestung"),
  zauber:document.getElementById("zauber"),
  vermoegen:document.getElementById("vermoegen"),
  charaktere:document.getElementById("charaktere"),

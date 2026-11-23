@@ -31,7 +31,10 @@
     el.innerHTML=`<h3>${esc(x.name)}${x.name_en?` <small>(${esc(x.name_en)})</small>`:''}</h3><div class="ausr-daten">${row('Quelle (DE)',esc(x.quelle_de||'–'))}${row('Quelle (EN)',esc(x.quelle_en||'–'))}${row('Buchseite',fmt(x.seite))}${row('Kategorie',esc(x.kategorie))}${row('Wo getragen',esc(x.ausruestungsplatz||'Kein fester Platz'))}${row('Preis (GM)',fmt(x.preis_gm))}${row('ZS',fmt(x.zs))}${row('Aura',fmt(x.aura))}${row('Erschaffungskosten (GM)',fmt(x.erschaffungskosten_gm))}</div><h4>Beschreibung</h4><p class="ausr-text">${val(x.beschreibung)}</p><h4>Erschaffungsvoraussetzungen</h4><p class="ausr-text">${val(x.erschaffungsvoraussetzungen)}</p><p class="ausr-pruefung">${esc(x.pruefstatus||'Nicht geprüft')}</p>`;
   }
   async function load(){try{const r=await fetch('data/ausruestung.json?v=1',{cache:'no-store'});if(!r.ok)throw Error('HTTP '+r.status);const j=await r.json();if(!Array.isArray(j.gegenstaende))throw Error('Ungültige Datenstruktur');daten=j.gegenstaende;bereit=true;render()}catch(e){fehler='Ausrüstungsdaten konnten nicht geladen werden: '+e.message;render()}}
-  const previous=zeigeSeite;
-  zeigeSeite=function(name){previous(name);if(name==='ausruestung'){document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');if(!bereit&&!fehler)load();else render()}};
-  btn.addEventListener('click',()=>zeigeSeite('ausruestung'));
+  btn.addEventListener('click',()=>{
+    zeigeSeite('ausruestung');
+    document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    if(!bereit&&!fehler)load();else render();
+  });
 })();
