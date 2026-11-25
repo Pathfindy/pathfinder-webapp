@@ -69,7 +69,7 @@
 
 <header>
 
-    <h1>Das azlantische Helferlein <small class="app-version">v0.61.27</small></h1>
+    <h1>Das azlantische Helferlein <small class="app-version">v0.61.28</small></h1>
 
 </header>
 
@@ -90,6 +90,7 @@
 
 </nav>
 
+<div id="charakterSpeicherWarnung" role="alert" hidden style="padding:12px;background:#fff0ce;color:#6b2415;font-weight:bold"></div>
 <main>
 
     <!-- ========================= -->
@@ -440,6 +441,7 @@
         </div>
 
         <div id="adminWerkzeuge" class="admin-karte" hidden>
+            <h3>Charakter-Notfallsicherung</h3><p>Lokale Sicherung der Charakterliste (kein vollständiger Charakterexport).</p><button type="button" id="btnCharakterBackup628">Letzten Charakterbestand wiederherstellen</button>
             <button type="button" id="btnZauberExport616">Zauberdatenbank als zauber.json exportieren</button>
             <h3>Standard-Effektliste</h3>
             <p>Öffne die Seite „Effekte“ und tippe bei einem Standardeffekt auf ✏️. Änderungen werden als lokaler Admin-Arbeitsstand gespeichert.</p>
@@ -453,7 +455,7 @@
 </main>
 <script>document.addEventListener("DOMContentLoaded",()=>{const b=document.getElementById("btnZauberExport616");if(b)b.addEventListener("click",()=>{if(typeof window.pfZauberDatenExport616==="function")window.pfZauberDatenExport616();else alert("Zauberdatenbank wird noch geladen.")})});</script>
 
-<script src="js/app.js?v=61.22"></script>
+<script src="js/app.js?v=61.28"></script>
 <script src="js/charakterwerte.js?v=61.21"></script>
 <script src="js/leben.js?v=53"></script>
 <script src="js/vermoegen.js?v=42.1"></script>
