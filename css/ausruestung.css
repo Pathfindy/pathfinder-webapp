@@ -1,4 +1,4 @@
-/* Ausrüstungskompendium v0.61.25 – Gestaltung wie das vorhandene Zauberlexikon. */
+/* Ausrüstungskompendium v0.61.26 – Gestaltung wie das vorhandene Zauberlexikon. */
 #ausruestung { color: #39271c; }
 #ausruestung .ausr-lexikon { margin: .75rem 0 1rem; border: 1px solid rgba(70,40,20,.4) !important; border-radius: 9px; background: rgba(52,30,17,.30) !important; overflow: hidden; }
 #ausruestung .ausr-lexikon > summary { display: flex; align-items: center; gap: 12px; min-height: 78px; padding: 9px 14px; cursor: pointer; list-style: none; font-weight: 700; color: #49351e; }
@@ -27,3 +27,20 @@
 @media (max-width: 650px) { #ausruestung .ausr-filterfelder { grid-template-columns: 1fr; } #ausruestung .ausr-trefferliste { grid-template-columns: 1fr; } }
 /* Unveränderte, gewünschte Runenreihenfolge. */
 nav #btnCharaktere{order:1}nav #btnCharakterwerte{order:2}nav #btnLeben{order:3}nav #btnEffekte{order:4}nav #btnZauber{order:5}nav #btnAusruestung{order:6}nav #btnZeit{order:7}nav #btnVermoegen{order:8}nav #btnAdmin{order:9}
+
+/* Mobile-first: kompakte Metadaten, umbrechende Quellen und gut erreichbare Bedienelemente. */
+#ausruestungPergament625 { box-sizing: border-box; max-width: calc(100% - 16px); }
+#ausruestungPergament625 dl { grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); align-items: start; font-size: .95em; }
+#ausruestungPergament625 dt, #ausruestungPergament625 dd { min-width: 0; overflow-wrap: anywhere; }
+#ausruestungPergament625 .zauber-pergament-schliessen-600 { min-width: 44px; min-height: 44px; }
+@media (max-width: 650px) {
+  #ausruestung .ausr-inhalt { padding: .65rem; }
+  #ausruestung .ausr-suche { flex-direction: column; align-items: stretch; gap: .35rem; }
+  #ausruestung .ausr-suche input, #ausruestung .ausr-filterfelder select { min-width: 0; min-height: 44px; font-size: 16px; }
+  #ausruestung .ausr-treffer { min-width: 0; min-height: 44px; overflow-wrap: anywhere; }
+  #ausruestung .ausr-trefferliste { grid-template-columns: minmax(0,1fr); max-height: 50vh; }
+  #ausruestung .ausr-lexikon > summary { gap: 8px; padding: 8px; min-height: 64px; }
+  #ausruestung .ausr-titelrune { width: 48px; height: 48px; flex-basis: 48px; }
+  #ausruestungPergament625 .zauber-pergament-inhalt-600 { padding: .85rem; }
+  #ausruestungPergament625 dl { grid-template-columns: minmax(0, 40%) minmax(0, 1fr); gap: .4rem .55rem; }
+}
