@@ -1,7 +1,7 @@
 // Das azlantische Helferlein der Boni
 // app.js
 // Version 0.32
-const APP_VERSION="0.55.5";
+const APP_VERSION="0.61.28";
 
 const seiten={
  dashboard:document.getElementById("dashboard"),
@@ -62,6 +62,20 @@ function speichereJson(key,wert){
 }
 
 let charaktere=[];
+let charakterSpeicherBereit=false;
+let charakterLetzterStand=null;
+const CHARAKTER_BACKUP="pf-charaktere-notfallsicherung";
+function gueltigeCharakterliste(raw){
+ const liste=JSON.parse(raw);
+ if(!Array.isArray(liste)||!liste.length||liste.some(c=>!c||typeof c!=="object"||Array.isArray(c))) throw new Error("Ungültige Charakterliste");
+ return liste;
+}
+function charakterWarnung(text){
+ const el=document.getElementById("charakterSpeicherWarnung");
+ if(el){el.hidden=false;el.textContent=text;}
+ console.warn(text);
+}
+
 let aktiverCharakterId=null;
 
 function neueCharakterId(){
@@ -264,19 +278,40 @@ function setzeCharakterKlassen(id,klassen){
 }
 
 function speichereCharaktere(){
- speichereJson(STORAGE_KEYS.charaktere,charaktere);
- if(aktiverCharakterId){
-   localStorage.setItem(STORAGE_KEYS.aktiverCharakter,aktiverCharakterId);
+ if(!charakterSpeicherBereit || !charaktere.length) return false;
+ try{
+   const alt=localStorage.getItem(STORAGE_KEYS.charaktere);
+   const neu=JSON.stringify(charaktere);
+   if(alt!==charakterLetzterStand) throw new Error("Charakterdaten wurden in einem anderen Fenster geändert.");
+   if(alt!==neu){
+     if(alt!==null){gueltigeCharakterliste(alt);localStorage.setItem(CHARAKTER_BACKUP,alt);}
+     localStorage.setItem(STORAGE_KEYS.charaktere,neu);
+     charakterLetzterStand=neu;
+   }
+   if(aktiverCharakterId) localStorage.setItem(STORAGE_KEYS.aktiverCharakter,aktiverCharakterId);
+   return true;
+ }catch(fehler){
+   charakterWarnung("Charakterdaten konnten nicht gespeichert werden. Bitte exportieren und andere App-Fenster schließen. "+fehler.message);
+   return false;
  }
 }
-
-function speichereCharaktereSofort(){
- speichereCharaktere();
-}
-
+function speichereCharaktereSofort(){speichereCharaktere();}
 window.addEventListener("pagehide",speichereCharaktereSofort);
-window.addEventListener("beforeunload",speichereCharaktereSofort);
 
+function stelleCharakterBackupWiederHer(){
+ if(!istAdminEntsperrt()) return;
+ try{
+   const raw=localStorage.getItem(CHARAKTER_BACKUP);
+   if(raw===null){alert("Keine lokale Notfallsicherung vorhanden.");return;}
+   const liste=gueltigeCharakterliste(raw);
+   if(!confirm(`${liste.length} Charakter(e) aus der lokalen Sicherung wiederherstellen? Der aktuelle Bestand wird ersetzt. Bitte vorher exportieren.`))return;
+   const alt=localStorage.getItem(STORAGE_KEYS.charaktere);
+   if(alt!==null) localStorage.setItem("pf-charaktere-vor-wiederherstellung",alt);
+   localStorage.setItem(STORAGE_KEYS.charaktere,raw);
+   charakterSpeicherBereit=false;
+   location.reload();
+ }catch(fehler){alert("Wiederherstellung fehlgeschlagen: "+fehler.message);}
+}
 
 function findeCharakter(id){
  return charaktere.find(charakter=>charakter.id===id)||null;
@@ -424,21 +459,26 @@ function aktualisiereAlleAnsichten(){
 window.aktualisiereAlleAnsichten=aktualisiereAlleAnsichten;
 
 function ladeCharaktere(){
- const gespeichert=ladeJson(STORAGE_KEYS.charaktere,[]);
- charaktere=Array.isArray(gespeichert)
-   ?gespeichert.map(normalisiereCharakter)
-   :[];
-
- if(charaktere.length===0){
-   charaktere=[normalisiereCharakter({name:"Mein Charakter"})];
+ charakterSpeicherBereit=false;
+ try{
+   const raw=localStorage.getItem(STORAGE_KEYS.charaktere);
+   charakterLetzterStand=raw;
+   if(raw===null){
+     if(localStorage.getItem(CHARAKTER_BACKUP)!==null) throw new Error("Hauptbestand fehlt, Notfallsicherung vorhanden.");
+     charaktere=[normalisiereCharakter({name:"Mein Charakter"})];
+   }else{
+     charaktere=gueltigeCharakterliste(raw).map(normalisiereCharakter);
+     if(localStorage.getItem(CHARAKTER_BACKUP)===null) localStorage.setItem(CHARAKTER_BACKUP,raw);
+   }
+   const auswahl=localStorage.getItem(STORAGE_KEYS.aktiverCharakter);
+   aktiverCharakterId=findeCharakter(auswahl)?auswahl:charaktere[0].id;
+   charakterSpeicherBereit=true;
+   if(raw===null) speichereCharaktere();
+ }catch(fehler){
+   charakterWarnung("Charakterdaten konnten nicht sicher geladen werden. Speicherung gesperrt. Notfallsicherung im Admin-Bereich prüfen. "+fehler.message);
+   charaktere=[];aktiverCharakterId=null;
+   rendereCharaktere();aktualisiereAktivenCharakterHinweis();return;
  }
-
- const gespeicherteAuswahl=localStorage.getItem(STORAGE_KEYS.aktiverCharakter);
- aktiverCharakterId=findeCharakter(gespeicherteAuswahl)
-   ?gespeicherteAuswahl
-   :charaktere[0].id;
-
- speichereCharaktere();
  ladeStatusFuerCharakter(aktiverCharakterId);
  rendereCharaktere();
  aktualisiereAktivenCharakterHinweis();
@@ -1315,7 +1355,7 @@ async function ladeEffekte(){
    bereinigeAlteAttributEffekte44();
    const antwort=await fetch(
      `data/effekte.json?v=${encodeURIComponent(APP_VERSION)}`,
-     {cache:"no-store"}
+     {cache:"default"}
    );
    const standardEffekte=await antwort.json();
    const status=ladeStatus();
@@ -2725,6 +2765,7 @@ async function verarbeiteAdminPin(event){
 
 function initialisiereAdminModus(){
   aktualisiereAdminAnsicht();
+  document.getElementById("btnCharakterBackup628")?.addEventListener("click",stelleCharakterBackupWiederHer);
   if(istAdminEntsperrt()) planeAdminSperre();
   document.getElementById("btnAdminEntsperren")?.addEventListener("click",oeffneAdminPinDialog);
   document.getElementById("btnAdminSperren")?.addEventListener("click",()=>sperreAdminModus(false));
