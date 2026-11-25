@@ -1,6 +1,6 @@
 (() => {
   'use strict';
-  // Ausrüstungskompendium, Version 0.61.25 – eigenständig, ohne Eingriff in Charakterdaten.
+  // Ausrüstungskompendium, Version 0.61.26 – eigenständig, ohne Eingriff in Charakterdaten.
   const btn = document.getElementById('btnAusruestung');
   const root = document.getElementById('ausruestungInhalt');
   if (!btn || !root) return;
@@ -14,37 +14,11 @@
   const format = value => (value === null || value === undefined || value === '') ? '–' :
     typeof value === 'number' ? new Intl.NumberFormat('de-DE').format(value) : String(value);
 
-  // Keine erfundenen englischen Seitenzahlen: die deutschen Buchseiten gehören zur ARK-Ausgabe.
-  const kuerzelDE = [
-    [/^ausr[uü]stungskompendium/i, 'ARK'],
-    [/^grundregelwerk/i, 'GRW'],
-    [/^expertenregeln/i, 'EXP'],
-    [/^ausbauregeln/i, 'ABR']
-  ];
-  const kuerzelEN = [
-    [/^ultimate equipment/i, 'UE'],
-    [/^core rulebook/i, 'CRB'],
-    [/^advanced player.s guide/i, 'APG'],
-    [/^ultimate magic/i, 'UM']
-  ];
-  function quellenTeile(roherWert, muster) {
-    return String(roherWert ?? '').split(/\s*\/\s*/).map(value => {
-      const original = value.trim();
-      if (!original) return '';
-      for (const [regex, kuerzel] of muster) if (regex.test(original)) return kuerzel;
-      return original;
-    }).filter(Boolean);
-  }
+  // Nur Kompendium-Quellen; Seitenzahlen der jeweiligen Ausgabe getrennt halten.
   function quellenText(x) {
-    const deutsch = [...new Set(quellenTeile(x.quelle_de, kuerzelDE))];
-    const englisch = [...new Set(quellenTeile(x.quelle_en, kuerzelEN))];
-    if (deutsch.length === 1 && x.seite !== null && x.seite !== undefined && x.seite !== '') {
-      deutsch[0] += ` S. ${x.seite}`;
-    }
-    if (englisch.length === 1 && x.seite_en !== null && x.seite_en !== undefined && x.seite_en !== '') {
-      englisch[0] += ` p. ${x.seite_en}`;
-    }
-    return [deutsch.join(', '), englisch.join(', ')].filter(Boolean).join(' / ') || '–';
+    const seite = v => v === null || v === undefined || v === '' ? '' : String(v);
+    const de = seite(x.seite), en = seite(x.seite_en);
+    return `ARK ${de ? 'S. ' + de : '(Seite offen)'} / Ultimate Equipment ${en ? 'p. ' + en : '(Seite offen)'}`;
   }
 
   function text(tag, content, className) {
@@ -87,20 +61,19 @@
     const felder = [
       ['Quelle', quellenText(x)],
       ['Kategorie', x.kategorie],
-      ['Ausrüstungsplatz', x.ausruestungsplatz || 'Kein fester Platz'],
+      ['Platz', x.ausruestungsplatz || 'Kein fester Platz'],
       ['Preis', x.preis_gm === null || x.preis_gm === undefined || x.preis_gm === '' ? '–' : `${format(x.preis_gm)} GM`],
       ['ZS', x.zs],
       ['Aura', x.aura],
-      ['Erschaffungskosten', x.erschaffungskosten_gm === null || x.erschaffungskosten_gm === undefined || x.erschaffungskosten_gm === '' ? '–' : `${format(x.erschaffungskosten_gm)} GM`]
+      ['Erschaf. Kosten', x.erschaffungskosten_gm === null || x.erschaffungskosten_gm === undefined || x.erschaffungskosten_gm === '' ? '–' : `${format(x.erschaffungskosten_gm)} GM`]
     ];
     for (const [label, wert] of felder) {
       dl.append(text('dt', label), text('dd', format(wert)));
     }
+    dl.append(text('dt', 'Erschaf. Voraus.'), text('dd', x.erschaffungsvoraussetzungen || 'Noch nicht erfasst.'));
     el.append(dl);
     el.append(text('h3', 'Beschreibung'));
     el.append(text('p', x.beschreibung || 'Noch nicht erfasst.', 'zauber-pergament-beschreibung-600'));
-    el.append(text('h3', 'Erschaffungsvoraussetzungen'));
-    el.append(text('p', x.erschaffungsvoraussetzungen || 'Noch nicht erfasst.', 'zauber-pergament-beschreibung-600'));
     if (x.pruefstatus) el.append(text('p', x.pruefstatus, 'ausr-pruefung'));
     if (!d.open) d.showModal();
   }
@@ -165,10 +138,10 @@
             <span id="ausrAnzahl625" aria-live="polite"></span>
           </div>
           <details class="ausr-filterklappe" id="ausrFilter625">
-            <summary>Filter: Kategorie und Ausrüstungsplatz</summary>
+            <summary>Filter: Kategorie und Platz</summary>
             <div class="ausr-filterfelder">
               <label>Kategorie<select id="ausrKategorie625" aria-label="Gegenstandskategorie"></select></label>
-              <label>Ausrüstungsplatz<select id="ausrPlatz625" aria-label="Ausrüstungsplatz"></select></label>
+              <label>Platz<select id="ausrPlatz625" aria-label="Ausrüstungsplatz"></select></label>
             </div>
           </details>
           <div class="zauber-lexikon-treffer-600 ausr-trefferliste" id="ausrTreffer625"></div>
@@ -178,7 +151,7 @@
     const k = root.querySelector('#ausrKategorie625');
     const a = root.querySelector('#ausrPlatz625');
     filterOptionen(k, gegenstaende.map(x=>x.kategorie), 'Alle Kategorien', kategorie);
-    filterOptionen(a, gegenstaende.map(x=>x.ausruestungsplatz), 'Alle Ausrüstungsplätze', platz);
+    filterOptionen(a, gegenstaende.map(x=>x.ausruestungsplatz), 'Alle Plätze', platz);
     root.querySelector('#ausrSuche625').value = suchtext;
     root.querySelector('#ausrSuche625').addEventListener('input', e => { suchtext = e.target.value; trefferAktualisieren(); });
     k.addEventListener('change', e => { kategorie = e.target.value; trefferAktualisieren(); });
