@@ -1,40 +1,214 @@
 (() => {
   'use strict';
-  const page=document.getElementById('ausruestung');
-  const btn=document.getElementById('btnAusruestung');
-  const root=document.getElementById('ausruestungInhalt');
-  if(!page||!btn||!root)return;
-  let daten=[],filter='',kategorie='',platz='',auswahl=null,bereit=false,fehler='';
-  const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-  const norm=v=>String(v??'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
-  const fmt=v=>v==null||v===''?'–':typeof v==='number'?new Intl.NumberFormat('de-DE').format(v):esc(v);
-  const val=v=>v==null||v===''?'Noch nicht erfasst':esc(v);
-  const kategorien=()=>[...new Set(daten.map(x=>x.kategorie).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'de'));
-  const plaetze=()=>[...new Set(daten.map(x=>x.ausruestungsplatz).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'de'));
-  function render(){
-    if(!bereit){root.innerHTML=`<div class="ausr-karte">${fehler?esc(fehler):'Ausrüstungsdaten werden geladen …'}</div>`;return;}
-    const hits=daten.filter(x=>(!kategorie||x.kategorie===kategorie)&&(!platz||x.ausruestungsplatz===platz)&&(!filter||norm([x.name,x.name_en,x.kategorie,x.ausruestungsplatz].join(' ')).includes(norm(filter))));
-    root.innerHTML=`<div class="ausr-karte"><div class="ausr-filter"><label>Gegenstand suchen<input id="ausrSuche" type="search" placeholder="Deutscher oder englischer Name …" value="${esc(filter)}"></label><label>Kategorie<select id="ausrKategorie"><option value="">Alle Kategorien</option>${kategorien().map(x=>`<option value="${esc(x)}" ${kategorie===x?'selected':''}>${esc(x)}</option>`).join('')}</select></label><label>Ausrüstungsplatz<select id="ausrPlatz"><option value="">Alle Plätze</option>${plaetze().map(x=>`<option value="${esc(x)}" ${platz===x?'selected':''}>${esc(x)}</option>`).join('')}</select></label></div><div class="ausr-status">${hits.length} von ${daten.length} Einträgen · Datenaufbau läuft: Die meisten Detailangaben und englischen Namen sind noch nicht verifiziert.</div><div class="ausr-layout"><div class="ausr-liste" id="ausrListe">${hits.slice(0,250).map(x=>`<button type="button" data-id="${esc(x.id)}" class="ausr-treffer ${auswahl===x.id?'ausr-aktiv':''}"><strong>${esc(x.name)}</strong><small>${esc(x.kategorie)}${x.name_en?' · '+esc(x.name_en):''}</small></button>`).join('')}${hits.length>250?'<p class="ausr-hinweis">Es werden die ersten 250 Treffer angezeigt. Bitte die Suche eingrenzen.</p>':''}${!hits.length?'<p class="ausr-hinweis">Keine passenden Gegenstände.</p>':''}</div><div class="ausr-details" id="ausrDetails"></div></div></div>`;
-    const search=root.querySelector('#ausrSuche');
-    search.addEventListener('input',e=>{const pos=e.target.selectionStart;filter=e.target.value;render();const n=root.querySelector('#ausrSuche');n.focus();n.setSelectionRange(pos,pos)});
-    root.querySelector('#ausrKategorie').addEventListener('change',e=>{kategorie=e.target.value;render()});
-    root.querySelector('#ausrPlatz').addEventListener('change',e=>{platz=e.target.value;render()});
-    root.querySelector('#ausrListe').addEventListener('click',e=>{const b=e.target.closest('[data-id]');if(!b)return;auswahl=b.dataset.id;root.querySelectorAll('.ausr-treffer').forEach(t=>t.classList.toggle('ausr-aktiv',t.dataset.id===auswahl));details()});
-    if(!hits.some(x=>x.id===auswahl))auswahl=hits[0]?.id||null;
-    details();
+  // Ausrüstungskompendium, Version 0.61.25 – eigenständig, ohne Eingriff in Charakterdaten.
+  const btn = document.getElementById('btnAusruestung');
+  const root = document.getElementById('ausruestungInhalt');
+  if (!btn || !root) return;
+
+  let gegenstaende = [];
+  let ladeversuch = null;
+  let suchtext = '';
+  let kategorie = '';
+  let platz = '';
+  const norm = value => String(value ?? '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase('de');
+  const format = value => (value === null || value === undefined || value === '') ? '–' :
+    typeof value === 'number' ? new Intl.NumberFormat('de-DE').format(value) : String(value);
+
+  // Keine erfundenen englischen Seitenzahlen: die deutschen Buchseiten gehören zur ARK-Ausgabe.
+  const kuerzelDE = [
+    [/^ausr[uü]stungskompendium/i, 'ARK'],
+    [/^grundregelwerk/i, 'GRW'],
+    [/^expertenregeln/i, 'EXP'],
+    [/^ausbauregeln/i, 'ABR']
+  ];
+  const kuerzelEN = [
+    [/^ultimate equipment/i, 'UE'],
+    [/^core rulebook/i, 'CRB'],
+    [/^advanced player.s guide/i, 'APG'],
+    [/^ultimate magic/i, 'UM']
+  ];
+  function quellenTeile(roherWert, muster) {
+    return String(roherWert ?? '').split(/\s*\/\s*/).map(value => {
+      const original = value.trim();
+      if (!original) return '';
+      for (const [regex, kuerzel] of muster) if (regex.test(original)) return kuerzel;
+      return original;
+    }).filter(Boolean);
   }
-  function details(){
-    const el=root.querySelector('#ausrDetails');if(!el)return;
-    const x=daten.find(z=>z.id===auswahl);
-    if(!x){el.innerHTML='<p>Bitte einen Gegenstand auswählen.</p>';return;}
-    const row=(name,v)=>`<div class="ausr-zeile"><span>${name}</span><strong>${v}</strong></div>`;
-    el.innerHTML=`<h3>${esc(x.name)}${x.name_en?` <small>(${esc(x.name_en)})</small>`:''}</h3><div class="ausr-daten">${row('Quelle (DE)',esc(x.quelle_de||'–'))}${row('Quelle (EN)',esc(x.quelle_en||'–'))}${row('Buchseite',fmt(x.seite))}${row('Kategorie',esc(x.kategorie))}${row('Wo getragen',esc(x.ausruestungsplatz||'Kein fester Platz'))}${row('Preis (GM)',fmt(x.preis_gm))}${row('ZS',fmt(x.zs))}${row('Aura',fmt(x.aura))}${row('Erschaffungskosten (GM)',fmt(x.erschaffungskosten_gm))}</div><h4>Beschreibung</h4><p class="ausr-text">${val(x.beschreibung)}</p><h4>Erschaffungsvoraussetzungen</h4><p class="ausr-text">${val(x.erschaffungsvoraussetzungen)}</p><p class="ausr-pruefung">${esc(x.pruefstatus||'Nicht geprüft')}</p>`;
+  function quellenText(x) {
+    const deutsch = [...new Set(quellenTeile(x.quelle_de, kuerzelDE))];
+    const englisch = [...new Set(quellenTeile(x.quelle_en, kuerzelEN))];
+    if (deutsch.length === 1 && x.seite !== null && x.seite !== undefined && x.seite !== '') {
+      deutsch[0] += ` S. ${x.seite}`;
+    }
+    if (englisch.length === 1 && x.seite_en !== null && x.seite_en !== undefined && x.seite_en !== '') {
+      englisch[0] += ` p. ${x.seite_en}`;
+    }
+    return [deutsch.join(', '), englisch.join(', ')].filter(Boolean).join(' / ') || '–';
   }
-  async function load(){try{const r=await fetch('data/ausruestung.json?v=1',{cache:'no-store'});if(!r.ok)throw Error('HTTP '+r.status);const j=await r.json();if(!Array.isArray(j.gegenstaende))throw Error('Ungültige Datenstruktur');daten=j.gegenstaende;bereit=true;render()}catch(e){fehler='Ausrüstungsdaten konnten nicht geladen werden: '+e.message;render()}}
-  btn.addEventListener('click',()=>{
+
+  function text(tag, content, className) {
+    const e = document.createElement(tag);
+    if (className) e.className = className;
+    e.textContent = String(content ?? '');
+    return e;
+  }
+
+  // Exakt die Pergament-Dialogklasse des vorhandenen Zauberlexikons wiederverwenden.
+  function dialog() {
+    let d = document.getElementById('ausruestungPergament625');
+    if (d) return d;
+    d = document.createElement('dialog');
+    d.id = 'ausruestungPergament625';
+    d.className = 'zauber-pergament-600 ausr-pergament';
+    const inhalt = document.createElement('div');
+    inhalt.className = 'zauber-pergament-inhalt-600';
+    const schliessen = text('button', '✕', 'zauber-pergament-schliessen-600');
+    schliessen.type = 'button';
+    schliessen.setAttribute('aria-label', 'Gegenstandbeschreibung schließen');
+    schliessen.addEventListener('click', () => d.close());
+    inhalt.append(schliessen);
+    const beschreibung = document.createElement('div');
+    beschreibung.id = 'ausruestungPergamentText625';
+    inhalt.append(beschreibung);
+    d.append(inhalt);
+    d.addEventListener('click', e => { if (e.target === d) d.close(); });
+    document.body.append(d);
+    return d;
+  }
+
+  function zeigeGegenstand(x) {
+    const d = dialog();
+    const el = d.querySelector('#ausruestungPergamentText625');
+    el.replaceChildren();
+    el.append(text('h2', x.name));
+    if (x.name_en) el.append(text('p', x.name_en, 'zauber-pergament-englisch-600'));
+    const dl = document.createElement('dl');
+    const felder = [
+      ['Quelle', quellenText(x)],
+      ['Kategorie', x.kategorie],
+      ['Ausrüstungsplatz', x.ausruestungsplatz || 'Kein fester Platz'],
+      ['Preis', x.preis_gm === null || x.preis_gm === undefined || x.preis_gm === '' ? '–' : `${format(x.preis_gm)} GM`],
+      ['ZS', x.zs],
+      ['Aura', x.aura],
+      ['Erschaffungskosten', x.erschaffungskosten_gm === null || x.erschaffungskosten_gm === undefined || x.erschaffungskosten_gm === '' ? '–' : `${format(x.erschaffungskosten_gm)} GM`]
+    ];
+    for (const [label, wert] of felder) {
+      dl.append(text('dt', label), text('dd', format(wert)));
+    }
+    el.append(dl);
+    el.append(text('h3', 'Beschreibung'));
+    el.append(text('p', x.beschreibung || 'Noch nicht erfasst.', 'zauber-pergament-beschreibung-600'));
+    el.append(text('h3', 'Erschaffungsvoraussetzungen'));
+    el.append(text('p', x.erschaffungsvoraussetzungen || 'Noch nicht erfasst.', 'zauber-pergament-beschreibung-600'));
+    if (x.pruefstatus) el.append(text('p', x.pruefstatus, 'ausr-pruefung'));
+    if (!d.open) d.showModal();
+  }
+
+  function filterOptionen(select, werte, titel, aktuell) {
+    select.replaceChildren();
+    const alle = document.createElement('option');
+    alle.value = '';
+    alle.textContent = titel;
+    select.append(alle);
+    for (const wert of [...new Set(werte.filter(Boolean))].sort((a,b) => a.localeCompare(b,'de'))) {
+      const o = document.createElement('option');
+      o.value = wert;
+      o.textContent = wert;
+      select.append(o);
+    }
+    select.value = aktuell;
+  }
+
+  function trefferAktualisieren() {
+    const treffer = root.querySelector('#ausrTreffer625');
+    const anzahl = root.querySelector('#ausrAnzahl625');
+    if (!treffer || !anzahl) return;
+    treffer.replaceChildren();
+    const suche = norm(suchtext.trim());
+    // Genau wie beim Zauberlexikon: keine Gegenstandsliste, bevor gesucht wird.
+    if (!suche) {
+      anzahl.textContent = `${gegenstaende.length} Gegenstände verfügbar`;
+      treffer.append(text('p', 'Zum Nachschlagen einen deutschen oder englischen Gegenstandsnamen eingeben.', 'ausr-hinweis'));
+      return;
+    }
+    const gefunden = gegenstaende.filter(x =>
+      (!kategorie || x.kategorie === kategorie) &&
+      (!platz || x.ausruestungsplatz === platz) &&
+      norm(`${x.name || ''} ${x.name_en || ''}`).includes(suche)
+    ).sort((a,b) => String(a.name || '').localeCompare(String(b.name || ''), 'de'));
+    anzahl.textContent = `${gefunden.length} Treffer`;
+    if (!gefunden.length) {
+      treffer.append(text('p', 'Keine passenden Gegenstände gefunden.', 'ausr-hinweis'));
+      return;
+    }
+    for (const x of gefunden.slice(0, 100)) {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'zauber-lexikon-trefferknopf-600 ausr-treffer';
+      b.append(text('strong', x.name));
+      if (x.name_en) b.append(text('small', x.name_en));
+      b.addEventListener('click', () => zeigeGegenstand(x));
+      treffer.append(b);
+    }
+    if (gefunden.length > 100) treffer.append(text('p', 'Es werden die ersten 100 Treffer angezeigt. Bitte die Suche verfeinern.', 'ausr-hinweis'));
+  }
+
+  function oberflaeche() {
+    root.innerHTML = `
+      <details class="zauber-lexikon-600 ausr-lexikon" id="ausrLexikon625">
+        <summary><img src="assets/runes/Ausruestungskompendium.png" alt="" aria-hidden="true" class="zauber-lexikon-rune-612 ausr-titelrune"><span>Ausrüstungskompendium</span></summary>
+        <div class="zauber-lexikon-inhalt-602 ausr-inhalt">
+          <p class="ausr-hinweis">Alle Gegenstände nach deutschem oder englischem Namen durchsuchen.</p>
+          <div class="zauber-lexikon-suche-600 ausr-suche">
+            <input type="search" id="ausrSuche625" autocomplete="off" placeholder="Deutscher oder englischer Gegenstandsname …" aria-label="Ausrüstungskompendium durchsuchen">
+            <span id="ausrAnzahl625" aria-live="polite"></span>
+          </div>
+          <details class="ausr-filterklappe" id="ausrFilter625">
+            <summary>Filter: Kategorie und Ausrüstungsplatz</summary>
+            <div class="ausr-filterfelder">
+              <label>Kategorie<select id="ausrKategorie625" aria-label="Gegenstandskategorie"></select></label>
+              <label>Ausrüstungsplatz<select id="ausrPlatz625" aria-label="Ausrüstungsplatz"></select></label>
+            </div>
+          </details>
+          <div class="zauber-lexikon-treffer-600 ausr-trefferliste" id="ausrTreffer625"></div>
+          <p class="ausr-datenhinweis">Datenaufbau läuft: Viele englische Namen, Preise und Beschreibungen sind noch nicht überprüft.</p>
+        </div>
+      </details>`;
+    const k = root.querySelector('#ausrKategorie625');
+    const a = root.querySelector('#ausrPlatz625');
+    filterOptionen(k, gegenstaende.map(x=>x.kategorie), 'Alle Kategorien', kategorie);
+    filterOptionen(a, gegenstaende.map(x=>x.ausruestungsplatz), 'Alle Ausrüstungsplätze', platz);
+    root.querySelector('#ausrSuche625').value = suchtext;
+    root.querySelector('#ausrSuche625').addEventListener('input', e => { suchtext = e.target.value; trefferAktualisieren(); });
+    k.addEventListener('change', e => { kategorie = e.target.value; trefferAktualisieren(); });
+    a.addEventListener('change', e => { platz = e.target.value; trefferAktualisieren(); });
+    trefferAktualisieren();
+  }
+
+  async function laden() {
+    if (ladeversuch) return ladeversuch;
+    root.innerHTML = '<p class="ausr-hinweis">Ausrüstungsdaten werden geladen …</p>';
+    ladeversuch = (async () => {
+      try {
+        const antwort = await fetch('data/ausruestung.json?v=1');
+        if (!antwort.ok) throw new Error(`HTTP ${antwort.status}`);
+        const daten = await antwort.json();
+        if (!Array.isArray(daten.gegenstaende)) throw new Error('Ungültiges Datenformat');
+        gegenstaende = daten.gegenstaende;
+        oberflaeche();
+      } catch (fehler) {
+        root.replaceChildren(text('p', `Ausrüstungsdaten konnten nicht geladen werden: ${fehler.message}`, 'ausr-hinweis'));
+        ladeversuch = null;
+      }
+    })();
+    return ladeversuch;
+  }
+
+  btn.addEventListener('click', () => {
     zeigeSeite('ausruestung');
-    document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('nav button').forEach(element => element.classList.remove('active'));
     btn.classList.add('active');
-    if(!bereit&&!fehler)load();else render();
+    if (!ladeversuch) void laden();
   });
 })();
