@@ -1,28 +1,29 @@
-/* Ausrüstungslexikon – dieselbe Pergament-/Braun-Palette wie die übrigen Seiten. */
-#ausruestung{--ausr-text:#39271c;--ausr-border:rgba(76,43,27,.40);--ausr-brown:rgba(76,43,27,.20);--ausr-white:rgba(255,255,255,.15);color:var(--ausr-text)}
-#ausruestung .ausr-karte{background:var(--ausr-white)!important;border:1px solid var(--ausr-border);border-radius:12px;padding:16px;color:var(--ausr-text)}
-#ausruestung .ausr-filter{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr) minmax(0,1fr);gap:12px;margin-bottom:12px}
-#ausruestung .ausr-filter label{display:flex;flex-direction:column;gap:5px;font-weight:600;color:var(--ausr-text)}
-#ausruestung .ausr-filter input,#ausruestung .ausr-filter select{width:100%;min-width:0;box-sizing:border-box;padding:10px;border:1px solid var(--ausr-border);border-radius:9px;background:var(--ausr-white)!important;color:var(--ausr-text)!important;font:inherit}
-#ausruestung .ausr-filter input::placeholder{color:#715b4a;opacity:1}
-#ausruestung .ausr-filter select option{background:#f0e5d4;color:#39271c}
-#ausruestung .ausr-status,#ausruestung .ausr-pruefung,#ausruestung .ausr-hinweis{font-size:.87em;color:#5d4635;margin:10px 0}
-#ausruestung .ausr-layout{display:grid;grid-template-columns:minmax(200px,1fr) minmax(0,1.6fr);gap:15px}
-#ausruestung .ausr-liste{max-height:620px;overflow:auto;border:1px solid var(--ausr-border);border-radius:10px;background:var(--ausr-white)}
-#ausruestung .ausr-treffer{display:block;width:100%;text-align:left;padding:10px 12px;border:0;border-bottom:1px solid rgba(76,43,27,.24);border-radius:0;background:transparent!important;color:var(--ausr-text)!important;cursor:pointer;font:inherit}
-#ausruestung .ausr-treffer strong{color:var(--ausr-text)!important}
-#ausruestung .ausr-treffer small{display:block;color:#624c3a;margin-top:3px}
-#ausruestung .ausr-treffer.ausr-aktiv{background:rgba(76,43,27,.24)!important;box-shadow:inset 3px 0 0 #8c6840}
-#ausruestung .ausr-treffer:hover,#ausruestung .ausr-treffer:focus-visible{background:rgba(76,43,27,.16)!important}
-#ausruestung .ausr-details{border:1px solid var(--ausr-border);border-radius:10px;padding:14px;min-width:0;background:var(--ausr-white);color:var(--ausr-text)}
-#ausruestung .ausr-details h3{margin-top:0;overflow-wrap:anywhere;color:var(--ausr-text)!important}
-#ausruestung .ausr-details h3 small{display:block;font-size:.7em;color:#624c3a;margin-top:5px}
-#ausruestung .ausr-details h4{color:var(--ausr-text)!important;margin:12px 0 5px}
-#ausruestung .ausr-daten{display:grid;gap:5px}
-#ausruestung .ausr-zeile{display:grid;grid-template-columns:42% 1fr;gap:9px;padding:5px 0;border-bottom:1px solid rgba(76,43,27,.20);overflow-wrap:anywhere}
-#ausruestung .ausr-zeile span{color:#5d4635}
-#ausruestung .ausr-zeile strong{color:var(--ausr-text)!important}
-#ausruestung .ausr-text{white-space:pre-line;overflow-wrap:anywhere;color:var(--ausr-text)}
-/* Reihenfolge der Navigationsrunen. */
+/* Ausrüstungskompendium v0.61.25 – Gestaltung wie das vorhandene Zauberlexikon. */
+#ausruestung { color: #39271c; }
+#ausruestung .ausr-lexikon { margin: .75rem 0 1rem; border: 1px solid rgba(70,40,20,.4) !important; border-radius: 9px; background: rgba(52,30,17,.30) !important; overflow: hidden; }
+#ausruestung .ausr-lexikon > summary { display: flex; align-items: center; gap: 12px; min-height: 78px; padding: 9px 14px; cursor: pointer; list-style: none; font-weight: 700; color: #49351e; }
+#ausruestung .ausr-lexikon > summary::-webkit-details-marker { display: none; }
+#ausruestung .ausr-lexikon > summary:hover { background: rgba(52,30,17,.12); }
+#ausruestung .ausr-lexikon[open] > summary { border-bottom: 1px solid rgba(70,40,20,.3); }
+#ausruestung .ausr-titelrune { height: 63px; width: 63px; max-height: 80%; flex: 0 0 63px; object-fit: contain; }
+#ausruestung .ausr-inhalt { padding: .8rem 1rem 1rem; }
+#ausruestung .ausr-hinweis,#ausruestung .ausr-datenhinweis { font-size: .9em; color: #554634; margin: .5rem 0; }
+#ausruestung .ausr-datenhinweis { font-style: italic; margin-top: 1rem; }
+#ausruestung .ausr-suche { display: flex; flex-wrap: wrap; align-items: center; gap: .7rem; }
+#ausruestung .ausr-suche input { flex: 1; min-width: 180px; width: 100%; box-sizing: border-box; padding: .7rem; border: 1px solid #987d50; border-radius: 8px; background: #f9f0dd; color: #352512; font: inherit; }
+#ausruestung .ausr-suche #ausrAnzahl625 { white-space: nowrap; font-size: .9em; color: #554634; }
+#ausruestung .ausr-filterklappe { margin: .8rem 0; border: 1px solid #bba37d; border-radius: 8px; background: rgba(246,238,223,.65); }
+#ausruestung .ausr-filterklappe > summary { cursor: pointer; padding: .7rem .85rem; color: #49351e; font-weight: 600; }
+#ausruestung .ausr-filterfelder { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; padding: .7rem .85rem .85rem; }
+#ausruestung .ausr-filterfelder label { display: flex; flex-direction: column; gap: 5px; min-width: 0; color: #49351e; font-weight: 600; }
+#ausruestung .ausr-filterfelder select { width: 100%; min-width: 0; padding: 9px 10px; border: 1px solid #987d50; border-radius: 8px; background: #f9f0dd; color: #352512; font: inherit; }
+#ausruestung .ausr-trefferliste { display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap: .5rem; max-height: 320px; overflow: auto; margin-top: .7rem; }
+#ausruestung .ausr-treffer { display: flex; flex-direction: column; align-items: flex-start; gap: .2rem; text-align: left; padding: .65rem .8rem; border: 1px solid #987d50; border-radius: 7px; background: #f3e6c9; color: #302216; cursor: pointer; font: inherit; }
+#ausruestung .ausr-treffer small { font-style: italic; opacity: .8; }
+#ausruestung .ausr-treffer:hover, #ausruestung .ausr-treffer:focus-visible { background: #e9d6af; }
+#ausruestung .ausr-treffer:focus-visible, #ausruestung .ausr-lexikon > summary:focus-visible { outline: 2px solid #79532a; outline-offset: 2px; }
+/* Das Dialogfenster erbt die Zauberlexikon-Pergamentgrafik unverändert. */
+#ausruestungPergament625 .ausr-pruefung { margin-top: 1.2rem; font-size: .86em; font-style: italic; color: #67543c; }
+@media (max-width: 650px) { #ausruestung .ausr-filterfelder { grid-template-columns: 1fr; } #ausruestung .ausr-trefferliste { grid-template-columns: 1fr; } }
+/* Unveränderte, gewünschte Runenreihenfolge. */
 nav #btnCharaktere{order:1}nav #btnCharakterwerte{order:2}nav #btnLeben{order:3}nav #btnEffekte{order:4}nav #btnZauber{order:5}nav #btnAusruestung{order:6}nav #btnZeit{order:7}nav #btnVermoegen{order:8}nav #btnAdmin{order:9}
-@media(max-width:700px){#ausruestung .ausr-filter{grid-template-columns:1fr}#ausruestung .ausr-layout{grid-template-columns:1fr}#ausruestung .ausr-liste{max-height:290px}}
