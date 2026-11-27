@@ -64,3 +64,11 @@ nav #btnCharaktere{order:1}nav #btnCharakterwerte{order:2}nav #btnLeben{order:3}
 #ausrInventar630 .ausr-slot {padding:4px 0;border-top:1px solid #bba37d;overflow-wrap:anywhere;}
 #ausrInventar630 .ausr-inv-gruppe {padding:4px;}
 #ausrInventar630 .ausr-inv-name {margin:4px 0;}
+
+#ausruestung input,#ausruestung select,#ausruestung .ausr-treffer,#ausruestung .ausr-inv-aktion,#ausruestung #ausrInventar630 .ausr-inv-controls button,#ausruestungPergament625 select,#ausruestungPergament625 .ausr-inv-aktion {background-color:rgba(255,255,255,.15)!important;}
+#ausruestung .ausr-rune,#ausruestungPergament625 .ausr-rune {background:transparent!important;border:0!important;}
+.ausr-rune img {width:30px;height:30px;object-fit:contain;}
+#ausruestung #ausrInventar630 .ausr-rune[aria-pressed=false] img {opacity:.45;}
+#ausruestung #ausrInventar630 .ausr-rune[aria-pressed=true] img {filter:drop-shadow(0 0 4px gold);}
+#ausruestung #ausrInventar630 .ausr-inv-controls .ausr-zuordnung {width:auto!important;max-width:85px;overflow-wrap:anywhere;font-size:.85em;}
+#ausruestungPergament625 .ausr-angriffwahl {display:inline-flex;align-items:center;gap:5px;margin:6px;min-height:44px;}
