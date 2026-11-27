@@ -1,6 +1,6 @@
 (() => {
   'use strict';
-  // Ausrüstungskompendium, Version 0.61.26 – eigenständig, ohne Eingriff in Charakterdaten.
+  // Ausrüstungskompendium, Version 0.61.29 – eigenständig, ohne Eingriff in Charakterdaten.
   const btn = document.getElementById('btnAusruestung');
   const root = document.getElementById('ausruestungInhalt');
   if (!btn || !root) return;
@@ -62,7 +62,8 @@
       ['Quelle', quellenText(x)],
       ['Kategorie', x.kategorie],
       ['Platz', x.ausruestungsplatz || 'Kein fester Platz'],
-      ['Preis', x.preis_gm === null || x.preis_gm === undefined || x.preis_gm === '' ? '–' : `${format(x.preis_gm)} GM`],
+      ['Preis', x.preis_original || (x.preis_gm === null || x.preis_gm === undefined || x.preis_gm === '' ? '–' : `${format(x.preis_gm)} GM`)],
+      ['Gewicht', x.gewicht],
       ['ZS', x.zs],
       ['Aura', x.aura],
       ['Erschaf. Kosten', x.erschaffungskosten_gm === null || x.erschaffungskosten_gm === undefined || x.erschaffungskosten_gm === '' ? '–' : `${format(x.erschaffungskosten_gm)} GM`]
@@ -70,7 +71,14 @@
     for (const [label, wert] of felder) {
       dl.append(text('dt', label), text('dd', format(wert)));
     }
-    dl.append(text('dt', 'Erschaf. Voraus.'), text('dd', x.erschaffungsvoraussetzungen || 'Noch nicht erfasst.'));
+    if (x.waffenwerte || x.ruestungswerte) {
+      for (const [label, wert] of Object.entries(x.waffenwerte || x.ruestungswerte)) {
+        dl.append(text('dt', label), text('dd', format(wert)));
+      }
+    }
+    if (x.erschaffungsvoraussetzungen || (x.id && x.id.startsWith('ak-'))) {
+      dl.append(text('dt', 'Erschaf. Voraus.'), text('dd', x.erschaffungsvoraussetzungen || 'Noch nicht erfasst.'));
+    }
     el.append(dl);
     el.append(text('h3', 'Beschreibung'));
     el.append(text('p', x.beschreibung || 'Noch nicht erfasst.', 'zauber-pergament-beschreibung-600'));
@@ -121,6 +129,7 @@
       b.className = 'zauber-lexikon-trefferknopf-600 ausr-treffer';
       b.append(text('strong', x.name));
       if (x.name_en) b.append(text('small', x.name_en));
+      else if (x.kategorie) b.append(text('small', x.kategorie));
       b.addEventListener('click', () => zeigeGegenstand(x));
       treffer.append(b);
     }
@@ -164,7 +173,7 @@
     root.innerHTML = '<p class="ausr-hinweis">Ausrüstungsdaten werden geladen …</p>';
     ladeversuch = (async () => {
       try {
-        const antwort = await fetch('data/ausruestung.json?v=1');
+        const antwort = await fetch('data/ausruestung.json?v=61.29');
         if (!antwort.ok) throw new Error(`HTTP ${antwort.status}`);
         const daten = await antwort.json();
         if (!Array.isArray(daten.gegenstaende)) throw new Error('Ungültiges Datenformat');
