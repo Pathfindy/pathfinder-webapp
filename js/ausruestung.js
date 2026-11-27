@@ -51,7 +51,48 @@
     return d;
   }
 
-  function zeigeGegenstand(x) {
+  function inventarAendern(id, fn) {
+    const c = aktiverCharakter();
+    if (!c || c.id !== id || !charakterSpeicherBereit) { alert('Kein sicher geladener Charakter ausgewählt.'); return false; }
+    const alt = c.ausruestung;
+    c.ausruestung = fn(Array.isArray(alt) ? alt : []);
+    if (!speichereCharaktere()) { c.ausruestung = alt; alert('Änderung konnte nicht sicher gespeichert werden.'); return false; }
+    inventarRendern();
+    return true;
+  }
+  function aktion(label, fn) {
+    const b = text('button', label, 'ausr-inv-aktion'); b.type = 'button'; b.addEventListener('click', fn); return b;
+  }
+  function inventarRendern() {
+    const box = root.querySelector('#ausrInventar630'); if (!box) return;
+    box.replaceChildren();
+    const c = aktiverCharakter();
+    if (!c || !charakterSpeicherBereit) { box.append(text('p','Kein sicher geladener Charakter.')); return; }
+    box.append(text('p', c.name, 'ausr-inv-name'));
+    const liste = Array.isArray(c.ausruestung) ? c.ausruestung : [];
+    const gruppen = new Map();
+    for (const e of liste) {
+      if (!e || !e.gegenstand) continue;
+      const k = e.gegenstand.kategorie || 'Sonstiges';
+      if (!gruppen.has(k)) gruppen.set(k, []); gruppen.get(k).push(e);
+    }
+    if (!gruppen.size) box.append(text('p','Noch keine Ausrüstung. Gegenstand im Kompendium suchen und hinzufügen.'));
+    for (const [k, eintraege] of [...gruppen].sort((a,b)=>a[0].localeCompare(b[0],'de'))) {
+      const gruppe = document.createElement('details'); gruppe.open = true; gruppe.className = 'ausr-inv-gruppe';
+      gruppe.append(text('summary', `${k} (${eintraege.length})`));
+      for (const e of eintraege.sort((a,b)=>String(a.gegenstand.name).localeCompare(String(b.gegenstand.name),'de'))) {
+        const zeile = document.createElement('div'); zeile.className = 'ausr-inv-zeile';
+        zeile.append(aktion(`${e.anzahl} × ${e.gegenstand.name}`, ()=>zeigeGegenstand(e.gegenstand, false)));
+        const controls = document.createElement('div'); controls.className = 'ausr-inv-controls';
+        const menge = document.createElement('input'); menge.type='number'; menge.min='1'; menge.max='999999'; menge.step='1'; menge.value=e.anzahl; menge.setAttribute('aria-label',`Anzahl ${e.gegenstand.name}`);
+        menge.addEventListener('change',()=>{ const n=Number(menge.value); if(!Number.isInteger(n)||n<1||n>999999){menge.value=e.anzahl;return;} if(!inventarAendern(c.id,l=>l.map(v=>v.id===e.id?{...v,anzahl:n}:v))) menge.value=e.anzahl; });
+        controls.append(menge, aktion('Entfernen',()=>{if(confirm(`${e.gegenstand.name} aus der Ausrüstung entfernen?`)) inventarAendern(c.id,l=>l.filter(v=>v.id!==e.id));}));
+        zeile.append(controls); gruppe.append(zeile);
+      }
+      box.append(gruppe);
+    }
+  }
+  function zeigeGegenstand(x, hinzufuegen = true) {
     const d = dialog();
     const el = d.querySelector('#ausruestungPergamentText625');
     el.replaceChildren();
@@ -80,6 +121,21 @@
       dl.append(text('dt', 'Erschaf. Voraus.'), text('dd', x.erschaffungsvoraussetzungen || 'Noch nicht erfasst.'));
     }
     el.append(dl);
+    if (hinzufuegen) {
+      const c = aktiverCharakter();
+      const b = aktion('Zur Ausrüstung hinzufügen', () => {
+        if (!c) return;
+        const ok = inventarAendern(c.id, liste => [...liste, {
+          id: globalThis.crypto?.randomUUID?.() || neueCharakterId(),
+          grundId:x.id, gegenstand:JSON.parse(JSON.stringify(x)), anzahl:1,
+          angelegt:false, belegtePlaetze:[], angriffe:[], material:null,
+          qualitaet:null, verbesserungsbonus:0, eigenschaften:[], boni:[]
+        }]);
+        if (ok) d.close();
+      });
+      b.disabled = !c || !charakterSpeicherBereit;
+      el.append(b);
+    }
     el.append(text('h3', 'Beschreibung'));
     el.append(text('p', x.beschreibung || 'Noch nicht erfasst.', 'zauber-pergament-beschreibung-600'));
     if (x.pruefstatus) el.append(text('p', x.pruefstatus, 'ausr-pruefung'));
@@ -156,7 +212,9 @@
           <div class="zauber-lexikon-treffer-600 ausr-trefferliste" id="ausrTreffer625"></div>
           <p class="ausr-datenhinweis">Datenaufbau läuft: Viele englische Namen, Preise und Beschreibungen sind noch nicht überprüft.</p>
         </div>
-      </details>`;
+      </details>
+      <details class="ausr-lexikon" open><summary>Meine Ausrüstung</summary><div class="ausr-inhalt" id="ausrInventar630"></div></details>`;
+    inventarRendern();
     const k = root.querySelector('#ausrKategorie625');
     const a = root.querySelector('#ausrPlatz625');
     filterOptionen(k, gegenstaende.map(x=>x.kategorie), 'Alle Kategorien', kategorie);
@@ -183,7 +241,13 @@
         root.replaceChildren(text('p', `Ausrüstungsdaten konnten nicht geladen werden: ${fehler.message}`, 'ausr-hinweis'));
         ladeversuch = null;
       }
-    })();
+      document.addEventListener('pf-charakter-importiert', inventarRendern);
+  // Auch globale Charakterwechsel berücksichtigen, ohne die Suchansicht neu aufzubauen.
+  const vorher = window.aktualisiereAlleAnsichten;
+  window.aktualisiereAlleAnsichten = function(...args) {
+    const result = vorher.apply(this,args); inventarRendern(); return result;
+  };
+})();
     return ladeversuch;
   }
 
@@ -192,5 +256,12 @@
     document.querySelectorAll('nav button').forEach(element => element.classList.remove('active'));
     btn.classList.add('active');
     if (!ladeversuch) void laden();
+    else inventarRendern();
   });
+  document.addEventListener('pf-charakter-importiert', inventarRendern);
+  // Auch globale Charakterwechsel berücksichtigen, ohne die Suchansicht neu aufzubauen.
+  const vorher = window.aktualisiereAlleAnsichten;
+  window.aktualisiereAlleAnsichten = function(...args) {
+    const result = vorher.apply(this,args); inventarRendern(); return result;
+  };
 })();

@@ -1,7 +1,7 @@
 // Das azlantische Helferlein der Boni
 // app.js
 // Version 0.32
-const APP_VERSION="0.61.28";
+const APP_VERSION="0.61.30";
 
 const seiten={
  dashboard:document.getElementById("dashboard"),
@@ -228,6 +228,7 @@ function normalisiereCharakter(charakter={}){
    gab:Number.isFinite(Number(charakter.gab))
      ?Math.max(0,Math.min(99,Math.trunc(Number(charakter.gab))))
      :0,
+   ausruestung:Array.isArray(charakter.ausruestung) ? charakter.ausruestung : [],
    vermoegen:charakter.vermoegen && typeof charakter.vermoegen==="object"
      ?charakter.vermoegen
      :undefined
