@@ -44,3 +44,11 @@ nav #btnCharaktere{order:1}nav #btnCharakterwerte{order:2}nav #btnLeben{order:3}
   #ausruestungPergament625 .zauber-pergament-inhalt-600 { padding: .85rem; }
   #ausruestungPergament625 dl { grid-template-columns: minmax(0, 40%) minmax(0, 1fr); gap: .4rem .55rem; }
 }
+
+.ausr-inv-aktion, #ausrInventar630 input { min-height:44px; box-sizing:border-box; border:1px solid #987d50; border-radius:7px; background:#f3e6c9; color:#39271c; font:inherit; padding:.45rem .65rem; overflow-wrap:anywhere; }
+#ausrInventar630 .ausr-inv-gruppe { margin:.5rem 0; border:1px solid #987d50; border-radius:7px; padding:.5rem; }
+#ausrInventar630 summary { cursor:pointer; padding:.5rem; font-weight:bold; }
+.ausr-inv-zeile { display:grid; gap:.4rem; padding:.5rem 0; border-top:1px solid #bba37d; }
+.ausr-inv-controls { display:flex; flex-wrap:wrap; gap:.5rem; }
+#ausrInventar630 input { width:7rem; max-width:100%; font-size:16px; }
+.ausr-inv-name { font-weight:bold; }
