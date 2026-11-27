@@ -72,3 +72,7 @@ nav #btnCharaktere{order:1}nav #btnCharakterwerte{order:2}nav #btnLeben{order:3}
 #ausruestung #ausrInventar630 .ausr-rune[aria-pressed=true] img {filter:drop-shadow(0 0 4px gold);}
 #ausruestung #ausrInventar630 .ausr-inv-controls .ausr-zuordnung {width:auto!important;max-width:85px;overflow-wrap:anywhere;font-size:.85em;}
 #ausruestungPergament625 .ausr-angriffwahl {display:inline-flex;align-items:center;gap:5px;margin:6px;min-height:44px;}
+
+#ausrInventar630 .ausr-belegt {color:#302015;font-weight:bold;background:rgba(255,220,110,.15);box-shadow:inset 0 0 8px rgba(255,200,40,.35);border-radius:5px;}
+#ausruestungPergament625 label {display:block;margin:.4rem 0;}
+#ausruestungPergament625 select {max-width:100%;min-height:44px;}
