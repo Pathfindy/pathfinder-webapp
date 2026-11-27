@@ -63,13 +63,46 @@
   function aktion(label, fn) {
     const b = text('button', label, 'ausr-inv-aktion'); b.type = 'button'; b.addEventListener('click', fn); return b;
   }
+  const koerperplaetze = ['Kopf','Stirn','Augen','Hals','Schultern','Brust','Körper','Rüstung','Handgelenke','Hände','Gürtel','Füße','Ring links','Ring rechts','Haupthand','Nebenhand'];
+  function platzOptionen(x) {
+    const k = x.kategorie || '', p = x.ausruestungsplatz || '';
+    if (k === 'Ring' || p === 'Ring') return [['Ring links'],['Ring rechts']];
+    if (/^(Gewöhnlicher|Magischer) Schild$/.test(k) || p === 'Nebenhand') return [['Nebenhand']];
+    if (/^(Gewöhnliche|Magische) Rüstung$/.test(k) || p === 'Rüstung') return [['Rüstung']];
+    if (/^(Gewöhnliche|Magische) Waffe$/.test(k) || p === 'Waffenhand') {
+      if (/pfeil|bolzen|munition/i.test(x.name) && !/bogen|armbrust/i.test(x.name)) return [];
+      if (/zweihand/i.test(x.waffenwerte?.Art || '') || /armbrust|bogen/i.test(x.name)) return [['Haupthand','Nebenhand']];
+      return [['Haupthand'],['Nebenhand'],['Haupthand','Nebenhand']];
+    }
+    if (koerperplaetze.includes(p)) return [[p]];
+    if (p === 'Keiner' && k === 'Wundersamer Gegenstand') return [[]];
+    return [];
+  }
+  function anlegen(c,e) {
+    const optionen = platzOptionen(e.gegenstand);
+    if (!optionen.length) return;
+    const d = dialog(), el = d.querySelector('#ausruestungPergamentText625');
+    el.replaceChildren(text('h2',e.gegenstand.name),text('p','Ausrüstungsplatz auswählen:'));
+    for (const plaetze of optionen) el.append(aktion(plaetze.join(' + ') || 'Platzlos anlegen',()=>{
+      const aktuell = aktiverCharakter(); if (!aktuell || aktuell.id !== c.id) return;
+      const konflikt = (aktuell.ausruestung || []).filter(v=>v.id!==e.id && v.angelegt && (v.belegtePlaetze || []).some(p=>plaetze.includes(p)));
+      if (konflikt.length && !confirm('Ablegen: '+konflikt.map(v=>v.gegenstand.name).join(', ')+'?')) return;
+      if (inventarAendern(c.id,l=>l.map(v=>v.id===e.id?{...v,angelegt:true,belegtePlaetze:plaetze}:konflikt.some(k=>k.id===v.id)?{...v,angelegt:false,belegtePlaetze:[]}:v))) d.close();
+    }));
+    if (!d.open) d.showModal();
+  }
   function inventarRendern() {
     const box = root.querySelector('#ausrInventar630'); if (!box) return;
+    const offen = new Map([...box.querySelectorAll('.ausr-inv-gruppe')].map(g=>[g.dataset.kategorie,g.open]));
     box.replaceChildren();
     const c = aktiverCharakter();
     if (!c || !charakterSpeicherBereit) { box.append(text('p','Kein sicher geladener Charakter.')); return; }
     box.append(text('p', c.name, 'ausr-inv-name'));
     const liste = Array.isArray(c.ausruestung) ? c.ausruestung : [];
+    const belegt = document.createElement('details'); belegt.className='ausr-inv-gruppe'; belegt.dataset.kategorie='__belegt'; belegt.open=offen.get('__belegt') ?? false; belegt.append(text('summary','Angelegte Ausrüstung'));
+    for (const p of koerperplaetze) { const e=liste.find(v=>v.angelegt && (v.belegtePlaetze||[]).includes(p)); belegt.append(text('div',p+': '+(e?.gegenstand?.name || '–'),'ausr-slot')); }
+    for (const e of liste.filter(v=>v.angelegt && !(v.belegtePlaetze||[]).length)) belegt.append(text('div','Platzlos: '+e.gegenstand.name,'ausr-slot'));
+    box.append(belegt);
     const gruppen = new Map();
     for (const e of liste) {
       if (!e || !e.gegenstand) continue;
@@ -78,15 +111,20 @@
     }
     if (!gruppen.size) box.append(text('p','Noch keine Ausrüstung. Gegenstand im Kompendium suchen und hinzufügen.'));
     for (const [k, eintraege] of [...gruppen].sort((a,b)=>a[0].localeCompare(b[0],'de'))) {
-      const gruppe = document.createElement('details'); gruppe.open = true; gruppe.className = 'ausr-inv-gruppe';
+      const gruppe = document.createElement('details'); gruppe.open = offen.get(k) ?? true; gruppe.dataset.kategorie=k; gruppe.className = 'ausr-inv-gruppe';
       gruppe.append(text('summary', `${k} (${eintraege.length})`));
       for (const e of eintraege.sort((a,b)=>String(a.gegenstand.name).localeCompare(String(b.gegenstand.name),'de'))) {
         const zeile = document.createElement('div'); zeile.className = 'ausr-inv-zeile';
-        zeile.append(aktion(`${e.anzahl} × ${e.gegenstand.name}`, ()=>zeigeGegenstand(e.gegenstand, false)));
+        zeile.append(aktion(e.gegenstand.name, ()=>zeigeGegenstand(e.gegenstand, false)));
         const controls = document.createElement('div'); controls.className = 'ausr-inv-controls';
         const menge = document.createElement('input'); menge.type='number'; menge.min='1'; menge.max='999999'; menge.step='1'; menge.value=e.anzahl; menge.setAttribute('aria-label',`Anzahl ${e.gegenstand.name}`);
         menge.addEventListener('change',()=>{ const n=Number(menge.value); if(!Number.isInteger(n)||n<1||n>999999){menge.value=e.anzahl;return;} if(!inventarAendern(c.id,l=>l.map(v=>v.id===e.id?{...v,anzahl:n}:v))) menge.value=e.anzahl; });
-        controls.append(menge, aktion('Entfernen',()=>{if(confirm(`${e.gegenstand.name} aus der Ausrüstung entfernen?`)) inventarAendern(c.id,l=>l.filter(v=>v.id!==e.id));}));
+        controls.append(menge);
+        if (e.angelegt || platzOptionen(e.gegenstand).length) {
+          const tragen = aktion(e.angelegt?'✓':'○',()=>e.angelegt?inventarAendern(c.id,l=>l.map(v=>v.id===e.id?{...v,angelegt:false,belegtePlaetze:[]}:v)):anlegen(c,e));
+          tragen.classList.add('ausr-tragen'); tragen.setAttribute('aria-label',e.angelegt?'Ablegen':'Anlegen'); tragen.title=e.angelegt?'Ablegen':'Anlegen'; tragen.setAttribute('aria-pressed',String(!!e.angelegt)); controls.append(tragen);
+        }
+        const entfernen=aktion('✕',()=>{if(confirm(`${e.gegenstand.name} aus der Ausrüstung entfernen?`)) inventarAendern(c.id,l=>l.filter(v=>v.id!==e.id));}); entfernen.setAttribute('aria-label','Entfernen'); entfernen.title='Entfernen'; controls.append(entfernen);
         zeile.append(controls); gruppe.append(zeile);
       }
       box.append(gruppe);
@@ -241,13 +279,7 @@
         root.replaceChildren(text('p', `Ausrüstungsdaten konnten nicht geladen werden: ${fehler.message}`, 'ausr-hinweis'));
         ladeversuch = null;
       }
-      document.addEventListener('pf-charakter-importiert', inventarRendern);
-  // Auch globale Charakterwechsel berücksichtigen, ohne die Suchansicht neu aufzubauen.
-  const vorher = window.aktualisiereAlleAnsichten;
-  window.aktualisiereAlleAnsichten = function(...args) {
-    const result = vorher.apply(this,args); inventarRendern(); return result;
-  };
-})();
+    })();
     return ladeversuch;
   }
 
