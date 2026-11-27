@@ -63,17 +63,33 @@
   function aktion(label, fn) {
     const b = text('button', label, 'ausr-inv-aktion'); b.type = 'button'; b.addEventListener('click', fn); return b;
   }
-  const koerperplaetze = ['Kopf','Stirn','Augen','Hals','Schultern','Brust','Körper','Rüstung','Handgelenke','Hände','Gürtel','Füße','Ring links','Ring rechts','Haupthand','Nebenhand'];
+  const koerperplaetze = ['Kopf','Stirn','Augen','Hals','Schultern','Brust','Körper','Rüstung','Handgelenke','Hände','Gürtel','Füße','Ring links','Ring rechts','Schild'];
+  const istWaffe = x => /^(Gewöhnliche|Magische) Waffe$/.test(x.kategorie || '') || x.ausruestungsplatz === 'Waffenhand';
+  function rune(b, datei) {
+    b.classList.add('rune-action-icon','ausr-rune');
+    const img = document.createElement('img'); img.src='assets/runes/'+datei+'.png?v=06127'; img.alt=''; b.replaceChildren(img); return b;
+  }
+  function waffeZuweisen(c,e) {
+    const d=dialog(), el=d.querySelector('#ausruestungPergamentText625');
+    el.replaceChildren(text('h2',e.gegenstand.name),text('p','Angriffe auswählen. Die Hand wird auf der Kampfseite festgelegt.'));
+    const felder=[];
+    for (const ziel of EFFEKT_ANGRIFFSZIELE) {
+      const label=text('label',ziel,'ausr-angriffwahl'); const input=document.createElement('input'); input.type='checkbox'; input.checked=(e.angriffe||[]).includes(ziel); label.prepend(input); el.append(label); felder.push([ziel,input]);
+    }
+    const b=aktion('Bestätigen',()=>{
+      const ziele=felder.filter(([z,i])=>i.checked).map(([z])=>z);
+      const aktuell=aktiverCharakter(); if(!aktuell||aktuell.id!==c.id)return;
+      const konflikte=(aktuell.ausruestung||[]).filter(v=>v.id!==e.id&&istWaffe(v.gegenstand)&&(v.angriffe||[]).some(z=>ziele.includes(z)));
+      if(konflikte.length&&!confirm('Angriffszuordnung bei '+konflikte.map(v=>v.gegenstand.name).join(', ')+' ersetzen?'))return;
+      if(inventarAendern(c.id,l=>l.map(v=>v.id===e.id?{...v,angriffe:ziele,angelegt:!!ziele.length,belegtePlaetze:[]}:konflikte.some(k=>k.id===v.id)?{...v,angriffe:v.angriffe.filter(z=>!ziele.includes(z)),angelegt:v.angriffe.some(z=>!ziele.includes(z)),belegtePlaetze:[]}:v)))d.close();
+    }); b.title='Bestätigen'; b.setAttribute('aria-label','Bestätigen'); el.append(rune(b,'Bestaetigung')); if(!d.open)d.showModal();
+  }
   function platzOptionen(x) {
     const k = x.kategorie || '', p = x.ausruestungsplatz || '';
     if (k === 'Ring' || p === 'Ring') return [['Ring links'],['Ring rechts']];
-    if (/^(Gewöhnlicher|Magischer) Schild$/.test(k) || p === 'Nebenhand') return [['Nebenhand']];
-    if (/^(Gewöhnliche|Magische) Rüstung$/.test(k) || p === 'Rüstung') return [['Rüstung']];
-    if (/^(Gewöhnliche|Magische) Waffe$/.test(k) || p === 'Waffenhand') {
-      if (/pfeil|bolzen|munition/i.test(x.name) && !/bogen|armbrust/i.test(x.name)) return [];
-      if (/zweihand/i.test(x.waffenwerte?.Art || '') || /armbrust|bogen/i.test(x.name)) return [['Haupthand','Nebenhand']];
-      return [['Haupthand'],['Nebenhand'],['Haupthand','Nebenhand']];
-    }
+    if (istWaffe(x)) return [];
+    if (/schild/i.test(k) || p === 'Nebenhand') return [['Schild']];
+    if (/rüstung/i.test(k) || p === 'Rüstung') return [['Rüstung']];
     if (koerperplaetze.includes(p)) return [[p]];
     if (p === 'Keiner' && k === 'Wundersamer Gegenstand') return [[]];
     return [];
@@ -101,7 +117,8 @@
     const liste = Array.isArray(c.ausruestung) ? c.ausruestung : [];
     const belegt = document.createElement('details'); belegt.className='ausr-inv-gruppe'; belegt.dataset.kategorie='__belegt'; belegt.open=offen.get('__belegt') ?? false; belegt.append(text('summary','Angelegte Ausrüstung'));
     for (const p of koerperplaetze) { const e=liste.find(v=>v.angelegt && (v.belegtePlaetze||[]).includes(p)); belegt.append(text('div',p+': '+(e?.gegenstand?.name || '–'),'ausr-slot')); }
-    for (const e of liste.filter(v=>v.angelegt && !(v.belegtePlaetze||[]).length)) belegt.append(text('div','Platzlos: '+e.gegenstand.name,'ausr-slot'));
+    for (const e of liste.filter(v=>v.angelegt && !istWaffe(v.gegenstand) && !(v.belegtePlaetze||[]).length)) belegt.append(text('div','Platzlos: '+e.gegenstand.name,'ausr-slot'));
+    for(const z of EFFEKT_ANGRIFFSZIELE) { const e=liste.find(v=>istWaffe(v.gegenstand)&&(v.angriffe||[]).includes(z)); belegt.append(text('div',z+': '+(e?.gegenstand.name||'–'),'ausr-slot')); }
     box.append(belegt);
     const gruppen = new Map();
     for (const e of liste) {
@@ -120,11 +137,13 @@
         const menge = document.createElement('input'); menge.type='number'; menge.min='1'; menge.max='999999'; menge.step='1'; menge.value=e.anzahl; menge.setAttribute('aria-label',`Anzahl ${e.gegenstand.name}`);
         menge.addEventListener('change',()=>{ const n=Number(menge.value); if(!Number.isInteger(n)||n<1||n>999999){menge.value=e.anzahl;return;} if(!inventarAendern(c.id,l=>l.map(v=>v.id===e.id?{...v,anzahl:n}:v))) menge.value=e.anzahl; });
         controls.append(menge);
-        if (e.angelegt || platzOptionen(e.gegenstand).length) {
+        if (istWaffe(e.gegenstand)) {
+          const zu=aktion((e.angriffe||[]).join(',')||'A–',()=>waffeZuweisen(c,e)); zu.title='Angriffe zuordnen'; zu.setAttribute('aria-label','Angriffe zuordnen'); zu.classList.add('ausr-zuordnung'); controls.append(zu);
+        } else if (e.angelegt || platzOptionen(e.gegenstand).length) {
           const tragen = aktion(e.angelegt?'✓':'○',()=>e.angelegt?inventarAendern(c.id,l=>l.map(v=>v.id===e.id?{...v,angelegt:false,belegtePlaetze:[]}:v)):anlegen(c,e));
-          tragen.classList.add('ausr-tragen'); tragen.setAttribute('aria-label',e.angelegt?'Ablegen':'Anlegen'); tragen.title=e.angelegt?'Ablegen':'Anlegen'; tragen.setAttribute('aria-pressed',String(!!e.angelegt)); controls.append(tragen);
+          tragen.classList.add('ausr-tragen'); tragen.setAttribute('aria-label',e.angelegt?'Ablegen':'Anlegen'); tragen.title=e.angelegt?'Ablegen':'Anlegen'; tragen.setAttribute('aria-pressed',String(!!e.angelegt)); controls.append(rune(tragen,'activate'));
         }
-        const entfernen=aktion('✕',()=>{if(confirm(`${e.gegenstand.name} aus der Ausrüstung entfernen?`)) inventarAendern(c.id,l=>l.filter(v=>v.id!==e.id));}); entfernen.setAttribute('aria-label','Entfernen'); entfernen.title='Entfernen'; controls.append(entfernen);
+        const entfernen=aktion('✕',()=>{if(confirm(`${e.gegenstand.name} aus der Ausrüstung entfernen?`)) inventarAendern(c.id,l=>l.filter(v=>v.id!==e.id));}); entfernen.setAttribute('aria-label','Entfernen'); entfernen.title='Entfernen'; controls.append(rune(entfernen,'delete'));
         zeile.append(controls); gruppe.append(zeile);
       }
       box.append(gruppe);
@@ -173,6 +192,9 @@
       });
       b.disabled = !c || !charakterSpeicherBereit;
       el.append(b);
+      if (/^Gewöhnlich/.test(x.kategorie||'') && /Waffe|Rüstung|Schild/.test(x.kategorie||'') && !/pfeil|bolzen|munition|doppel|shuriken/i.test(x.name) && !/doppel/i.test(JSON.stringify(x.waffenwerte||{})) && typeof x.preis_gm==='number' && Number.isFinite(x.preis_gm)) {
+        el.append(aktion('Konfigurieren',()=>konfigurieren(x,c)));
+      }
     }
     el.append(text('h3', 'Beschreibung'));
     el.append(text('p', x.beschreibung || 'Noch nicht erfasst.', 'zauber-pergament-beschreibung-600'));
@@ -180,6 +202,19 @@
     if (!d.open) d.showModal();
   }
 
+  function konfigurieren(x,c) {
+    const d=dialog(), el=d.querySelector('#ausruestungPergamentText625');
+    el.replaceChildren(text('h2',x.name),text('p','Grundgegenstand konfigurieren'));
+    const w=istWaffe(x), q=document.createElement('select'), bonus=document.createElement('select');
+    for(const v of ['Normal','Meisterarbeit','Magisch']) q.append(new Option(v,v));
+    for(let i=1;i<=5;i++)bonus.append(new Option('+'+i,String(i)));
+    const label=text('label','Qualität: ');label.append(q);el.append(label);
+    const bl=text('label',' Verbesserungsbonus: ');bl.append(bonus);el.append(bl);
+    const preis=text('p','');el.append(preis,text('p','Material: Standardmaterial. Sondermaterialien und besondere magische Eigenschaften folgen nach Regelabgleich.'));
+    const berechnen=()=>{bl.hidden=q.value!=='Magisch'; const n=q.value==='Magisch'?Number(bonus.value):0; const kosten=x.preis_gm+(q.value==='Normal'?0:w?300:150)+(w?2000:1000)*n*n;preis.textContent='Preis: '+format(kosten)+' GM';return {n,kosten};};
+    q.onchange=bonus.onchange=berechnen;berechnen();
+    el.append(aktion('Zur Ausrüstung hinzufügen',()=>{if(!c)return;const {n,kosten}=berechnen();const g={...x,name:x.name+(n?' +'+n:q.value==='Meisterarbeit'?' (Meisterarbeit)':''),preis_gm:kosten,preis_original:format(kosten)+' GM'};if(inventarAendern(c.id,l=>[...l,{id:globalThis.crypto?.randomUUID?.()||neueCharakterId(),grundId:x.id,gegenstand:g,anzahl:1,angelegt:false,belegtePlaetze:[],angriffe:[],material:'Standardmaterial',qualitaet:q.value,verbesserungsbonus:n,eigenschaften:[],boni:[]}]))d.close();}));
+  }
   function filterOptionen(select, werte, titel, aktuell) {
     select.replaceChildren();
     const alle = document.createElement('option');
