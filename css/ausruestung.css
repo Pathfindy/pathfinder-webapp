@@ -52,3 +52,15 @@ nav #btnCharaktere{order:1}nav #btnCharakterwerte{order:2}nav #btnLeben{order:3}
 .ausr-inv-controls { display:flex; flex-wrap:wrap; gap:.5rem; }
 #ausrInventar630 input { width:7rem; max-width:100%; font-size:16px; }
 .ausr-inv-name { font-weight:bold; }
+
+/* v0.61.31: eine kompakte Inventarzeile, unabhängig von globalen Button-Regeln. */
+#ausrInventar630 .ausr-inv-zeile {display:flex;align-items:center;gap:4px;padding:4px 0;min-width:0;}
+#ausrInventar630 .ausr-inv-zeile > button {flex:1 1 0;min-width:0;width:auto!important;text-align:left;white-space:normal;line-height:1.15;}
+#ausrInventar630 .ausr-inv-controls {display:flex;flex:0 0 auto;flex-wrap:nowrap;align-items:center;gap:3px;width:auto!important;}
+#ausrInventar630 .ausr-inv-controls input {width:52px!important;min-width:0;max-width:52px;padding:3px;margin:0;}
+#ausrInventar630 .ausr-inv-zeile button {margin:0!important;min-height:44px;height:auto;box-sizing:border-box;padding:4px!important;}
+#ausrInventar630 .ausr-inv-controls button {width:44px!important;min-width:44px;max-width:44px;background:#f3e6c9!important;background-image:none!important;color:#39271c!important;}
+#ausrInventar630 .ausr-inv-controls button[aria-pressed=true] {background:#d1dfc4!important;}
+#ausrInventar630 .ausr-slot {padding:4px 0;border-top:1px solid #bba37d;overflow-wrap:anywhere;}
+#ausrInventar630 .ausr-inv-gruppe {padding:4px;}
+#ausrInventar630 .ausr-inv-name {margin:4px 0;}
