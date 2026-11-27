@@ -116,9 +116,9 @@
     box.append(text('p', c.name, 'ausr-inv-name'));
     const liste = Array.isArray(c.ausruestung) ? c.ausruestung : [];
     const belegt = document.createElement('details'); belegt.className='ausr-inv-gruppe'; belegt.dataset.kategorie='__belegt'; belegt.open=offen.get('__belegt') ?? false; belegt.append(text('summary','Angelegte Ausrüstung'));
-    for (const p of koerperplaetze) { const e=liste.find(v=>v.angelegt && (v.belegtePlaetze||[]).includes(p)); belegt.append(text('div',p+': '+(e?.gegenstand?.name || '–'),'ausr-slot')); }
+    for (const p of koerperplaetze) { const e=liste.find(v=>v.angelegt && (v.belegtePlaetze||[]).includes(p)); belegt.append(text('div',p+': '+(e?.gegenstand?.name || '–'),'ausr-slot'+(e?' ausr-belegt':''))); }
     for (const e of liste.filter(v=>v.angelegt && !istWaffe(v.gegenstand) && !(v.belegtePlaetze||[]).length)) belegt.append(text('div','Platzlos: '+e.gegenstand.name,'ausr-slot'));
-    for(const z of EFFEKT_ANGRIFFSZIELE) { const e=liste.find(v=>istWaffe(v.gegenstand)&&(v.angriffe||[]).includes(z)); belegt.append(text('div',z+': '+(e?.gegenstand.name||'–'),'ausr-slot')); }
+    for(const z of EFFEKT_ANGRIFFSZIELE) { const e=liste.find(v=>istWaffe(v.gegenstand)&&(v.angriffe||[]).includes(z)); belegt.append(text('div',z+': '+(e?.gegenstand.name||'–'),'ausr-slot'+(e?' ausr-belegt':''))); }
     box.append(belegt);
     const gruppen = new Map();
     for (const e of liste) {
@@ -131,8 +131,8 @@
       const gruppe = document.createElement('details'); gruppe.open = offen.get(k) ?? true; gruppe.dataset.kategorie=k; gruppe.className = 'ausr-inv-gruppe';
       gruppe.append(text('summary', `${k} (${eintraege.length})`));
       for (const e of eintraege.sort((a,b)=>String(a.gegenstand.name).localeCompare(String(b.gegenstand.name),'de'))) {
-        const zeile = document.createElement('div'); zeile.className = 'ausr-inv-zeile';
-        zeile.append(aktion(e.gegenstand.name, ()=>zeigeGegenstand(e.gegenstand, false)));
+        const zeile = document.createElement('div'); zeile.className = 'ausr-inv-zeile'+(e.angelegt?' ausr-belegt':'');
+        zeile.append(aktion(e.gegenstand.name, ()=>zeigeGegenstand(inventarDetails(e), false)));
         const controls = document.createElement('div'); controls.className = 'ausr-inv-controls';
         const menge = document.createElement('input'); menge.type='number'; menge.min='1'; menge.max='999999'; menge.step='1'; menge.value=e.anzahl; menge.setAttribute('aria-label',`Anzahl ${e.gegenstand.name}`);
         menge.addEventListener('change',()=>{ const n=Number(menge.value); if(!Number.isInteger(n)||n<1||n>999999){menge.value=e.anzahl;return;} if(!inventarAendern(c.id,l=>l.map(v=>v.id===e.id?{...v,anzahl:n}:v))) menge.value=e.anzahl; });
@@ -167,11 +167,11 @@
       ['Erschaf. Kosten', x.erschaffungskosten_gm === null || x.erschaffungskosten_gm === undefined || x.erschaffungskosten_gm === '' ? '–' : `${format(x.erschaffungskosten_gm)} GM`]
     ];
     for (const [label, wert] of felder) {
-      dl.append(text('dt', label), text('dd', format(wert)));
+      dl.append(text('dt', ({'Rüstungs-/Schildbonus':'RK-Bonus','Rüstungsbonus':'RK-Bonus','Zauberpatzerchance':'Zauberpatzer'})[label]||label), text('dd', format(wert)));
     }
     if (x.waffenwerte || x.ruestungswerte) {
       for (const [label, wert] of Object.entries(x.waffenwerte || x.ruestungswerte)) {
-        dl.append(text('dt', label), text('dd', format(wert)));
+        dl.append(text('dt', ({'Rüstungs-/Schildbonus':'RK-Bonus','Rüstungsbonus':'RK-Bonus','Zauberpatzerchance':'Zauberpatzer'})[label]||label), text('dd', format(wert)));
       }
     }
     if (x.erschaffungsvoraussetzungen || (x.id && x.id.startsWith('ak-'))) {
@@ -202,18 +202,42 @@
     if (!d.open) d.showModal();
   }
 
+  // ARK S. 48–51. Materialauswahl bewusst konservativ für bekannte Grundtypen.
+  const zahl = v => /^[-+]?\d+(?:[.,]\d+)?/.test(String(v)) ? Number(String(v).match(/^[-+]?\d+(?:[.,]\d+)?/)[0].replace(',','.')) : null;
+  const plus = n => (n>0?'+':'')+n;
+  function materialien(x) {
+    const w=istWaffe(x), name=norm(x.name), r=x.ruestungswerte||{}, schild=/schild/i.test(x.kategorie), art=r.Art||'';
+    const metall=w?/^(langschwert|kurzschwert|dolch|rapier|zweihander|kriegshammer|streitaxt|handaxt|krummsabel|falchion|morgenstern|streitkolben)$/.test(name):/stahl|ketten|ritterrustung|brustplatte|schuppenpanzer|plattenpanzer|schienenpanzer/.test(name);
+    const holz=w?/^(kurzbogen|langbogen|kampfstab|knuppel|speer|kurzspeer|wurfspeer)$/.test(name):schild&&/holz/.test(name);
+    const m=['Standardmaterial'];
+    if(metall){if(!schild)m.push('Adamant');if(w)m.push('Kaltes Eisen','Alchemistensilber');if(!w||zahl(x.gewicht)!==null)m.push('Mithral');}
+    if(holz&&zahl(x.gewicht)!==null)m.push('Schwarzholz');
+    return m;
+  }
+  function modifizieren(x,q,n,m) {
+    const w=istWaffe(x), schild=/schild/i.test(x.kategorie), r={...x.ruestungswerte}, art=r.Art||'', gewicht=zahl(x.gewicht), mw=q!=='Normal'||['Adamant','Mithral','Schwarzholz'].includes(m);
+    let kosten=x.preis_gm+(mw?(w?300:150):0)+(w?2000:1000)*n*n, malus=mw?1:0, hinweise=[];
+    if(m==='Adamant'){kosten+=(w?3000:/^Leichte/.test(art)?5000:/^Mittelschwere/.test(art)?10000:15000)-(w?300:150);hinweise.push(w?'Ignoriert Härte unter 20 beim Angriff auf Gegenstände.':'SR '+(/^Leichte/.test(art)?1:/^Mittelschwere/.test(art)?2:3)+'/–');}
+    if(m==='Kaltes Eisen'){kosten+=x.preis_gm+(n?2000:0);hinweise.push('Kaltes Eisen zur Überwindung von SR.');}
+    if(m==='Alchemistensilber'){kosten+=/leicht/i.test(x.waffenwerte?.Art)?20:/zweihand/i.test(x.waffenwerte?.Art)?180:90;hinweise.push('Bei Hieb- oder Stichschaden −1 Schaden (mindestens 1).');}
+    if(m==='Mithral'){kosten+=(w?500*gewicht:schild?1000:/^Leichte/.test(art)?1000:/^Mittelschwere/.test(art)?4000:9000)-(w?300:150);malus=3;hinweise.push(w?'Gilt als Silber zur Überwindung von SR.':'Rüstung gilt für Bewegung als eine Kategorie leichter; Umgang unverändert.');if(!w){if(zahl(r['Max. GE-Bonus'])!==null)r['Max. GE-Bonus']=plus(zahl(r['Max. GE-Bonus'])+2);if(zahl(r.Zauberpatzerchance)!==null)r.Zauberpatzerchance=Math.max(0,zahl(r.Zauberpatzerchance)-10)+' %';}}
+    if(m==='Schwarzholz'){kosten+=10*gewicht;if(schild)malus=2;}
+    const g={...x,name:(m==='Standardmaterial'?'':m+' – ')+x.name+(n?' +'+n:mw?' (Meisterarbeit)':''),preis_gm:kosten,preis_original:format(kosten)+' GM',kategorie:n?(w?'Magische Waffe':schild?'Magischer Schild':'Magische Rüstung'):x.kategorie};
+    if(['Mithral','Schwarzholz'].includes(m)&&gewicht!==null)g.gewicht=format(gewicht/2)+' Pfd.';
+    if(w){g.waffenwerte={...x.waffenwerte};if(mw)g.waffenwerte.Angriffsbonus=plus(n||1);if(n)g.waffenwerte.Schadensbonus=plus(n);}
+    else {g.ausruestungsplatz=schild?'Schild':'Rüstung';const key=schild?'Schildbonus':'Rüstungsbonus';const base=zahl(r[key]??r['Rüstungs-/Schildbonus']);delete r['Rüstungs-/Schildbonus'];if(base!==null)r[key]=plus(base+n);if(zahl(r.Rüstungsmalus)!==null)r.Rüstungsmalus=String(Math.min(0,zahl(r.Rüstungsmalus)+malus));for(const key of Object.keys(r))if(key.startsWith('Bewegung')&&(schild||/^Leichte/.test(art)||(m==='Mithral'&&/^Mittelschwere/.test(art))))delete r[key];g.ruestungswerte=r;}
+    if(n){g.zs=3*n;g.aura=(n<=1?'Schwache':n<=3?'Durchschnittliche':'Starke')+' Bannmagie';if(w)g.aura=(n<=1?'Schwache':n<=3?'Durchschnittliche':'Starke')+' Hervorrufungsmagie';}
+    if(hinweise.length)g.beschreibung=(x.beschreibung||'')+' '+hinweise.join(' ');return g;
+  }
+  function inventarDetails(e){const x=gegenstaende.find(v=>v.id===e.grundId);if(x&&e.qualitaet&&typeof x.preis_gm==='number')return modifizieren(x,e.qualitaet,Number(e.verbesserungsbonus)||0,e.material||'Standardmaterial');return e.gegenstand;}
   function konfigurieren(x,c) {
-    const d=dialog(), el=d.querySelector('#ausruestungPergamentText625');
-    el.replaceChildren(text('h2',x.name),text('p','Grundgegenstand konfigurieren'));
-    const w=istWaffe(x), q=document.createElement('select'), bonus=document.createElement('select');
-    for(const v of ['Normal','Meisterarbeit','Magisch']) q.append(new Option(v,v));
-    for(let i=1;i<=5;i++)bonus.append(new Option('+'+i,String(i)));
-    const label=text('label','Qualität: ');label.append(q);el.append(label);
-    const bl=text('label',' Verbesserungsbonus: ');bl.append(bonus);el.append(bl);
-    const preis=text('p','');el.append(preis,text('p','Material: Standardmaterial. Sondermaterialien und besondere magische Eigenschaften folgen nach Regelabgleich.'));
-    const berechnen=()=>{bl.hidden=q.value!=='Magisch'; const n=q.value==='Magisch'?Number(bonus.value):0; const kosten=x.preis_gm+(q.value==='Normal'?0:w?300:150)+(w?2000:1000)*n*n;preis.textContent='Preis: '+format(kosten)+' GM';return {n,kosten};};
-    q.onchange=bonus.onchange=berechnen;berechnen();
-    el.append(aktion('Zur Ausrüstung hinzufügen',()=>{if(!c)return;const {n,kosten}=berechnen();const g={...x,name:x.name+(n?' +'+n:q.value==='Meisterarbeit'?' (Meisterarbeit)':''),preis_gm:kosten,preis_original:format(kosten)+' GM'};if(inventarAendern(c.id,l=>[...l,{id:globalThis.crypto?.randomUUID?.()||neueCharakterId(),grundId:x.id,gegenstand:g,anzahl:1,angelegt:false,belegtePlaetze:[],angriffe:[],material:'Standardmaterial',qualitaet:q.value,verbesserungsbonus:n,eigenschaften:[],boni:[]}]))d.close();}));
+    const d=dialog(), el=d.querySelector('#ausruestungPergamentText625');el.replaceChildren(text('h2',x.name));
+    const q=document.createElement('select'), bonus=document.createElement('select'), mat=document.createElement('select');
+    for(const v of ['Normal','Meisterarbeit','Magisch'])q.append(new Option(v,v));for(let i=1;i<=5;i++)bonus.append(new Option('+'+i,String(i)));for(const v of materialien(x))mat.append(new Option(v,v));
+    for(const [t,i] of [['Material: ',mat],['Qualität: ',q]]){const l=text('label',t);l.append(i);el.append(l);}
+    const bl=text('label','Verbesserungsbonus: ');bl.append(bonus);el.append(bl);const preis=text('p','');el.append(preis);
+    const berechnen=()=>{const zwang=['Adamant','Mithral','Schwarzholz'].includes(mat.value);if(zwang&&q.value==='Normal')q.value='Meisterarbeit';q.options[0].disabled=zwang;bl.hidden=q.value!=='Magisch';const n=q.value==='Magisch'?Number(bonus.value):0;const g=modifizieren(x,q.value,n,mat.value);preis.textContent='Preis: '+g.preis_original;return {n,g};};
+    q.onchange=bonus.onchange=mat.onchange=berechnen;berechnen();el.append(aktion('Zur Ausrüstung hinzufügen',()=>{if(!c)return;const {n,g}=berechnen();if(inventarAendern(c.id,l=>[...l,{id:globalThis.crypto?.randomUUID?.()||neueCharakterId(),grundId:x.id,gegenstand:g,anzahl:1,angelegt:false,belegtePlaetze:[],angriffe:[],material:mat.value,qualitaet:q.value,verbesserungsbonus:n,eigenschaften:[],boni:[]}]))d.close();}));
   }
   function filterOptionen(select, werte, titel, aktuell) {
     select.replaceChildren();
@@ -304,7 +328,7 @@
     root.innerHTML = '<p class="ausr-hinweis">Ausrüstungsdaten werden geladen …</p>';
     ladeversuch = (async () => {
       try {
-        const antwort = await fetch('data/ausruestung.json?v=61.29');
+        const antwort = await fetch('data/ausruestung.json?v=61.33');
         if (!antwort.ok) throw new Error(`HTTP ${antwort.status}`);
         const daten = await antwort.json();
         if (!Array.isArray(daten.gegenstaende)) throw new Error('Ungültiges Datenformat');
