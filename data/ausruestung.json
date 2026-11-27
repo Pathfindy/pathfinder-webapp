@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": "0.61.33",
   "stand": "2026-11-27",
   "quelle": "Ausrüstungskompendium, 2. Auflage",
   "hinweis": "V0.61.29: Kapitel 1-2 ergänzt (gewöhnliche Waffen, Rüstungen, Reiseausrüstung, Werkzeuge, Dienstleistungen, Alchemie etc.). PDF-Extraktion und Tabellenerfassung nicht einzeln geprüft; englische Namen und Seiten bleiben überwiegend offen. Bestehende Datensätze unverändert übernommen.",
@@ -2712,7 +2712,7 @@
       "quelle_en": "Ultimate Equipment",
       "seite": 9,
       "kategorie": "Gewöhnliche Rüstung",
-      "ausruestungsplatz": "",
+      "ausruestungsplatz": "Rüstung",
       "preis_gm": 250.0,
       "preis_original": "250 GM",
       "zs": null,
@@ -2724,12 +2724,12 @@
       "gewicht": "35 Pfd.",
       "ruestungswerte": {
         "Art": "Schwere Rüstung",
-        "Rüstungs-/Schildbonus": "+7",
         "Max. GE-Bonus": "+1",
         "Rüstungsmalus": "-6",
         "Zauberpatzerchance": "35 %",
         "Bewegung (9 m)": "6 m",
-        "Bewegung (6 m)": "4,50 m"
+        "Bewegung (6 m)": "4,50 m",
+        "Rüstungsbonus": "+7"
       }
     },
     {
@@ -2867,7 +2867,7 @@
       "quelle_en": "Ultimate Equipment",
       "seite": 9,
       "kategorie": "Gewöhnliche Rüstung",
-      "ausruestungsplatz": "",
+      "ausruestungsplatz": "Rüstung",
       "preis_gm": 400.0,
       "preis_original": "400 GM",
       "zs": null,
@@ -2879,12 +2879,12 @@
       "gewicht": "25 Pfd.",
       "ruestungswerte": {
         "Art": "Mittelschwere Rüstung",
-        "Rüstungs-/Schildbonus": "+6",
         "Max. GE-Bonus": "+3",
         "Rüstungsmalus": "-4",
         "Zauberpatzerchance": "25 %",
         "Bewegung (9 m)": "6 m",
-        "Bewegung (6 m)": "4,50 m"
+        "Bewegung (6 m)": "4,50 m",
+        "Rüstungsbonus": "+6"
       }
     },
     {
@@ -2895,7 +2895,7 @@
       "quelle_en": "Ultimate Equipment",
       "seite": 9,
       "kategorie": "Gewöhnliche Rüstung",
-      "ausruestungsplatz": "",
+      "ausruestungsplatz": "Rüstung",
       "preis_gm": 850.0,
       "preis_original": "850 GM",
       "zs": null,
@@ -2907,12 +2907,12 @@
       "gewicht": "55 Pfd.",
       "ruestungswerte": {
         "Art": "Schwere Rüstung",
-        "Rüstungs-/Schildbonus": "+8",
         "Max. GE-Bonus": "+0",
         "Rüstungsmalus": "-7",
         "Zauberpatzerchance": "40 %",
         "Bewegung (9 m)": "6 m",
-        "Bewegung (6 m)": "4,50 m"
+        "Bewegung (6 m)": "4,50 m",
+        "Rüstungsbonus": "+8"
       }
     },
     {
@@ -3093,7 +3093,7 @@
       "quelle_en": "Ultimate Equipment",
       "seite": 9,
       "kategorie": "Gewöhnliche Rüstung",
-      "ausruestungsplatz": "",
+      "ausruestungsplatz": "Rüstung",
       "preis_gm": 250.0,
       "preis_original": "250 GM",
       "zs": null,
@@ -3105,12 +3105,12 @@
       "gewicht": "40 Pfd.",
       "ruestungswerte": {
         "Art": "Mittelschwere Rüstung",
-        "Rüstungs-/Schildbonus": "+6",
         "Max. GE-Bonus": "+3",
         "Rüstungsmalus": "-4",
         "Zauberpatzerchance": "30 %",
         "Bewegung (9 m)": "6 m",
-        "Bewegung (6 m)": "4,50 m"
+        "Bewegung (6 m)": "4,50 m",
+        "Rüstungsbonus": "+6"
       }
     },
     {
@@ -3121,7 +3121,7 @@
       "quelle_en": "Ultimate Equipment",
       "seite": 9,
       "kategorie": "Gewöhnliche Rüstung",
-      "ausruestungsplatz": "",
+      "ausruestungsplatz": "Rüstung",
       "preis_gm": 25.0,
       "preis_original": "25 GM",
       "zs": null,
@@ -3133,12 +3133,10 @@
       "gewicht": "20 Pfd.",
       "ruestungswerte": {
         "Art": "Leichte Rüstung",
-        "Rüstungs-/Schildbonus": "+3",
         "Max. GE-Bonus": "+5",
         "Rüstungsmalus": "-1",
         "Zauberpatzerchance": "15 %",
-        "Bewegung (9 m)": "9 m",
-        "Bewegung (6 m)": "6 m"
+        "Rüstungsbonus": "+3"
       }
     },
     {
@@ -4114,7 +4112,7 @@
       "quelle_en": "Ultimate Equipment",
       "seite": 9,
       "kategorie": "Gewöhnliche Rüstung",
-      "ausruestungsplatz": "",
+      "ausruestungsplatz": "Rüstung",
       "preis_gm": 200.0,
       "preis_original": "200 GM",
       "zs": null,
@@ -4126,12 +4124,12 @@
       "gewicht": "30 Pfd.",
       "ruestungswerte": {
         "Art": "Mittelschwere Rüstung",
-        "Rüstungs-/Schildbonus": "+6",
         "Max. GE-Bonus": "+3",
         "Rüstungsmalus": "-4",
         "Zauberpatzerchance": "25 %",
         "Bewegung (9 m)": "6 m",
-        "Bewegung (6 m)": "4,50 m"
+        "Bewegung (6 m)": "4,50 m",
+        "Rüstungsbonus": "+6"
       }
     },
     {
@@ -4783,7 +4781,7 @@
       "quelle_en": "Ultimate Equipment",
       "seite": 9,
       "kategorie": "Gewöhnliche Rüstung",
-      "ausruestungsplatz": "",
+      "ausruestungsplatz": "Rüstung",
       "preis_gm": 200.0,
       "preis_original": "200 GM",
       "zs": null,
@@ -4795,12 +4793,12 @@
       "gewicht": "30 Pfd.",
       "ruestungswerte": {
         "Art": "Mittelschwere Rüstung",
-        "Rüstungs-/Schildbonus": "+5",
         "Max. GE-Bonus": "+4",
         "Rüstungsmalus": "-4",
         "Zauberpatzerchance": "25 %",
         "Bewegung (9 m)": "6 m",
-        "Bewegung (6 m)": "4,50 m"
+        "Bewegung (6 m)": "4,50 m",
+        "Rüstungsbonus": "+5"
       }
     },
     {
@@ -7381,7 +7379,7 @@
       "quelle_en": "Ultimate Equipment",
       "seite": 9,
       "kategorie": "Gewöhnliche Rüstung",
-      "ausruestungsplatz": "",
+      "ausruestungsplatz": "Rüstung",
       "preis_gm": 15.0,
       "preis_original": "15 GM",
       "zs": null,
@@ -7393,12 +7391,12 @@
       "gewicht": "25 Pfd.",
       "ruestungswerte": {
         "Art": "Mittelschwere Rüstung",
-        "Rüstungs-/Schildbonus": "+4",
         "Max. GE-Bonus": "+4",
         "Rüstungsmalus": "-3",
         "Zauberpatzerchance": "20 %",
         "Bewegung (9 m)": "6 m",
-        "Bewegung (6 m)": "4,50 m"
+        "Bewegung (6 m)": "4,50 m",
+        "Rüstungsbonus": "+4"
       }
     },
     {
@@ -9060,7 +9058,7 @@
       "quelle_en": "Ultimate Equipment",
       "seite": 9,
       "kategorie": "Gewöhnliche Rüstung",
-      "ausruestungsplatz": "",
+      "ausruestungsplatz": "Rüstung",
       "preis_gm": 50.0,
       "preis_original": "50 GM",
       "zs": null,
@@ -9072,12 +9070,12 @@
       "gewicht": "20 Pfd.",
       "ruestungswerte": {
         "Art": "Mittelschwere Rüstung",
-        "Rüstungs-/Schildbonus": "+4",
         "Max. GE-Bonus": "+3",
         "Rüstungsmalus": "-2",
         "Zauberpatzerchance": "20 %",
         "Bewegung (9 m)": "6 m",
-        "Bewegung (6 m)": "4,50 m"
+        "Bewegung (6 m)": "4,50 m",
+        "Rüstungsbonus": "+4"
       }
     },
     {
@@ -9281,7 +9279,7 @@
       "quelle_en": "Ultimate Equipment",
       "seite": 9,
       "kategorie": "Gewöhnliche Rüstung",
-      "ausruestungsplatz": "",
+      "ausruestungsplatz": "Rüstung",
       "preis_gm": 100.0,
       "preis_original": "100 GM",
       "zs": null,
@@ -9293,12 +9291,10 @@
       "gewicht": "15 Pfd.",
       "ruestungswerte": {
         "Art": "Leichte Rüstung",
-        "Rüstungs-/Schildbonus": "+1",
         "Max. GE-Bonus": "+8",
         "Rüstungsmalus": "0",
         "Zauberpatzerchance": "10 %",
-        "Bewegung (9 m)": "9 m",
-        "Bewegung (6 m)": "6 m"
+        "Rüstungsbonus": "+1"
       }
     },
     {
@@ -11146,7 +11142,7 @@
       "quelle_en": "Ultimate Equipment",
       "seite": 9,
       "kategorie": "Gewöhnliche Rüstung",
-      "ausruestungsplatz": "",
+      "ausruestungsplatz": "Rüstung",
       "preis_gm": 3.0,
       "preis_original": "3 GM",
       "zs": null,
@@ -11158,12 +11154,10 @@
       "gewicht": "1 Pfd.",
       "ruestungswerte": {
         "Art": "Leichte Rüstung",
-        "Rüstungs-/Schildbonus": "+1",
         "Max. GE-Bonus": "–",
         "Rüstungsmalus": "0",
         "Zauberpatzerchance": "0 %",
-        "Bewegung (9 m)": "9 m",
-        "Bewegung (6 m)": "6 m"
+        "Rüstungsbonus": "+1"
       }
     },
     {
@@ -11911,7 +11905,7 @@
       "quelle_en": "Ultimate Equipment",
       "seite": 9,
       "kategorie": "Gewöhnliche Rüstung",
-      "ausruestungsplatz": "",
+      "ausruestungsplatz": "Rüstung",
       "preis_gm": 20.0,
       "preis_original": "20 GM",
       "zs": null,
@@ -11923,12 +11917,10 @@
       "gewicht": "25 Pfd.",
       "ruestungswerte": {
         "Art": "Leichte Rüstung",
-        "Rüstungs-/Schildbonus": "+3",
         "Max. GE-Bonus": "+3",
         "Rüstungsmalus": "-1",
         "Zauberpatzerchance": "15 %",
-        "Bewegung (9 m)": "9 m",
-        "Bewegung (6 m)": "6 m"
+        "Rüstungsbonus": "+3"
       }
     },
     {
@@ -13599,7 +13591,7 @@
       "quelle_en": "Ultimate Equipment",
       "seite": 9,
       "kategorie": "Gewöhnliche Rüstung",
-      "ausruestungsplatz": "",
+      "ausruestungsplatz": "Rüstung",
       "preis_gm": 100.0,
       "preis_original": "100 GM",
       "zs": null,
@@ -13611,12 +13603,10 @@
       "gewicht": "25 Pfd.",
       "ruestungswerte": {
         "Art": "Leichte Rüstung",
-        "Rüstungs-/Schildbonus": "+4",
         "Max. GE-Bonus": "+4",
         "Rüstungsmalus": "-2",
         "Zauberpatzerchance": "20 %",
-        "Bewegung (9 m)": "9 m",
-        "Bewegung (6 m)": "6 m"
+        "Rüstungsbonus": "+4"
       }
     },
     {
@@ -13627,7 +13617,7 @@
       "quelle_en": "Ultimate Equipment",
       "seite": 9,
       "kategorie": "Gewöhnliche Rüstung",
-      "ausruestungsplatz": "",
+      "ausruestungsplatz": "Rüstung",
       "preis_gm": 150.0,
       "preis_original": "150 GM",
       "zs": null,
@@ -13639,12 +13629,12 @@
       "gewicht": "40 Pfd.",
       "ruestungswerte": {
         "Art": "Mittelschwere Rüstung",
-        "Rüstungs-/Schildbonus": "+6",
         "Max. GE-Bonus": "+2",
         "Rüstungsmalus": "-5",
         "Zauberpatzerchance": "30 %",
         "Bewegung (9 m)": "6 m",
-        "Bewegung (6 m)": "4,50 m"
+        "Bewegung (6 m)": "4,50 m",
+        "Rüstungsbonus": "+6"
       }
     },
     {
@@ -13753,7 +13743,7 @@
       "quelle_en": "Ultimate Equipment",
       "seite": 9,
       "kategorie": "Gewöhnliche Rüstung",
-      "ausruestungsplatz": "",
+      "ausruestungsplatz": "Rüstung",
       "preis_gm": 250.0,
       "preis_original": "250 GM",
       "zs": null,
@@ -13765,12 +13755,12 @@
       "gewicht": "25 Pfd.",
       "ruestungswerte": {
         "Art": "Mittelschwere Rüstung",
-        "Rüstungs-/Schildbonus": "+5",
         "Max. GE-Bonus": "+4",
         "Rüstungsmalus": "-3",
         "Zauberpatzerchance": "20 %",
         "Bewegung (9 m)": "6 m",
-        "Bewegung (6 m)": "4,50 m"
+        "Bewegung (6 m)": "4,50 m",
+        "Rüstungsbonus": "+5"
       }
     },
     {
@@ -13866,7 +13856,7 @@
       "quelle_en": "Ultimate Equipment",
       "seite": 9,
       "kategorie": "Gewöhnlicher Schild",
-      "ausruestungsplatz": "",
+      "ausruestungsplatz": "Schild",
       "preis_gm": 12.0,
       "preis_original": "12 GM",
       "zs": null,
@@ -13878,12 +13868,10 @@
       "gewicht": "6 Pfd.",
       "ruestungswerte": {
         "Art": "Schilde",
-        "Rüstungs-/Schildbonus": "+1",
         "Max. GE-Bonus": "–",
         "Rüstungsmalus": "-1",
         "Zauberpatzerchance": "5 %",
-        "Bewegung (9 m)": "–",
-        "Bewegung (6 m)": "–"
+        "Schildbonus": "+1"
       }
     },
     {
@@ -15384,7 +15372,7 @@
       "quelle_en": "Ultimate Equipment",
       "seite": 9,
       "kategorie": "Gewöhnliche Rüstung",
-      "ausruestungsplatz": "",
+      "ausruestungsplatz": "Rüstung",
       "preis_gm": 350.0,
       "preis_original": "350 GM",
       "zs": null,
@@ -15396,12 +15384,12 @@
       "gewicht": "45 Pfd.",
       "ruestungswerte": {
         "Art": "Schwere Rüstung",
-        "Rüstungs-/Schildbonus": "+7",
         "Max. GE-Bonus": "+1",
         "Rüstungsmalus": "-7",
         "Zauberpatzerchance": "35 %",
         "Bewegung (9 m)": "6 m",
-        "Bewegung (6 m)": "4,50 m"
+        "Bewegung (6 m)": "4,50 m",
+        "Rüstungsbonus": "+7"
       }
     },
     {
@@ -15487,7 +15475,7 @@
       "quelle_en": "Ultimate Equipment",
       "seite": 9,
       "kategorie": "Gewöhnliche Rüstung",
-      "ausruestungsplatz": "",
+      "ausruestungsplatz": "Rüstung",
       "preis_gm": 200.0,
       "preis_original": "200 GM",
       "zs": null,
@@ -15499,12 +15487,12 @@
       "gewicht": "50 Pfd.",
       "ruestungswerte": {
         "Art": "Schwere Rüstung",
-        "Rüstungs-/Schildbonus": "+7",
         "Max. GE-Bonus": "+0",
         "Rüstungsmalus": "-7",
         "Zauberpatzerchance": "40 %",
         "Bewegung (9 m)": "6 m",
-        "Bewegung (6 m)": "4,50 m"
+        "Bewegung (6 m)": "4,50 m",
+        "Rüstungsbonus": "+7"
       }
     },
     {
@@ -15515,7 +15503,7 @@
       "quelle_en": "Ultimate Equipment",
       "seite": 9,
       "kategorie": "Gewöhnliche Rüstung",
-      "ausruestungsplatz": "",
+      "ausruestungsplatz": "Rüstung",
       "preis_gm": 100.0,
       "preis_original": "100 GM",
       "zs": null,
@@ -15527,12 +15515,12 @@
       "gewicht": "30 Pfd.",
       "ruestungswerte": {
         "Art": "Mittelschwere Rüstung",
-        "Rüstungs-/Schildbonus": "+5",
         "Max. GE-Bonus": "+3",
         "Rüstungsmalus": "-4",
         "Zauberpatzerchance": "25 %",
         "Bewegung (9 m)": "6 m",
-        "Bewegung (6 m)": "4,50 m"
+        "Bewegung (6 m)": "4,50 m",
+        "Rüstungsbonus": "+5"
       }
     },
     {
@@ -15543,7 +15531,7 @@
       "quelle_en": "Ultimate Equipment",
       "seite": 9,
       "kategorie": "Gewöhnliche Rüstung",
-      "ausruestungsplatz": "",
+      "ausruestungsplatz": "Rüstung",
       "preis_gm": 60.0,
       "preis_original": "60 GM",
       "zs": null,
@@ -15555,12 +15543,10 @@
       "gewicht": "25 Pfd.",
       "ruestungswerte": {
         "Art": "Leichte Rüstung",
-        "Rüstungs-/Schildbonus": "+4",
         "Max. GE-Bonus": "+3",
         "Rüstungsmalus": "-2",
         "Zauberpatzerchance": "20 %",
-        "Bewegung (9 m)": "9 m",
-        "Bewegung (6 m)": "6 m"
+        "Rüstungsbonus": "+4"
       }
     },
     {
@@ -15571,7 +15557,7 @@
       "quelle_en": "Ultimate Equipment",
       "seite": 9,
       "kategorie": "Gewöhnliche Rüstung",
-      "ausruestungsplatz": "",
+      "ausruestungsplatz": "Rüstung",
       "preis_gm": 150.0,
       "preis_original": "150 GM",
       "zs": null,
@@ -15583,12 +15569,12 @@
       "gewicht": "35 Pfd.",
       "ruestungswerte": {
         "Art": "Mittelschwere Rüstung",
-        "Rüstungs-/Schildbonus": "+6",
         "Max. GE-Bonus": "+3",
         "Rüstungsmalus": "-5",
         "Zauberpatzerchance": "25 %",
         "Bewegung (9 m)": "6 m",
-        "Bewegung (6 m)": "4,50 m"
+        "Bewegung (6 m)": "4,50 m",
+        "Rüstungsbonus": "+6"
       }
     },
     {
@@ -15599,7 +15585,7 @@
       "quelle_en": "Ultimate Equipment",
       "seite": 9,
       "kategorie": "Gewöhnliche Rüstung",
-      "ausruestungsplatz": "",
+      "ausruestungsplatz": "Rüstung",
       "preis_gm": 500.0,
       "preis_original": "500 GM",
       "zs": null,
@@ -15611,12 +15597,12 @@
       "gewicht": "45 Pfd.",
       "ruestungswerte": {
         "Art": "Schwere Rüstung",
-        "Rüstungs-/Schildbonus": "+8",
         "Max. GE-Bonus": "+0",
         "Rüstungsmalus": "-7",
         "Zauberpatzerchance": "40 %",
         "Bewegung (9 m)": "6 m",
-        "Bewegung (6 m)": "4,50 m"
+        "Bewegung (6 m)": "4,50 m",
+        "Rüstungsbonus": "+8"
       }
     },
     {
@@ -15627,7 +15613,7 @@
       "quelle_en": "Ultimate Equipment",
       "seite": 9,
       "kategorie": "Gewöhnliche Rüstung",
-      "ausruestungsplatz": "",
+      "ausruestungsplatz": "Rüstung",
       "preis_gm": 15.0,
       "preis_original": "15 GM",
       "zs": null,
@@ -15639,12 +15625,10 @@
       "gewicht": "8 Pfd.",
       "ruestungswerte": {
         "Art": "Leichte Rüstung",
-        "Rüstungs-/Schildbonus": "+2",
         "Max. GE-Bonus": "+4",
         "Rüstungsmalus": "0",
         "Zauberpatzerchance": "5 %",
-        "Bewegung (9 m)": "9 m",
-        "Bewegung (6 m)": "6 m"
+        "Rüstungsbonus": "+2"
       }
     },
     {
@@ -15712,23 +15696,6 @@
         "Grundreichweite": "–",
         "Schadensart": "H"
       }
-    },
-    {
-      "id": "ak-standard-1219",
-      "name": "Langschwert +1",
-      "name_en": "+1 Longsword",
-      "quelle_de": "Grundregelwerk / Ausrüstungskompendium",
-      "quelle_en": "Core Rulebook / Ultimate Equipment",
-      "seite": null,
-      "kategorie": "Magische Waffe",
-      "ausruestungsplatz": "Waffenhand",
-      "preis_gm": 2315,
-      "zs": null,
-      "aura": "",
-      "beschreibung": "Magisches Langschwert mit einem Verbesserungsbonus von +1.",
-      "erschaffungsvoraussetzungen": "",
-      "erschaffungskosten_gm": null,
-      "pruefstatus": "Standardgegenstand – Angaben teilweise geprüft"
     },
     {
       "id": "ark29-0485",
@@ -16043,7 +16010,7 @@
       "quelle_en": "Ultimate Equipment",
       "seite": 9,
       "kategorie": "Gewöhnliche Rüstung",
-      "ausruestungsplatz": "",
+      "ausruestungsplatz": "Rüstung",
       "preis_gm": 10.0,
       "preis_original": "10 GM",
       "zs": null,
@@ -16055,12 +16022,10 @@
       "gewicht": "15 Pfd.",
       "ruestungswerte": {
         "Art": "Leichte Rüstung",
-        "Rüstungs-/Schildbonus": "+2",
         "Max. GE-Bonus": "+6",
         "Rüstungsmalus": "0",
         "Zauberpatzerchance": "10 %",
-        "Bewegung (9 m)": "9 m",
-        "Bewegung (6 m)": "6 m"
+        "Rüstungsbonus": "+2"
       }
     },
     {
@@ -16181,7 +16146,7 @@
       "quelle_en": "Ultimate Equipment",
       "seite": 9,
       "kategorie": "Gewöhnlicher Schild",
-      "ausruestungsplatz": "",
+      "ausruestungsplatz": "Schild",
       "preis_gm": 3.0,
       "preis_original": "3 GM",
       "zs": null,
@@ -16193,12 +16158,10 @@
       "gewicht": "5 Pfd.",
       "ruestungswerte": {
         "Art": "Schilde",
-        "Rüstungs-/Schildbonus": "+1",
         "Max. GE-Bonus": "–",
         "Rüstungsmalus": "-1",
         "Zauberpatzerchance": "5 %",
-        "Bewegung (9 m)": "–",
-        "Bewegung (6 m)": "–"
+        "Schildbonus": "+1"
       }
     },
     {
@@ -16237,7 +16200,7 @@
       "quelle_en": "Ultimate Equipment",
       "seite": 9,
       "kategorie": "Gewöhnlicher Schild",
-      "ausruestungsplatz": "",
+      "ausruestungsplatz": "Schild",
       "preis_gm": 9.0,
       "preis_original": "9 GM",
       "zs": null,
@@ -16249,12 +16212,10 @@
       "gewicht": "6 Pfd.",
       "ruestungswerte": {
         "Art": "Schilde",
-        "Rüstungs-/Schildbonus": "+1",
         "Max. GE-Bonus": "–",
         "Rüstungsmalus": "-1",
         "Zauberpatzerchance": "5 %",
-        "Bewegung (9 m)": "–",
-        "Bewegung (6 m)": "–"
+        "Schildbonus": "+1"
       }
     },
     {
@@ -16972,7 +16933,7 @@
       "quelle_en": "Ultimate Equipment",
       "seite": 9,
       "kategorie": "Gewöhnlicher Schild",
-      "ausruestungsplatz": "",
+      "ausruestungsplatz": "Schild",
       "preis_gm": 40.0,
       "preis_original": "40 GM",
       "zs": null,
@@ -16984,12 +16945,10 @@
       "gewicht": "5 Pfd.",
       "ruestungswerte": {
         "Art": "Schilde",
-        "Rüstungs-/Schildbonus": "+1",
         "Max. GE-Bonus": "–",
         "Rüstungsmalus": "-2",
         "Zauberpatzerchance": "5 %",
-        "Bewegung (9 m)": "–",
-        "Bewegung (6 m)": "–"
+        "Schildbonus": "+1"
       }
     },
     {
@@ -17000,7 +16959,7 @@
       "quelle_en": "Ultimate Equipment",
       "seite": 9,
       "kategorie": "Gewöhnlicher Schild",
-      "ausruestungsplatz": "",
+      "ausruestungsplatz": "Schild",
       "preis_gm": 50.0,
       "preis_original": "50 GM",
       "zs": null,
@@ -17012,12 +16971,10 @@
       "gewicht": "6 Pfd.",
       "ruestungswerte": {
         "Art": "Schilde",
-        "Rüstungs-/Schildbonus": "+1",
         "Max. GE-Bonus": "–",
         "Rüstungsmalus": "-2",
         "Zauberpatzerchance": "5 %",
-        "Bewegung (9 m)": "–",
-        "Bewegung (6 m)": "–"
+        "Schildbonus": "+1"
       }
     },
     {
@@ -19039,7 +18996,7 @@
       "quelle_en": "Ultimate Equipment",
       "seite": 9,
       "kategorie": "Gewöhnliche Rüstung",
-      "ausruestungsplatz": "",
+      "ausruestungsplatz": "Rüstung",
       "preis_gm": 1700.0,
       "preis_original": "1.700 GM",
       "zs": null,
@@ -19051,12 +19008,12 @@
       "gewicht": "45 Pfd.",
       "ruestungswerte": {
         "Art": "Schwere Rüstung",
-        "Rüstungs-/Schildbonus": "+8",
         "Max. GE-Bonus": "+2",
         "Rüstungsmalus": "-6",
         "Zauberpatzerchance": "35 %",
         "Bewegung (9 m)": "6 m",
-        "Bewegung (6 m)": "4,50 m"
+        "Bewegung (6 m)": "4,50 m",
+        "Rüstungsbonus": "+8"
       }
     },
     {
@@ -19677,7 +19634,7 @@
       "quelle_en": "Ultimate Equipment",
       "seite": 9,
       "kategorie": "Gewöhnliche Rüstung",
-      "ausruestungsplatz": "",
+      "ausruestungsplatz": "Rüstung",
       "preis_gm": 25.0,
       "preis_original": "25 GM",
       "zs": null,
@@ -19689,12 +19646,10 @@
       "gewicht": "20 Pfd.",
       "ruestungswerte": {
         "Art": "Leichte Rüstung",
-        "Rüstungs-/Schildbonus": "+3",
         "Max. GE-Bonus": "+5",
         "Rüstungsmalus": "-1",
         "Zauberpatzerchance": "15 %",
-        "Bewegung (9 m)": "9 m",
-        "Bewegung (6 m)": "6 m"
+        "Rüstungsbonus": "+3"
       }
     },
     {
@@ -20161,7 +20116,7 @@
       "quelle_en": "Ultimate Equipment",
       "seite": 9,
       "kategorie": "Gewöhnliche Rüstung",
-      "ausruestungsplatz": "",
+      "ausruestungsplatz": "Rüstung",
       "preis_gm": 600.0,
       "preis_original": "600 GM",
       "zs": null,
@@ -20173,12 +20128,12 @@
       "gewicht": "50 Pfd.",
       "ruestungswerte": {
         "Art": "Schwere Rüstung",
-        "Rüstungs-/Schildbonus": "+8",
         "Max. GE-Bonus": "+0",
         "Rüstungsmalus": "-7",
         "Zauberpatzerchance": "40 %",
         "Bewegung (9 m)": "6 m",
-        "Bewegung (6 m)": "4,50 m"
+        "Bewegung (6 m)": "4,50 m",
+        "Rüstungsbonus": "+8"
       }
     },
     {
@@ -22020,7 +21975,7 @@
       "quelle_en": "Ultimate Equipment",
       "seite": 9,
       "kategorie": "Gewöhnliche Rüstung",
-      "ausruestungsplatz": "",
+      "ausruestungsplatz": "Rüstung",
       "preis_gm": 1500.0,
       "preis_original": "1.500 GM",
       "zs": null,
@@ -22032,12 +21987,12 @@
       "gewicht": "50 Pfd.",
       "ruestungswerte": {
         "Art": "Schwere Rüstung",
-        "Rüstungs-/Schildbonus": "+9",
         "Max. GE-Bonus": "+1",
         "Rüstungsmalus": "-6",
         "Zauberpatzerchance": "35 %",
         "Bewegung (9 m)": "6 m",
-        "Bewegung (6 m)": "4,50 m"
+        "Bewegung (6 m)": "4,50 m",
+        "Rüstungsbonus": "+9"
       }
     },
     {
@@ -23260,7 +23215,7 @@
       "quelle_en": "Ultimate Equipment",
       "seite": 9,
       "kategorie": "Gewöhnliche Rüstung",
-      "ausruestungsplatz": "",
+      "ausruestungsplatz": "Rüstung",
       "preis_gm": 200.0,
       "preis_original": "200 GM",
       "zs": null,
@@ -23272,12 +23227,12 @@
       "gewicht": "45 Pfd.",
       "ruestungswerte": {
         "Art": "Schwere Rüstung",
-        "Rüstungs-/Schildbonus": "+7",
         "Max. GE-Bonus": "+0",
         "Rüstungsmalus": "-7",
         "Zauberpatzerchance": "40 %",
         "Bewegung (9 m)": "6 m",
-        "Bewegung (6 m)": "4,50 m"
+        "Bewegung (6 m)": "4,50 m",
+        "Rüstungsbonus": "+7"
       }
     },
     {
@@ -24271,7 +24226,7 @@
       "quelle_en": "Ultimate Equipment",
       "seite": 9,
       "kategorie": "Gewöhnliche Rüstung",
-      "ausruestungsplatz": "",
+      "ausruestungsplatz": "Rüstung",
       "preis_gm": 50.0,
       "preis_original": "50 GM",
       "zs": null,
@@ -24283,12 +24238,12 @@
       "gewicht": "30 Pfd.",
       "ruestungswerte": {
         "Art": "Mittelschwere Rüstung",
-        "Rüstungs-/Schildbonus": "+5",
         "Max. GE-Bonus": "+3",
         "Rüstungsmalus": "-4",
         "Zauberpatzerchance": "25 %",
         "Bewegung (9 m)": "6 m",
-        "Bewegung (6 m)": "4,50 m"
+        "Bewegung (6 m)": "4,50 m",
+        "Rüstungsbonus": "+5"
       }
     },
     {
@@ -24776,7 +24731,7 @@
       "quelle_en": "Ultimate Equipment",
       "seite": 9,
       "kategorie": "Gewöhnlicher Schild",
-      "ausruestungsplatz": "",
+      "ausruestungsplatz": "Schild",
       "preis_gm": 7.0,
       "preis_original": "7 GM",
       "zs": null,
@@ -24788,12 +24743,10 @@
       "gewicht": "10 Pfd.",
       "ruestungswerte": {
         "Art": "Schilde",
-        "Rüstungs-/Schildbonus": "+2",
         "Max. GE-Bonus": "–",
         "Rüstungsmalus": "-2",
         "Zauberpatzerchance": "15 %",
-        "Bewegung (9 m)": "–",
-        "Bewegung (6 m)": "–"
+        "Schildbonus": "+2"
       }
     },
     {
@@ -24840,7 +24793,7 @@
       "quelle_en": "Ultimate Equipment",
       "seite": 9,
       "kategorie": "Gewöhnlicher Schild",
-      "ausruestungsplatz": "",
+      "ausruestungsplatz": "Schild",
       "preis_gm": 20.0,
       "preis_original": "20 GM",
       "zs": null,
@@ -24852,12 +24805,10 @@
       "gewicht": "15 Pfd.",
       "ruestungswerte": {
         "Art": "Schilde",
-        "Rüstungs-/Schildbonus": "+2",
         "Max. GE-Bonus": "–",
         "Rüstungsmalus": "-2",
         "Zauberpatzerchance": "15 %",
-        "Bewegung (9 m)": "–",
-        "Bewegung (6 m)": "–"
+        "Schildbonus": "+2"
       }
     },
     {
@@ -25595,24 +25546,6 @@
       "erschaffungskosten_gm": null,
       "pruefstatus": "Automatisch aus dem deutschen Ausrüstungskompendium erfasst – Einzelprüfung offen",
       "gewicht": "–"
-    },
-    {
-      "id": "ak-0847",
-      "name": "Silberdolch [Meisterarbeit]",
-      "name_en": "",
-      "quelle_de": "Ausrüstungskompendium (2. Auflage)",
-      "quelle_en": "Ultimate Equipment",
-      "seite": 160,
-      "kategorie": "Magische Waffe",
-      "ausruestungsplatz": "Waffenhand",
-      "preis_gm": 322.0,
-      "zs": null,
-      "aura": "Keine Aura (nicht-magisch)",
-      "beschreibung": "",
-      "erschaffungsvoraussetzungen": "",
-      "erschaffungskosten_gm": null,
-      "pruefstatus": "Automatischer PDF-Abgleich – Angaben noch nicht einzeln geprüft",
-      "gewicht": "1 Pfd."
     },
     {
       "id": "ak-0848",
@@ -27905,7 +27838,7 @@
       "quelle_en": "Ultimate Equipment",
       "seite": 9,
       "kategorie": "Gewöhnliche Rüstung",
-      "ausruestungsplatz": "",
+      "ausruestungsplatz": "Rüstung",
       "preis_gm": 1800.0,
       "preis_original": "1.800 GM",
       "zs": null,
@@ -27917,12 +27850,12 @@
       "gewicht": "75 Pfd.",
       "ruestungswerte": {
         "Art": "Schwere Rüstung",
-        "Rüstungs-/Schildbonus": "+9",
         "Max. GE-Bonus": "+1",
         "Rüstungsmalus": "-6",
         "Zauberpatzerchance": "35 %",
         "Bewegung (9 m)": "4,50 m",
-        "Bewegung (6 m)": "3 m"
+        "Bewegung (6 m)": "3 m",
+        "Rüstungsbonus": "+9"
       }
     },
     {
@@ -29227,7 +29160,7 @@
       "quelle_en": "Ultimate Equipment",
       "seite": 9,
       "kategorie": "Gewöhnlicher Schild",
-      "ausruestungsplatz": "",
+      "ausruestungsplatz": "Schild",
       "preis_gm": 5.0,
       "preis_original": "5 GM",
       "zs": null,
@@ -29239,12 +29172,10 @@
       "gewicht": "5 Pfd.",
       "ruestungswerte": {
         "Art": "Schilde",
-        "Rüstungs-/Schildbonus": "+1",
         "Max. GE-Bonus": "–",
         "Rüstungsmalus": "-1",
         "Zauberpatzerchance": "5 %",
-        "Bewegung (9 m)": "–",
-        "Bewegung (6 m)": "–"
+        "Schildbonus": "+1"
       }
     },
     {
@@ -29255,7 +29186,7 @@
       "quelle_en": "Ultimate Equipment",
       "seite": 9,
       "kategorie": "Gewöhnliche Rüstung",
-      "ausruestungsplatz": "",
+      "ausruestungsplatz": "Rüstung",
       "preis_gm": 1000.0,
       "preis_original": "1.000 GM",
       "zs": null,
@@ -29267,12 +29198,12 @@
       "gewicht": "45 Pfd.",
       "ruestungswerte": {
         "Art": "Schwere Rüstung",
-        "Rüstungs-/Schildbonus": "+7",
         "Max. GE-Bonus": "+3",
         "Rüstungsmalus": "-6",
         "Zauberpatzerchance": "35 %",
         "Bewegung (9 m)": "6 m",
-        "Bewegung (6 m)": "4,50 m"
+        "Bewegung (6 m)": "4,50 m",
+        "Rüstungsbonus": "+7"
       }
     },
     {
@@ -30442,7 +30373,7 @@
       "quelle_en": "Ultimate Equipment",
       "seite": 9,
       "kategorie": "Gewöhnlicher Schild",
-      "ausruestungsplatz": "",
+      "ausruestungsplatz": "Schild",
       "preis_gm": 30.0,
       "preis_original": "30 GM",
       "zs": null,
@@ -30454,12 +30385,10 @@
       "gewicht": "45 Pfd.",
       "ruestungswerte": {
         "Art": "Schilde",
-        "Rüstungs-/Schildbonus": "+4",
         "Max. GE-Bonus": "+2",
         "Rüstungsmalus": "-10",
         "Zauberpatzerchance": "50 %",
-        "Bewegung (9 m)": "–",
-        "Bewegung (6 m)": "–"
+        "Schildbonus": "+4"
       }
     },
     {
@@ -31839,7 +31768,7 @@
       "quelle_en": "Ultimate Equipment",
       "seite": 9,
       "kategorie": "Gewöhnliche Rüstung",
-      "ausruestungsplatz": "",
+      "ausruestungsplatz": "Rüstung",
       "preis_gm": 125.0,
       "preis_original": "125 GM",
       "zs": null,
@@ -31851,12 +31780,12 @@
       "gewicht": "45 Pfd.",
       "ruestungswerte": {
         "Art": "Mittelschwere Rüstung",
-        "Rüstungs-/Schildbonus": "+6",
         "Max. GE-Bonus": "+2",
         "Rüstungsmalus": "-5",
         "Zauberpatzerchance": "30 %",
         "Bewegung (9 m)": "6 m",
-        "Bewegung (6 m)": "4,50 m"
+        "Bewegung (6 m)": "4,50 m",
+        "Rüstungsbonus": "+6"
       }
     },
     {
@@ -32150,7 +32079,7 @@
       "quelle_en": "Ultimate Equipment",
       "seite": 9,
       "kategorie": "Gewöhnliche Rüstung",
-      "ausruestungsplatz": "",
+      "ausruestungsplatz": "Rüstung",
       "preis_gm": 5.0,
       "preis_original": "5 GM",
       "zs": null,
@@ -32162,12 +32091,10 @@
       "gewicht": "10 Pfd.",
       "ruestungswerte": {
         "Art": "Leichte Rüstung",
-        "Rüstungs-/Schildbonus": "+1",
         "Max. GE-Bonus": "+8",
         "Rüstungsmalus": "0",
         "Zauberpatzerchance": "5 %",
-        "Bewegung (9 m)": "9 m",
-        "Bewegung (6 m)": "6 m"
+        "Rüstungsbonus": "+1"
       }
     },
     {
